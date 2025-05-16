@@ -1,0 +1,13 @@
+[package]
+name = "awful_knowledge_synthesizer"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+serde = "1.0.219"
+serde_derive = "1.0.219"
+serde_yaml = "0.9.34"
+awful_aj = { version = "*", git = "https://github.com/graves/awful_aj" }
+tokio = { version = "1.45.0", features = ["full"] }
+serde_json = "1.0.140"
+clap = { version = "4.5.38", features = ["derive"] }
