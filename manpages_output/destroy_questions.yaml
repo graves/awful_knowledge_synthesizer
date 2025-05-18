@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `destroy`.\n\n\n\nManpage text:\n\ndestroy(n)\t\t     Tk Built-In Commands\t\t    destroy(n)\n\n______________________________________________________________________________\n\nNAME\n       destroy - Destroy one or more windows\n\nSYNOPSIS\n       destroy ?window window ...?\n______________________________________________________________________________\n\nDESCRIPTION\n       This command deletes the windows given by the window arguments, plus\n       all of their descendants.  If a window “.” is deleted then all windows\n       will be destroyed and the application will (normally) exit.  The\n       windows are destroyed in order, and if an error occurs in destroying a\n       window the command aborts without destroying the remaining windows.  No\n       error is returned if window does not exist.\n\nEXAMPLE\n       Destroy all checkbuttons that are direct children of the given widget:\n\t      proc killCheckbuttonChildren {parent} {\n\t\t foreach w [winfo children $parent] {\n\t\t    if {[winfo class $w] eq \"Checkbutton\"} {\n\t\t       destroy $w\n\t\t    }\n\t\t }\n\t      }"
+  manpageQuestion1: What is the primary purpose of the destroy command in the Tk toolkit?
+  manpageQuestion2: How can you use the destroy command to remove all Checkbutton widgets that are direct children of a given widget?
+  manpageQuestion3: What happens if you attempt to destroy a window that does not exist?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `destroy`.\n\n\n\nManpage text:\n\nKEYWORDS\n       application, destroy, window\n\nTk\t\t\t\t\t\t\t\t    destroy(n)"
+  manpageQuestion1: What is the primary purpose of the destroy command in the Tk toolkit?
+  manpageQuestion2: How would you use the destroy command to close a window in a Tk application?
+  manpageQuestion3: Can you provide an example of using the destroy command to remove an application from the Tk interface?
+

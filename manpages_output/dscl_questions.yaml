@@ -1,0 +1,266 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dscl`.\n\n\n\nManpage text:\n\ndscl(1) \t\t    General Commands Manual\t\t       dscl(1)\n\nNAME\n     dscl – Directory Service command line utility\n\nSYNOPSIS\n     dscl [options] [datasource [command]]\n\n\t  options:\n\t\t-p\t     prompt for password\n\t\t-u user      authenticate as user\n\t\t-P password  authentication password\n\t\t-f filepath  targeted local node database file path\n\t\t-raw\t     don't strip off prefix from DirectoryService API\n\t\t\t     constants\n\t\t-plist\t     print out record(s) or attribute(s) in XML plist\n\t\t\t     format\n\t\t-url\t     print record attribute values in URL-style\n\t\t\t     encoding\n\t\t-q\t     quiet - no interactive prompt\n\n\t  commands:\n\t\t-read [path [key ...]]\n\t\t-readall [path [key ...]]\n\t\t-readpl path key plist_path\n\t\t-readpli path key value_index plist_path\n\t\t-list path [key]\n\t\t-search path key val\n\t\t-create record_path [key [val ...]]\n\t\t-createpl record_path key plist_path val1 [val2 ...]\n\t\t-createpli record_path key value_index plist_path val1 [val2 ...]\n\t\t-append record_path key val ...\n\t\t-merge record_path key val ...\n\t\t-delete path [key [val ...]]\n\t\t-deletepl record_path key plist_path [val ...]\n\t\t-deletepli record_path key value_index plist_path [val ...]\n\t\t-change record_path key old_val new_val\n\t\t-changei record_path key val_index new_val\n\t\t-diff path1 path2 [key ...]\n\t\t-passwd user_path [new_password | old_password new_password]\n\n\t  available only in interactive mode:\n\t\t-cd dir\n\t\t-pushd [dir]\n\t\t-popd\n\t\t-auth [user [password]]\n\t\t-authonly [user [password]]\n\t\t-quit"
+  manpageQuestion1: What is the primary purpose of the dscl command-line utility?
+  manpageQuestion2: How would you use dscl to read the value of a specific attribute from a user record in the directory service?
+  manpageQuestion3: Can you provide an example of using dscl to create a new user record with specific attributes?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dscl`.\n\n\n\nManpage text:\n\nDESCRIPTION\n     dscl is a general-purpose utility for operating on Directory Service\n     directory nodes.  Its commands allow one to create, read, and manage\n     Directory Service data.  If invoked without any commands, dscl runs in an\n     interactive mode, reading commands from standard input.  Interactive\n     processing is terminated by the quit command.  Leading dashes (\"-\") are\n     optional for all commands.\n\n     dscl operates on a datasource specified on the command line.  This may be\n     a node name or a Mac OS X Server (10.2 or later) host specified by DNS\n     hostname or IP address.  Node names may be absolute paths beginning with\n     a slash (\"/\"), or relative domain paths beginning with a dot (\".\")\n     character, which specifies the local domain, or \"..\", specifying the\n     local domain's parent.  If the hostname or IP address form is used then\n     the user must specify the -u option and either the -P or -p options to\n     specify an administrative user and password on the remote host to\n     authenticate with to the remote host. The exception to this is if\n     \"localhost\" is specified.\tPassing passwords on the command line is\n     inherently insecure and can cause password exposure.  For better security\n     do not provide the password as part of the command and you will be\n     securely prompted."
+  manpageQuestion1: What is the primary purpose of the dscl command?
+  manpageQuestion2: How would you use dscl to read a specific attribute from a directory service node?
+  manpageQuestion3: Can you provide an example of using dscl to modify a user's information on a remote macOS server?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dscl`.\n\n\n\nManpage text:\n\nThe datasource may also be specified as \"localonly\" in which case a\n     separate DirectoryService daemon process is activated which contains only\n     the Local plugin for use by dscl.\tIf no file path is provided then\n     access goes only to the registered local nodes on the system. However, if\n     the -f option is specified then access is added to the local node\n     \"/Local/Target\" which points to the database located at the provided\n     filepath. One example is to provide the filepath of\n     \"/Volumes/Build100/var/db/dslocal/nodes/Default\" and then access to that\n     database is provided via the nodename \"/Local/Target\".\n\nPATH SPECIFICATION\n     There are two modes of operation when specifying paths to operate on. The\n     two modes correspond to whether the datasource is a node or a host. In\n     the case of specifying a node, the top level of paths will be record\n     types. Example top level paths would be:\n\n\t   /Users/alice\n\t   /Groups/admin\n\n     In the case of specifying a host as a data source, the top level of paths\n     correspond to Open Directory plug-ins and Search Paths. One can specify\n     the plug-in to traverse to a node name, after which the paths are\n     equivalent to the former usage. The following might be the equivalent\n     paths as the above paths:"
+  manpageQuestion1: What is the primary purpose of the dscl command?
+  manpageQuestion2: How would you use dscl to add a new user account named 'jane' with the home directory set to '/Users/jane'?
+  manpageQuestion3: Can you provide an example of using dscl to query the value of the 'User Shell' attribute for the user 'alice'?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dscl`.\n\n\n\nManpage text:\n\n/NetInfo/root/Users/alice\n\t   /LDAPv3/10.0.1.42/Groups/admin\n\n     If path components contain keys or values with embedded slash characters,\n     the slash characters must be escaped with a leading backslash character.\n     Since the shell also processes escape characters, an extra backslash is\n     required to correctly specify an escape.  For example, to read a mount\n     record with the name \"ldapserver:/Users\" in the \"/Mounts\" path, the\n     following path would be used:\n\n\t   dscl  . -read /Mounts/ldaphost:\\/Users\n\n     All pathnames are case-sensitive.\n\nCOMMANDS\n     The action of each command is described below.  Some commands have\n     aliases.  For example, \"cat\" and \".\" are aliases for \"read\".  Command\n     aliases are listed in parentheses.\n\n   read (cat .)\n     Usage: read [path [key ...]]\n\n     Prints a directory.  The property key is followed by colon, then a space-\n     separated list of the values for that property. If any value contains\n     embedded spaces, the list will instead be displayed one entry per line,\n     starting on the line after the key."
+  manpageQuestion1: What is the primary purpose of the dscl command?
+  manpageQuestion2: How would you use dscl to read the value of a specific key in a directory path?
+  manpageQuestion3: Can you provide an example of using dscl to read a property with an embedded slash character in the key?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dscl`.
+
+
+
+    Manpage text:
+
+    If The -raw flag for raw output has been given, then read prints the full
+         DirectoryService API constant for record and attribute types.
+
+         If the -url flag has been specified then printed record path attribute
+         values are encoded in the style of URLs. This is useful if a script or
+         program is trying to process the output since values will not have any
+         spaces or other control characters.
+
+       readall
+         Usage: readall [path [key ...]]
+
+         readall prints all the records of a given type.  The output of readall is
+         formatted in the same way as read with a "-" on a line as a delimeter
+         between records.
+
+       readpl
+         Usage: readpl path key plist_path
+
+         Prints the contents of plist_path. The plist_path is followed by a colon,
+         then a whitespace, and then the value for the path.
+
+         If the plist_path is the key for a dictionary or array, the contents of
+         it are displayed in plist form after the plist_path. If plist_path is the
+         key for a string, number, bool, date, or data object, only the value is
+         printed out after the plist_path.
+  manpageQuestion1: What is the primary purpose of the dscl command?
+  manpageQuestion2: How can you use dscl to retrieve all records of a specific type from a given path?
+  manpageQuestion3: Can you provide an example of using dscl to read the contents of a plist file and display it in a structured format?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dscl`.
+
+
+
+    Manpage text:
+
+    readpli
+         Usage: readpli path key value_index plist_path
+
+         Prints the contents of plist_path for the plist at value_index of the
+         key.  The plist_path is followed by a colon, then a whitespace, and then
+         the value for the path.
+
+         If the plist_path is the key for a dictionary or array, the contents of
+         it are displayed in plist form after the plist_path. If plist_path is the
+         key for a string, number, bool, date, or data object, only the value is
+         printed out after the plist_path.
+
+       list (ls)
+         Usage: list path
+
+         Lists the subdirectories of the given directory.  Subdirectories are
+         listed one per line.  In the case of listing a search path, the names are
+         preceded by an index number that can act as a shortcut and used in place
+         of the name when specifying a path.
+
+         When used in interactive mode, the path is optional.  With no path given,
+         the current directory will be used.
+
+       search
+         path key val
+
+         Searches for records that match a pattern.  The search is rooted at the
+         given path.  The path may be a node path or a record type path.  Valid
+         keys are Directory Service record attribute types.
+  manpageQuestion1: What is the primary purpose of the dscl resource?
+  manpageQuestion2: How would you use dscl to list all subdirectories in the /Library/DirectoryServices directory?
+  manpageQuestion3: Can you provide an example of using dscl to search for records with the key 'AppleUser' and the value 'username123' in the /System directory?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dscl`.
+
+
+
+    Manpage text:
+
+    create (mk)
+         Usage: create record_path [key [val ...]]
+
+         Creates a record, property, or value.  If only a record path is given,
+         the create command will create the record if it does not exist.  If a key
+         is given, then a property with that key will be created.
+
+         WARNING - If a property with the given key already exists, it will be
+         destroyed and a new property will be created in its place.  To add values
+         to an existing property, use the append or merge commands.
+
+         If values are included in the command, these values will be set for the
+         given key.
+
+         NOTE - Not all directory nodes support a property without a value. An
+         error will be given if you attempt to create a property with no value in
+         such a directory node.
+
+       createpl
+         Usage: createpl record_path key plist_path val1 [val2 ...]
+
+         Creates a string, or array of strings at plist_path.
+
+         If you are creating a value at the root of a plist that is an array,
+         simply use "0" as the plist_path.
+  manpageQuestion1: What is the primary purpose of the dscl command?
+  manpageQuestion2: How would you use dscl to create a new property in a record with the key 'MyKey' and value 'MyValue'?
+  manpageQuestion3: Can you provide an example of using dscl createpl to create a string value 'Hello, World!' at the root of a property list?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dscl`.
+
+
+
+    Manpage text:
+
+    If only val1 is specified, a string will be created at plist_path. If
+         val1 val2 ... are specified, an array of strings will be created at
+         plist_path.
+
+         WARNING - If a value with the given plist_path already exists, it will be
+         destroyed and a new value will be created in its place.
+
+       createpli
+         Usage: createpli record_path key value_index plist_path val1 [val2 ...]
+
+         Creates a string, or array of strings at plist_path for the plist at
+         value_index of the key.
+
+         If you are creating a value at the root of a plist that is an array,
+         simply use "0" as the plist_path.
+
+         If only val1 is specified, a string will be created at plist_path. If
+         val1 val2 ... are specified, an array of strings will be created at
+         plist_path.
+
+         WARNING - If a value with the given plist_path already exists, it will be
+         destroyed and a new value will be created in its place.
+
+       append
+         Usage: append record_path key val ...
+
+         Appends one or more values to a property in a given record.  The property
+         is created if it does not exist.
+  manpageQuestion1: What is the primary purpose of the dscl command in macOS?
+  manpageQuestion2: How would you use the createpli command to add a new string value to a specific location in a property list?
+  manpageQuestion3: Can you provide an example of using the append command to add multiple values to a property in a macOS user record?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dscl`.\n\n\n\nManpage text:\n\nmerge\n     Usage: merge record_path key val ...\n\n     Appends one or more values to a property in a given directory if the\n     property does not already have those values.  The property is created if\n     it does not exist.\n\n   change\n     Usage: change record_path key old_val new_val\n\n     Replaces the given old value in the list of values of the given key with\n     the new value in the specified record.\n\n   changei\n     Usage: changei path key index val\n\n     Replaces the value at the given index in the list of values of the given\n     key with the new value in the specified record.  index is an integer\n     value.  An index of 1 specifies the first value.  An index greater than\n     the number of values in the list will result in an error.\n\n   diff\n     Usage: diff path1 path2 key ...\n\n     Compares the data from path1 and path2 looking at the specified keys (or\n     all if no keys are specified).\n\n   delete (rm)\n     Usage: delete path [key [val ...]]\n\n     Delete a directory, property, or value.  If a directory path is given,\n     the delete command will delete the directory.  This can only be used on\n     record type and record paths.  If a key is given, then a property with\n     that key will be deleted.\tIf one or more values are given, those values\n     will be removed from the property with the given key."
+  manpageQuestion1: What is the primary purpose of the dscl command in macOS?
+  manpageQuestion2: How would you use dscl to append the value 'example.com' to the 'NFSv4_1_Servers' property of a user record located at '/Users/username'
+  manpageQuestion3: Can you provide an example of using dscl to replace the third value in the 'UserShell' key of a record at '/Users/username' with the shell '/bin/zsh'?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dscl`.
+
+
+
+    Manpage text:
+
+    deletepl
+         Usage: deletepl record_path key plist_path [val ...]
+
+         Deletes a value in a plist.  If no values are given deletepl deletes the
+         plist_path. If one or more values are given, deletepl deletes the values
+         within plist_path.
+
+       deletepli
+         Usage: deletepli record_path key value_index plist_path [val ...]
+
+         Deletes a value for the plist at value_index of the key.  If no values
+         are given deletepli deletes the plist_path. If one or more values are
+         given, deletepli deletes the values within plist_path.
+
+       passwd
+         Usage: passwd user_path [new_password | old_password new_password]
+
+         Changes a password for a user. The user must be specified by full path,
+         not just a username.  If you are authenticated to the node (either by
+         specifying the -u and -P flags or by using the auth command when in
+         interactive node) then you can simply specify a new password.  If you are
+         not authenticated or if FileVault is enabled then the user's old password
+         must be specified.  If passwords are not specified while in interactive
+         mode, you will be prompted for them.  Passing these passwords on the
+         command line is inherently insecure and can cause password exposure.  For
+         better security do not provide the password as part of the command and
+         you will be securely prompted.
+  manpageQuestion1: What is the primary purpose of the deletepl and deletepli commands in macOS?
+  manpageQuestion2: How would you use the deletepl command to remove a specific value from a plist file?
+  manpageQuestion3: Can you provide an example of using the deletepli command to remove a particular value index from a key in a plist?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dscl`.
+
+
+
+    Manpage text:
+
+    INTERACTIVE COMMANDS
+       cd
+         Usage: cd dir
+
+         Sets the current directory.  Path names for other dscl commands may be
+         relative to the current directory.
+
+       pushd (pd)
+         Usage: pushd path
+
+         Similar to the pushd command commonly found in Unix shells.  When a path
+         is specified it sets the current directory while pushing the previous
+         directory on to the directory stack.  If no path is specified it
+         exchanges the top two elements of the directory stack.  It will also
+         print the final directory stack.
+
+       popd
+         Usage: popd
+
+         Pops the directory stack and returns to the new top directory.  It will
+         also print the final directory stack.
+
+       auth (su)
+         Usage: auth [user [password]]
+
+         Authenticate as the named user, or as "root" if no user is specified.  If
+         a password is supplied, then that password is used for authentication,
+         otherwise the command prompts for a password.
+
+         If dscl is run in host mode, then when this command is run the current
+         directory must be in the subdirectories of a node.
+  manpageQuestion1: What is the primary purpose of the dscl commands?
+  manpageQuestion2: How would you use the pushd command in dscl to change directories and maintain a directory stack?
+  manpageQuestion3: Can you provide an example of using the auth command in dscl to authenticate as the root user without providing a password?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dscl`.\n\n\n\nManpage text:\n\nauthonly\n     Usage: authonly [user [password]]\n\n     Used to verify the password of a named user, or of \"root\" if no user is\n     specified.  If a password is supplied, then that password is used for\n     authentication, otherwise the command prompts for a password.\n\n     If dscl is run in host mode, then when this command is run the current\n     directory must be in the subdirectories of a node.\n\n   quit (q)\n     Usage: quit\n\n     Ends processing of interactive commands and terminates the program.\n\n   command history\n     The up and down arrow keys will scan through the command history.\n\n   tab completion\n     When pathnames are being typed, pressing the tab key will result in a\n     search to auto-complete the typed partial subdirectory name. It will also\n     attempt to correct capitilization in the process.\n\nEXAMPLES\n     -view a record in the local directory node\n\t      dscl . -read /Users/www\n\n     -create or replace the UserShell attribute value for the www user record\n\t      dscl . -create /Users/www UserShell /usr/bin/false"
+  manpageQuestion1: What is the primary purpose of the dscl command?
+  manpageQuestion2: How would you use dscl to verify the password for the user 'admin'?
+  manpageQuestion3: Can you provide an example of using dscl to create a new user record with specific attributes?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dscl`.\n\n\n\nManpage text:\n\n-create or replace the test key of the mcx_application_data:loginwindow\n\t      plist value for the MCXSettings attribute of the user1 user\n\t      record\n\t      dscl . -createpl /Users/user1 MCXSettings\n\t      mcx_application_data:loginwindow:test value\n\n     -list the uniqueID values for all user records on a given node\n\t      dscl /LDAPv3/ldap.company.com -list /Users UniqueID\n\n     -append a value that has spaces in it\n\t      dscl . -append /Users/www Comment \"This is a comment\"\n\nDIAGNOSTICS\n     dscl will return -1 (255) on error.\n\nSEE ALSO\n     DirectoryService(8), DirectoryServiceAttributes(7)\n\nMacOSX\t\t\t\tAugust 25, 2003 \t\t\tMacOSX"
+  manpageQuestion1: What is the primary purpose of the dscl command in macOS?
+  manpageQuestion2: How would you use dscl to append a comment to the user account 'www' in the current node?
+  manpageQuestion3: Can you provide an example of using dscl to list the UniqueID values for all user records on the LDAP server 'ldap.company.com'?
+

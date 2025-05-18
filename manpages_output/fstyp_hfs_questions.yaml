@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `fstyp_hfs`.\n\n\n\nManpage text:\n\nFSTYP_HFS(8)\t\t    System Manager's Manual\t\t  FSTYP_HFS(8)\n\nNAME\n     fstyp_hfs – check for an HFS volume\n\nSYNOPSIS\n     fstyp_hfs device\n\nDESCRIPTION\n     The fstyp_hfs utility is not intended to be run directly, but rather\n     called by fstyp(8) while it is trying to determine which file system type\n     is present on the given device.  It returns 1 if it thinks the device\n     contains an HFS volume, and 0 otherwise.\n\nSEE ALSO\n     fstyp(8)\n\nmacOS 15.3\t\t\tAugust 15, 2005 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the fstyp_hfs utility?
+  manpageQuestion2: How would you use fstyp_hfs in conjunction with fstyp to determine the file system type of a device?
+  manpageQuestion3: Can you explain the return values of the fstyp_hfs utility and their significance?
+

@@ -1,0 +1,98 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `symbols`.\n\n\n\nManpage text:\n\nsymbols(1)\t\t    General Commands Manual\t\t    symbols(1)\n\nNAME\n     symbols – display symbol information about a file or process\n\nSYNOPSIS\n     symbols [-help] [-w] [-uuid] [-arch arch_name] [-saveSignature path]\n\t     [-symbolsPackageDir path] [-lookup (0x1234 | symbol) ...] file...\n\t     pid...  process-name...  signature...  dSYM...\n\nDESCRIPTION\n     The symbols command may be used to examine library, symbol, and source\n     line information in files and running processes.\n\n     You may need root privileges to examine running processes.\n\n     The symbols command can be used to determine symbol availability to tools\n     such as Instruments, dtrace, and sample.\n\nCOMMON OPTIONS\n     -help\t      Print a more extensive list of options\n\n     -v \t      Print version information\n\n     -w \t      Print wide output, do not clip to terminal width\n\n     -uuid\t      Print UUID info only.\n\n     -arch arch_name  Specify the target architecture. The default value is\n\t\t      current , which matches the current system architecture.\n\t\t      If the current architecture is not available in the\n\t\t      targeted file or process, the symbols command will\n\t\t      attempt to use any64bit , which matches the first\n\t\t      available 64-bit architecture. If there is no 64-bit\n\t\t      architecture available, the symbols command will finally\n\t\t      fall back to any , which matches the first available\n\t\t      architecture. The value all may be used to iterate over\n\t\t      all architectures in a target. The arch name may also be\n\t\t      any of the commonly used architecture mnemonics, for\n\t\t      example i386, x86_64, or arm"
+  manpageQuestion1: What is the primary purpose of the symbols command?
+  manpageQuestion2: How can you use the symbols command to display symbol information for a specific file or process?
+  manpageQuestion3: What is the function of the -arch option in the symbols command and how would you use it to specify a target architecture?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `symbols`.\n\n\n\nManpage text:\n\n-cpuType #       Specify the target architecture cpu type as a numeric\n\t\t      value\n\n     -cpuSubtype #    Specify the target architecture cpu subtype as a numeric\n\t\t      value\n\n     -noHeaders       Do not print library level information. This also\n\t\t      supresses printing of any lower level information, which\n\t\t      implies -noRegions, -noSymbols, and -noSources\n\n     -noRegions       Do not print segment/section level information. This\n\t\t      also supresses printing of any lower level information,\n\t\t      which implies -noSymbols and -noSources\n\n     -noSymbols       Do not print symbol level information. This also\n\t\t      supresses printing of any lower level information, which\n\t\t      implies -noSources\n\n     -noSources       Do not print source level information\n\n     -noDemangling    Do not print the human readable form of symbol names,\n\t\t      instead print the name used by the linker\n\n     -printSignature  Print a \"signature\" for each target, which can later be\n\t\t      used as input to the symbols command. This is a way to\n\t\t      archive target data for later use. See also the\n\t\t      -saveSignature flag"
+  manpageQuestion1: What is the primary purpose of the symbols command in macOS?
+  manpageQuestion2: How can you use the symbols command to display only symbol-level information without any lower-level details?
+  manpageQuestion3: What is the function of the -printSignature flag when used with the symbols command?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `symbols`.\n\n\n\nManpage text:\n\n-deepSignature   Causes all signatures to be \"deep copies\", containing\n\t\t      complete copies of all available information\n\n     -fullSourcePath  Print the entire source path for each source info\n\n     -printDsymPaths  Print the path of the dSYM file (if found) used when\n\t\t      creating symbol information\n\n     -lookup (0x1234 | symbol)\n\t\t      Find one or more addresses or symbols in the targets.\n\t\t      Symbols may contain simple shell globbing style\n\t\t      patterns.\n\nOUTPUT\n     Output from symbols has the following format:\n\n     target [arch_name, elapsed-time]:\n       UUID symbol-owner-path [FLAGS]\n\t address (size) region-name\n\t   address (size) symbol-name [FLAGS]\n\t     address (size) sourcefile : line #\n\n     Symbol owner flags have the following meanings:\n\n     PROT\t      A load command has the SG_PROTECTED_VERSION_1 flag set\n     AOUT\t      This symbol owner is an executable\n     DYLIB\t      This symbol owner is a dylib or framework\n     DYLIB-STUB       This symbol owner is used only by the linker\n     DYLD\t      This symbol owner is the runtime dynamic linker\n     BUNDLE\t      This symbol owner is a loadable bundle\n     OBJECT\t      This symbol owner is an unlinked object file\n     KEXT-BUNDLE      This symbol owner is a kext\n     dSYM_v#\t      This symbol owner is a dSYM, of version '#'\n     DYLDSHAREDCACHE  This symbol owner was found in the dyld shared cache\n     ObjC-RR\t      This symbol owner supports manual retain-release\n     ObjC-GC\t      This symbol owner supports old-style garbage collection\n     SLID\t      This symbol owner was relocated from its base address\n     PIE\t      This symbol owner is compiled position independent\n     RESTRICTED       This symbol owner has a restrict segment/section\n     STATIC-LIB       This symbol-owner is from a static library (.a)\n     FaultedFromDisk  The data for this symbol owner was found on disk\n     FaultedFromTask  The data for this symbol owner was retrieved from a\n\t\t      running task\n     FaultedFromSelfDyldSharedCache\n\t\t      The data for this symbol owner was found in the current\n\t\t      processes dyld shared cache\n     FilesetEntry     This symbol owner is a member of a fileset kernel\n\t\t      collection\n     Found-dSYM       A dSYM was found for this symbol owner\n     Found-Binary-via-dSYM-colocation\n\t\t      The binary for this symbol owner was found by looking up\n\t\t      the dSYM, and then looking next to the dSYM\n     Found-Binary-via-dSYM-plist\n\t\t      The binary for this symbol owner was found by looking up\n\t\t      the dSYM, and then reading its plist\n     MMap32\t      The symbol owner is using a mmap'd file cache for symbol\n\t\t      information\n     MMap64\t      The symbol owner is using a mmap'd file cache for symbol\n\t\t      information\n     Private\t      This symbol owner cannot be cached\n     Empty\t      No data was found for this symbol owner"
+  manpageQuestion1: What is the primary purpose of the symbols command?
+  manpageQuestion2: How can you use the symbols command to find the address of a specific symbol named 'myFunction' in a target?
+  manpageQuestion3: Can you explain how to use the symbols command with the -deepSignature and -fullSourcePath options to get detailed information about symbol owners?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `symbols`.\n\n\n\nManpage text:\n\nSymbol flags have the following meanings:\n\n     FUNC\t\t    This symbol has executable code\n     DYLD-STUB\t\t    This symbol is a stub used by the dynamic linker\n     OBJC\t\t    This symbol is an Objective C method\n     THUMB\t\t    This symbol uses thumb instruction encoding\n     OMIT-FP\t\t    This symbol does not create a frame pointer.\n     EXT\t\t    This symbol has external visibility\n     PEXT\t\t    This symbol has private-external visibility\n     LENGTH\t\t    The length of this symbol is known, not guessed\n     NameNList\t\t    The name of this symbol comes from NList data\n     NameDwarf\t\t    The name of this symbol comes from Dwarf data\n     NameDwarfMIPSLinkage   The name of this symbol is from specialized Dwarf\n     MangledNameNList\t    The mangled name of this symbol is from NList data\n     MangledNameDwarf\t    The mangled name of this symbol is from Dwarf data\n     MangledNameDwarfMIPSLinkage\n\t\t\t    The mangled name of this symbol is from\n\t\t\t    specialized Dwarf\n     Merged\t\t    This symbol has multiple data sources\n     NList\t\t    This symbol was found in NList data\n     Dwarf\t\t    This symbol was found in Dwarf data\n     DebugMap\t\t    This symbol was found in DebugMap data\n     FunctionStarts\t    This symbol was found in function starts data"
+  manpageQuestion1: What is the primary purpose of the symbols resource in macOS?
+  manpageQuestion2: How can you determine if a symbol is an Objective-C method using the symbols resource?
+  manpageQuestion3: Can you explain how to identify a symbol that has external visibility using the symbols resource?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `symbols`.
+
+
+
+    Manpage text:
+
+    SOURCES OF SYMBOL INFORMATION
+         symbols uses multiple sources of symbol information. All sources are
+         queried, and the resulting data is merged.
+
+         NLIST symbol information is found in the LINKEDIT segment. It is
+         imprecise, and only contains a starting address, not a length or ending
+         address. Nlist data is not required to (and typically does not) reference
+         all symbols. Usually only external symbol information is available. Even
+         that may be removed by use of strip(1)
+
+         DEBUG MAP symbol information is multi-part. A per-symbol reference in the
+         original file points to an external file containing additional debug
+         information, usually DWARF.
+
+         FUNCTION STARTS symbol information is found in the LC_FUNCTION_STARTS
+         load command of the target. It is imprecise, and only contains a starting
+         address, not a length or ending address. Furthermore, it contains no name
+         or mangled name information. The LC_FUNCTION_STARTS load command is
+         optional, it may not be found in all targets.
+  manpageQuestion1: What is the primary purpose of the symbols command in macOS?
+  manpageQuestion2: How can you use the symbols command to retrieve debug information for a specific symbol in a binary file?
+  manpageQuestion3: What are the different sources of symbol information that the symbols command queries, and how do they differ in their reliability or detail?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `symbols`.
+
+
+
+    Manpage text:
+
+    DWARF symbol information is true debug info. It is usually precise (but
+         it is not required to be). When available, dwarf information is treated
+         as more reliable than any other information source, and conflicts are
+         resolved in favor of dwarf data.
+
+         DSYM. A dSYM is an external file containing DWARF and NLIST symbol
+         information.
+
+    KERNEL SYMBOLS
+         Kernel symbols are available by using the special pid "-1". This includes
+         loaded kexts.
+
+    SIGNATURES
+         A signature is the information needed to reconstruct symbol information
+         at a later date. For example, a signature contains a list of libraries,
+         and for each library a UUID and the addresses the segments were loaded
+         at. You can also ask for a "deep" signature, which contains complete
+         information about every piece of information symbols could find. This can
+         be very useful for later diagnosis and exploration.
+
+    SYMBOLS PACKAGE
+         A symbols package is a directory with "deep" signatures for one or more
+         binary images.  When a directory is specified with -symbolsPackageDir,
+         symbols will output a deep signature for each binary image slice it
+         reads.  These files contain enough information to symbolicate application
+         stack traces (such as those generated by crash reports) with function
+         names and file names/line numbers.
+  manpageQuestion1: What is the primary purpose of the symbols tool?
+  manpageQuestion2: How can you retrieve kernel symbol information using the symbols tool?
+  manpageQuestion3: What is a symbols package, and how can it be used with the symbols tool?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `symbols`.\n\n\n\nManpage text:\n\nEXAMPLES\n     symbols /System/Library/Frameworks/AppKit.framework/AppKit\n\t     Print out all symbol and source line information in the default\n\t     architecture of AppKit.\n\n     symbols -uuid /System/Library/Frameworks/AppKit.framework/AppKit\n\t     Print out summarized UUID information for each arch in AppKit.\n\n     symbols -arch i386 /System/Library/Frameworks/AppKit.framework/AppKit\n\t     Print out all symbol and source line information in the i386\n\t     architecture of AppKit.\n\n     symbols 7085\n\t     Print out all symbol and source line information in pid 7085.\n\n     symbols 7085 -lookup 0x7fff5bf0008\n\t     Print the symbol and source line information in pid 7085 at\n\t     address 0x7fff5bf0008.\n\n     symbols Safari\n\t     Attempt to find a process named Safari, and print its symbol and\n\t     source line information.\n\n     symbols -deepSignature -saveSignature /tmp/Safari.signature Safari\n\t     Attempt to find a process named Safari, and save a copy of all\n\t     discoverable information to a file in /tmp."
+  manpageQuestion1: What is the primary purpose of the symbols command?
+  manpageQuestion2: How can you use the symbols command to inspect symbol and source line information for a specific process, such as Safari?
+  manpageQuestion3: What is the command to save all discoverable information about a process named Safari into a file called Safari.signature in the /tmp directory?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `symbols`.\n\n\n\nManpage text:\n\nsymbols /tmp/Safari.signature -lookup \"*alloc*\"\n\t     Using the cached information in /tmp/Safari.signature, find every\n\t     method/function matching the wildcard name *alloc*\n\n     symbols -w -1\n\t     Print out in wide format all available information on kernel\n\t     symbols\"\n\nDarwin\t\t\t\t    9/20/10\t\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the symbols command-line tool?
+  manpageQuestion2: How would you use the symbols command to search for all functions containing the substring 'alloc' in a cached signature file?
+  manpageQuestion3: Can you provide an example of using the symbols command to display all available kernel symbols in wide format?
+

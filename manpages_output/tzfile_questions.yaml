@@ -1,0 +1,43 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tzfile`.\n\n\n\nManpage text:\n\nTZFILE(5)\t\t      File Formats Manual\t\t     TZFILE(5)\n\nNAME\n     tzfile – timezone information\n\nSYNOPSIS\n     #include <tzfile.h>\n\nDESCRIPTION\n     The time zone information files used by tzset(3) begin with the magic\n     characters “TZif” to identify them as time zone information files,\n     followed by a character identifying the version of the file's format (as\n     of 2005, either an ASCII NUL or a '2') followed by fifteen bytes\n     containing zeroes reserved for future use, followed by four four-byte\n     values written in a ``standard'' byte order (the high-order byte of the\n     value is written first).  These values are, in order:\n\n     tzh_ttisgmtcnt  The number of UTC/local indicators stored in the file.\n     tzh_ttisstdcnt  The number of standard/wall indicators stored in the\n\t\t     file.\n     tzh_leapcnt     The number of leap seconds for which data is stored in\n\t\t     the file.\n     tzh_timecnt     The number of ``transition times'' for which data is\n\t\t     stored in the file.\n     tzh_typecnt     The number of ``local time types'' for which data is\n\t\t     stored in the file (must not be zero).\n     tzh_charcnt     The number of characters of ``time zone abbreviation\n\t\t     strings'' stored in the file."
+  manpageQuestion1: What is the primary purpose of the tzfile format?
+  manpageQuestion2: How would you verify that a file is a valid tzfile by checking its magic header?
+  manpageQuestion3: Can you explain how the tzfile format organizes the transition time data?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tzfile`.\n\n\n\nManpage text:\n\nThe above header is followed by tzh_timecnt four-byte values of type\n     long, sorted in ascending order.  These values are written in\n     ``standard'' byte order.  Each is used as a transition time (as returned\n     by time(3)) at which the rules for computing local time change.  Next\n     come tzh_timecnt one-byte values of type unsigned char; each one tells\n     which of the different types of ``local time'' types described in the\n     file is associated with the same-indexed transition time.\tThese values\n     serve as indices into an array of ttinfo structures (with tzh_typecnt\n     entries) that appears next in the file; these structures are defined as\n     follows:\n\n\t   struct ttinfo {\n\t\t   long    tt_gmtoff;\n\t\t   int\t   tt_isdst;\n\t\t   unsigned int    tt_abbrind;\n\t   };\n\n     Each structure is written as a four-byte value for tt_gmtoff of type\n     long, in a standard byte order, followed by a one-byte value for tt_isdst\n     and a one-byte value for tt_abbrind.  In each structure, tt_gmtoff gives\n     the number of seconds to be added to UTC, tt_isdst tells whether tm_isdst\n     should be set by localtime(3) and tt_abbrind serves as an index into the\n     array of time zone abbreviation characters that follow the ttinfo\n     structure(s) in the file."
+  manpageQuestion1: What is the primary purpose of the tzfile resource?
+  manpageQuestion2: How would you use the tzfile to retrieve transition time information for a specific timezone?
+  manpageQuestion3: Can you explain how the ttinfo structures within a tzfile are structured and what their fields represent?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tzfile`.
+
+
+
+    Manpage text:
+
+    Then there are tzh_leapcnt pairs of four-byte values, written in standard
+         byte order; the first value of each pair gives the time (as returned by
+         time(3)) at which a leap second occurs; the second gives the total number
+         of leap seconds to be applied after the given time.  The pairs of values
+         are sorted in ascending order by time.
+
+         Then there are tzh_ttisstdcnt standard/wall indicators, each stored as a
+         one-byte value; they tell whether the transition times associated with
+         local time types were specified as standard time or wall clock time, and
+         are used when a time zone file is used in handling POSIX-style time zone
+         environment variables.
+
+         Finally there are tzh_ttisgmtcnt UTC/local indicators, each stored as a
+         one-byte value; they tell whether the transition times associated with
+         local time types were specified as UTC or local time, and are used when a
+         time zone file is used in handling POSIX-style time zone environment
+         variables.
+  manpageQuestion1: What is the primary purpose of the tzfile resource?
+  manpageQuestion2: How would you interpret the tzh_leapcnt entries in a tzfile?
+  manpageQuestion3: Can you explain the role of tzh_ttisstdcnt and tzh_ttisgmtcnt in a tzfile?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tzfile`.\n\n\n\nManpage text:\n\nlocaltime uses the first standard-time ttinfo structure in the file (or\n     simply the first ttinfo structure in the absence of a standard-time\n     structure) if either tzh_timecnt is zero or the time argument is less\n     than the first transition time recorded in the file.\n\n     For version-2-format time zone files, the above header and data is\n     followed by a second header and data, identical in format except that\n     eight bytes are used for each transition time or leap second time.  After\n     the second header and data comes a newline-enclosed, POSIX-TZ-\n     environment-variable-style string for use in handling instants after the\n     last transition time stored in the file (with nothing between the\n     newlines if there is no POSIX representation for such instants).\n\nSEE ALSO\n     ctime(3), time2posix(3), zic(8)\n\nmacOS 15.3\t\t      September 13, 1994\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the tzfile resource?
+  manpageQuestion2: How would you use the tzfile to retrieve the first transition time in a time zone file?
+  manpageQuestion3: Can you explain how the tzfile format handles POSIX-TZ environment variables for time zones after the last transition time?
+

@@ -1,0 +1,120 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `db_dump`.\n\n\n\nManpage text:\n\ndb_dump(1)\t\t    General Commands Manual\t\t    db_dump(1)\n\nNAME\n     db_dump\n\nSYNOPSIS\n     db_dump [-klNpRrV] [-d ahr] [-f output] [-h home] [-P password]\n\t     [-s database] file\n\nDESCRIPTION\n     The db_dump utility reads the database file file and writes it to the\n     standard output using a portable flat-text format understood by the\n     db_load utility. The file argument must be a file produced using the\n     Berkeley DB library functions.\n\n     The options are as follows:\n\n     -d\n       Dump the specified database in a format helpful for debugging the\n       Berkeley DB library routines.\n\n       a\n\t Display all information.\n\n       h\n\t Display only page headers.\n\n       r\n\t Do not display the free-list or pages on the free list. This mode is\n\t used by the recovery tests.\n\n       The output format of the -d option is not standard and may change,\n       without notice, between releases of the Berkeley DB library.\n\n     -f\n       Write to the specified file instead of to the standard output."
+  manpageQuestion1: What is the primary purpose of the db_dump command?
+  manpageQuestion2: How can you use db_dump to dump a Berkeley DB file into a portable flat-text format for debugging?
+  manpageQuestion3: What command would you use to direct the output of db_dump to a specific file instead of standard output?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `db_dump`.
+
+
+
+    Manpage text:
+
+    -h
+           Specify a home directory for the database environment; by default, the
+           current working directory is used.
+
+         -k
+           Dump record numbers from Queue and Recno databases as keys.
+
+         -l
+           List the databases stored in the file.
+
+         -N
+           Do not acquire shared region mutexes while running. Other problems,
+           such as potentially fatal errors in Berkeley DB, will be ignored as
+           well. This option is intended only for debugging errors, and should not
+           be used under any other circumstances.
+
+         -P
+           Specify an environment password. Although Berkeley DB utilities
+           overwrite password strings as soon as possible, be aware there may be a
+           window of vulnerability on systems where unprivileged users can see
+           command-line arguments or where utilities are not able to overwrite the
+           memory containing the command-line arguments.
+
+         -p
+           If characters in either the key or data items are printing characters
+           (as defined by isprint(3)), use printing characters in file to
+           represent them. This option permits users to use standard text editors
+           and tools to modify the contents of databases.
+  manpageQuestion1: What is the primary purpose of the db_dump utility?
+  manpageQuestion2: How can you use db_dump to list all databases stored in a specified environment file?
+  manpageQuestion3: What command would you use to dump record numbers from a Queue database using db_dump?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `db_dump`.
+
+
+
+    Manpage text:
+
+    Note: different systems may have different notions about what
+           characters are considered printing characters, and databases dumped in
+           this manner may be less portable to external systems.
+
+         -R
+           Aggressively salvage data from a possibly corrupt file. The -R flag
+           differs from the -r option in that it will return all possible data
+           from the file at the risk of also returning already deleted or
+           otherwise nonsensical items. Data dumped in this fashion will almost
+           certainly have to be edited by hand or other means before the data is
+           ready for reload into another database
+
+         -r
+           Salvage data from a possibly corrupt file. When used on a uncorrupted
+           database, this option should return equivalent data to a normal dump,
+           but most likely in a different order.
+
+         -s
+           Specify a single database to dump. If no database is specified, all
+           databases in the database file are dumped.
+
+         -V
+           Write the library version number to the standard output, and exit.
+  manpageQuestion1: What is the primary purpose of the db_dump utility?
+  manpageQuestion2: How can you use the -R option with db_dump to salvage data from a potentially corrupt database file?
+  manpageQuestion3: What is the function of the -s flag in db_dump, and how would you use it to dump a specific database?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `db_dump`.
+
+
+
+    Manpage text:
+
+    Dumping and reloading Hash databases that use user-defined hash functions
+         will result in new databases that use the default hash function. Although
+         using the default hash function may not be optimal for the new database,
+         it will continue to work correctly.
+
+         Dumping and reloading Btree databases that use user-defined prefix or
+         comparison functions will result in new databases that use the default
+         prefix and comparison functions.  In this case, it is quite likely that
+         the database will be damaged beyond repair permitting neither record
+         storage or retrieval.
+
+         The only available workaround for either case is to modify the sources
+         for the db_load utility to load the database using the correct hash,
+         prefix, and comparison functions.
+
+         The db_dump utility output format is documented in the Dump Output
+         Formats section of the Berkeley DB Reference Guide.
+
+         The db_dump utility may be used with a Berkeley DB environment (as
+         described for the -h option, the environment variable DB_HOME, or because
+         the utility was run in a directory containing a Berkeley DB environment).
+         In order to avoid environment corruption when using a Berkeley DB
+         environment, db_dump should always be given the chance to detach from the
+         environment and exit gracefully. To cause db_dump to release all
+         environment resources and exit cleanly, send it an interrupt signal
+         (SIGINT).
+  manpageQuestion1: What is the primary purpose of the db_dump utility?
+  manpageQuestion2: How can you ensure that db_dump exits cleanly when working with a Berkeley DB environment?
+  manpageQuestion3: What are the potential consequences of reloading a Btree database with default functions after using db_dump?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `db_dump`.\n\n\n\nManpage text:\n\nEven when using a Berkeley DB database environment, the db_dump utility\n     does not use any kind of database locking if it is invoked with the -d,\n     -R, or -r arguments. If used with one of these arguments, the db_dump\n     utility may only be safely run on databases that are not being modified\n     by any other process; otherwise, the output may be corrupt.\n\n     The db_dump utility exits 0 on success, and >0 if an error occurs.\n\nENVIRONMENT\n     DB_HOME  If the -h option is not specified and the environment variable\n\t      DB_HOME is set, it is used as the path of the database home, as\n\t      described in DB_ENV->open.\n\nSEE ALSO\n     db_archive(1), db_checkpoint(1), db_deadlock(1), db_load(1),\n     db_printlog(1), db_recover(1), db_stat(1), db_upgrade(1), db_verify(1)\n\nDarwin\t\t\t       December 3, 2003 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the db_dump utility?
+  manpageQuestion2: How can you use db_dump to backup a database without locking it?
+  manpageQuestion3: What is the exit status of db_dump and under what circumstances does it return a non-zero value?
+

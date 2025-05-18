@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `DiskUnmountWatcher`.\n\n\n\nManpage text:\n\nDiskUnmountWatcher(8)\t    System Manager's Manual\t DiskUnmountWatcher(8)\n\nNAME\n     DiskUnmountWatcher – watches for disk unmount and remove cached\n     credentials\n\nDESCRIPTION\n     DiskUnmountWatcher watches for disk unmount and remove cached credentials\n     that was cached to support that specific mountpoint.\n\nmacOS 15.3\t\t       December 1, 2016 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the DiskUnmountWatcher tool?
+  manpageQuestion2: How would you use DiskUnmountWatcher to monitor and manage disk unmount events?
+  manpageQuestion3: Can you describe the function of DiskUnmountWatcher in the context of macOS system management?
+

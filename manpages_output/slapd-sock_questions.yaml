@@ -1,0 +1,59 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `slapd-sock`.\n\n\n\nManpage text:\n\nSLAPD-SOCK(5)\t\t      File Formats Manual\t\t SLAPD-SOCK(5)\n\nNAME\n       slapd-sock - Socket backend/overlay to slapd\n\nSYNOPSIS\n       /etc/openldap/slapd.conf\n\nDESCRIPTION\n       The Socket backend to slapd(8) uses an external program to handle\n       queries, similarly to slapd-shell(5).  However, in this case the\n       external program listens on a Unix domain socket.  This makes it\n       possible to have a pool of processes, which persist between requests.\n       This allows multithreaded operation and a higher level of efficiency.\n       The external program must have been started independently; slapd(8)\n       itself will not start it.\n\n       This module may also be used as an overlay on top of some other\n       database.  Use as an overlay allows external actions to be triggered in\n       response to operations on the main database.\n\nCONFIGURATION\n       These slapd.conf options apply to the SOCK backend database.  That is,\n       they must follow a \"database sock\" line and come before any subsequent\n       \"backend\" or \"database\" lines.  Other database options are described in\n       the slapd.conf(5) manual page.\n\n       Alternatively, to use this module as an overlay, these directives must\n       follow an \"overlay sock\" line within an existing database definition.\n\n       extensions [ binddn | peername | ssf | connid ]*\n\t      Enables the sending of additional meta-attributes with each\n\t      request.\n\t      binddn: <bound DN>\n\t      peername: IP=<address>:<port>\n\t      ssf: <SSF value>\n\t      connid: <connection ID>\n\n       socketpath <pathname>\n\t      Gives the path to a Unix domain socket to which the commands\n\t      will be sent and from which replies are received.\n\n\t      When used as an overlay, these additional directives are\n\t      defined:\n\n       sockops\t [ bind | unbind | search | compare | modify | modrdn | add |\n       delete ]*\n\t      Specify which request types to send to the external program. The\n\t      default is empty (no requests are sent).\n\n       sockresps [ result | search ]*\n\t      Specify which response types to send to the external program.\n\t      \"result\" sends just the results of an operation. \"search\" sends\n\t      all entries that the database returned for a search request. The\n\t      default is empty (no responses are sent)."
+  manpageQuestion1: What is the primary purpose of the slapd-sock resource?
+  manpageQuestion2: How can you configure slapd-sock to send additional meta-attributes like binddn and peername to the external program?
+  manpageQuestion3: What is the correct way to specify the Unix domain socket path for slapd-sock to communicate with an external program?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `slapd-sock`.\n\n\n\nManpage text:\n\nPROTOCOL\n       The protocol is essentially the same as slapd-shell(5) with the\n       addition of a newline to terminate the command parameters. The\n       following commands are sent:\n\t      ADD\n\t      msgid: <message id>\n\t      <repeat { \"suffix:\" <database suffix DN> }>\n\t      <entry in LDIF format>\n\t      <blank line>\n\n\t      BIND\n\t      msgid: <message id>\n\t      <repeat { \"suffix:\" <database suffix DN> }>\n\t      dn: <DN>\n\t      method: <method number>\n\t      credlen: <length of <credentials>>\n\t      cred: <credentials>\n\t      <blank line>\n\n\t      COMPARE\n\t      msgid: <message id>\n\t      <repeat { \"suffix:\" <database suffix DN> }>\n\t      dn: <DN>\n\t      <attribute>: <value>\n\t      <blank line>\n\n\t      DELETE\n\t      msgid: <message id>\n\t      <repeat { \"suffix:\" <database suffix DN> }>\n\t      dn: <DN>\n\t      <blank line>\n\n\t      MODIFY\n\t      msgid: <message id>\n\t      <repeat { \"suffix:\" <database suffix DN> }>\n\t      dn: <DN>\n\t      <repeat {\n\t\t  <\"add\"/\"delete\"/\"replace\">: <attribute>\n\t\t  <repeat { <attribute>: <value> }>\n\t\t  -\n\t      }>\n\t      <blank line>\n\n\t      MODRDN\n\t      msgid: <message id>\n\t      <repeat { \"suffix:\" <database suffix DN> }>\n\t      dn: <DN>\n\t      newrdn: <new RDN>\n\t      deleteoldrdn: <0 or 1>\n\t      <if new superior is specified: \"newSuperior: <DN>\">\n\t      <blank line>\n\n\t      SEARCH\n\t      msgid: <message id>\n\t      <repeat { \"suffix:\" <database suffix DN> }>\n\t      base: <base DN>\n\t      scope: <0-2, see ldap.h>\n\t      deref: <0-3, see ldap.h>\n\t      sizelimit: <size limit>\n\t      timelimit: <time limit>\n\t      filter: <filter>\n\t      attrsonly: <0 or 1>\n\t      attrs: <\"all\" or space-separated attribute list>\n\t      <blank line>\n\n\t      UNBIND\n\t      msgid: <message id>\n\t      <repeat { \"suffix:\" <database suffix DN> }>\n\t      <blank line>\n\n       The commands - except unbind - should output:\n\t      RESULT\n\t      code: <integer>\n\t      matched: <matched DN>\n\t      info: <text>\n       where only RESULT is mandatory, and then close the socket.  The search\n       RESULT should be preceded by the entries in LDIF format, each entry\n       followed by a blank line.  Lines starting with `#' or `DEBUG:' are\n       ignored.\n\n       When used as an overlay, the external program should return a CONTINUE\n       response if request processing should continue normally, or a regular\n       RESULT response if the external program wishes to bypass the underlying\n       database.\n\n       If the overlay is configured to send response messages to the external\n       program, they will appear as an extended RESULT message or as an ENTRY\n       message, defined below. The RESULT message is similar to the one above,\n       but also includes the msgid and any configured extensions:\n\t      RESULT\n\t      msgid: <message id>\n\t      code: <integer>\n\t      matched: <matched DN>\n\t      info: <text>\n\t      <blank line>\n\n       Typically both the msgid and the connid will be needed to match a\n       result message to a request. The ENTRY message has the form\n\t      ENTRY\n\t      msgid: <message id>\n\t      <entry in LDIF format>\n\t      <blank line>"
+  manpageQuestion1: What is the primary purpose of the slapd-sock tool?
+  manpageQuestion2: How can you use slapd-sock to perform a SEARCH operation on a specific base DN with certain filters and attributes?
+  manpageQuestion3: Can you provide an example of using slapd-sock to execute a BIND operation with a specified suffix, DN, method, and credentials?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `slapd-sock`.
+
+
+
+    Manpage text:
+
+    ACCESS CONTROL
+           The sock backend does not honor all ACL semantics as described in
+           slapd.access(5).  In general, access to objects is checked by using a
+           dummy object that contains only the DN, so access rules that rely on
+           the contents of the object are not honored.  In detail:
+
+           The add operation does not require write (=w) access to the children
+           pseudo-attribute of the parent entry.
+
+           The bind operation requires auth (=x) access to the entry pseudo-
+           attribute of the entry whose identity is being assessed; auth (=x)
+           access to the credentials is not checked, but rather delegated to the
+           underlying program.
+
+           The compare operation requires compare (=c) access to the entry pseudo-
+           attribute of the object whose value is being asserted; compare (=c)
+           access to the attribute whose value is being asserted is not checked.
+
+           The delete operation does not require write (=w) access to the children
+           pseudo-attribute of the parent entry.
+
+           The modify operation requires write (=w) access to the entry pseudo-
+           attribute; write (=w) access to the specific attributes that are
+           modified is not checked.
+
+           The modrdn operation does not require write (=w) access to the children
+           pseudo-attribute of the parent entry, nor to that of the new parent, if
+           different; write (=w) access to the distinguished values of the naming
+           attributes is not checked.
+
+           The search operation does not require search (=s) access to the entry
+           pseudo_attribute of the searchBase; search (=s) access to the
+           attributes and values used in the filter is not checked.
+  manpageQuestion1: What is the primary purpose of the slapd-sock resource?
+  manpageQuestion2: How does the slapd-sock resource handle access control for the bind operation?
+  manpageQuestion3: What are the specific access requirements for the modify operation in slapd-sock?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `slapd-sock`.\n\n\n\nManpage text:\n\nEXAMPLE\n       There is an example script in the slapd/back-sock/ directory in the\n       OpenLDAP source tree.\n\nFILES\n       /etc/openldap/slapd.conf\n\t      default slapd configuration file\n\nSEE ALSO\n       slapd.conf(5), slapd-config(5), slapd(8).\n\nAUTHOR\n       Brian Candler, with enhancements by Howard Chu\n\nOpenLDAP 2.4.28 \t\t  2011/11/24\t\t\t SLAPD-SOCK(5)"
+  manpageQuestion1: What is the primary purpose of the slapd-sock resource?
+  manpageQuestion2: Where can I find an example script for using the slapd-sock resource?
+  manpageQuestion3: What configuration file is used to set up the slapd-sock resource in macOS?
+

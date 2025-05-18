@@ -1,0 +1,45 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `db_verify`.\n\n\n\nManpage text:\n\ndb_verify(1)\t\t    General Commands Manual\t\t  db_verify(1)\n\nNAME\n     db_verify\n\nSYNOPSIS\n     db_verify [-NoqV] [-h home] [-P password] file ...\n\nDESCRIPTION\n     The db_verify utility verifies the structure of one or more files and the\n     databases they contain.\n\n     The options are as follows:\n\n     -h\n       Specify a home directory for the database environment; by default, the\n       current working directory is used.\n\n     -o\n       Skip the database checks for btree and duplicate sort order and for\n       hashing.\n\n       If the file being verified contains databases with non-default\n       comparison or hashing configurations, calling the db_verify utility\n       without the -o flag will usually return failure. The -o flag causes\n       db_verify to ignore database sort or hash ordering and allows db_verify\n       to be used on these files. To fully verify these files, verify them\n       explicitly using the DB->verify method, after configuring the correct\n       comparison or hashing functions."
+  manpageQuestion1: What is the primary purpose of the db_verify tool?
+  manpageQuestion2: How would you use db_verify to check the structure of a database file while skipping specific checks?
+  manpageQuestion3: Can you provide an example of using db_verify with a specified home directory and password to verify multiple database files?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `db_verify`.
+
+
+
+    Manpage text:
+
+    -N
+           Do not acquire shared region mutexes while running. Other problems,
+           such as potentially fatal errors in Berkeley DB, will be ignored as
+           well. This option is intended only for debugging errors, and should not
+           be used under any other circumstances.
+
+         -P
+           Specify an environment password. Although Berkeley DB utilities
+           overwrite password strings as soon as possible, be aware there may be a
+           window of vulnerability on systems where unprivileged users can see
+           command-line arguments or where utilities are not able to overwrite the
+           memory containing the command-line arguments.
+
+         -q
+           Suppress the printing of any error descriptions, simply exit success or
+           failure.
+
+         -V
+           Write the library version number to the standard output, and exit.
+
+         The db_verify utility does not perform any locking, even in Berkeley DB
+         environments that are configured with a locking subsystem. As such, it
+         should only be used on files that are not being modified by another
+         thread of control.
+  manpageQuestion1: What is the primary purpose of the db_verify utility?
+  manpageQuestion2: How can you use the -P option with db_verify to specify an environment password?
+  manpageQuestion3: What is the effect of using the -q flag with db_verify?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `db_verify`.\n\n\n\nManpage text:\n\nThe db_verify utility may be used with a Berkeley DB environment (as\n     described for the -h option, the environment variable DB_HOME, or because\n     the utility was run in a directory containing a Berkeley DB environment).\n     In order to avoid environment corruption when using a Berkeley DB\n     environment, db_verify should always be given the chance to detach from\n     the environment and exit gracefully. To cause db_verify to release all\n     environment resources and exit cleanly, send it an interrupt signal\n     (SIGINT).\n\n     The db_verify utility exits 0 on success, and >0 if an error occurs.\n\nENVIRONMENT\n     DB_HOME  If the -h option is not specified and the environment variable\n\t      DB_HOME is set, it is used as the path of the database home, as\n\t      described in DB_ENV->open.\n\nSEE ALSO\n     db_archive(1), db_checkpoint(1), db_deadlock(1), db_dump(1), db_load(1),\n     db_printlog(1), db_recover(1), db_stat(1), db_upgrade(1)\n\nDarwin\t\t\t       December 3, 2003 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the db_verify utility?
+  manpageQuestion2: How can you ensure that db_verify exits cleanly after checking a Berkeley DB environment?
+  manpageQuestion3: In what scenarios would the db_verify utility be most useful when working with Berkeley DB environments?
+

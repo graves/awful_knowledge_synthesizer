@@ -1,0 +1,498 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsappinfo`.\n\n\n\nManpage text:\n\nLSAPPINFO(8)\t\t\t\t\t\t\t  LSAPPINFO(8)\n\nNAME\n       lsappinfo - Control and query CoreApplicationServices about the app\n       state on the system\n\nSYNOPSIS\n       lsappinfo [options] [ command [command options] ] ...\n\nCOMMON COMMANDS\n       •   front Show the front application.\n\n       •   find [ key=value ]+\n\t   Show the ASN of all applications which have the given key/value\n\t   present in their application information. For key the actual\n\t   CFString value for the key can be used, or any of the aliases\n\t   described below under Key Strings. For value, see the rules below\n\t   under Key Values.\n\n       •   info [-only information-item-key] [-app app-specifier]\n\t   [-long][app-specifier]\n\t   Show the information for the application app-specifier\n\n       •   list\n\t   Show the application list and information about each running\n\t   application\n\n       •   listen [+notificationcode]* [-notificationcode]* [-addasn asn]\n\t   [-removeasn asn] [ -id # ] duration [--]\n\t   Listen for the given notifications ( those with ´+´, excluding\n\t   those with ´-´ ) and display each one and its payload.\n\t   Notifications are displayed when they receive when this tool is\n\t   executing a wait or forever command.\n\n       •   launch [[launch-modifier=value]+ [launch-option=value]+ [-arg\n\t   argument] [path-to-bundle] [--]\n\t   Launch an application with CoreApplicationServices in\n\t   LaunchServices. At the minimum, the execpath must be included as\n\t   one of the launch-options or -poseas and a path-to-bundle. This is\n\t   a fairly low level operation and does not handle a number of\n\t   conditions that the higher level functions do.\n\n       •   metainfo\n\t   Show the meta information, which is the session-wide information\n\t   which CoreApplicationServices maintains for each login session.\n\n       •   processList\n\t   Show the application list, in ascending ASN order.\n\n       •   restart\n\t   Ask the launchservicesd to restart. The requestor must be\n\t   privileged.\n\n       •   sharedmemory\n\t   Show the shared memory information page for this session.\n\n       •   unlisten [ -id ID ] [ -all ]\n\t   Unlisten to all notifications on notification ID.\n\n       •   visibleProcessList\n\t   Show the visible ( front-to-back ) application list."
+  manpageQuestion1: What is the primary purpose of the lsappinfo command-line tool?
+  manpageQuestion2: How can you use lsappinfo to find all applications that have the key 'CFBundleIdentifier' set to 'com.example.app'?
+  manpageQuestion3: Can you provide an example of using lsappinfo to launch a new application with the path '/Applications/MyApp.app'?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsappinfo`.\n\n\n\nManpage text:\n\nUNCOMMON COMMANDS\n       •   allocateASN Ask launchservicesd to allocate an ASN, and print it\n\t   out.\n\n       •   createFile PATH Create a file at the given path\n\n       •   disconnect disconnect from launchservicesd\n\n       •   file path Open the file at path and read lines, treating each one\n\t   as if it were passed to lsappinfo on the command line.\n\n       •   forever Wait forever before executing the next command\n\n       •   log [ -d | -i | -n | -w | -e | -c | -a ] [ -B ] [ -sender\n\t   *processname* ] [ string ... -- ] If an option is given, dump any\n\t   LaunchServices logging information on the system until the process\n\t   is terminated with control-C. If a string is provided, log that\n\t   string to syslog.\n\n       •   removeFile PATH Remove the file at the given path\n\n       •   server [ -xpcservicename ARG ] [ -local ] [ -duration *DURATION* ]\n\t   [ -file *FILEPATH* ] [ -gone FILEGONEPATH ] [ -forever ] Start up\n\t   the launchservicesd server in process, with the optional given xpc\n\t   service name or if -local then processing xpc requests from future\n\t   commands for this same process. Terminate the server after the\n\t   given DURATION seconds, or when the file at FILEPATH exists, or the\n\t   file at path FILEPATHFONE is deleted, or never if -forever.\n\n       •   setinfo [-app app-specifier] [app-info-item=value]+ [--] Set the\n\t   values for the given application information items in the specified\n\t   application.\n\n       •   setmetainfo [meta-info-item=value]+ [--]\n\n       •   wait [ -duration duration ] [ -file FILEPATH ] [ -gone FILEPATHGONE\n\t   ] duration Wait for duration seconds before executing the next\n\t   command, or if FILEPATH is given until that file exists, or if\n\t   FILEPATHGONE is given until that file no longer exists.\n\n       •   writePIDToFile PATH Write the current processes pid to a file at\n\t   PATH."
+  manpageQuestion1: What is the primary purpose of the lsappinfo command?
+  manpageQuestion2: How can you use lsappinfo to create a file at a specified path?
+  manpageQuestion3: Can you provide an example of using lsappinfo to wait for a file to exist before executing the next command?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsappinfo`.\n\n\n\nManpage text:\n\nOPTIONS\n       •   -v | --verbose Be more verbose about many operations\n\n       •   -q | --quiet Be less verbose about many operations\n\n       •   -defaultSession Use kLSDefaultSessionID as the sessionID passed to\n\t   all calls (the default)\n\n       •   -currentSession Use kLSCurrentSessionID as the sessionID passed to\n\t   all calls\n\n       •   -debug | -info | -notice | -warning | -err | -critical | -alert |\n\t   -emergency Set the log level for this process to the given level\n\n\n\n\nAPPLICATION SPECIFIERS\n       There are different ways to indicate what application the commands\n       operate on, collectively called the app-specifier. This may be one of\n       the following.\n\n       •   \"ASN:0xAAAA:0xBBBB:\" where AAAA and BBBB are the values for an\n\t   application ASN.\n\n       •   \"0xBBBB\" where BBBB are the values from the lower part of an\n\t   application ASN for which the upper part of the ASN is 0x0\n\n       •   \"#\" where # is a decimal value above 10, representing the\n\t   application with the pid #\n\n       •   \"name\" where name is the display name of a running application\n\n       •   \"bundleid\" where bundleid is the bundle id of a running application\n\n       •   \"me\" the asn of the lsappinfo tool"
+  manpageQuestion1: What is the primary purpose of the lsappinfo tool?
+  manpageQuestion2: How would you use lsappinfo to retrieve detailed information about a running application named 'TextEdit'?
+  manpageQuestion3: Can you provide an example of using lsappinfo to set the log level to 'debug' and query the application with bundle ID 'com.apple.TextEdit'?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsappinfo`.\n\n\n\nManpage text:\n\nKEY STRINGS\n       Any string from this set will map to the corresponding constant from\n       the LaunchServices header files.\n\n\n\n\t   kCFBundleNameKey\n\t   kLSASNKey\n\t   kLSASNToBringForwardAtNextApplicationExitKey\n\t   kLSAllowedToBecomeFrontmostKey\n\t   kLSApplicationBackgroundOnlyTypeKey\n\t   kLSApplicationBackgroundPriorityKey\n\t   kLSApplicationCountKey\n\t   kLSApplicationDesiresAttentionKey,\n\t   kLSApplicationForegroundPriorityKey\n\t   kLSApplicationForegroundTypeKey\n\t   kLSApplicationHasRegisteredKey\n\t   kLSApplicationHasSignalledItIsReadyKey\n\t   kLSApplicationInStoppedStateKey\n\t   kLSApplicationInThrottledStateAfterLaunchKey\n\t   kLSApplicationInformationSeedKey\n\t   kLSApplicationIsHiddenKey\n\t   kLSApplicationListSeedKey\n\t   kLSApplicationReadyToBeFrontableKey\n\t   kLSApplicationTypeKey\n\t   kLSApplicationTypeToRestoreKey\n\t   kLSApplicationUIElementTypeKey\n\t   kLSApplicationVersionKey\n\t   kLSApplicationWasTerminatedByTALKey\n\t   kLSApplicationWouldBeTerminatedByTALKey\n\t   kLSArchitectureKey\n\t   kLSBundleIdentifierLowerCaseKey\n\t   kLSBundlePathDeviceIDKey\n\t   kLSBundlePathINodeKey\n\t   kLSBundlePathKey\n\t   kLSCheckInTimeKey\n\t   kLSDebugLevelKey\n\t   kLSDisplayNameKey\n\t   kLSExecutableFormatCFMKey\n\t   kLSExecutableFormatKey\n\t   kLSExecutableFormatMachOKey\n\t   kLSExecutableFormatPoundBangKey\n\t   kLSExecutablePathDeviceIDKey\n\t   kLSExecutablePathINodeKey\n\t   kLSExecutablePathKey\n\t   kLSExitStatusKey\n\t   kLSFileCreatorKey\n\t   kLSFileTypeKey\n\t   kLSFlavorKey\n\t   kLSFrontApplicationSeedKey\n\t   kLSHiddenApplicationCountKey\n\t   kLSLaunchTimeKey\n\t   kLSLaunchedByLaunchServicesKey\n\t   kLSLaunchedByLaunchServicesThruForkExecKey\n\t   kLSLaunchedByLaunchServicesThruLaunchDKey\n\t   kLSLaunchedByLaunchServicesThruSessionLauncherKey\n\t   kLSLaunchedInQuarantineKey\n\t   kLSMenuBarOwnerApplicationSeedKey\n\t   kLSModifierLaunchedForPersistenceKey\n\t   kLSModifierRefConKey\n\t   kLSNotifyBecameFrontmostAnotherLaunchKey\n\t   kLSNotifyBecameFrontmostFirstActivationKey\n\t   kLSNotifyLaunchRequestLaunchModifiersKey\n\t   kLSOriginalExecutablePathDeviceIDKey\n\t   kLSOriginalExecutablePathINodeKey\n\t   kLSOriginalExecutablePathKey\n\t   kLSOriginalPIDKey\n\t   kLSPIDKey\n\t   kLSParentASNKey\n\t   kLSParentASNWasInferredKey\n\t   kLSPersistenceSuppressRelaunchAtLoginKey\n\t   kLSPreviousASNKey\n\t   kLSPreviousPresentationModeKey\n\t   kLSPreviousValueKey\n\t   kLSRecordingAppleEventsKey\n\t   kLSRequiresCarbonKey\n\t   kLSSessionIDKey\n\t   kLSShellExecutablePathKey\n\t   kLSUIDsInSessionKey\n\t   kLSUIPresentationModeAllHiddenValue\n\t   kLSUIPresentationModeAllSuppressedValue\n\t   kLSUIPresentationModeContentHiddenValue\n\t   kLSUIPresentationModeContentSuppressedValue\n\t   kLSUIPresentationModeKey\n\t   kLSUIPresentationModeNormalValue\n\t   kLSUIPresentationOptionsKey\n\t   kLSUnhiddenApplicationCountKey\n\t   kLSVisibleApplicationCountKey\n\t   kLSVisibleApplicationListSeedKey\n\t   kLSWantsToComeForwardAtRegistrationTimeKey\n\t   launchedThrottled"
+  manpageQuestion1: What is the primary purpose of the lsappinfo utility?
+  manpageQuestion2: How can you use lsappinfo to retrieve the display name of an application?
+  manpageQuestion3: Can you provide an example of using lsappinfo to get the bundle identifier of a specific application?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsappinfo`.\n\n\n\nManpage text:\n\nLikewise, these short strings also make to the corresponding constants.\n\n\n\n\t   allowedtobecomefrontmost\n\t   applicationTypeToRestore\n\t   applicationWasTerminatedByTAL\n\t   applicationtype\n\t   arch\n\t   asn\n\t   bundleid\n\t   bundlelastcomponent\n\t   bundlename\n\t   bundlenamelc\n\t   bundlepath\n\t   changecount\n\t   creator\n\t   debuglevel\n\t   displayname\n\t   execpath\n\t   executablepath\n\t   filecreator\n\t   filename\n\t   filetype\n\t   hidden\n\t   isconnectedtowindowserver\n\t   isready\n\t   isregistered\n\t   isstopped\n\t   isthrottled\n\t   launchedForPersistence\n\t   launchedinquarantine\n\t   name\n\t   parentasn\n\t   pid\n\t   presentationmode\n\t   presentationoptions\n\t   psn\n\t   recordingAppleEvents\n\t   session\n\t   shellpath\n\t   supressRelaunch\n\t   version\n\n\n\n\nKEY VALUES\n       In numerous places a key can be set to a value. The format of value can\n       be any of the following\n\n       •   \"string\" A string, surrounded by double quotes.\n\n       •   numeric-digits | -numeric-digits |\n\t   numeric-digits.numeric-digits[E]numeric-digits A numeric value,\n\t   either an integer type or a double floating point type.\n\n       •   $hex-digits A numeric value given by the hex value hex-digits.\n\n       •   \"ASN:0xAAAA:0xBBBB:\" An ASN, where AAAA and BBBB are the values for\n\t   an application ASN.\n\n       •   App:str An ASN, where str matches one of the application-specifier\n\t   formats.\n\n       •   ( [[str,] str] ) A CFArrayRef, where each str is converted as if it\n\t   were a key value.\n\n       •   true The kCFBooleanTrue value.\n\n       •   false The kCFBooleanFalse value.\n\n       •   null The kCFNull value.\n\n       •   Any of the application information item, or launch modifier strings\n\t   The equivalent, exported LaunchServices CFStringRef key for the\n\t   item or launch modifier."
+  manpageQuestion1: What is the primary purpose of the lsappinfo command?
+  manpageQuestion2: How would you use lsappinfo to retrieve the application's bundle name and display name?
+  manpageQuestion3: Can you provide an example of using lsappinfo to set the 'supressRelaunch' key to true for a specific application?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsappinfo`.\n\n\n\nManpage text:\n\nAPPLICATION INFORMATION ITEM KEYS\n       •   asn An application ASN, which is unique identifier assigned to each\n\t   application when the application is launched and persists until the\n\t   application exits, and likely is unique for the entire time a user\n\t   is logged in. When displayed, an ASN looks like \"ASN:0x0-0x1f01f:\".\n\n       •   parentasn The ASN of the application which launched this\n\t   application.\n\n       •   bundlename The bundle name, if one exists, for the application.\n\n       •   bundlenamelc The bundle name, if one exists, for the application,\n\t   but with every upper case character converted into the equivalent\n\t   lower case character.\n\n       •   bundlepath The bundle path, if the application is bundled\n\n       •   executablepath The executable path of the application\n\n       •   filetype The file type of the application, if it has one.\n\n       •   filecreator The creator type of the application, if it has one.\n\n       •   pid The pid of the application.\n\n       •   filename The filename of the executable (the last component of the\n\t   executable path), converted into a lowercase string\n\n       •   bundlelastcomponent The last component of the bundle path,\n\t   converted into a lowercase string.\n\n       •   displayname | name The display name of this application\n\n       •   bundleid The bundle identifier of the application, if one exists.\n\n       •   applicationtype The type of the application (generally\n\t   \"Foreground\", \"Background\", or \"UIElement\")\n\n       •   allowedtobecomefrontmost The application is allowed to be\n\t   frontmost.\n\n       •   version The version string for the application, if it has one\n\n       •   presentationmode The UIPresentationMode for this application (only\n\t   for foreground applications), generally one of \"Normal\",\n\t   \"ContentSupressed\", \"ContentHidden\", \"Suppressed\", \"AllHidden\"\n\n       •   presentationoptions\n\n       •   session A number indicating which audit session this application is\n\t   running in.\n\n       •   hidden If this application is a foreground application, then if it\n\t   is hidden, \"true\", or \"false\" if it is not hidden\n\n       •   changecount A number which changes whenever any items in the\n\t   application´s information dictionary is changed.\n\n       •   debuglevel\n\n       •   isregistered If this application has registered, then \"true\",\n\t   otherwise \"false\".\n\n       •   isready If this application has entered its main runloop and is\n\t   able to respond to requests to hide or show itself, \"true\",\n\t   otherwise \"false\".\n\n       •   isstopped If this application was launched stopped, and if it has\n\t   not been started yet, then \"true\", otherwise \"false\" or not\n\t   present.\n\n       •   launchedinquarantine If this application was launched in a\n\t   quarantined state, then \"true\", otherwise \"false\" or not present.\n\n       •   arch The architecture of the code running this application,\n\t   generally \"x86_64\" or \"i386\".\n\n       •   recordingAppleEvents If this application is recording AppleEvents,\n\t   then \"true\", otherwise \"false\" or not present.\n\n       •   supressRelaunch If this application should not be re-launched after\n\t   a logout and login, then \"true\", otherwise \"false\" or not present.\n\n       •   applicationTypeToRestore\n\n       •   applicationWasTerminatedByTAL\n\n       •   isthrottled If this application was launched in the throttled\n\t   state, and if it has not been unthrottled, then \"true\", otherwise\n\t   false or not present.\n\n       •   applicationWouldBeTerminatedByTALKey\n\n       •   launchedhidden If the application was launched hidden, then \"true\",\n\t   otherwise \"false\" or not present. This is not whether the\n\t   application is currently hidden, just whether at the time it was\n\t   launched the request was to have it hide itself.\n\n       •   launchandhideothers If the application was launched and asked to\n\t   hide all other application, then \"true\", otherwise \"false\" or not\n\t   present. This is not whether the application is currently hidden,\n\t   just whether at the time it was launched the request was to have it\n\t   hide all other applications.\n\n       •   launchForPersistence If the application was launched with\n\t   launchForPersistence=true, then \"true\", otherwise \"false\" or not\n\t   present."
+  manpageQuestion1: What is the primary purpose of the lsappinfo command?
+  manpageQuestion2: How can you retrieve the bundle identifier of an application using lsappinfo?
+  manpageQuestion3: Can you provide an example of using lsappinfo to check the display name and file type of a specific application?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsappinfo`.\n\n\n\nManpage text:\n\nLAUNCHMODIFIER KEYS\n       •   async=[true|false] Launch asynchronously\n\n       •   refcon=[#] Launch with the given numeric refcon.\n\n       •   nofront=[true|false] If true, do not bring the application to the\n\t   front when it finishes launching\n\n       •   stopped=[true|false] Launch the process but do not start it.\n\n       •   launchandhide=[true|false] Launch the process and cause it to hide\n\t   itself when it finishes launching\n\n       •   \\launchandhideothers`=[true|false] Launch the process and couse it\n\t   to hide all other applications when it finishes launching\n\n       •   launchForPersistence=[true|false]\n\n       •   launchWithASLRDisabled=[true|false]\n\n\n\n\nNOTIFICATION CODES\n       Notifications are sent out by LaunchServices when various conditions\n       arrive. Each notification has a type, called the notification-code, a\n       dictionary of data items which are specific to the notification, a time\n       the notification was sent, and an optional affected ASN.\n\n       •   launch"
+  manpageQuestion1: What is the primary purpose of the lsappinfo command?
+  manpageQuestion2: How would you use lsappinfo to launch an application asynchronously and hide it after launching?
+  manpageQuestion3: Can you provide an example of using lsappinfo to launch an application with a specific refcon value?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsappinfo`.
+
+
+
+    Manpage text:
+
+    Sent when an application is launched
+
+           •   creation
+
+
+
+
+           Sent when an entry for an application is created on the system and
+           associated with an ASN.
+
+           •   birth
+
+
+
+
+           Sent when an
+
+           •   death
+
+
+
+
+           Sent when an application exits.
+
+           •   abnormaldeath
+
+
+
+
+           Sent when an application exits with a non-zero exit status.
+
+           •   childDeath
+
+
+
+
+           Sent when an application exits, with affected ASN set to the parent ASN
+           of the application which exited.
+
+           •   abnormalChildDeath
+
+
+
+
+           Sent when an application exits with a non-zero exit status, with
+           affected ASN set to the parent ASN of the application which exited.
+
+           •   launchFailure
+
+
+
+
+           Sent when an application launch fails, after a launch notification has
+           been sent out.
+
+           •   appCreation
+
+
+
+
+           Sent when an application is "created", which happens immediately after
+           the application is created and certain items are added into the
+           application information dictionary.
+
+           •   childAppCreation
+  manpageQuestion1: What is the primary purpose of the lsappinfo resource?
+  manpageQuestion2: How can you monitor an application's lifecycle events using lsappinfo?
+  manpageQuestion3: Can you explain how to detect an abnormal application exit using lsappinfo?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsappinfo`.
+
+
+
+    Manpage text:
+
+    Sent when an application is "created", which happens immediately after
+           the application is created and certain items are added into the
+           application information dictionary, with affected ASN set to the asn of
+           the parent ASN of this application.
+
+           •   appReady
+
+
+
+
+           Sent when an applications signals to LaunchServices that it is ready to
+           accept hide/show events, generally when it has entered its main
+           runloop.
+
+           •   childAppReady
+
+
+
+
+           Sent when an applications signals to LaunchServices that it is ready to
+           accept hide/show events, generally when it has entered its main
+           runloop, with affected ASN set to the parent ASN of the application
+           which signalled ready.
+
+           •   readyToAcceptAppleEvents
+
+
+
+
+           Sent when an application signals that it is ready to accept
+           AppleEvents.
+
+           •   launchTimedOut
+
+           •   launchFinished
+
+           •   allTALAppsRegistered
+
+
+
+
+           Sent when talagentd decides that all applications which were launched
+           for persistence have registered.
+
+           •   becameFrontmost
+  manpageQuestion1: What is the primary purpose of the lsappinfo resource?
+  manpageQuestion2: How would you use lsappinfo to signal that an application has finished launching?
+  manpageQuestion3: Can you provide an example of using lsappinfo to indicate that an application is ready to accept AppleEvents?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsappinfo`.
+
+
+
+    Manpage text:
+
+    Sent when an application is made into the front application.
+
+           •   lostFrontmost
+
+
+
+
+           Sent when an application which previously was the front application is
+           no longer the front application.
+
+           •   orderChanged
+
+
+
+
+           Sent when the front-to-back order of the application list changes.
+
+           •   bringForwardRequest
+
+
+
+
+           Someone has requested that the application with affected ASN make
+           itself frontmost.
+
+           •   menuBarAcquired
+
+
+
+
+           Sent when the application which is responsible for drawing the menu bar
+           (generally the frontmost foreground application) changes
+
+           •   menuBarLost
+
+
+
+
+           Sent when the application which was responsible for drawing the menu
+           bar (generally the frontmost foreground application) is no longer
+           responsible
+
+           •   hidden
+
+
+
+
+           Sent when the application is hidden
+
+           •   shown
+
+
+
+
+           Sent when the application is shown
+
+           •   showRequest
+
+
+
+
+           Someone has requested that the application with the affected
+           application asn should show (un-hide) itself.
+
+           •   hideRequest
+  manpageQuestion1: What is the primary purpose of the lsappinfo resource?
+  manpageQuestion2: How would you use lsappinfo to handle the 'showRequest' event for an application?
+  manpageQuestion3: Can you provide an example of using lsappinfo to detect when an application is hidden?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsappinfo`.
+
+
+
+    Manpage text:
+
+    Someone has requested that the application with the affected
+           application asn should hide itself.
+
+           •   pullwindowsforward
+
+
+
+
+           Someone has requested that the application with the affected
+           application asn should show itself and pull all of its windows forward.
+
+           •   appInfoChanged
+
+
+
+
+           Sent when the information for the application is changed.
+
+           •   appInfoKeyAdded
+
+
+
+
+           Sent when a key is added to the information for the application. The
+           data for the notification will include the key being added and its
+           value.
+
+           •   appInfoKeyChanged
+
+
+
+
+           Sent when a value for an item in the application information is
+           changed. The data for the notification will include the key being
+           changes and its new and old value.
+
+           •   appInfoKeyRemoved
+
+
+
+
+           Sent when the value for an item in the application information is
+           removed. The data for the notification will include the key being
+           removed and its value.
+
+           •   appTypeChanged
+  manpageQuestion1: What is the primary purpose of the lsappinfo command?
+  manpageQuestion2: How can you use lsappinfo to trigger the 'pullwindowsforward' action for an application?
+  manpageQuestion3: What notification is sent when a key is added to the application information in lsappinfo?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsappinfo`.
+
+
+
+    Manpage text:
+
+    Sent when the "ApplicationType" key in the application information is
+           changed.
+
+           •   appNameChanged
+
+
+
+
+           Sent when the application name in the application information is
+           changed.
+
+           •   wantsAttentionChanged
+
+
+
+
+           Sent when the LSWantsAttention key in the application information is
+           changed.
+
+           •   presentationModeChanged
+
+
+
+
+           Sent when an application changes its presentation mode.
+
+           •   pidChanged
+
+
+
+
+           Sent when an application changes its pid. In practice this can never
+           happen, except when LaunchServices launches a process which itself
+           forks or spawns a new process, and then checks-in from that new pid.
+
+           •   frontPresentationModeChanged
+
+
+
+
+           Sent when the presentation mode of the system changes, generally when
+           the foreground application changes its own presentation mode or when
+           the front application changes and the old and new applications have
+           different presentation modes.
+
+           •   presentationModeChangedBecauseFrontApplicationChanged
+  manpageQuestion1: What is the primary purpose of the lsappinfo resource?
+  manpageQuestion2: How can you monitor changes to an application's name using lsappinfo?
+  manpageQuestion3: What is the function of the 'presentationModeChangedBecauseFrontApplicationChanged' event in lsappinfo?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsappinfo`.
+
+
+
+    Manpage text:
+
+    Sent when the presentation mode of the system changes only because the
+           front application changed and the old and new applications have
+           different presentation modes.
+
+           •   launchrequest
+
+           •   started
+
+
+
+
+           Sent when a formally stopped application is started.
+
+           •   sessionLauncherRegister
+
+
+
+
+           Sent when the ASN of the session launcher application registers with
+           LaunchServices.
+
+           •   sessionLauncherUnregistered
+
+
+
+
+           Sent when the application registered as the session launcher
+           unregisters or exits.
+
+           •   nextAppToBringForwardAtQuitRegistered
+
+
+
+
+           Sent when the meta-information item for the next application to bring
+           forward ASN is changed
+
+           •   nextAppToBringForwardAtQuitUnregistered
+
+           •   systemProcessRegistered
+
+
+
+
+           Sent when the system process (generally loginwindow) registers with
+           LaunchServices.
+
+           •   systemProcessUnregistered
+
+
+
+
+           Sent when the system process (generally loginwindow) unregisters with
+           LaunchServices.
+
+           •   frontReservationCreated
+  manpageQuestion1: What is the primary purpose of the lsappinfo resource?
+  manpageQuestion2: How can lsappinfo be used to monitor changes in the presentation mode of the front application?
+  manpageQuestion3: What is the significance of the 'systemProcessRegistered' event in lsappinfo?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsappinfo`.
+
+
+
+    Manpage text:
+
+    Sent when a front-reservation is created.
+
+           •   frontReservationDestroyed
+
+
+
+
+           Sent when a front reservation is destroyed.
+
+           •   permittedFrontASNsChanged
+
+
+
+
+           Sent when the array of permitted-front-applications changes.
+
+           •   suppressRelaunch
+
+
+
+
+           Sent when an application changes its "LSSupressRelaunch" key.
+
+           •   terminatedByTALChanged
+
+
+
+
+           Sent when an application changes its "TerminatedByTAL" key.
+
+           •   launchedThrottledChanged
+
+
+
+
+           Sent when an application changes *
+           applicationWouldBeTerminatedByTALChanged *
+           applicationProgressValueChanged * applicationVisualNotification *
+           wakeup
+
+           Request that the application with affected ASN resume running its main
+           runloop.
+
+           •   sessionCreated
+
+
+
+
+           Sent when a session is created, generally when the first application
+           registers inside the session. Affected ASN is always NULL, since this
+           does not refer to any particular application.
+
+           •   sessionDestroyed
+  manpageQuestion1: What is the primary purpose of the lsappinfo resource?
+  manpageQuestion2: How can you track changes to the 'LSSuppressRelaunch' key of an application using lsappinfo?
+  manpageQuestion3: What is the significance of the 'sessionCreated' event in lsappinfo?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsappinfo`.\n\n\n\nManpage text:\n\nSent when a session is destroyed. Affected ASN is always NULL, since\n       this does not refer to any particular application.\n\n       •   invalid\n\n\n\n\n       This represents an invalid notification code, and is never sent.\n\n       •   all\n\n\n\n\n       This represents all notification codes, and is never sent, but gets\n       used when specifying which notifications to listen for.\n\nEXAMPLES\n       •   List all of the running applications\n\n\n\n\n       lsappinfo list\n\n       •   Show all the notifications which are being sent out\n\n\n\n\n       lsappinfo listen +all forever\n\n       •   Show the notifications sent out whenever the front application is\n\t   changed, for the next 60 seconds\n\n\n\n\n       lsappinfo listen +becameFrontmost wait 60\n\n       •   Launch TextEdit.app, asyncronously, and don´t bring it to the front\n\n\n\n\n       lsappinfo launch nofront=true async=true /Applications/TextEdit.app/\n\n       •   Find the ASN for the running application \"TextEdit\", by bundle id\n\n\n\n\n       lsappinfo find bundleid=com.apple.TextEdit\n\n       •   Find the ASN for the running application \"TextEdit\", by name"
+  manpageQuestion1: What is the primary purpose of the lsappinfo command?
+  manpageQuestion2: How can you use lsappinfo to list all currently running applications?
+  manpageQuestion3: Can you provide an example of using lsappinfo to find the ASN for an application named 'TextEdit' by its bundle ID?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsappinfo`.\n\n\n\nManpage text:\n\nlsappinfo find name=\"TextEdit\"\n\n       •   Show the information for the running application \"TextEdit\"\n\n\n\n\n       lsappinfo info \"TextEdit\"\n\n\t\t\t\t  04/01/2013\t\t\t  LSAPPINFO(8)"
+  manpageQuestion1: What is the primary purpose of the lsappinfo command?
+  manpageQuestion2: 'How would you use lsappinfo to find the name of a running application that is associated with the file type ''com.apple.TextEdit''? '
+  manpageQuestion3: Can you provide an example of using lsappinfo to retrieve detailed information about a specific application, such as its bundle identifier and version?
+

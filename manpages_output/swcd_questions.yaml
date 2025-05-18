@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `swcd`.\n\n\n\nManpage text:\n\nswcd(8) \t\t    System Manager's Manual\t\t       swcd(8)\n\nNAME\n     swcd – Shared Web Credentials Daemon.\n\nSYNOPSIS\n     Daemon providing support for technologies based on Associated Domains\n     such as Shared Web Credentials and Universal Links.\n\nLOCATION\n     /usr/libexec/swcd\n\n\t\t\t\t  11/20/2016"
+  manpageQuestion1: What is the primary purpose of the swcd daemon?
+  manpageQuestion2: How would you start or restart the swcd service to ensure it is running properly?
+  manpageQuestion3: What is the typical location of the swcd executable on a macOS system?
+

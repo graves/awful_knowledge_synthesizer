@@ -1,0 +1,104 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `nss_cctl`.\n\n\n\nManpage text:\n\nNSS_CCTL(4)\t\t     Device Drivers Manual\t\t   NSS_CCTL(4)\n\nNAME\n       nss_cctl - Xsan Cluster-Wide Central Control File\n\nSYNOPSIS\n       /Library/Preferences/Xsan/nss_cctl.xml\n\nDESCRIPTION\n       The Xsan File System supports cluster-wide central control to restrict\n       the behavior of Xsan cluster nodes (fsm server, volume client and\n       administrative commands such as cvadmin) from a central place. A\n       central control file nss_cctl.xml is used to specify the desired\n       controls on the cluster nodes. This file resides under\n       /Library/Preferences/Xsan on an nss coordinator server.\tThe filename\n       of the nss_cctl file follows the format:\n\n\t      nss_cctl.xml\n\n       NOTE: The recommended way to get started with the central control\n       facility is to first use the nss_cctl_template(8) commmand to generate\n       a file that can then be edited to form your nss_cctl.xml file.  The\n       addresses of hosts and names of filesystems will be those that are\n       currently in use and mounted in the cluster in which you are running\n       the template command."
+  manpageQuestion1: What is the primary purpose of the nss_cctl file?
+  manpageQuestion2: How can you generate a template for the nss_cctl.xml file?
+  manpageQuestion3: What is the typical location of the nss_cctl.xml file on an nss coordinator server?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `nss_cctl`.\n\n\n\nManpage text:\n\nThis control file is in xml format and has hierarchical structure.  The\n       top level element is snfsControl. It contains control element\n       securityControl for certain volumes. If you have different controls for\n       different volumes, then each volume should have its own control\n       definition. A special virtual volume #SNFS_ALL# is used as the default\n       control for volumes not defined in this control file. It is also the\n       required file system name when configuring the snfsAdmin and\n       snfsAdminControl options.  NOTE: You cannot have a real volume named as\n       #SNFS_ALL#.\n\n       Each volume related control element (i.e. securityControl) has a list\n       of controlEntry. Each controlEntry defines the client and the intended\n       controls. The simplest and preferred way of defining a client within\n       the controlEntry is in the following manner:\n\n\t      <client>\n\n\t\t  <address value=\"value\"/>\n\t      </client>\n\n       where value can either be an IP address (or hostname) by itself, or\n       followed by a netmask length separated by a slash (e.g \"192.0.2.0/24\")\n       if one would like to specify a subnet. An IP address by itself is\n       equivalent to the same IP address followed by the maximum netmask\n       length of the IP version in use (e.g. \"192.0.2.10\" is equivalent to\n       \"192.0.2.10/32\").  Both IPv4 and IPv6 are supported. There may be\n       multiple address entries within the client element if the specified\n       addresses will be sharing the same controls within the controlEntry."
+  manpageQuestion1: What is the primary purpose of the nss_cctl control file?
+  manpageQuestion2: How would you configure a subnet of IP addresses (e.g., 192.0.2.0/24) to apply specific security controls in the nss_cctl file?
+  manpageQuestion3: Can you provide an example of defining a client with a single IP address in the nss_cctl file?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `nss_cctl`.\n\n\n\nManpage text:\n\nA value which matches any client can be specified by using a zero\n       length netmask, for example \"0.0.0.0/0\".\n\n       Another way of defining a client is supported for backwards\n       compatibility, wherein its type is explicitly defined: host or netgrp.\n       For type host, the client is defined in the following format below,\n       where value may be either an IP address or hostname:\n\n\t      <client type=\"host\">\n\n\t\t  <hostname value=\"value\"/>\n\t      </client>\n\n       For type netgrp, two sub-elements network, which defines the IP address\n       of the subnet, and maskbits, which defines the netmask length of the\n       subnet, need to be included as follows:\n\n\t      <client type=\"netgrp\">\n\n\t\t  <network value=\"value\"/>\n\t\t  <maskbits value=\"value\"/>\n\t      </client>\n\n       NOTE: When there is overlap between client IP addresses, the controls\n       which correspond to the IP address with the longest netmask length will\n       take precedence.\n\n   Controls\n       Currently eight controls are supported. Each control has this format:"
+  manpageQuestion1: What is the primary purpose of the nss_cctl resource?
+  manpageQuestion2: How can you define a client in the nss_cctl resource using the host type with a specific hostname?
+  manpageQuestion3: Can you provide an example of defining a subnet client in the nss_cctl resource using the netgrp type with a specific network address and mask length?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `nss_cctl`.\n\n\n\nManpage text:\n\n<control value=\"value\"/>\n\n       The value can be either true or false. The control is one of the\n       following controls:\n\n       mountReadOnly\n\t      Controls whether the client should mount the given volume as\n\t      readonly. Value true(false) means the volume is mounted as\n\t      readonly (read/write). If this control is not specified, the\n\t      default is read/write.\n\n       mountDlanClient\n\t      Controls whether the client can mount the given volume via proxy\n\t      client. Value true(false) means the volume is (not) allowed to\n\t      mount via proxy client. The default is \"mount via proxy client\n\t      not allowed\".\n\n       takeOwnership\n\t      Controls whether users on a windows client are allowed to take\n\t      ownership of file or directory of a stornext volume.  Value\n\t      true(false) means that taking ownership is (not) allowed. The\n\t      default is that \"take ownership is not allowed\". Note: this\n\t      control only applies to the clients running on Windows\n\t      platforms."
+  manpageQuestion1: What is the primary purpose of the nss_cctl resource?
+  manpageQuestion2: How would you use nss_cctl to set the mountReadOnly control to true for a volume?
+  manpageQuestion3: Can you provide an example of using nss_cctl to disable the takeOwnership control on a Windows client?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `nss_cctl`.\n\n\n\nManpage text:\n\nsnfsAdmin\n\t      Controls whether cvadmin(8), sgmanage(8), and snquota(1) running\n\t      on a host are allowed to have super-admin privilege to run\n\t      privileged commands such as start/stop a volume, manipulate\n\t      storage pools or change quota settings.  Value true(false) means\n\t      users with superadmin privilege is (not) allowed to run\n\t      privileged commands. The default value is \"false\". This option\n\t      can only be defined under the #SNFS_ALL# file system name.\n\n       snfsAdminConnect\n\t      Controls whether cvadmin(8) running on a client is allowed to\n\t      connect to other fsm host via -H option.\tValue true(false)\n\t      means cvadmin(8) is (not) allowed to connect to other fsm host\n\t      via -H option. The default value is false. This option can only\n\t      be defined under the #SNFS_ALL# file system name.\n\n       exec   Controls whether binary executable files on the volume are\n\t      allowed to be executed. Value true(false) means binary\n\t      executable files are (not) allowed to be executed. The default\n\t      value is false, i.e. the execution is not allowed. Note: the\n\t      StorNext upgrade process may rely on the ability to run binary\n\t      executables residing on the HA file system. Therefore, setting\n\t      exec to \"true\" for this file system is required, at least during\n\t      upgrades."
+  manpageQuestion1: 'What is the primary purpose of the snfsAdmin, snfsAdminConnect, and exec options in the #SNFS_ALL# file system configuration?'
+  manpageQuestion2: How would you configure the snfsAdmin option to allow super-admin users to run privileged commands on a host?
+  manpageQuestion3: 'Can you provide an example of setting the exec option to true for the #SNFS_ALL# file system to permit execution of binary files during upgrades?'
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `nss_cctl`.\n\n\n\nManpage text:\n\nsuid   Controls whether setuid bit is allowed to take effect.  Value\n\t      true(false) means setuid bit is (not) allowed to take effect.\n\t      The default value is false.\n\n       denyRetrieves\n\t      Controls whether a client is permitted to retrieve offline files\n\t      by reading them.\tThis only applies to managed file systems.\n\t      When a file is offline, storage manager is responsible for\n\t      retrieving its contents, this can usually be triggered by a file\n\t      read.  If read based retrieve is disabled then an fsretrieve\n\t      command must be used, either directly, or via a web services\n\t      call.  Value true(false) means that the client cannot (can)\n\t      initiate retrieves. The default value is false.\n\n       globalSuperUser\n\t      Controls whether a client can override the file system\n\t      configuration for global super user. This nss_cctl variable only\n\t      has meaning when the file system configuration variable\n\t      globalSuperUser has been set to false, disabling global super\n\t      user for clients.  When this nss_cctl variable is set to true\n\t      for a set of clients, these clients behave as if the\n\t      configuration variable had been set to true. See the\n\t      snfs_config(5) man page for a complete description of this\n\t      privilege.  The default value is false.  Apple Xsan clients do\n\t      not honor the setting of globalSuperUser."
+  manpageQuestion1: What is the primary purpose of the nss_cctl resource?
+  manpageQuestion2: How can you configure a client to not be able to initiate file retrieves when offline files are involved?
+  manpageQuestion3: What is the effect of setting the globalSuperUser parameter to true in nss_cctl?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `nss_cctl`.
+
+
+
+    Manpage text:
+
+    NOTE: If no match is found for a given client's IP address, then the
+           client has no privilege to access a Xsan cluster. If a volume has been
+           defined but the client is not defined in that volume's control
+           (securityControl), then the client has no access privilege to the
+           specified volume.
+
+       Non-voting and Voting client configuration
+           The element nonVotingCluster can be included (on the same level as the
+           securityControl element) to set the default client behavior (voting or
+           non-voting) within the cluster during the election that will choose the
+           host on which a specific file system manager will run. The cluster to
+           which this control is applied will be the one specified by the nss_cctl
+           filename.  NOTE: If no cluster is specified in the filename, please
+           refer to the beginning of this man page's DESCRIPTION section for more
+           information on which cluster this control will take effect.
+
+           The element nonVotingCluster has the following format:
+  manpageQuestion1: What is the primary purpose of the nss_cctl resource?
+  manpageQuestion2: How can you configure a client to be non-voting within a Xsan cluster using nss_cctl?
+  manpageQuestion3: What is the default behavior of a client in a Xsan cluster if it is not explicitly defined in the securityControl element?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `nss_cctl`.
+
+
+
+    Manpage text:
+
+    <nonVotingCluster value="value"/>
+
+           where value can either be true or false. If value is true, the default
+           behavior of all clients within the cluster will be to abstain from
+           voting in the election. In effect, unnecessary NSS message traffic may
+           be greatly reduced. If the nonVotingCluster is not included in the xml
+           file, client behavior will be the same as if its value were set to
+           false (i.e. all clients within the cluster will be voting in the
+           election).
+
+           Note that clients running versions of StorNext prior to StorNext 6.0
+           use an older version of the NSS protocol (NSS1), which does not honor
+           the non-voting cluster configuration options specified in this file.
+
+           NOTE: There always needs to be voting clients within the cluster so
+           that a decision can be derived from the election. Therefore, when the
+           nonVotingCluster element is set to true, it should be used in
+           conjunction with the votingClients element (described in the following
+           paragraphs) which allows one to specify an explicit list of voting
+           clients.
+  manpageQuestion1: What is the primary purpose of the nonVotingCluster element in the StorNext configuration file?
+  manpageQuestion2: How can a system administrator configure a cluster to have non-voting clients while ensuring there are still voting clients for decision-making?
+  manpageQuestion3: What is the effect of setting the nonVotingCluster element to true without specifying the votingClients element?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `nss_cctl`.\n\n\n\nManpage text:\n\nIt is also possible to specify a group of non-voting clients within a\n       cluster by creating a list of client addresses with the\n       nonVotingClients element (also used on the same level as that of the\n       securityControl element). The nonVotingClients element has the\n       following format:\n\n\t      <nonVotingClients>\n\n\t\t  <address value=\"value\"/>\n\t\t  <address value=\"value\"/>\n\t\t   .\n\t\t   .\n\t\t   .\n\t\t  <address value=\"value\"/>\n\t      </nonVotingClients>\n\n       where each address element is the same element used when specifying a\n       client within a controlEntry, and there must be at least one address\n       element. To specify a group of voting clients, the same format is used\n       but replacing nonVotingClients with votingClients.\n\n       NOTE: For more information on the address element and its allowed\n       values, please refer to the beginning of this man page's DESCRIPTION\n       section.\n\n       NOTE: All three elements (i.e. nonVotingCluster, nonVotingClients and\n       votingClients) may be in the nss_cctl.xml file at the same time. The\n       votingClients and nonVotingClients elements will take precedence over\n       the nonVotingCluster element. When a client IP address matches elements\n       in both nonVotingClients and votingClients, the element with the\n       longest netmask will take precedence; if there is a tie, the\n       votingClients element will be used."
+  manpageQuestion1: What is the primary purpose of the nss_cctl resource?
+  manpageQuestion2: How can you specify a group of non-voting clients in an nss_cctl.xml file?
+  manpageQuestion3: What is the process for determining which clients take precedence when both nonVotingClients and votingClients are defined in nss_cctl.xml?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `nss_cctl`.\n\n\n\nManpage text:\n\nLIMITATIONS\n       Only the Linux platform is supported to be a nss coordinator server\n       capable of parsing this xml file.\n\nEXAMPLE\n       The following is an example of nss_cctl.xml file. It defines the\n       control of volume xsan1, and also the special virtual volume\n       #SNFS_ALL#.\n\n       NOTE: As stated earlier, instead of using this example, you can\n       generate a starting point nss_cctl.xml file using the\n       nss_cctl_template(8) command.\n\n\t  <snfsControl xmlns=\"http://www.quantum.com/snfs/cctl/v1.0\">\n\t      <nonVotingCluster value=\"true\"/>\n\t      <votingClients>\n\t\t  <address value=\"192.0.2.108/24\"/>\n\t\t  <address value=\"198.51.100.215\"/>\n\t      </votingClients>\n\t      <securityControl fileSystem=\"xsan1\">\n\t\t <controlEntry>\n\t\t      <client>\n\t\t\t  <address value=\"192.0.2.108\"/>\n\t\t\t  <address value=\"198.51.100.215\"/>\n\t\t      </client>\n\t\t      <controls>\n\t\t\t  <mountReadOnly value=\"false\"/>\n\t\t\t  <mountDlanClient value=\"false\"/>\n\t\t\t  <takeOwnership value=\"false\"/>\n\t\t\t  <exec value=\"true\"/>\n\t\t\t  <suid value=\"false\"/>\n\t\t      </controls>\n\t\t  </controlEntry>\n\t       <controlEntry>\n\t\t   <client type=\"host\">\n\t\t    <hostName value=\"192.0.2.132\"/>\n\t\t   </client>\n\t\t   <controls>\n\t\t    <mountReadOnly value=\"true\"/>\n\t\t    <mountDlanClient value=\"true\"/>\n\t\t    <takeOwnership value=\"false\"/>\n\t\t    <exec value=\"true\"/>\n\t\t    <suid value=\"false\"/>\n\t\t   </controls>\n\t       </controlEntry>\n\t       <controlEntry>\n\t\t   <client type=\"netgrp\">\n\t\t    <network value=\"192.0.2.0\"/>\n\t\t    <maskbits value=\"24\"/>\n\t\t   </client>\n\t\t   <controls>\n\t\t    <takeOwnership value=\"true\"/>\n\t\t    <mountReadOnly value=\"true\"/>\n\t\t\t  <exec value=\"true\"/>\n\t\t\t  <suid value=\"false\"/>\n\t\t   </controls>\n\t       </controlEntry>\n\t      </securityControl>\n\t      <securityControl fileSystem=\"#SNFS_ALL#\">\n\t       <controlEntry>\n\t\t   <client type=\"host\">\n\t\t    <hostName value=\"linux_ludev\"/>\n\t\t   </client>\n\t\t   <controls>\n\t\t    <snfsAdmin value=\"true\"/>\n\t\t    <snfsAdminConnect value=\"true\"/>\n\t\t\t  <exec value=\"true\"/>\n\t\t\t  <suid value=\"false\"/>\n\t\t   </controls>\n\t       </controlEntry>\n\t      </securityControl>\n\t  </snfsControl>"
+  manpageQuestion1: What is the primary function of the nss_cctl command?
+  manpageQuestion2: How can you generate a starting point for an nss_cctl.xml file?
+  manpageQuestion3: What is an example of configuring a security control entry for the file system 'xsan1' in nss_cctl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `nss_cctl`.\n\n\n\nManpage text:\n\nFILES\n       /Library/Preferences/Xsan/nss_cctl.xml\n       /System/Library/Filesystems/acfs.fs/Contents/examples/nss_cctl.example\n\nSEE ALSO\n       cvadmin(8), fsnameservers(4), nss_cctl_template(8), sgmanage(8),\n       snfs_config(5), snquota(1)\n\nXsan File System\t\t   May 2020\t\t\t   NSS_CCTL(4)"
+  manpageQuestion1: What is the primary purpose of the nss_cctl resource?
+  manpageQuestion2: How can you use nss_cctl to configure the Xsan file system?
+  manpageQuestion3: What files are associated with the nss_cctl resource and what is their purpose?
+

@@ -1,0 +1,48 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `option`.\n\n\n\nManpage text:\n\noption(n)\t\t     Tk Built-In Commands\t\t     option(n)\n\n______________________________________________________________________________\n\nNAME\n       option - Add/retrieve window options to/from the option database\n\nSYNOPSIS\n       option add pattern value ?priority?\n       option clear\n       option get window name class\n       option readfile fileName ?priority?\n______________________________________________________________________________\n\nDESCRIPTION\n       The option command allows you to add entries to the Tk option database\n       or to retrieve options from the database.  The add form of the command\n       adds a new option to the database.  Pattern contains the option being\n       specified, and consists of names and/or classes separated by asterisks\n       or dots, in the usual X format (see PATTERN FORMAT).  Value contains a\n       text string to associate with pattern;  this is the value that will be\n       returned in calls to Tk_GetOption or by invocations of the option get\n       command.  If priority is specified, it indicates the priority level for\n       this option (see below for legal values);  it defaults to interactive.\n       This command always returns an empty string."
+  manpageQuestion1: What is the primary purpose of the option command in Tk?
+  manpageQuestion2: How would you use the option add command to set a custom option pattern for a specific window class?
+  manpageQuestion3: Can you provide an example of retrieving an option value for a specific window using the option get command?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `option`.\n\n\n\nManpage text:\n\nThe option clear command clears the option database.  Default options\n       (from the RESOURCE_MANAGER property or the .Xdefaults file) will be\n       reloaded automatically the next time an option is added to the database\n       or removed from it.  This command always returns an empty string.\n\n       The option get command returns the value of the option specified for\n       window under name and class.  If several entries in the option database\n       match window, name, and class, then the command returns whichever was\n       created with highest priority level.  If there are several matching\n       entries at the same priority level, then it returns whichever entry was\n       most recently entered into the option database.\tIf there are no\n       matching entries, then the empty string is returned.\n\n       The readfile form of the command reads fileName, which should have the\n       standard format for an X resource database such as .Xdefaults, and adds\n       all the options specified in that file to the option database.  If\n       priority is specified, it indicates the priority level at which to\n       enter the options;  priority defaults to interactive."
+  manpageQuestion1: What is the primary purpose of the option command in the context of X resources?
+  manpageQuestion2: How would you use the option command to retrieve the value of a specific option for a given window and class?
+  manpageQuestion3: Can you provide an example of using the option command to read and add options from a file like .Xdefaults into the option database?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `option`.\n\n\n\nManpage text:\n\nThe priority arguments to the option command are normally specified\n       symbolically using one of the following values:\n\n       widgetDefault\n\t      Level 20.  Used for default values hard-coded into widgets.\n\n       startupFile\n\t      Level 40.  Used for options specified in application-specific\n\t      startup files.\n\n       userDefault\n\t      Level 60.  Used for options specified in user-specific defaults\n\t      files, such as .Xdefaults, resource databases loaded into the X\n\t      server, or user-specific startup files.\n\n       interactive\n\t      Level 80.  Used for options specified interactively after the\n\t      application starts running.  If priority is not specified, it\n\t      defaults to this level.\n\n       Any of the above keywords may be abbreviated.  In addition, priorities\n       may be specified numerically using integers between 0 and 100,\n       inclusive.  The numeric form is probably a bad idea except for new\n       priority levels other than the ones given above.\n\nPATTERN FORMAT\n       Patterns consist of a sequence of words separated by either periods,\n       “.”, or asterisks “*”.  The overall pattern may also be optionally\n       preceded by an asterisk."
+  manpageQuestion1: What is the primary purpose of the option command?
+  manpageQuestion2: How would you use the option command to set a preference value for a widget with a priority level of 20?
+  manpageQuestion3: Can you provide an example of how to use the option command with a pattern that includes both periods and asterisks?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `option`.
+
+
+
+    Manpage text:
+
+    Each word in the pattern conventionally starts with either an upper-
+           case letter (in which case it denotes the class of either a widget or
+           an option) or any other character, when it denotes the name of a widget
+           or option. The last word in the pattern always indicates the option;
+           the preceding ones constrain which widgets that option will be looked
+           for in.
+
+           When two words are separated by a period, the latter widget must be a
+           direct child of the former (or the option must apply to only the
+           indicated widgets).  When two words are separated by an asterisk, any
+           depth of widgets may lie between the former and latter widgets (and the
+           option applies to all widgets that are children of the former widget).
+
+           If the overall pattern is preceded by an asterisk, then the overall
+           pattern applies anywhere it can throughout the whole widget hierarchy.
+           Otherwise the first word of the pattern is matched against the name and
+           class of the “.” toplevel, which are usually set by options to wish.
+  manpageQuestion1: What is the primary purpose of the `option` resource in macOS?
+  manpageQuestion2: How would you use the `option` resource to specify a pattern that matches any widget in the hierarchy?
+  manpageQuestion3: Can you provide an example of using the `option` resource to define a pattern that matches a specific widget and its children?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `option`.\n\n\n\nManpage text:\n\nEXAMPLES\n       Instruct every button in the application to have red text on it unless\n       explicitly overridden (note that on some platforms the option is\n       ignored):\n\t      option add *Button.foreground red startupFile\n\n       Allow users to control what happens in an entry widget when the Return\n       key is pressed by specifying a script in the option database and add a\n       default option for that which rings the bell:\n\t      entry .e\n\t      bind .e <Return> [option get .e returnCommand Command]\n\t      option add *.e.returnCommand bell widgetDefault\n\nSEE ALSO\n       options(n), wish(1)\n\nKEYWORDS\n       database, option, priority, retrieve\n\nTk\t\t\t\t\t\t\t\t     option(n)"
+  manpageQuestion1: What is the primary purpose of the `option` command in Tcl/Tk?
+  manpageQuestion2: How would you use the `option` command to set a default behavior for all entry widgets when the Return key is pressed?
+  manpageQuestion3: Can you provide an example of using the `option` command to configure a button widget to have red text color?
+

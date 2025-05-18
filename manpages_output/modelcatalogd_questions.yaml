@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `modelcatalogd`.\n\n\n\nManpage text:\n\nmodelcatalogd(8)\t    System Manager's Manual\t      modelcatalogd(8)\n\nNAME\n     modelcatalogd – A daemon that stores base models and adapters.\n\nSYNOPSIS\n     modelcatalogd\n\nDESCRIPTION\n     modelcatalogd provides a catalog of models, adapters, and tokenizers for\n     use by the system\n\nmacOS\t\t\t\t June 6, 2022\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the modelcatalogd daemon?
+  manpageQuestion2: How does the modelcatalogd daemon function in the macOS system?
+  manpageQuestion3: What role does modelcatalogd play in managing machine learning models and adapters on macOS?
+

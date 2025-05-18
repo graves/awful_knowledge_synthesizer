@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `audiomxd`.\n\n\n\nManpage text:\n\naudiomxd(1)\t\t    General Commands Manual\t\t   audiomxd(1)\n\nNAME\n     audiomxd\n\nSYNOPSIS\n     audiomxd\n\nDESCRIPTION\n     audiomxd is a daemon that manages audio route arbitration on macOS along\n     with other nearby Apple devices such as iPhones and iPads.  audiomxd was\n     introduced with macOS version 14.0.\n\nDarwin\t\t\t\tThu Oct 20 2022 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the audiomxd tool?
+  manpageQuestion2: How would you start the audiomxd daemon on a macOS system?
+  manpageQuestion3: What is the role of audiomxd in managing audio routes between macOS and other Apple devices?
+

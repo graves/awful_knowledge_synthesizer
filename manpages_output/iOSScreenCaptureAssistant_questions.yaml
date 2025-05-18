@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `iOSScreenCaptureAssistant`.\n\n\n\nManpage text:\n\niOSScreenCaptureAssistant(8)\t\t\t       System Manager's Manual\n\nNAME\n     iOSScreenCaptureAssistant – CoreMediaIO DAL Assistant Process.\n\nDESCRIPTION\n     iOSScreenCaptureAssistant is used by the CoreMediaIO Device Abstraction\n     Layer Plug-In that provides audio/video capture from iOS devices using\n     AVFoundation Capture APIs.  The process allows multiple applications to\n     simultaneously capture from the same iOS device.\n\nmacOS 15.3\t\t       November 11, 2016\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the iOSScreenCaptureAssistant tool?
+  manpageQuestion2: How would you use iOSScreenCaptureAssistant to enable simultaneous audio/video capture from an iOS device for multiple applications?
+  manpageQuestion3: Can you describe the role of iOSScreenCaptureAssistant in the context of CoreMediaIO and AVFoundation APIs?
+

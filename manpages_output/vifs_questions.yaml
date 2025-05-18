@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `vifs`.\n\n\n\nManpage text:\n\nVIFS(8) \t\t    System Manager's Manual\t\t       VIFS(8)\n\nNAME\n     vifs – safely edit fstab\n\nSYNOPSIS\n     vifs\n\nDESCRIPTION\n     The vifs utility simply locks the fstab file before invoking an editor on\n     it.  This is important to facilitate the modification of fstab by\n     automated tools and system management software.\n\n     Always use vifs to edit fstab, instead of invoking an editor directly.\n\nSEE ALSO\n     vi(1), fstab(5)\n\nHISTORY\n     The vifs utility originates from Mac OSX 10.5.\n\nmacOS 15.3\t\t       November 18, 2005\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the vifs utility?
+  manpageQuestion2: Why should automated tools and system management software use vifs instead of directly editing fstab?
+  manpageQuestion3: What is the most common way to use the vifs command in macOS?
+

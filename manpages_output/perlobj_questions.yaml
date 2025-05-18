@@ -1,0 +1,311 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\nPERLOBJ(1)\t       Perl Programmers Reference Guide \t    PERLOBJ(1)"
+  manpageQuestion1: What is the primary purpose of the perlobj command?
+  manpageQuestion2: How would you use perlobj to create a new Perl object with the class 'MyClass' and initialize it with the value 42?
+  manpageQuestion3: Can you provide an example of using perlobj to retrieve the class name of a Perl object?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\nNAME\n       perlobj - Perl object reference\n\nDESCRIPTION\n       This document provides a reference for Perl's object orientation\n       features. If you're looking for an introduction to object-oriented\n       programming in Perl, please see perlootut.\n\n       In order to understand Perl objects, you first need to understand\n       references in Perl. See perlreftut for details.\n\n       This document describes all of Perl's object-oriented (OO) features\n       from the ground up. If you're just looking to write some object-\n       oriented code of your own, you are probably better served by using one\n       of the object systems from CPAN described in perlootut.\n\n       If you're looking to write your own object system, or you need to\n       maintain code which implements objects from scratch then this document\n       will help you understand exactly how Perl does object orientation.\n\n       There are a few basic principles which define object oriented Perl:\n\n       1.  An object is simply a data structure that knows to which class it\n\t   belongs."
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How would you create a new Perl object using the perlobj resource?
+  manpageQuestion3: Can you explain how to implement a custom object system in Perl using the perlobj resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\n2.  A class is simply a package. A class provides methods that expect\n\t   to operate on objects.\n\n       3.  A method is simply a subroutine that expects a reference to an\n\t   object (or a package name, for class methods) as the first\n\t   argument.\n\n       Let's look at each of these principles in depth.\n\n   An Object is Simply a Data Structure\n       Unlike many other languages which support object orientation, Perl does\n       not provide any special syntax for constructing an object. Objects are\n       merely Perl data structures (hashes, arrays, scalars, filehandles,\n       etc.) that have been explicitly associated with a particular class.\n\n       That explicit association is created by the built-in \"bless\" function,\n       which is typically used within the constructor subroutine of the class.\n\n       Here is a simple constructor:\n\n\t package File;\n\n\t sub new {\n\t     my $class = shift;\n\n\t     return bless {}, $class;\n\t }\n\n       The name \"new\" isn't special. We could name our constructor something\n       else:"
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How would you create a new object in Perl using the perlobj resource?
+  manpageQuestion3: Can you explain how the 'bless' function is used in the context of perlobj?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\npackage File;\n\n\t sub load {\n\t     my $class = shift;\n\n\t     return bless {}, $class;\n\t }\n\n       The modern convention for OO modules is to always use \"new\" as the name\n       for the constructor, but there is no requirement to do so. Any\n       subroutine that blesses a data structure into a class is a valid\n       constructor in Perl.\n\n       In the previous examples, the \"{}\" code creates a reference to an empty\n       anonymous hash. The \"bless\" function then takes that reference and\n       associates the hash with the class in $class. In the simplest case, the\n       $class variable will end up containing the string \"File\".\n\n       We can also use a variable to store a reference to the data structure\n       that is being blessed as our object:\n\n\t sub new {\n\t     my $class = shift;\n\n\t     my $self = {};\n\t     bless $self, $class;\n\n\t     return $self;\n\t }\n\n       Once we've blessed the hash referred to by $self we can start calling\n       methods on it. This is useful if you want to put object initialization\n       in its own separate method:"
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How would you create a new object using the perlobj resource with a custom constructor?
+  manpageQuestion3: Can you provide an example of using the perlobj resource to initialize an object with a specific class and data structure?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\nsub new {\n\t     my $class = shift;\n\n\t     my $self = {};\n\t     bless $self, $class;\n\n\t     $self->_initialize();\n\n\t     return $self;\n\t }\n\n       Since the object is also a hash, you can treat it as one, using it to\n       store data associated with the object. Typically, code inside the class\n       can treat the hash as an accessible data structure, while code outside\n       the class should always treat the object as opaque. This is called\n       encapsulation. Encapsulation means that the user of an object does not\n       have to know how it is implemented. The user simply calls documented\n       methods on the object.\n\n       Note, however, that (unlike most other OO languages) Perl does not\n       ensure or enforce encapsulation in any way. If you want objects to\n       actually be opaque you need to arrange for that yourself. This can be\n       done in a variety of ways, including using \"Inside-Out objects\" or\n       modules from CPAN.\n\n       Objects Are Blessed; Variables Are Not"
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How can you create an object using the perlobj resource and store data in it as a hash?
+  manpageQuestion3: What is the significance of encapsulation in the context of the perlobj resource and how can it be enforced in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\nWhen we bless something, we are not blessing the variable which\n       contains a reference to that thing, nor are we blessing the reference\n       that the variable stores; we are blessing the thing that the variable\n       refers to (sometimes known as the referent). This is best demonstrated\n       with this code:\n\n\t use Scalar::Util 'blessed';\n\n\t my $foo = {};\n\t my $bar = $foo;\n\n\t bless $foo, 'Class';\n\t print blessed( $bar ) // 'not blessed';    # prints \"Class\"\n\n\t $bar = \"some other value\";\n\t print blessed( $bar ) // 'not blessed';    # prints \"not blessed\"\n\n       When we call \"bless\" on a variable, we are actually blessing the\n       underlying data structure that the variable refers to. We are not\n       blessing the reference itself, nor the variable that contains that\n       reference. That's why the second call to \"blessed( $bar )\" returns\n       false. At that point $bar is no longer storing a reference to an\n       object.\n\n       You will sometimes see older books or documentation mention \"blessing a\n       reference\" or describe an object as a \"blessed reference\", but this is\n       incorrect. It isn't the reference that is blessed as an object; it's\n       the thing the reference refers to (i.e. the referent)."
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How can you use the perlobj resource to determine if a reference is blessed as an object?
+  manpageQuestion3: Can you provide an example of using the perlobj resource to bless a reference and then verify that the referent is correctly blessed?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.
+
+
+
+    Manpage text:
+
+    A Class is Simply a Package
+           Perl does not provide any special syntax for class definitions. A
+           package is simply a namespace containing variables and subroutines. The
+           only difference is that in a class, the subroutines may expect a
+           reference to an object or the name of a class as the first argument.
+           This is purely a matter of convention, so a class may contain both
+           methods and subroutines which don't operate on an object or class.
+
+           Each package contains a special array called @ISA. The @ISA array
+           contains a list of that class's parent classes, if any. This array is
+           examined when Perl does method resolution, which we will cover later.
+
+           Calling methods from a package means it must be loaded, of course, so
+           you will often want to load a module and add it to @ISA at the same
+           time. You can do so in a single step using the parent pragma.  (In
+           older code you may encounter the base pragma, which is nowadays
+           discouraged except when you have to work with the equally discouraged
+           fields pragma.)
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How can you load a module and add it to @ISA in Perl?
+  manpageQuestion3: What is the role of the @ISA array in Perl classes?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.
+
+
+
+    Manpage text:
+
+    However the parent classes are set, the package's @ISA variable will
+           contain a list of those parents. This is simply a list of scalars, each
+           of which is a string that corresponds to a package name.
+
+           All classes inherit from the UNIVERSAL class implicitly. The UNIVERSAL
+           class is implemented by the Perl core, and provides several default
+           methods, such as "isa()", "can()", and "VERSION()".  The "UNIVERSAL"
+           class will never appear in a package's @ISA variable.
+
+           Perl only provides method inheritance as a built-in feature.  Attribute
+           inheritance is left up the class to implement. See the "Writing
+           Accessors" section for details.
+
+       A Method is Simply a Subroutine
+           Perl does not provide any special syntax for defining a method. A
+           method is simply a regular subroutine, and is declared with "sub".
+           What makes a method special is that it expects to receive either an
+           object or a class name as its first argument.
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How would you define a method in Perl using the perlobj resource?
+  manpageQuestion3: Can you explain how class inheritance works with the perlobj resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\nPerl does provide special syntax for method invocation, the \"->\"\n       operator. We will cover this in more detail later.\n\n       Most methods you write will expect to operate on objects:\n\n\t sub save {\n\t     my $self = shift;\n\n\t     open my $fh, '>', $self->path() or die $!;\n\t     print {$fh} $self->data()\t     or die $!;\n\t     close $fh\t\t\t     or die $!;\n\t }\n\n   Method Invocation\n       Calling a method on an object is written as \"$object->method\".\n\n       The left hand side of the method invocation (or arrow) operator is the\n       object (or class name), and the right hand side is the method name.\n\n\t my $pod = File->new( 'perlobj.pod', $data );\n\t $pod->save();\n\n       The \"->\" syntax is also used when dereferencing a reference. It looks\n       like the same operator, but these are two different operations.\n\n       When you call a method, the thing on the left side of the arrow is\n       passed as the first argument to the method. That means when we call\n       \"Critter->new()\", the \"new()\" method receives the string \"Critter\" as\n       its first argument. When we call \"$fred->speak()\", the $fred variable\n       is passed as the first argument to \"speak()\"."
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How would you use the perlobj resource to create an object and call a method on it?
+  manpageQuestion3: Can you provide an example of using the perlobj resource to demonstrate method invocation with a class name as the left side of the arrow operator?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.
+
+
+
+    Manpage text:
+
+    Just as with any Perl subroutine, all of the arguments passed in @_ are
+           aliases to the original argument. This includes the object itself.  If
+           you assign directly to $_[0] you will change the contents of the
+           variable that holds the reference to the object. We recommend that you
+           don't do this unless you know exactly what you're doing.
+
+           Perl knows what package the method is in by looking at the left side of
+           the arrow. If the left hand side is a package name, it looks for the
+           method in that package. If the left hand side is an object, then Perl
+           looks for the method in the package that the object has been blessed
+           into.
+
+           If the left hand side is neither a package name nor an object, then the
+           method call will cause an error, but see the section on "Method Call
+           Variations" for more nuances.
+
+       Inheritance
+           We already talked about the special @ISA array and the parent pragma.
+
+           When a class inherits from another class, any methods defined in the
+           parent class are available to the child class. If you attempt to call a
+           method on an object that isn't defined in its own class, Perl will also
+           look for that method in any parent classes it may have.
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How does Perl handle method inheritance when a class inherits from another class?
+  manpageQuestion3: What are the implications of directly modifying $_[0] in a Perl method?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\npackage File::MP3;\n\t use parent 'File';    # sets @File::MP3::ISA = ('File');\n\n\t my $mp3 = File::MP3->new( 'Andvari.mp3', $data );\n\t $mp3->save();\n\n       Since we didn't define a \"save()\" method in the \"File::MP3\" class, Perl\n       will look at the \"File::MP3\" class's parent classes to find the\n       \"save()\" method. If Perl cannot find a \"save()\" method anywhere in the\n       inheritance hierarchy, it will die.\n\n       In this case, it finds a \"save()\" method in the \"File\" class. Note that\n       the object passed to \"save()\" in this case is still a \"File::MP3\"\n       object, even though the method is found in the \"File\" class.\n\n       We can override a parent's method in a child class. When we do so, we\n       can still call the parent class's method with the \"SUPER\" pseudo-class.\n\n\t sub save {\n\t     my $self = shift;\n\n\t     say 'Prepare to rock';\n\t     $self->SUPER::save();\n\t }\n\n       The \"SUPER\" modifier can only be used for method calls. You can't use\n       it for regular subroutine calls or class methods:"
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How would you override the 'save()' method in a child class of 'File::MP3' to call the parent's 'save()' method?
+  manpageQuestion3: Can you provide an example of how Perl handles a missing method in an object's inheritance hierarchy?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\nSUPER::save($thing);\t  # FAIL: looks for save() sub in package SUPER\n\n\t SUPER->save($thing);\t  # FAIL: looks for save() method in class\n\t\t\t\t  #\t  SUPER\n\n\t $thing->SUPER::save();   # Okay: looks for save() method in parent\n\t\t\t\t  #\t  classes\n\n       How SUPER is Resolved\n\n       The \"SUPER\" pseudo-class is resolved from the package where the call is\n       made. It is not resolved based on the object's class. This is\n       important, because it lets methods at different levels within a deep\n       inheritance hierarchy each correctly call their respective parent\n       methods.\n\n\t package A;\n\n\t sub new {\n\t     return bless {}, shift;\n\t }\n\n\t sub speak {\n\t     my $self = shift;\n\n\t     say 'A';\n\t }\n\n\t package B;\n\n\t use parent -norequire, 'A';\n\n\t sub speak {\n\t     my $self = shift;\n\n\t     $self->SUPER::speak();\n\n\t     say 'B';\n\t }\n\n\t package C;\n\n\t use parent -norequire, 'B';\n\n\t sub speak {\n\t     my $self = shift;\n\n\t     $self->SUPER::speak();\n\n\t     say 'C';\n\t }\n\n\t my $c = C->new();\n\t $c->speak();"
+  manpageQuestion1: What is the primary purpose of the perlobj resource in macOS?
+  manpageQuestion2: How would you use perlobj to correctly call a parent class's method in a multi-level inheritance hierarchy?
+  manpageQuestion3: Can you provide an example of using perlobj in a scenario where multiple parent classes are involved and how does it resolve the SUPER pseudo-class?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\nIn this example, we will get the following output:\n\n\t A\n\t B\n\t C\n\n       This demonstrates how \"SUPER\" is resolved. Even though the object is\n       blessed into the \"C\" class, the \"speak()\" method in the \"B\" class can\n       still call \"SUPER::speak()\" and expect it to correctly look in the\n       parent class of \"B\" (i.e the class the method call is in), not in the\n       parent class of \"C\" (i.e. the class the object belongs to).\n\n       There are rare cases where this package-based resolution can be a\n       problem. If you copy a subroutine from one package to another, \"SUPER\"\n       resolution will be done based on the original package.\n\n       Multiple Inheritance\n\n       Multiple inheritance often indicates a design problem, but Perl always\n       gives you enough rope to hang yourself with if you ask for it.\n\n       To declare multiple parents, you simply need to pass multiple class\n       names to \"use parent\":\n\n\t package MultiChild;\n\n\t use parent 'Parent1', 'Parent2';\n\n       Method Resolution Order"
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How can you use the perlobj resource to demonstrate SUPER method resolution in a multi-class inheritance scenario?
+  manpageQuestion3: Can you provide an example of using the perlobj resource to handle multiple inheritance in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\nMethod resolution order only matters in the case of multiple\n       inheritance. In the case of single inheritance, Perl simply looks up\n       the inheritance chain to find a method:\n\n\t Grandparent\n\t   |\n\t Parent\n\t   |\n\t Child\n\n       If we call a method on a \"Child\" object and that method is not defined\n       in the \"Child\" class, Perl will look for that method in the \"Parent\"\n       class and then, if necessary, in the \"Grandparent\" class.\n\n       If Perl cannot find the method in any of these classes, it will die\n       with an error message.\n\n       When a class has multiple parents, the method lookup order becomes more\n       complicated.\n\n       By default, Perl does a depth-first left-to-right search for a method.\n       That means it starts with the first parent in the @ISA array, and then\n       searches all of its parents, grandparents, etc. If it fails to find the\n       method, it then goes to the next parent in the original class's @ISA\n       array and searches from there."
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How does Perl handle method resolution when a class has multiple parents?
+  manpageQuestion3: What is the default method resolution order in Perl when dealing with multiple inheritance?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\nSharedGreatGrandParent\n\t\t   /\t\t\t\\\n\t PaternalGrandparent\t   MaternalGrandparent\n\t\t   \\\t\t\t/\n\t\t    Father\t  Mother\n\t\t\t  \\\t /\n\t\t\t   Child\n\n       So given the diagram above, Perl will search \"Child\", \"Father\",\n       \"PaternalGrandparent\", \"SharedGreatGrandParent\", \"Mother\", and finally\n       \"MaternalGrandparent\". This may be a problem because now we're looking\n       in \"SharedGreatGrandParent\" before we've checked all its derived\n       classes (i.e. before we tried \"Mother\" and \"MaternalGrandparent\").\n\n       It is possible to ask for a different method resolution order with the\n       mro pragma.\n\n\t package Child;\n\n\t use mro 'c3';\n\t use parent 'Father', 'Mother';\n\n       This pragma lets you switch to the \"C3\" resolution order. In simple\n       terms, \"C3\" order ensures that shared parent classes are never searched\n       before child classes, so Perl will now search: \"Child\", \"Father\",\n       \"PaternalGrandparent\", \"Mother\" \"MaternalGrandparent\", and finally\n       \"SharedGreatGrandParent\". Note however that this is not \"breadth-first\"\n       searching: All the \"Father\" ancestors (except the common ancestor) are\n       searched before any of the \"Mother\" ancestors are considered."
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How can you modify the method resolution order in Perl to use the C3 algorithm instead of the default?
+  manpageQuestion3: What is the effect of using the 'c3' method resolution order in Perl's mro pragma?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\nThe C3 order also lets you call methods in sibling classes with the\n       \"next\" pseudo-class. See the mro documentation for more details on this\n       feature.\n\n       Method Resolution Caching\n\n       When Perl searches for a method, it caches the lookup so that future\n       calls to the method do not need to search for it again. Changing a\n       class's parent class or adding subroutines to a class will invalidate\n       the cache for that class.\n\n       The mro pragma provides some functions for manipulating the method\n       cache directly.\n\n   Writing Constructors\n       As we mentioned earlier, Perl provides no special constructor syntax.\n       This means that a class must implement its own constructor. A\n       constructor is simply a class method that returns a reference to a new\n       object.\n\n       The constructor can also accept additional parameters that define the\n       object. Let's write a real constructor for the \"File\" class we used\n       earlier:\n\n\t package File;"
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How would you define a constructor for the 'File' class using perlobj?
+  manpageQuestion3: What is the effect of changing a class's parent class on the method resolution cache in perlobj?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\nsub new {\n\t     my $class = shift;\n\t     my ( $path, $data ) = @_;\n\n\t     my $self = bless {\n\t\t path => $path,\n\t\t data => $data,\n\t     }, $class;\n\n\t     return $self;\n\t }\n\n       As you can see, we've stored the path and file data in the object\n       itself. Remember, under the hood, this object is still just a hash.\n       Later, we'll write accessors to manipulate this data.\n\n       For our \"File::MP3\" class, we can check to make sure that the path\n       we're given ends with \".mp3\":\n\n\t package File::MP3;\n\n\t sub new {\n\t     my $class = shift;\n\t     my ( $path, $data ) = @_;\n\n\t     die \"You cannot create a File::MP3 without an mp3 extension\\n\"\n\t\t unless $path =~ /\\.mp3\\z/;\n\n\t     return $class->SUPER::new(@_);\n\t }\n\n       This constructor lets its parent class do the actual object\n       construction.\n\n   Attributes\n       An attribute is a piece of data belonging to a particular object.\n       Unlike most object-oriented languages, Perl provides no special syntax\n       or support for declaring and manipulating attributes."
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How would you use the perlobj resource to create a File::MP3 object with a valid .mp3 file path?
+  manpageQuestion3: Can you explain how attributes are handled in the perlobj resource?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.
+
+
+
+    Manpage text:
+
+    Attributes are often stored in the object itself. For example, if the
+           object is an anonymous hash, we can store the attribute values in the
+           hash using the attribute name as the key.
+
+           While it's possible to refer directly to these hash keys outside of the
+           class, it's considered a best practice to wrap all access to the
+           attribute with accessor methods.
+
+           This has several advantages. Accessors make it easier to change the
+           implementation of an object later while still preserving the original
+           API.
+
+           An accessor lets you add additional code around attribute access. For
+           example, you could apply a default to an attribute that wasn't set in
+           the constructor, or you could validate that a new value for the
+           attribute is acceptable.
+
+           Finally, using accessors makes inheritance much simpler. Subclasses can
+           use the accessors rather than having to know how a parent class is
+           implemented internally.
+
+           Writing Accessors
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How can you use perlobj to create an accessor method for an attribute that applies a default value if it's not set in the constructor?
+  manpageQuestion3: Can you provide an example of using perlobj to implement inheritance in a class hierarchy?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\nAs with constructors, Perl provides no special accessor declaration\n       syntax, so classes must provide explicitly written accessor methods.\n       There are two common types of accessors, read-only and read-write.\n\n       A simple read-only accessor simply gets the value of a single\n       attribute:\n\n\t sub path {\n\t     my $self = shift;\n\n\t     return $self->{path};\n\t }\n\n       A read-write accessor will allow the caller to set the value as well as\n       get it:\n\n\t sub path {\n\t     my $self = shift;\n\n\t     if (@_) {\n\t\t $self->{path} = shift;\n\t     }\n\n\t     return $self->{path};\n\t }\n\n   An Aside About Smarter and Safer Code\n       Our constructor and accessors are not very smart. They don't check that\n       a $path is defined, nor do they check that a $path is a valid\n       filesystem path.\n\n       Doing these checks by hand can quickly become tedious. Writing a bunch\n       of accessors by hand is also incredibly tedious. There are a lot of\n       modules on CPAN that can help you write safer and more concise code,\n       including the modules we recommend in perlootut."
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How can you create a read-write accessor method in Perl for an attribute called 'path'?
+  manpageQuestion3: What are some recommendations for writing safer and more concise accessor methods in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\nMethod Call Variations\n       Perl supports several other ways to call methods besides the\n       \"$object->method()\" usage we've seen so far.\n\n       Method Names with a Fully Qualified Name\n\n       Perl allows you to call methods using their fully qualified name (the\n       package and method name):\n\n\t my $mp3 = File::MP3->new( 'Regin.mp3', $data );\n\t $mp3->File::save();\n\n       When you call a fully qualified method name like \"File::save\", the\n       method resolution search for the \"save\" method starts in the \"File\"\n       class, skipping any \"save\" method the \"File::MP3\" class may have\n       defined. It still searches the \"File\" class's parents if necessary.\n\n       While this feature is most commonly used to explicitly call methods\n       inherited from an ancestor class, there is no technical restriction\n       that enforces this:\n\n\t my $obj = Tree->new();\n\t $obj->Dog::bark();\n\n       This calls the \"bark\" method from class \"Dog\" on an object of class\n       \"Tree\", even if the two classes are completely unrelated. Use this with\n       great care."
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How would you call a method from an ancestor class using a fully qualified name in Perl?
+  manpageQuestion3: Can you provide an example of using a fully qualified method name to call a method from a completely unrelated class in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\nThe \"SUPER\" pseudo-class that was described earlier is not the same as\n       calling a method with a fully-qualified name. See the earlier\n       \"Inheritance\" section for details.\n\n       Method Names as Strings\n\n       Perl lets you use a scalar variable containing a string as a method\n       name:\n\n\t my $file = File->new( $path, $data );\n\n\t my $method = 'save';\n\t $file->$method();\n\n       This works exactly like calling \"$file->save()\". This can be very\n       useful for writing dynamic code. For example, it allows you to pass a\n       method name to be called as a parameter to another method.\n\n       Class Names as Strings\n\n       Perl also lets you use a scalar containing a string as a class name:\n\n\t my $class = 'File';\n\n\t my $file = $class->new( $path, $data );\n\n       Again, this allows for very dynamic code.\n\n       Subroutine References as Methods\n\n       You can also use a subroutine reference as a method:\n\n\t my $sub = sub {\n\t     my $self = shift;\n\n\t     $self->save();\n\t };"
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How can you dynamically call a method named 'save' on an object using a scalar variable in Perl?
+  manpageQuestion3: Can you explain how to use a subroutine reference as a method in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\n$file->$sub();\n\n       This is exactly equivalent to writing \"$sub->($file)\". You may see this\n       idiom in the wild combined with a call to \"can\":\n\n\t if ( my $meth = $object->can('foo') ) {\n\t     $object->$meth();\n\t }\n\n       Dereferencing Method Call\n\n       Perl also lets you use a dereferenced scalar reference in a method\n       call. That's a mouthful, so let's look at some code:\n\n\t $file->${ \\'save' };\n\t $file->${ returns_scalar_ref() };\n\t $file->${ \\( returns_scalar() ) };\n\t $file->${ returns_ref_to_sub_ref() };\n\n       This works if the dereference produces a string or a subroutine\n       reference.\n\n       Method Calls on Filehandles\n\n       Under the hood, Perl filehandles are instances of the \"IO::Handle\" or\n       \"IO::File\" class. Once you have an open filehandle, you can call\n       methods on it. Additionally, you can call methods on the \"STDIN\",\n       \"STDOUT\", and \"STDERR\" filehandles.\n\n\t open my $fh, '>', 'path/to/file';\n\t $fh->autoflush();\n\t $fh->print('content');"
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How would you use perlobj to call a method named 'save' on a filehandle?
+  manpageQuestion3: Can you provide an example of calling a method on a filehandle using a dereferenced scalar reference?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\nSTDOUT->autoflush();\n\n   Invoking Class Methods\n       Because Perl allows you to use barewords for package names and\n       subroutine names, it sometimes interprets a bareword's meaning\n       incorrectly. For example, the construct \"Class->new()\" can be\n       interpreted as either \"'Class'->new()\" or \"Class()->new()\".  In\n       English, that second interpretation reads as \"call a subroutine named\n       Class(), then call new() as a method on the return value of Class()\".\n       If there is a subroutine named \"Class()\" in the current namespace, Perl\n       will always interpret \"Class->new()\" as the second alternative: a call\n       to \"new()\" on the object  returned by a call to \"Class()\"\n\n       You can force Perl to use the first interpretation (i.e. as a method\n       call on the class named \"Class\") in two ways. First, you can append a\n       \"::\" to the class name:\n\n\t   Class::->new()\n\n       Perl will always interpret this as a method call.\n\n       Alternatively, you can quote the class name:"
+  manpageQuestion1: What is the primary purpose of the perlobj resource in Perl?
+  manpageQuestion2: How can you ensure that Perl interprets 'Class->new()' as a method call on the class named 'Class' rather than a subroutine call?
+  manpageQuestion3: What is the effect of appending '::' to a class name in Perl when using the '->' operator?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\n'Class'->new()\n\n       Of course, if the class name is in a scalar Perl will do the right\n       thing as well:\n\n\t   my $class = 'Class';\n\t   $class->new();\n\n       Indirect Object Syntax\n\n       Outside of the file handle case, use of this syntax is discouraged as\n       it can confuse the Perl interpreter. See below for more details.\n\n       Perl supports another method invocation syntax called \"indirect object\"\n       notation. This syntax is called \"indirect\" because the method comes\n       before the object it is being invoked on.\n\n       This syntax can be used with any class or object method:\n\n\t   my $file = new File $path, $data;\n\t   save $file;\n\n       We recommend that you avoid this syntax, for several reasons.\n\n       First, it can be confusing to read. In the above example, it's not\n       clear if \"save\" is a method provided by the \"File\" class or simply a\n       subroutine that expects a file object as its first argument.\n\n       When used with class methods, the problem is even worse. Because Perl\n       allows subroutine names to be written as barewords, Perl has to guess\n       whether the bareword after the method is a class name or subroutine\n       name. In other words, Perl can resolve the syntax as either \"File->new(\n       $path, $data )\" or \"new( File( $path, $data ) )\"."
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How would you use the perlobj resource to create an object using indirect object syntax?
+  manpageQuestion3: What are the recommended practices for using the perlobj resource according to the manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\nTo parse this code, Perl uses a heuristic based on what package names\n       it has seen, what subroutines exist in the current package, what\n       barewords it has previously seen, and other input. Needless to say,\n       heuristics can produce very surprising results!\n\n       Older documentation (and some CPAN modules) encouraged this syntax,\n       particularly for constructors, so you may still find it in the wild.\n       However, we encourage you to avoid using it in new code.\n\n       You can force Perl to interpret the bareword as a class name by\n       appending \"::\" to it, like we saw earlier:\n\n\t my $file = new File:: $path, $data;\n\n   \"bless\", \"blessed\", and \"ref\"\n       As we saw earlier, an object is simply a data structure that has been\n       blessed into a class via the \"bless\" function. The \"bless\" function can\n       take either one or two arguments:\n\n\t my $object = bless {}, $class;\n\t my $object = bless {};\n\n       In the first form, the anonymous hash is being blessed into the class\n       in $class. In the second form, the anonymous hash is blessed into the\n       current package."
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How can you force Perl to interpret a bareword as a class name in object-oriented programming?
+  manpageQuestion3: Can you explain how the 'bless' function is used to create an object in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\nThe second form is strongly discouraged, because it breaks the ability\n       of a subclass to reuse the parent's constructor, but you may still run\n       across it in existing code.\n\n       If you want to know whether a particular scalar refers to an object,\n       you can use the \"blessed\" function exported by Scalar::Util, which is\n       shipped with the Perl core.\n\n\t use Scalar::Util 'blessed';\n\n\t if ( defined blessed($thing) ) { ... }\n\n       If $thing refers to an object, then this function returns the name of\n       the package the object has been blessed into. If $thing doesn't contain\n       a reference to a blessed object, the \"blessed\" function returns\n       \"undef\".\n\n       Note that \"blessed($thing)\" will also return false if $thing has been\n       blessed into a class named \"0\". This is a possible, but quite\n       pathological. Don't create a class named \"0\" unless you know what\n       you're doing.\n\n       Similarly, Perl's built-in \"ref\" function treats a reference to a\n       blessed object specially. If you call \"ref($thing)\" and $thing holds a\n       reference to an object, it will return the name of the class that the\n       object has been blessed into."
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How can you determine if a scalar variable in Perl contains a reference to a blessed object?
+  manpageQuestion3: What is the function of the 'blessed' function in Perl, and how is it typically used?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\nIf you simply want to check that a variable contains an object\n       reference, we recommend that you use \"defined blessed($object)\", since\n       \"ref\" returns true values for all references, not just objects.\n\n   The UNIVERSAL Class\n       All classes automatically inherit from the UNIVERSAL class, which is\n       built-in to the Perl core. This class provides a number of methods, all\n       of which can be called on either a class or an object. You can also\n       choose to override some of these methods in your class. If you do so,\n       we recommend that you follow the built-in semantics described below.\n\n       isa($class)\n\t   The \"isa\" method returns true if the object is a member of the\n\t   class in $class, or a member of a subclass of $class.\n\n\t   If you override this method, it should never throw an exception.\n\n       DOES($role)\n\t   The \"DOES\" method returns true if its object claims to perform the\n\t   role $role. By default, this is equivalent to \"isa\". This method is\n\t   provided for use by object system extensions that implement roles,\n\t   like \"Moose\" and \"Role::Tiny\"."
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How would you check if a variable contains an object reference in Perl?
+  manpageQuestion3: What is the function of the isa method in the UNIVERSAL class?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\nYou can also override \"DOES\" directly in your own classes. If you\n\t   override this method, it should never throw an exception.\n\n       can($method)\n\t   The \"can\" method checks to see if the class or object it was called\n\t   on has a method named $method. This checks for the method in the\n\t   class and all of its parents. If the method exists, then a\n\t   reference to the subroutine is returned. If it does not then\n\t   \"undef\" is returned.\n\n\t   If your class responds to method calls via \"AUTOLOAD\", you may want\n\t   to overload \"can\" to return a subroutine reference for methods\n\t   which your \"AUTOLOAD\" method handles.\n\n\t   If you override this method, it should never throw an exception.\n\n       VERSION($need)\n\t   The \"VERSION\" method returns the version number of the class\n\t   (package).\n\n\t   If the $need argument is given then it will check that the current\n\t   version (as defined by the $VERSION variable in the package) is\n\t   greater than or equal to $need; it will die if this is not the\n\t   case. This method is called automatically by the \"VERSION\" form of\n\t   \"use\"."
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How can you check if a class or object has a specific method using the perlobj resource?
+  manpageQuestion3: What is the function of the VERSION method in perlobj and how does it handle version checking?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\nuse Package 1.2 qw(some imported subs);\n\t       # implies:\n\t       Package->VERSION(1.2);\n\n\t   We recommend that you use this method to access another package's\n\t   version, rather than looking directly at $Package::VERSION. The\n\t   package you are looking at could have overridden the \"VERSION\"\n\t   method.\n\n\t   We also recommend using this method to check whether a module has a\n\t   sufficient version. The internal implementation uses the version\n\t   module to make sure that different types of version numbers are\n\t   compared correctly.\n\n   AUTOLOAD\n       If you call a method that doesn't exist in a class, Perl will throw an\n       error. However, if that class or any of its parent classes defines an\n       \"AUTOLOAD\" method, that \"AUTOLOAD\" method is called instead.\n\n       \"AUTOLOAD\" is called as a regular method, and the caller will not know\n       the difference. Whatever value your \"AUTOLOAD\" method returns is\n       returned to the caller.\n\n       The fully qualified method name that was called is available in the\n       $AUTOLOAD package global for your class. Since this is a global, if you\n       want to refer to do it without a package name prefix under \"strict\n       'vars'\", you need to declare it."
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How can you check if a module has a sufficient version using perlobj?
+  manpageQuestion3: What is the role of the AUTOLOAD method in Perl object-oriented programming?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\n# XXX - this is a terrible way to implement accessors, but it makes\n\t # for a simple example.\n\t our $AUTOLOAD;\n\t sub AUTOLOAD {\n\t     my $self = shift;\n\n\t     # Remove qualifier from original method name...\n\t     my $called =  $AUTOLOAD =~ s/.*:://r;\n\n\t     # Is there an attribute of that name?\n\t     die \"No such attribute: $called\"\n\t\t unless exists $self->{$called};\n\n\t     # If so, return it...\n\t     return $self->{$called};\n\t }\n\n\t sub DESTROY { } # see below\n\n       Without the \"our $AUTOLOAD\" declaration, this code will not compile\n       under the strict pragma.\n\n       As the comment says, this is not a good way to implement accessors.\n       It's slow and too clever by far. However, you may see this as a way to\n       provide accessors in older Perl code. See perlootut for recommendations\n       on OO coding in Perl.\n\n       If your class does have an \"AUTOLOAD\" method, we strongly recommend\n       that you override \"can\" in your class as well. Your overridden \"can\"\n       method should return a subroutine reference for any method that your\n       \"AUTOLOAD\" responds to."
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How can you use the perlobj resource to implement accessors in Perl?
+  manpageQuestion3: What is recommended when a class has an AUTOLOAD method according to the perlobj documentation?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.
+
+
+
+    Manpage text:
+
+    Destructors
+           When the last reference to an object goes away, the object is
+           destroyed. If you only have one reference to an object stored in a
+           lexical scalar, the object is destroyed when that scalar goes out of
+           scope. If you store the object in a package global, that object may not
+           go out of scope until the program exits.
+
+           If you want to do something when the object is destroyed, you can
+           define a "DESTROY" method in your class. This method will always be
+           called by Perl at the appropriate time, unless the method is empty.
+
+           This is called just like any other method, with the object as the first
+           argument. It does not receive any additional arguments. However, the
+           $_[0] variable will be read-only in the destructor, so you cannot
+           assign a value to it.
+
+           If your "DESTROY" method throws an exception, this will not cause any
+           control transfer beyond exiting the method.  The exception will be
+           reported to "STDERR" as a warning, marked "(in cleanup)", and Perl will
+           continue with whatever it was doing before.
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How can you ensure that a specific action is performed when an object in Perl is destroyed?
+  manpageQuestion3: What happens if a 'DESTROY' method in a Perl class throws an exception during object destruction?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\nBecause \"DESTROY\" methods can be called at any time, you should\n       localize any global status variables that might be set by anything you\n       do in your \"DESTROY\" method.  If you are in doubt about a particular\n       status variable, it doesn't hurt to localize it.  There are five global\n       status variables, and the safest way is to localize all five of them:\n\n\t sub DESTROY {\n\t     local($., $@, $!, $^E, $?);\n\t     my $self = shift;\n\t     ...;\n\t }\n\n       If you define an \"AUTOLOAD\" in your class, then Perl will call your\n       \"AUTOLOAD\" to handle the \"DESTROY\" method. You can prevent this by\n       defining an empty \"DESTROY\", like we did in the autoloading example.\n       You can also check the value of $AUTOLOAD and return without doing\n       anything when called to handle \"DESTROY\".\n\n       Global Destruction\n\n       The order in which objects are destroyed during the global destruction\n       before the program exits is unpredictable. This means that any objects\n       contained by your object may already have been destroyed. You should\n       check that a contained object is defined before calling a method on it:"
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How can you ensure that global status variables are properly localized within a DESTROY method in Perl?
+  manpageQuestion3: What is the recommended approach to handle the 'DESTROY' method when using AUTOLOAD in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\nsub DESTROY {\n\t     my $self = shift;\n\n\t     $self->{handle}->close() if $self->{handle};\n\t }\n\n       You can use the \"${^GLOBAL_PHASE}\" variable to detect if you are\n       currently in the global destruction phase:\n\n\t sub DESTROY {\n\t     my $self = shift;\n\n\t     return if ${^GLOBAL_PHASE} eq 'DESTRUCT';\n\n\t     $self->{handle}->close();\n\t }\n\n       Note that this variable was added in Perl 5.14.0. If you want to detect\n       the global destruction phase on older versions of Perl, you can use the\n       \"Devel::GlobalDestruction\" module on CPAN.\n\n       If your \"DESTROY\" method issues a warning during global destruction,\n       the Perl interpreter will append the string \" during global\n       destruction\" to the warning.\n\n       During global destruction, Perl will always garbage collect objects\n       before unblessed references. See \"PERL_DESTRUCT_LEVEL\" in perlhacktips\n       for more information about global destruction.\n\n   Non-Hash Objects\n       All the examples so far have shown objects based on a blessed hash.\n       However, it's possible to bless any type of data structure or referent,\n       including scalars, globs, and subroutines. You may see this sort of\n       thing when looking at code in the wild."
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How can you modify a DESTROY method to avoid executing cleanup code during the global destruction phase in Perl?
+  manpageQuestion3: Can you provide an example of creating and using a non-hash object in Perl with the perlobj resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\nHere's an example of a module as a blessed scalar:\n\n\t package Time;\n\n\t use strict;\n\t use warnings;\n\n\t sub new {\n\t     my $class = shift;\n\n\t     my $time = time;\n\t     return bless \\$time, $class;\n\t }\n\n\t sub epoch {\n\t     my $self = shift;\n\t     return $$self;\n\t }\n\n\t my $time = Time->new();\n\t print $time->epoch();\n\n   Inside-Out objects\n       In the past, the Perl community experimented with a technique called\n       \"inside-out objects\". An inside-out object stores its data outside of\n       the object's reference, indexed on a unique property of the object,\n       such as its memory address, rather than in the object itself. This has\n       the advantage of enforcing the encapsulation of object attributes,\n       since their data is not stored in the object itself.\n\n       This technique was popular for a while (and was recommended in Damian\n       Conway's Perl Best Practices), but never achieved universal adoption.\n       The Object::InsideOut module on CPAN provides a comprehensive\n       implementation of this technique, and you may see it or other inside-\n       out modules in the wild."
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How can you create an inside-out object in Perl using the Object::InsideOut module?
+  manpageQuestion3: Can you provide an example of how to use the perlobj resource to encapsulate object attributes using inside-out objects?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\nHere is a simple example of the technique, using the\n       Hash::Util::FieldHash core module. This module was added to the core to\n       support inside-out object implementations.\n\n\t package Time;\n\n\t use strict;\n\t use warnings;\n\n\t use Hash::Util::FieldHash 'fieldhash';\n\n\t fieldhash my %time_for;\n\n\t sub new {\n\t     my $class = shift;\n\n\t     my $self = bless \\( my $object ), $class;\n\n\t     $time_for{$self} = time;\n\n\t     return $self;\n\t }\n\n\t sub epoch {\n\t     my $self = shift;\n\n\t     return $time_for{$self};\n\t }\n\n\t my $time = Time->new;\n\t print $time->epoch;\n\n   Pseudo-hashes\n       The pseudo-hash feature was an experimental feature introduced in\n       earlier versions of Perl and removed in 5.10.0. A pseudo-hash is an\n       array reference which can be accessed using named keys like a hash. You\n       may run in to some code in the wild which uses it. See the fields\n       pragma for more information.\n\nSEE ALSO\n       A kinder, gentler tutorial on object-oriented programming in Perl can\n       be found in perlootut. You should also check out perlmodlib for some\n       style guides on constructing both modules and classes."
+  manpageQuestion1: What is the primary purpose of the perlobj resource?
+  manpageQuestion2: How can you implement an object-oriented class in Perl using the perlobj resource?
+  manpageQuestion3: What is a pseudo-hash, and how can it be used in Perl programming?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlobj`.\n\n\n\nManpage text:\n\nperl v5.34.1\t\t\t  2022-02-19\t\t\t    PERLOBJ(1)"
+  manpageQuestion1: What is the primary purpose of the perlobj command?
+  manpageQuestion2: How would you use perlobj to create a new Perl object with specific attributes?
+  manpageQuestion3: Can you provide an example of using perlobj to manipulate a Perl object's properties?
+

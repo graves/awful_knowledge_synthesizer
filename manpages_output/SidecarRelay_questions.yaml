@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `SidecarRelay`.\n\n\n\nManpage text:\n\nSidecarRelay(8) \t    System Manager's Manual\t       SidecarRelay(8)\n\nNAME\n     SidecarRelay – Sidecar Relay Service\n\nDESCRIPTION\n     SidecarRelay provides arbitration for applications using Sidecar\n     services.\n\nmacOS\t\t\t\t April 1, 2018\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the SidecarRelay service?
+  manpageQuestion2: How can SidecarRelay be used to manage arbitration between applications that use Sidecar services?
+  manpageQuestion3: Can you explain the role of SidecarRelay in handling communication between different applications on macOS?
+

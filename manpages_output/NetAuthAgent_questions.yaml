@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `NetAuthAgent`.\n\n\n\nManpage text:\n\nNetAuthAgent(8) \t    System Manager's Manual\t       NetAuthAgent(8)\n\nNAME\n     NetAuthAgent – Shows dialogs on behalf of NetAuthSysAgent.\n\nDESCRIPTION\n     NetAuthAgent displays dialogs to the user so they can authenticate with a\n     network file server and select shares to mount.\n\nmacOS 15.3\t\t\tApril 20, 2017\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the NetAuthAgent tool?
+  manpageQuestion2: How would you use NetAuthAgent to prompt a user for authentication when accessing a network file server?
+  manpageQuestion3: Can you describe the typical scenario where NetAuthAgent is used in conjunction with NetAuthSysAgent?
+

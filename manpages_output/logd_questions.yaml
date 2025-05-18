@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `logd`.\n\n\n\nManpage text:\n\nlogd(8) \t\t    System Manager's Manual\t\t       logd(8)\n\nNAME\n     logd – unified logging system daemon\n\nDESCRIPTION\n     logd is the part of the unified logging system that is responsible for\n     handling and managing historical data and related metadata.  For example,\n     it handles entries generated via the os_log(3) family of facilities.\n\n\t   { process }\n\t\t`--- os_log ---> [ page ]\n\t\t\t\t [ page ]\n\t\t\t\t [ page ]\n\t\t\t\t     `---> { logd }\n\t\t\t\t\t      | `---> [ buffer ]\n\t\t\t\t\t      |\n\t\t\t\t\t      `---> [ data store ]\n\n     All processes that use os_log(3) share pages of memory with logd and\n     append entries to them.  logd reads pages and combines and compresses\n     this data.  Depending on configured policies, it keeps them in a local\n     ring buffer or writes them out to persistent storage.\n\n\t   { logd }\n\t      | `---> [ buffer ] ----.\n\t      | \t\t     ,`---> { log show }\n\t      `---> [ data store ] -'\n\n     The log(1) utility can view these data by requesting logd for access to\n     both the ring buffer and the persistent storage."
+  manpageQuestion1: What is the primary purpose of the logd daemon?
+  manpageQuestion2: How does logd handle and manage historical data and metadata from os_log(3) calls?
+  manpageQuestion3: Can you explain how the log(1) utility interacts with logd to view historical logging data?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `logd`.\n\n\n\nManpage text:\n\nSEE ALSO\n     log(1), os_log(3), diagnosticd(8)\n\n     Logging | Apple Developer Documentation:\n     https://developer.apple.com/documentation/os/logging\n\nDarwin\t\t\t\tAugust 30, 2018 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the logd tool?
+  manpageQuestion2: How would you use logd to monitor system logs in real-time?
+  manpageQuestion3: Can you explain how logd integrates with the logging system in macOS?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pam_self`.\n\n\n\nManpage text:\n\npam_self(8)\t\t    System Manager's Manual\t\t   pam_self(8)\n\nNAME\n     pam_self – Self PAM module\n\nSYNOPSIS\n     [service-name] function-class control-flag pam_self [options]\n\nDESCRIPTION\n     The Self PAM module supports the account management function class.  In\n     terms of the function-class parameter, this is the “account” class.\n\n     The Self account management module verifies that the username for the\n     target account (PAM_USER) and the username of the applicant (PAM_RUSER)\n     are the same.\n\nSEE ALSO\n     pam_get_item(3), pam.conf(5), pam(8)\n\nmacOS 15.3\t\t       February 7, 2009 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the pam_self PAM module?
+  manpageQuestion2: How would you configure the pam_self module in a PAM configuration file to enforce account management checks?
+  manpageQuestion3: What is the function-class parameter for the pam_self module and what does it signify?
+

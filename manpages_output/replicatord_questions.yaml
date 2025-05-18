@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `replicatord`.\n\n\n\nManpage text:\n\nreplicatord(8)\t\t    System Manager's Manual\t\treplicatord(8)\n\nNAME\n     replicatord – remote widget sync daemon\n\nDESCRIPTION\n     replicatord is a daemon that provides data syncing for remote widgets and\n     remote device data for iPhone Mirroring.\n\n     There are no options for replicatord, and users should not run\n     replicatord manually.\n\nmacOS\t\t\t      September 23, 2024\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the replicatord tool?
+  manpageQuestion2: How would you start the replicatord service on a macOS system?
+  manpageQuestion3: What are the common use cases for the replicatord daemon?
+

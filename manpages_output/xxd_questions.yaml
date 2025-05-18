@@ -1,0 +1,140 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `xxd`.\n\n\n\nManpage text:\n\nXXD(1)\t\t\t    General Commands Manual\t\t\tXXD(1)\n\nNAME\n       xxd - make a hex dump or do the reverse.\n\nSYNOPSIS\n       xxd -h[elp]\n       xxd [options] [infile [outfile]]\n       xxd -r[evert] [options] [infile [outfile]]\n\nDESCRIPTION\n       xxd creates a hex dump of a given file or standard input.  It can also\n       convert a hex dump back to its original binary form.  Like uuencode(1)\n       and uudecode(1) it allows the transmission of binary data in a `mail-\n       safe' ASCII representation, but has the advantage of decoding to\n       standard output.  Moreover, it can be used to perform binary file\n       patching.\n\nOPTIONS\n       If no infile is given, standard input is read.  If infile is specified\n       as a `-' character, then input is taken from standard input.  If no\n       outfile is given (or a `-' character is in its place), results are sent\n       to standard output.\n\n       Note that a \"lazy\" parser is used which does not check for more than\n       the first option letter, unless the option is followed by a parameter.\n       Spaces between a single option letter and its parameter are optional.\n       Parameters to options can be specified in decimal, hexadecimal or octal\n       notation.  Thus -c8, -c 8, -c 010 and -cols 8 are all equivalent."
+  manpageQuestion1: What is the primary purpose of the xxd command?
+  manpageQuestion2: How can you use xxd to convert a binary file into a hex dump and save the output to a new file?
+  manpageQuestion3: Can you provide an example of using xxd in reverse mode to convert a hex dump back into its original binary format?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `xxd`.\n\n\n\nManpage text:\n\n-a | -autoskip\n\t      Toggle autoskip: A single '*' replaces NUL-lines.  Default off.\n\n       -b | -bits\n\t      Switch to bits (binary digits) dump, rather than hex dump.  This\n\t      option writes octets as eight digits \"1\"s and \"0\"s instead of a\n\t      normal hexadecimal dump. Each line is preceded by a line number\n\t      in hexadecimal and followed by an ASCII (or EBCDIC)\n\t      representation. The command line switch -p does not work with\n\t      this mode. Can be combined with -i.\n\n       -c cols | -cols cols\n\t      Format <cols> octets per line. Default 16 (-i: 12, -ps: 30, -b:\n\t      6). Max 256.  No maximum for -ps. With -ps, 0 results in one\n\t      long line of output.\n\n       -C | -capitalize\n\t      Capitalize variable names in C include file style, when using\n\t      -i.\n\n       -d     show offset in decimal instead of hex.\n\n       -E | -EBCDIC\n\t      Change the character encoding in the righthand column from ASCII\n\t      to EBCDIC.  This does not change the hexadecimal representation.\n\t      The option is meaningless in combinations with -r, -p or -i."
+  manpageQuestion1: What is the primary purpose of the xxd command?
+  manpageQuestion2: How would you use xxd to convert a binary file into a hexadecimal dump with 16 octets per line?
+  manpageQuestion3: Can you provide an example of using xxd to display the decimal offset instead of hexadecimal when converting a file into a hex dump?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `xxd`.\n\n\n\nManpage text:\n\n-e     Switch to little-endian hex dump.  This option treats byte\n\t      groups as words in little-endian byte order.  The default\n\t      grouping of 4 bytes may be changed using -g.  This option only\n\t      applies to the hex dump, leaving the ASCII (or EBCDIC)\n\t      representation unchanged.  The command line switches -r, -p, -i\n\t      do not work with this mode.\n\n       -g bytes | -groupsize bytes\n\t      Separate the output of every <bytes> bytes (two hex characters\n\t      or eight bit digits each) by a whitespace.  Specify -g 0 to\n\t      suppress grouping.  <Bytes> defaults to 2 in normal mode, 4 in\n\t      little-endian mode and 1 in bits mode.  Grouping does not apply\n\t      to PostScript or include style.\n\n       -h | -help\n\t      Print a summary of available commands and exit.  No hex dumping\n\t      is performed.\n\n       -i | -include\n\t      Output in C include file style. A complete static array\n\t      definition is written (named after the input file), unless xxd\n\t      reads from stdin. Can be combined with -b."
+  manpageQuestion1: What is the primary purpose of the xxd command?
+  manpageQuestion2: How would you use xxd to create a C include file-style hex dump of a file named 'example.txt'?
+  manpageQuestion3: Can you provide an example of using xxd with the -e option to generate a little-endian hex dump and group bytes in sets of 4?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `xxd`.\n\n\n\nManpage text:\n\n-l len | -len len\n\t      Stop after writing <len> octets.\n\n       -n name\t|  -name name\n\t      Override the variable name output when -i is used. The array is\n\t      named name and the length is named name_len.\n\n       -o offset\n\t      Add <offset> to the displayed file position.\n\n       -p | -ps | -postscript | -plain\n\t      Output in PostScript continuous hex dump style. Also known as\n\t      plain hex dump style.\n\n       -r | -revert\n\t      Reverse operation: convert (or patch) hex dump into binary.  If\n\t      not writing to stdout, xxd writes into its output file without\n\t      truncating it. Use the combination -r -p to read plain\n\t      hexadecimal dumps without line number information and without a\n\t      particular column layout. Additional whitespace and line breaks\n\t      are allowed anywhere. Use the combination -r -b to read a bits\n\t      dump instead of a hex dump.\n\n       -R when\n\t      In the output the hex-value and the value are both colored with\n\t      the same color depending on the hex-value. Mostly helping to\n\t      differentiate printable and non-printable characters.  when is\n\t      never, always, or auto (default: auto).  When the $NO_COLOR\n\t      environment variable is set, colorization will be disabled."
+  manpageQuestion1: What is the primary purpose of the xxd command?
+  manpageQuestion2: How can you use xxd to convert a binary file into a hex dump and save the output to a new file named 'output.hex'?
+  manpageQuestion3: What command would you use to reverse a hex dump file back into its original binary format, ensuring that the output is in plain hex dump style?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `xxd`.\n\n\n\nManpage text:\n\n-seek offset\n\t      When used after -r: revert with <offset> added to file positions\n\t      found in hex dump.\n\n       -s [+][-]seek\n\t      Start at <seek> bytes abs. (or rel.) infile offset.  + indicates\n\t      that the seek is relative to the current stdin file position\n\t      (meaningless when not reading from stdin).  - indicates that the\n\t      seek should be that many characters from the end of the input\n\t      (or if combined with +: before the current stdin file position).\n\t      Without -s option, xxd starts at the current file position.\n\n       -u     Use upper-case hex letters. Default is lower-case.\n\n       -v | -version\n\t      Show version string.\n\nCAVEATS\n       xxd -r has some built-in magic while evaluating line number\n       information.  If the output file is seekable, then the line numbers at\n       the start of each hex dump line may be out of order, lines may be\n       missing, or overlapping. In these cases xxd will lseek(2) to the next\n       position. If the output file is not seekable, only gaps are allowed,\n       which will be filled by null-bytes."
+  manpageQuestion1: What is the primary purpose of the xxd command?
+  manpageQuestion2: How can you use the -s option with xxd to start at a specific byte offset in the input file?
+  manpageQuestion3: What is the effect of using the -u flag with xxd, and how would you use it in a command?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `xxd`.\n\n\n\nManpage text:\n\nxxd -r never generates parse errors. Garbage is silently skipped.\n\n       When editing hex dumps, please note that xxd -r skips everything on the\n       input line after reading enough columns of hexadecimal data (see option\n       -c). This also means that changes to the printable ASCII (or EBCDIC)\n       columns are always ignored. Reverting a plain (or PostScript) style hex\n       dump with xxd -r -p does not depend on the correct number of columns.\n       Here, anything that looks like a pair of hex digits is interpreted.\n\n       Note the difference between\n       % xxd -i file\n       and\n       % xxd -i < file\n\n       xxd -s +seek may be different from xxd -s seek, as lseek(2) is used to\n       \"rewind\" input.\tA '+' makes a difference if the input source is stdin,\n       and if stdin's file position is not at the start of the file by the\n       time xxd is started and given its input.  The following examples may\n       help to clarify (or further confuse!):\n\n       Rewind stdin before reading; needed because the `cat' has already read\n       to the end of stdin.\n       % sh -c \"cat > plain_copy; xxd -s 0 > hex_copy\" < file"
+  manpageQuestion1: What is the primary purpose of the xxd command?
+  manpageQuestion2: How would you use xxd to convert a hex dump file back into binary data?
+  manpageQuestion3: Can you provide an example of using xxd with the -s option to read data from a specific offset in a file?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `xxd`.
+
+
+
+    Manpage text:
+
+    Hex dump from file position 0x480 (=1024+128) onwards.  The `+' sign
+           means "relative to the current position", thus the `128' adds to the 1k
+           where dd left off.
+           % sh -c "dd of=plain_snippet bs=1k count=1; xxd -s +128 > hex_snippet"
+           < file
+
+           Hex dump from file position 0x100 (=1024-768) onwards.
+           % sh -c "dd of=plain_snippet bs=1k count=1; xxd -s +-768 > hex_snippet"
+           < file
+
+           However, this is a rare situation and the use of `+' is rarely needed.
+           The author prefers to monitor the effect of xxd with strace(1) or
+           truss(1), whenever -s is used.
+
+    EXAMPLES
+           Print everything but the first three lines (hex 0x30 bytes) of file.
+           % xxd -s 0x30 file
+
+           Print 3 lines (hex 0x30 bytes) from the end of file.
+           % xxd -s -0x30 file
+
+           Note: The results of the examples below are relevant to the xxd.1 man
+           page as of May 2024
+
+           Print 120 bytes as a continuous hex dump with 20 octets per line.
+           % xxd -l 120 -ps -c 20 xxd.1
+           2e544820585844203120224d6179203230323422
+           20224d616e75616c207061676520666f72207878
+           64220a2e5c220a2e5c222032317374204d617920
+           313939360a2e5c22204d616e2070616765206175
+           74686f723a0a2e5c2220202020546f6e79204e75
+           67656e74203c746f6e79407363746e7567656e2e
+  manpageQuestion1: What is the primary purpose of the xxd command?
+  manpageQuestion2: How can you use xxd to print a hex dump starting from the 0x30 byte position of a file?
+  manpageQuestion3: Can you provide an example of using xxd to generate a hex dump of 120 bytes from the end of a file, with 20 octets per line?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `xxd`.\n\n\n\nManpage text:\n\nHex dump the first 120 bytes of this man page with 12 octets per line.\n       % xxd -l 120 -c 12 xxd.1\n       00000000: 2e54 4820 5858 4420 3120 224d\t.TH XXD 1 \"M\n       0000000c: 6179 2032 3032 3422 2022 4d61\tay 2024\" \"Ma\n       00000018: 6e75 616c 2070 6167 6520 666f\tnual page fo\n       00000024: 7220 7878 6422 0a2e 5c22 0a2e\tr xxd\"..\\\"..\n       00000030: 5c22 2032 3173 7420 4d61 7920\t\\\" 21st May\n       0000003c: 3139 3936 0a2e 5c22 204d 616e\t1996..\\\" Man\n       00000048: 2070 6167 6520 6175 7468 6f72\t page author\n       00000054: 3a0a 2e5c 2220 2020 2054 6f6e\t:..\\\"\t Ton\n       00000060: 7920 4e75 6765 6e74 203c 746f\ty Nugent <to\n       0000006c: 6e79 4073 6374 6e75 6765 6e2e\tny@sctnugen.\n\n       Display just the date from the file xxd.1\n       % xxd -s 0x33 -l 13 -c 13 xxd.1\n       00000033: 3231 7374 204d 6179 2031 3939 36  21st May 1996\n\n       Copy input_file to output_file and prepend 100 bytes of value 0x00.\n       % xxd input_file | xxd -r -s 100 > output_file\n\n       Patch the date in the file xxd.1\n       % echo \"0000034: 3574 68\" | xxd -r - xxd.1\n       % xxd -s 0x33 -l 13 -c 13 xxd.1\n       00000033: 3235 7468 204d 6179 2031 3939 36  25th May 1996"
+  manpageQuestion1: What is the primary purpose of the xxd command?
+  manpageQuestion2: How can you use xxd to display only the date field from a file?
+  manpageQuestion3: Can you provide an example of using xxd to modify a specific part of a file, such as changing the date in the xxd.1 manual page?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `xxd`.\n\n\n\nManpage text:\n\nCreate a 65537 byte file with all bytes 0x00, except for the last one\n       which is 'A' (hex 0x41).\n       % echo \"010000: 41\" | xxd -r > file\n\n       Hex dump this file with autoskip.\n       % xxd -a -c 12 file\n       00000000: 0000 0000 0000 0000 0000 0000\t............\n       *\n       0000fffc: 0000 0000 41\t\t\t....A\n\n       Create a 1 byte file containing a single 'A' character.\tThe number\n       after '-r -s' adds to the line numbers found in the file; in effect,\n       the leading bytes are suppressed.\n       % echo \"010000: 41\" | xxd -r -s -0x10000 > file\n\n       Use xxd as a filter within an editor such as vim(1) to hex dump a\n       region marked between `a' and `z'.\n       :'a,'z!xxd\n\n       Use xxd as a filter within an editor such as vim(1) to recover a binary\n       hex dump marked between `a' and `z'.\n       :'a,'z!xxd -r\n\n       Use xxd as a filter within an editor such as vim(1) to recover one line\n       of a hex dump.  Move the cursor over the line and type:\n       !!xxd -r"
+  manpageQuestion1: What is the primary purpose of the xxd command?
+  manpageQuestion2: How can you use xxd to convert a hex dump back into binary data?
+  manpageQuestion3: Can you provide an example of using xxd as a filter in Vim to hex dump a specific region of a file?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `xxd`.
+
+
+
+    Manpage text:
+
+    Read single characters from a serial line
+           % xxd -c1 < /dev/term/b &
+           % stty < /dev/term/b -echo -opost -isig -icanon min 1
+           % echo -n foo > /dev/term/b
+
+    RETURN VALUES
+           The following error values are returned:
+
+           0      no errors encountered.
+
+           -1     operation not supported (xxd -r -i still impossible).
+
+           1      error while parsing options.
+
+           2      problems with input file.
+
+           3      problems with output file.
+
+           4,5    desired seek position is unreachable.
+
+    SEE ALSO
+           uuencode(1), uudecode(1), patch(1)
+
+    WARNINGS
+           The tool's weirdness matches its creator's brain.  Use entirely at your
+           own risk. Copy files. Trace it. Become a wizard.
+
+    VERSION
+           This manual page documents xxd version 1.7 from 2024-05.
+
+    AUTHOR
+           (c) 1990-1997 by Juergen Weigert
+           <jnweiger@informatik.uni-erlangen.de>
+
+           Distribute freely and credit me,
+           make money and share with me,
+           lose money and don't ask me.
+
+           Manual page started by Tony Nugent
+           <tony@sctnugen.ppp.gu.edu.au> <T.Nugent@sct.gu.edu.au>
+           Small changes by Bram Moolenaar.  Edited by Juergen Weigert.
+  manpageQuestion1: What is the primary purpose of the xxd tool?
+  manpageQuestion2: How can you use xxd to read a single character from a serial line and echo it back?
+  manpageQuestion3: What is the error code returned by xxd when there are problems with the input file?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `xxd`.\n\n\n\nManpage text:\n\nManual page for xxd\t\t   May 2024\t\t\t\tXXD(1)"
+  manpageQuestion1: What is the primary purpose of the xxd command?
+  manpageQuestion2: How can you use xxd to convert a file into a hex dump format that includes both the raw binary data and its corresponding ASCII representation?
+  manpageQuestion3: Can you provide an example of using xxd to create a hex dump of a file named 'input.txt' and save the output to a file called 'output.hex'?
+

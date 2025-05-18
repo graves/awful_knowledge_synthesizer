@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `companiond`.\n\n\n\nManpage text:\n\ncompaniond(8)\t\t    System Manager's Manual\t\t companiond(8)\n\n\n\nNAME\n     companiond – Companion Services Daemon.\n\nSYNOPSIS\n     Daemon for interacting with companion devices.\n\nLOCATION\n     /usr/libexec/companiond\n\n\t\t\t\t   2/4/2024"
+  manpageQuestion1: What is the primary purpose of the companiond daemon?
+  manpageQuestion2: How does the companiond daemon interact with companion devices?
+  manpageQuestion3: What is the file path of the companiond daemon on a macOS system?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `PIPAgent`.\n\n\n\nManpage text:\n\nPIPAgent(8)\t\t    System Manager's Manual\t\t   PIPAgent(8)\n\nNAME\n     PIPAgent – A system service which provides picture in picture\n     functionality\n\nDESCRIPTION\n     PIPAgent provides the picture in picture functionality for the system\n\n     There are no options for PIPAgent, and users should not run PIPAgent\n     manually.\n\nmacOS\t\t\t\t July 4, 2018\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the PIPAgent service?
+  manpageQuestion2: Is it possible to run PIPAgent manually, and if so, how would you do it?
+  manpageQuestion3: What are the key characteristics of PIPAgent according to its manpage?
+

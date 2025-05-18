@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `usbmuxd`.\n\n\n\nManpage text:\n\nusbmuxd(8)\t\t    System Manager's Manual\t\t    usbmuxd(8)\n\nNAME\n     usbmuxd – iOS communications daemon\n\nSYNOPSIS\n     usbmuxd [options]\n\nDESCRIPTION\n     The usbmuxd daemon manages communications between MacOS hosts and iOS\n     devices. USB and WiFi (via Bounjour) connections are supported.\n\n     usbmuxd is started automatically at boot time and does not require user\n     or operator intervention.\n\nOPTIONS\n     --version\n\t     Print version number and exit\n\n     --launchd\n\t     Passed by launchd to inform usbmuxd that it is being launched as\n\t     a daemon\n\n     --debug n\n\t     Set debug level\n\nmacOS 15.3\t\t\tApril 28, 2017\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the usbmuxd daemon?
+  manpageQuestion2: How can you check the version of the usbmuxd daemon?
+  manpageQuestion3: What is the command to set the debug level for usbmuxd to 3?
+

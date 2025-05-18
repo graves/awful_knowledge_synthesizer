@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `fileproviderd`.\n\n\n\nManpage text:\n\nFILEPROVIDERD(8)\t    System Manager's Manual\t      FILEPROVIDERD(8)\n\nNAME\n     fileproviderd – Part of File Coordination\n\nSYNOPSIS\n     fileproviderd\n\nDESCRIPTION\n     fileproviderd is the daemon controlling the interaction between\n     extensions and filecoordinationd. It is also responsible for coordinating\n     enumeration and property lookup.\n\n     There are no configuration options to fileproviderd, and users should not\n     run fileproviderd manually.\n\nmacOS\t\t\t\t   11/07/17\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the fileproviderd daemon?
+  manpageQuestion2: How would you check if the fileproviderd service is running on a macOS system?
+  manpageQuestion3: What are the common use cases for the fileproviderd daemon in macOS?
+

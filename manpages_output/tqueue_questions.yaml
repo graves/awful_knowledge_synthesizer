@@ -1,0 +1,75 @@
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tqueue`.
+
+
+
+    Manpage text:
+
+    transfer::copy::queue(n)   Data transfer facilities   transfer::copy::queue(n)
+
+    ______________________________________________________________________________
+
+    NAME
+           transfer::copy::queue - Queued transfers
+
+    SYNOPSIS
+           package require Tcl  8.4
+
+           package require snit  ?1.0?
+
+           package require struct::queue  ?1.4?
+
+           package require transfer::copy  ?0.2?
+
+           package require transfer::copy::queue  ?0.1?
+
+           transfer::copy::queue objectName outchannel ?options...?
+
+           objectName method ?arg arg ...?
+
+           objectName destroy
+
+           objectName busy
+
+           objectName pending
+
+           objectName put request
+
+    ______________________________________________________________________________
+
+    DESCRIPTION
+           This package provides objects which serialize transfer requests for a
+           single channel by means of a fifo queue. Accumulated requests are
+           executed in order of entrance, with the first request reaching an idle
+           object starting the execution in general. New requests can be added
+           while the object is active and are defered until all requests entered
+           before them have been completed successfully.
+
+           When a request causes a transfer error execution stops and all requests
+           coming after it are not served. Currently this means that their
+           completion callbacks are never triggered at all.
+
+           NOTE: Not triggering the completion callbacks of the unserved requests
+           after an error stops the queue object is something I am not fully sure
+           that it makes sense. It forces the user of the queue to remember the
+           callbacks as well and run them. Because otherwise everything in the
+           system which depends on getting a notification about the status of a
+           request will hang in the air. I am slowly convincing myself that it is
+           more sensible to trigger the relevant completion callbacks with an
+           error message about the queue abort, and 0 bytes transfered.
+
+           All transfer requests are of the form
+  manpageQuestion1: What is the primary purpose of the transfer::copy::queue command?
+  manpageQuestion2: How can you use transfer::copy::queue to manage a queue of file transfer requests on a Tcl script?
+  manpageQuestion3: Can you explain how to add a new transfer request to the queue while it is actively processing other requests?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tqueue`.\n\n\n\nManpage text:\n\n{type data options...}\n\n\n       where type is in {chan, string}, and data specifies the information to\n       transfer.  For chan the data is the handle of the channel containing\n       the actual information to transfer, whereas for string data contains\n       directly the information to transfer.  The options are a list of them\n       and their values, and are the same as are accepted by the low-level\n       copy operations of the package transfer::copy.  Note how just\n       prepending the request with transfer::copy::do and inserting a channel\n       handle in between data and options easily transforms it from a pure\n       data structure into a command whose evaluation will perform the\n       request.\n\nAPI\n   PACKAGE COMMANDS\n       transfer::copy::queue objectName outchannel ?options...?\n\t      This command creates a new queue object for the management of\n\t      the channel outchannel, with an associated Tcl command whose\n\t      name is objectName.  This object command is explained in full\n\t      detail in the sections Object command and Object methods. The\n\t      set of supported options is explained in section Options.\n\n\t      The object command will be created under the current namespace\n\t      if the objectName is not fully qualified, and in the specified\n\t      namespace otherwise.  The fully qualified name of the object\n\t      command is returned as the result of the command.\n\n   OBJECT COMMAND\n       All objects created by the ::transfer::copy::queue command have the\n       following general form:\n\n       objectName method ?arg arg ...?\n\t      The method method and its arg'uments determine the exact\n\t      behavior of the command.\tSee section Object methods for the\n\t      detailed specifications.\n\n   OBJECT METHODS\n       objectName destroy\n\t      This method destroys the object. Doing so while the object is\n\t      busy will cause errors later on, when the currently executed\n\t      request completes and tries to access the now missing data\n\t      structures of the destroyed object.\n\n       objectName busy\n\t      This method returns a boolean value telling us if the object is\n\t      currently serving a request (i.e. busy, value True), or not\n\t      (i.e. idle, value False).\n\n       objectName pending\n\t      This method returns the number of requests currently waiting in\n\t      the queue for their execution. A request currently served is not\n\t      counted as waiting.\n\n       objectName put request\n\t      This method enters the transfer request into the object's queue\n\t      of waiting requests.  If the object is idle it will become busy,\n\t      immediately servicing the request. Otherwise servicing the new\n\t      request will be defered until all preceding requests have been\n\t      served.\n\nOPTIONS\n       The only option known is -on-status-change. It is optional and defaults\n       to the empty list, disabling the reporting of status changes. Otherwise\n       its argument is a command prefix which is invoked whenever the internal\n       status of the object changed. The callback is invoked with two\n       additional arguments, the result of the methods pending and busy, in\n       this order. This allows any user to easily know, for example, when the\n       object has processed all outstanding requests.\n\nUSE\n       A possible application of this package and class is within a HTTP 1.1\n       server, managing the results waiting for transfer to the client.\n\n       It should be noted that in this application the system also needs an\n       additional data structure which keeps track of outstanding results as\n       they may come back in a different order than the requests from the\n       client, and releases them to the actual queue in the proper order.\n\nBUGS, IDEAS, FEEDBACK\n       This document, and the package it describes, will undoubtedly contain\n       bugs and other problems.  Please report such in the category transfer\n       of the Tcllib SF Trackers\n       [http://sourceforge.net/tracker/?group_id=12883].  Please also report\n       any ideas for enhancements you may have for either package and/or\n       documentation.\n\nKEYWORDS\n       channel, copy, queue, transfer\n\nCATEGORY\n       Transfer module\n\nCOPYRIGHT\n       Copyright (c) 2006 Andreas Kupries <andreas_kupries@users.sourceforge.net>"
+  manpageQuestion1: What is the primary purpose of the tqueue resource?
+  manpageQuestion2: How would you use the tqueue to manage a queue of transfer requests in an HTTP 1.1 server?
+  manpageQuestion3: Can you explain how to create a tqueue object and use its 'put' method to add a transfer request to the queue?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tqueue`.\n\n\n\nManpage text:\n\ntransfer\t\t\t      0.1\t      transfer::copy::queue(n)"
+  manpageQuestion1: What is the primary purpose of the tqueue tool?
+  manpageQuestion2: How can you use tqueue to copy files from a source directory to a destination directory?
+  manpageQuestion3: Can you provide an example of using tqueue to manage a queue of tasks with specific priority settings?
+

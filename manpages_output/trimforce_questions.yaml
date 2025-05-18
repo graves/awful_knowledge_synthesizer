@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `trimforce`.\n\n\n\nManpage text:\n\nTRIMFORCE(8)\t\t    System Manager's Manual\t\t  TRIMFORCE(8)\n\nNAME\n     trimforce – enable TRIM commands on third-party drives\n\nSYNOPSIS\n     trimforce verb\n\nDESCRIPTION\n     trimforce enables sending TRIM commands to third-party drives attached to\n     an AHCI controller.  By default, TRIM commands are not sent to third-\n     party drives.  Use extreme caution when enabling TRIM, as some drives may\n     not correctly handle the commands.  trimforce must be run by the system\n     administrator.\n\nVERBS\n     enable\n\t      Start sending TRIM commands to AHCI-attached third-party drives.\n\t      Requires a reboot to take effect.\n\n     disable\n\t      Stop sending TRIM commands to AHCI-attached third-party drives.\n\t      Requires a reboot to take effect.\n\n     help\n\t      Display brief usage syntax.\n\nERRORS\n     trimforce will exit with status 0 if successful, or with an appropriate\n     error if it cannot parse input, allocate memory, or is unauthorized to\n     perform its work.\n\nHISTORY\n     The trimforce utility first appeared in OS X 10.10.4."
+  manpageQuestion1: What is the primary purpose of the trimforce command?
+  manpageQuestion2: How can you use trimforce to enable TRIM commands on third-party drives?
+  manpageQuestion3: What is the correct syntax to disable TRIM commands with trimforce?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `trimforce`.\n\n\n\nManpage text:\n\nOS X\t\t\t\t 27 April 2015\t\t\t\t  OS X"
+  manpageQuestion1: What is the primary purpose of the trimforce command?
+  manpageQuestion2: How would you use trimforce to force the trimming of a specific disk partition?
+  manpageQuestion3: Can you provide an example of using trimforce to trigger garbage collection on a volume?
+

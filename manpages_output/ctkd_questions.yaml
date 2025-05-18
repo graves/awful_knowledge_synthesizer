@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ctkd`.\n\n\n\nManpage text:\n\nctkd(8) \t\t    System Manager's Manual\t\t       ctkd(8)\n\nNAME\n     ctkd – SmartCard daemon/agent\n\nDESCRIPTION\n     ctkd ensures loading of SmartCard token driver, maintains SmartCard token\n     sessions, provides SmartCard integration into the system.\n\nmacOS 15.3\t\t       November 16, 2016\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the ctkd tool?
+  manpageQuestion2: How would you start or restart the SmartCard daemon using ctkd?
+  manpageQuestion3: What is the role of ctkd in integrating SmartCard technology with the macOS system?
+

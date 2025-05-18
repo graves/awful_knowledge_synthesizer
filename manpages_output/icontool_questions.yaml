@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `icontool`.\n\n\n\nManpage text:\n\nicontool(1)\t\t    General Commands Manual\t\t   icontool(1)\n\nNAME\n     icontool – tool for testing and debugging IconServices.\n\nSYNOPSIS\n     icontool [-abcd] [-a path] [file] [file ...] arg0 arg2 ...\n\nDESCRIPTION\n     icontool a tool for testing and debugging IconServices. Allows the user\n     to dump the cache content, clear the cache, etc.\n\nFILES\n     /usr/local/bin/icontool  executable\n\nSEE ALSO\n     iconservicesagent iconservicesd\n\nDarwin\t\t\t\t    8/9/12\t\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the icontool command?
+  manpageQuestion2: How can you use icontool to clear the cache for IconServices?
+  manpageQuestion3: What command would you use to dump the cache content using icontool?
+

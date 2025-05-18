@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `odproxyd`.\n\n\n\nManpage text:\n\nODPROXYD(8)\t\t    System Manager's Manual\t\t   ODPROXYD(8)\n\nNAME\n     odproxyd – OpenDirectory proxy daemon\n\nSYNOPSIS\n     odproxyd [--version]\n\nDESCRIPTION\n     The odproxyd launchd(8) job maintains incoming proxy connections to the\n     local opendirectoryd(8) daemon.  It should not be run manually.\n\nSEE ALSO\n     odutil(1), opendirectory(8)\n\nmacOS 15.3\t\t       December 21, 2009\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the odproxyd tool?
+  manpageQuestion2: How would you check the version of the odproxyd daemon?
+  manpageQuestion3: What is the role of the odproxyd daemon in the OpenDirectory system?
+

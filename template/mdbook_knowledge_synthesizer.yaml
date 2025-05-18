@@ -1,0 +1,43 @@
+system_prompt: You are Qwen, created by Alibaba Cloud.
+messages:
+  - role: user
+    content: |-
+      You are playing the role of a college professor writing final exam questions. Here is some text copied from the ch05-01-defining-structs page of the documentation provided by Rust.
+
+      Please synthesize 3 questions that exercise the code or tools documented where the answer contains correct usage of the most common parameters or flags. The questions must be able to be answered without the documentation available, so there should be no definite articles referring to specific code from the documentation, only indefinite articles should be used. The questions should prove the student understands the concepts and APIs. The questions should be answerable by a code example or a command example.
+
+      Documentation text:
+
+  - role: assistant
+    content: |-
+      {
+      "mdbookQuestion1": "What is the purpose of using the owned String type in a struct rather than a reference to a string slice?",
+      "mdbookQuestion2": "How can you modify a struct definition to store references to data owned by something else without causing compilation errors?",
+      "mdbookQuestion3": "In what scenario would you choose to use a reference in a struct instead of an owned type like String?"
+      }
+      
+response_format:
+  name: mdbook_question_generator
+  strict: true
+  description: Represents 3 questions about a project that can be answered by reading its documentation.
+  schema:
+    type: object
+    properties:
+      manpageQuestion1:
+        type: string
+      manpageQuestion2:
+        type: string
+      manpageQuestion3:
+        type: string
+    required:
+      - mdbookQuestion1
+      - mdbookQuestion2
+      - mdbookQuestion3
+pre_user_message_content: |-
+  You are playing the role of a college professor writing final exam questions. Here is some text copied from the ch05-01-defining-structs page of the documentation provided by Rust.
+
+  Please synthesize 3 questions that exercise the code or tools documented where the answer contains correct usage of the most common parameters or flags. The questions must be able to be answered without the documentation available, so there should be no definite articles referring to specific code from the documentation, only indefinite articles should be used. The questions should prove the student understands the concepts and APIs. The questions should be answerable by a code example or a command example.
+
+  Documentation text:
+  
+post_user_message_content:

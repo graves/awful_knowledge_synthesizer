@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `UserPictureSyncAgent`.\n\n\n\nManpage text:\n\nUserPictureSyncAgent(8)     System Manager's Manual    UserPictureSyncAgent(8)\n\nNAME\n     UserPictureSyncAgent – Agent for synchronizing user picture between user\n     record and Me card in Contacts.\n\nSYNOPSIS\n     UserPictureSyncAgent\n\nDESCRIPTION\n     UserPictureSyncAgent is responsible for synchronizing the user picture\n     between the user record and the Me card in Contacts.\n\n     There are no configuration options.  Users should not run\n     UserPictureSyncAgent manually.\n\nmacOS\t\t\t\tMarch 12, 2021\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the UserPictureSyncAgent?
+  manpageQuestion2: How would you check if UserPictureSyncAgent is running on a macOS system?
+  manpageQuestion3: What is the recommended way to ensure that UserPictureSyncAgent synchronizes user pictures correctly?
+

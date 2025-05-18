@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `intelligenceflowd`.\n\n\n\nManpage text:\n\nintelligenceflowd(8)\t    System Manager's Manual\t  intelligenceflowd(8)\n\nNAME\n     intelligenceflowd – A daemon that manages sessions for intelligence\n     services.\n\nSYNOPSIS\n     intelligenceflowd\n\nDESCRIPTION\n     intelligenceflowd manages sessions, communication, and state between\n     clients and backend intelligence services.\n\nSEE ALSO\n     intelligencecontextd(8)\n\nmacOS\t\t\t\t June 10, 2024\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the intelligenceflowd daemon?
+  manpageQuestion2: How would you start and configure the intelligenceflowd service on a macOS system?
+  manpageQuestion3: What are the key functions of the intelligenceflowd daemon as described in its manpage?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `Script Menu`.\n\n\n\nManpage text:\n\nSCRIPT MENU(8)\t\t    System Manager's Manual\t\tSCRIPT MENU(8)\n\nNAME\n     Script Menu – menu bar application for running Scripts\n\nSYNOPSIS\n     Script Menu\n\nDESCRIPTION\n     Script Menu shows a status item in the main menu bar, which allows users\n     to quickly lanuch Scripts or Automator Workflows.\n\n     There are no configuration options for Script Menu.\n\nmacOS\t\t\t\t  May 9, 2018\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the Script Menu tool?
+  manpageQuestion2: How would you use Script Menu to launch an Automator workflow quickly?
+  manpageQuestion3: Can you explain how Script Menu integrates with the macOS menu bar?
+

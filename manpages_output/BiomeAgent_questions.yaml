@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `BiomeAgent`.\n\n\n\nManpage text:\n\nBiomeAgent(8)\t\t    System Manager's Manual\t\t BiomeAgent(8)\n\nNAME\n     BiomeAgent – Biome operation graph execution launch agent\n\nDESCRIPTION\n     BiomeAgent accepts downstream subscriptions for real time event\n     processing.\n\nSEE ALSO\n     biomed(8) biomesyncd(8)\n\nDarwin\t\t\t       February 9, 2021 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the BiomeAgent tool?
+  manpageQuestion2: How would you use BiomeAgent to process real-time events from downstream subscriptions?
+  manpageQuestion3: Can you describe a scenario where BiomeAgent would be used in conjunction with other system tools like biomed or biomesyncd?
+

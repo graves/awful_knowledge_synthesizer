@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `WiFiAgent`.\n\n\n\nManpage text:\n\nWiFiAgent(8)\t\t    System Manager's Manual\t\t  WiFiAgent(8)\n\nNAME\n     WiFiAgent – Wi-Fi User agent.\n\nDESCRIPTION\n     WiFiAgent is the User Agent to perform Wi-Fi tasks on behalf of\n     airportd(8).  This must not be invoked directly.\n\nSEE ALSO\n     airportd(8)\n\nmacOS 15.3\t\t       November 10, 2016\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the WiFiAgent tool?
+  manpageQuestion2: How would you use WiFiAgent to manage Wi-Fi settings on a macOS system?
+  manpageQuestion3: What is the relationship between WiFiAgent and airportd(8)?
+

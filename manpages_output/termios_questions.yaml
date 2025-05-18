@@ -1,0 +1,372 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.\n\n\n\nManpage text:\n\nTERMIOS(4)\t\t     Device Drivers Manual\t\t    TERMIOS(4)\n\nNAME\n     termios – general terminal line discipline\n\nSYNOPSIS\n     #include <termios.h>\n\nDESCRIPTION\n     This describes a general terminal line discipline that is supported on\n     tty asynchronous communication ports.\n\n   Opening a Terminal Device File\n     When a terminal file is opened, it normally causes the process to wait\n     until a connection is established.  For most hardware, the presence of a\n     connection is indicated by the assertion of the hardware CARRIER line. If\n     the termios structure associated with the terminal file has the CLOCAL\n     flag set in the cflag, or if the O_NONBLOCK flag is set in the open(2)\n     call, then the open will succeed even without a connection being present.\n     In practice, applications seldom open these files; they are opened by\n     special programs, such as getty(2) or rlogind(2), and become an\n     application's standard input, output, and error files.\n\n   Job Control in a Nutshell\n     Every process is associated with a particular process group and session.\n     The grouping is hierarchical: every member of a particular process group\n     is a member of the same session.  This structuring is used in managing\n     groups of related processes for purposes of job control; that is, the\n     ability from the keyboard (or from program control) to simultaneously\n     stop or restart a complex command (a command composed of one or more\n     related processes).  The grouping into process groups allows delivering\n     of signals that stop or start the group as a whole, along with\n     arbitrating which process group has access to the single controlling\n     terminal.\tThe grouping at a higher layer into sessions is to restrict\n     the job control related signals and system calls to within processes\n     resulting from a particular instance of a \"login\".  Typically, a session\n     is created when a user logs in, and the login terminal is setup to be the\n     controlling terminal; all processes spawned from that login shell are in\n     the same session, and inherit the controlling terminal.  A job control\n     shell operating interactively (that is, reading commands from a terminal)\n     normally groups related processes together by placing them into the same\n     process group.  A set of processes in the same process group is\n     collectively referred to as a \"job\". When the foreground process group of\n     the terminal is the same as the process group of a particular job, that\n     job is said to be in the \"foreground\".  When the process group of the\n     terminal is different than the process group of a job (but is still the\n     controlling terminal), that job is said to be in the \"background\".\n     Normally the shell reads a command and starts the job that implements\n     that command.  If the command is to be started in the foreground\n     (typical), it sets the process group of the terminal to the process group\n     of the started job, waits for the job to complete, and then sets the\n     process group of the terminal back to its own process group (it puts\n     itself into the foreground).  If the job is to be started in the\n     background (as denoted by the shell operator \"&\"), it never changes the\n     process group of the terminal and doesn't wait for the job to complete\n     (that is, it immediately attempts to read the next command).  If the job\n     is started in the foreground, the user may type a key (usually ‘^Z’)\n     which generates the terminal stop signal (SIGTSTP) and has the affect of\n     stopping the entire job.  The shell will notice that the job stopped, and\n     will resume running after placing itself in the foreground.  The shell\n     also has commands for placing stopped jobs in the background, and for\n     placing stopped or background jobs into the foreground."
+  manpageQuestion1: What is the primary purpose of the termios resource in macOS?
+  manpageQuestion2: How can you use the termios structure to configure job control settings for a terminal session?
+  manpageQuestion3: Can you explain how the termios resource facilitates process group and session management in a terminal environment?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.\n\n\n\nManpage text:\n\nOrphaned Process Groups\n     An orphaned process group is a process group that has no process whose\n     parent is in a different process group, yet is in the same session.\n     Conceptually it means a process group that doesn't have a parent that\n     could do anything if it were to be stopped.  For example, the initial\n     login shell is typically in an orphaned process group.  Orphaned process\n     groups are immune to keyboard generated stop signals and job control\n     signals resulting from reads or writes to the controlling terminal.\n\n   The Controlling Terminal\n     A terminal may belong to a process as its controlling terminal.  Each\n     process of a session that has a controlling terminal has the same\n     controlling terminal.  A terminal may be the controlling terminal for at\n     most one session.\tThe controlling terminal for a session is allocated by\n     the session leader by issuing the TIOCSCTTY ioctl.  A controlling\n     terminal is never acquired by merely opening a terminal device file.\n     When a controlling terminal becomes associated with a session, its\n     foreground process group is set to the process group of the session\n     leader."
+  manpageQuestion1: What is the primary purpose of the termios resource in macOS?
+  manpageQuestion2: How does a process become the controlling terminal for a session in macOS?
+  manpageQuestion3: What is an orphaned process group, and how does it behave differently from other process groups?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.
+
+
+
+    Manpage text:
+
+    The controlling terminal is inherited by a child process during a fork(2)
+         function call.  A process relinquishes its controlling terminal when it
+         creates a new session with the setsid(2) function; other processes
+         remaining in the old session that had this terminal as their controlling
+         terminal continue to have it.  A process does not relinquish its
+         controlling terminal simply by closing all of its file descriptors
+         associated with the controlling terminal if other processes continue to
+         have it open.
+
+         When a controlling process terminates, the controlling terminal is
+         disassociated from the current session, allowing it to be acquired by a
+         new session leader.  Subsequent access to the terminal by other processes
+         in the earlier session will be denied, with attempts to access the
+         terminal treated as if modem disconnect had been sensed.
+
+       Terminal Access Control
+         If a process is in the foreground process group of its controlling
+         terminal, read operations are allowed.  Any attempts by a process in a
+         background process group to read from its controlling terminal causes a
+         SIGTTIN signal to be sent to the process's group unless one of the
+         following special cases apply:  If the reading process is ignoring or
+         blocking the SIGTTIN signal, or if the process group of the reading
+         process is orphaned, the read(2) returns -1 with errno set to EIO and no
+         signal is sent.  The default action of the SIGTTIN signal is to stop the
+         process to which it is sent.
+  manpageQuestion1: What is the primary purpose of the termios resource in macOS?
+  manpageQuestion2: How can a process relinquish its controlling terminal in macOS?
+  manpageQuestion3: What happens to the controlling terminal when the controlling process terminates?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.
+
+
+
+    Manpage text:
+
+    If a process is in the foreground process group of its controlling
+         terminal, write operations are allowed.  Attempts by a process in a
+         background process group to write to its controlling terminal will cause
+         the process group to be sent a SIGTTOU signal unless one of the following
+         special cases apply:  If TOSTOP is not set, or if TOSTOP is set and the
+         process is ignoring or blocking the SIGTTOU signal, the process is
+         allowed to write to the terminal and the SIGTTOU signal is not sent.  If
+         TOSTOP is set, and the process group of the writing process is orphaned,
+         and the writing process is not ignoring or blocking SIGTTOU, the write
+         returns -1 with errno set to EIO and no signal is sent.
+
+         Certain calls that set terminal parameters are treated in the same
+         fashion as write, except that TOSTOP is ignored; that is, the effect is
+         identical to that of terminal writes when TOSTOP is set.
+
+       Input Processing and Reading Data
+         A terminal device associated with a terminal device file may operate in
+         full-duplex mode, so that data may arrive even while output is occurring.
+         Each terminal device file has associated with it an input queue, into
+         which incoming data is stored by the system before being read by a
+         process.  The system imposes a limit, {MAX_INPUT}, on the number of bytes
+         that may be stored in the input queue.  The behavior of the system when
+         this limit is exceeded depends on the setting of the IMAXBEL flag in the
+         termios c_iflag.  If this flag is set, the terminal is sent an ASCII BEL
+         character each time a character is received while the input queue is
+         full.  Otherwise, the input queue is flushed upon receiving the
+         character.
+  manpageQuestion1: What is the primary purpose of the termios resource?
+  manpageQuestion2: How does the termios resource handle input processing when the input queue is full and the IMAXBEL flag is set?
+  manpageQuestion3: What happens when a process in the background process group attempts to write to its controlling terminal while TOSTOP is set?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.
+
+
+
+    Manpage text:
+
+    Two general kinds of input processing are available, determined by
+         whether the terminal device file is in canonical mode or noncanonical
+         mode. Additionally, input characters are processed according to the
+         c_iflag and c_lflag fields.  Such processing can include echoing, which
+         in general means transmitting input characters immediately back to the
+         terminal when they are received from the terminal.  This is useful for
+         terminals that can operate in full-duplex mode.
+
+         The manner in which data is provided to a process reading from a terminal
+         device file is dependent on whether the terminal device file is in
+         canonical or noncanonical mode.
+
+         Another dependency is whether the O_NONBLOCK flag is set by open() or
+         fcntl().  If the O_NONBLOCK flag is clear, then the read request is
+         blocked until data is available or a signal has been received.  If the
+         O_NONBLOCK flag is set, then the read request is completed, without
+         blocking, in one of three ways:
+  manpageQuestion1: What is the primary purpose of the termios resource in macOS?
+  manpageQuestion2: How would you configure a terminal to operate in noncanonical mode with input echoing disabled?
+  manpageQuestion3: Can you explain how to set the O_NONBLOCK flag for a terminal device file in macOS?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.\n\n\n\nManpage text:\n\n1.\tIf there is enough data available to satisfy the entire\n\t\trequest, and the read completes successfully the number of\n\t\tbytes read is returned.\n\n\t   2.\tIf there is not enough data available to satisfy the entire\n\t\trequest, and the read completes successfully, having read as\n\t\tmuch data as possible, the number of bytes read is returned.\n\n\t   3.\tIf there is no data available, the read returns -1, with errno\n\t\tset to EAGAIN.\n\n     When data is available depends on whether the input processing mode is\n     canonical or noncanonical.\n\n   Canonical Mode Input Processing\n     In canonical mode input processing, terminal input is processed in units\n     of lines.\tA line is delimited by a newline ‘\\n’ character, an end-of-\n     file (EOF) character, or an end-of-line (EOL) character.  See the Special\n     Characters section for more information on EOF and EOL.  This means that\n     a read request will not return until an entire line has been typed, or a\n     signal has been received.\tAlso, no matter how many bytes are requested\n     in the read call, at most one line is returned.  It is not, however,\n     necessary to read a whole line at once; any number of bytes, even one,\n     may be requested in a read without losing information."
+  manpageQuestion1: What is the primary purpose of the termios resource?
+  manpageQuestion2: How does the termios resource handle input in canonical mode?
+  manpageQuestion3: What is the behavior of the termios resource when there is no data available for reading?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.\n\n\n\nManpage text:\n\n{MAX_CANON} is a limit on the number of bytes in a line.  The behavior of\n     the system when this limit is exceeded is the same as when the input\n     queue limit {MAX_INPUT}, is exceeded.\n\n     Erase and kill processing occur when either of two special characters,\n     the ERASE and KILL characters (see the Special Characters section), is\n     received.\tThis processing affects data in the input queue that has not\n     yet been delimited by a newline NL, EOF, or EOL character.  This un-\n     delimited data makes up the current line.\tThe ERASE character deletes\n     the last character in the current line, if there is any.  The KILL\n     character deletes all data in the current line, if there is any.  The\n     ERASE and KILL characters have no effect if there is no data in the\n     current line.  The ERASE and KILL characters themselves are not placed in\n     the input queue.\n\n   Noncanonical Mode Input Processing\n     In noncanonical mode input processing, input bytes are not assembled into\n     lines, and erase and kill processing does not occur.  The values of the\n     MIN and TIME members of the c_cc array are used to determine how to\n     process the bytes received."
+  manpageQuestion1: What is the primary purpose of the termios resource in macOS?
+  manpageQuestion2: How does the termios resource handle input processing when in noncanonical mode?
+  manpageQuestion3: What is the effect of exceeding the MAX_CANON limit in termios settings?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.\n\n\n\nManpage text:\n\nMIN represents the minimum number of bytes that should be received when\n     the read function successfully returns.  TIME is a timer of 0.1 second\n     granularity that is used to time out bursty and short term data\n     transmissions.  If MIN is greater than { MAX_INPUT}, the response to the\n     request is undefined.  The four possible values for MIN and TIME and\n     their interactions are described below.\n\n   Case A: MIN > 0, TIME > 0\n     In this case TIME serves as an inter-byte timer and is activated after\n     the first byte is received.  Since it is an inter-byte timer, it is reset\n     after a byte is received.\tThe interaction between MIN and TIME is as\n     follows:  as soon as one byte is received, the inter-byte timer is\n     started.  If MIN bytes are received before the inter-byte timer expires\n     (remember that the timer is reset upon receipt of each byte), the read is\n     satisfied.  If the timer expires before MIN bytes are received, the\n     characters received to that point are returned to the user.  Note that if\n     TIME expires at least one byte is returned because the timer would not\n     have been enabled unless a byte was received.  In this case (MIN > 0,\n     TIME > 0) the read blocks until the MIN and TIME mechanisms are activated\n     by the receipt of the first byte, or a signal is received.  If data is in\n     the buffer at the time of the read(), the result is as if data had been\n     received immediately after the read()."
+  manpageQuestion1: What is the primary purpose of the termios resource?
+  manpageQuestion2: How does the termios resource handle data reception when both MIN and TIME are set to positive values?
+  manpageQuestion3: What is the behavior of the termios resource when MIN is greater than MAX_INPUT?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.
+
+
+
+    Manpage text:
+
+    Case B: MIN > 0, TIME = 0
+         In this case, since the value of TIME is zero, the timer plays no role
+         and only MIN is significant.  A pending read is not satisfied until MIN
+         bytes are received (i.e., the pending read blocks until MIN bytes are
+         received), or a signal is received.  A program that uses this case to
+         read record-based terminal I/O may block indefinitely in the read
+         operation.
+
+       Case C: MIN = 0, TIME > 0
+         In this case, since MIN = 0, TIME no longer represents an inter-byte
+         timer.  It now serves as a read timer that is activated as soon as the
+         read function is processed.  A read is satisfied as soon as a single byte
+         is received or the read timer expires.  Note that in this case if the
+         timer expires, no bytes are returned.  If the timer does not expire, the
+         only way the read can be satisfied is if a byte is received.  In this
+         case the read will not block indefinitely waiting for a byte; if no byte
+         is received within TIME*0.1 seconds after the read is initiated, the read
+         returns a value of zero, having read no data.  If data is in the buffer
+         at the time of the read, the timer is started as if data had been
+         received immediately after the read.
+  manpageQuestion1: What is the primary purpose of the termios resource?
+  manpageQuestion2: How does the termios resource handle read operations when MIN is greater than 0 and TIME is zero?
+  manpageQuestion3: What happens when MIN is set to 0 and TIME is greater than 0 in the termios resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.\n\n\n\nManpage text:\n\nCase D: MIN = 0, TIME = 0\n     The minimum of either the number of bytes requested or the number of\n     bytes currently available is returned without waiting for more bytes to\n     be input.\tIf no characters are available, read returns a value of zero,\n     having read no data.\n\n   Writing Data and Output Processing\n     When a process writes one or more bytes to a terminal device file, they\n     are processed according to the c_oflag field (see the Output Modes\n     section).\tThe implementation may provide a buffering mechanism; as such,\n     when a call to write() completes, all of the bytes written have been\n     scheduled for transmission to the device, but the transmission will not\n     necessarily have been completed.\n\n   Special Characters\n     Certain characters have special functions on input or output or both.\n     These functions are summarized as follows:\n\n     INTR    Special character on input and is recognized if the ISIG flag\n\t     (see the Local Modes section) is enabled.\tGenerates a SIGINT\n\t     signal which is sent to all processes in the foreground process\n\t     group for which the terminal is the controlling terminal.\tIf\n\t     ISIG is set, the INTR character is discarded when processed."
+  manpageQuestion1: What is the primary purpose of the termios resource in macOS?
+  manpageQuestion2: How can you configure the terminal to return immediately when no characters are available for reading?
+  manpageQuestion3: What is the function of the INTR special character in terminal input processing?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.\n\n\n\nManpage text:\n\nQUIT    Special character on input and is recognized if the ISIG flag is\n\t     enabled.  Generates a SIGQUIT signal which is sent to all\n\t     processes in the foreground process group for which the terminal\n\t     is the controlling terminal.  If ISIG is set, the QUIT character\n\t     is discarded when processed.\n\n     ERASE   Special character on input and is recognized if the ICANON flag\n\t     is set.  Erases the last character in the current line; see\n\t     Canonical Mode Input Processing.  It does not erase beyond the\n\t     start of a line, as delimited by an NL, EOF, or EOL character.\n\t     If ICANON is set, the ERASE character is discarded when\n\t     processed.\n\n     KILL    Special character on input and is recognized if the ICANON flag\n\t     is set.  Deletes the entire line, as delimited by a NL, EOF, or\n\t     EOL character.  If ICANON is set, the KILL character is discarded\n\t     when processed.\n\n     EOF     Special character on input and is recognized if the ICANON flag\n\t     is set.  When received, all the bytes waiting to be read are\n\t     immediately passed to the process, without waiting for a newline,\n\t     and the EOF is discarded.\tThus, if there are no bytes waiting\n\t     (that is, the EOF occurred at the beginning of a line), a byte\n\t     count of zero is returned from the read(), representing an end-\n\t     of-file indication.  If ICANON is set, the EOF character is\n\t     discarded when processed.\tNL Special character on input and is\n\t     recognized if the ICANON flag is set.  It is the line delimiter\n\t     ‘\\n’."
+  manpageQuestion1: What is the primary purpose of the termios resource in macOS?
+  manpageQuestion2: How can you configure the terminal to use the ERASE character to delete the last input character?
+  manpageQuestion3: What is the function of the EOF special character in the termios resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.\n\n\n\nManpage text:\n\nEOL     Special character on input and is recognized if the ICANON flag\n\t     is set.  Is an additional line delimiter, like NL.\n\n     SUSP    If the ISIG flag is enabled, receipt of the SUSP character causes\n\t     a SIGTSTP signal to be sent to all processes in the foreground\n\t     process group for which the terminal is the controlling terminal,\n\t     and the SUSP character is discarded when processed.\n\n     STOP    Special character on both input and output and is recognized if\n\t     the IXON (output control) or IXOFF (input control) flag is set.\n\t     Can be used to temporarily suspend output.  It is useful with\n\t     fast terminals to prevent output from disappearing before it can\n\t     be read.  If IXON is set, the STOP character is discarded when\n\t     processed.\n\n     START   Special character on both input and output and is recognized if\n\t     the IXON (output control) or IXOFF (input control) flag is set.\n\t     Can be used to resume output that has been suspended by a STOP\n\t     character.  If IXON is set, the START character is discarded when\n\t     processed.  CR Special character on input and is recognized if\n\t     the ICANON flag is set; it is the ‘\\r’, as denoted in the C\n\t     Standard {2}.  When ICANON and ICRNL are set and IGNCR is not\n\t     set, this character is translated into a NL, and has the same\n\t     effect as a NL character."
+  manpageQuestion1: What is the primary purpose of the termios resource in macOS?
+  manpageQuestion2: How would you configure the terminal to recognize the ‘SIGTSTP’ signal upon receiving a SUSP character using termios?
+  manpageQuestion3: Can you explain how to set the START and STOP characters for flow control in a terminal using termios?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.\n\n\n\nManpage text:\n\nThe following special characters are extensions defined by this system\n     and are not a part of 1003.1 termios.\n\n     EOL2    Secondary EOL character.  Same function as EOL.\n\n     WERASE  Special character on input and is recognized if the ICANON flag\n\t     is set.  Erases the last word in the current line according to\n\t     one of two algorithms.  If the ALTWERASE flag is not set, first\n\t     any preceding whitespace is erased, and then the maximal sequence\n\t     of non-whitespace characters.  If ALTWERASE is set, first any\n\t     preceding whitespace is erased, and then the maximal sequence of\n\t     alphabetic/underscores or non alphabetic/underscores.  As a\n\t     special case in this second algorithm, the first previous non-\n\t     whitespace character is skipped in determining whether the\n\t     preceding word is a sequence of alphabetic/undercores.  This\n\t     sounds confusing but turns out to be quite practical.\n\n     REPRINT\n\t     Special character on input and is recognized if the ICANON flag\n\t     is set.  Causes the current input edit line to be retyped."
+  manpageQuestion1: What is the primary purpose of the termios resource in macOS?
+  manpageQuestion2: How can you configure the terminal to use the REPRINT special character for redisplaying the input line?
+  manpageQuestion3: What is the function of the WERASE special character in termios and how does it differ based on the ALTWERASE flag?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.\n\n\n\nManpage text:\n\nDSUSP   Has similar actions to the SUSP character, except that the\n\t     SIGTSTP signal is delivered when one of the processes in the\n\t     foreground process group issues a read() to the controlling\n\t     terminal.\n\n     LNEXT   Special character on input and is recognized if the IEXTEN flag\n\t     is set.  Receipt of this character causes the next character to\n\t     be taken literally.\n\n     DISCARD\n\t     Special character on input and is recognized if the IEXTEN flag\n\t     is set.  Receipt of this character toggles the flushing of\n\t     terminal output.\n\n     STATUS  Special character on input and is recognized if the ICANON flag\n\t     is set.  Receipt of this character causes a SIGINFO signal to be\n\t     sent to the foreground process group of the terminal.  Also, if\n\t     the NOKERNINFO flag is not set, it causes the kernel to write a\n\t     status message to the terminal that displays the current load\n\t     average, the name of the command in the foreground, its process\n\t     ID, the symbolic wait channel, the number of user and system\n\t     seconds used, the percentage of cpu the process is getting, and\n\t     the resident set size of the process."
+  manpageQuestion1: What is the primary purpose of the termios resource in macOS?
+  manpageQuestion2: How can you configure the terminal to treat the LNEXT character as a literal input character?
+  manpageQuestion3: What is the function of the DISCARD special character in termios settings?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.\n\n\n\nManpage text:\n\nThe NL and CR characters cannot be changed.  The values for all the\n     remaining characters can be set and are described later in the document\n     under Special Control Characters.\n\n     Special character functions associated with changeable special control\n     characters can be disabled individually by setting their value to\n     {_POSIX_VDISABLE}; see Special Control Characters.\n\n     If two or more special characters have the same value, the function\n     performed when that character is received is undefined.\n\n   Modem Disconnect\n     If a modem disconnect is detected by the terminal interface for a\n     controlling terminal, and if CLOCAL is not set in the c_cflag field for\n     the terminal, the SIGHUP signal is sent to the controlling process\n     associated with the terminal.  Unless other arrangements have been made,\n     this causes the controlling process to terminate.\tAny subsequent call to\n     the read() function returns the value zero, indicating end of file.\n     Thus, processes that read a terminal file and test for end-of-file can\n     terminate appropriately after a disconnect.  Any subsequent write() to\n     the terminal device returns -1, with errno set to EIO, until the device\n     is closed."
+  manpageQuestion1: What is the primary purpose of the termios resource in macOS?
+  manpageQuestion2: How can you disable the special function associated with a changeable special control character in termios?
+  manpageQuestion3: What happens to a process when a modem disconnect is detected and CLOCAL is not set in the termios configuration?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.\n\n\n\nManpage text:\n\nGeneral Terminal Interface\n   Closing a Terminal Device File\n     The last process to close a terminal device file causes any output to be\n     sent to the device and any input to be discarded.\tThen, if HUPCL is set\n     in the control modes, and the communications port supports a disconnect\n     function, the terminal device performs a disconnect.\n\n   Parameters That Can Be Set\n     Routines that need to control certain terminal I/O characteristics do so\n     by using the termios structure as defined in the header ⟨termios.h⟩.\n     This structure contains minimally four scalar elements of bit flags and\n     one array of special characters.  The scalar flag elements are named:\n     c_iflag, c_oflag, c_cflag, and c_lflag.  The character array is named\n     c_cc, and its maximum index is NCCS.\n\n   Input Modes\n     Values of the c_iflag field describe the basic terminal input control,\n     and are composed of following masks:\n\n\t   IGNBRK   /* ignore BREAK condition */\n\t   BRKINT   /* map BREAK to SIGINTR */\n\t   IGNPAR   /* ignore (discard) parity errors */\n\t   PARMRK   /* mark parity and framing errors */\n\t   INPCK    /* enable checking of parity errors */\n\t   ISTRIP   /* strip 8th bit off chars */\n\t   INLCR    /* map NL into CR */\n\t   IGNCR    /* ignore CR */\n\t   ICRNL    /* map CR to NL (ala CRMOD) */\n\t   IXON     /* enable output flow control */\n\t   IXOFF    /* enable input flow control */\n\t   IXANY    /* any char will restart after stop */\n\t   IMAXBEL  /* ring bell on input queue full */\n\t   IUCLC    /* translate upper case to lower case */"
+  manpageQuestion1: What is the primary purpose of the termios resource?
+  manpageQuestion2: How can you set the input mode to ignore parity errors and enable input flow control using termios?
+  manpageQuestion3: Can you explain how to configure the terminal device file to disconnect when the last process closes it?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.
+
+
+
+    Manpage text:
+
+    In the context of asynchronous serial data transmission, a break
+         condition is defined as a sequence of zero-valued bits that continues for
+         more than the time to send one byte.  The entire sequence of zero-valued
+         bits is interpreted as a single break condition, even if it continues for
+         a time equivalent to more than one byte.  In contexts other than
+         asynchronous serial data transmission the definition of a break condition
+         is implementation defined.
+
+         If IGNBRK is set, a break condition detected on input is ignored, that
+         is, not put on the input queue and therefore not read by any process.  If
+         IGNBRK is not set and BRKINT is set, the break condition flushes the
+         input and output queues and if the terminal is the controlling terminal
+         of a foreground process group, the break condition generates a single
+         SIGINT signal to that foreground process group.  If neither IGNBRK nor
+         BRKINT is set, a break condition is read as a single ‘\0’, or if PARMRK
+         is set, as ‘\377’, ‘\0’, ‘\0’.
+  manpageQuestion1: What is the primary purpose of the termios resource in macOS?
+  manpageQuestion2: How does the termios resource handle a break condition when IGNBRK is set?
+  manpageQuestion3: What are the effects of a break condition on the input and output queues when neither IGNBRK nor BRKINT is set?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.\n\n\n\nManpage text:\n\nIf IGNPAR is set, a byte with a framing or parity error (other than\n     break) is ignored.\n\n     If PARMRK is set, and IGNPAR is not set, a byte with a framing or parity\n     error (other than break) is given to the application as the three-\n     character sequence ‘\\377’, ‘\\0’, X, where ‘\\377’, ‘\\0’ is a two-character\n     flag preceding each sequence and X is the data of the character received\n     in error.\tTo avoid ambiguity in this case, if ISTRIP is not set, a valid\n     character of ‘\\377’ is given to the application as ‘\\377’, ‘\\377’.  If\n     neither PARMRK nor IGNPAR is set, a framing or parity error (other than\n     break) is given to the application as a single character ‘\\0’.\n\n     If INPCK is set, input parity checking is enabled.  If INPCK is not set,\n     input parity checking is disabled, allowing output parity generation\n     without input parity errors.  Note that whether input parity checking is\n     enabled or disabled is independent of whether parity detection is enabled\n     or disabled (see Control Modes).  If parity detection is enabled but\n     input parity checking is disabled, the hardware to which the terminal is\n     connected recognizes the parity bit, but the terminal special file does\n     not check whether this bit is set correctly or not."
+  manpageQuestion1: What is the primary purpose of the termios resource in macOS?
+  manpageQuestion2: How does the termios resource handle input parity checking when the INPCK flag is not set?
+  manpageQuestion3: What happens to a byte with a framing or parity error when both IGNPAR and PARMRK are not set?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.
+
+
+
+    Manpage text:
+
+    If ISTRIP is set, valid input bytes are first stripped to seven bits,
+         otherwise all eight bits are processed.
+
+         If INLCR is set, a received NL character is translated into a CR
+         character.  If IGNCR is set, a received CR character is ignored (not
+         read).  If IGNCR is not set and ICRNL is set, a received CR character is
+         translated into a NL character.
+
+         If IXON is set, start/stop output control is enabled.  A received STOP
+         character suspends output and a received START character restarts output.
+         If IXANY is also set, then any character may restart output. When IXON is
+         set, START and STOP characters are not read, but merely perform flow
+         control functions.  When IXON is not set, the START and STOP characters
+         are read.
+
+         If IXOFF is set, start/stop input control is enabled.  The system shall
+         transmit one or more STOP characters, which are intended to cause the
+         terminal device to stop transmitting data, as needed to prevent the input
+         queue from overflowing and causing the undefined behavior described in
+         Input Processing and Reading Data, and shall transmit one or more START
+         characters, which are intended to cause the terminal device to resume
+         transmitting data, as soon as the device can continue transmitting data
+         without risk of overflowing the input queue.  The precise conditions
+         under which STOP and START characters are transmitted are implementation
+         defined.
+  manpageQuestion1: What is the primary function of the termios resource in macOS?
+  manpageQuestion2: How does the termios resource handle flow control when IXON is enabled?
+  manpageQuestion3: What is the role of the IXOFF flag in termios settings?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.\n\n\n\nManpage text:\n\nIf IMAXBEL is set and the input queue is full, subsequent input shall\n     cause an ASCII BEL character to be transmitted to the output queue.\n\n     If IUCLC is set, characters will be translated from upper to lower case\n     on input.\n\n     The initial input control value after open() is implementation defined.\n\n   Output Modes\n     Values of the c_oflag field describe the basic terminal output control,\n     and are composed of the following masks:\n\n\t   OPOST   /* enable following output processing */\n\t   ONLCR   /* map NL to CR-NL (ala CRMOD) */\n\t   OXTABS  /* expand tabs to spaces */\n\t   ONOEOT  /* discard EOT's ‘^D’ on output) */\n\t   OCRNL   /* map CR to NL */\n\t   OLCUC   /* translate lower case to upper case */\n\t   ONOCR   /* No CR output at column 0 */\n\t   ONLRET  /* NL performs CR function */\n\n     If OPOST is set, the remaining flag masks are interpreted as follows;\n     otherwise characters are transmitted without change.\n\n     If ONLCR is set, newlines are translated to carriage return, linefeeds."
+  manpageQuestion1: What is the primary purpose of the termios resource in macOS?
+  manpageQuestion2: How would you configure a terminal to map newline characters to carriage return and linefeed using termios?
+  manpageQuestion3: Can you explain how to set the termios options to disable the translation of lowercase letters to uppercase on output?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.\n\n\n\nManpage text:\n\nIf OXTABS is set, tabs are expanded to the appropriate number of spaces\n     (assuming 8 column tab stops).\n\n     If ONOEOT is set, ASCII EOT NS 's are discarded on output.\n\n     If OCRNL is set, carriage returns are translated to newlines.\n\n     If OLCUC is set, lower case is translated to upper case on output.\n\n     If ONOCR is set, no CR character is output when at column 0.\n\n     If ONLRET is set, NL also performs CR on output, and reset current column\n     to 0.\n\n   Control Modes\n     Values of the c_cflag field describe the basic terminal hardware control,\n     and are composed of the following masks.  Not all values specified are\n     supported by all hardware.\n\n\t   CSIZE       /* character size mask */\n\t   CS5\t       /* 5 bits (pseudo) */\n\t   CS6\t       /* 6 bits */\n\t   CS7\t       /* 7 bits */\n\t   CS8\t       /* 8 bits */\n\t   CSTOPB      /* send 2 stop bits */\n\t   CREAD       /* enable receiver */\n\t   PARENB      /* parity enable */\n\t   PARODD      /* odd parity, else even */\n\t   HUPCL       /* hang up on last close */\n\t   CLOCAL      /* ignore modem status lines */\n\t   CCTS_OFLOW  /* CTS flow control of output */\n\t   CRTSCTS     /* same as CCTS_OFLOW */\n\t   CRTS_IFLOW  /* RTS flow control of input */\n\t   MDMBUF      /* flow control output via Carrier */"
+  manpageQuestion1: What is the primary purpose of the termios resource?
+  manpageQuestion2: How would you configure a serial port to use 8 data bits, 1 stop bit, and even parity using termios?
+  manpageQuestion3: Can you explain how to set the terminal to expand tabs to spaces using termios?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.\n\n\n\nManpage text:\n\nThe CSIZE bits specify the byte size in bits for both transmission and\n     reception.  The c_cflag is masked with CSIZE and compared with the values\n     CS5, CS6, CS7, or CS8.  This size does not include the parity bit, if\n     any.  If CSTOPB is set, two stop bits are used, otherwise one stop bit.\n     For example, at 110 baud, two stop bits are normally used.\n\n     If CREAD is set, the receiver is enabled.\tOtherwise, no character is\n     received.\tNot all hardware supports this bit.  In fact, this flag is\n     pretty silly and if it were not part of the termios specification it\n     would be omitted.\n\n     If PARENB is set, parity generation and detection are enabled and a\n     parity bit is added to each character.  If parity is enabled, PARODD\n     specifies odd parity if set, otherwise even parity is used.\n\n     If HUPCL is set, the modem control lines for the port are lowered when\n     the last process with the port open closes the port or the process\n     terminates.  The modem connection is broken."
+  manpageQuestion1: What is the primary purpose of the termios resource in macOS?
+  manpageQuestion2: How would you configure the termios settings to set a 8-bit character size, one stop bit, and even parity for serial communication?
+  manpageQuestion3: What is the effect of setting the HUPCL flag in termios settings?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.
+
+
+
+    Manpage text:
+
+    If CLOCAL is set, a connection does not depend on the state of the modem
+         status lines.  If CLOCAL is clear, the modem status lines are monitored.
+
+         Under normal circumstances, a call to the open() function waits for the
+         modem connection to complete.  However, if the O_NONBLOCK flag is set or
+         if CLOCAL has been set, the open() function returns immediately without
+         waiting for the connection.
+
+         The CCTS_OFLOW (CRTSCTS) flag is currently unused.
+
+         If MDMBUF is set then output flow control is controlled by the state of
+         Carrier Detect.
+
+         If the object for which the control modes are set is not an asynchronous
+         serial connection, some of the modes may be ignored; for example, if an
+         attempt is made to set the baud rate on a network connection to a
+         terminal on another host, the baud rate may or may not be set on the
+         connection between that terminal and the machine it is directly connected
+         to.
+
+       Local Modes
+         Values of the c_lflag field describe the control of various functions,
+         and are composed of the following masks.
+  manpageQuestion1: What is the primary purpose of the termios resource in macOS?
+  manpageQuestion2: How does the termios resource handle the behavior of the open() function when CLOCAL is set?
+  manpageQuestion3: What is the effect of setting the MDMBUF flag in termios?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.\n\n\n\nManpage text:\n\nECHOKE      /* visual erase for line kill */\n\t   ECHOE       /* visually erase chars */\n\t   ECHO        /* enable echoing */\n\t   ECHONL      /* echo NL even if ECHO is off */\n\t   ECHOPRT     /* visual erase mode for hardcopy */\n\t   ECHOCTL     /* echo control chars as ^(Char) */\n\t   ISIG        /* enable signals INTR, QUIT, [D]SUSP */\n\t   ICANON      /* canonicalize input lines */\n\t   ALTWERASE   /* use alternate WERASE algorithm */\n\t   IEXTEN      /* enable DISCARD and LNEXT */\n\t   EXTPROC     /* external processing */\n\t   TOSTOP      /* stop background jobs from output */\n\t   FLUSHO      /* output being flushed (state) */\n\t   NOKERNINFO  /* no kernel output from VSTATUS */\n\t   PENDIN      /* XXX retype pending input (state) */\n\t   NOFLSH      /* don't flush after interrupt */\n\n     If ECHO is set, input characters are echoed back to the terminal.\tIf\n     ECHO is not set, input characters are not echoed.\n\n     If ECHOE and ICANON are set, the ERASE character causes the terminal to\n     erase the last character in the current line from the display, if\n     possible.\tIf there is no character to erase, an implementation may echo\n     an indication that this was the case or do nothing."
+  manpageQuestion1: What is the primary purpose of the termios resource?
+  manpageQuestion2: How would you configure a terminal to enable echoing of input characters using the termios settings?
+  manpageQuestion3: Can you explain how to use the termios resource to set up an alternate erase method for a terminal?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.
+
+
+
+    Manpage text:
+
+    If ECHOK and ICANON are set, the KILL character causes the current line
+         to be discarded and the system echoes the ‘\n’ character after the KILL
+         character.
+
+         If ECHOKE and ICANON are set, the KILL character causes the current line
+         to be discarded and the system causes the terminal to erase the line from
+         the display.
+
+         If ECHOPRT and ICANON are set, the system assumes that the display is a
+         printing device and prints a backslash and the erased characters when
+         processing ERASE characters, followed by a forward slash.
+
+         If ECHOCTL is set, the system echoes control characters in a visible
+         fashion using a caret followed by the control character.
+
+         If ALTWERASE is set, the system uses an alternative algorithm for
+         determining what constitutes a word when processing WERASE characters
+         (see WERASE).
+
+         If ECHONL and ICANON are set, the ‘\n’ character echoes even if ECHO is
+         not set.
+
+         If ICANON is set, canonical processing is enabled.  This enables the
+         erase and kill edit functions, and the assembly of input characters into
+         lines delimited by NL, EOF, and EOL, as described in Canonical Mode Input
+         Processing.
+  manpageQuestion1: What is the primary purpose of the termios resource in macOS?
+  manpageQuestion2: How does the termios resource handle the KILL character when ECHOK and ICANON are both set?
+  manpageQuestion3: What effect does setting ECHOCTL have on the behavior of the termios resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.\n\n\n\nManpage text:\n\nIf ICANON is not set, read requests are satisfied directly from the input\n     queue.  A read is not satisfied until at least MIN bytes have been\n     received or the timeout value TIME expired between bytes.\tThe time value\n     represents tenths of seconds.  See Noncanonical Mode Input Processing for\n     more details.\n\n     If ISIG is set, each input character is checked against the special\n     control characters INTR, QUIT, and SUSP (job control only).  If an input\n     character matches one of these control characters, the function\n     associated with that character is performed.  If ISIG is not set, no\n     checking is done.\tThus these special input functions are possible only\n     if ISIG is set.\n\n     If IEXTEN is set, implementation-defined functions are recognized from\n     the input data.  How IEXTEN being set interacts with ICANON, ISIG, IXON,\n     or IXOFF is implementation defined.  If IEXTEN is not set, then\n     implementation-defined functions are not recognized, and the\n     corresponding input characters are not processed as described for ICANON,\n     ISIG, IXON, and IXOFF."
+  manpageQuestion1: What is the primary purpose of the termios resource in macOS?
+  manpageQuestion2: How does the termios resource handle input processing when ICANON is not set?
+  manpageQuestion3: Under what conditions do the special input functions (INTR, QUIT, SUSP) become active in termios?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.\n\n\n\nManpage text:\n\nIf NOFLSH is set, the normal flush of the input and output queues\n     associated with the INTR, QUIT, and SUSP characters are not be done.\n\n     If ICANON is set, an upper case character is preserved on input if\n     prefixed by a \\ character.  In addition, this prefix is added to upper\n     case characters on output.\n\n     In addition, the following special character translations are in effect:\n\n\t   for:    use:\n\t   `\t   \\'\n\t   |\t   \\!\n\t   ~\t   \\^\n\t   {\t   \\(\n\t   }\t   \\)\n\t   \\\t   \\\\\n\n     If TOSTOP is set, the signal SIGTTOU is sent to the process group of a\n     process that tries to write to its controlling terminal if it is not in\n     the foreground process group for that terminal.  This signal, by default,\n     stops the members of the process group.  Otherwise, the output generated\n     by that process is output to the current output stream.  Processes that\n     are blocking or ignoring SIGTTOU signals are excepted and allowed to\n     produce output and the SIGTTOU signal is not sent."
+  manpageQuestion1: What is the primary purpose of the termios resource in macOS?
+  manpageQuestion2: How can you configure the termios settings to enable canonical mode with line editing features?
+  manpageQuestion3: What is the effect of setting the NOFLSH flag in termios settings?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.\n\n\n\nManpage text:\n\nIf NOKERNINFO is set, the kernel does not produce a status message when\n     processing STATUS characters (see STATUS).\n\n   Special Control Characters\n     The special control characters values are defined by the array c_cc.\n     This table lists the array index, the corresponding special character,\n     and the system default value.  For an accurate list of the system\n     defaults, consult the header file ⟨ttydefaults.h⟩.\n\n\t   Index Name\t Special Character    Default Value\n\t   VEOF \t EOF\t\t      ^D\n\t   VEOL \t EOL\t\t      _POSIX_VDISABLE\n\t   VEOL2\t EOL2\t\t      _POSIX_VDISABLE\n\t   VERASE\t ERASE\t\t      ^? ‘\\177’\n\t   VWERASE\t WERASE \t      ^W\n\t   VKILL\t KILL\t\t      ^U\n\t   VREPRINT\t REPRINT\t      ^R\n\t   VINTR\t INTR\t\t      ^C\n\t   VQUIT\t QUIT\t\t      ^\\\\ ‘\\34’\n\t   VSUSP\t SUSP\t\t      ^Z\n\t   VDSUSP\t DSUSP\t\t      ^Y\n\t   VSTART\t START\t\t      ^Q\n\t   VSTOP\t STOP\t\t      ^S\n\t   VLNEXT\t LNEXT\t\t      ^V\n\t   VDISCARD\t DISCARD\t      ^O\n\t   VMIN \t ---\t\t      1\n\t   VTIME\t ---\t\t      0\n\t   VSTATUS\t STATUS \t      ^T"
+  manpageQuestion1: What is the primary purpose of the termios resource?
+  manpageQuestion2: How would you configure the terminal to ignore status characters when using termios?
+  manpageQuestion3: Can you explain how the VMIN and VTIME parameters in termios are used to control terminal input behavior?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `termios`.\n\n\n\nManpage text:\n\nIf the value of one of the changeable special control characters (see\n     Special Characters) is {_POSIX_VDISABLE}, that function is disabled; that\n     is, no input data is recognized as the disabled special character.  If\n     ICANON is not set, the value of {_POSIX_VDISABLE} has no special meaning\n     for the VMIN and VTIME entries of the c_cc array.\n\n     The initial values of the flags and control characters after open() is\n     set according to the values in the header ⟨sys/ttydefaults.h⟩.\n\nSEE ALSO\n     tcgetattr(3), tcsetattr(3)\n\nBSD 4\t\t\t\tApril 19, 1994\t\t\t\t BSD 4"
+  manpageQuestion1: What is the primary purpose of the termios resource in macOS?
+  manpageQuestion2: How would you disable a special control character using the termios resource?
+  manpageQuestion3: Can you explain how the initial values of termios flags and control characters are set in macOS?
+

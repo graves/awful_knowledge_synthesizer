@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `UniversalControl`.\n\n\n\nManpage text:\n\nUniversalControl(8)\t    System Manager's Manual\t   UniversalControl(8)\n\nNAME\n     UniversalControl – Universal Control\n\nDESCRIPTION\n     The UniversalControl process provides Universal Control for the system.\n\n     There are no configuration options for UniversalControl, and users should\n     not run UniversalControl manually.\n\nmacOS\t\t\t\t June 7, 2021\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the UniversalControl resource?
+  manpageQuestion2: How would you use UniversalControl to manage system-wide settings?
+  manpageQuestion3: Can you explain the typical use case for UniversalControl in a macOS environment?
+

@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cfilutil`.\n\n\n\nManpage text:\n\ncfilutil(1)\t\t    General Commands Manual\t\t   cfilutil(1)\n\nNAME\n     cfilutil – Tool to exercise the content filter subsystem.\n\nSYNOPSIS\n     cfilutil [-hilqsv] -u unit [-a offset] [-d offset value] [-k increment]\n\t      [-m length] [-p offset] [-r random] [-t delay]\n\nDESCRIPTION\n     Use cfilutil to exercise the content filter subsystem.\n\n     The flags have the following meaning:\n\n     -a offset\n\t      Auto start filtering with given offset.\n\n     -a offset value\n\t      Default values for offset passin, peekin, passout, peekout, pass\n\t      or peek.\n\n     -h       Display this help.\n\n     -i       Interactive mode.\n\n     -k increment\n\t      Peek mode with increment.\n\n     -l       Pass loopback traffic.\n\n     -m length\n\t      Maximum dump length.\n\n     -p offset\n\t      Pass mode (all or after given offset if it is > 0).\n\n     -q       Decrease verbosity.\n\n     -r rate  Random drop rate.\n\n     -s       display content filter statistics (all, sock, filt, cfil).\n\n     -t delay\n\t      Pass delay in microseconds."
+  manpageQuestion1: What is the primary purpose of the cfilutil command?
+  manpageQuestion2: How can you use cfilutil to set a random drop rate of 5% while in interactive mode?
+  manpageQuestion3: What command would you use to enable loopback traffic and display content filter statistics with cfilutil?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cfilutil`.\n\n\n\nManpage text:\n\n-u unit  NECP filter control unit.\n\n     -v       Increase verbosity.\n\nSEE ALSO\n     neutil(1)\n\nDarwin\t\t\t\t    2/10/14\t\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the cfilutil tool?
+  manpageQuestion2: How would you use cfilutil to display detailed information about a NECP filter control unit?
+  manpageQuestion3: Can you provide an example of using cfilutil with the -v flag to increase verbosity?
+

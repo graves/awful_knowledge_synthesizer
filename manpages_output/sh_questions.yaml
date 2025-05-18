@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sh`.\n\n\n\nManpage text:\n\nSH(1)\t\t\t    General Commands Manual\t\t\t SH(1)\n\nNAME\n     sh – POSIX-compliant command interpreter\n\nSYNOPSIS\n     sh [options]\n\nDESCRIPTION\n     sh is a POSIX-compliant command interpreter (shell).  It is implemented\n     by re-execing as either bash(1), dash(1), or zsh(1) as determined by the\n     symbolic link located at /private/var/select/sh.  If\n     /private/var/select/sh does not exist or does not point to a valid shell,\n     sh will use one of the supported shells.\n\nFILES\n     /private/var/select/sh\n\n     $HOME/.profile\n\n     /etc/profile\n\nSEE ALSO\n     bash(1), dash(1), ksh(1), tcsh(1), zsh(1)\n\nmacOS 15.3\t\t       February 8, 2019 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the sh command?
+  manpageQuestion2: How can you use the sh command to execute a script named 'my_script.sh'?
+  manpageQuestion3: What is the function of the /private/var/select/sh file in relation to the sh command?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `fskit_agent`.\n\n\n\nManpage text:\n\nFSKIT_AGENT(8)\t\t    System Manager's Manual\t\tFSKIT_AGENT(8)\n\nNAME\n     fskit_agent – FSKit 3rd party extension support agent\n\nDESCRIPTION\n     fskit_agent is the FSKit per-user FSModule support agent. It reports\n     FSModule availabilty and enablement to fskitd per user. It also launches\n     FSModules at the direction of fskitd.\n\nFILES\n     /System/Library/LaunchAgents/com.apple.fskit_agent.plist\n\nOS X\t\t\t\t March 7, 2024\t\t\t\t  OS X"
+  manpageQuestion1: What is the primary purpose of the fskit_agent tool?
+  manpageQuestion2: How would you configure fskit_agent to report FSModule availability for a specific user?
+  manpageQuestion3: Can you explain how fskit_agent interacts with the fskitd service to launch FSModules?
+

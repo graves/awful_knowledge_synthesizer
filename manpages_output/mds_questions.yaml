@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mds`.\n\n\n\nManpage text:\n\nMDS(8)\t\t\t    System Manager's Manual\t\t\tMDS(8)\n\nNAME\n     mds – metadata server\n\nSYNOPSIS\n     mds\n\nDESCRIPTION\n     mds is the metadata server.  It serves all clients of the metadata APIs,\n     including Spotlight.\n\n     There are no configurations to mds, and users should not run mds\n     manually.\n\nSEE ALSO\n     mdfind(1), mdls(1), mdutil(1)\n\nMac OS X\t\t       January 19, 2006 \t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the mds command?
+  manpageQuestion2: How would you check the status of the metadata server using mds?
+  manpageQuestion3: Can you explain how to verify that the metadata server is functioning correctly with mds?
+

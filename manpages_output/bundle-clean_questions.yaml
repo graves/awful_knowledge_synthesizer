@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `bundle-clean`.\n\n\n\nManpage text:\n\nBUNDLE-CLEAN(1) \t\t\t\t\t       BUNDLE-CLEAN(1)\n\nNAME\n       bundle-clean - Cleans up unused gems in your bundler directory\n\nSYNOPSIS\n       bundle clean [--dry-run] [--force]\n\nDESCRIPTION\n       This command will remove all unused gems in your bundler directory.\n       This is useful when you have made many changes to your gem\n       dependencies.\n\nOPTIONS\n       --dry-run\n\t      Print the changes, but do not clean the unused gems.\n\n       --force\n\t      Force a clean even if --path is not set.\n\n\n\t\t\t\t November 2018\t\t       BUNDLE-CLEAN(1)"
+  manpageQuestion1: What is the primary purpose of the bundle-clean command?
+  manpageQuestion2: How would you use bundle-clean to simulate the cleanup process without actually removing any gems?
+  manpageQuestion3: Can you provide an example of using bundle-clean to forcefully remove unused gems even if the --path option is not specified?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `corestoraged`.\n\n\n\nManpage text:\n\nCORESTORAGED(1) \t    General Commands Manual\t       CORESTORAGED(1)\n\nNAME\n     corestoraged – CoreStorage volume manager\n\nSYNOPSIS\n     corestoraged\n\nDESCRIPTION\n     corestoraged manages CoreStorage volumes.\tIt is invoked by launchd(8)\n     when a CoreStorage volume needs management.\n\nFILES\n     /System/Library/LaunchDaemons/com.apple.corestorage.corestoraged.plist\n\nSEE ALSO\n     diskutil(8)\n\nOS X\t\t\t\tApril 8th, 2010 \t\t\t  OS X"
+  manpageQuestion1: What is the primary purpose of the corestoraged tool?
+  manpageQuestion2: How would you use corestoraged to manage a CoreStorage volume?
+  manpageQuestion3: Can you describe the typical scenario in which corestoraged is invoked by launchd(8)?
+

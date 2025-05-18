@@ -1,0 +1,931 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.\n\n\n\nManpage text:\n\nSNFS_CONFIG(5)\t\t      File Formats Manual\t\tSNFS_CONFIG(5)\n\nNAME\n       snfs_config - Xsan Volume Configuration File\n\nSYNOPSIS\n       /Library/Preferences/Xsan/*.cfg\n\nDESCRIPTION\n       The Xsan Volume configuration file describes to the File System Manager\n       (FSM) the physical and logical layout of an individual volume.\n\nFORMAT OPTIONS\n       The Xsan Volume uses the XML format for the configuration file (see\n       snfs.cfgx.5).  This is supported on linux MDCs and is required when\n       using the Storage Manager web-based GUI. If the GUI is not used or not\n       available, the sncfgedit(8) utility should be used to create or change\n       the XML configuration file.\n\n       The old non-XML format (see snfs.cfg.5) used in previous versions of\n       Xsan is required on Windows MDCs and is valid on linux MDCs, but the\n       Storage Manager GUI will not recognize it.\n\n       Linux MDCs will automatically have their volume configuration files\n       converted to the XML format on upgrade, if necessary.  Old config files\n       will be retained in the\n       /Library/Logs/Xsan/data/<volume_name>/config_history directory.\n\n       When a volume system is created, the configuration file is stored in a\n       compressed format in the metadata.  Some Xsan components validate that\n       if the configuration file has changed, it is still valid for the\n       operation of that component.  The components that do this are: fsm(8),\n       cvupdatefs(1), and cvfsck(1).  If the configuration is invalid, the\n       component terminates.  If the configuration has changed and is valid,\n       the old configuration is saved in\n       /Library/Logs/Xsan/data/<volume_name>/config_history/*.cfg.<TIMESTAMP>\n       and the new one replaces the old one in metadata.\n\n       This manpage seeks to describe the configuration file in general.\n       Format specific information can be found in snfs.cfgx.5 and snfs.cfg.5.\n\nGLOBAL VARIABLES\n       The file system configuration has several global variables that affect\n       the size, function and performance of the Xsan File System Manager\n       (FSM).  (The FSM is the controlling program that tracks file allocation\n       and consistency across the multiple clients that have access to the\n       volume via a Storage Area Network.) The following global variables can\n       be modified.\n\n     • XML: affinityPreference <true/false>\n\n       Old: AffinityPreference <Yes|No>\n\n       The AffinityPreference variable instructs the FSM how to allocate space\n       to a file with an Affinity in low space conditions.  If space cannot be\n       allocated on a storage pool with a matching Affinity, the system\n       normally fails with ENOSPC.  This occurs even if the file system has\n       remaining space that could satisfy the allocation request.  If this\n       variable is set to true (Yes), instead of returning ENOSPC, the system\n       attempts to allocate space on another storage pool with an Affinity of\n       0.\n\n       With this preference mechanism, the file's Affinity is not changed so a\n       subsequent allocation request will still try to use the original\n       Affinity before retrying with an Affinity of 0.\n\n       The default value of false (No) retains the behavior of returning\n       ENOSPC instead of retrying the allocation request.\n\n     • XML: allocationStrategy <strategy>\n\n       Old: AllocationStrategy <strategy>\n\n       The AllocationStrategy variable selects a method for allocating new\n       disk file blocks in the volume.\tThere are three methods supported:\n       Round, Balance, and Fill.  These methods specify how, for each file,\n       the allocator chooses an initial storage pool to allocate blocks from,\n       and how the allocator chooses a new storage pool when it cannot honor\n       an allocation request from a file's current storage pool.\n\n       The default allocation strategy is Round.  Round means that when there\n       are multiple storage pools of similar classes (for example two storage\n       pools for non-exclusive data), the space allocator should alternate\n       (round robin) new files through the available storage pools.\n       Subsequent allocation requests for any one file are directed to the\n       same storage pool.  If insufficient space is available in that storage\n       pool, the allocator will choose the next storage pool that can honor\n       the allocation request.\n\n       When the strategy is Balance, the available blocks of each storage pool\n       are analyzed, and the storage pool with the most total free blocks is\n       chosen.\tSubsequent requests for the same file are directed to the same\n       storage pool.  If insufficient space is available in that storage pool,\n       the allocator will choose the storage pool with the most available\n       space.\n\n       When the strategy is Fill, the allocator will initially choose the\n       storage pool that has the least amount of total free space.  After that\n       it will allocate from the same storage pool until the storage pool\n       cannot honor a request.\tThe allocator then reselects a storage pool\n       using the original criteria.\n\n       To use a strategy other than Round, the Allocation Session Reservation\n       feature must be disabled.\n\n     • XML: fileLockResyncTimeOut <value>\n\n       Old: BRLResyncTimeout <value>\n\n       NOTE: Not intended for general use.  Only use when recommended by Apple\n       Support.\n\n     • XML: allocSessionReservationSize <value>\n\n       Old: AllocSessionReservationSize <value>\n\n       The Allocation Session Reservation (ASR) feature allows a file system\n       to benefit from optimized allocation behavior for certain rich media\n       streaming applications and most other workloads.  The feature also\n       focuses on reducing free space fragmentation.\n\n       By default, this feature is enabled with a 1GB, 1073741824, size.\n\n       An old, deprecated parameter, AllocSessionReservation, when set to yes\n       would use a 1 GB segment size with no rounding.\tThis old parameter is\n       now ignored but can generate some warnings.\n\n       allocSessionReservationSize allows you to specify the size this feature\n       should use when allocating segments for a session.  The value is\n       expressed in bytes so a value of 2147483648 is 2 GBs.  The value must\n       be a multiple of MBs.  The XML file format must be in bytes.  The old\n       configuration file format can use multipliers such as m for MBs or g\n       for GBs.  If the multiplier is omitted in the old configuration file,\n       the value is interpreted as bytes as in the XML format.\n\n       A value of 0 turns off this capability and falls back on the base\n       allocator.  When enabled, the value can range from 128 MB (134217728)\n       to 1 TB (1099511627776).  (The largest value would indicate segments\n       are 1 TB in size, which is extremely large.)  The feature starts with\n       the specified size and then may use rounding to better handle user's\n       requests.  See also InodeStripeWidth.\n\n       There are 3 session types: small, medium, and large.  The type is\n       determined by the file offset and requested allocation size.  Small\n       sessions are for sizes (offset+allocation size) smaller than 1MB.\n       Medium sessions are for sizes 1MB through 1/10th of the\n       allocSessionReservationSize.  Large sessions are sizes bigger than\n       medium.\n\n       Here is another way to think of these three types: small sessions\n       collect or organize all small files into small session chunks; medium\n       sessions collect medium sized files by chunks using their parent\n       directory; and large files collect their own chunks and are allocated\n       independently of other files.\n\n       All sessions are client specific.  Multiple writers to the same\n       directory or large file on different clients will use different\n       sessions.  Small files from different clients use different chunks by\n       client.\n\n       Small sessions use a smaller chunk size than the configured\n       allocSessionReservationSize.  The small chunk size is determined by\n       dividing the configured size by 32.  For 128 MB, the small chunk size\n       is 4 MB.  For 1 GB, the small chunk size is 32 MBs.\n\n       Files can start using one session type and then move to another session\n       type.  If a file starts in a medium session and then becomes large, it\n       \"reserves\" the remainder of the session chunk it was using for itself.\n       After a session is reserved for a file, a new session segment will be\n       allocated for any other medium files in that directory.\n\n       When allocating subsequent pieces for a session, they are rotated\n       around to other stripe groups that can hold user data unless\n       InodeStripeWidth is set to 0.  When InodeStripeWidth is set, session\n       chunks are rotated in a similar fashion to InodeStripeWidth.  The\n       direction of rotation is determined by a combination of the session key\n       and the index of the client in the client table.  The session key is\n       based on the inode number so odd inodes will rotate in a different\n       direction from even inodes.  Directory session keys are based on the\n       inode number of the parent directory.\n\n       If this capability is enabled, StripeAlignSize is forced to 0.  In\n       fact, all stripe alignment requests are disabled because they can cause\n       clipping and can lead to severe free-space fragmentation.\n\n       The old AllocSessionReservation parameter is deprecated and replaced by\n       allocSessionReservationSize.\n\n       If any of the following \"special\" allocation functions are detected,\n       allocSessionReservationSize is turned off for that allocation:\n       PerfectFit, MustFit, or Gapped files.\n\n       When this feature is enabled, AllocationStrategy must be set to Round.\n       As of StorNext 6, this is enforced when creating and modifying file\n       systems. If a file system was created using a prior version of StorNext\n       and ASR was enabled but AllocationStrategy was not set to Round, the\n       FSM will run. However, the AllocationStrategy will be treated as Round\n       and a warning will be issued whenever the configuration file is parsed.\n\n     • XML: bufferCacheSize <value>\n\n       Old: BufferCacheSize <value>\n\n       This variable defines how much memory to use in the FSM program for\n       general metadata information caching.  The amount of memory consumed is\n       up to 2 times the value specified but typically less.\n\n       Increasing this value can improve performance of many metadata\n       operations by performing a memory cache access to directory blocks,\n       inode info and other metadata info.  This is about 10 - 1000 times\n       faster than performing I/O.\n\n       There are two buffer caches: the L1 cache and the L2 cache.  If\n       bufferCacheSize is configured as 1G or smaller, only the L1 cache is\n       used.  If bufferCacheSize is configured greater than 1G, the first 512M\n       is used by the L1 cache and the remainder is used by the L2 cache.\n       Blocks may reside in both caches.  Blocks in the L2 cache are\n       compressed by about a factor of 2.4, allowing for better memory\n       utilization.  For example, if bufferCacheSize is set to a value of 8G,\n       the FSM will actually be able to cache about 7.5 * 2.4 = 18 G of\n       metadata.  Depending on the amount of RAM in the MDC and the number of\n       allocated metadata blocks, in some cases it may be possible to keep all\n       used metadata in cache which can dramatically improve performance for\n       file system scanning.  Cvfsck also uses the buffer cache and specifying\n       a large enough value of bufferCacheSize to cover all metadata will\n       result in a large speed increase.  The cvadmin \"metadata\" command can\n       be used to determine the value of bufferCacheSize required to cache all\n       metadata.\n\n       Also see the useL2BufferCache configuration parameter.\n\n     • XML: caseInsensitive <true|false>\n\n       Old:"
+  manpageQuestion1: What is the primary purpose of the snfs_config file?
+  manpageQuestion2: How can you configure the AllocationStrategy in snfs_config to use the 'Balance' method?
+  manpageQuestion3: What is the function of the allocSessionReservationSize parameter in snfs_config and how would you set it to 2 GB?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.
+
+
+
+    Manpage text:
+
+    The caseInsensitive variable controls how the FSM reports case
+           sensitivity to clients. Windows clients are always case insensitive,
+           Mac clients default to case insensitive, but if the FSM is configured
+           as case sensitive then they will operate in case sensitive mode.  Linux
+           clients will follow the configuration variable, but can operate in case
+           insensitive mode on a case sensitive filesystem by using the
+           caseinsensitive mount option. Linux clients must be at the 5.4 release
+           or beyond to enable this behavior.
+
+           Note: You must stop the file system and run  cvupdatefs once the config
+           file has been updated in order to enable or disable case insensitive.
+           Clients must re-mount the file system to pick up the change.
+
+           When enabling case insensitive, it is also strongly recommended that
+           cvfsck -A be run to detect name case collisions. Cvupdatefs will not
+           enable case insensitive when name case collisions are present in the
+           file system.
+  manpageQuestion1: What is the primary purpose of the snfs_config resource?
+  manpageQuestion2: How can you configure the FSM to be case insensitive for Mac clients while ensuring that name case collisions are resolved?
+  manpageQuestion3: What steps are required to enable case insensitive mode in the snfs_config after modifying the configuration file?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.\n\n\n\nManpage text:\n\n• XML: cvRootDir <path>\n\n       Old: CvRootDir <path>\n\n       NOTE: Not intended for general use.  Only use when recommended by Apple\n       Support.\n\n       The CvRootDir variable specifies the directory in the StorNext file\n       system that will be mounted by clients. The specified path is an\n       absolute pathname of a directory that will become the root of the\n       mounted file system. The default value for the CvRootDir path is the\n       root of the file system, \"/\". This feature is available only with\n       Quantum StorNext Appliance products.\n\n     • XML: debug <debug_value>\n\n       Old: Debug <debug_value>\n\n       The Debug variable turns on debug functions for the FSM. The output is\n       sent to /Library/Logs/Xsan/data/<volume_name>/log/cvfs_log.  These data\n       may be useful when a problem occurs.  The following list shows which\n       value turns on a specific debug trace.  Multiple debugging options may\n       be selected by calculating the bitwise OR of the options' values to use\n       as debug_value.\tOutput from the debugging options is accumulated into\n       a single file."
+  manpageQuestion1: What is the primary purpose of the snfs_config tool?
+  manpageQuestion2: How would you configure the CvRootDir to point to a specific directory in the StorNext file system?
+  manpageQuestion3: What command can be used to enable debug tracing for the FSM with specific debug options?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.\n\n\n\nManpage text:\n\n0x00000001\t General Information\n\t  0x00000002\t Sockets\n\t  0x00000004\t Messages\n\t  0x00000008\t Connections\n\t  0x00000010\t File (VFS) requests\n\t  0x00000020\t File file (VOPS)\n\t  0x00000040\t Allocations\n\t  0x00000080\t Inodes\n\t  0x00000100\t Tokens\n\t  0x00000200\t Directories\n\t  0x00000400\t Attributes\n\t  0x00000800\t Bandwidth Management\n\t  0x00001000\t Quotas\n\t  0x00002000\t Administrative Management\n\t  0x00004000\t I/O\n\t  0x00008000\t Data Migration\n\t  0x00010000\t B+Trees\n\t  0x00020000\t Transactions and Journal\n\t  0x00040000\t REST API calls and data\n\t  0x00080000\t Memory Management\n\t  0x00100000\t QOS IO\n\t  0x00200000\t External API\n\t  0x00400000\t Windows Security\n\t  0x00800000\t Journal Activity\n\t  0x01000000\t Dump Statistics (Once Only)\n\t  0x02000000\t Extended Buffers\n\t  0x04000000\t Extended Directories\n\t  0x08000000\t Queues\n\t  0x10000000\t Extended Inodes\n\t  0x20000000\t Metadata Archive\n\t  0x40000000\t Xattr manipulation\n\t  0x80000000\t Development debug\n\n       NOTE: The performance of the volume is dramatically affected by turning\n       on debugging traces."
+  manpageQuestion1: What is the primary purpose of the snfs_config resource?
+  manpageQuestion2: How can you configure snfs_config to enable debugging traces for development purposes?
+  manpageQuestion3: Can you provide an example of setting the snfs_config flag to include both file (VFS) requests and file file (VOPS) operations?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.
+
+
+
+    Manpage text:
+
+    • XML: dirWarp <true|false>
+
+           Old: DirWarp <Yes|No>
+
+           NOTE: This setting has been deprecated and is no longer supported.  It
+           will be ignored.
+
+         • XML: enforceAcls <true|false>
+
+           Old: EnforceACLs <Yes|No>
+
+           Enables Access Control List enforcement on XSan clients.  On non-XSan
+           MDCs, windowsSecurity should also be enabled for this feature to work
+           with XSan clients.
+
+           This variable is only applicable when securityModel is set to legacy.
+           It is ignored for other securityModel values.  See securityModel for
+           details.
+
+         • XML: enableSpotlight <true|false>
+
+           Old: EnableSpotlight <Yes|No>
+
+           Enable Spotlight indexing.
+
+         • XML: eventFiles <true|false>
+
+           Old: EventFiles <Yes|No>
+
+           NOTE: Not intended for general use.  Only use when recommended by Apple
+           Support.
+
+           Enables event files processing for Data Migration
+
+         • XML: eventFileDir <path>
+
+           Old: EventFileDir <path>
+
+           NOTE: Not intended for general use.  Only use when recommended by Apple
+           Support.
+  manpageQuestion1: What is the primary purpose of the snfs_config tool or setting?
+  manpageQuestion2: How would you configure Spotlight indexing using the snfs_config settings?
+  manpageQuestion3: Can you explain how to enable event files processing for Data Migration using snfs_config?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.\n\n\n\nManpage text:\n\nSpecifies the location to put Event Files\n\n     • XML: extentCountThreshold <value>\n\n       Old: ExtentCountThreshold <value>\n\n       When a file has this many extents, a RAS event is triggered to warn of\n       fragmented files.  The default value is 49152.  A value of 0 or 1\n       disables the RAS event.\tThis value must be between 0 and 33553408\n       (0x1FFFC00), inclusive.\n\n     • XML: fileLocks <true|false>\n\n       Old: FileLocks <Yes|No>\n\n       The variable enables or disables the tracking and enforcement of file-\n       system-wide file locking.  Enabling the File locks feature allows file\n       locks to be tracked across all clients of the volume. The FileLocks\n       feature supports both the POSIX file locking model and the Windows file\n       locking model.\n\n       If enabled, byte-range file locks are coordinated through the FSM,\n       allowing a lock set by one client to block overlapping locks by other\n       clients.  If disabled, then byte-range locks are local to a client and\n       do not prevent other clients from getting byte-range locks on a file,\n       however they do prevent overlapping lock attempts on the same client."
+  manpageQuestion1: What is the primary purpose of the snfs_config resource?
+  manpageQuestion2: How would you configure snfs_config to trigger a RAS event when a file has 65536 extents?
+  manpageQuestion3: Can you provide an example of disabling file locking in snfs_config?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.
+
+
+
+    Manpage text:
+
+    • XML: forcePerfectFit <true|false>
+
+           Old: ForcePerfectFit <Yes|No>
+
+           NOTE: Not intended for general use.  Only use when recommended by Apple
+           Support.
+
+           Enables a specialized allocation mode where all files are automatically
+           aligned and rounded to PerfectFitSize blocks.  If this is enabled,
+           allocSessionReservationSize is ignored.
+
+         • XML: fsBlockSize <value>
+
+           Old: FsBlockSize <value>
+
+           The File System Block Size defines the granularity of the volume's
+           allocation size.  The block size is fixed at 4K.  When an older file
+           system is upgraded to StorNext 5, if the block size is other than 4k,
+           the file system is converted to a 4K block size.  For these file
+           systems, the original block size value remains in the config file.  If
+           a file system is remade that had a file system block size other than
+           4K, the config file is rewritten, changing the file system block size
+           parameter value to 4K.
+
+         • XML: fsCapacityThreshold <value>
+  manpageQuestion1: What is the primary purpose of the snfs_config resource?
+  manpageQuestion2: How would you set the file system block size to 4K using snfs_config?
+  manpageQuestion3: Can you explain how to enable the ForcePerfectFit mode in snfs_config?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.
+
+
+
+    Manpage text:
+
+    Old: FsCapacityThreshold <value>
+
+           When a file system is over fsCapacityThreshold percent full, a RAS
+           event is sent to warn of this condition. This value must be between 0
+           and 100, inclusive. The default value is 0, which disables the RAS
+           event for all file systems except the HA shared file system which
+           defaults to 85%.  To disable this RAS event for the HA shared file
+           system, set fsCapacityThreshold to 100.
+
+         • XML: globalShareMode <true|false>
+
+           Old: GlobalShareMode <Yes|No>
+
+           The GlobalShareMode variable enables or disables the enforcement of
+           Windows Share Modes across StorNext clients.  This feature is limited
+           to StorNext clients running on Microsoft Windows platforms.  See the
+           Windows CreateFile documentation for the details on the behavior of
+           share modes.  When enabled, sharing violations will be detected between
+           processes on different StorNext clients accessing the same file.
+           Otherwise sharing violations will only be detected between processes on
+           the same system.  The default of this variable is false.  This value
+           may be modified for existing volumes.
+  manpageQuestion1: What is the primary purpose of the snfs_config tool?
+  manpageQuestion2: How would you configure the fsCapacityThreshold for a file system to trigger a RAS event when it reaches 85% capacity?
+  manpageQuestion3: Can you explain how to enable GlobalShareMode on a StorNext client running on Windows platforms using snfs_config?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.
+
+
+
+    Manpage text:
+
+    • XML: globalSuperUser <true|false>
+
+           Old: GlobalSuperUser <Yes|No>
+
+           The Global Super User variable allows the administrator to decide if
+           any user with super-user privileges may use those privileges on the
+           file system. When this variable is set to true, any super-user has
+           global access rights on the volume. This may be equated to the
+           maproot=0 directive in NFS. When the Global Super User variable is set
+           to false, a super-user may only modify files where it has access rights
+           as a normal user. This value may be modified for existing volumes.  If
+           storageManager is enabled and this variable is set to false, the value
+           will be overriden and set to true on storage manager nodes.  A storage
+           manager node is the MDC or a Distributed Data Mover client.  Apple Xsan
+           clients do not honor the setting of globalSuperUser.
+
+         • XML: haFsType <HaShared|HaManaged|HaUnmanaged|HaUnmonitored>
+
+           Old: HaFsType <HaShared|HaManaged|HaUnmanaged|HaUnmonitored>
+  manpageQuestion1: What is the primary purpose of the snfs_config tool?
+  manpageQuestion2: How would you set the GlobalSuperUser variable to true using snfs_config?
+  manpageQuestion3: Can you provide an example of configuring the haFsType parameter to HaShared using snfs_config?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.\n\n\n\nManpage text:\n\nThe HaFsType configuration item turns on Xsan High Availability (HA)\n       protection for a file system, which prevents split-brain scenario data\n       corruption.  HA detects conditions where split brain is possible and\n       triggers a hardware reset of the server to remove the possibility of\n       split brain scenario.  This occurs when an activated FSM is not\n       properly maintaining its brand of an arbitration block (ARB) on the\n       metadata LUN.  Timers on the activated and standby FSMs coordinate the\n       usurpation of the ARB so that the activated server will relinquish\n       control or perform a hardware reset before the standby FSM can take\n       over.  It is very important to configure all file systems correctly and\n       consistently between the two servers in the HA cluster.\n\n       There are currently three types of HA monitoring that are indicated by\n       the HaShared, HaManaged, and HaUnmanaged configuration parameters.\n\n       The HaShared dedicated file system holds shared data for the operation\n       of the StorNext File System and Stornext Storage Manager (SNSM).  There\n       must be one and only one HaShared file system configured for these\n       installations.  The running of SNSM processes and the starting of\n       managed file systems is triggered by activation of the HaShared file\n       system.\tIn addition to being monitored for ARB branding as described\n       above, the exit of the HaShared FSM triggers a hardware reset to ensure\n       that SNSM processes are stopped if the shared file system is not\n       unmounted."
+  manpageQuestion1: What is the primary purpose of the snfs_config resource?
+  manpageQuestion2: How would you configure the HaShared file system to ensure proper HA protection in a StorNext environment?
+  manpageQuestion3: What are the key considerations when configuring HA monitoring parameters for a file system in an HA cluster?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.
+
+
+
+    Manpage text:
+
+    The HaManaged file systems are not started until the HaShared file
+           system activates.  This keeps all the managed file systems collocated
+           with the SNSM processes.  It also means that they cannot experience
+           split-brain corruption because there is no redundant server to compete
+           for control, so they are not monitored and cannot trigger a hardware
+           reset.
+
+           The HaUnmanaged file systems are monitored.  The minimum configuration
+           necessary for an HA cluster is to: 1) place this type in all the FSMs,
+           and 2) enter the peer server's IP address in the ha_peer(4) file.
+           Unmanaged FSMs can activate on either server and fail over to the peer
+           server without a hardware reset under normal operating conditions.
+
+           On non-HA setups, the special HaUnmonitored type is used to indicate no
+           HA monitoring is done on the file systems.  It is only to be used on
+           non-HA setups. Note that setting HaFsType to HaUnmonitored disables the
+           HA monitor timers used to guarantee against split brain.  When two MDCs
+           are configured to run as an HA pair but full HA protection is disabled
+           in this way, it is possible in rare situations for file system metadata
+           to become corrupt if there are lengthy delays or excessive loads in the
+           LAN and SAN networks that prevent an active FSM from maintaining its
+           branding of the ARB in a timely manner.
+  manpageQuestion1: What is the primary purpose of the snfs_config resource?
+  manpageQuestion2: How would you configure an HA cluster to use HaUnmanaged file systems with peer server IP addresses?
+  manpageQuestion3: What is the recommended setting for file systems in non-HA setups according to the manpage?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.
+
+
+
+    Manpage text:
+
+    • XML: inodeCacheSize <value>
+
+           Old: nodeCacheSize <value>
+
+           This variable defines how many inodes can be cached in the FSM program.
+           An in-core inode is approximately 800 - 1000 bytes per entry.
+
+         • XML: inodeDeleteMax <value>
+
+           Old: InodeDeleteMax <value>
+
+           NOTE: Not intended for general use.  Only use when recommended by Apple
+           Support.
+
+           Sets the trickle delete rate of inodes that fall under the Perfect Fit
+           check (see the Force Perfect Fit option for more information.  If Inode
+           Delete Max is set to 0 or is excluded from the configuration file, it
+           is set to an internally calculated value.
+
+         • XML: inodeExpandMin <file_system_blocks>
+
+           Old: InodeExpandMin <file_system_blocks>
+
+         • XML: inodeExpandInc <file_system_blocks>
+
+           Old: InodeExpandInc <file_system_blocks>
+
+         • XML: inodeExpandMax <file_system_blocks>
+
+           Old: InodeExpandMax <file_system_blocks>
+
+           The inodeExpandMin, inodeExpandInc and inodeExpandMax variables
+           configure the floor, increment and ceiling, respectively, for the block
+           allocation size of a dynamically expanding file.  The new format
+           requires this value be specified in bytes and multipliers are not
+           supported.  In the old format, when the value is specified without a
+           multiplier suffix, it is a number of volume blocks; when specified with
+           a multiplier, it is bytes.
+  manpageQuestion1: What is the primary purpose of the snfs_config tool or configuration parameters?
+  manpageQuestion2: How would you configure the inode cache size in snfs_config to cache 500 inodes, given that each inode is approximately 900 bytes?
+  manpageQuestion3: Can you provide an example of setting the inodeExpandMin to 1024 bytes and inodeExpandInc to 512 bytes for a dynamically expanding file system?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.
+
+
+
+    Manpage text:
+
+    The first time a file requires space, inodeExpandMin blocks are
+           allocated. When an allocation is exhausted, a new set of blocks is
+           allocated equal to the size of the previous allocation to this file
+           plus inodeExpandInc additional blocks. Each new allocation size will
+           increase until the allocations reach inodeExpandMax blocks. Any
+           expansion that occurs thereafter will always use inodeExpandMax blocks
+           per expansion.
+
+           NOTE: when inodeExpandInc is not a factor of inodeExpandMin, all new
+           allocation sizes will be rounded up to the next inodeExpandMin
+           boundary. The allocation increment rules are still used, but the actual
+           allocation size is always a multiple of inodeExpandMin.
+
+           NOTE: The explicit use of the configuration variables inodeExpandMin,
+           inodeExpandInc and inodeExpandMax are being deprecated in favor of an
+           internal table driven mechanism.  Although they are still supported for
+           backward compatibility, there may be warnings during the conversion of
+           an old configuration file to an XML format.
+  manpageQuestion1: What is the primary purpose of the snfs_config resource?
+  manpageQuestion2: How does the snfs_config tool manage inode expansion when allocating blocks for a file?
+  manpageQuestion3: What happens to the allocation size when inodeExpandInc is not a factor of inodeExpandMin?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.
+
+
+
+    Manpage text:
+
+    • XML: inodeStripeWidth <value>
+
+           Old: InodeStripeWidth <value>
+
+           The Inode Stripe Width variable defines how a file is striped across
+           the volume's data storage pools.  The default value is 4 GBs
+           (4294967296).  After the initial placement policy has selected a
+           storage pool for the first extent of the file, for each Inode Stripe
+           Width extent the allocation is changed to prefer the next storage pool
+           allowed to contain file data.  Next refers to the next numerical stripe
+           group number going up or down.  (The direction is determined using the
+           inode number: odd inode numbers go up or increment, and even inode
+           numbers go down or decrement).  The rotation is modulo the number of
+           stripe groups that can hold data.
+
+           When Inode Stripe Width is not specified, file data allocations will
+           typically attempt to use the same storage pool as the initial
+           allocation to the file.
+
+           When used with an Allocation Strategy setting of Round, files will be
+           spread around the allocation groups both in terms of where their
+           initial allocation is and in how the file contents are spread out.
+  manpageQuestion1: What is the primary purpose of the snfs_config tool?
+  manpageQuestion2: How would you set the Inode Stripe Width to 8 GBs using snfs_config?
+  manpageQuestion3: Can you explain how the Inode Stripe Width interacts with the Allocation Strategy setting of Round?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.\n\n\n\nManpage text:\n\nInode Stripe Width is intended for large files.\tThe typical value\n       would be many times the maximum Stripe Breadth of the data storage\n       pools. The value cannot be less than the maximum Stripe Breadth of the\n       data storage pools.  Note that when some storage pools are full, this\n       policy will start to prefer the storage pool logically following the\n       full one.  A typical value is 4 GB (4294967296) or 8 GBs (8589934592).\n       The size is capped at 1099511627776 (1TB).\n\n       If this value is configured too small, fragmentation can occur.\n       Consider using a setting of 1MB with files as big as 100 GBs.  Each 100\n       GB file would have 102,400 extents!\n\n       The new format requires this value be specified in bytes, and\n       multipliers are not supported.  In the old format, when the value is\n       specified without a multiplier suffix, it is a number of volume blocks;\n       when specified with a multiplier, it is bytes.\n\n       When allocSessionReservationSize is non-zero, this parameter is forced\n       to be >= allocSessionReservationSize."
+  manpageQuestion1: What is the primary purpose of the snfs_config tool?
+  manpageQuestion2: How would you configure snfs_config to set the Inode Stripe Width to 4 GB in bytes?
+  manpageQuestion3: Can you explain how to set the Inode Stripe Width to 1MB when using the old format without multipliers?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.\n\n\n\nManpage text:\n\nIf Inode Stripe Width is greater than allocSessionReservationSize,\n       files larger than allocSessionReservationSize will use Inode Stripe\n       Width as their allocSessionReservationSize for allocations with an\n       offset beyond allocSessionReservationSize.\n\n     • XML: ioTokens <true|false>\n\n       Old: IoTokens <Yes|No>\n\n       The I/O Tokens variable allows the administrator to select which\n       coherency model should be used when different clients open the same\n       file, concurrently.  With ioTokens set to false, the coherency model\n       uses 3 states: exclusive, shared, and shared write.  If a file is\n       exclusive, only one client is using the file.  Shared indicates that\n       multiple clients have the file open but for read only mode.  This\n       allows clients to cache data in memory.\tShared write indicates\n       multiple clients have the file open and at least one client has the\n       file open for write.  With \"Shared Write\" mode, coherency is resolved\n       by using DMA I/O and no caching of data."
+  manpageQuestion1: What is the primary purpose of the snfs_config tool or setting?
+  manpageQuestion2: How does the ioTokens setting affect coherency models in a multi-client environment?
+  manpageQuestion3: What is the relationship between Inode Stripe Width and allocSessionReservationSize in snfs_config?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.
+
+
+
+    Manpage text:
+
+    A problem with DMA I/O is that small or unaligned I/Os need to do a
+           read-modify-write.  So, two racing clients can undo each other's writes
+           since they could have data in memory.  This occurs when a client has
+           read into a buffer, modifies part of the buffer, and then write it
+           using DMA (after the other client's write that occurred before this
+           client read into the buffer being written).  Different platforms have
+           requirements on the granularity of DMA I/O, usually at least 512 bytes
+           that must be written and also using a 512 or greater boundary for the
+           start and end of the I/O.
+
+           If one sets ioTokens to true (the default setting), each I/O performed
+           by a client must have a token.  Clients cache and can do many I/Os
+           while they have the token.  When the token is revoked, all data and
+           associated attributes are flushed.
+
+           Customers, who have multiple writers on a file, should set ioTokens to
+           true, unless they know that the granularity and length of I/Os are safe
+           for DMA.  File locking does NOT prevent read-modify-write across lock
+           boundaries.
+  manpageQuestion1: What is the primary purpose of the snfs_config resource?
+  manpageQuestion2: How can a user configure snfs_config to ensure proper handling of DMA I/O operations with multiple writers on a file?
+  manpageQuestion3: What is the recommended setting for ioTokens in snfs_config to prevent race conditions during DMA I/O operations?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.
+
+
+
+    Manpage text:
+
+    The default for I/O Tokens is true.
+
+           For backward compatibility, if a client opens a file from a prior
+           release that does not support ioTokens, the coherency model drops back
+           to the "Shared Write" model using DMA I/O (ioTokens false) but on a
+           file-by-file basis.
+
+           If ioTokens is changed and the MDC is restarted, files that were open
+           at that time continue to operate in the model before the change.  To
+           switch these files to the new value of ioTokens, all applications  must
+           close the file and wait for a few seconds and then re-open it.  Or, if
+           the value was switched from true to false, a new client can open the
+           file and all clients will transparently be switched to the old model on
+           that file.
+
+         • XML: journalSize <value>
+
+           Old: JournalSize <value>
+
+           Controls the size of the volume journal.  cvupdatefs(8) must be run
+           after changing this value for it to take effect.  The FSM will not
+           activate if it detects that the journal size has been changed in the
+           config file, but the metadata has not been updated.
+  manpageQuestion1: What is the primary purpose of the snfs_config resource?
+  manpageQuestion2: How would you configure the journal size for an SNFS volume to 1024 bytes using snfs_config?
+  manpageQuestion3: What is the process for changing the ioTokens setting in snfs_config and ensuring that existing open files adopt the new setting?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.
+
+
+
+    Manpage text:
+
+    • XML: maintenanceMode <true|false>
+
+           Old: MaintenanceMode <Yes|No>
+
+           The maintenanceMode parameter enables or disables maintenance mode for
+           the file system. In maintenance mode, all client mount requests are
+           rejected by the FSM except from the client running on the same node as
+           the FSM.
+
+           NOTE: Not intended for general use.  Only use when recommended by Apple
+           Support.
+
+         • XML: maxLogs <value>
+
+           Old: MaxLogs <value>
+
+           The maxLogs variable defines the maximum number of logs a FSM can
+           rotate through when they get to MaxLogSize.  The current log file
+           resides in /Library/Logs/Xsan/data/<volume_name>/log/cvlog.
+
+         • XML: maxLogSize <value>
+
+           Old: MaxLogSize <value>
+
+           The maxLogSize variable defines the maximum number of bytes a FSM log
+           file should grow to. The log file resides in
+           /Library/Logs/Xsan/data/<volume_name>/log/cvlog.  When the log file
+           grows to the specified size, it is moved to cvlog_<number> and a new
+           cvlog is started. Therefore, the maximum space consumed will be maxLogs
+           multiplied by maxLogSize.
+  manpageQuestion1: What is the primary purpose of the snfs_config tool or configuration parameters?
+  manpageQuestion2: How would you configure the maximum log size for FSM logs on a Xsan volume using snfs_config?
+  manpageQuestion3: Can you explain how the maxLogs and maxLogSize parameters work together to manage FSM log rotation?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.
+
+
+
+    Manpage text:
+
+    • XML: namedStreams <true|false>
+
+           Old: NamedStreams <Yes|No>
+
+           The namedStreams parameter enables or disables support for Apple Named
+           Streams. Named Streams can be used by macOS clients to efficiently
+           store resource forks and extended attributes directly in file system
+           metadata instead of using Apple Double files. If namedStreams is not
+           enabled when the file system is initialized, cvupdatefs(8) must be run
+           after enabling namedStreams for it to take effect. The FSM will not
+           activate if it detects that namedStreams has been enabled in the config
+           file, but the metadata has not been updated by cvupdatefs. Enabling
+           namedStreams is meant to be a permanent operation. Once enabled,
+           disabling namedStreams requires a special procedure only available
+           through technical support that is not always feasible. Note that most
+           "copy" programs on Windows and Linux do not preserve namedStreams. This
+           includes Windows Explorer. Also note that this parameter applies to
+           Apple Named  Streams support in the file system only. The StorNext NAS
+           SMB server has its own named streams option that must be activated
+           separately.
+  manpageQuestion1: What is the primary purpose of the snfs_config resource?
+  manpageQuestion2: How would you enable Apple Named Streams support in a StorNext file system using snfs_config?
+  manpageQuestion3: What are the implications of enabling namedStreams in snfs_config and not running cvupdatefs after making the change?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.
+
+
+
+    Manpage text:
+
+    • XML: opHangLimitSecs <value>
+
+           Old: OpHangLimitSecs <value>
+
+           This variable defines the time threshold used by the FSM program to
+           discover hung operations.  The default is 180.  It can be disabled by
+           specifying 0.  When the FSM program detects an I/O hang, it will stop
+           execution in order to initiate failover to backup system.
+
+         • XML: perfectFitSize <value>
+
+           Old: PerfectFitSize <value>
+
+           For files in perfect fit mode, all allocations will be rounded up to
+           the number of volume blocks set by this variable.  Perfect fit mode can
+           be enabled on an individual file by an application using the Xsan
+           extended API, or for an entire file system by setting forcePerfectFit.
+
+           If InodeStripeWidth or allocSessionReservationSize are non-zero and
+           Perfect fit is not being applied to an allocation, this rounding is
+           skipped.
+
+         • XML: quotas <true|false>
+
+           Old: Quotas <Yes|No>
+
+           The quotas variable enables or disables the enforcement of the volume
+           quotas. Enabling the quotas feature allows storage usage to be tracked
+           for individual users and groups. Setting hard and soft quotas allows
+           administrators to limit the amount of storage consumed by a particular
+           user/group ID. See snquota(1) for information on quotas feature
+           commands.
+  manpageQuestion1: What is the primary purpose of the snfs_config tool?
+  manpageQuestion2: How would you configure the FSM program to detect hung operations after 300 seconds using snfs_config?
+  manpageQuestion3: Can you explain how to enable quotas for a volume using snfs_config?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.\n\n\n\nManpage text:\n\nNOTE: Quotas are calculated differently on Windows and Linux systems.\n       It is not possible to migrate a meta data controller running quotas\n       between these different types.\n\n       NOTE: Quotas are not allowed when securityModel is set to legacy and\n       windowsSecurity is set to false.\n\n       NOTE: When using a Windows MDC, quotas are not allowed if securityModel\n       is set to unixpermbits.\n\n     • XML: quotaHistoryDays <value>\n\n       Old: QuotaHistoryDays <value>\n\n       When the quotas variable (see above) is turned on, there will be\n       nightly logging of the current quota limits and values.\tThe logs will\n       be placed in the /Library/Logs/Xsan/data/<volume_name>/quota_history\n       directory.  This variable specifies the number of days of logs to keep.\n       Valid values are 0 (no logs are kept) to 3650 (10 years of nightly logs\n       are kept).  The default is 7.\n\n     • XML: remoteNotification <true|false>\n\n       Old: RemoteNotification <Yes|No>\n\n       The remoteNotification variable controls the Windows Remote Directory\n       Notification feature.  The default value is no which disables the\n       feature.  Note: this option is not intended for general use.  Only use\n       when recommended by Apple Support."
+  manpageQuestion1: What is the primary purpose of the snfs_config tool or configuration settings?
+  manpageQuestion2: How can you configure the number of days to retain quota history logs using snfs_config?
+  manpageQuestion3: What is the function of the remoteNotification configuration option in snfs_config?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.\n\n\n\nManpage text:\n\n• XML: renameTracking <true|false>\n\n       Old: RenameTracking <Yes|No>\n\n       The renameTracking variable controls the Stornext Storage Manager\n       (SNSM) rename tracking feature.\tThis replaces the (global) Storage\n       Manager configuration variable MICRO_RENAME that was present in older\n       versions of StorNext. It is by default set to 'false'. Note that this\n       feature should ONLY be enabled at sites where Microsoft, or other\n       similar applications, end up renaming operational files during their\n       processing. See the fsrecover(1) man page for more information on use\n       of renameTracking.\n\n     • XML: reservedSpace <true|false>\n\n       Old: ReservedSpace <Yes|No>\n\n       NOTE: Not intended for general use. Only use when recommended by\n       Quantum Support.\n\n       The reservedSpace parameter allows the administrator the ability to\n       control the use of delayed allocations on clients.  The default value\n       is Yes.\treservedSpace is a performance feature that allows clients to\n       perform buffered writes on a file without first obtaining real\n       allocations from the FSM.  The allocations are later performed when the\n       data are flushed to disk in the background by a daemon performing a\n       periodic sync."
+  manpageQuestion1: What is the primary purpose of the snfs_config tool or configuration parameter?
+  manpageQuestion2: How would you set the renameTracking parameter to true in snfs_config?
+  manpageQuestion3: What is the default value for the reservedSpace parameter in snfs_config and what is its purpose?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.
+
+
+
+    Manpage text:
+
+    When reservedSpace is true, the FSM reserves enough disk space so that
+           clients are able to safely perform these delayed allocations.  The
+           meta-data server reserves a minimum of 4GB per stripe group and up to
+           280 megabytes per client per stripe group.
+
+           Setting reservedSpace to false allows slightly more disk space to be
+           used, but adversely affects buffer cache performance and may result in
+           serious fragmentation.
+
+           XML: metadataArchive <true|false>
+
+           The metadataArchive statement is used to enable or disable the Metadata
+           Archive created by the FSM. The Metadata Archive contains a copy of all
+           file system metadata including past history of metadata changes if
+           metadataArchiveDays is set to a value greater than zero.  The Metadata
+           Archive is used for disaster recovery, file system event notification,
+           and file system auditing among other features.
+
+           XML: metadataArchiveDir <path>
+
+           The metadataArchiveDir statement is used to change the path in which
+           the Metadata Archive is created. The default path is
+           /System/Library/Filesystems/acfs.fs/Contents/database/mdarchives/ for
+           all file systems except non-managed file systems not running in an HA
+           environment where the path is then
+           /Library/Logs/Xsan/data/<volume_name>/.
+  manpageQuestion1: What is the primary purpose of the snfs_config tool?
+  manpageQuestion2: How would you configure snfs_config to enable the Metadata Archive and set its directory path to /custom/archive/path?
+  manpageQuestion3: What is the effect of setting reservedSpace to false in snfs_config and what are the potential consequences?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.\n\n\n\nManpage text:\n\nXML: metadataArchiveSearch <true|false>\n\n       The metadataArchiveSearch statement is used to enable or disable the\n       Metadata Archive Search capability in Metadata Archive.\tIf enabled,\n       Metadata Archive supports advanced searching capabilities which are\n       used by various other StorNext features. Metadata Archive Search is\n       enabled by default and should only be turned off if performance issues\n       are experienced.\n\n       XML: metadataArchiveCache <bytes>\n\n       The metadataArchiveCache statement is used to configure the size of the\n       memory cache for the Metadata Archive.  The minimum cache size is 1GB,\n       the maximum is 500GB, and the default is 2GB.\n\n       XML: metadataArchiveDays <value>\n\n       The metadataArchiveDays statement is used to set the number of days of\n       metadata history to keep available in the Metadata Archive.  The\n       default value is zero (no metadata history).\n\n       XML: audit <true|false>\n\n       The audit keyword controls if the filesystem maintains extra metadata\n       for use with the snaudit command and for tracking client activity on\n       files. The default value is false and this feature requires that\n       metadataArchive be enabled."
+  manpageQuestion1: What is the primary purpose of the snfs_config tool or settings?
+  manpageQuestion2: How would you configure the Metadata Archive to enable advanced searching capabilities and set a cache size of 4GB?
+  manpageQuestion3: Can you explain how to disable the audit feature in snfs_config and ensure that metadataArchive is enabled?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.\n\n\n\nManpage text:\n\nXML: restAccess <privileged|enabled|disabled>\n\n       Controls the presentation of a rest API for various filesystem\n       capabilities on Linux systems.  An https service is presented by the\n       FSM if this is enabled.\tVarious utilities such as sgmanage and parts\n       of the GUI make use of this.  Some rest services also depend on\n       metadataArchive being enabled.  When the mode is set to privileged, the\n       access information for the service is only available to privileged\n       users. When the mode is enabled, any user may view the service. The\n       service may be disabled completely with by setting this to disabled.\n       The default is privileged.\n\n     • XML: securityModel <legacy|acl|unixpermbits>\n\n       Old: SecurityModel <legacy|acl|unixpermbits>\n\n       The securityModel variable determines the security model to use on Xsan\n       clients.  legacy is the default value.\n\n       When set to legacy, the windowsSecurity variable is checked to\n       determine whether or not Windows clients should make use of the Windows\n       Security Reference Monitor (ACLs).  The windowsIdMapping variable is\n       ignored for this security model."
+  manpageQuestion1: What is the primary purpose of the snfs_config resource?
+  manpageQuestion2: How can you configure snfs_config to enable the REST API for filesystem capabilities on Linux systems and allow any user to access it?
+  manpageQuestion3: What is the default security model for Xsan clients in snfs_config and what does it imply about access control?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.\n\n\n\nManpage text:\n\nWhen set to acl, all Xsan clients (Windows and Unix) will make use of\n       the Windows Security Reference Monitor (ACLs).  The windowsSecurity,\n       windowsIdMapping, and enforceAcls variables are ignored for this\n       security model.\n\n       When set to unixpermbits, all Xsan clients (Unix and Windows) will use\n       Unix permission bit settings when performing file access checks.  When\n       unixpermbits is specified, an additional variable, windowsIdMapping, is\n       used to control the method used to perform the Windows User to Unix\n       User/Group ID mappings.\tSee the windowsIdMapping variable for\n       additional information.\tThe windowsSecurity, useActiveDirectorySFU,\n       enforceAcls, and unixIdFabricationOnWindows variables are ignored for\n       this security model.\n\n       NOTE: The unixpermbits setting does not support the Windows\n       NtCreateFile function FILE_OPEN_BY_FILE_ID option, which opens a file\n       by inode number versus file name.\n\n     • XML: spotlightSearchLevel <FsSearch|ReadWrite>"
+  manpageQuestion1: What is the primary purpose of the snfs_config resource?
+  manpageQuestion2: How would you configure the snfs_config to use Unix permission bit settings for file access checks on Xsan clients?
+  manpageQuestion3: Can you explain how the windowsIdMapping variable is used in conjunction with the unixpermbits security model?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.
+
+
+
+    Manpage text:
+
+    Old: SpotlightSearchLevel <FsSearch|ReadWrite>
+
+           Set the SpotlightSearchLevel. This option only applies when Xsan MDCs
+           are used and should not be used elsewhere as it can interfere with
+           Spotlight Proxy functionality.
+
+         • XML: spotlightUseProxy <true|false>
+
+           Old: SpotlightUseProxy <Yes|No>
+
+           Enable properly configured Xsan clients to act as proxy servers for OS
+           X Spotlight Search on Xsan.
+
+         • XML: stripeAlignSize <value>
+
+           Old: StripeAlignSize <value>
+
+           The stripeAlignSize statement causes the allocator to automatically
+           attempt stripe alignment and rounding of allocations greater than or
+           equal to this size.  The new format requires this value be specified in
+           bytes and multipliers are not supported.  In the old format, when the
+           value is specified without a multiplier suffix, it is a number of
+           volume blocks; when specified with a multiplier, it is bytes.  If set
+           to default value (-1), it internally gets set to the size of largest
+           stripeBreadth found for any stripeGroup that can hold user data.  A
+           value of 0 turns off automatic stripe alignment.  Stripe-aligned
+           allocations are rounded up so that allocations are one stripe breadth
+           or larger.
+  manpageQuestion1: What is the primary purpose of the snfs_config resource?
+  manpageQuestion2: How would you configure Xsan clients to act as proxy servers for Spotlight Search using snfs_config?
+  manpageQuestion3: Can you explain how to set the stripeAlignSize parameter in snfs_config to automatically align allocations based on the largest stripeBreadth?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.\n\n\n\nManpage text:\n\nIf an allocation fails with stripe alignment enabled, another attempt\n       is made to allocate the space without stripe alignment.\n\n       If allocSessionReservationSize is enabled, stripeAlignSize is set to 0\n       to reduce fragmentation within segments which occurs when clipping\n       within segments.\n\n     • XML: trimOnClose <value>\n\n       Old: TrimOnClose <value>\n\n       NOTE: Not intended for general use.  Only use when recommended by Apple\n       Support.\n\n     • XML: useL2BufferCache <true|false>\n\n       Old: UseL2BufferCache <yes|no>\n\n       The useL2BufferCache variable determines whether the FSM should use the\n       compressed L2 metadata block cache when the bufferCacheSize is greater\n       than 1GB.  The default is true.\tSetting this variable to false may\n       delay FSM startup when using a very large value for bufferCacheSize.\n\n       NOTE: This variable may be removed in a future release.\n\n       NOTE: Not intended for general use.  Only use when recommended by Apple\n       Support."
+  manpageQuestion1: What is the primary purpose of the snfs_config resource?
+  manpageQuestion2: How can you configure snfs_config to disable the L2 buffer cache for large bufferCacheSize values?
+  manpageQuestion3: What is the recommended approach for handling trimOnClose in snfs_config according to Apple Support?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.\n\n\n\nManpage text:\n\n• XML: unixDirectoryCreationModeOnWindows <value>\n\n       Old: UnixDirectoryCreationModeOnWindows <value>\n\n       The unixDirectoryCreationModeOnWindows variable instructs the FSM to\n       pass this value back to Microsoft Windows clients.  The Windows Xsan\n       clients will then use this value as the permission mode when creating a\n       directory.  The default value is 0755.  This value must be between 0\n       and 0777, inclusive.\n\n     • XML: unixFileCreationModeOnWindows <value>\n\n       Old: UnixFileCreationModeOnWindows <value>\n\n       The unixFileCreationModeOnWindows variable instructs the FSM to pass\n       this value back to Microsoft Windows clients. The Windows Xsan clients\n       will then use this value as the permission mode when creating a file.\n       The default value is 0644.  This value must be between 0 and 0777,\n       inclusive.\n\n     • XML: unixIdFabricationOnWindows <true|false>\n\n       Old: UnixIdFabricationOnWindows <yes|no>\n\n       The unixIdFabricationOnWindows variable is simply passed back to a\n       Microsoft Windows client. The client uses this information to turn\n       on/off \"fabrication\" of uid/gids from a Microsoft Active Directory\n       obtained GUID for a given Windows user.\tA value of yes will cause the\n       client for this volume to fabricate the uid/gid and possibly override\n       any specific uid/gid already in Microsoft Active Directory for the\n       Windows user.  This setting should only be enabled if it is necessary\n       for compatibility with Apple MacOS clients.  The default is false,\n       unless the meta-data server is running on Apple MacOS, in which case it\n       is true."
+  manpageQuestion1: What is the primary purpose of the snfs_config resource?
+  manpageQuestion2: How would you set the default directory creation permission mode for Windows clients to 0755 using snfs_config?
+  manpageQuestion3: Can you explain how to configure the UnixIdFabricationOnWindows setting to enable uid/gid fabrication for compatibility with Apple macOS clients?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.
+
+
+
+    Manpage text:
+
+    This variable is only applicable when securityModel is set to legacy or
+           acl.  It is ignored for other securityModel values.  See securityModel
+           for details.
+
+         • XML: unixIdMapping <value>
+
+           Old: UnixIdMapping <value>
+
+           When securityModel is set to acl, the unixIdMapping variable determines
+           the method Linux and Unix clients use to perform Unix User/Group ID to
+           Windows User mappings used by ACLs. This setting has no effect on
+           Windows or Xsan clients.
+
+           The default value of this variable is none which is incompatible with
+           setting securityModel to acl.
+
+           A value of winbind should be used when the environment contains Linux
+           clients that are all bound to Active Directory using Winbind and
+           running the winbind service.
+
+           A value of mdc should be used when the MDCs for a file system are bound
+           to Active Directory using Winbind but one or more of the Linux clients
+           in the environment are not running Winbind.  For example, Linux clients
+           may instead be bound to Active Directory using sssd. The use of mdc
+           unixIdMapping allows such environments to be supported by having Linux
+           clients forward ID mapping requests to the MDC for processing.
+  manpageQuestion1: What is the primary purpose of the snfs_config variable in the context of macOS?
+  manpageQuestion2: What is the recommended value for unixIdMapping when Linux clients are bound to Active Directory using Winbind?
+  manpageQuestion3: How does the unixIdMapping variable affect the behavior of Linux clients in an environment with mixed Winbind and sssd configurations?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.\n\n\n\nManpage text:\n\nWhen unixIdMapping is set to algorithmic, UIDs are mapped to SIDs using\n       the following:\n\t   RID(uid) = (2 * uid) + 1000\n       The RID is then appended to the Domain SID. For the algorithmic\n       unixIdMapping, the default value of the Domain SID is:\n\t   S-5-21-3274805877-1740924817-4269325941\n       For example, a user having a UID of 400, will have the SID:\n\t   S-5-21-3274805877-1740924817-4269325941-1800\n       GIDs are mapped to SIDs using the following:\n\t   RID(gid) = (2 * gid) + 1001\n       The RID is then appended to the Domain SID.  For example, a group\n       having a GID of 300 will have the SID:\n\t   S-5-21-3274805877-1740924817-4269325941-1601\n       Note: while commonly only required when using Open Directory, the\n       Domain SID can be overridden using the StorNext domainsid (4)\n       configuration file.\n\n     • XML: unixNobodyGidOnWindows <value>\n\n       Old: UnixNobodyGidOnWindows <value>\n\n       The unixNobodyGidOnWindows variable instructs the FSM to pass this\n       value back to Microsoft Windows clients. The Windows Xsan clients will\n       then use this value as the gid for a Windows user when no gid can be\n       found using Microsoft Active Directory.\tThe default value is 60001.\n       This value must be between 0 and 2147483647, inclusive."
+  manpageQuestion1: What is the primary purpose of the snfs_config resource?
+  manpageQuestion2: How can you override the default Domain SID used in the algorithmic unixIdMapping setting?
+  manpageQuestion3: What is the default value for the unixNobodyGidOnWindows configuration parameter, and what does it do?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.\n\n\n\nManpage text:\n\n• XML: unixNobodyUidOnWindows <value>\n\n       Old: UnixNobodyUidOnWindows <value>\n\n       The unixNobodyUidOnWindows variable instructs the FSM to pass this\n       value back to Microsoft Windows clients. The Windows Xsan clients will\n       then use this value as the uid for a Windows user when no uid can be\n       found using Microsoft Active Directory.\tThe default value is 60001.\n       This value must be between 0 and 2147483647, inclusive.\n\n     • XML: useActiveDirectorySFU <true|false>\n\n       Old: UseActiveDirectorySFU <Yes|No>\n\n       The useActiveDirectorySFU variable enables or disables the use of\n       Microsoft's Active Directory Services for UNIX (SFU) on Windows based\n       Xsan clients.  (Note: Microsoft has changed the name \"Services for\n       UNIX\" in recent releases of Windows.  We are using the term SFU as a\n       generic name for all similar Active Directory Unix services.) This\n       variable does not affect the behavior of Unix clients.  Active\n       Directory SFU allows Windows-based clients to obtain the Windows user's\n       Unix security credentials.  By default, Xsan clients running on Windows\n       query Active Directory to translated Windows SIDs to Unix uid, gid and\n       mode values and store those credentials with newly created files.  This\n       is needed to set the proper Unix uid, gid and permissions on files.  If\n       there is no Active Directory mapping of a Windows user's SID to a Unix\n       user, a file created in Windows will have its uid and gid owned by\n       NOBODY in the Unix view (See unixNobodyUidOnWindows.)"
+  manpageQuestion1: What is the primary purpose of the snfs_config resource?
+  manpageQuestion2: How would you configure the snfs_config to enable Active Directory Services for UNIX (SFU) on Windows-based Xsan clients?
+  manpageQuestion3: What is the default value for the unixNobodyUidOnWindows variable and what does it do?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.\n\n\n\nManpage text:\n\nAlways use Active Directory SFU in a mixed Windows/Unix environment, or\n       if there is a possibility in the future of moving to a mixed\n       environment.  If useActiveDirectorySFU is set to false, files created\n       on Windows based Xsan clients will always have their uid and gid set to\n       NOBODY with default permissions.\n\n       However, if it is unlikely a Unix client will ever access the Xsan\n       volume, then you may get a small performance increase by setting\n       useActiveDirectorySFU to false.\tThe performance increase will be\n       substantial higher only if you have more than 100 users concurrently\n       access the volume via a single Windows Xsan client.\n\n       This variable is only applicable when securityModel is set to legacy or\n       acl.  It is ignored for other securityModel values.  See securityModel\n       for details.\n\n       The default of this variable is true.  This value may be modified for\n       existing volumes.\n\n     • XML: windowsIdMapping <ldap|mdc|mdcall|none>"
+  manpageQuestion1: What is the primary purpose of the snfs_config tool or configuration parameter?
+  manpageQuestion2: How would you configure snfs_config to use Active Directory SFU in a mixed Windows/Unix environment?
+  manpageQuestion3: Can you explain the impact of setting useActiveDirectorySFU to false in a Unix-only Xsan volume scenario?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.
+
+
+
+    Manpage text:
+
+    Old: WindowsIdMapping <ldap|mdc|mdcall|none>
+
+           The windowsIdMapping variable determines the method Windows clients
+           should use to perform the Windows User to Unix User/Group ID mappings.
+           ldap is the default value.
+
+           This variable is only applicable when securityModel is set to
+           unixpermbits.  It is ignored for other securityModel values.  See
+           securityModel for details. Note that due to caching, the effect of
+           changing the windowsIdMapping may not be seen on Windows clients until
+           10-15 minutes after the FSM is restarted unless StorNext is also
+           subsequently restarted on Windows clients.
+
+           When set to ldap, Microsoft Active Directory is queried to obtain
+           uid/gid values for the Windows User, including support for up to 32
+           supplemental GIDs.
+
+           When set to mdc, the Xsan MDC is queried to obtain uid/gid values for
+           Windows users that are in the Active Directory domain that the system
+           belongs to. This includes support for an unlimited number of
+           supplemental GIDs.  However, local users and groups are NOT mapped. The
+           mdc setting is not valid on Windows MDCs.
+  manpageQuestion1: What is the primary purpose of the snfs_config tool or setting?
+  manpageQuestion2: How would you configure the system to use Active Directory for Windows user-to-Unix ID mapping?
+  manpageQuestion3: What is the difference between setting windowsIdMapping to 'ldap' and 'mdc'?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.\n\n\n\nManpage text:\n\nWhen set to mdcall, ID mapping on Windows works the same as described\n       above for the mdc type except that locally created Windows accounts are\n       also mapped. Note that with this setting, Windows systems that are not\n       joined to any domain can still use MDC mapping.\tThe mdcall setting is\n       not valid on Windows MDCs.\n\n       When set to none, then there is no specific Windows User to Unix User\n       mapping (see the Windows control panel). In this case, files will be\n       owned by NOBODY in the Unix view.\n\n     • XML: windowsSecurity <true|false>\n\n       Old: WindowsSecurity <Yes|No>\n\n       The windowsSecurity variable enables or disables the use of the Windows\n       Security Reference Monitor (ACLs) on Windows clients. This does not\n       affect the behavior of Unix clients. In a mixed client environment\n       where there is no specific Windows User to Unix User mapping (see the\n       Windows control panel), files under Windows security will be owned by\n       NOBODY in the Unix view.  The default of this variable is false for\n       configuration files using the old format and true when using the new\n       XML format.  This value may be modified for existing volumes."
+  manpageQuestion1: What is the primary purpose of the snfs_config resource?
+  manpageQuestion2: How would you configure the snfs_config to disable Windows Security Reference Monitor (ACLs) on Windows clients?
+  manpageQuestion3: Can you explain how to set the windowsSecurity variable to true in the snfs_config for a new XML format configuration file?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.
+
+
+
+    Manpage text:
+
+    This variable is only applicable when securityModel is set to legacy.
+           It is ignored for other securityModel values.  See securityModel for
+           details.
+
+           NOTE: Once windowsSecurity has been enabled, the volume will track
+           Windows access control lists (ACLs) for the life of the volume
+           regardless of the windowsSecurity value.
+
+    AUTOAFFINITY DEFINITION
+           A autoAffinity defines a mapping of file extension(s) to an Affinity. A
+           noAffinity defines a mapping of file extensions to an affinity of 0.
+           The Affinity must exist in the storage pool section (see below).  At
+           file creation time, if the file has an extension in the list specified,
+           it will be assigned the Affinity or 0.  This is only done for regular
+           files and not other types of files such as directories, devices,
+           symbolic links, etc.  An extension can only exist once for all
+           autoAffinity and noAffinity mappings.
+
+           Extensions in a file name are defined by all the characters following
+           the last "." in the file name.  The extension tag in the configuration
+           file is followed by the characters in the extension without the ".".
+           There is one special extension that is defined by not specifying an
+           extension.  This is the "empty" extension and tells file creation to
+           map all files not matching another extension to the autoAffinity or
+           noAffinity mapping it is in.
+  manpageQuestion1: What is the primary purpose of the snfs_config variable?
+  manpageQuestion2: How would you configure snfs_config to assign the 'affinity-1' to all files with the .txt extension?
+  manpageQuestion3: Can you provide an example of using snfs_config to set the 'empty' extension mapping to assign affinity 0 to all unclassified files?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.\n\n\n\nManpage text:\n\nFor example, an administrator can map all files ending in .dpx to an\n       affinity of Movies.  Or, all remaining files could be mapped to an\n       affinity of Other.\n\n       Customers can explicitly assign affinities to files and directories\n       using the cvmkdir, cvmkfile, or cvaffinity commands.  Or, files can be\n       assigned affinities with library API calls from within applications.\n       The automatic affinities defined in this section take precedence and\n       override affinities set with cvmkdir/cvmkfile or via a library\n       function.  For example, if a directory exists with an affinity of Audio\n       and a file is created in that directory with a dpx extension with the\n       above autoAffinity mapping.  The *.dpx files gets assigned the Movies\n       affinity overriding Audio.\n\n       The cvaffinity command can be used to later change the affinity of a\n       file to some other value.\n\n       Some applications create temporary files before renaming them to their\n       final name.  Mappings of extension to affinity take effect only on the\n       create call.  So for these applications, the temporary file name\n       determines the file's affinity.\tIf the temporary file name has a\n       different extension or no extension, the temporary's extension is used\n       for the mapping.  If the file is renamed to a different extension, the\n       mapping is not affected.  A typical example of this is Microsoft Word."
+  manpageQuestion1: What is the primary purpose of the snfs_config resource?
+  manpageQuestion2: How would you use the cvaffinity command to change the affinity of a file named 'example.txt' to the 'Other' category?
+  manpageQuestion3: Can you provide an example of how to map all files ending in .dpx to the 'Movies' affinity using snfs_config?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.
+
+
+
+    Manpage text:
+
+    DISKTYPE DEFINITION
+           A diskType defines the number of sectors for a category of disk
+           devices, and optionally the number of bytes per disk device sector.
+           Since multiple disks used in a file system may have the same type of
+           disk, it is easier to consolidate that information into a disk type
+           definition rather than including it for each disk definition.
+
+           For example, a 9.2GB Seagate Barracuda Fibre Channel ST19171FC disk has
+           1778311 total sectors. However, using most drivers, a portion of the
+           disk device is used for the volume header. For example, when using a
+           Prisa adapter and driver, the maximum number of sectors available to
+           the volume is 11781064.
+
+           When specified, the sector size must be 512 or 4096 bytes.  The default
+           sector size is 512 bytes.
+
+    DISK DEFINITION
+           Note: The XML format defines disks in the stripeGroup section. The old
+           format defines disks in a separate section and then links to that
+           definition with the node variable in the stripe group. The general
+           description below applies to both.
+  manpageQuestion1: What is the primary purpose of the snfs_config resource?
+  manpageQuestion2: How can you define a disk type with 1778311 sectors and 512 bytes per sector in snfs_config?
+  manpageQuestion3: What is the correct way to specify a disk type with 1073741824 sectors and 4096 bytes per sector in snfs_config?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.\n\n\n\nManpage text:\n\nEach disk defines a disk device that is in the Storage Area Network\n       configuration. The name of each disk device must be entered into the\n       disk device's volume header label using cvlabel(8).  Disk devices that\n       the client cannot see will not be accessible, and any stripe group\n       containing an inaccessible disk device will not be available, so plan\n       stripe groups accordingly.  Entire disks must be specified here;\n       partitions may not be used.\n\n       The disk definition's name must be unique, and is used by the volume\n       administrator programs.\n\n       A disk's status may be up or down.  When down, this device will not be\n       accessible. Users may still be able to see directories, file names and\n       other meta-data if the disk is in a stripe group that only contains\n       userdata, but attempts to open a file affected by the downed disk\n       device will receive an Operation Not Permitted (EPERM) failure.\tWhen a\n       volume contains down data storage pools, space reporting tools in the\n       operating system will not count these storage pools in computing the\n       total volume size and available free blocks.  NOTE: when files are\n       removed that only contain extents on down storage pools, the amount of\n       available free space displayed will not change."
+  manpageQuestion1: What is the primary purpose of the snfs_config resource?
+  manpageQuestion2: How do you define a unique disk device name in snfs_config and ensure it is properly labeled for the Storage Area Network?
+  manpageQuestion3: What are the implications of marking a disk as 'down' in snfs_config and how does it affect file access and space reporting?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.
+
+
+
+    Manpage text:
+
+    Each disk definition has a type which must match one of the names from
+           a previously defined diskType.
+
+           NOTE: In much older releases there was also a DeviceName option in the
+           Disk section.  The DeviceName was previously used to specify a
+           operating system specific disk name, but this has been superseded by
+           automatic volume recognition for some time and is no longer supported.
+           This is now for internal use only.
+
+    STRIPEGROUP DEFINITION
+           The stripeGroup defines individual storage pools.  A storage pool is a
+           collection of disk devices. A disk device may only be in one storage
+           pool.
+
+           The stripeGroup has a name name that is used in subsequent system
+           administration functions for the storage pool.
+
+           A storage pool can be set to have it's status up or down.  If down, the
+           storage pool is not used by the file system, and anything on that
+           storage pool is inaccessible.  This should normally be left up.
+
+           A storage pool can contain a combination of metadata, journal, or
+           userdata.  There can only be one storage pool that contains a journal
+           per file system.  Best performance is attained with a minimum of 2
+           stripe groups per file system with one stripe group used exclusively
+           for metadata/journal and the other for user data.  Metadata has an I/O
+           pattern of small random I/O whereas user data is typically of much
+           larger size.  Splitting apart metadata and journal so there are 3
+           stripe groups is recommended particularly if latency for file creation,
+           removal and allocation of space is important.
+  manpageQuestion1: What is the primary purpose of the snfs_config resource?
+  manpageQuestion2: How would you define a storage pool in snfs_config to separate metadata and user data into different stripe groups?
+  manpageQuestion3: Can you explain how to set a storage pool in snfs_config to be in 'down' status so it is not used by the file system?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.
+
+
+
+    Manpage text:
+
+    When a collection of disk devices is assembled under a storage pool,
+           each disk device is logically striped into chunks of disk blocks as
+           defined by the stripeBreadth variable.  For example, with a 4k-byte
+           block-size and a stripe breadth of 86 volume blocks, the first 352,256
+           bytes would be written or read from/to the first disk device in the
+           storage pool, the second 352,256 bytes would be on the second disk
+           device and so on. When the last disk device used its 352,256 bytes, the
+           stripe would start again at drive zero. This allows for more than a
+           single disk device's bandwidth to be realized by applications.
+
+           The allocator aligns an allocation that is greater than or equal to the
+           largest stripeBreadth of any storage pool that can hold data. This is
+           done if the allocation request is an extension of the file.
+
+           A storage pool can be marked up or down.  When the storage pool is
+           marked down, it is not available for data access. However, users may
+           look at the directory and meta-data information. Attempts to open a
+           file residing on a downed storage pool will receive a Permission Denied
+           failure.
+  manpageQuestion1: What is the primary purpose of the snfs_config resource?
+  manpageQuestion2: How does snfs_config manage data distribution across multiple disk devices in a storage pool?
+  manpageQuestion3: What happens when a storage pool is marked down in snfs_config?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.\n\n\n\nManpage text:\n\nThere is an option to turn off reads to a stripe group.\tNOTE: Not\n       intended for general use.  Only use when recommended by Apple Support.\n\n       A storage pool can have write access denied.  If writes are disabled,\n       then any new allocations are disallowed as well.  When a volume\n       contains data storage pools with writes disabled, space reporting tools\n       in the operating system will show all blocks for the storage pool as\n       used.  Note that when files are removed that only contain extents on\n       write-disabled storage pools, the amount of available free space\n       displayed will not change.  This is typically only used during Dynamic\n       Resource Allocation procedures (see the StorNext User Guide for more\n       details).\n\n       Allocations can be disabled on a storage pool. This would typically be\n       done as a step towards retiring a stripe group. Unlike disabling\n       writes, turning off allocations allows writes to a file which do not\n       require a new allocation.  On Linux systems, the stripe group\n       management utilities sgmanage and sgoffload can be used to change this\n       field, while the file system remains up and on-line."
+  manpageQuestion1: What is the primary purpose of the snfs_config resource?
+  manpageQuestion2: How can you disable writes to a storage pool using snfs_config?
+  manpageQuestion3: What is the difference between disabling writes and disabling allocations on a storage pool?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.
+
+
+
+    Manpage text:
+
+    Affinities can be used to target allocations at specific stripe groups,
+           and the stripe group can exclusively contain affinity targeted
+           allocations or have affinity targeted allocations co-existing with
+           other allocations.  See snfs.cfg(5) and snfs.cfgx(5) for more details.
+
+           Each stripe group can define a multipath method, which controls the
+           algorithm used to allocate disk I/Os on paths to the storage when the
+           volume has multiple paths available to it. See sgmanage(8) for details.
+
+           Various realtime I/O parameters can be specified on a per stripe group
+           basis as well.  These define the maximum number of I/O operations per
+           second available to real-time applications for the stripe group using
+           the Quality of Service (QoS) API.  There is also the ability to specify
+           I/Os that should be reserved for applications not using the QoS API.
+           Realtime I/O functionality is off by default.
+
+           A stripe group contains one or more disks on which to put the
+           metadata/journal/userdata.  The disk has an index that defines the
+           ordinal position the disk has in the storage pool. This number must be
+           in the range of zero to the number of disks in the storage pool minus
+           one, and be unique within the storage pool. There must be one disk
+           entry per disk and the number of disk entries defines the stripe depth.
+           For more information about disks, see the DISK DEFINITION section
+           above.
+  manpageQuestion1: What is the primary purpose of the snfs_config resource?
+  manpageQuestion2: How can you configure a stripe group to exclusively contain affinity targeted allocations?
+  manpageQuestion3: What is the process for defining a stripe group with specific disk entries and setting its multipath method?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snfs_config`.\n\n\n\nManpage text:\n\nNOTE: The StripeClusters variable has been deprecated.  It was used to\n       limit I/O submitted by a single process, but was removed when\n       asynchronous I/O was added to the volume.\n\n       NOTE: The Type variable for Stripe Groups has been deprecated.  Several\n       versions ago, the Type parameter was used as a very course-grained\n       affinity-like control of how data was laid out between stripe groups.\n       The only valid value of Type for several releases of SNFS has been\n       Regular, and this is now deprecated as well for the XML configuration\n       format.\tType has been superseded by Affinity.\n\nFILES\n       /Library/Preferences/Xsan/*.cfgx\n       /Library/Preferences/Xsan/*.cfg\n\nSEE ALSO\n       snfs.cfgx(5), snfs.cfg(5), sncfgedit(8), cnvt2ha.sh(8), cvfs(8),\n       cvadmin(8), cvlabel(8), snldapd(8), cvmkdir(1), cvmkfile(1),\n       acldomain(4), ha_peer(4), mount_acfs(8), sgmanage(8), sgoffload(8)\n\nXsan File System\t\t February 2023\t\t\tSNFS_CONFIG(5)"
+  manpageQuestion1: What is the primary purpose of the snfs_config resource?
+  manpageQuestion2: How would you configure a Stripe Group in SNFS using the snfs_config tool?
+  manpageQuestion3: What is the recommended replacement for the deprecated StripeClusters variable in SNFS configuration?
+

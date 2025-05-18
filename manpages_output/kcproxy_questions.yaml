@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `kcproxy`.\n\n\n\nManpage text:\n\nKCPROXY(8)\t\t    System Manager's Manual\t\t    KCPROXY(8)\n\nNAME\n     kcproxy – Keychain Proxy\n\nSYNOPSIS\n     kcproxy\n\nDESCRIPTION\n     kcproxy spawned by launchd to handle privileged keychain operations with\n     appropriate authorization.\n\n     This command is not intended to be invoked directly.\n\nSEE ALSO\n\nMac OS X\t\t       February 2, 2012 \t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the kcproxy tool?
+  manpageQuestion2: How would you use kcproxy to manage keychain operations with appropriate authorization?
+  manpageQuestion3: Can you explain the typical scenario in which kcproxy is invoked by launchd?
+

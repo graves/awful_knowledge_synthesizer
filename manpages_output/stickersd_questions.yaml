@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `stickersd`.\n\n\n\nManpage text:\n\nstickersd(8)\t\t    System Manager's Manual\t\t  stickersd(8)\n\nNAME\n     stickersd – stickersd daemon\n\nDESCRIPTION\n     stickersd manages user-created and recently-used stickers. It provides\n     functionality to apps using the Stickers API and performs various\n     background maintenance tasks.\n\n     This command is not intended to be invoked directly.\n\nmacOS\t\t\t\tJanuary 1, 2023 \t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the stickersd daemon?
+  manpageQuestion2: How would you describe the role of stickersd in managing user-created stickers?
+  manpageQuestion3: Can you explain the function of stickersd in performing background maintenance tasks related to stickers?
+

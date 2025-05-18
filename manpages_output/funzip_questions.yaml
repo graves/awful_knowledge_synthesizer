@@ -1,0 +1,54 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `funzip`.\n\n\n\nManpage text:\n\nFUNZIP(1L)\t\t\t\t\t\t\t    FUNZIP(1L)\n\nNAME\n       funzip - filter for extracting from a ZIP archive in a pipe\n\nSYNOPSIS\n       funzip [-password] [input[.zip|.gz]]\n\nARGUMENTS\n       [-password]\n\t      Optional password to be used if ZIP archive is encrypted.\n\t      Decryption may not be supported at some sites.  See DESCRIPTION\n\t      for more details.\n\n       [input[.zip|.gz]]\n\t      Optional input archive file specification. See DESCRIPTION for\n\t      details.\n\nDESCRIPTION\n       funzip without a file argument acts as a filter; that is, it assumes\n       that a ZIP archive (or a gzip'd(1) file) is being piped into standard\n       input, and it extracts the first member from the archive to stdout.\n       When stdin comes from a tty device, funzip assumes that this cannot be\n       a stream of (binary) compressed data and shows a short help text,\n       instead.  If there is a file argument, then input is read from the\n       specified file instead of from stdin.\n\n       A password for encrypted zip files can be specified on the command line\n       (preceding the file name, if any) by prefixing the password with a\n       dash.  Note that this constitutes a security risk on many systems;\n       currently running processes are often visible via simple commands\n       (e.g., ps(1) under Unix), and command-line histories can be read.  If\n       the first entry of the zip file is encrypted and no password is\n       specified on the command line, then the user is prompted for a password\n       and the password is not echoed on the console."
+  manpageQuestion1: What is the primary purpose of the funzip tool?
+  manpageQuestion2: How would you use funzip to extract the contents of an encrypted ZIP file named 'archive.zip' without a password?
+  manpageQuestion3: Can you provide an example of using funzip to extract a ZIP archive from standard input, assuming it is not encrypted?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `funzip`.
+
+
+
+    Manpage text:
+
+    Given the limitation on single-member extraction, funzip is most useful
+           in conjunction with a secondary archiver program such as tar(1).  The
+           following section includes an example illustrating this usage in the
+           case of disk backups to tape.
+
+    EXAMPLES
+           To use funzip to extract the first member file of the archive test.zip
+           and to pipe it into more(1):
+
+           funzip test.zip | more
+
+           To use funzip to test the first member file of test.zip (any errors
+           will be reported on standard error):
+
+           funzip test.zip > /dev/null
+
+           To use zip and funzip in place of compress(1) and zcat(1) (or gzip(1L)
+           and gzcat(1L)) for tape backups:
+
+           tar cf - . | zip -7 | dd of=/dev/nrst0 obs=8k
+           dd if=/dev/nrst0 ibs=8k | funzip | tar xf -
+
+           (where, for example, nrst0 is a SCSI tape drive).
+
+    BUGS
+           When piping an encrypted file into more and allowing funzip to prompt
+           for password, the terminal may sometimes be reset to a non-echo mode.
+           This is apparently due to a race condition between the two programs;
+           funzip changes the terminal mode to non-echo before more reads its
+           state, and more then ``restores'' the terminal to this mode before
+           exiting.  To recover, run funzip on the same file but redirect to
+           /dev/null rather than piping into more; after prompting again for the
+           password, funzip will reset the terminal properly.
+  manpageQuestion1: What is the primary purpose of the funzip tool?
+  manpageQuestion2: How would you use funzip to extract the first member of an archive and display its contents in real-time?
+  manpageQuestion3: Can you provide an example of using funzip in conjunction with tar and zip for tape backups?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `funzip`.\n\n\n\nManpage text:\n\nThere is presently no way to extract any member but the first from a\n       ZIP archive.  This would be useful in the case where a ZIP archive is\n       included within another archive.  In the case where the first member is\n       a directory, funzip simply creates the directory and exits.\n\n       The functionality of funzip should be incorporated into unzip itself\n       (future release).\n\nSEE ALSO\n       gzip(1L), unzip(1L), unzipsfx(1L), zip(1L), zipcloak(1L), zipinfo(1L),\n       zipnote(1L), zipsplit(1L)\n\nURL\n       The Info-ZIP home page is currently at\n       http://www.info-zip.org/pub/infozip/\n       or\n       ftp://ftp.info-zip.org/pub/infozip/ .\n\nAUTHOR\n       Mark Adler (Info-ZIP)\n\nInfo-ZIP\t\t     20 April 2009 (v3.95)\t\t    FUNZIP(1L)"
+  manpageQuestion1: What is the primary purpose of the funzip command?
+  manpageQuestion2: How can you use funzip to extract only the first member of a ZIP archive?
+  manpageQuestion3: What is the main limitation of funzip when working with ZIP archives?
+

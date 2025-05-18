@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `psm`.\n\n\n\nManpage text:\n\npsm(1)\t\t\t    General Commands Manual\t\t\tpsm(1)\n\nNAME\n     psm – Command line interface to Apple Silicon password slot manager\n\nSYNOPSIS\n     psm [verb] [-dsv]\n\nDESCRIPTION\n     A simple command line interface which lets you check the status of slots,\n     and remove any orphaned slots. Slots are automatically allocated on a\n     first come first serve bases, and this tool allows you to see which users\n     are currently being protected by a specific slot.\tTo free up a slot you\n     may need to delete an existing user from the system that is currently\n     enrolled; thus allowing the next password change to enroll into Apple\n     Silicon password slot manager.\n\n     By default psm will execute the command supplied and report if anything\n     went wrong.\n\n     Here is a complete list of the options available:\n\n     -d disk3s5\n\t      specify a disk to operate on <disk3s5>\n\n     -s #     specify a specifc slot number\n\n     -v       will make psm more verbose.\n\nVERBS\n     status\tDisplays status for all currently enrolled slots"
+  manpageQuestion1: What is the primary purpose of the psm command?
+  manpageQuestion2: How can you use the psm command to check the status of all currently enrolled slots?
+  manpageQuestion3: What is the command to specify a specific disk and slot number when using psm?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `psm`.\n\n\n\nManpage text:\n\nremove\tAllows you to remove a specific slot\n\nSEE ALSO\n     passwd(1) diskutil(8) fdesetup(8)\n\nHISTORY\n     psm was first introduced in Mac OS X version 11.\n\nMac OS X\t\t\t June 15, 2020\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the psm command?
+  manpageQuestion2: How would you use the psm command to remove a specific slot?
+  manpageQuestion3: Can you explain the relationship between psm and other related commands like passwd or diskutil?
+

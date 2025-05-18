@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cloudd`.\n\n\n\nManpage text:\n\nCLOUDD(8)\t\t    System Manager's Manual\t\t     CLOUDD(8)\n\nNAME\n     cloudd – CloudKit\n\nSYNOPSIS\n     cloudd\n\nDESCRIPTION\n     cloudd is the system daemon backing the CloudKit feature.\n\n     There are no configuration options to cloudd, and users should not run\n     cloudd manually.\n\nmacOS\t\t\t\t   14/12/15\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the cloudd tool?
+  manpageQuestion2: How would you use cloudd to manage CloudKit services on a macOS system?
+  manpageQuestion3: Can you explain the typical usage scenario for the cloudd daemon in a macOS environment?
+

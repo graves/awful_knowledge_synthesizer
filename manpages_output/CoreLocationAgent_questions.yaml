@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `CoreLocationAgent`.\n\n\n\nManpage text:\n\nCoreLocationAgent(8)\t    System Manager's Manual\t  CoreLocationAgent(8)\n\nNAME\n     CoreLocationAgent – manages location authorization prompts\n\nDESCRIPTION\n     CoreLocationAgent manages the authorization prompts for apps, daemons and\n     widgets that use location services.\n\n     CoreLocationAgent is launched by locationd.\n\nSEE ALSO\n     locationd(8)\n\nMac OS X\t\t\t July 6, 2017\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the CoreLocationAgent tool?
+  manpageQuestion2: How does CoreLocationAgent handle authorization requests for location services in macOS?
+  manpageQuestion3: Can you explain the relationship between CoreLocationAgent and locationd?
+

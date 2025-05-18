@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `AssetCacheManagerService`.\n\n\n\nManpage text:\n\nAssetCacheManagerService(8)\t\t\t       System Manager's Manual\n\nNAME\n     AssetCacheManagerService – Service to manage macOS Content Caching\n\nSYNOPSIS\n     AssetCacheManagerService\n\nDESCRIPTION\n     AssetCacheManagerService manages the computer's Content Cache.\n\n     There are no configuration options to AssetCacheManagerService.  Users\n     should not run AssetCacheManagerService manually.\n\nDIAGNOSTICS\n     AssetCacheManagerService logs to the os_log(3) subsystem\n     com.apple.AssetCacheServices category Manager.\n\nSEE ALSO\n     System Settings > Sharing > Content Caching, log(1), AssetCache(8),\n     AssetCacheLocatorUtil(8), AssetCacheManagerUtil(8)\n\nmacOS\t\t\t\t    5/1/17\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the AssetCacheManagerService?
+  manpageQuestion2: How does one typically interact with the AssetCacheManagerService?
+  manpageQuestion3: What is the role of the AssetCacheManagerService in macOS system management?
+

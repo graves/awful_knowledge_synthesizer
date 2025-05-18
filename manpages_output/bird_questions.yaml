@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `bird`.\n\n\n\nManpage text:\n\nBIRD(8) \t\t    System Manager's Manual\t\t       BIRD(8)\n\nNAME\n     bird – Documents in the Cloud\n\nSYNOPSIS\n     bird\n\nDESCRIPTION\n     bird is one of the system daemons backing the Documents in the Cloud\n     feature.\n\n     There are no configuration options to bird, and users should not run bird\n     manually.\n\nSEE ALSO\n     brctl(1)\n\nMac OS X\t\t\t   22/04/14\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the bird tool?
+  manpageQuestion2: How would you use bird to manage documents in the Cloud feature?
+  manpageQuestion3: Can you explain the role of bird in relation to other system daemons like brctl?
+

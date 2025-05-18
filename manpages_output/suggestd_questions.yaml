@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `suggestd`.\n\n\n\nManpage text:\n\nsuggestd(8)\t\t    System Manager's Manual\t\t   suggestd(8)\n\nNAME\n     suggestd – daemon that processes user content in order to detect\n     contacts, events, named entities, etc.\n\nDESCRIPTION\n     suggestd The suggestd daemon receives content from Spotlight, Mail,\n     Messages and various other apps in order to power various features. Those\n     features include Found in Apps, Proactive QuickType, and\n     Keyboard/Siri/News Personalization.\n\nmacOS 15.3\t\t\t June 26, 2017\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the suggestd service?
+  manpageQuestion2: How does suggestd interact with other system components to provide personalized features?
+  manpageQuestion3: What role does suggestd play in enhancing user experience through Spotlight and other applications?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `wifivelocityd`.\n\n\n\nManpage text:\n\nwifivelocityd(8)\t    System Manager's Manual\t      wifivelocityd(8)\n\nNAME\n     wifivelocityd – launchd daemon for the WiFiVelocity framework\n\nSYNOPSIS\n     wifivelocityd\n\nDESCRIPTION\n     wifivelocityd XPC helper for performing system context actions for the\n     WiFiVelocity framework\n\nmacOS 15.3\t\t\t   02/24/16\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the wifivelocityd tool?
+  manpageQuestion2: How would you use wifivelocityd to perform system context actions for the WiFiVelocity framework?
+  manpageQuestion3: Can you provide an example of using wifivelocityd in a system context action scenario?
+

@@ -1,0 +1,105 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `fsports`.\n\n\n\nManpage text:\n\nFSPORTS(4)\t\t     Device Drivers Manual\t\t    FSPORTS(4)\n\nNAME\n       fsports - Xsan File System Port Restrictions\n\nSYNOPSIS\n       /Library/Preferences/Xsan/fsports\n\nDESCRIPTION\n       The Xsan File System fsports file provides a way to constrain the TCP\n       and UDP ports used by core Xsan server processes consisting of the\n       FSMs, the FSMPM, and any Distributed LAN servers.  This file can also\n       be used to redefine the port used by the Xsan Alternate Portmapper\n       service.  The fsports file is usually only necessary when the Xsan\n       control-network configuration must pass through a firewall.  Use of the\n       fsports file permits firewall pinholing for improved security.  If no\n       fsports file is used then port assignment is operating-system\n       dependent.\n\nSYNTAX\n       When an fsports file exists in the Xsan 'config' directory, it\n       restricts the TCP and UDP port bindings to the user-specified range.\n       The format of the fsports file has two required lines, one optional\n       line, and comments starting with pound-sign (#) in column one as\n       follows:\n\t  MinPort value\n\t  MaxPort value\n\t  AltPmap value"
+  manpageQuestion1: What is the primary purpose of the fsports file in the Xsan File System?
+  manpageQuestion2: How can you configure the fsports file to restrict Xsan server processes to use TCP and UDP ports between 1024 and 5000?
+  manpageQuestion3: What is the process for redefining the port used by the Xsan Alternate Portmapper service using the fsports file?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `fsports`.
+
+
+
+    Manpage text:
+
+    The value fields are port numbers that define an inclusive range of
+           ports that the Xsan server processes can use.  Be careful to choose
+           port range values that are appropriate for your operating system. Note
+           that the Internet Assigned Numbers Authority (IANA) suggests a dynamic
+           client port range for outgoing connections of 49152 through 65535. With
+           that in mind, most Linux kernels use a port range of 32768 through
+           61000, Microsoft Windows operating systems through XP use the range
+           1025 to 5000 by default, Windows Vista, Windows 7, and Server 2008 use
+           the IANA range by default, and Windows Server 2003 uses the range 1025
+           to 5000 by default, until Microsoft security update MS08-037 from 2008
+           is installed, after which it uses the IANA range by default.
+
+           The optional AltPmap value changes the TCP port used for the Xsan
+           Alternate Portmapper service, which defaults to port 5164.  When Xsan
+           is used with a firewall, you can either configure the firewall to allow
+           port 5164 or change the SNFS port number via the AltPmap keyword to a
+           port that is allowed to pass through the firewall.
+  manpageQuestion1: What is the primary purpose of the fsports resource?
+  manpageQuestion2: How would you configure the Xsan server to use a custom port range for its processes?
+  manpageQuestion3: What is the default TCP port used by the Xsan Alternate Portmapper service, and how can it be changed?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `fsports`.\n\n\n\nManpage text:\n\nThe AltPmap value must be defined the same way on all Xsan server and\n       client nodes in order for Xsan to function properly.  When using\n       AltPmap to change the Xsan Alternate Portmapper service port number,\n       you must include an fsports file on every Xsan client and server with\n       the same AltPmap value.\tWhen the AltPmap keyword is not used, the\n       fsports file is not necessary on Xsan clients.\n\n       The minimum number of ports needed on a given node can be computed as\n       follows: one port for the FsmPm process, plus one port for each FSM\n       process, plus one port for each file system served by this node as a\n       Distributed LAN server.\n\nEXAMPLE\n       To restrict Xsan Server processes to using ports 52,000 through 52,100\n       the fsports file would contain the following lines:\n\t  MinPort 52000\n\t  MaxPort 52100\n\n       This fsports file is only needed on Xsan servers.\n\n       To restrict Xsan Alternate Portmapper service to a specific port,\n       select a port number outside the range of the MinPort and MaxPort\n       values.\t For example if MinPort is 52000 and MaxPort is 52100 then\n       select a value outside that range.\n\t  MinPort 52000\n\t  MaxPort 52100\n\t  AltPmap 52101"
+  manpageQuestion1: What is the primary purpose of the fsports file in the context of Xsan?
+  manpageQuestion2: How would you configure an fsports file to restrict Xsan Server processes to use ports 52000 through 52100?
+  manpageQuestion3: Can you provide an example of setting up the AltPmap parameter in an fsports file to specify a different port for the Xsan Alternate Portmapper service?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `fsports`.\n\n\n\nManpage text:\n\nThis fsports file is required on all Xsan clients and servers.\n\nCOMMON FSPORTS COOKBOOK\n       The primary use case for fsports is allowing StorNext SAN and LAN\n       clients outside of a firewall to access the services provided by\n       StorNext servers inside of a firewall.  While other use cases exist,\n       and more complex and restrictive configurations are possible, the\n       following \"cookbook\" steps describe how to produce a common fsports\n       file for all servers inside of a firewall.  The resultant file provides\n       security without sacrificing ease of deployment.\n\n       Step 1.\n       Determine the set of servers inside of the firewall that need to be\n       accessed.  This may include primary and standby MDCs and Distributed\n       LAN servers.\n\n       Step 2.\n       For the list of servers from Step 1, determine the maximum number of\n       StorNext ports used by any one server.  The following equation can be\n       used for this calculation:\n\n\t # ports required for a given server = (\n\t     Three ports for each file system in the \"fsmlist\" file +\n\t     One port for each file system for which this server is acting as\n\t     a Distributed LAN server +\n\t     Two ports for the Tiering, if enabled +\n\t     Three ports for the Alternate Portmapper, the NSS protocol, and\n\t     fsmpm web services ) * Multiplier"
+  manpageQuestion1: What is the primary purpose of the fsports file?
+  manpageQuestion2: How do you determine the number of StorNext ports required for a server in a firewall environment?
+  manpageQuestion3: What is the process for creating a common fsports file for all servers inside a firewall?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `fsports`.\n\n\n\nManpage text:\n\nwhere Multiplier is 2 for Windows servers and 1 for non-Windows\n       servers.\n\n       For example, consider the following configuration of servers inside of\n       a firewall that need to be accessed by clients outside of the firewall:\n\n\t A Linux MDC hosting 4 file systems and Tiering enabled\n\t     ports: (4 * 3 + 0 + 2 + 3) * 1  =\t17\n\n\t A second Linux MDC hosting 6 file systems\n\t     ports: (6 * 3 + 0 + 0 + 3) * 1  =\t21\n\n\t A Windows MDC hosting 1 file system and acting as a Distributed LAN\n\t server for just that file system\n\t     ports: (1 * 3 + 1 + 0 + 3) * 2  =\t14\n\n\t A dedicated Linux Distributed LAN server that serves 9 file systems\n\t from the various MDC pairs\n\t     ports: (0 + 9 + 0 + 3) * 1  = 12\n\n\t The maximum number of StorNext ports needed by any one server is:\n\t     MAX(17, 21, 14, 12) = 21 ports\n\n       Step 3.\n       Based on the maximum port count determined in step 2, pick a range of\n       unused ports on the firewall and open them up.  For example, for a\n       maximum port count of 21, ports 52000 through 52020 could be chosen if\n       they are available.  The firewall should be configured to allow outside\n       UDP and TCP connections using any source port to connect to StorNext\n       servers inside the firewall having the restricted range of ports.  Port\n       5164 should also be opened up for TCP for the AltPortMap service.  (See\n       NOTES below if this is not possible.)"
+  manpageQuestion1: What is the primary purpose of the fsports resource according to the provided manpage text?
+  manpageQuestion2: How would you calculate the maximum number of StorNext ports required for a server configuration with 5 file systems on a Linux MDC and 2 file systems on a Windows MDC?
+  manpageQuestion3: Can you provide an example of how to determine the port range to open on a firewall based on the maximum port count calculated for StorNext servers?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `fsports`.\n\n\n\nManpage text:\n\nStep 4.\n       Configure the common fsports file.  Using the example from step 3 of\n       where 10 ports are needed starting at 52000.  The configuration is as\n       follows:\n\t  MinPort 52000\n\t  MaxPort 52020\n\n       Step 5.\n       Install the resulting file on all servers from Step 1.  Also install\n       the file on all clients if the AltPmap directive was used.  Then\n       restart StorNext.\n\nNOTES\n       Servers having common fsports files will use the same range of network\n       ports for core StorNext file system services.  This does not result in\n       conflicts since each network address is comprised of an IP address and\n       a port number and is therefore unique even when using the same port\n       number as another network address.\n\n       As mentioned under EXAMPLES, when port 5164 cannot be opened on the\n       firewall for the AltPortMap service, it is possible to use the AltPmap\n       directive in the fsports file so that a different port is used.\tThis\n       also requires that clients outside of the firewall use an fsports file."
+  manpageQuestion1: What is the primary purpose of the fsports resource in macOS?
+  manpageQuestion2: How would you configure the fsports file to allocate a port range from 52000 to 52020 for StorNext services?
+  manpageQuestion3: What steps are required to implement the AltPmap directive in the fsports file to bypass firewall restrictions on port 5164?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `fsports`.\n\n\n\nManpage text:\n\nThe fsports file does not constrain the ports used by the client end of\n       connections.  Ephemeral ports are used instead.\tTherefore, the fsports\n       file is only useful on clients when the AltPmap directive is used.\n\n       When using fsports files, if services fail to start or clients fail to\n       connect, to debug the problem, try slightly increasing the range of\n       open StorNext ports on the firewall and, correspondingly, in the\n       fsports files.  Running netstat on the servers may reveal that\n       unexpected processes are binding to ports within the range specified in\n       the fsports file.  Also, if services are restarted on Windows servers,\n       in some cases ports may not be reusable for several minutes.  Using an\n       expanded port range will work around this.\n\n       The information above covers the ports used by the core StorNext file\n       system services.  If firewall pinholing is needed for other StorNext\n       services (for example, replication), additional hard-wired ports may\n       need to be opened on the firewall outside of the domain of the fsports\n       file.  Refer to the \"Port Used by StorNext\" section in the StorNext\n       File System Tuning Guide."
+  manpageQuestion1: What is the primary purpose of the fsports file?
+  manpageQuestion2: How can the fsports file be used to troubleshoot issues with StorNext services on a client?
+  manpageQuestion3: What is the recommended approach to handle port issues when restarting StorNext services on Windows servers?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `fsports`.
+
+
+
+    Manpage text:
+
+    UPDATING FSPORTS CONFIGURATION ON AN HA PAIR
+           When changing the fsports configuration on an HA pair and the AltPmap
+           directive is used, special care must be taken to avoid having the HA
+           mechanism reboot one or both of the HA nodes. Here is the sequence to
+           follow:
+
+           Step 1.
+           Use the StorNext GUI to enter HA config mode. This locks the secondary
+           node and allows configuration changes to be made on the primary node.
+
+           Step 2.
+           Stop the cvfs service on the primary node.
+
+           Step 3.
+           Stop the cvfs service on the coordinator (name service) nodes.
+
+           Step 4.
+           Update, remove or create the fsports file on the coordinator nodes.
+
+           Step 5.
+           Start the cvfs service on the coordinator nodes.
+
+           Step 6.
+           Update, remove or create the fsports file on both the HA primary and HA
+           secondary nodes.
+
+           Step 7.
+           Start the cvfs service on the primary node.
+
+           Step 8.
+           Use the StorNext GUI to exit HA config mode.
+  manpageQuestion1: What is the primary purpose of the fsports resource in the context of HA (High Availability) configuration on an HA pair?
+  manpageQuestion2: What is the correct sequence of steps to update the fsports configuration on an HA pair without causing a reboot of either node?
+  manpageQuestion3: How should the fsports file be handled during the HA configuration update process on coordinator nodes?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `fsports`.\n\n\n\nManpage text:\n\nIf not using external coordinators, that is, the HA MDC pair are the\n       coordinators for the cluster, eliminate steps 3, 4 and 5.\n\nFILES\n       /Library/Preferences/Xsan/fsports\n       /System/Library/Filesystems/acfs.fs/Contents/examples/fsports.example\n\nSEE ALSO\n       cvfs(8), snfs_config(5), fsm(8), fsmpm(8)\n\nXsan File System\t\t  March 2019\t\t\t    FSPORTS(4)"
+  manpageQuestion1: What is the primary purpose of the fsports resource?
+  manpageQuestion2: How would you configure the fsports resource to use the HA MDC pair as coordinators without external coordinators?
+  manpageQuestion3: Can you provide an example of the file structure related to the fsports resource?
+

@@ -1,0 +1,139 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `vDSP`.\n\n\n\nManpage text:\n\nACCELERATE(7)\t       Miscellaneous Information Manual \t ACCELERATE(7)\n\nNAME\n     Accelerate – This man page introduces the Accelerate umbrella framework,\n     its constituent libraries and programming support in Mac OS X.\n\nDESCRIPTION\n     The Accelerate framework\n     (/System/Library/Frameworks/Accelerate.framework) contains thousands of\n     hand tuned high performance library routines for common problems in\n     signal and image processing and general and scientific computing.\tThese\n     routines are provided to help developers and Apple frameworks alike make\n     better use of onboard hardware SIMD vector engines (such as SSE and Neon)\n     and multiple processors for best performance, without the need to invest\n     in the complexity that SIMD and multithreaded programming sometimes\n     requires.\n\n     A typical Accelerate.framework function will be presented as a single\n     function that accomplishes a task -- e.g. do a discrete Fourier\n     transform, or blur an image, or perhaps just multiply two arrays of\n     floats together.  Once called, a typical Accelerate.framework function\n     will examine available hardware and select a tuned version of the\n     algorithm for best performance on that hardware for that problem size,\n     image shape, etc.\tThat function will usually be hand-tuned vectorized\n     code (i.e. uses SSE or Neon).  For large enough problems, the function\n     may automatically split up the work across multiple processors using\n     Grand Central Dispatch (GCD) or pthreads, all without involvement of the\n     caller.  The speedups so obtained can be quite significant due to\n     impressive synergies between SIMD vector engines and multithreading.\n     Vectorization typically will enchance performance many fold -- 2, 4, or\n     even 10 fold improvement is normal.  Multithreading can then further\n     accelerate your code many fold according to the number of processors on\n     your system.  Some vectorized, multithreaded Accelerate.framework\n     functions run hundreds of times faster than their scalar, single threaded\n     counterparts."
+  manpageQuestion1: What is the primary purpose of the Accelerate framework?
+  manpageQuestion2: How can developers leverage the Accelerate framework to optimize signal and image processing tasks on macOS?
+  manpageQuestion3: What are the key benefits of using the Accelerate framework for scientific computing on Mac OS X?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `vDSP`.
+
+
+
+    Manpage text:
+
+    Accelerate.framework is intended to help you towards greater application
+         performance regardless of your current investment in high performance
+         technologies.  If you have already written your own threading engine, you
+         can use methods such as the kvImageDoNotTile flag or the
+         VECLIB_MAXIMUM_THREADS environment variable to disable internal
+         multithreading so that it does not contend with your threading engine
+         (note: the value of VECLIB_MAXIMUM_THREADS may be cached by the library
+         and reused; if you need to ensure single-threaded execution, you should
+         set VECLIB_MAXIMUM_THREADS before making any Accelerate calls).  If you
+         have pseudo-real-time scheduling needs, Accelerate.framework functions
+         that otherwise might allocate their own temporary memory on the heap
+         allow you to pass in preallocated temporary buffers, so as to avoid
+         potential locking in malloc.  If you are interested in writing your own
+         vector code, perhaps to speed up areas of your application which is not
+         covered by Accelerate functionality, the framework headers provide cross
+         platform vector types that you can use to enhance the portability of some
+         vector code and facilitate debugging, as well as a number of basic
+         library routines to make writing vector code easier, such as the
+         interfaces found in vMathLib, a library of math routines (e.g. sin, cos,
+         pow, etc.) for SIMD vectors.
+  manpageQuestion1: What is the primary purpose of the Accelerate.framework?
+  manpageQuestion2: How can you disable internal multithreading in Accelerate.framework to avoid contention with your own threading engine?
+  manpageQuestion3: What is the role of the vMathLib within the Accelerate.framework?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `vDSP`.
+
+
+
+    Manpage text:
+
+    To use Accelerate.framework headers:
+           #include <Accelerate/Accelerate.h>
+
+         To link to Accelerate.framework, simply add -framework Accelerate to your
+         compiler line:
+           cc -framework Accelerate my_file.c
+
+         For help with linking to frameworks in Xcode, see also:
+           http://developer.apple.com/library/mac/#documentation/MacOSX/Conceptual/BPFrameworks/Tasks/IncludingFrameworks.html
+
+    For further information:
+         Browse a comprehensive introduction to the Accelerate framework:
+           https://developer.apple.com/documentation/accelerate
+
+    Accelerate Umbrella Framework
+         The Accelerate umbrella framework encompasses all the libraries provided
+         with MacOS X that Apple has optimized for high performance vector and
+         numerical computing.  Subsequent sections describe the sub-frameworks
+         that comprise the Accelerate framework.
+
+         Please link to Accelerate.framework.  The positioning of interfaces
+         within sub-frameworks and libraries within Accelerate.framework is
+         subject to change.
+  manpageQuestion1: What is the primary purpose of the vDSP resource?
+  manpageQuestion2: How can you link the Accelerate framework to your macOS project using the command line compiler?
+  manpageQuestion3: What is the role of the Accelerate umbrella framework in macOS?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `vDSP`.\n\n\n\nManpage text:\n\nvImage Framework\n     This framework is designed to provide a suite of image processing\n     primitives.  Convolutions, Morphological operators, and Geometric\n     transforms (e.g. scale, shear, warp, rotate) are provided.  Alpha\n     compositing and histogram operations are also supported, in addition to\n     various conversion routines between different image formats.  vImage uses\n     your image data in place without costly packing and unpacking from\n     wrapper objects, using a simple descriptor of the image using base\n     address, height, width and row bytes (to allow for tiling and row\n     padding).\tFour core formats are supported:\n\n       Planar8 - a single channel, 8-bit per channel image\n       ARGB8888 - a four channel, 8-bit per channel image.*\n       PlanarF - a single channel, floating point image.\n       ARGBFFFF - a four channel, floating point image.*\n\n     *Most functions are channel order agnostic, but where it matters, RGBA\n     and BGRA forms may also be provided."
+  manpageQuestion1: What is the primary purpose of the vImage framework?
+  manpageQuestion2: How can you convert an image from ARGB8888 format to Planar8 format using the vImage framework?
+  manpageQuestion3: What is the role of the descriptor in the vImage framework and how does it contribute to efficient image processing?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `vDSP`.\n\n\n\nManpage text:\n\nOther formats are supported by conversion to core format prior to\n     applying various vImage functions.  The conversion cost is typically very\n     small, and is in many cases faster than attempting to do the conversion\n     just in time within the function, because many redundant conversions to a\n     arithmetic format usable by the core vector units, some hidden from you,\n     can be avoided.  The formats provided reflect core performance\n     competencies of the vector hardware rather than the wide diversity of\n     image formats out there.\n\n     For more information, see:\n\n\thttps://developer.apple.com/documentation/accelerate/vimage\n\nvecLib Framework\n     The vecLib framework is a collection of facilities covering digital\n     signal processing (vDSP), matrix computations (BLAS), numerical linear\n     algebra (LAPACK) and mathematical routines (vForce/vMathLib)\n\n     The vDSP, BLAS and LAPACK components of vecLib run on the scalar and\n     vector domain.  vecLib automatically detects the presence of the vector\n     engine and uses it.  vMathLib mirrors the existing scalar libm on the\n     vector engine.  vMathLib runs only on the vector engine."
+  manpageQuestion1: What is the primary purpose of the vDSP resource?
+  manpageQuestion2: How can you leverage vDSP for digital signal processing tasks in macOS development?
+  manpageQuestion3: What are the key features of the vecLib framework that make it suitable for high-performance computing on macOS?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `vDSP`.\n\n\n\nManpage text:\n\nFor more information, see:\n\n\thttps://developer.apple.com/documentation/accelerate/veclib\n\nvDSP\n     The vDSP Library provides mathematical functions for applications such as\n     speech, sound, audio, and video processing, diagnostic medical imaging,\n     radar signal processing, seismic analysis, and scientific data\n     processing.\n\n     The vDSP functions operate on real and complex data types.  The functions\n     include data type conversions, fast Fourier transforms (FFTs), and\n     vector-to-vector and vector-to-scalar operations.\n\n     The vDSP functions have been implemented in two ways:  as vectorized\n     code, using the vector unit on the ARM and Intel microprocessors, and as\n     scalar code, which runs on all machines.  Vector code often has special\n     alignment restrictions.  If your data is not properly aligned it is\n     common for vDSP to use the scalar path as a fallback.  For best results\n     on Intel, align your data to a multiple of 16 bytes.  (Malloc naturally\n     aligns memory blocks that it allocates to 16 bytes on MacOS X.)"
+  manpageQuestion1: What is the primary purpose of the vDSP library?
+  manpageQuestion2: How would you use vDSP to perform a Fast Fourier Transform (FFT) on a vector of real data?
+  manpageQuestion3: Can you provide an example of using vDSP to convert a vector of real data into complex data type?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `vDSP`.
+
+
+
+    Manpage text:
+
+    It is noteworthy that vDSP's FFTs are one of the fastest implementations
+         of the Discrete Fourier Transforms available anywhere.
+
+         The vDSP Library itself is included as part of vecLib in Mac OS X.  The
+         header file, vDSP.h, defines data types used by the vDSP functions and
+         symbols accepted as flag arguments to vDSP functions.
+
+         vDSP functions are available in single and double precision.  Note that
+         only the single precision is vectorized on ARM due to the underlying
+         instruction set architecture of the vector engine on board.  The Intel
+         vector unit supports both single and double precision, so double
+         precision operations can be vectorized on Intel processors.
+
+         For more information about vDSP see:
+
+           https://developer.apple.com/documentation/accelerate/vdsp
+
+    BLAS
+         The Basic Linear Algebra Subroutines (BLAS) are high quality, industry
+         standard routines for performing basic vector and matrix operations.
+         Level 1 BLAS consists of vector-vector operations, Level 2 BLAS consists
+         of matrix-vector operations, and Level 3 BLAS have matrix-matrix
+         operations.  The efficiency, portability, and the wide adoption of the
+         BLAS  have made them commonplace in the development of high quality
+         linear algebra software such as LAPACK and in  other technologies
+         requiring fast vector and matrix calculations.  All of the industry
+         standard FORTRAN and C BLAS entry points, as well as some common
+         extensions, are exported by the vecLib framework.
+  manpageQuestion1: What is the primary purpose of the vDSP library?
+  manpageQuestion2: How can you utilize vDSP to perform a Fast Fourier Transform (FFT) on a dataset efficiently?
+  manpageQuestion3: What are the key differences between single and double precision operations in vDSP, and how do they impact performance on different processor architectures?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `vDSP`.\n\n\n\nManpage text:\n\nFor more information refer to:\n\n       <http://www.netlib.org/blas/faq.html>\n\nLAPACK\n     LAPACK provides routines for solving systems of simultaneous linear\n     equations, least-squares solutions of linear systems of equations,\n     eigenvalue problems, and singular value problems.\tThe associated matrix\n     factorizations (LU, Cholesky, QR, SVD, Schur, generalized Schur) are also\n     provided, as are related computations such as reordering of the Schur\n     factorizations and estimating condition numbers.  Dense and banded\n     matrices are handled, but not general sparse matrices.  In all areas,\n     similar functionality is provided for real and complex matrices, in both\n     single and double precision.  LAPACK in vecLib makes full use of the\n     optimized BLAS and  fully benefits from their performance.  All the\n     industry standard FORTRAN LAPACK entry points are exported from the\n     vecLib framework.\tC programs may make calls to the FORTRAN entry points\n     using the prototypes set out in\n     \"/System/Library/Frameworks/vecLib.framework/Headers/clapack.h\"."
+  manpageQuestion1: What is the primary purpose of the vDSP resource?
+  manpageQuestion2: How can vDSP be used in a C program to solve a system of linear equations?
+  manpageQuestion3: Can you explain how the vDSP framework integrates with BLAS for performance optimization?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `vDSP`.\n\n\n\nManpage text:\n\nFor more information, please see:\n\n       <http://www.netlib.org/lapack/index.html>\n\n     LAPACK follows FORTRAN calling conventions (even when called from C\n     code).  Users must be aware that ALL arguments are passed by reference.\n     This includes all scalar arguments such as matrix dimensions and scale\n     factors.  Additionally, please note that two-dimensional arrays such as\n     matrices are stored in column-major order; this differs from how C\n     programmers customarily lay out such arrays.\n\n     For more information refer to <http://www.netlib.org/clapack/readme>.\n\nSEE ALSO\n     You may also be interested in the system math library, which provides\n     high-quality implementations of basic mathematical functions like exp,\n     log, pow, sin, cos...  See math(3) for more information.\n\nBUGS\n     Accelerate.framework is not magic! It will not vectorize or multithread\n     your code for you, just because you linked against the framework.\tYou\n     have to actually call the functions exported by the Accelerate.framework,\n     and then only those functions from the framework that you called will be\n     Accelerated."
+  manpageQuestion1: What is the primary purpose of the vDSP resource?
+  manpageQuestion2: How can users ensure that their C code correctly handles matrix storage in column-major order when using vDSP functions?
+  manpageQuestion3: What should users be aware of regarding the Accelerate.framework when using vDSP?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `vDSP`.\n\n\n\nManpage text:\n\nMacOS X \t\t\t  May 1, 2007\t\t\t       MacOS X"
+  manpageQuestion1: What is the primary purpose of the vDSP resource?
+  manpageQuestion2: How would you use vDSP to perform a Fast Fourier Transform on a vector of complex numbers?
+  manpageQuestion3: Can you provide an example of using vDSP to compute the sum of a vector of floating-point numbers?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `assistantd`.\n\n\n\nManpage text:\n\nassistantd(8)\t\t    System Manager's Manual\t\t assistantd(8)\n\nNAME\n     assistantd – Siri Daemon.\n\nSYNOPSIS\n     Daemon that enables Siri features.\n\n\t\t\t\t   3/24/2016"
+  manpageQuestion1: What is the primary purpose of the assistantd tool?
+  manpageQuestion2: How would you start the Siri daemon using assistantd?
+  manpageQuestion3: What is the function of the assistantd process in a macOS system?
+

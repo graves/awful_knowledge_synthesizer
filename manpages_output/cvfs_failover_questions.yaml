@@ -1,0 +1,56 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cvfs_failover`.\n\n\n\nManpage text:\n\nCVFS_FAILOVER(8)\t    System Manager's Manual\t      CVFS_FAILOVER(8)\n\nNAME\n       Xsan Volume Failover  - How To Configure and Operate\n\nDESCRIPTION\n       The Xsan File System uses a single File System Manager (FSM) process\n       per file system to manage metadata.  Since this is a single point of\n       failure, the ability to configure an additional hot-standby FSM is\n       supported.  This redundant configuration is called High Availability\n       (HA).  An HA cluster comprises two identically configured server-class\n       computers operating as metadata controllers (MDC).  Either MDC in an HA\n       cluster can serve as the primary MDC for the purposes of configuring\n       the cluster and for running the processes that provide the Stornext\n       Storage Manager (SNSM) features.  The alternate MDC is called\n       secondary.\n\n       All SNSM HA clusters must have one (HaShared) unmanaged Stornext file\n       system dedicated to configuration and operational data that is shared\n       between the MDCs.  The MDC running the active HaShared FSM is the\n       primary MDC by definition.  The primary MDC runs the active FSMs for\n       all the managed file systems (HaManaged), as well as the HaShared file\n       system, and it runs all the management processes together on one MDC.\n       In the event that an HaManaged FSM process fails, another FSM process\n       for that file system will be started and activated on the primary.\n       There are no redundant FSM processes on the secondary MDC for HaManaged\n       file systems.  Non-managed file systems (HaUnmanaged) can be active on\n       either MDC.  There is a redundant standby FSM ready to take control\n       through the activation protocol for each HaUnmanaged file system."
+  manpageQuestion1: What is the primary purpose of the cvfs_failover command?
+  manpageQuestion2: How can you configure an HA cluster for Xsan file systems using cvfs_failover?
+  manpageQuestion3: What is the role of the HaShared file system in an Xsan HA cluster?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cvfs_failover`.
+
+
+
+    Manpage text:
+
+    HA cluster configurations guard against data corruption that could
+           occur from both MDCs simultaneously writing metadata or management data
+           by resetting one of the MDCs when failure conditions are detected.  HA
+           resets allow the alternate MDC to operate without risk of corruption
+           from multiple writers.  HA reset is also known as Shoot Myself in the
+           Head (SMITH) for the way that resets are triggered autonomously.  HA
+           resets occur when an active FSM fails to update the arbitration control
+           block (ARB) for a file system, which prevents the standby from
+           attempting a takeover, but also fails to relinquish control.  HA reset
+           also occurs when the active HaShared FSM stops unless the file system
+           is unmounted on the local server, which ensures that management
+           processes will only run on a single MDC.
+
+           There are three major system components that participate in a failover
+           situation. First, there is the FSM Port Mapper daemon, fsmpm(8).  This
+           daemon resolves the TCP access ports to the server of the volume. Along
+           with this daemon is the Node Status Server daemon (NSS). This daemon
+           monitors the health of the communication network and the File System
+           Services.  The third component is the FSM that is responsible for the
+           file system metadata.
+  manpageQuestion1: What is the primary purpose of the cvfs_failover resource?
+  manpageQuestion2: How does the cvfs_failover mechanism ensure data integrity in a high-availability setup?
+  manpageQuestion3: What are the three major components involved in a failover situation for cvfs_failover?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cvfs_failover`.\n\n\n\nManpage text:\n\nWhenever a file system driver requests the location of a file system\n       server, the NSS initiates a quorum vote to decide which of the FSMs\n       that are standing by should activate. The vote is based on an optional\n       priority specified in the FSM host configuration list, fsmlist(4), and\n       the connectivity each server has to its clients.  When an elected FSM\n       is given the green light, it initiates a failover protocol that uses an\n       arbitration block on disk (ARB) to take control of metadata operations.\n       The activating server brands the volume by writing to ARB block,\n       essentially taking ownership of it. It then re-checks the brand twice\n       to make sure another server has not raced to this point. If all is\n       correct, it lets the server take over. The new server re-plays the\n       volume journal and publishes its port address to the local FSM Port\n       Mapper.\tOnce these steps are taken, clients attempting connection will\n       recover their operations with the new server."
+  manpageQuestion1: What is the primary purpose of the cvfs_failover resource?
+  manpageQuestion2: How does cvfs_failover determine which FSM should be activated during a failover event?
+  manpageQuestion3: What steps does cvfs_failover perform once an FSM is elected as the activating server?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cvfs_failover`.\n\n\n\nManpage text:\n\nSITE PLANNING\n       In order to correctly configure a failover capable Xsan system, there\n       are a number of things to consider. First, hardware connectivity must\n       be planned. It is recommended that servers have redundant network\n       connections.  In order to failover, the metadata must reside on\n       shareable storage.\n\nCONFIGURATION\n       This section will show how to set up a Xsan configuration in a way that\n       will support failover.\n\n       File System Name Server Configuration\n\t      The fsnameservers(4) files should have two hosts described that\n\t      could manage the File System Name Services.  This is required to\n\t      ensure that the name service, and therefore the NSS voting\n\t      capabilities, do not have a single point of failure. It is\n\t      recommended that these server machines also be named as the name\n\t      servers.\tIt is important to note that the fsnameservers list be\n\t      consistent and accurate on all of the participating SAN clients.\n\t      Otherwise some clients may not correctly acquire access to the\n\t      volume. In other words, be sure to replicate the fsnameservers\n\t      list across all Xsan clients."
+  manpageQuestion1: What is the primary purpose of the cvfs_failover resource?
+  manpageQuestion2: How would you configure a failover-capable Xsan system using cvfs_failover?
+  manpageQuestion3: What are the key considerations when setting up a failover-capable Xsan system according to the cvfs_failover manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cvfs_failover`.\n\n\n\nManpage text:\n\nFSM List\n\t      Each line in the FSM list file fsmlist(4) describes a single\n\t      volume name.  An entry in this file directs the fsmpm process to\n\t      start an fsm process with a configuration file of the same name.\n\n       Volume Configuration\n\t      GUI supported configuration is done by completely configuring a\n\t      single MDC, and then the configuration is copied to the other\n\t      MDC through the HaShared file system.  By-hand configurations\n\t      must be exactly the same on both MDCs.\n\n       License Files\n\t      License files must also be distributed to each system that may\n\t      be a server.\n\nOPERATION\n       Once all the servers are up and running they can be managed using the\n       normal cvadmin(8) command. The active servers will be shown with an\n       asterisk (*) before it. Server priorities are shown inside brackets.\n       DO NOT start managed FSMs on the secondary server by hand as this\n       violates the management requirement for running all of them on a single\n       MDC.  When a managed FSM will not start reliably, a failover can be\n       forced by the snhamgr command on the primary MDC as follows:"
+  manpageQuestion1: What is the primary purpose of the cvfs_failover resource?
+  manpageQuestion2: How can you force a failover of a managed FSM if it is not starting reliably?
+  manpageQuestion3: What steps are required to configure the license files for cvfs_failover?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cvfs_failover`.\n\n\n\nManpage text:\n\nsnhamgr force smith\n\nFILES\n       /Library/Preferences/Xsan/license.dat\n       /Library/Preferences/Xsan/fsmlist\n       /Library/Preferences/Xsan/fsnameservers\n\nSEE ALSO\n       cvadmin(8), snfs_config(5), cvfsck(8), fsnameservers(4), fsm(8),\n       fsmpm(8)\n\nXsan File System\t\t   June 2014\t\t      CVFS_FAILOVER(8)"
+  manpageQuestion1: What is the primary purpose of the `cvfs_failover` resource?
+  manpageQuestion2: How would you use `cvfs_failover` to force a failover in a Xsan environment?
+  manpageQuestion3: Can you provide an example of using `cvfs_failover` to manage a failover scenario with the 'smith' configuration?
+

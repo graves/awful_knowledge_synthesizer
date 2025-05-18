@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `usbaudiod`.\n\n\n\nManpage text:\n\nUSBAUDIOD(8)\t\t    System Manager's Manual\t\t  USBAUDIOD(8)\n\nNAME\n     usbaudiod – usbaudiod is a system daemon that runs USB audio diagnostics.\n\nSYNOPSIS\n     takes no arguments, and users should not launch it manually.\n\nDESCRIPTION\n     usbaudiod performs diagnostics of USB audio devices\n\nSEE ALSO\n     coreaudiod(8), audiomxd(8),\n\nHISTORY\n     usbaudiod first appeared in macOS 15.0 and iOS 18.0.\n\nDarwin\t\t\t\tAugust 28, 2023 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the usbaudiod tool?
+  manpageQuestion2: How would you check USB audio diagnostics using usbaudiod?
+  manpageQuestion3: What is the recommended way to ensure usbaudiod is running on a macOS system?
+

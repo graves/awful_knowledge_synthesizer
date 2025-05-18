@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `calaccessd`.\n\n\n\nManpage text:\n\ncalaccessd(8)\t\t    System Manager's Manual\t\t calaccessd(8)\n\nNAME\n     calaccessd – calendar data process\n\nDESCRIPTION\n     calaccessd is the calendar data process. It is used by the system to\n     coordinate access to calendar data and to post calendar notifications.\n\n     There are no configuration options to calaccessd, and users should not\n     run calaccessd manually.\n\nmacOS\t\t\t\t July 17, 2022\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the calaccessd tool?
+  manpageQuestion2: How would you use calaccessd to manage calendar data access and notifications?
+  manpageQuestion3: Can you explain the typical usage scenario for calaccessd in a macOS system?
+

@@ -1,0 +1,40 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `bundle-package`.\n\n\n\nManpage text:\n\nBUNDLE-PACKAGE(1)\t\t\t\t\t     BUNDLE-PACKAGE(1)\n\nNAME\n       bundle-package - Package your needed .gem files into your application\n\nSYNOPSIS\n       bundle package\n\nDESCRIPTION\n       Copy all of the .gem files needed to run the application into the\n       vendor/cache directory. In the future, when running [bundle\n       install(1)][bundle-install], use the gems in the cache in preference to\n       the ones on rubygems.org.\n\nGIT AND PATH GEMS\n       Since Bundler 1.2, the bundle package command can also package :git and\n       :path dependencies besides .gem files. This needs to be explicitly\n       enabled via the --all option. Once used, the --all option will be\n       remembered.\n\nSUPPORT FOR MULTIPLE PLATFORMS\n       When using gems that have different packages for different platforms,\n       Bundler 1.8 and newer support caching of gems for other platforms where\n       the Gemfile has been resolved (i.e. present in the lockfile) in\n       vendor/cache. This needs to be enabled via the --all-platforms option.\n       This setting will be remembered in your local bundler configuration.\n\nREMOTE FETCHING\n       By default, if you run bundle install(1)](bundle-install.1.html) after\n       running bundle package(1) bundle-package.1.html, bundler will still\n       connect to rubygems.org to check whether a platform-specific gem exists\n       for any of the gems in vendor/cache.\n\n       For instance, consider this Gemfile(5):\n\n\n\n\t   source \"https://rubygems.org\"\n\n\t   gem \"nokogiri\""
+  manpageQuestion1: What is the primary purpose of the bundle-package command?
+  manpageQuestion2: How can you use bundle-package to package both .gem files and git/path dependencies into your application?
+  manpageQuestion3: What is the process for enabling bundle-package to cache gems for multiple platforms?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `bundle-package`.
+
+
+
+    Manpage text:
+
+    If you run bundle package under C Ruby, bundler will retrieve the
+           version of nokogiri for the "ruby" platform. If you deploy to JRuby and
+           run bundle install, bundler is forced to check to see whether a "java"
+           platformed nokogiri exists.
+
+           Even though the nokogiri gem for the Ruby platform is technically
+           acceptable on JRuby, it has a C extension that does not run on JRuby.
+           As a result, bundler will, by default, still connect to rubygems.org to
+           check whether it has a version of one of your gems more specific to
+           your platform.
+
+           This problem is also not limited to the "java" platform. A similar
+           (common) problem can happen when developing on Windows and deploying to
+           Linux, or even when developing on OSX and deploying to Linux.
+
+           If you know for sure that the gems packaged in vendor/cache are
+           appropriate for the platform you are on, you can run bundle install
+           --local to skip checking for more appropriate gems, and use the ones in
+           vendor/cache.
+  manpageQuestion1: What is the primary purpose of the bundle-package command?
+  manpageQuestion2: How can you use bundle-package to avoid checking for platform-specific gem versions when installing dependencies?
+  manpageQuestion3: What is the recommended approach when deploying to a different platform than your development environment?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `bundle-package`.\n\n\n\nManpage text:\n\nOne way to be sure that you have the right platformed versions of all\n       your gems is to run bundle package on an identical machine and check in\n       the gems. For instance, you can run bundle package on an identical\n       staging box during your staging process, and check in the vendor/cache\n       before deploying to production.\n\n       By default, bundle package(1) bundle-package.1.html fetches and also\n       installs the gems to the default location. To package the dependencies\n       to vendor/cache without installing them to the local install location,\n       you can run bundle package --no-install.\n\n\t\t\t\t November 2018\t\t     BUNDLE-PACKAGE(1)"
+  manpageQuestion1: What is the primary purpose of the bundle-package command?
+  manpageQuestion2: How can you use bundle-package to package dependencies without installing them locally?
+  manpageQuestion3: In what scenario would you typically run the bundle-package command?
+

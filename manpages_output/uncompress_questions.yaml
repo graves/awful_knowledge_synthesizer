@@ -1,0 +1,93 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `uncompress`.\n\n\n\nManpage text:\n\nCOMPRESS(1)\t\t    General Commands Manual\t\t   COMPRESS(1)\n\nNAME\n     compress, uncompress – compress and expand data\n\nSYNOPSIS\n     compress [-fv] [-b bits] [file ...]\n     compress -c [-b bits] [file]\n     uncompress [-fv] [file ...]\n     uncompress -c [file ...]\n\nDESCRIPTION\n     The compress utility reduces the size of files using adaptive Lempel-Ziv\n     coding.  Each file is renamed to the same name plus the extension .Z.  A\n     file argument with a .Z extension will be ignored except it will cause an\n     error exit after other arguments are processed.  If compression would not\n     reduce the size of a file, the file is ignored.\n\n     The uncompress utility restores compressed files to their original form,\n     renaming the files by deleting the .Z extensions.\tA file specification\n     need not include the file's .Z extension.\tIf a file's name in its file\n     system does not have a .Z extension, it will not be uncompressed and it\n     will cause an error exit after other arguments are processed."
+  manpageQuestion1: What is the primary purpose of the uncompress command?
+  manpageQuestion2: How would you use the uncompress command to decompress a file named 'data.Z'?
+  manpageQuestion3: Can you provide an example of using the uncompress command with the -f flag to force overwriting of existing files?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `uncompress`.\n\n\n\nManpage text:\n\nIf renaming the files would cause files to be overwritten and the\n     standard input device is a terminal, the user is prompted (on the\n     standard error output) for confirmation.  If prompting is not possible or\n     confirmation is not received, the files are not overwritten.\n\n     As many of the modification time, access time, file flags, file mode,\n     user ID, and group ID as allowed by permissions are retained in the new\n     file.\n\n     If no files are specified or a file argument is a single dash (‘-’), the\n     standard input is compressed or uncompressed to the standard output.  If\n     either the input and output files are not regular files, the checks for\n     reduction in size and file overwriting are not performed, the input file\n     is not removed, and the attributes of the input file are not retained in\n     the output file.\n\n     The options are as follows:\n\n     -b bits\t    The code size (see below) is limited to bits, which must\n\t\t    be in the range 9..16.  The default is 16."
+  manpageQuestion1: What is the primary purpose of the uncompress command?
+  manpageQuestion2: How can you use the -b option with uncompress to limit the code size to 13 bits?
+  manpageQuestion3: What happens if you run uncompress without specifying any files or use a single dash as the argument?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `uncompress`.\n\n\n\nManpage text:\n\n-c \t    Compressed or uncompressed output is written to the\n\t\t    standard output.  No files are modified.  The -v option is\n\t\t    ignored.  Compression is attempted even if the results\n\t\t    will be larger than the original.\n\n     -f \t    Files are overwritten without prompting for confirmation.\n\t\t    Also, for compress, files are compressed even if they are\n\t\t    not actually reduced in size.\n\n     -v \t    Print the percentage reduction of each file.  Ignored by\n\t\t    uncompress or if the -c option is also used.\n\n     The compress utility uses a modified Lempel-Ziv algorithm.  Common\n     substrings in the file are first replaced by 9-bit codes 257 and up.\n     When code 512 is reached, the algorithm switches to 10-bit codes and\n     continues to use more bits until the limit specified by the -b option or\n     its default is reached.\n\n     After the limit is reached, compress periodically checks the compression\n     ratio.  If it is increasing, compress continues to use the existing code\n     dictionary.  However, if the compression ratio decreases, compress\n     discards the table of substrings and rebuilds it from scratch.  This\n     allows the algorithm to adapt to the next \"block\" of the file."
+  manpageQuestion1: What is the primary purpose of the uncompress command?
+  manpageQuestion2: How would you use uncompress to decompress a file without modifying the original file and display the output on the terminal?
+  manpageQuestion3: Can you provide an example of using uncompress to overwrite a file without confirmation and show the compression percentage reduction?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `uncompress`.
+
+
+
+    Manpage text:
+
+    The -b option is unavailable for uncompress since the bits parameter
+         specified during compression is encoded within the output, along with a
+         magic number to ensure that neither decompression of random data nor
+         recompression of compressed data is attempted.
+
+         The amount of compression obtained depends on the size of the input, the
+         number of bits per code, and the distribution of common substrings.
+         Typically, text such as source code or English is reduced by 50-60%.
+         Compression is generally much better than that achieved by Huffman coding
+         (as used in the historical command pack), or adaptive Huffman coding (as
+         used in the historical command compact), and takes less time to compute.
+
+         If file is a soft or hard link compress will replace it with a compressed
+         copy of the file pointed to by the link.  The link's target file is left
+         uncompressed.
+
+    EXIT STATUS
+         The compress and uncompress utilities exit 0 on success, and >0 if an
+         error occurs.
+  manpageQuestion1: What is the primary purpose of the uncompress command?
+  manpageQuestion2: How can you use the uncompress command to decompress a file that was compressed with the compress utility?
+  manpageQuestion3: What are the key differences between the compression achieved by uncompress and traditional methods like Huffman coding?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `uncompress`.\n\n\n\nManpage text:\n\nThe compress utility exits 2 if attempting to compress a file would not\n     reduce its size and the -f option was not specified and if no other error\n     occurs.\n\nEXAMPLES\n     Create a file test_file with a single line of text:\n\n\t   echo \"This is a test\" > test_file\n\n     Try to reduce the size of the file using a 10-bit code and show the exit\n     status:\n\n\t   $ compress -b 10 test_file\n\t   $ echo $?\n\t   2\n\n     Try to compress the file and show compression percentage:\n\n\t   $ compress -v test_file\n\t   test_file: file would grow; left unmodified\n\n     Same as above but forcing compression:\n\n\t   $ compress -f -v test_file\n\t   test_file.Z: 79% expansion\n\n     Compress and uncompress the string ‘hello’ on the fly:\n\n\t   $ echo \"hello\" | compress | uncompress\n\t   hello\n\nSEE ALSO\n     gunzip(1), gzexe(1), gzip(1), zcat(1), zmore(1), znew(1)\n\n     Welch, Terry A., “A Technique for High Performance Data Compression”,\n     IEEE Computer, 17:6, pp. 8-19, June, 1984.\n\nSTANDARDS\n     The compress and uncompress utilities conform to IEEE Std 1003.1-2001\n     (“POSIX.1”)."
+  manpageQuestion1: What is the primary purpose of the uncompress utility?
+  manpageQuestion2: How can you force compression of a file even if it would increase its size using the uncompress tool?
+  manpageQuestion3: Can you provide an example of using uncompress to decompress a file and show the compression percentage?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `uncompress`.
+
+
+
+    Manpage text:
+
+    HISTORY
+         The compress command appeared in 4.3BSD.
+
+    BUGS
+         The program does not handle links well and has no link-handling options.
+
+         Some of these might be considered otherwise-undocumented features.
+
+         compress: If the utility does not compress a file because doing so would
+         not reduce its size, and a file of the same name except with an .Z
+         extension exists, the named file is not really ignored as stated above;
+         it causes a prompt to confirm the overwriting of the file with the
+         extension.  If the operation is confirmed, that file is deleted.
+
+         uncompress: If an empty file is compressed (using -f), the resulting .Z
+         file is also empty.  That seems right, but if uncompress is then used on
+         that file, an error will occur.
+
+         Both utilities: If a ‘-’ argument is used and the utility prompts the
+         user, the standard input is taken as the user's reply to the prompt.
+
+         Both utilities: If the specified file does not exist, but a similarly-
+         named one with (for compress) or without (for uncompress) a .Z extension
+         does exist, the utility will waste the user's time by not immediately
+         emitting an error message about the missing file and continuing.
+         Instead, it first asks for confirmation to overwrite the existing file
+         and then does not overwrite it.
+  manpageQuestion1: What is the primary purpose of the uncompress command?
+  manpageQuestion2: How can you use uncompress to decompress a file named 'data.Z' without overwriting an existing file with the same name?
+  manpageQuestion3: What is a known issue with uncompress when dealing with empty files?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `uncompress`.\n\n\n\nManpage text:\n\nmacOS 15.3\t\t\t March 4, 2021\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the uncompress utility?
+  manpageQuestion2: How can you use uncompress to decompress a file named 'data.gz'?
+  manpageQuestion3: What command would you use to uncompress a file called 'archive.Z'?
+

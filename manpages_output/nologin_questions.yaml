@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `nologin`.\n\n\n\nManpage text:\n\nNOLOGIN(8)\t\t    System Manager's Manual\t\t    NOLOGIN(8)\n\nNAME\n     nologin – politely refuse a login\n\nSYNOPSIS\n     nologin\n\nDESCRIPTION\n     The nologin is intended as a replacement shell field for accounts that\n     have been disabled.\n\n     When executed, nologin first writes about the login attempt to syslog(3)\n     and then displays a message that an account is not available.\n\n     To disable all logins, investigate nologin(5).\n\nEXIT STATUS\n     The nologin utility always exits non-zero.\n\nSEE ALSO\n     login(1), nologin(5)\n\nHISTORY\n     The nologin utility appeared in 4.4BSD.\n\nmacOS 15.3\t\t\tApril 15, 2020\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the nologin utility?
+  manpageQuestion2: How would you use the nologin command to handle a login attempt for a disabled account?
+  manpageQuestion3: What is the exit status of the nologin utility and what does it indicate?
+

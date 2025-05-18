@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cc_fips_test`.\n\n\n\nManpage text:\n\ncc_fips_test(1) \t    General Commands Manual\t       cc_fips_test(1)\n\nNAME\n     cc_fips_test – Validates correctness of the corecrypto library during\n     bootup\n\nDESCRIPTION\n     The cc_fips_test performs a basic POST validation pass on the corecrypto\n     dynamic library loaded by the operating system during the early boot\n     cycle.  This command is called by launchd and will return a non-zero\n     error code if the system fails the tests.\n\nDarwin\t\t\t       February 2, 2012 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the cc_fips_test command?
+  manpageQuestion2: How would you use cc_fips_test to verify the integrity of the corecrypto library during system boot?
+  manpageQuestion3: Can you explain how the cc_fips_test command interacts with the operating system's boot process?
+

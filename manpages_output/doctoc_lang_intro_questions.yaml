@@ -1,0 +1,125 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `doctoc_lang_intro`.\n\n\n\nManpage text:\n\ndoctoc_lang_intro(n)\t      Documentation tools\t  doctoc_lang_intro(n)\n\n______________________________________________________________________________\n\nNAME\n       doctoc_lang_intro - doctoc language introduction\n\nDESCRIPTION\n       This document is an informal introduction to version 1.1 of the doctoc\n       markup language based on a multitude of examples. After reading this a\n       writer should be ready to understand the two parts of the formal\n       specification, i.e. the doctoc language syntax specification and the\n       doctoc language command reference.\n\n   FUNDAMENTALS\n       While the doctoc markup language is quite similar to the doctools\n       markup language, in the broadest terms possible, there is one key\n       difference. A table of contents consists essentially only of markup\n       commands, with no plain text interspersed between them, except for\n       whitespace.\n\n       Each markup command is a Tcl command surrounded by a matching pair of [\n       and ]. Inside of these delimiters the usual rules for a Tcl command\n       apply with regard to word quotation, nested commands, continuation\n       lines, etc. I.e."
+  manpageQuestion1: What is the primary purpose of the doctoc_lang_intro tool?
+  manpageQuestion2: How would you use doctoc_lang_intro to understand the syntax of the doctoc markup language?
+  manpageQuestion3: Can you explain how to use doctoc_lang_intro in conjunction with other doctoc tools for document processing?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `doctoc_lang_intro`.\n\n\n\nManpage text:\n\n... [division_start {Appendix 1}] ...\n\n\n\t ... [item thefile \\\\\n\t\t label {file description}] ...\n\n\n   BASIC STRUCTURE\n       The most simple document which can be written in doctoc is\n\n\t   [toc_begin GROUPTITLE TITLE]\n\t   [toc_end]\n\n       This also shows us that all doctoc documents consist of only one part\n       where we will list items and divisions.\n\n       The user is free to mix these as she sees fit. This is a change from\n       version 1 of the language, which did not allow this mixing, but only\n       the use of either a series of items or a series of divisions.\n\n       We will discuss the commands for each of these two possibilities in the\n       next sections.\n\n   ITEMS\n       Use the command item to put an item into a table of contents. This is\n       essentially a reference to a section, subsection, etc. in the document,\n       or set of documents, the table of contents is for. The command takes\n       three arguments, a symbolic name for the file the item is for and two\n       text to label the item and describe the referenced section.\n\n       Symbolic names are used to preserve the convertibility of this format\n       to any output format. The actual name of any file will be inserted by\n       the chosen formatting engine when converting the input, based on a\n       mapping from symbolic to actual names given to the engine.\n\n       Here a made up example for a table of contents of this document:\n\n       [toc_begin Doctoc {Language Introduction}]\n       [item 1 DESCRIPTION]\n       [item 1.1 {Basic structure}]\n       [item 1.2 Items]\n       [item 1.3 Divisions]\n       [item 2 {FURTHER READING}]\n       [toc_end]"
+  manpageQuestion1: What is the primary purpose of the doctoc_lang_intro resource?
+  manpageQuestion2: How would you use the doctoc_lang_intro tool to create a table of contents for a document that includes sections labeled 'Basic structure' and 'Items'?
+  manpageQuestion3: Can you provide an example of using doctoc_lang_intro to define a symbolic name 'myfile' that references a file named 'introduction.txt' with a description of 'Language Introduction'?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `doctoc_lang_intro`.\n\n\n\nManpage text:\n\nDIVISIONS\n       One thing of notice in the last example in the previous section is that\n       the referenced sections actually had a nested structure, something\n       which was expressed in the item labels, by using a common prefix for\n       all the sections nested under section 1.\n\n       This kind of structure can be made more explicit in the doctoc language\n       by using divisions. Instead of using a series of plain items we use a\n       series of divisions for the major references, and then place the nested\n       items inside of these.\n\n       Of course, instead of the nested items we can again use divisions and\n       thus nest arbitrarily deep.\n\n       A division is marked by two commands instead of one, one to start it,\n       the other to close the last opened division. They are:\n\n       division_start\n\t      This command opens a new division. It takes one or two\n\t      arguments, the title of the division, and the symbolic name of\n\t      the file it refers to. The latter is optional.  If the symbolic\n\t      filename is present then the section title should link to the\n\t      referenced document, if links are supported by the output\n\t      format.\n\n       division_end\n\t      This command closes the last opened and not yet closed division.\n\n       Using this we can recast the last example like this\n\n       [toc_begin Doctoc {Language Introduction}]\n       [division_start DESCRIPTION]\n       [item 1 {Basic structure}]\n       [item 2 Items]\n       [item 3 Divisions]\n       [division_end]\n       [division_start {FURTHER READING}]\n       [division_end]\n       [toc_end]"
+  manpageQuestion1: What is the primary purpose of the doctoc_lang_intro resource?
+  manpageQuestion2: How can divisions be used in the doctoc_lang_intro resource to structure nested documentation sections?
+  manpageQuestion3: Can you provide an example of using division_start and division_end commands to create a nested structure in the doctoc_lang_intro resource?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `doctoc_lang_intro`.
+
+
+
+    Manpage text:
+
+    Or, to demonstrate deeper nesting
+
+           [toc_begin Doctoc {Language Introduction}]
+           [division_start DESCRIPTION]
+           [division_start {Basic structure}]
+           [item 1 Do]
+           [item 2 Re]
+           [division_end]
+           [division_start Items]
+           [item a Fi]
+           [item b Fo]
+           [item c Fa]
+           [division_end]
+           [division_start Divisions]
+           [item 1 Sub]
+           [item 1 Zero]
+           [division_end]
+           [division_end]
+           [division_start {FURTHER READING}]
+           [division_end]
+           [toc_end]
+
+           And do not forget, it is possible to freely mix items and divisions,
+           and to have empty divisions.
+
+           [toc_begin Doctoc {Language Introduction}]
+           [item 1 Do]
+           [division_start DESCRIPTION]
+           [division_start {Basic structure}]
+           [item 2 Re]
+           [division_end]
+           [item a Fi]
+           [division_start Items]
+           [item b Fo]
+           [item c Fa]
+           [division_end]
+           [division_start Divisions]
+           [division_end]
+           [division_end]
+           [division_start {FURTHER READING}]
+           [division_end]
+           [toc_end]
+  manpageQuestion1: What is the primary purpose of the doctoc_lang_intro resource?
+  manpageQuestion2: How can you create a nested table of contents using doctoc_lang_intro to organize sections and subsections?
+  manpageQuestion3: Can you provide an example of how to structure a document with doctoc_lang_intro to include both items and divisions at multiple levels?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `doctoc_lang_intro`.\n\n\n\nManpage text:\n\nADVANCED STRUCTURE\n       In all previous examples we fudged a bit regarding the markup actually\n       allowed to be used before the toc_begin command opening the document.\n\n       Instead of only whitespace the two templating commands include and vset\n       are also allowed, to enable the writer to either set and/or import\n       configuration settings relevant to the table of contents. I.e. it is\n       possible to write\n\n       [include FILE]\n       [vset VAR VALUE]\n       [toc_begin GROUPTITLE TITLE]\n       [toc_end]\n\n       Even more important, these two commands are allowed anywhere where a\n       markup command is allowed, without regard for any other structure.\n\n       [toc_begin GROUPTITLE TITLE]\n       [include FILE]\n       [vset VAR VALUE]\n       [toc_end]\n\n       The only restriction include has to obey is that the contents of the\n       included file must be valid at the place of the inclusion. I.e. a file\n       included before toc_begin may contain only the templating commands vset\n       and include, a file included in a division may contain only items or\n       divisions commands, etc.\n\n   ESCAPES\n       Beyond the 6 commands shown so far we have two more available.  However\n       their function is not the marking up of toc structure, but the\n       insertion of characters, namely [ and ].  These commands, lb and rb\n       respectively, are required because our use of [ and ] to bracket markup\n       commands makes it impossible to directly use [ and ] within the text.\n\n       Our example of their use are the sources of the last sentence in the\n       previous paragraph, with some highlighting added.\n\n\t ...\n\t These commands, [cmd lb] and [cmd lb] respectively, are required\n\t because our use of [lb] and [rb] to bracket markup commands makes it\n\t impossible to directly use [lb] and [rb] within the text.\n\t ..."
+  manpageQuestion1: What is the primary purpose of the doctoc_lang_intro resource?
+  manpageQuestion2: How can you include a configuration file and set a variable before generating the table of contents using doctoc_lang_intro?
+  manpageQuestion3: What is the correct way to insert a bracketed character like '[' into the text when using doctoc_lang_intro?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `doctoc_lang_intro`.
+
+
+
+    Manpage text:
+
+    FURTHER READING
+           Now that this document has been digested the reader, assumed to be a
+           writer of documentation should be fortified enough to be able to
+           understand the formal doctoc language syntax specification as well.
+           From here on out the doctoc language command reference will also serve
+           as the detailed specification and cheat sheet for all available
+           commands and their syntax.
+
+           To be able to validate a document while writing it, it is also
+           recommended to familiarize oneself with Tclapps' ultra-configurable
+           dtp.
+
+           On the other hand, doctoc is perfectly suited for the automatic
+           generation from doctools documents, and this is the route Tcllib's easy
+           and simple dtplite goes, creating a table of contents for a set of
+           documents behind the scenes, without the writer having to do so on
+           their own.
+
+    BUGS, IDEAS, FEEDBACK
+           This document, will undoubtedly contain bugs and other problems.
+           Please report such in the category doctools of the Tcllib SF Trackers
+           [http://sourceforge.net/tracker/?group_id=12883].  Please also report
+           any ideas for enhancements you may have.
+
+    SEE ALSO
+           doctoc_intro, doctoc_lang_cmdref, doctoc_lang_syntax
+
+    KEYWORDS
+           doctoc commands, doctoc language, doctoc markup, doctoc syntax, markup,
+           semantic markup
+
+    CATEGORY
+           Documentation tools
+
+    COPYRIGHT
+           Copyright (c) 2007 Andreas Kupries <andreas_kupries@users.sourceforge.net>
+  manpageQuestion1: What is the primary purpose of the doctoc_lang_intro resource?
+  manpageQuestion2: How can a user validate a document while writing it using doctoc_lang_intro?
+  manpageQuestion3: In what way is doctoc_lang_intro suited for automatic generation from doctools documents?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `doctoc_lang_intro`.\n\n\n\nManpage text:\n\ndoctools\t\t\t      1.0\t\t  doctoc_lang_intro(n)"
+  manpageQuestion1: What is the primary purpose of the doctoc_lang_intro tool?
+  manpageQuestion2: How would you use doctoc_lang_intro to generate a language introduction section for a documentation file?
+  manpageQuestion3: Can you provide an example of using doctoc_lang_intro to create a language-specific introduction for a technical manual?
+

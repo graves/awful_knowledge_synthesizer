@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `homed`.\n\n\n\nManpage text:\n\nhomed(8)\t\t    System Manager's Manual\t\t      homed(8)\n\nNAME\n     homed – home services daemon\n\nDESCRIPTION\n     homed is a daemon that manages home state and controls HomeKit\n     accessories.\n\n     There are no options for homed, and users should not run homed manually.\n\nmacOS\t\t\t\t June 26, 2018\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the homed service?
+  manpageQuestion2: Is it possible to run the homed daemon manually, and if so, how would you do that?
+  manpageQuestion3: What are the main functions of the homed daemon in managing HomeKit accessories?
+

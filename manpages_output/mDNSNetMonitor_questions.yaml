@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mDNSNetMonitor`.\n\n\n\nManpage text:\n\nmDNSNetMonitor(8)\t    System Manager's Manual\t     mDNSNetMonitor(8)\n\nNAME\n     mDNSNetMonitor – dumps mDNS traffic on a network\n\nSYNOPSIS\n     mDNSNetMonitor [-i interface] [host]\n\nDESCRIPTION\n     mDNSNetMonitor prints out a description of the contents of mDNS packets\n     on a network interface. It is similiar to tcpdump in that it continuously\n     captures packets until it is interrupted by a SIGINT signal (generated,\n     for example, by typing your interrupt character, typically  control-C)\n     or a SIGTERM signal (typically generated with the kill(1) command).\n\n     When mDNSNetMonitor finishes capturing packets, it will report counts of\n     packets captured per mDNS packet type, service type and source device.\n\n     Note that mDNSNetMonitor will not capture unicast mDNS packets.\n\nOPTION\n     -i interface    Displays packets on specified interface.\n\nExample\n     To print all packets arriving at or departing from sundown:\n\t % mDNSNetMonitor sundown\n\nSEE ALSO\n     mDNSResponder(8), dns-sd(8)"
+  manpageQuestion1: What is the primary purpose of the mDNSNetMonitor tool?
+  manpageQuestion2: How can you use mDNSNetMonitor to monitor mDNS traffic on the 'eth0' network interface?
+  manpageQuestion3: What is an example of using mDNSNetMonitor to capture and analyze mDNS packets on a specific host?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mDNSNetMonitor`.\n\n\n\nManpage text:\n\nDarwin\t\t\t\t    8/31/16\t\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the mDNSNetMonitor tool?
+  manpageQuestion2: How would you use mDNSNetMonitor to monitor the status of a specific DNS service on a local network?
+  manpageQuestion3: Can you provide an example of using mDNSNetMonitor to display information about all multicast DNS services on the network?
+

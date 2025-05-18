@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `biomesyncd`.\n\n\n\nManpage text:\n\nbiomesyncd(8)\t\t    System Manager's Manual\t\t biomesyncd(8)\n\nNAME\n     biomesyncd – data synchronization daemon\n\nDESCRIPTION\n     biomesyncd synchronizes data between devices registered to the same\n     account.\n\nSEE ALSO\n     biomed(8)\n\nDarwin\t\t\t       November 12, 2020\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the biomesyncd tool?
+  manpageQuestion2: How would you start the biomesyncd daemon to synchronize data between devices registered to the same account?
+  manpageQuestion3: What is the relationship between biomesyncd and the biomed command according to the manpage?
+

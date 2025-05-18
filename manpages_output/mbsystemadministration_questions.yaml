@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mbsystemadministration`.\n\n\n\nManpage text:\n\nmbsystemadministration(8)   System Manager's Manual  mbsystemadministration(8)\n\nNAME\n     mbsystemadministration – helper for the Setup Assistant application.\n\nDESCRIPTION\n     mbsystemadministration is used by the Setup Assistant application to\n     configure system-level settings. It is not meant to be invoked directly.\n\nmacOS 15.3\t\t       November 10, 2016\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the mbsystemadministration command?
+  manpageQuestion2: How would you use mbsystemadministration to configure system-level settings during the Setup Assistant process?
+  manpageQuestion3: Can you explain why mbsystemadministration is not meant to be invoked directly by users?
+

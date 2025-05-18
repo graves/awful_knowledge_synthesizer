@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mskanji`.\n\n\n\nManpage text:\n\nMSKANJI(5)\t\t      File Formats Manual\t\t    MSKANJI(5)\n\nNAME\n     mskanji – Shift-JIS (MS Kanji) encoding for Japanese text\n\nSYNOPSIS\n     ENCODING \"MSKanji\"\n\nDESCRIPTION\n     Shift-JIS, also known as MS Kanji or SJIS, is an encoding system for\n     Japanese characters, developed by Microsoft Corporation.  It encodes the\n     characters from the JIS X 0201 (ASCII/JIS-Roman) and JIS X 0208\n     (Japanese) character sets as sequences of either one or two bytes.\n\n     Characters from the ASCII/JIS-Roman character set are encoded as single\n     bytes between 0x00 and 0x7F (ASCII) or 0xA1 and 0xDF (Half-width\n     katakana).\n\n     Characters from the JIS X 0208 character set are encoded as two bytes.\n     The first ranges from 0x81 - 0x9F, 0xE0 - 0xEA, 0xED - 0xEE (not JIS:\n     NEC-selected IBM extended characters), 0xF0 - 0xF9 (not JIS: user\n     defined), or 0xFA - 0xFC (not JIS: IBM extended characters).  The second\n     byte ranges from 0x40 - 0xFC, excluding 0x7F (delete).\n\nSEE ALSO\n     euc(5), utf8(5)"
+  manpageQuestion1: What is the primary purpose of the mskanji encoding?
+  manpageQuestion2: How would you use mskanji to encode a string of Japanese text into Shift-JIS format?
+  manpageQuestion3: Can you explain how the mskanji encoding handles characters from the JIS X 0208 character set?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mskanji`.\n\n\n\nManpage text:\n\nmacOS 15.3\t\t\tAugust 7, 2003\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the mskanji tool?
+  manpageQuestion2: How can you use mskanji to convert a Unicode code point to its corresponding Kanji character?
+  manpageQuestion3: Can you provide an example of using mskanji to convert the Unicode code point U+4E2D to its Kanji representation?
+

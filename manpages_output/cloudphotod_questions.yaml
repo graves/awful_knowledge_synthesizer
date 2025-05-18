@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cloudphotod`.\n\n\n\nManpage text:\n\ncloudphotod(8)\t\t    System Manager's Manual\t\tcloudphotod(8)\n\nNAME\n     cloudphotod – The macOS iCloud Photos agent.\n\nDESCRIPTION\n     cloudphotod is the iCloud Photos agent.  It is responsible for all iCloud\n     Photos activity.\n\nSEE ALSO\n     mstreamd(8), photolibraryd(8)\n\nmacOS\t\t\t       December 18, 2018\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the cloudphotod tool?
+  manpageQuestion2: How would you check if the cloudphotod service is running on a macOS system?
+  manpageQuestion3: What are the main functions of the cloudphotod process in relation to iCloud Photos?
+

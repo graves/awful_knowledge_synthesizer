@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `gputoolsserviced`.\n\n\n\nManpage text:\n\nGPUTOOLSSERVICED(8)\t    System Manager's Manual\t   GPUTOOLSSERVICED(8)\n\nNAME\n     gputoolsserviced – provides services for the GPU Debugger\n\nSYNOPSIS\n     takes no arguments, and users should not launch it manually.\n\nDESCRIPTION\n     gputoolsserviced is an OS user agent that advertises services for use by\n     the GPU Debugger.\n\nHISTORY\n     gputoolsserviced first appeared in macOS 14.0 and iOS 17.0.\n\nDarwin\t\t\t\t July 28, 2022\t\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the gputoolsserviced resource?
+  manpageQuestion2: How is gputoolsserviced typically used in a macOS environment?
+  manpageQuestion3: What is the significance of the gputoolsserviced being a system agent rather than a user-launched application?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `managedappdistributiond`.\n\n\n\nManpage text:\n\nmanagedappdistributiond(8)  System Manager's Manual managedappdistributiond(8)\n\nNAME\n     managedappdistributiond – macOS managed app distribution daemon\n\nDESCRIPTION\n     managedappdistributiond is used by the system during managed app\n     installation. It should not be invoked manually.\n\nSEE ALSO\n     installer(8),\n\nmacOS 15.3\t\t      September 11, 2023\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the managedappdistributiond daemon?
+  manpageQuestion2: How would you describe the typical usage scenario for managedappdistributiond?
+  manpageQuestion3: What is the recommended approach for interacting with managedappdistributiond without manually invoking it?
+

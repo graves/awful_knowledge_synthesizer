@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `yes`.\n\n\n\nManpage text:\n\nYES(1)\t\t\t    General Commands Manual\t\t\tYES(1)\n\nNAME\n     yes – be repetitively affirmative\n\nSYNOPSIS\n     yes [expletive]\n\nDESCRIPTION\n     The yes utility outputs expletive, or, by default, “y”, forever.\n\nSEE ALSO\n     jot(1), seq(1)\n\nHISTORY\n     The yes command appeared in Version 7 AT&T UNIX.\n\nmacOS 15.3\t\t\t June 4, 2014\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the yes command?
+  manpageQuestion2: How can you use the yes command to output the word 'hello' repeatedly?
+  manpageQuestion3: What is the standard behavior of the yes command when no arguments are provided?
+

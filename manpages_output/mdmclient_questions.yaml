@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mdmclient`.\n\n\n\nManpage text:\n\nmdmclient(1)\t\t    General Commands Manual\t\t  mdmclient(1)\n\nNAME\n     mdmclient – MDM (Mobile Device Management) client\n\n\nDESCRIPTION\n     mdmclient\n\n     Used internally for communication with Mobile Device Management server.\n     Receives profiles and commands from the server after a user enrolls with\n     the server by installing a management profile. Provides support for\n     configuration profiles. Part of Managed Client (MCX).\n\n     WARNING: All command arguments are private. The arguments and output can\n     and will change without notice. Do not rely on any output this command\n     may produce.\n\nMacOSX\t\t\t\t June 10, 2022\t\t\t\tMacOSX"
+  manpageQuestion1: What is the primary purpose of the mdmclient tool?
+  manpageQuestion2: How would you use mdmclient to send a command to the Mobile Device Management server?
+  manpageQuestion3: Can you describe a common scenario where mdmclient is used in conjunction with Managed Client (MCX)?
+

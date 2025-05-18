@@ -1,0 +1,90 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `aa`.\n\n\n\nManpage text:\n\nAA(1)\t\t\t    General Commands Manual\t\t\t AA(1)\n\nNAME\n     aa – Manipulate Apple Archives\n\nSYNOPSIS\n     aa command [options]\n\nDESCRIPTION\n     aa creates and manipulates Apple Archives\n\nCOMMANDS\n     archive\t       Archive the contents of the target directory\n     append\t       Archive the contents of the target directory, append to\n     an existing archive file\n     extract\t       Extract the contents of an archive to the target\n     directory\n     list\t       List the contents of an archive\n     convert\t       Convert an archive into another archive\n     manifest\t       Alias for 'archive -manifest'\n     verify\t       Compare the contents of the target directory with a\n     manifest\n     check-and-fix     Verify and fix the contents of the target directory\n     using an error correcting manifest\n\nOPTIONS\n     -v      Increase verbosity.  Default is silent operation.\n\n     -h      Print usage and exit.\n\n     -d -dir\n\t     Target directory for archive/extract.  Default is the current\n\t     directory."
+  manpageQuestion1: What is the primary purpose of the aa tool?
+  manpageQuestion2: How would you use the aa command to archive the contents of a directory called 'data' and append it to an existing archive file named 'myarchive.aar'?
+  manpageQuestion3: Can you provide an example of using the aa command to extract the contents of an archive file called 'myarchive.aar' into a directory named 'extracted_data'?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `aa`.\n\n\n\nManpage text:\n\n-i -input_file\n\t     Input file.  Default is stdin.\n\n     -o -output_file\n\t     Output file.  Default is stdout.\n\n     -subdir -subdir\n\t     Path to archive under dir.  subdir will be included in the\n\t     archived paths, and extracted.  Default is empty.\n\n     -D -dir_and_subdir\n\t     Set both dir to `dirname dir_and_subdir` and subdir to `basename\n\t     dir_and_subdir`.\n\n     -x      Do not cross volume boundaries when archiving.\n\n     -p      Generate destination path automatically based on source path.\n\t     For example 'aa archive -d foo -p' becomes 'aa archive -d foo -o\n\t     foo.aar'.\n\n     -a -algorithm\n\t     Compression algorithm used when creating archives.  One of lzfse,\n\t     lzma, lz4, zlib, raw.  Default is lzfse.\n\n     -b -block_size\n\t     Block size used when compressing archives, a number with optional\n\t     b, k, m, g suffix (bytes are assumed if no suffix is specified).\n\t     Default is 4m for archive and 1m for the other commands.\n\n     -t -worker_threads\n\t     Number of worker threads compressing/decompressing data.  Default\n\t     is the number of physical CPU on the running machine."
+  manpageQuestion1: What is the primary purpose of the `aa` command-line tool?
+  manpageQuestion2: How can you use the `aa` tool to create a compressed archive with a custom compression algorithm and block size?
+  manpageQuestion3: What command would you use to extract an archive without crossing volume boundaries and automatically generate the destination path based on the source path?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `aa`.\n\n\n\nManpage text:\n\n-wt -writer_threads\n\t     Number of writer threads extracting archive content.  Default is\n\t     to match worker_threads.\n\n     -enable-dedup -(-no-enable-dedup)\n\t     If set, and SLC fields (the SLC field identifies a cluster of\n\t     regular files with identical content) are present in the archive,\n\t     files with same data will be extracted as clones.\n\n\t     Note that to create such an archive, you have to manually add the\n\t     SLC field, for example `aa archive -o archive.aa -include-field\n\t     SLC ...`.\tIn this case, aa marks files with identical content as\n\t     a cluster and shows a summary at the end.\n\n\t     There is no way to deduplicate the data in the archive (by\n\t     storing the data only once) from the command line.  To achieve\n\t     this, use the API and pass the `AA_FLAG_ARCHIVE_DEDUPLICATE_DAT`\n\t     flag.\n\n     -enable-holes -(-no-enable-holes)\n\t     If set, and the filesystem supports it, detect and create holes\n\t     in files to store 0-filled segments\n\n     -ignore-eperm -(-no-ignore-eperm)\n\t     If set, ignore EPERM (operation not permitted) errors when\n\t     setting files attributes"
+  manpageQuestion1: What is the primary purpose of the aa command-line tool?
+  manpageQuestion2: How can you configure aa to use deduplication of files with identical content in an archive?
+  manpageQuestion3: What command-line option can be used with aa to create holes in files for efficient storage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `aa`.\n\n\n\nManpage text:\n\n-manifest\n\t     Alias for the following options:\n\t     -exclude-field dat\n\t     -include-field sh2,siz,idx,idz\n\t     -a lzfse -b 1m\n\n     -imanifest -input_manifest_file\n\t     Manifest matching the input archive.  Can be used in conjonction\n\t     with the entry selection options to accelerate processing\n\n     -omanifest -output_manifest_file\n\t     Receives a manifest of the output archive\n\n     -list-format -format\n\t     Output format for the list command, one of text, json.  Default\n\t     is text\n\nENTRY SELECTION OPTIONS\n     -include-path and -include-path-list options are applied first to select\n     an initial set of entries, then -exclude-path, -exclude-path-list,\n     -exclude-name, -exclude-regex are applied to remove entries from this\n     set.\n\n     If no -include-path or -include-path-list option is given, all entries\n     are included in the initial set.  If a directory is included/excluded,\n     the entire sub-tree is included/excluded.\n\n     -include-path -path\n\t     Include entry paths having path as a prefix.  This option can be\n\t     given multiple times."
+  manpageQuestion1: What is the primary purpose of the `aa` command-line tool?
+  manpageQuestion2: How can you use the `aa` command to include only files in the `/home/user/data` directory and exclude those with names matching the regex `^temp_.*\.log$`?
+  manpageQuestion3: What command would you use with `aa` to generate a manifest file for the output archive and specify that the list output should be in JSON format?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `aa`.\n\n\n\nManpage text:\n\n-exclude-path -path\n\t     Exclude entry paths having path as a prefix.  This option can be\n\t     given multiple times.\n\n     -include-path-list -path_list_file\n\t     File containing a list of paths to include, one entry per line.\n\t     This option can be given multiple times.\n\n     -exclude-path-list -path_list_file\n\t     File containing a list of paths to exclude, one entry per line.\n\t     This option can be given multiple times.\n\n     -include-regex -expr\n\t     Include entry paths matching regular expression expr, see\n\t     re_format(7).  This option can be given multiple times.\n\n     -exclude-regex -expr\n\t     Exclude entry paths matching regular expression expr, see\n\t     re_format(7).  This option can be given multiple times.\n\n     -exclude-name -name\n\t     Exclude entry paths where a single component of the path matches\n\t     exactly name.  This option can be given multiple times.\n\n     --include-type -<type_spec>\n\t     Include only entries matching the given types.  <type_spec> is a\n\t     word containing one or more of the entry type characters listed\n\t     below."
+  manpageQuestion1: What is the primary purpose of the `aa` command-line tool?
+  manpageQuestion2: How can you use the `aa` tool to exclude all files in a specific directory and its subdirectories?
+  manpageQuestion3: Can you provide an example of using the `aa` tool to include only directories and exclude files using regular expressions?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `aa`.\n\n\n\nManpage text:\n\n-exclude-type -<type_spec>\n\t     Include only entries not matching the given types.  <type_spec>\n\t     is a word containing one or more of the entry type characters\n\t     listed below.\n\n     -include-field -<field_spec>\n\t     Add the given fields to the set of field keys.  This option can\n\t     be given multiple times.  <field_spec> is a comma separated list\n\t     of entry field keys listed below.\n\n     -exclude-field -<field_spec>\n\t     Remove the given fields from the set of field keys.  This option\n\t     can be given multiple times.  <field_spec> is a comma separated\n\t     list of entry field keys listed below.\n\nENCRYPTION OPTIONS\n     When archiving, encryption is selected by one of the -password...,\n     -key..., or -recipient-pub options.\n\n     The archive will be signed if a private key is specified with -sign-priv.\n\n     With the currently available profiles, public/private keys are on the\n     Elliptic Curve P-256, and symmetric keys are 256-bit long.\n\n     -keychain\n\t     Use Keychain to load/store symmetric keys and passwords"
+  manpageQuestion1: What is the primary purpose of the `aa` resource?
+  manpageQuestion2: How would you use the `aa` command to include only entries that do not match the type 'U' and also add the field 'description' to the output?
+  manpageQuestion3: Can you provide an example of using the `aa` command to exclude fields 'created' and 'modified' from the output while including entries that do not match the type 'A'?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `aa`.\n\n\n\nManpage text:\n\n-password -file\n\t     File containing encryption password.  When encrypting, and if\n\t     -password-gen is passed, receives the generated password.\tCan be\n\t     - to print the password to standard output.\n\n     --password-value -password\n\t     Password.\n\n     -password-gen\n\t     When encrypting, generate a new random password.  It is\n\t     recommended to always use this option, in conjonction with\n\t     -keychain to store the password in the Keychain, or -password to\n\t     store the password in a file or print it.\n\n     -key -file\n\t     File containing encryption symmetric key.\tWhen encrypting, and\n\t     if -key-gen is passed, receives the generated key.\n\n     -key-value -key\n\t     Symmetric key, either \"hex:<64 hex digits>\" or \"base64:<32 bytes\n\t     encoded using base64>\".\n\n     -key-gen\n\t     When encrypting, generate a new random symmetric key.\n\n     -recipient-pub -file\n\t     Recipient public key for encryption.  The corresponding private\n\t     key is required to decrypt the archive."
+  manpageQuestion1: What is the primary purpose of the `aa` command-line tool?
+  manpageQuestion2: How can you generate a random encryption password and store it in the macOS Keychain using the `aa` tool?
+  manpageQuestion3: What is the correct way to specify a symmetric key in hex format when using the `aa` command?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `aa`.\n\n\n\nManpage text:\n\n-recipient-priv -file\n\t     Recipient private key for decryption.  The archive must have been\n\t     encrypted against the corresponding public key.\n\n     -sign-pub -file\n\t     Signing public key for decryption.  The archive must have been\n\t     signed with the corresponding private key.\n\n     -sign-priv -file\n\t     Signing private key for encryption.  The corresponding public key\n\t     is required to decrypt and authenticate the archive.\n\nENTRY TYPES\n     b block special\n     c character special\n     d directory\n     f regular file\n     l symbolic link\n     m metadata\n     p fifo\n     s socket\n\nENTRY FIELDS\n     typ entry type\n     pat path\n     lnk link path\n     dev device id\n     uid user id\n     gid group id\n     mod access permissions\n     flg flags\n     mtm modification time\n     ctm creation time\n     btm backup time\n     xat extended attributes\n     acl access control list\n     cks CRC32 checksum\n     sh1 SHA1 digest\n     sh2 SHA2-256 digest\n     dat file contents\n     siz file size\n     duz disk usage\n     idx entry index in main archive\n     yec file data error correcting codes\n     yaf Apple Archive fields (in metadata entry)\n     all alias for all fields (exclude only)\n     attr alias for uid,gid,mod,flg,mtm,btm,ctm"
+  manpageQuestion1: What is the primary purpose of the `aa` resource?
+  manpageQuestion2: How would you use the `aa` tool to decrypt an archive that was encrypted with a recipient's public key?
+  manpageQuestion3: Can you provide an example of using the `aa` tool to encrypt a file using a signing private key and verify it with the corresponding public key?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `aa`.
+
+
+
+    Manpage text:
+
+    EXAMPLES
+         Archive the contents of directory foo into archive foo.aar, using LZMA
+         compression with 8 MB blocks
+
+          aa archive -d foo -o foo.aar -a lzma -b 8m
+
+         Extract the contents of foo.aar in directory dst
+
+          aa extract -d dst -i foo.aar
+
+         Create a manifest of the contents of directory foo into foo.manifest,
+         using LZFSE compression with 1 MB blocks
+
+          aa manifest -d foo -o foo.manifest -a lzfse -b 1m
+
+         Verify the contents of dst match the manifest foo.manifest
+
+          aa verify -i foo.manifest -d dst -v
+
+         Print all entry paths in foo.manifest
+
+          aa list -i foo.manifest
+
+         Print all entry paths, uid, gid for regular files in foo.manifest
+
+          aa list -v -i foo.manifest -include-type f -exclude-field all -include-
+         field uid,gid,pat
+
+         Create a manifest of the contents of archive foo.aar in foo.manifest
+
+          aa convert -manifest -v -i foo.aar -o foo.manifest
+
+         Extract a subset of entries matching prefix Applications/Mail.app from
+         archive foo.aar in directory dst
+  manpageQuestion1: What is the primary purpose of the aa command-line tool?
+  manpageQuestion2: How can you create a compressed manifest of a directory using LZFSE compression with 1 MB block size?
+  manpageQuestion3: Can you provide an example of extracting specific entries from an archive based on a file path prefix?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `aa`.\n\n\n\nManpage text:\n\naa extract -i foo.aar -include-path Applications/Mail.app -d dst\n\n     Archive and encrypt directory foo to archive foo.aea, generating a random\n     password and storing it in the Keychain\n\n      aa archive -d foo -o foo.aea -keychain -password-gen\n\n     Decrypt and extract archive foo.aea to directory dst, obtaining the\n     password from the Keychain (requires local authentication)\n\n      aa extract -o foo.aea -d dst -keychain\n\n     Archive directory foo to archive foo.aar\n\n      aa archive -p -d foo\n\n     Extract archive foo.aar to directory foo\n\n      aa extract -p -i foo.aar\n\nmacOS\t\t\t\t March 9, 2020\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the `aa` command-line tool?
+  manpageQuestion2: How can I use the `aa` tool to archive a directory named foo into an encrypted archive called foo.aea, generating a random password and storing it in the Keychain?
+  manpageQuestion3: What is the correct command to extract an encrypted archive named foo.aea into a directory called dst, using the password stored in the Keychain?
+

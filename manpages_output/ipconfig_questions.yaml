@@ -1,0 +1,63 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ipconfig`.\n\n\n\nManpage text:\n\nIPCONFIG(8)\t\t    System Manager's Manual\t\t   IPCONFIG(8)\n\nNAME\n     ipconfig – view and control IP configuration state\n\nSYNOPSIS\n     ipconfig waitall\n     ipconfig getifaddr interface-name\n     ipconfig ifcount\n     ipconfig getoption interface-name (option-name | option-code)\n     ipconfig getpacket interface-name\n     ipconfig getv6packet interface-name\n     ipconfig getra interface-name\n     ipconfig getsummary interface-name\n     ipconfig getsummary interface-name\n     ipconfig getdhcpduid\n     ipconfig getdhcpiaid interface-name\n     ipconfig setverbose level\n     ipconfig set interface-name NONE\n     ipconfig set interface-name (DHCP | BOOTP)\n     ipconfig set interface-name (MANUAL | INFORM) ip-address subnet-mask\n     ipconfig set interface-name NONE-V6\n     ipconfig set interface-name AUTOMATIC-V6\n     ipconfig set interface-name MANUAL-V6 ipv6-address prefix-length\n     ipconfig set interface-name 6TO4\n\nDESCRIPTION\n     ipconfig is a utility that communicates with the IPConfiguration agent to\n     retrieve and set IP configuration parameters.  It should only be used in\n     a test and debug context.\tUsing it for any other purpose is strongly\n     discouraged. Public API's in the SystemConfiguration framework are\n     currently the only supported way to access and control the state of\n     IPConfiguration."
+  manpageQuestion1: What is the primary purpose of the ipconfig command?
+  manpageQuestion2: How can you use ipconfig to set a specific interface's IP address to manual configuration?
+  manpageQuestion3: What command would you use to retrieve the IPv6 address of a given network interface?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ipconfig`.
+
+
+
+    Manpage text:
+
+    The IPConfiguration agent is responsible for configuring and managing the
+         IPv4 and IPv6 addresses on direct, connectionless interfaces such as
+         ethernet and Wi-Fi.  The IPConfiguration agent is a program bundle that
+         is loaded and executed by the configd(8) process.
+
+         The IPConfiguration agent implements the client side of the DHCP and
+         BOOTP protocols described in RFC951, RFC1542, RFC2131, and RFC2132.  It
+         also assigns and maintains static IP addresses.  It may also allocate and
+         assign a link-local IP address if DHCP fails to acquire an IP address.
+
+         The IPConfiguration agent enables and controls the IPv6 SLAAC (RFC 4862)
+         state in the kernel, and also handles statically configured IPv6
+         addresses.  The agent implements the client side of the DHCPv6 protocol
+         (RFC 3315) and supports both stateless and stateful operation.
+
+         In all cases, the IPConfiguration agent performs IP address conflict
+         detection before assigning an IP address to an interface.
+  manpageQuestion1: What is the primary purpose of the ipconfig resource?
+  manpageQuestion2: How does the ipconfig resource handle DHCP and BOOTP protocols?
+  manpageQuestion3: What role does the ipconfig resource play in managing IPv6 addresses?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ipconfig`.\n\n\n\nManpage text:\n\nCOMMANDS\n     The ipconfig utility provides several commands:\n\n     waitall\n\t     Blocks until all network services have completed configuring, or\n\t     have timed out in the process of configuring.  This is only\n\t     useful for initial system start-up time synchronization for\n\t     legacy network services that are incapable of dealing with\n\t     dynamic network configuration changes.\n\n     getifaddr interface-name\n\t     Prints to standard output the IP address for the first network\n\t     service associated with the given interface.  The output will be\n\t     empty if no service is currently configured or active on the\n\t     interface.\n\n     ifcount\n\t     Prints the number of interfaces that IPConfiguration is capable\n\t     of configuring.  The value that's printed will not change unless\n\t     relevant network interfaces are either added to or removed from\n\t     the system.\n\n     getoption interface-name (option-name | option-code)\n\t     Prints the BOOTP/DHCP option with the given name or option code\n\t     integer value.  See bootpd(8) for option code names.  If an\n\t     option has multiple values e.g. domain_name_server, only the\n\t     first value is printed."
+  manpageQuestion1: What is the primary purpose of the ipconfig utility?
+  manpageQuestion2: How can you use ipconfig to retrieve the IP address of a specific network interface?
+  manpageQuestion3: What command can you use with ipconfig to get information about a specific BOOTP/DHCP option for a network interface?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ipconfig`.\n\n\n\nManpage text:\n\ngetpacket interface-name\n\t     Prints to standard output the DHCP/BOOTP packet that the client\n\t     accepted from the DHCP/BOOTP server.  This command is useful to\n\t     check what the server provided, and whether the values are\n\t     sensible.\tThis command outputs nothing if DHCP/BOOTP is not\n\t     active on the interface, or the attempt to acquire an IP address\n\t     was unsuccessful.\n\n     getv6packet interface-name\n\t     Prints to standard output the latest DHCPv6 packet that the\n\t     client accepted from the DHCPv6 server.  In the case of stateful\n\t     DHCPv6, it corresponds to the last packet from the server that\n\t     contained addressing information.\tThis command is useful to\n\t     check what the server provided, and whether the values are\n\t     sensible.\tThis command outputs nothing if DHCPv6 is not active\n\t     on the interface.\n\n     getra interface-name\n\t     Prints to standard output the latest IPv6 Router Advertisement\n\t     packet that the client accepted from an advertising router. This\n\t     command outputs nothing if no router is present."
+  manpageQuestion1: What is the primary purpose of the ipconfig tool?
+  manpageQuestion2: How can you use the getpacket command to inspect the DHCP/BOOTP packet received by a network interface?
+  manpageQuestion3: What is the function of the getra command in the context of IPv6 networking?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ipconfig`.\n\n\n\nManpage text:\n\ngetsummary interface-name\n\t     Prints to standard output a summary of the current\n\t     IPConfiguration state over the specific interface.\n\n     getdhcpduid\n\t     Prints to standard output the DHCP DUID, if one has been\n\t     established.\n\n     getdhcpiaid interface-name\n\t     Prints to standard output the DHCP IA_ID for the specific\n\t     interface, if the interface is configured for IPv6 and the DHCP\n\t     DUID has been established.\n\n     set interface-name NONE\n     set interface-name (DHCP | BOOTP)\n     set interface-name (MANUAL | INFORM) ip-address subnet-mask\n     set interface-name NONE-V6\n     set interface-name AUTOMATIC-V6\n     set interface-name MANUAL-V6 ipv6-address prefix-length\n     set interface-name 6TO4\n\t     Sets the interface to have a new temporary network service of the\n\t     given type.  Any existing services on the interface for the\n\t     particular protocol (IPv4 or IPv6) are first de-configured before\n\t     the new service is instantiated.\n\n\t     If NONE is specified, all existing IPv4 services are de-\n\t     configured.  If NONE-V6 is specified, all existing IPv6 services\n\t     are de-configured."
+  manpageQuestion1: What is the primary purpose of the ipconfig command in macOS?
+  manpageQuestion2: How would you use ipconfig to set a static IPv4 address of 192.168.1.100 with a subnet mask of 255.255.255.0 on the 'en0' interface?
+  manpageQuestion3: Can you provide an example of using ipconfig to retrieve the DHCP IA_ID for the 'en1' interface?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ipconfig`.\n\n\n\nManpage text:\n\nDHCP and BOOTP require no additional arguments. The IP address,\n\t     subnet mask, router, and DNS information are retrieved\n\t     automatically.\n\n\t     Both MANUAL and INFORM require the specification of an IP address\n\t     ip-address and a subnet mask subnet-mask.\n\n\t     The INFORM service configures the IP address statically like\n\t     MANUAL, but then broadcasts DHCP INFORM packets to retrieve DHCP\n\t     option information. If the DHCP server responds and supplies a\n\t     subnet mask, that subnet mask is used instead of the specified\n\t     subnet-mask.\n\n\t     AUTOMATIC-V6 requires no additional arguments.  The IPv6 address,\n\t     prefix length and router are retrieved automatically.\n\n\t     MANUAL-V6 requires the specification of the IPv6 address\n\t     ipv6-address and a prefix length prefix-length.\n\n\t     6TO4 only works on Six To Four (IFT_STF) interfaces e.g. stf0.\n\t     If it is specified on a non-IFT_STF interface, it has the same\n\t     effect as specifying NONE-V6.\n\n\t     The set command requires root privileges."
+  manpageQuestion1: What is the primary purpose of the ipconfig command in macOS?
+  manpageQuestion2: How can you configure a manual IPv6 address with a specific prefix length using ipconfig?
+  manpageQuestion3: What is the difference between using the MANUAL and INFORM options when configuring IP settings with ipconfig?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ipconfig`.\n\n\n\nManpage text:\n\nNote: The set command is very useful for debugging, but it can't\n\t     be used to configure a persistent service.  The temporary\n\t     services that are created only remain until the next network\n\t     configuration change occurs. See scselect(8).\n\n     setverbose level\n\t     Enables or disables verbose mode logging in the IPConfiguration\n\t     agent. Specify a level value of 0 to disable verbose logging, the\n\t     default.  Specify a value of 1 to enable verbose logging. This\n\t     setting is persistent across boots of the operating system.\n\n\t     All logging generated by the IPConfiguration agent can be\n\t     filtered using the \"com.apple.IPConfiguration\" subsystem\n\t     identifier.\n\n\t     The setverbose command requires root privileges.\n\nEXAMPLES\n     # ipconfig getpacket en0\n     op = BOOTREPLY\n     htype = 1\n     dp_flags = 0\n     hlen = 6\n     hops = 0\n     xid = 1956115059\n     secs = 0\n     ciaddr = 0.0.0.0\n     yiaddr = 192.168.4.10\n     siaddr = 192.168.4.1\n     giaddr = 0.0.0.0\n     chaddr = 0:3:93:7a:d7:5c\n     sname = dhcp.mycompany.net\n     file =\n     options:\n     Options count is 10\n     dhcp_message_type (uint8): ACK 0x5\n     server_identifier (ip): 192.168.4.1\n     lease_time (uint32): 0x164a\n     subnet_mask (ip): 255.255.255.0\n     router (ip_mult): {192.168.4.1}\n     domain_name_server (ip_mult): {192.168.4.1}\n     domain_name (string): mycompany.net\n     end (none):"
+  manpageQuestion1: What is the primary purpose of the ipconfig command?
+  manpageQuestion2: How would you use ipconfig to retrieve information about the network configuration of a specific interface, such as en0?
+  manpageQuestion3: Can you provide an example of using the setverbose command to enable verbose logging for the IPConfiguration agent?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ipconfig`.\n\n\n\nManpage text:\n\n# ipconfig getoption en0 router\n     192.168.4.1\n\nSEE ALSO\n     configd(8), bootpd(8), scselect(8)\n\nHISTORY\n     The ipconfig command first appeared in Mac OS X Version 10.0 Public Beta.\n\nMac OS X\t\t\tAugust 1, 2022\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the ipconfig command?
+  manpageQuestion2: How can you retrieve the router address for the Ethernet interface en0 using ipconfig?
+  manpageQuestion3: What is the function of the 'getoption' subcommand in ipconfig?
+

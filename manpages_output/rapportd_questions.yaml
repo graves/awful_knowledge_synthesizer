@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `rapportd`.\n\n\n\nManpage text:\n\nrapportd(8)\t\t    System Manager's Manual\t\t   rapportd(8)\n\nNAME\n     rapportd – Rapport Daemon.\n\nSYNOPSIS\n     Daemon that enables Phone Call Handoff and other communication features\n     between Apple devices.\n\n     Use '/usr/libexec/rapportd -V' to get the version.\n\nLOCATION\n     /usr/libexec/rapportd\n\n\t\t\t\t   3/24/2016"
+  manpageQuestion1: What is the primary purpose of the rapportd daemon?
+  manpageQuestion2: How can you check the version of the rapportd daemon?
+  manpageQuestion3: What is the general location of the rapportd executable on a macOS system?
+

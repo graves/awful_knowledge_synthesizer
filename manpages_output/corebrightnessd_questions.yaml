@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `corebrightnessd`.\n\n\n\nManpage text:\n\ncorebrightnessd(8)\t    System Manager's Manual\t    corebrightnessd(8)\n\nNAME\n     corebrightnessd – corebrightnessd daemon\n\nSYNOPSIS\n     corebrightnessd\n\nDESCRIPTION\n     corebrightnessd Manages Night Shift.  corebrightnessd should not be\n     invoked directly.\n\nmacOS 15.3\t\t\t  10/06/2016\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the corebrightnessd daemon?
+  manpageQuestion2: How would you interact with the corebrightnessd daemon to manage Night Shift settings?
+  manpageQuestion3: Can you explain the typical use case for the corebrightnessd daemon in a macOS system?
+

@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mib2c-update`.\n\n\n\nManpage text:\n\nmib2c-update(1) \t\t   Net-SNMP\t\t       mib2c-update(1)\n\nNAME\n       mib2c-update - script to merge custom code into updated mib2c code\n\nSYNOPSIS\n       mib2c-update\n\nDESCRIPTION\n       Use mib2c-update to generate your mib2c code templates, and it will\n       track the original code and the changes you make to the code. If the\n       mib2c template changes (bug fixes, enhances in later releases), re-\n       running mib2c will update the template and then attempt to re-apply\n       your changes.\n\n       This can be extremely useful when developing your own mib2c templates.\n\n       When you first run mib2c-update, it will create several hidden\n       directories and a .mib2c-updaterc file. You must edit the .mib2c-\n       udpaterc file to specify two values. The first, UPDATE_OID, is the\n       table name to specify when running mib2c. The second, UPDATE_CONF, is\n       the mib2c configuration file to specify when running mib2c.\n\n       Additional mib2c options can be specified in UPDATE_MIB2C_OPTS."
+  manpageQuestion1: What is the primary purpose of the mib2c-update tool?
+  manpageQuestion2: How would you use mib2c-update to generate and manage custom mib2c code templates?
+  manpageQuestion3: Can you provide an example of configuring mib2c-update to use a specific MIB2C configuration file and update OID?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mib2c-update`.\n\n\n\nManpage text:\n\nBUGS\n       mib2c-update has only been tested on individual tables. Specifying a\n       scalar or and entire MIB might not work.\n\nV5.6.2.1\t\t\t  07 Apr 2010\t\t       mib2c-update(1)"
+  manpageQuestion1: What is the primary purpose of the mib2c-update tool?
+  manpageQuestion2: How would you use mib2c-update to update a specific MIB table?
+  manpageQuestion3: What are the potential limitations or issues when using mib2c-update with complex MIB structures?
+

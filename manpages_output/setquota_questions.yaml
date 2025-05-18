@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `setquota`.\n\n\n\nManpage text:\n\nsetquota(1)\t\t    General Commands Manual\t\t   setquota(1)\n\nNAME\n     setquota – Sets home directory quotas on the local computer.\n\nSYNOPSIS\n     setquota [-ahl] [-n directoryDomainName] [-u username]\n\nDESCRIPTION\n     setquota provides several options for creating and updating home\n     directory quotas.\tQuotas are set as specified in the individual user\n     record.\n\nOPTIONS\n     -a       sets home directory quota for users defined in all directory\n\t      domains of the server's search path.\n\n     -l       sets home directory quota for users defined in the local\n\t      directory domain.\n\n     -n directoryDomainName\n\t      sets home directory quota for users defined in a specific\n\t      directory domain in the server's search path.\n\n     -u username\n\t      sets home directory quota for a specific user defined in the\n\t      domain(s) identified in the -a, -l, or -n parameter.  If you\n\t      omit the -a, -l, and -n parameters when you use the -u\n\t      parameter, -a is assumed.\n\nFILES\n     /usr/sbin/setquota \t\t\t   location of tool"
+  manpageQuestion1: What is the primary purpose of the setquota command?
+  manpageQuestion2: How would you use setquota to set a home directory quota for all users in the local directory domain?
+  manpageQuestion3: Can you provide an example of using setquota to set a home directory quota for a specific user, John Doe, in the local directory domain?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `setquota`.\n\n\n\nManpage text:\n\nMac OS X\t\t\tWed Nov 12 2008 \t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the setquota command?
+  manpageQuestion2: How would you use the setquota command to set a disk quota for a specific user on a file system?
+  manpageQuestion3: Can you provide an example of using the setquota command to set both disk and inode quotas for a user on a specific file system?
+

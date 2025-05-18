@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `uuchk`.\n\n\n\nManpage text:\n\nuuchk(8)\t\t    System Manager's Manual\t\t      uuchk(8)\n\nNAME\n       uuchk - display information read from the UUCP configuration files.\n\nSYNOPSIS\n       uuchk [ options ]\n\nDESCRIPTION\n       The uuchk program displays information read from the UUCP configuration\n       files.  It should be used to ensure that UUCP has been configured\n       correctly.\n\n       The -s or --system options may be used to display the configuration for\n       just the specified system, rather than for all systems.\tThe uuchk\n       program also supports the standard UUCP program options.\n\nOPTIONS\n       -s system, --system system\n\t    Display the configuration for just the specified system, rather\n\t    than for all systems.\n\n       Standard UUCP options:\n\n       -I file, --config\n\t    Set configuration file to use.\n\n       -v, --version\n\t    Report version information and exit.\n\n       --help\n\t    Print a help message and exit.\n\nSEE ALSO\n       uucp(1)\n\nAUTHOR\n       Ian Lance Taylor <ian@airs.com>.  Text for this Manpage comes from\n       Taylor UUCP, version 1.07 Info documentation."
+  manpageQuestion1: What is the primary purpose of the uuchk command?
+  manpageQuestion2: How would you use uuchk to check the UUCP configuration for a specific system, such as 'example.com'?
+  manpageQuestion3: Can you provide an example of using uuchk to display the UUCP configuration with a custom configuration file?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `uuchk`.\n\n\n\nManpage text:\n\nTaylor UUCP 1.07 \t\t      uuchk(8)"
+  manpageQuestion1: What is the primary purpose of the uuchk command?
+  manpageQuestion2: How would you use uuchk to check the validity of a UUCP address?
+  manpageQuestion3: Can you provide an example of using uuchk to verify a UUCP address in the format 'host-123.456'?
+

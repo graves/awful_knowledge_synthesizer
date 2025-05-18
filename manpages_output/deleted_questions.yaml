@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `deleted`.\n\n\n\nManpage text:\n\ndeleted(8)\t\t    System Manager's Manual\t\t    deleted(8)\n\nNAME\n     deleted – The purgeable space / cache management daemon.\n\nDESCRIPTION\n     deleted is a system daemon that keeps track of purgeable space via\n     registered services.  deleted listens for low-space events from the file\n     system and attempts to avoid running out of disk space by requesting that\n     clients purge space.  deleted is not intended to be invoked directly.\n\nFILES\n     /System/Library/CacheDelete  CacheDelete service definitions provided by\n\t\t\t\t  Apple.\n\nSEE ALSO\n     launchctl(1), launchd.plist(5)\n\nDarwin\t\t\t      10 September, 2013\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the deleted daemon?
+  manpageQuestion2: How does the deleted daemon manage purgeable space on a macOS system?
+  manpageQuestion3: Can you explain the role of the /System/Library/CacheDelete file in relation to the deleted daemon?
+

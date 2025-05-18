@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `AMPSystemPlayerAgent`.\n\n\n\nManpage text:\n\nAMPSYSTEMPLAYERAGENT(8)     System Manager's Manual    AMPSYSTEMPLAYERAGENT(8)\n\nNAME\n     AMPSystemPlayerAgent – The agent for MediaPlayer system player\n\nSYNOPSIS\n     AMPSystemPlayerAgent\n\nDESCRIPTION\n     AMPSystemPlayerAgent is a per-user daemon which manages the systen\n     player.\n\n     There are no configuration options to AMPSYSTEMPLAYERAGENT.  Users should\n     not run AMPSystemPlayerAgent it manually.\n\nMac OS X\t\t       December 6, 2018 \t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the AMPSystemPlayerAgent tool?
+  manpageQuestion2: How would you use AMPSystemPlayerAgent to manage the system player?
+  manpageQuestion3: Can you provide an example of using AMPSystemPlayerAgent to handle user-specific system player settings?
+

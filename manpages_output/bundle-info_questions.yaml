@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `bundle-info`.\n\n\n\nManpage text:\n\nBUNDLE-INFO(1)\t\t\t\t\t\t\tBUNDLE-INFO(1)\n\nNAME\n       bundle-info - Show information for the given gem in your bundle\n\nSYNOPSIS\n       bundle info [GEM] [--path]\n\nDESCRIPTION\n       Print the basic information about the provided GEM such as homepage,\n       version, path and summary.\n\nOPTIONS\n       --path Print the path of the given gem\n\n\n\t\t\t\t November 2018\t\t\tBUNDLE-INFO(1)"
+  manpageQuestion1: What is the primary purpose of the bundle-info command?
+  manpageQuestion2: How would you use bundle-info to display the path of a specific gem in your bundle?
+  manpageQuestion3: Can you provide an example of using bundle-info to retrieve the version and homepage information of a gem?
+

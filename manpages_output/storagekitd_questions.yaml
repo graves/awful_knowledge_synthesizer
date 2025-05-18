@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `storagekitd`.\n\n\n\nManpage text:\n\nstoragekitd(8)\t\t    System Manager's Manual\t\tstoragekitd(8)\n\nNAME\n     storagekitd – helper for the StorageKit framework.\n\nSYNOPSIS\n     storagekitd\n\nDESCRIPTION\n     storagekitd is used by the StorageKit framework for disk state keeping\n     and privileged operations. It is used by various clients in macOS. It is\n     not meant to be invoked directly.\n\nMac OS X\t\t       November 11, 2016\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the storagekitd tool?
+  manpageQuestion2: How would you use storagekitd in a macOS system environment?
+  manpageQuestion3: Can you explain the role of storagekitd in relation to the StorageKit framework?
+

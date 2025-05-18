@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `uasysdiagnose`.\n\n\n\nManpage text:\n\nuasysdiagose(8) \t    System Manager's Manual\t       uasysdiagose(8)\n\nNAME\n     uasysdiagone – Produce system diagnostics for UserActivity.framework\n\nDESCRIPTION\n     uasysdiagone is used to dump a diagnostic state from useractivityd.\n\nmacOS 15.3\t\t\t June 15, 2017\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the uasysdiagone tool?
+  manpageQuestion2: How would you use uasysdiagone to retrieve diagnostic information from the UserActivity framework?
+  manpageQuestion3: Can you provide an example of using uasysdiagone to generate system diagnostics for debugging purposes?
+

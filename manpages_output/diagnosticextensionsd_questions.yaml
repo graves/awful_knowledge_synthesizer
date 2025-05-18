@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `diagnosticextensionsd`.\n\n\n\nManpage text:\n\ndiagnosticextensionsd(8)    System Manager's Manual   diagnosticextensionsd(8)\n\nNAME\n     diagnosticextensionsd – A background daemon for diagnostics gathering.\n\nDESCRIPTION\n     diagnosticextensionsd gathers diagnostic files for Apple feedback\n     reporting tools.\n\n     There are no configuration options to diagnosticextensionsd. Users should\n     not run diagnosticextensionsd manually.\n\nmacOS\t\t\t\tJanuary 9, 2023 \t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the diagnosticextensionsd daemon?
+  manpageQuestion2: How would you check if the diagnosticextensionsd daemon is running on a macOS system?
+  manpageQuestion3: What should users avoid when dealing with the diagnosticextensionsd daemon?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `firmwaresyncd`.\n\n\n\nManpage text:\n\nFIRMWARESYNCD(8)\t    System Manager's Manual\t      FIRMWARESYNCD(8)\n\nNAME\n     firmwaresyncd – synchronize files used by the system firmware\n\nSYNOPSIS\n     firmwaresyncd [-d]\n\nDESCRIPTION\n     firmwaresyncd runs at boot time to synchronize the firmware file(s) from\n     the root filesystem to the EFI System Partition (ESP). It does not run\n     when the system is performing a Safe Boot.\n\nSEE ALSO\n     bless(8), kextd(8), nvram(8)\n\nMac OS X\t\t       October 26, 2007 \t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the firmwaresyncd command?
+  manpageQuestion2: How would you use the firmwaresyncd command to ensure firmware files are synchronized during system boot?
+  manpageQuestion3: Can you explain the role of the -d flag when using firmwaresyncd?
+

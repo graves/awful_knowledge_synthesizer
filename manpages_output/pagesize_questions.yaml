@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pagesize`.\n\n\n\nManpage text:\n\nPAGESIZE(1)\t\t    General Commands Manual\t\t   PAGESIZE(1)\n\nNAME\n     pagesize – print system page size\n\nSYNOPSIS\n     pagesize\n\nDESCRIPTION\n     The pagesize utility prints the size of a page of memory in bytes, as\n     returned by getpagesize(3).  This program is useful in constructing\n     portable shell scripts.\n\nSEE ALSO\n     getpagesize(3)\n\nHISTORY\n     The pagesize command appeared in 4.2BSD.\n\nmacOS 15.3\t\t\t June 6, 1993\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the pagesize utility?
+  manpageQuestion2: How would you use the pagesize command to determine the memory page size on a macOS system?
+  manpageQuestion3: Can you provide an example of using the pagesize command in a shell script to set a variable for memory page size?
+

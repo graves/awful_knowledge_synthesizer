@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `xscertd`.\n\n\n\nManpage text:\n\nxscertd(8)\t\t    System Manager's Manual\t\t    xscertd(8)\n\nNAME\n     xscertd -- Certificate signing daemon\n\nSYNOPSIS\n     xscertd\n\nDESCRIPTION\n     xscertd is a daemon which signs certificate requests and distributes CRLs\n     using the SCEP protocol. Its controlled by launchd.\n\nSEE ALSO\n\nMacOSX\t\t\t\tTue Apr 6 2010\t\t\t\tMacOSX"
+  manpageQuestion1: What is the primary purpose of the xscertd utility?
+  manpageQuestion2: How would you start and configure the xscertd daemon on a macOS system?
+  manpageQuestion3: What is the role of launchd in relation to xscertd?
+

@@ -1,0 +1,947 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nLSOF(8) \t\t    System Manager's Manual\t\t       LSOF(8)"
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to list all open files for a specific process with PID 1234?
+  manpageQuestion3: Can you provide an example of using lsof to monitor and display open files for a particular user, such as 'john'?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nNAME\n       lsof - list open files\n\nSYNOPSIS\n       lsof [ -?abChlnNOPRtUvVX ] [ -A A ] [ -c c ] [ +c c ] [ +|-d d ] [ +|-D\n       D ] [ +|-e s ] [ +|-E ] [ +|-f [cfgGn] ] [ -F [f] ] [ -g [s] ] [ -i [i]\n       ] [ -k k ] [ -K k ] [ +|-L [l] ] [ +|-m m ] [ +|-M ] [ -o [o] ] [ -p s\n       ] [ +|-r [t[m<fmt>]] ] [ -s [p:s] ] [ -S [t] ] [ -T [t] ] [ -u s ] [\n       +|-w ] [ -x [fl] ] [ +|-X ] [ -z [z] ] [ -Z [Z] ] [ -- ] [names]\n\nDESCRIPTION\n       Lsof revision 4.91 lists on its standard output file information about\n       files opened by processes for the following UNIX dialects:\n\n\t    Apple Darwin 9 and Mac OS X 10.[567]\n\t    FreeBSD 8.[234], 9.0 and 1[012].0 for AMD64-based systems\n\t    Linux 2.1.72 and above for x86-based systems\n\t    Solaris 9, 10 and 11\n\n       (See the DISTRIBUTION section of this manual page for information on\n       how to obtain the latest lsof revision.)\n\n       An open file may be a regular file, a directory, a block special file,\n       a character special file, an executing text reference, a library, a\n       stream or a network file (Internet socket, NFS file or UNIX domain\n       socket.)  A specific file or all the files in a file system may be\n       selected by path."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to list all open files for processes running as the user 'john' on a Linux system?
+  manpageQuestion3: Can you provide an example of using lsof to display open network sockets on a Darwin system?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.
+
+
+
+    Manpage text:
+
+    Instead of a formatted display, lsof will produce output that can be
+           parsed by other programs.  See the -F, option description, and the
+           OUTPUT FOR OTHER PROGRAMS section for more information.
+
+           In addition to producing a single output list, lsof will run in repeat
+           mode.  In repeat mode it will produce output, delay, then repeat the
+           output operation until stopped with an interrupt or quit signal.  See
+           the +|-r [t[m<fmt>]] option description for more information.
+
+    OPTIONS
+           In the absence of any options, lsof lists all open files belonging to
+           all active processes.
+
+           If any list request option is specified, other list requests must be
+           specifically requested - e.g., if -U is specified for the listing of
+           UNIX socket files, NFS files won't be listed unless -N is also
+           specified; or if a user list is specified with the -u option, UNIX
+           domain socket files, belonging to users not in the list, won't be
+           listed unless the -U option is also specified.
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof in repeat mode to monitor open files continuously until interrupted?
+  manpageQuestion3: What command would you use to list all open UNIX domain socket files for users with the username 'john'?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nNormally list options that are specifically stated are ORed - i.e.,\n       specifying the -i option without an address and the -ufoo option\n       produces a listing of all network files OR files belonging to processes\n       owned by user ``foo''.  The exceptions are:\n\n       1) the `^' (negated) login name or user ID (UID), specified with the -u\n\t  option;\n\n       2) the `^' (negated) process ID (PID), specified with the -p option;\n\n       3) the `^' (negated) process group ID (PGID), specified with the -g\n\t  option;\n\n       4) the `^' (negated) command, specified with the -c option;\n\n       5) the (`^') negated TCP or UDP protocol state names, specified with\n\t  the -s [p:s] option.\n\n       Since they represent exclusions, they are applied without ORing or\n       ANDing and take effect before any other selection criteria are applied.\n\n       The -a option may be used to AND the selections.  For example,\n       specifying -a, -U, and -ufoo produces a listing of only UNIX socket\n       files that belong to processes owned by user ``foo''."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to list all open files belonging to processes owned by the user 'john'?
+  manpageQuestion3: Can you provide an example of using lsof to list only UNIX socket files that belong to processes owned by the user 'jane'?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nCaution: the -a option causes all list selection options to be ANDed;\n       it can't be used to cause ANDing of selected pairs of selection options\n       by placing it between them, even though its placement there is\n       acceptable.  Wherever -a is placed, it causes the ANDing of all\n       selection options.\n\n       Items of the same selection set - command names, file descriptors,\n       network addresses, process identifiers, user identifiers, zone names,\n       security contexts - are joined in a single ORed set and applied before\n       the result participates in ANDing.  Thus, for example, specifying\n       -i@aaa.bbb, -i@ccc.ddd, -a, and -ufff,ggg will select the listing of\n       files that belong to either login ``fff'' OR ``ggg'' AND have network\n       connections to either host aaa.bbb OR ccc.ddd.\n\n       Options may be grouped together following a single prefix -- e.g., the\n       option set ``-a -b -C'' may be stated as -abC.  However, since values\n       are optional following +|-f, -F, -g, -i, +|-L, -o, +|-r, -s, -S, -T, -x\n       and -z.\twhen you have no values for them be careful that the following\n       character isn't ambiguous.  For example, -Fn might represent the -F and\n       -n options, or it might represent the n field identifier character\n       following the -F option.  When ambiguity is possible, start a new\n       option with a `-' character - e.g., ``-F -n''.  If the next option is a\n       file name, follow the possibly ambiguous option with ``--'' - e.g.,\n       ``-F -- name''."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to list all open files for processes with the user ID 501 and network connections to host 192.168.1.1?
+  manpageQuestion3: Can you explain how to use lsof with the -a option to combine multiple selection criteria, such as finding files that belong to either user 'alice' or 'bob' and have a specific file descriptor type?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nEither the `+' or the `-' prefix may be applied to a group of options.\n       Options that don't take on separate meanings for each prefix - e.g., -i\n       - may be grouped under either prefix.  Thus, for example, ``+M -i'' may\n       be stated as ``+Mi'' and the group means the same as the separate\n       options.  Be careful of prefix grouping when one or more options in the\n       group does take on separate meanings under different prefixes - e.g.,\n       +|-M; ``-iM'' is not the same request as ``-i +M''.  When in doubt, use\n       separate options with appropriate prefixes.\n\n       -? -h\n\t    These two equivalent options select a usage (help) output list.\n\t    Lsof displays a shortened form of this output when it detects an\n\t    error in the options supplied to it, after it has displayed\n\t    messages explaining each error.  (Escape the `?' character as your\n\t    shell requires.)\n\n       -a   causes list selection options to be ANDed, as described above.\n\n       -A A is available on systems configured for AFS whose AFS kernel code\n\t    is implemented via dynamic modules.  It allows the lsof user to\n\t    specify A as an alternate name list file where the kernel\n\t    addresses of the dynamic modules might be found.  See the lsof FAQ\n\t    (The FAQ section gives its location.)  for more information about\n\t    dynamic modules, their symbols, and how they affect lsof.\n\n       -b   causes lsof to avoid kernel functions that might block - lstat(2),\n\t    readlink(2), and stat(2).\n\n\t    See the BLOCKS AND TIMEOUTS and AVOIDING KERNEL BLOCKS sections\n\t    for information on using this option.\n\n       -c c selects the listing of files for processes executing the command\n\t    that begins with the characters of c.  Multiple commands may be\n\t    specified, using multiple -c options.  They are joined in a single\n\t    ORed set before participating in AND option selection.\n\n\t    If c begins with a `^', then the following characters specify a\n\t    command name whose processes are to be ignored (excluded.)\n\n\t    If c begins and ends with a slash ('/'), the characters between\n\t    the slashes are interpreted as a regular expression.  Shell\n\t    meta-characters in the regular expression must be quoted to\n\t    prevent their interpretation by the shell.\tThe closing slash may\n\t    be followed by these modifiers:\n\n\t\t b    the regular expression is a basic one.\n\t\t i    ignore the case of letters.\n\t\t x    the regular expression is an extended one\n\t\t      (default).\n\n\t    See the lsof FAQ (The FAQ section gives its location.)  for more\n\t    information on basic and extended regular expressions.\n\n\t    The simple command specification is tested first.  If that test\n\t    fails, the command regular expression is applied.  If the simple\n\t    command test succeeds, the command regular expression test isn't\n\t    made.  This may result in ``no command found for regex:'' messages\n\t    when lsof's -V option is specified.\n\n       +c w defines the maximum number of initial characters of the name,\n\t    supplied by the UNIX dialect, of the UNIX command associated with\n\t    a process to be printed in the COMMAND column.  (The lsof default\n\t    is nine.)\n\n\t    Note that many UNIX dialects do not supply all command name\n\t    characters to lsof in the files and structures from which lsof\n\t    obtains command name.  Often dialects limit the number of\n\t    characters supplied in those sources.  For example, Linux 2.4.27\n\t    and Solaris 9 both limit command name length to 16 characters.\n\n\t    If w is zero ('0'), all command characters supplied to lsof by the\n\t    UNIX dialect will be printed.\n\n\t    If w is less than the length of the column title, ``COMMAND'', it\n\t    will be raised to that length.\n\n       -C   disables the reporting of any path name components from the\n\t    kernel's name cache.  See the KERNEL NAME CACHE section for more\n\t    information.\n\n       +d s causes lsof to search for all open instances of directory s and\n\t    the files and directories it contains at its top level.  +d does\n\t    NOT descend the directory tree, rooted at s.  The +D D option may\n\t    be used to request a full-descent directory tree search, rooted at\n\t    directory D.\n\n\t    Processing of the +d option does not follow symbolic links within\n\t    s unless the -x or -x  l option is also specified.\tNor does it\n\t    search for open files on file system mount points on\n\t    subdirectories of s unless the -x or -x  f option is also\n\t    specified.\n\n\t    Note: the authority of the user of this option limits it to\n\t    searching for files that the user has permission to examine with\n\t    the system stat(2) function.\n\n       -d s specifies a list of file descriptors (FDs) to exclude from or\n\t    include in the output listing.  The file descriptors are specified\n\t    in the comma-separated set s - e.g., ``cwd,1,3'', ``^6,^2''.\n\t    (There should be no spaces in the set.)\n\n\t    The list is an exclusion list if all entries of the set begin with\n\t    `^'.  It is an inclusion list if no entry begins with `^'.\tMixed\n\t    lists are not permitted.\n\n\t    A file descriptor number range may be in the set as long as\n\t    neither member is empty, both members are numbers, and the ending\n\t    member is larger than the starting one - e.g., ``0-7'' or\n\t    ``3-10''.  Ranges may be specified for exclusion if they have the\n\t    `^' prefix - e.g., ``^0-7'' excludes all file descriptors 0\n\t    through 7.\n\n\t    Multiple file descriptor numbers are joined in a single ORed set\n\t    before participating in AND option selection.\n\n\t    When there are exclusion and inclusion members in the set, lsof\n\t    reports them as errors and exits with a non-zero return code.\n\n\t    See the description of File Descriptor (FD) output values in the\n\t    OUTPUT section for more information on file descriptor names.\n\n       +D D causes lsof to search for all open instances of directory D and\n\t    all the files and directories it contains to its complete depth.\n\n\t    Processing of the +D option does not follow symbolic links within\n\t    D unless the -x or -x  l option is also specified.\tNor does it\n\t    search for open files on file system mount points on\n\t    subdirectories of D unless the -x or -x  f option is also\n\t    specified.\n\n\t    Note: the authority of the user of this option limits it to\n\t    searching for files that the user has permission to examine with\n\t    the system stat(2) function.\n\n\t    Further note: lsof may process this option slowly and require a\n\t    large amount of dynamic memory to do it.  This is because it must\n\t    descend the entire directory tree, rooted at D, calling stat(2)\n\t    for each file and directory, building a list of all the files it\n\t    finds, and searching that list for a match with every open file.\n\t    When directory D is large, these steps can take a long time, so\n\t    use this option prudently.\n\n       -D D directs lsof's use of the device cache file.  The use of this\n\t    option is sometimes restricted.  See the DEVICE CACHE FILE section\n\t    and the sections that follow it for more information on this\n\t    option.\n\n\t    -D must be followed by a function letter; the function letter may\n\t    optionally be followed by a path name.  Lsof recognizes these\n\t    function letters:\n\n\t\t ? - report device cache file paths\n\t\t b - build the device cache file\n\t\t i - ignore the device cache file\n\t\t r - read the device cache file\n\t\t u - read and update the device cache file\n\n\t    The b, r, and u functions, accompanied by a path name, are\n\t    sometimes restricted.  When these functions are restricted, they\n\t    will not appear in the description of the -D option that\n\t    accompanies -h or -?  option output.  See the DEVICE CACHE FILE\n\t    section and the sections that follow it for more information on\n\t    these functions and when they're restricted.\n\n\t    The ?  function reports the read-only and write paths that lsof\n\t    can use for the device cache file, the names of any environment\n\t    variables whose values lsof will examine when forming the device\n\t    cache file path, and the format for the personal device cache file\n\t    path.  (Escape the `?' character as your shell requires.)\n\n\t    When available, the b, r, and u functions may be followed by the\n\t    device cache file's path.  The standard default is .lsof_hostname\n\t    in the home directory of the real user ID that executes lsof, but\n\t    this could have been changed when lsof was configured and\n\t    compiled.  (The output of the -h and -?  options show the current\n\t    default prefix - e.g., ``.lsof''.)\tThe suffix, hostname, is the\n\t    first component of the host's name returned by gethostname(2).\n\n\t    When available, the b function directs lsof to build a new device\n\t    cache file at the default or specified path.\n\n\t    The i function directs lsof to ignore the default device cache\n\t    file and obtain its information about devices via direct calls to\n\t    the kernel.\n\n\t    The r function directs lsof to read the device cache at the\n\t    default or specified path, but prevents it from creating a new\n\t    device cache file when none exists or the existing one is\n\t    improperly structured.  The r function, when specified without a\n\t    path name, prevents lsof from updating an incorrect or outdated\n\t    device cache file, or creating a new one in its place.  The r\n\t    function is always available when it is specified without a path\n\t    name argument; it may be restricted by the permissions of the lsof\n\t    process.\n\n\t    When available, the u function directs lsof to read the device\n\t    cache file at the default or specified path, if possible, and to\n\t    rebuild it, if necessary.  This is the default device cache file\n\t    function when no -D option has been specified.\n\n       +|-e s\n\t    exempts the file system whose path name is s from being subjected\n\t    to kernel function calls that might block.\tThe +e option exempts\n\t    stat(2), lstat(2) and most readlink(2) kernel function calls.  The\n\t    -e option exempts only stat(2) and lstat(2) kernel function calls.\n\t    Multiple file systems may be specified with separate +|-e\n\t    specifications and each may have readlink(2) calls exempted or\n\t    not.\n\n\t    This option is currently implemented only for Linux.\n\n\t    CAUTION: this option can easily be mis-applied to other than the\n\t    file system of interest, because it uses path name rather than the\n\t    more reliable device and inode numbers.  (Device and inode numbers\n\t    are acquired via the potentially blocking stat(2) kernel call and\n\t    are thus not available, but see the +|-m m option as a possible\n\t    alternative way to supply device numbers.)\tUse this option with\n\t    great care and fully specify the path name of the file system to\n\t    be exempted.\n\n\t    When open files on exempted file systems are reported, it may not\n\t    be possible to obtain all their information.  Therefore, some\n\t    information columns will be blank, the characters ``UNKN'' preface\n\t    the values in the TYPE column, and the applicable exemption option\n\t    is added in parentheses to the end of the NAME column.  (Some\n\t    device number information might be made available via the +|-m m\n\t    option.)\n\n       +|-E +E specifies that Linux pipe, Linux UNIX socket and Linux\n\t    pseudoterminal files should be displayed with endpoint information\n\t    and the files of the endpoints should also be displayed.  Note:\n\t    UNIX socket file endpoint information is only available when the\n\t    compile flags line of -v output contains HASUXSOCKEPT, and\n\t    psudoterminal endpoint information is only available when the\n\t    compile flags line contains HASPTYEPT.\n\n\t    Pipe endpoint information is displayed in the NAME column in the\n\t    form ``PID,cmd,FDmode'', where PID is the endpoint process ID; cmd\n\t    is the endpoint process command; FD is the endpoint file's\n\t    descriptor; and mode is the endpoint file's access mode.\n\n\t    Pseudoterminal endpoint information is displayed in the NAME\n\t    column as ``->/dev/ptsmin PID,cmd,FDmode'' or ``PID,cmd,FDmode''.\n\t    The first form is for a primary device; the second, for a replica\n\t    device.  min is a replica device's minor device number; and PID,\n\t    cmd, FD and mode are the same as with pipe endpoint information.\n\t    Note: psudoterminal endpoint information is only available when\n\t    the compile flags line of -V output contains HASPTYEPT.\n\n\t    UNIX socket file endpoint information is displayed in the NAME\n\t    column in the form\n\t    ``type=TYPE ->INO=INODE PID,cmd,FDmode'', where TYPE is the socket\n\t    type; INODE is the i-node number of the connected socket; and PID,\n\t    cmd, FD and mode are the same as with pipe endpoint information.\n\t    Note: UNIX socket file endpoint information is available only when\n\t    the compile flags line of -v output contains HASUXSOCKEPT.\n\n\t    Multiple occurrences of this information can appear in a file's\n\t    NAME column.\n\n\t    -E specfies that Linux pipe and Linux UNIX socket files should be\n\t    displayed with endpoint information, but not the files of the\n\t    endpoints.\n\n       +|-f [cfgGn]\n\t    f by itself clarifies how path name arguments are to be\n\t    interpreted.  When followed by c, f, g, G, or n in any combination\n\t    it specifies that the listing of kernel file structure information\n\t    is to be enabled (`+') or inhibited (`-').\n\n\t    Normally a path name argument is taken to be a file system name if\n\t    it matches a mounted-on directory name reported by mount(8), or if\n\t    it represents a block device, named in the mount output and\n\t    associated with a mounted directory name.  When +f is specified,\n\t    all path name arguments will be taken to be file system names, and\n\t    lsof will complain if any are not.\tThis can be useful, for\n\t    example, when the file system name (mounted-on device) isn't a\n\t    block device.  This happens for some CD-ROM file systems.\n\n\t    When -f is specified by itself, all path name arguments will be\n\t    taken to be simple files.  Thus, for example, the ``-f -- /''\n\t    arguments direct lsof to search for open files with a `/' path\n\t    name, not all open files in the `/' (root) file system.\n\n\t    Be careful to make sure +f and -f are properly terminated and\n\t    aren't followed by a character (e.g., of the file or file system\n\t    name) that might be taken as a parameter.  For example, use ``--''\n\t    after +f and -f as in these examples.\n\n\t\t $ lsof +f -- /file/system/name\n\t\t $ lsof -f -- /file/name\n\n\t    The listing of information from kernel file structures, requested\n\t    with the +f [cfgGn] option form, is normally inhibited, and is not\n\t    available in whole or part for some dialects - e.g., /proc-based\n\t    Linux kernels below 2.6.22.  When the prefix to f is a plus sign\n\t    (`+'), these characters request file structure information:\n\n\t\t c    file structure use count (not Linux)\n\t\t f    file structure address (not Linux)\n\t\t g    file flag abbreviations (Linux 2.6.22 and up)\n\t\t G    file flags in hexadecimal (Linux 2.6.22 and up)\n\t\t n    file structure node address (not Linux)\n\n\t    When the prefix is minus (`-') the same characters disable the\n\t    listing of the indicated values.\n\n\t    File structure addresses, use counts, flags, and node addresses\n\t    may be used to detect more readily identical files inherited by\n\t    child processes and identical files in use by different processes.\n\t    Lsof column output can be sorted by output columns holding the\n\t    values and listed to identify identical file use, or lsof field\n\t    output can be parsed by an AWK or Perl post-filter script, or by a\n\t    C program.\n\n       -F f specifies a character list, f, that selects the fields to be\n\t    output for processing by another program, and the character that\n\t    terminates each output field.  Each field to be output is\n\t    specified with a single character in f.  The field terminator\n\t    defaults to NL, but may be changed to NUL (000).  See the OUTPUT\n\t    FOR OTHER PROGRAMS section for a description of the field\n\t    identification characters and the field output process.\n\n\t    When the field selection character list is empty, all standard\n\t    fields are selected (except the raw device field, security context\n\t    and zone field for compatibility reasons) and the NL field\n\t    terminator is used.\n\n\t    When the field selection character list contains only a zero\n\t    (`0'), all fields are selected (except the raw device field for\n\t    compatibility reasons) and the NUL terminator character is used.\n\n\t    Other combinations of fields and their associated field terminator\n\t    character must be set with explicit entries in f, as described in\n\t    the OUTPUT FOR OTHER PROGRAMS section.\n\n\t    When a field selection character identifies an item lsof does not\n\t    normally list - e.g., PPID, selected with -R - specification of\n\t    the field character - e.g., ``-FR'' - also selects the listing of\n\t    the item.\n\n\t    When the field selection character list contains the single\n\t    character `?', lsof will display a help list of the field\n\t    identification characters.\t(Escape the `?' character as your\n\t    shell requires.)\n\n       -g [s]\n\t    excludes or selects the listing of files for the processes whose\n\t    optional process group IDentification (PGID) numbers are in the\n\t    comma-separated set s - e.g., ``123'' or ``123,^456''.  (There\n\t    should be no spaces in the set.)\n\n\t    PGID numbers that begin with `^' (negation) represent exclusions.\n\n\t    Multiple PGID numbers are joined in a single ORed set before\n\t    participating in AND option selection.  However, PGID exclusions\n\t    are applied without ORing or ANDing and take effect before other\n\t    selection criteria are applied.\n\n\t    The -g option also enables the output display of PGID numbers.\n\t    When specified without a PGID set that's all it does.\n\n       -i [i]\n\t    selects the listing of files any of whose Internet address matches\n\t    the address specified in i.  If no address is specified, this\n\t    option selects the listing of all Internet and x.25 (HP-UX)\n\t    network files.\n\n\t    If -i4 or -i6 is specified with no following address, only files\n\t    of the indicated IP version, IPv4 or IPv6, are displayed.  (An\n\t    IPv6 specification may be used only if the dialects supports IPv6,\n\t    as indicated by ``[46]'' and ``IPv[46]'' in lsof's -h or -?\n\t    output.)  Sequentially specifying -i4, followed by -i6 is the same\n\t    as specifying -i, and vice-versa.  Specifying -i4, or -i6 after -i\n\t    is the same as specifying -i4 or -i6 by itself.\n\n\t    Multiple addresses (up to a limit of 100) may be specified with\n\t    multiple -i options.  (A port number or service name range is\n\t    counted as one address.)  They are joined in a single ORed set\n\t    before participating in AND option selection.\n\n\t    An Internet address is specified in the form (Items in square\n\t    brackets are optional.):"
+  manpageQuestion1: What is the primary purpose of the 4ccconv command?
+  manpageQuestion2: How can I convert a 4-character code to its hexadecimal representation using 4ccconv?
+  manpageQuestion3: What is the correct way to print an unsigned integer as a 4cc code using 4ccconv?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\n[46][protocol][@hostname|hostaddr][:service|port]\n\n\t    where:\n\t\t 46 specifies the IP version, IPv4 or IPv6\n\t\t      that applies to the following address.\n\t\t      '6' may be be specified only if the UNIX\n\t\t      dialect supports IPv6.  If neither '4' nor\n\t\t      '6' is specified, the following address\n\t\t      applies to all IP versions.\n\t\t protocol is a protocol name - TCP, UDP\n\t\t hostname is an Internet host name.  Unless a\n\t\t      specific IP version is specified, open\n\t\t      network files associated with host names\n\t\t      of all versions will be selected.\n\t\t hostaddr is a numeric Internet IPv4 address in\n\t\t      dot form; or an IPv6 numeric address in\n\t\t      colon form, enclosed in brackets, if the\n\t\t      UNIX dialect supports IPv6.  When an IP\n\t\t      version is selected, only its numeric\n\t\t      addresses may be specified.\n\t\t service is an /etc/services name - e.g., smtp -\n\t\t      or a list of them.\n\t\t port is a port number, or a list of them.\n\n\t    IPv6 options may be used only if the UNIX dialect supports IPv6.\n\t    To see if the dialect supports IPv6, run lsof and specify the -h\n\t    or -?  (help) option.  If the displayed description of the -i\n\t    option contains ``[46]'' and ``IPv[46]'', IPv6 is supported."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How would you use lsof to list all open files associated with IPv6 addresses on a macOS system?
+  manpageQuestion3: Can you provide an example of using lsof to filter open network files by a specific service, such as 'smtp'?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nIPv4 host names and addresses may not be specified if network file\n\t    selection is limited to IPv6 with -i 6.  IPv6 host names and\n\t    addresses may not be specified if network file selection is\n\t    limited to IPv4 with -i 4.\tWhen an open IPv4 network file's\n\t    address is mapped in an IPv6 address, the open file's type will be\n\t    IPv6, not IPv4, and its display will be selected by '6', not '4'.\n\n\t    At least one address component - 4, 6, protocol, hostname,\n\t    hostaddr, or service - must be supplied.  The `@' character,\n\t    leading the host specification, is always required; as is the `:',\n\t    leading the port specification.  Specify either hostname or\n\t    hostaddr.  Specify either service name list or port number list.\n\t    If a service name list is specified, the protocol may also need to\n\t    be specified if the TCP, UDP and UDPLITE port numbers for the\n\t    service name are different.  Use any case - lower or upper - for\n\t    protocol.\n\n\t    Service names and port numbers may be combined in a list whose\n\t    entries are separated by commas and whose numeric range entries\n\t    are separated by minus signs.  There may be no embedded spaces,\n\t    and all service names must belong to the specified protocol.\n\t    Since service names may contain embedded minus signs, the starting\n\t    entry of a range can't be a service name; it can be a port number,\n\t    however."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to list all open files associated with a specific IPv4 address?
+  manpageQuestion3: Can you provide an example of using lsof to filter open files by both a service name and a protocol type?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nHere are some sample addresses:\n\n\t\t -i6 - IPv6 only\n\t\t TCP:25 - TCP and port 25\n\t\t @1.2.3.4 - Internet IPv4 host address 1.2.3.4\n\t\t @[3ffe:1ebc::1]:1234 - Internet IPv6 host address\n\t\t      3ffe:1ebc::1, port 1234\n\t\t UDP:who - UDP who service port\n\t\t TCP@lsof.itap:513 - TCP, port 513 and host name lsof.itap\n\t\t tcp@foo:1-10,smtp,99 - TCP, ports 1 through 10,\n\t\t      service name smtp, port 99, host name foo\n\t\t tcp@bar:1-smtp - TCP, ports 1 through smtp, host bar\n\t\t :time - either TCP, UDP or UDPLITE time service port\n\n       -K k selects the listing of tasks (threads) of processes, on dialects\n\t    where task (thread) reporting is supported.  (If help output -\n\t    i.e., the output of the -h or -?  options - shows this option,\n\t    then task (thread) reporting is supported by the dialect.)\n\n\t    If -K is followed by a value, k, it must be ``i''.\tThat causes\n\t    lsof to ignore tasks, particularly in the default, list-everything\n\t    case when no other options are specified.\n\n\t    When -K and -a are both specified on Linux, and the tasks of a\n\t    main process are selected by other options, the main process will\n\t    also be listed as though it were a task, but without a task ID.\n\t    (See the description of the TID column in the OUTPUT section.)"
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to list all open TCP connections on a system?
+  manpageQuestion3: Can you provide an example of using lsof to find all open files associated with a specific process ID (PID)?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nWhere the FreeBSD version supports threads, all threads will be\n\t    listed with their IDs.\n\n\t    In general threads and tasks inherit the files of the caller, but\n\t    may close some and open others, so lsof always reports all the\n\t    open files of threads and tasks.\n\n       -k k specifies a kernel name list file, k, in place of /vmunix, /mach,\n\t    etc.  -k is not available under AIX on the IBM RISC/System 6000.\n\n       -l   inhibits the conversion of user ID numbers to login names.\tIt is\n\t    also useful when login name lookup is working improperly or\n\t    slowly.\n\n       +|-L [l]\n\t    enables (`+') or disables (`-') the listing of file link counts,\n\t    where they are available - e.g., they aren't available for\n\t    sockets, or most FIFOs and pipes.\n\n\t    When +L is specified without a following number, all link counts\n\t    will be listed.  When -L is specified (the default), no link\n\t    counts will be listed.\n\n\t    When +L is followed by a number, only files having a link count\n\t    less than that number will be listed.  (No number may follow -L.)\n\t    A specification of the form ``+L1'' will select open files that\n\t    have been unlinked.  A specification of the form\n\t    ``+aL1 <file_system>'' will select unlinked open files on the\n\t    specified file system."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to inhibit the conversion of user ID numbers to login names?
+  manpageQuestion3: What command can you use with lsof to list file link counts for open files that have been unlinked?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nFor other link count comparisons, use field output (-F) and a\n\t    post-processing script or program.\n\n       +|-m m\n\t    specifies an alternate kernel memory file or activates mount table\n\t    supplement processing.\n\n\t    The option form -m m specifies a kernel memory file, m, in place\n\t    of /dev/kmem or /dev/mem - e.g., a crash dump file.\n\n\t    The option form +m requests that a mount supplement file be\n\t    written to the standard output file.  All other options are\n\t    silently ignored.\n\n\t    There will be a line in the mount supplement file for each mounted\n\t    file system, containing the mounted file system directory,\n\t    followed by a single space, followed by the device number in\n\t    hexadecimal \"0x\" format - e.g.,\n\n\t\t / 0x801\n\n\t    Lsof can use the mount supplement file to get device numbers for\n\t    file systems when it can't get them via stat(2) or lstat(2).\n\n\t    The option form +m m identifies m as a mount supplement file.\n\n\t    Note: the +m and +m m options are not available for all supported\n\t    dialects.  Check the output of lsof's -h or -?  options to see if\n\t    the +m and +m m options are available."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How would you use lsof with the +m option to generate a mount supplement file containing device numbers for mounted file systems?
+  manpageQuestion3: Can you provide an example of using lsof to obtain device numbers for file systems when they cannot be retrieved via stat(2) or lstat(2)?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\n+|-M Enables (+) or disables (-) the reporting of portmapper\n\t    registrations for local TCP, UDP and UDPLITE ports, where port\n\t    mapping is supported.  (See the last paragraph of this option\n\t    description for information about where portmapper registration\n\t    reporting is supported.)\n\n\t    The default reporting mode is set by the lsof builder with the\n\t    HASPMAPENABLED #define in the dialect's machine.h header file;\n\t    lsof is distributed with the HASPMAPENABLED #define deactivated,\n\t    so portmapper reporting is disabled by default and must be\n\t    requested with +M.\tSpecifying lsof's -h or -?  option will report\n\t    the default mode.  Disabling portmapper registration when it is\n\t    already disabled or enabling it when already enabled is\n\t    acceptable.  When portmapper registration reporting is enabled,\n\t    lsof displays the portmapper registration (if any) for local TCP,\n\t    UDP or UDPLITE ports in square brackets immediately following the\n\t    port numbers or service names - e.g., ``:1234[name]'' or\n\t    ``:name[100083]''.\tThe registration information may be a name or\n\t    number, depending on what the registering program supplied to the\n\t    portmapper when it registered the port."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you enable portmapper registration reporting in lsof?
+  manpageQuestion3: What does the +M option do when used with lsof?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nWhen portmapper registration reporting is enabled, lsof may run a\n\t    little more slowly or even become blocked when access to the\n\t    portmapper becomes congested or stopped.  Reverse the reporting\n\t    mode to determine if portmapper registration reporting is slowing\n\t    or blocking lsof.\n\n\t    For purposes of portmapper registration reporting lsof considers a\n\t    TCP, UDP or UDPLITE port local if: it is found in the local part\n\t    of its containing kernel structure; or if it is located in the\n\t    foreign part of its containing kernel structure and the local and\n\t    foreign Internet addresses are the same; or if it is located in\n\t    the foreign part of its containing kernel structure and the\n\t    foreign Internet address is INADDR_LOOPBACK (127.0.0.1).  This\n\t    rule may make lsof ignore some foreign ports on machines with\n\t    multiple interfaces when the foreign Internet address is on a\n\t    different interface from the local one.\n\n\t    See the lsof FAQ (The FAQ section gives its location.)  for\n\t    further discussion of portmapper registration reporting issues."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you enable portmapper registration reporting in lsof to monitor network port usage?
+  manpageQuestion3: What are the conditions under which lsof considers a port to be 'local' for portmapper registration reporting?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nPortmapper registration reporting is supported only on dialects\n\t    that have RPC header files.  (Some Linux distributions with GlibC\n\t    2.14 do not have them.)  When portmapper registration reporting is\n\t    supported, the -h or -?  help output will show the +|-M option.\n\n       -n   inhibits the conversion of network numbers to host names for\n\t    network files.  Inhibiting conversion may make lsof run faster.\n\t    It is also useful when host name lookup is not working properly.\n\n       -N   selects the listing of NFS files.\n\n       -o   directs lsof to display file offset at all times.  It causes the\n\t    SIZE/OFF output column title to be changed to OFFSET.  Note: on\n\t    some UNIX dialects lsof can't obtain accurate or consistent file\n\t    offset information from its kernel data sources, sometimes just\n\t    for particular kinds of files (e.g., socket files.)  Consult the\n\t    lsof FAQ (The FAQ section gives its location.)  for more\n\t    information.\n\n\t    The -o and -s options are mutually exclusive; they can't both be\n\t    specified.\tWhen neither is specified, lsof displays whatever\n\t    value - size or offset - is appropriate and available for the type\n\t    of the file."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use the -n option with lsof to improve performance when host name lookups are problematic?
+  manpageQuestion3: Can you provide an example of using the -N option with lsof to list NFS files?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\n-o o defines the number of decimal digits (o) to be printed after the\n\t    ``0t'' for a file offset before the form is switched to ``0x...''.\n\t    An o value of zero (unlimited) directs lsof to use the ``0t'' form\n\t    for all offset output.\n\n\t    This option does NOT direct lsof to display offset at all times;\n\t    specify -o (without a trailing number) to do that.\t-o o only\n\t    specifies the number of digits after ``0t'' in either mixed size\n\t    and offset or offset-only output.  Thus, for example, to direct\n\t    lsof to display offset at all times with a decimal digit count of\n\t    10, use:\n\n\t\t -o -o 10\n\t    or\n\t\t -oo10\n\n\t    The default number of digits allowed after ``0t'' is normally 8,\n\t    but may have been changed by the lsof builder.  Consult the\n\t    description of the -o o option in the output of the -h or -?\n\t    option to determine the default that is in effect.\n\n       -O   directs lsof to bypass the strategy it uses to avoid being blocked\n\t    by some kernel operations - i.e., doing them in forked child\n\t    processes.\tSee the BLOCKS AND TIMEOUTS and AVOIDING KERNEL BLOCKS\n\t    sections for more information on kernel operations that may block\n\t    lsof."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How would you use the -o option with lsof to ensure that all offset outputs are displayed in decimal format with a minimum of 10 digits after the '0t' prefix?
+  manpageQuestion3: Can you explain how the -O option in lsof affects its behavior when interacting with the kernel?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nWhile use of this option will reduce lsof startup overhead, it may\n\t    also cause lsof to hang when the kernel doesn't respond to a\n\t    function.  Use this option cautiously.\n\n       -p s excludes or selects the listing of files for the processes whose\n\t    optional process IDentification (PID) numbers are in the\n\t    comma-separated set s - e.g., ``123'' or ``123,^456''.  (There\n\t    should be no spaces in the set.)\n\n\t    PID numbers that begin with `^' (negation) represent exclusions.\n\n\t    Multiple process ID numbers are joined in a single ORed set before\n\t    participating in AND option selection.  However, PID exclusions\n\t    are applied without ORing or ANDing and take effect before other\n\t    selection criteria are applied.\n\n       -P   inhibits the conversion of port numbers to port names for network\n\t    files.  Inhibiting the conversion may make lsof run a little\n\t    faster.  It is also useful when port name lookup is not working\n\t    properly.\n\n       +|-r [t[m<fmt>]]\n\t    puts lsof in repeat mode.  There lsof lists open files as selected\n\t    by other options, delays t seconds (default fifteen), then repeats\n\t    the listing, delaying and listing repetitively until stopped by a\n\t    condition defined by the prefix to the option."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How would you use the -p option with lsof to list files for processes with PID 123 and exclude PID 456?
+  manpageQuestion3: Can you provide an example of using the -P option with lsof to prevent port number conversion for network files?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nIf the prefix is a `-', repeat mode is endless.  Lsof must be\n\t    terminated with an interrupt or quit signal.\n\n\t    If the prefix is `+', repeat mode will end the first cycle no open\n\t    files are listed - and of course when lsof is stopped with an\n\t    interrupt or quit signal.  When repeat mode ends because no files\n\t    are listed, the process exit code will be zero if any open files\n\t    were ever listed; one, if none were ever listed.\n\n\t    Lsof marks the end of each listing: if field output is in progress\n\t    (the -F, option has been specified), the default marker is `m';\n\t    otherwise the default marker is ``========''.  The marker is\n\t    followed by a NL character.\n\n\t    The optional \"m<fmt>\" argument specifies a format for the marker\n\t    line.  The <fmt> characters following `m' are interpreted as a\n\t    format specification to the strftime(3) function, when both it and\n\t    the localtime(3) function are available in the dialect's C\n\t    library.  Consult the strftime(3) documentation for what may\n\t    appear in its format specification.  Note that when field output\n\t    is requested with the -F option, <fmt> cannot contain the NL\n\t    format, ``%n''.  Note also that when <fmt> contains spaces or\n\t    other characters that affect the shell's interpretation of\n\t    arguments, <fmt> must be quoted appropriately."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How would you use lsof in repeat mode to list open files repeatedly until interrupted?
+  manpageQuestion3: Can you provide an example of using lsof with a custom marker format to display timestamps in the listing?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nRepeat mode reduces lsof startup overhead, so it is more efficient\n\t    to use this mode than to call lsof repetitively from a shell\n\t    script, for example.\n\n\t    To use repeat mode most efficiently, accompany +|-r with\n\t    specification of other lsof selection options, so the amount of\n\t    kernel memory access lsof does will be kept to a minimum.  Options\n\t    that filter at the process level - e.g., -c, -g, -p, -u - are the\n\t    most efficient selectors.\n\n\t    Repeat mode is useful when coupled with field output (see the -F,\n\t    option description) and a supervising awk or Perl script, or a C\n\t    program.\n\n       -R   directs lsof to list the Parent Process IDentification number in\n\t    the PPID column.\n\n       -s [p:s]\n\t    s alone directs lsof to display file size at all times.  It causes\n\t    the SIZE/OFF output column title to be changed to SIZE.  If the\n\t    file does not have a size, nothing is displayed.\n\n\t    The optional -s p:s form is available only for selected dialects,\n\t    and only when the -h or -?\thelp output lists it."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof in repeat mode to efficiently monitor open files in a shell script?
+  manpageQuestion3: What command would you use to display the Parent Process IDentification number (PPID) with lsof?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nWhen the optional form is available, the s may be followed by a\n\t    protocol name (p), either TCP or UDP, a colon (`:') and a\n\t    comma-separated protocol state name list, the option causes open\n\t    TCP and UDP files to be excluded if their state name(s) are in the\n\t    list (s) preceded by a `^'; or included if their name(s) are not\n\t    preceded by a `^'.\n\n\t    Dialects that support this option may support only one protocol.\n\t    When an unsupported protocol is specified, a message will be\n\t    displayed indicating state names for the protocol are unavailable.\n\n\t    When an inclusion list is defined, only network files with state\n\t    names in the list will be present in the lsof output.  Thus,\n\t    specifying one state name means that only network files with that\n\t    lone state name will be listed.\n\n\t    Case is unimportant in the protocol or state names, but there may\n\t    be no spaces and the colon (`:') separating the protocol name (p)\n\t    and the state name list (s) is required."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to exclude TCP connections in the 'LISTEN' state from being displayed?
+  manpageQuestion3: Can you provide an example of using lsof with the option to include only UDP connections in the 'ESTABLISHED' state?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nIf only TCP and UDP files are to be listed, as controlled by the\n\t    specified exclusions and inclusions, the -i option must be\n\t    specified, too.  If only a single protocol's files are to be\n\t    listed, add its name as an argument to the -i option.\n\n\t    For example, to list only network files with TCP state LISTEN,\n\t    use:\n\n\t\t -iTCP -sTCP:LISTEN\n\n\t    Or, for example, to list network files with all UDP states except\n\t    Idle, use:\n\n\t\t -iUDP -sUDP:Idle\n\n\t    State names vary with UNIX dialects, so it's not possible to\n\t    provide a complete list.  Some common TCP state names are: CLOSED,\n\t    IDLE, BOUND, LISTEN, ESTABLISHED, SYN_SENT, SYN_RCDV, ESTABLISHED,\n\t    CLOSE_WAIT, FIN_WAIT1, CLOSING, LAST_ACK, FIN_WAIT_2, and\n\t    TIME_WAIT.\tTwo common UDP state names are Unbound and Idle.\n\n\t    See the lsof FAQ (The FAQ section gives its location.)  for more\n\t    information on how to use protocol state exclusion and inclusion,\n\t    including examples.\n\n\t    The -o (without a following decimal digit count) and -s option\n\t    (without a following protocol and state name list) are mutually\n\t    exclusive; they can't both be specified.  When neither is\n\t    specified, lsof displays whatever value - size or offset - is\n\t    appropriate and available for the type of file."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How would you use lsof to list all TCP network files that are in the LISTEN state?
+  manpageQuestion3: Can you provide an example of using lsof to list UDP network files that are not in the Idle state?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nSince some types of files don't have true sizes - sockets, FIFOs,\n\t    pipes, etc. - lsof displays for their sizes the content amounts in\n\t    their associated kernel buffers, if possible.\n\n       -S [t]\n\t    specifies an optional time-out seconds value for kernel functions\n\t    - lstat(2), readlink(2), and stat(2) - that might otherwise\n\t    deadlock.  The minimum for t is two; the default, fifteen; when no\n\t    value is specified, the default is used.\n\n\t    See the BLOCKS AND TIMEOUTS section for more information.\n\n       -T [t]\n\t    controls the reporting of some TCP/TPI information, also reported\n\t    by netstat(1), following the network addresses.  In normal output\n\t    the information appears in parentheses, each item except TCP or\n\t    TPI state name identified by a keyword, followed by `=', separated\n\t    from others by a single space:\n\n\t\t <TCP or TPI state name>\n\t\t QR=<read queue length>\n\t\t QS=<send queue length>\n\t\t SO=<socket options and values>\n\t\t SS=<socket states>\n\t\t TF=<TCP flags and values>\n\t\t WR=<window read length>\n\t\t WW=<window write length>"
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you set a custom timeout value for kernel functions like lstat(2) using lsof?
+  manpageQuestion3: What does the -T flag do in the lsof command, and how is it used to display TCP/TPI information?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nNot all values are reported for all UNIX dialects.\tItems values\n\t    (when available) are reported after the item name and '='.\n\n\t    When the field output mode is in effect (See OUTPUT FOR OTHER\n\t    PROGRAMS.) each item appears as a field with a `T' leading\n\t    character.\n\n\t    -T with no following key characters disables TCP/TPI information\n\t    reporting.\n\n\t    -T with following characters selects the reporting of specific\n\t    TCP/TPI information:\n\n\t\t f    selects reporting of socket options,\n\t\t      states and values, and TCP flags and\n\t\t      values.\n\t\t q    selects queue length reporting.\n\t\t s    selects connection state reporting.\n\t\t w    selects window size reporting.\n\n\t    Not all selections are enabled for some UNIX dialects.  State may\n\t    be selected for all dialects and is reported by default.  The -h\n\t    or -?  help output for the -T option will show what selections may\n\t    be used with the UNIX dialect.\n\n\t    When -T is used to select information - i.e., it is followed by\n\t    one or more selection characters - the displaying of state is\n\t    disabled by default, and it must be explicitly selected again in\n\t    the characters following -T.  (In effect, then, the default is\n\t    equivalent to -Ts.) For example, if queue lengths and state are\n\t    desired, use -Tqs."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to display TCP connection states and queue lengths for open files?
+  manpageQuestion3: What is the correct way to use lsof with the -T option to report TCP flags and socket options?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nSocket options, socket states, some socket values, TCP flags and\n\t    one TCP value may be reported (when available in the UNIX dialect)\n\t    in the form of the names that commonly appear after SO_, so_, SS_,\n\t    TCP_  and TF_ in the dialect's header files - most often\n\t    <sys/socket.h>, <sys/socketvar.h> and <netinet/tcp_var.h>.\n\t    Consult those header files for the meaning of the flags, options,\n\t    states and values.\n\n\t    ``SO='' precedes socket options and values; ``SS='', socket\n\t    states; and ``TF='', TCP flags and values.\n\n\t    If a flag or option has a value, the value will follow an '=' and\n\t    the name -- e.g., ``SO=LINGER=5'', ``SO=QLIM=5'', ``TF=MSS=512''.\n\t    The following seven values may be reported:\n\n\t\t Name\n\t\t Reported  Description (Common Symbol)\n\n\t\t KEEPALIVE keep alive time (SO_KEEPALIVE)\n\t\t LINGER    linger time (SO_LINGER)\n\t\t MSS\t   maximum segment size (TCP_MAXSEG)\n\t\t PQLEN\t\tpartial listen queue connections\n\t\t QLEN\t   established listen queue connections\n\t\t QLIM\t   established listen queue limit\n\t\t RCVBUF    receive buffer length (SO_RCVBUF)\n\t\t SNDBUF    send buffer length (SO_SNDBUF)"
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to view the keep-alive time setting for a socket?
+  manpageQuestion3: Can you provide an example of using lsof to check the maximum segment size (MSS) for a TCP connection?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nDetails on what socket options and values, socket states, and TCP\n\t    flags and values may be displayed for particular UNIX dialects may\n\t    be found in the answer to the ``Why doesn't lsof report socket\n\t    options, socket states, and TCP flags and values for my dialect?''\n\t    and ``Why doesn't lsof report the partial listen queue connection\n\t    count for my dialect?''  questions in the lsof FAQ (The FAQ\n\t    section gives its location.)\n\n       -t   specifies that lsof should produce terse output with process\n\t    identifiers only and no header - e.g., so that the output may be\n\t    piped to kill(1).  -t selects the -w option.\n\n       -u s selects the listing of files for the user whose login names or\n\t    user ID numbers are in the comma-separated set s - e.g., ``abe'',\n\t    or ``548,root''.  (There should be no spaces in the set.)\n\n\t    Multiple login names or user ID numbers are joined in a single\n\t    ORed set before participating in AND option selection.\n\n\t    If a login name or user ID is preceded by a `^', it becomes a\n\t    negation - i.e., files of processes owned by the login name or\n\t    user ID will never be listed.  A negated login name or user ID\n\t    selection is neither ANDed nor ORed with other selections; it is\n\t    applied before all other selections and absolutely excludes the\n\t    listing of the files of the process.  For example, to direct lsof\n\t    to exclude the listing of files belonging to root processes,\n\t    specify ``-u^root'' or ``-u^0''."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to list all open files for the user 'john'?
+  manpageQuestion3: What command would you use to exclude files owned by the root user from being listed by lsof?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\n-U   selects the listing of UNIX domain socket files.\n\n       -v   selects the listing of lsof version information, including:\n\t    revision number; when the lsof binary was constructed; who\n\t    constructed the binary and where; the name of the compiler used to\n\t    construct the lsof binary; the version number of the compiler when\n\t    readily available; the compiler and loader flags used to construct\n\t    the lsof binary; and system information, typically the output of\n\t    uname's -a option.\n\n       -V   directs lsof to indicate the items it was asked to list and failed\n\t    to find - command names, file names, Internet addresses or files,\n\t    login names, NFS files, PIDs, PGIDs, and UIDs.\n\n\t    When other options are ANDed to search options, or compile-time\n\t    options restrict the listing of some files, lsof may not report\n\t    that it failed to find a search item when an ANDed option or\n\t    compile-time option prevents the listing of the open file\n\t    containing the located search item."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use the -U option with lsof to list UNIX domain socket files?
+  manpageQuestion3: What is the function of the -V option in lsof, and how would you use it to check for missing items in a listing?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nFor example, ``lsof -V -iTCP@foobar -a -d 999'' may not report a\n\t    failure to locate open files at ``TCP@foobar'' and may not list\n\t    any, if none have a file descriptor number of 999.\tA similar\n\t    situation arises when HASSECURITY and HASNOSOCKSECURITY are\n\t    defined at compile time and they prevent the listing of open\n\t    files.\n\n       +|-w Enables (+) or disables (-) the suppression of warning messages.\n\n\t    The lsof builder may choose to have warning messages disabled or\n\t    enabled by default.  The default warning message state is\n\t    indicated in the output of the -h or -?  option.  Disabling\n\t    warning messages when they are already disabled or enabling them\n\t    when already enabled is acceptable.\n\n\t    The -t option selects the -w option.\n\n       -x [fl]\n\t    may accompany the +d and +D options to direct their processing to\n\t    cross over symbolic links and|or file system mount points\n\t    encountered when scanning the directory (+d) or directory tree\n\t    (+D)."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to suppress warning messages when listing open files?
+  manpageQuestion3: Can you provide an example of using lsof with the -x option to process symbolic links and mount points in a directory tree?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nIf -x is specified by itself without a following parameter,\n\t    cross-over processing of both symbolic links and file system mount\n\t    points is enabled.\tNote that when -x is specified without a\n\t    parameter, the next argument must begin with '-' or '+'.\n\n\t    The optional 'f' parameter enables file system mount point\n\t    cross-over processing; 'l', symbolic link cross-over processing.\n\n\t    The -x option may not be supplied without also supplying a +d or\n\t    +D option.\n\n       -X   This is a dialect-specific option.\n\n\t   AIX:\n\t    This IBM AIX RISC/System 6000 option requests the reporting of\n\t    executed text file and shared library references.\n\n\t    WARNING: because this option uses the kernel readx() function, its\n\t    use on a busy AIX system might cause an application process to\n\t    hang so completely that it can neither be killed nor stopped.  I\n\t    have never seen this happen or had a report of its happening, but\n\t    I think there is a remote possibility it could happen."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How would you use lsof with the -x option to enable cross-over processing for both symbolic links and file system mount points?
+  manpageQuestion3: Can you provide an example of using the -X option in lsof on AIX to report executed text file and shared library references?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nBy default use of readx() is disabled.  On AIX 5L and above lsof\n\t    may need setuid-root permission to perform the actions this option\n\t    requests.\n\n\t    The lsof builder may specify that the -X option be restricted to\n\t    processes whose real UID is root.  If that has been done, the -X\n\t    option will not appear in the -h or -?  help output unless the\n\t    real UID of the lsof process is root.  The default lsof\n\t    distribution allows any UID to specify -X, so by default it will\n\t    appear in the help output.\n\n\t    When AIX readx() use is disabled, lsof may not be able to report\n\t    information for all text and loader file references, but it may\n\t    also avoid exacerbating an AIX kernel directory search kernel\n\t    error, known as the Stale Segment ID bug.\n\n\t    The readx() function, used by lsof or any other program to access\n\t    some sections of kernel virtual memory, can trigger the Stale\n\t    Segment ID bug.  It can cause the kernel's dir_search() function\n\t    to believe erroneously that part of an in-memory copy of a file\n\t    system directory has been zeroed.  Another application process,\n\t    distinct from lsof, asking the kernel to search the directory -\n\t    e.g., by using open(2) - can cause dir_search() to loop forever,\n\t    thus hanging the application process."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use the -X option with lsof on AIX 5L to access kernel virtual memory?
+  manpageQuestion3: What are the potential risks associated with using the readx() function in lsof on AIX systems?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nConsult the lsof FAQ (The FAQ section gives its location.)\tand\n\t    the 00README file of the lsof distribution for a more complete\n\t    description of the Stale Segment ID bug, its APAR, and methods for\n\t    defining readx() use when compiling lsof.\n\n\t   Darwin:\n\t    This Darwin option requests that lsof reports exclusively\n\t    information about files from the process file descriptor table and\n\t    process file ports.\n\n\t   Linux:\n\t    This Linux option requests that lsof skip the reporting of\n\t    information on all open TCP, UDP and UDPLITE IPv4 and IPv6 files.\n\n\t    This Linux option is most useful when the system has an extremely\n\t    large number of open TCP, UDP and UDPLITE files, the processing of\n\t    whose information in the /proc/net/tcp* and /proc/net/udp* files\n\t    would take lsof a long time, and whose reporting is not of\n\t    interest.\n\n\t    Use this option with care and only when you are sure that the\n\t    information you want lsof to display isn't associated with open\n\t    TCP, UDP or UDPLITE socket files."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to display only information about files from the process file descriptor table on Darwin systems?
+  manpageQuestion3: What is the purpose of the Linux option in lsof that skips reporting on open TCP, UDP, and UDPLITE files?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nSolaris 10 and above:\n\t    This Solaris 10 and above option requests the reporting of cached\n\t    paths for files that have been deleted - i.e., removed with rm(1)\n\t    or unlink(2).\n\n\t    The cached path is followed by the string `` (deleted)'' to\n\t    indicate that the path by which the file was opened has been\n\t    deleted.\n\n\t    Because intervening changes made to the path - i.e., renames with\n\t    mv(1) or rename(2) - are not recorded in the cached path, what\n\t    lsof reports is only the path by which the file was opened, not\n\t    its possibly different final path.\n\n       -z [z]\n\t    specifies how Solaris 10 and higher zone information is to be\n\t    handled.\n\n\t    Without a following argument - e.g., NO z - the option specifies\n\t    that zone names are to be listed in the ZONE output column.\n\n\t    The -z option may be followed by a zone name, z.  That causes lsof\n\t    to list only open files for processes in that zone.  Multiple -z z\n\t    option and argument pairs may be specified to form a list of named\n\t    zones.  Any open file of any process in any of the zones will be\n\t    listed, subject to other conditions specified by other options and\n\t    arguments."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How would you use the -z option with lsof to list open files in a specific zone?
+  manpageQuestion3: Can you provide an example of using lsof with the -z option to list open files in multiple zones?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\n-Z [Z]\n\t    specifies how SELinux security contexts are to be handled.\tIt and\n\t    'Z' field output character support are inhibited when SELinux is\n\t    disabled in the running Linux kernel.  See OUTPUT FOR OTHER\n\t    PROGRAMS for more information on the 'Z' field output character.\n\n\t    Without a following argument - e.g., NO Z - the option specifies\n\t    that security contexts are to be listed in the SECURITY-CONTEXT\n\t    output column.\n\n\t    The -Z option may be followed by a wildcard security context name,\n\t    Z.\tThat causes lsof to list only open files for processes in that\n\t    security context.  Multiple -Z Z option and argument pairs may be\n\t    specified to form a list of security contexts.  Any open file of\n\t    any process in any of the security contexts will be listed,\n\t    subject to other conditions specified by other options and\n\t    arguments.\tNote that Z can be A:B:C or *:B:C or A:B:* or *:*:C to\n\t    match against the A:B:C context.\n\n       --   The double minus sign option is a marker that signals the end of\n\t    the keyed options.\tIt may be used, for example, when the first\n\t    file name begins with a minus sign.  It may also be used when the\n\t    absence of a value for the last keyed option must be signified by\n\t    the presence of a minus sign in the following option and before\n\t    the start of the file names."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use the -Z option with lsof to list open files associated with processes in a specific SELinux security context?
+  manpageQuestion3: What is the function of the -- option in lsof and when would it be used?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nnames\n\t    These are path names of specific files to list.  Symbolic links\n\t    are resolved before use.  The first name may be separated from the\n\t    preceding options with the ``--'' option.\n\n\t    If a name is the mounted-on directory of a file system or the\n\t    device of the file system, lsof will list all the files open on\n\t    the file system.  To be considered a file system, the name must\n\t    match a mounted-on directory name in mount(8) output, or match the\n\t    name of a block device associated with a mounted-on directory\n\t    name.  The +|-f option may be used to force lsof to consider a\n\t    name a file system identifier (+f) or a simple file (-f).\n\n\t    If name is a path to a directory that is not the mounted-on\n\t    directory name of a file system, it is treated just as a regular\n\t    file is treated - i.e., its listing is restricted to processes\n\t    that have it open as a file or as a process-specific directory,\n\t    such as the root or current working directory.  To request that\n\t    lsof look for open files inside a directory name, use the +d s and\n\t    +D D options."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to list all open files on a specific file system mounted at /Volumes/MyDrive?
+  manpageQuestion3: Can you provide an example of using lsof to list all open files within the directory /usr/local/bin?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nIf a name is the base name of a family of multiplexed files - e.g,\n\t    AIX's /dev/pt[cs] - lsof will list all the associated multiplexed\n\t    files on the device that are open - e.g., /dev/pt[cs]/1,\n\t    /dev/pt[cs]/2, etc.\n\n\t    If a name is a UNIX domain socket name, lsof will usually search\n\t    for it by the characters of the name alone - exactly as it is\n\t    specified and is recorded in the kernel socket structure.  (See\n\t    the next paragraph for an exception to that rule for Linux.)\n\t    Specifying a relative path - e.g., ./file - in place of the file's\n\t    absolute path - e.g., /tmp/file - won't work because lsof must\n\t    match the characters you specify with what it finds in the kernel\n\t    UNIX domain socket structures.\n\n\t    If a name is a Linux UNIX domain socket name, in one case lsof is\n\t    able to search for it by its device and inode number, allowing\n\t    name to be a relative path.  The case requires that the absolute\n\t    path -- i.e., one beginning with a slash ('/') be used by the\n\t    process that created the socket, and hence be stored in the\n\t    /proc/net/unix file; and it requires that lsof be able to obtain\n\t    the device and node numbers of both the absolute path in\n\t    /proc/net/unix and name via successful stat(2) system calls.  When\n\t    those conditions are met, lsof will be able to search for the UNIX\n\t    domain socket when some path to it is is specified in name.  Thus,\n\t    for example, if the path is /dev/log, and an lsof search is\n\t    initiated when the working directory is /dev, then name could be\n\t    ./log."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to find all open multiplexed files associated with the device /dev/ptcs?
+  manpageQuestion3: Can you provide an example of using lsof to locate a UNIX domain socket named ./log when the working directory is /dev?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nIf a name is none of the above, lsof will list any open files\n\t    whose device and inode match that of the specified path name.\n\n\t    If you have also specified the -b option, the only names you may\n\t    safely specify are file systems for which your mount table\n\t    supplies alternate device numbers.\tSee the AVOIDING KERNEL BLOCKS\n\t    and ALTERNATE DEVICE NUMBERS sections for more information.\n\n\t    Multiple file names are joined in a single ORed set before\n\t    participating in AND option selection.\n\nAFS\n       Lsof supports the recognition of AFS files for these dialects (and AFS\n       versions):\n\n\t    AIX 4.1.4 (AFS 3.4a)\n\t    HP-UX 9.0.5 (AFS 3.4a)\n\t    Linux 1.2.13 (AFS 3.3)\n\t    Solaris 2.[56] (AFS 3.4a)\n\n       It may recognize AFS files on other versions of these dialects, but has\n       not been tested there.  Depending on how AFS is implemented, lsof may\n       recognize AFS files in other dialects, or may have difficulties\n       recognizing AFS files in the supported dialects."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to list all open files associated with a specific path name, including those on alternate device numbers?
+  manpageQuestion3: Can you provide an example of using lsof to check for AFS files on a supported system like AIX 4.1.4?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nLsof may have trouble identifying all aspects of AFS files in supported\n       dialects when AFS kernel support is implemented via dynamic modules\n       whose addresses do not appear in the kernel's variable name list.  In\n       that case, lsof may have to guess at the identity of AFS files, and\n       might not be able to obtain volume information from the kernel that is\n       needed for calculating AFS volume node numbers.\tWhen lsof can't\n       compute volume node numbers, it reports blank in the NODE column.\n\n       The -A A option is available in some dialect implementations of lsof\n       for specifying the name list file where dynamic module kernel addresses\n       may be found.  When this option is available, it will be listed in the\n       lsof help output, presented in response to the -h or -?\n\n       See the lsof FAQ (The FAQ section gives its location.)  for more\n       information about dynamic modules, their symbols, and how they affect\n       lsof options.\n\n       Because AFS path lookups don't seem to participate in the kernel's name\n       cache operations, lsof can't identify path name components for AFS\n       files."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use the -A A option with lsof to specify a name list file for dynamic module addresses?
+  manpageQuestion3: What is the impact of AFS kernel support implemented via dynamic modules on lsof's ability to identify AFS files?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nSECURITY\n       Lsof has three features that may cause security concerns.  First, its\n       default compilation mode allows anyone to list all open files with it.\n       Second, by default it creates a user-readable and user-writable device\n       cache file in the home directory of the real user ID that executes\n       lsof.  (The list-all-open-files and device cache features may be\n       disabled when lsof is compiled.)  Third, its -k and -m options name\n       alternate kernel name list or memory files.\n\n       Restricting the listing of all open files is controlled by the\n       compile-time HASSECURITY and HASNOSOCKSECURITY options.\tWhen\n       HASSECURITY is defined, lsof will allow only the root user to list all\n       open files.  The non-root user may list only open files of processes\n       with the same user IDentification number as the real user ID number of\n       the lsof process (the one that its user logged on with).\n\n       However, if HASSECURITY and HASNOSOCKSECURITY are both defined, anyone\n       may list open socket files, provided they are selected with the -i\n       option."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you restrict lsof from listing all open files for non-root users?
+  manpageQuestion3: What security measures are in place with lsof to prevent unauthorized access to open files?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.
+
+
+
+    Manpage text:
+
+    When HASSECURITY is not defined, anyone may list all open files.
+
+           Help output, presented in response to the -h or -?  option, gives the
+           status of the HASSECURITY and HASNOSOCKSECURITY definitions.
+
+           See the Security section of the 00README file of the lsof distribution
+           for information on building lsof with the HASSECURITY and
+           HASNOSOCKSECURITY options enabled.
+
+           Creation and use of a user-readable and user-writable device cache file
+           is controlled by the compile-time HASDCACHE option.  See the DEVICE
+           CACHE FILE section and the sections that follow it for details on how
+           its path is formed.  For security considerations it is important to
+           note that in the default lsof distribution, if the real user ID under
+           which lsof is executed is root, the device cache file will be written
+           in root's home directory - e.g., / or /root.  When HASDCACHE is not
+           defined, lsof does not write or attempt to read a device cache file.
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you check if the HASSECURITY option is defined when using lsof?
+  manpageQuestion3: What is the default behavior of lsof regarding the creation of a device cache file when HASDCACHE is not defined?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nWhen HASDCACHE is defined, the lsof help output, presented in response\n       to the -h, -D?, or -?  options, will provide device cache file handling\n       information.  When HASDCACHE is not defined, the -h or -?  output will\n       have no -D option description.\n\n       Before you decide to disable the device cache file feature - enabling\n       it improves the performance of lsof by reducing the startup overhead of\n       examining all the nodes in /dev (or /devices) - read the discussion of\n       it in the 00DCACHE file of the lsof distribution and the lsof FAQ (The\n       FAQ section gives its location.)\n\n       WHEN IN DOUBT, YOU CAN TEMPORARILY DISABLE THE USE OF THE DEVICE CACHE\n       FILE WITH THE -Di OPTION.\n\n       When lsof user declares alternate kernel name list or memory files with\n       the -k and -m options, lsof checks the user's authority to read them\n       with access(2).\tThis is intended to prevent whatever special power\n       lsof's modes might confer on it from letting it read files not normally\n       accessible via the authority of the real user ID."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you temporarily disable the device cache file feature in lsof to troubleshoot potential issues?
+  manpageQuestion3: What is the effect of using the -k option with lsof, and how does it relate to file access permissions?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nOUTPUT\n       This section describes the information lsof lists for each open file.\n       See the OUTPUT FOR OTHER PROGRAMS section for additional information on\n       output that can be processed by another program.\n\n       Lsof only outputs printable (declared so by isprint(3)) 8 bit\n       characters.  Non-printable characters are printed in one of three\n       forms: the C ``\\[bfrnt]'' form; the control character `^' form (e.g.,\n       ``^@''); or hexadecimal leading ``\\x'' form (e.g., ``\\xab'').  Space is\n       non-printable in the COMMAND column (``\\x20'') and printable elsewhere.\n\n       For some dialects - if HASSETLOCALE is defined in the dialect's\n       machine.h header file - lsof will print the extended 8 bit characters\n       of a language locale.  The lsof process must be supplied a language\n       locale environment variable (e.g., LANG) whose value represents a known\n       language locale in which the extended characters are considered\n       printable by isprint(3).  Otherwise lsof considers the extended\n       characters non-printable and prints them according to its rules for\n       non-printable characters, stated above.\tConsult your dialect's\n       setlocale(3) man page for the names of other environment variables that\n       may be used in place of LANG - e.g., LC_ALL, LC_CTYPE, etc."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How would you use lsof to display the open files associated with a specific process ID, such as 1234?
+  manpageQuestion3: Can you provide an example of using lsof to display non-printable characters in their hexadecimal format?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.
+
+
+
+    Manpage text:
+
+    Lsof's language locale support for a dialect also covers wide
+           characters - e.g., UTF-8 - when HASSETLOCALE and HASWIDECHAR are
+           defined in the dialect's machine.h header file, and when a suitable
+           language locale has been defined in the appropriate environment
+           variable for the lsof process.  Wide characters are printable under
+           those conditions if iswprint(3) reports them to be.  If HASSETLOCALE,
+           HASWIDECHAR and a suitable language locale aren't defined, or if
+           iswprint(3) reports wide characters that aren't printable, lsof
+           considers the wide characters non-printable and prints each of their 8
+           bits according to its rules for non-printable characters, stated above.
+
+           Consult the answers to the "Language locale support" questions in the
+           lsof FAQ (The FAQ section gives its location.) for more information.
+
+           Lsof dynamically sizes the output columns each time it runs,
+           guaranteeing that each column is a minimum size.  It also guarantees
+           that each column is separated from its predecessor by at least one
+           space.
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you configure lsof to handle wide characters such as UTF-8 in its output?
+  manpageQuestion3: What is the behavior of lsof when it encounters wide characters that are not printable in a specific locale?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nCOMMAND\n\t      contains the first nine characters of the name of the UNIX\n\t      command associated with the process.  If a non-zero w value is\n\t      specified to the +c w option, the column contains the first w\n\t      characters of the name of the UNIX command associated with the\n\t      process up to the limit of characters supplied to lsof by the\n\t      UNIX dialect.  (See the description of the +c w command or the\n\t      lsof FAQ for more information.  The FAQ section gives its\n\t      location.)\n\n\t      If w is less than the length of the column title, ``COMMAND'',\n\t      it will be raised to that length.\n\n\t      If a zero w value is specified to the +c w option, the column\n\t      contains all the characters of the name of the UNIX command\n\t      associated with the process.\n\n\t      All command name characters maintained by the kernel in its\n\t      structures are displayed in field output when the command name\n\t      descriptor (`c') is specified.  See the OUTPUT FOR OTHER\n\t      COMMANDS section for information on selecting field output and\n\t      the associated command name descriptor."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to display the full name of the UNIX command associated with a process?
+  manpageQuestion3: What is the effect of specifying a non-zero value for the +c w option in lsof when viewing the COMMAND column?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nPID    is the Process IDentification number of the process.\n\n       TID    is the task (thread) IDentification number, if task (thread)\n\t      reporting is supported by the dialect and a task (thread) is\n\t      being listed.  (If help output - i.e., the output of the -h or\n\t      -?  options - shows this option, then task (thread) reporting is\n\t      supported by the dialect.)\n\n\t      A blank TID column in Linux indicates a process - i.e., a\n\t      non-task.\n\n       TASKCMD\n\t      is the task command name.  Generally this will be the same as\n\t      the process named in the COMMAND column, but some task\n\t      implementations (e.g., Linux) permit a task to change its\n\t      command name.\n\n\t      The TASKCMD column width is subject to the same size limitation\n\t      as the COMMAND column.\n\n       ZONE   is the Solaris 10 and higher zone name.  This column must be\n\t      selected with the -z option.\n\n       SECURITY-CONTEXT\n\t      is the SELinux security context.\tThis column must be selected\n\t      with the -Z option.  Note that the -Z option is inhibited when\n\t      SELinux is disabled in the running Linux kernel."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to display the process ID and thread ID for all open files by a specific user?
+  manpageQuestion3: What does the TASKCMD column in lsof output represent, and how is it different from the COMMAND column?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nPPID   is the Parent Process IDentification number of the process.  It\n\t      is only displayed when the -R option has been specified.\n\n       PGID   is the process group IDentification number associated with the\n\t      process.\tIt is only displayed when the -g option has been\n\t      specified.\n\n       USER   is the user ID number or login name of the user to whom the\n\t      process belongs, usually the same as reported by ps(1).\n\t      However, on Linux USER is the user ID number or login that owns\n\t      the directory in /proc where lsof finds information about the\n\t      process.\tUsually that is the same value reported by ps(1), but\n\t      may differ when the process has changed its effective user ID.\n\t      (See the -l option description for information on when a user ID\n\t      number or login name is displayed.)\n\n       FD     is the File Descriptor number of the file or:\n\n\t\t   cwd\tcurrent working directory;\n\t\t   Lnn\tlibrary references (AIX);\n\t\t   err\tFD information error (see NAME column);\n\t\t   jld\tjail directory (FreeBSD);\n\t\t   ltx\tshared library text (code and data);\n\t\t   Mxx\thex memory-mapped type number xx.\n\t\t   m86\tDOS Merge mapped file;\n\t\t   mem\tmemory-mapped file;\n\t\t   mmap memory-mapped device;\n\t\t   pd\tparent directory;\n\t\t   rtd\troot directory;\n\t\t   tr\tkernel trace file (OpenBSD);\n\t\t   txt\tprogram text (code and data);\n\t\t   v86\tVP/ix mapped file;"
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you display the Parent Process ID (PPID) of a process using lsof?
+  manpageQuestion3: What is the meaning of the FD column in the output of lsof and how can it be interpreted?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nFD is followed by one of these characters, describing the mode\n\t      under which the file is open:\n\n\t\t   r for read access;\n\t\t   w for write access;\n\t\t   u for read and write access;\n\t\t   space if mode unknown and no lock\n\t\t\tcharacter follows;\n\t\t   `-' if mode unknown and lock\n\t\t\tcharacter follows.\n\n\t      The mode character is followed by one of these lock characters,\n\t      describing the type of lock applied to the file:\n\n\t\t   N for a Solaris NFS lock of unknown type;\n\t\t   r for read lock on part of the file;\n\t\t   R for a read lock on the entire file;\n\t\t   w for a write lock on part of the file;\n\t\t   W for a write lock on the entire file;\n\t\t   u for a read and write lock of any length;\n\t\t   U for a lock of unknown type;\n\t\t   x for an SCO OpenServer Xenix lock on part\tof the file;\n\t\t   X for an SCO OpenServer Xenix lock on the entire file;\n\t\t   space if there is no lock.\n\n\t      See the LOCKS section for more information on the lock\n\t      information character.\n\n\t      The FD column contents constitutes a single field for parsing in\n\t      post-processing scripts."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to display open files along with their associated lock information?
+  manpageQuestion3: Can you provide an example of using lsof to check the lock status of a specific file opened by a particular process?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nTYPE   is the type of the node associated with the file - e.g., GDIR,\n\t      GREG, VDIR, VREG, etc.\n\n\t      or ``IPv4'' for an IPv4 socket;\n\n\t      or ``IPv6'' for an open IPv6 network file - even if its address\n\t      is IPv4, mapped in an IPv6 address;\n\n\t      or ``ax25'' for a Linux AX.25 socket;\n\n\t      or ``inet'' for an Internet domain socket;\n\n\t      or ``lla'' for a HP-UX link level access file;\n\n\t      or ``rte'' for an AF_ROUTE socket;\n\n\t      or ``sock'' for a socket of unknown domain;\n\n\t      or ``unix'' for a UNIX domain socket;\n\n\t      or ``x.25'' for an HP-UX x.25 socket;\n\n\t      or ``BLK'' for a block special file;\n\n\t      or ``CHR'' for a character special file;\n\n\t      or ``DEL'' for a Linux map file that has been deleted;\n\n\t      or ``DIR'' for a directory;\n\n\t      or ``DOOR'' for a VDOOR file;\n\n\t      or ``FIFO'' for a FIFO special file;\n\n\t      or ``KQUEUE'' for a BSD style kernel event queue file;\n\n\t      or ``LINK'' for a symbolic link file;\n\n\t      or ``MPB'' for a multiplexed block file;"
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to display the file types associated with open files in a process?
+  manpageQuestion3: Can you provide an example of using lsof to identify the type of a specific socket file, such as an IPv4 socket?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nor ``MPC'' for a multiplexed character file;\n\n\t      or ``NOFD'' for a Linux /proc/<PID>/fd directory that can't be\n\t      opened -- the directory path appears in the NAME column,\n\t      followed by an error message;\n\n\t      or ``PAS'' for a /proc/as file;\n\n\t      or ``PAXV'' for a /proc/auxv file;\n\n\t      or ``PCRE'' for a /proc/cred file;\n\n\t      or ``PCTL'' for a /proc control file;\n\n\t      or ``PCUR'' for the current /proc process;\n\n\t      or ``PCWD'' for a /proc current working directory;\n\n\t      or ``PDIR'' for a /proc directory;\n\n\t      or ``PETY'' for a /proc executable type (etype);\n\n\t      or ``PFD'' for a /proc file descriptor;\n\n\t      or ``PFDR'' for a /proc file descriptor directory;\n\n\t      or ``PFIL'' for an executable /proc file;\n\n\t      or ``PFPR'' for a /proc FP register set;\n\n\t      or ``PGD'' for a /proc/pagedata file;\n\n\t      or ``PGID'' for a /proc group notifier file;\n\n\t      or ``PIPE'' for pipes;\n\n\t      or ``PLC'' for a /proc/lwpctl file;\n\n\t      or ``PLDR'' for a /proc/lpw directory;"
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to list all open files for a specific process ID (PID)?
+  manpageQuestion3: What does the lsof command do when it encounters a file descriptor that is not open?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nor ``PLDT'' for a /proc/ldt file;\n\n\t      or ``PLPI'' for a /proc/lpsinfo file;\n\n\t      or ``PLST'' for a /proc/lstatus file;\n\n\t      or ``PLU'' for a /proc/lusage file;\n\n\t      or ``PLWG'' for a /proc/gwindows file;\n\n\t      or ``PLWI'' for a /proc/lwpsinfo file;\n\n\t      or ``PLWS'' for a /proc/lwpstatus file;\n\n\t      or ``PLWU'' for a /proc/lwpusage file;\n\n\t      or ``PLWX'' for a /proc/xregs file;\n\n\t      or ``PMAP'' for a /proc map file (map);\n\n\t      or ``PMEM'' for a /proc memory image file;\n\n\t      or ``PNTF'' for a /proc process notifier file;\n\n\t      or ``POBJ'' for a /proc/object file;\n\n\t      or ``PODR'' for a /proc/object directory;\n\n\t      or ``POLP'' for an old format /proc light weight process file;\n\n\t      or ``POPF'' for an old format /proc PID file;\n\n\t      or ``POPG'' for an old format /proc page data file;\n\n\t      or ``PORT'' for a SYSV named pipe;\n\n\t      or ``PREG'' for a /proc register file;\n\n\t      or ``PRMP'' for a /proc/rmap file;\n\n\t      or ``PRTD'' for a /proc root directory;"
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to list all open files for a specific process with PID 1234?
+  manpageQuestion3: Can you provide an example of using lsof to examine the memory image of a process with PID 5678?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nor ``PSGA'' for a /proc/sigact file;\n\n\t      or ``PSIN'' for a /proc/psinfo file;\n\n\t      or ``PSTA'' for a /proc status file;\n\n\t      or ``PSXSEM'' for a POSIX semaphore file;\n\n\t      or ``PSXSHM'' for a POSIX shared memory file;\n\n\t      or ``PTS'' for a /dev/pts file;\n\n\t      or ``PUSG'' for a /proc/usage file;\n\n\t      or ``PW'' for a /proc/watch file;\n\n\t      or ``PXMP'' for a /proc/xmap file;\n\n\t      or ``REG'' for a regular file;\n\n\t      or ``SMT'' for a shared memory transport file;\n\n\t      or ``STSO'' for a stream socket;\n\n\t      or ``UNNM'' for an unnamed type file;\n\n\t      or ``XNAM'' for an OpenServer Xenix special file of unknown\n\t      type;\n\n\t      or ``XSEM'' for an OpenServer Xenix semaphore file;\n\n\t      or ``XSD'' for an OpenServer Xenix shared data file;\n\n\t      or the four type number octets if the corresponding name isn't\n\t      known.\n\n       FILE-ADDR\n\t      contains the kernel file structure address when f has been\n\t      specified to +f;\n\n       FCT    contains the file reference count from the kernel file structure\n\t      when c has been specified to +f;"
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How would you use lsof to list all open files for a specific process with the process ID 1234?
+  manpageQuestion3: Can you provide an example of using lsof to display the file reference count for a particular file structure?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nFILE-FLAG\n\t      when g or G has been specified to +f, this field contains the\n\t      contents of the f_flag[s] member of the kernel file structure\n\t      and the kernel's per-process open file flags (if available); `G'\n\t      causes them to be displayed in hexadecimal; `g', as short-hand\n\t      names; two lists may be displayed with entries separated by\n\t      commas, the lists separated by a semicolon (`;'); the first list\n\t      may contain short-hand names for f_flag[s] values from the\n\t      following table:\n\n\t\t   AIO\t     asynchronous I/O (e.g., FAIO)\n\t\t   AP\t     append\n\t\t   ASYN      asynchronous I/O (e.g., FASYNC)\n\t\t   BAS\t     block, test, and set in use\n\t\t   BKIU      block if in use\n\t\t   BL\t     use block offsets\n\t\t   BSK\t     block seek\n\t\t   CA\t     copy avoid\n\t\t   CIO\t     concurrent I/O\n\t\t   CLON      clone\n\t\t   CLRD      CL read\n\t\t   CR\t     create\n\t\t   DF\t     defer\n\t\t   DFI\t     defer IND\n\t\t   DFLU      data flush\n\t\t   DIR\t     direct\n\t\t   DLY\t     delay\n\t\t   DOCL      do clone\n\t\t   DSYN      data-only integrity\n\t\t   DTY\t     must be a directory\n\t\t   EVO\t     event only\n\t\t   EX\t     open for exec\n\t\t   EXCL      exclusive open\n\t\t   FSYN      synchronous writes\n\t\t   GCDF      defer during unp_gc() (AIX)\n\t\t   GCMK      mark during unp_gc() (AIX)\n\t\t   GTTY      accessed via /dev/tty\n\t\t   HUP\t     HUP in progress\n\t\t   KERN      kernel\n\t\t   KIOC      kernel-issued ioctl\n\t\t   LCK\t     has lock\n\t\t   LG\t     large file\n\t\t   MBLK      stream message block\n\t\t   MK\t     mark\n\t\t   MNT\t     mount\n\t\t   MSYN      multiplex synchronization\n\t\t   NATM      don't update atime\n\t\t   NB\t     non-blocking I/O\n\t\t   NBDR      no BDRM check\n\t\t   NBIO      SYSV non-blocking I/O\n\t\t   NBF\t     n-buffering in effect\n\t\t   NC\t     no cache\n\t\t   ND\t     no delay\n\t\t   NDSY      no data synchronization\n\t\t   NET\t     network\n\t\t   NFLK      don't follow links\n\t\t   NMFS      NM file system\n\t\t   NOTO      disable background stop\n\t\t   NSH\t     no share\n\t\t   NTTY      no controlling TTY\n\t\t   OLRM      OLR mirror\n\t\t   PAIO      POSIX asynchronous I/O\n\t\t   PP\t     POSIX pipe\n\t\t   R\t     read\n\t\t   RC\t     file and record locking cache\n\t\t   REV\t     revoked\n\t\t   RSH\t     shared read\n\t\t   RSYN      read synchronization\n\t\t   RW\t     read and write access\n\t\t   SL\t     shared lock\n\t\t   SNAP      cooked snapshot\n\t\t   SOCK      socket\n\t\t   SQSH      Sequent shared set on open\n\t\t   SQSV      Sequent SVM set on open\n\t\t   SQR\t     Sequent set repair on open\n\t\t   SQS1      Sequent full shared open\n\t\t   SQS2      Sequent partial shared open\n\t\t   STPI      stop I/O\n\t\t   SWR\t     synchronous read\n\t\t   SYN\t     file integrity while writing\n\t\t   TCPM      avoid TCP collision\n\t\t   TR\t     truncate\n\t\t   W\t     write\n\t\t   WKUP      parallel I/O synchronization\n\t\t   WTG\t     parallel I/O synchronization\n\t\t   VH\t     vhangup pending\n\t\t   VTXT      virtual text\n\t\t   XL\t     exclusive lock"
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to display the file flags in hexadecimal format for processes that have open files?
+  manpageQuestion3: Can you provide an example of using lsof to display the file flags for a specific process, including short-hand names and hexadecimal values?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nthis list of names was derived from F* #define's in dialect\n\t      header files <fcntl.h>, <linux</fs.h>, <sys/fcntl.c>,\n\t      <sys/fcntlcom.h>, and <sys/file.h>; see the lsof.h header file\n\t      for a list showing the correspondence between the above\n\t      short-hand names and the header file definitions;\n\n\t      the second list (after the semicolon) may contain short-hand\n\t      names for kernel per-process open file flags from this table:\n\n\t\t   ALLC      allocated\n\t\t   BR\t     the file has been read\n\t\t   BHUP      activity stopped by SIGHUP\n\t\t   BW\t     the file has been written\n\t\t   CLSG      closing\n\t\t   CX\t     close-on-exec (see fcntl(F_SETFD))\n\t\t   LCK\t     lock was applied\n\t\t   MP\t     memory-mapped\n\t\t   OPIP      open pending - in progress\n\t\t   RSVW      reserved wait\n\t\t   SHMT      UF_FSHMAT set (AIX)\n\t\t   USE\t     in use (multi-threaded)\n\n       NODE-ID\n\t      (or INODE-ADDR for some dialects) contains a unique identifier\n\t      for the file node (usually the kernel vnode or inode address,\n\t      but also occasionally a concatenation of device and node number)\n\t      when n has been specified to +f;"
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to list all open files along with their associated node IDs?
+  manpageQuestion3: Can you provide an example of using lsof to display open files with specific flags like 'SHMT' and 'USE'?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nDEVICE contains the device numbers, separated by commas, for a\n\t      character special, block special, regular, directory or NFS\n\t      file;\n\n\t      or ``memory'' for a memory file system node under Tru64 UNIX;\n\n\t      or the address of the private data area of a Solaris socket\n\t      stream;\n\n\t      or a kernel reference address that identifies the file (The\n\t      kernel reference address may be used for FIFO's, for example.);\n\n\t      or the base address or device name of a Linux AX.25 socket\n\t      device.\n\n\t      Usually only the lower thirty two bits of Tru64 UNIX kernel\n\t      addresses are displayed.\n\n       SIZE, SIZE/OFF, or OFFSET\n\t      is the size of the file or the file offset in bytes.  A value is\n\t      displayed in this column only if it is available.  Lsof displays\n\t      whatever value - size or offset - is appropriate for the type of\n\t      the file and the version of lsof.\n\n\t      On some UNIX dialects lsof can't obtain accurate or consistent\n\t      file offset information from its kernel data sources, sometimes\n\t      just for particular kinds of files (e.g., socket files.)\tIn\n\t      other cases, files don't have true sizes - e.g., sockets, FIFOs,\n\t      pipes - so lsof displays for their sizes the content amounts it\n\t      finds in their kernel buffer descriptors (e.g., socket buffer\n\t      size counts or TCP/IP window sizes.)  Consult the lsof FAQ (The\n\t      FAQ section gives its location.)\tfor more information."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to display the device numbers and file offsets for all open files?
+  manpageQuestion3: Can you provide an example of using lsof to inspect the size and offset information for a specific socket file?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nThe file size is displayed in decimal; the offset is normally\n\t      displayed in decimal with a leading ``0t'' if it contains 8\n\t      digits or less; in hexadecimal with a leading ``0x'' if it is\n\t      longer than 8 digits.  (Consult the -o o option description for\n\t      information on when 8 might default to some other value.)\n\n\t      Thus the leading ``0t'' and ``0x'' identify an offset when the\n\t      column may contain both a size and an offset (i.e., its title is\n\t      SIZE/OFF).\n\n\t      If the -o option is specified, lsof always displays the file\n\t      offset (or nothing if no offset is available) and labels the\n\t      column OFFSET.  The offset always begins with ``0t'' or ``0x''\n\t      as described above.\n\n\t      The lsof user can control the switch from ``0t'' to ``0x'' with\n\t      the -o o option.\tConsult its description for more information.\n\n\t      If the -s option is specified, lsof always displays the file\n\t      size (or nothing if no size is available) and labels the column\n\t      SIZE.  The -o and -s options are mutually exclusive; they can't\n\t      both be specified."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How does lsof display file sizes and offsets, and what controls the format (decimal or hexadecimal) of the offset?
+  manpageQuestion3: What options can be used to ensure lsof always displays the file offset with a specific format, and how does this affect the output?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nFor files that don't have a fixed size - e.g., don't reside on a\n\t      disk device - lsof will display appropriate information about\n\t      the current size or position of the file if it is available in\n\t      the kernel structures that define the file.\n\n       NLINK  contains the file link count when +L has been specified;\n\n       NODE   is the node number of a local file;\n\n\t      or the inode number of an NFS file in the server host;\n\n\t      or the Internet protocol type - e.g, ``TCP'';\n\n\t      or ``STR'' for a stream;\n\n\t      or ``CCITT'' for an HP-UX x.25 socket;\n\n\t      or the IRQ or inode number of a Linux AX.25 socket device.\n\n       NAME   is the name of the mount point and file system on which the file\n\t      resides;\n\n\t      or the name of a file specified in the names option (after any\n\t      symbolic links have been resolved);\n\n\t      or the name of a character special or block special device;\n\n\t      or the local and remote Internet addresses of a network file;\n\t      the local host name or IP number is followed by a colon (':'),\n\t      the port, ``->'', and the two-part remote address; IP addresses\n\t      may be reported as numbers or names, depending on the +|-M, -n,\n\t      and -P options; colon-separated IPv6 numbers are enclosed in\n\t      square brackets; IPv4 INADDR_ANY and IPv6\n\t      IN6_IS_ADDR_UNSPECIFIED addresses, and zero port numbers are\n\t      represented by an asterisk ('*'); a UDP destination address may\n\t      be followed by the amount of time elapsed since the last packet\n\t      was sent to the destination; TCP, UDP and UDPLITE remote\n\t      addresses may be followed by TCP/TPI information in parentheses\n\t      - state (e.g., ``(ESTABLISHED)'', ``(Unbound)''), queue sizes,\n\t      and window sizes (not all dialects) - in a fashion similar to\n\t      what netstat(1) reports; see the -T option description or the\n\t      description of the TCP/TPI field in OUTPUT FOR OTHER PROGRAMS\n\t      for more information on state, queue size, and window size;"
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to display the file link count for all open files?
+  manpageQuestion3: Can you provide an example of using lsof to view the network connection details for a specific port, such as port 80?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nor the address or name of a UNIX domain socket, possibly\n\t      including a stream clone device name, a file system object's\n\t      path name, local and foreign kernel addresses, socket pair\n\t      information, and a bound vnode address;\n\n\t      or the local and remote mount point names of an NFS file;\n\n\t      or ``STR'', followed by the stream name;\n\n\t      or a stream character device name, followed by ``->'' and the\n\t      stream name or a list of stream module names, separated by\n\t      ``->'';\n\n\t      or ``STR:'' followed by the SCO OpenServer stream device and\n\t      module names, separated by ``->'';\n\n\t      or system directory name, `` -- '', and as many components of\n\t      the path name as lsof can find in the kernel's name cache for\n\t      selected dialects (See the KERNEL NAME CACHE section for more\n\t      information.);\n\n\t      or ``PIPE->'', followed by a Solaris kernel pipe destination\n\t      address;\n\n\t      or ``COMMON:'', followed by the vnode device information\n\t      structure's device name, for a Solaris common vnode;"
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to list all open files associated with a specific process ID?
+  manpageQuestion3: Can you provide an example of using lsof to inspect the contents of a UNIX domain socket file?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nor the address family, followed by a slash (`/'), followed by\n\t      fourteen comma-separated bytes of a non-Internet raw socket\n\t      address;\n\n\t      or the HP-UX x.25 local address, followed by the virtual\n\t      connection number (if any), followed by the remote address (if\n\t      any);\n\n\t      or ``(dead)'' for disassociated Tru64 UNIX files - typically\n\t      terminal files that have been flagged with the TIOCNOTTY ioctl\n\t      and closed by daemons;\n\n\t      or ``rd=<offset>'' and ``wr=<offset>'' for the values of the\n\t      read and write offsets of a FIFO;\n\n\t      or ``clone n:/dev/event'' for SCO OpenServer file clones of the\n\t      /dev/event device, where n is the minor device number of the\n\t      file;\n\n\t      or ``(socketpair: n)'' for a Solaris 2.6, 8, 9  or 10 UNIX\n\t      domain socket, created by the socketpair(3N) network function;\n\n\t      or ``no PCB'' for socket files that do not have a protocol block\n\t      associated with them, optionally followed by ``, CANTSENDMORE''\n\t      if sending on the socket has been disabled, or ``, CANTRCVMORE''\n\t      if receiving on the socket has been disabled (e.g., by the\n\t      shutdown(2) function);"
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to list all open files associated with a specific process ID?
+  manpageQuestion3: What is the format of the output for a raw socket address as displayed by lsof?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nor the local and remote addresses of a Linux IPX socket file in\n\t      the form <net>:[<node>:]<port>, followed in parentheses by the\n\t      transmit and receive queue sizes, and the connection state;\n\n\t      or ``dgram'' or ``stream'' for the type UnixWare 7.1.1 and above\n\t      in-kernel UNIX domain sockets, followed by a colon (':') and the\n\t      local path name when available, followed by ``->'' and the\n\t      remote path name or kernel socket address in hexadecimal when\n\t      available;\n\n\t      or the association value, association index, endpoint value,\n\t      local address, local port, remote address and remote port for\n\t      Linux SCTP sockets;\n\n\t      or ``protocol: '' followed by the Linux socket's protocol\n\t      attribute.\n\n       For dialects that support a ``namefs'' file system, allowing one file\n       to be attached to another with fattach(3C), lsof will add\n       ``(FA:<address1><direction><address2>)'' to the NAME column.\n       <address1> and <address2> are hexadecimal vnode addresses.  <direction>\n       will be ``<-'' if <address2> has been fattach'ed to this vnode whose\n       address is <address1>; and ``->'' if <address1>, the vnode address of\n       this vnode, has been fattach'ed to <address2>.  <address1> may be\n       omitted if it already appears in the DEVICE column."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to display information about both local and remote addresses of an IPX socket?
+  manpageQuestion3: Can you explain how lsof handles the NAME column when a 'namefs' file system is in use?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.
+
+
+
+    Manpage text:
+
+    Lsof may add two parenthetical notes to the NAME column for open
+           Solaris 10 files: ``(?)'' if lsof considers the path name of
+           questionable accuracy; and ``(deleted)'' if the -X option has been
+           specified and lsof detects the open file's path name has been deleted.
+           Consult the lsof FAQ (The FAQ section gives its location.)  for more
+           information on these NAME column additions.
+
+    LOCKS
+           Lsof can't adequately report the wide variety of UNIX dialect file
+           locks in a single character.  What it reports in a single character is
+           a compromise between the information it finds in the kernel and the
+           limitations of the reporting format.
+
+           Moreover, when a process holds several byte level locks on a file, lsof
+           only reports the status of the first lock it encounters.  If it is a
+           byte level lock, then the lock character will be reported in lower case
+           - i.e., `r', `w', or `x' - rather than the upper case equivalent
+           reported for a full file lock.
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to check open files associated with a specific process ID?
+  manpageQuestion3: What does the lsof output indicate when it reports a lock character in lowercase, such as 'r', 'w', or 'x'?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.
+
+
+
+    Manpage text:
+
+    Generally lsof can only report on locks held by local processes on
+           local files.  When a local process sets a lock on a remotely mounted
+           (e.g., NFS) file, the remote server host usually records the lock
+           state.  One exception is Solaris - at some patch levels of 2.3, and in
+           all versions above 2.4, the Solaris kernel records information on
+           remote locks in local structures.
+
+           Lsof has trouble reporting locks for some UNIX dialects.  Consult the
+           BUGS section of this manual page or the lsof FAQ (The FAQ section gives
+           its location.)  for more information.
+
+    OUTPUT FOR OTHER PROGRAMS
+           When the -F option is specified, lsof produces output that is suitable
+           for processing by another program - e.g, an awk or Perl script, or a C
+           program.
+
+           Each unit of information is output in a field that is identified with a
+           leading character and terminated by a NL (012) (or a NUL (000) if the 0
+           (zero) field identifier character is specified.)  The data of the field
+           follows immediately after the field identification character and
+           extends to the field terminator.
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof with the -F option to generate output suitable for processing by another program?
+  manpageQuestion3: What are the limitations of lsof when reporting on locks for certain UNIX dialects?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.
+
+
+
+    Manpage text:
+
+    It is possible to think of field output as process and file sets.  A
+           process set begins with a field whose identifier is `p' (for process
+           IDentifier (PID)).  It extends to the beginning of the next PID field
+           or the beginning of the first file set of the process, whichever comes
+           first.  Included in the process set are fields that identify the
+           command, the process group IDentification (PGID) number, the task
+           (thread) ID (TID), and the user ID (UID) number or login name.
+
+           A file set begins with a field whose identifier is `f' (for file
+           descriptor).  It is followed by lines that describe the file's access
+           mode, lock state, type, device, size, offset, inode, protocol, name and
+           stream module names.  It extends to the beginning of the next file or
+           process set, whichever comes first.
+
+           When the NUL (000) field terminator has been selected with the 0 (zero)
+           field identifier character, lsof ends each process and file set with a
+           NL (012) character.
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How would you use lsof to list all open files for processes with a PID greater than 1000?
+  manpageQuestion3: Can you provide an example of using lsof to display the file descriptors and their associated files for a specific process, such as PID 1234?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.
+
+
+
+    Manpage text:
+
+    Lsof always produces one field, the PID (`p') field.  All other fields
+           may be declared optionally in the field identifier character list that
+           follows the -F option.  When a field selection character identifies an
+           item lsof does not normally list - e.g., PPID, selected with -R -
+           specification of the field character - e.g., ``-FR'' - also selects the
+           listing of the item.
+
+           It is entirely possible to select a set of fields that cannot easily be
+           parsed - e.g., if the field descriptor field is not selected, it may be
+           difficult to identify file sets.  To help you avoid this difficulty,
+           lsof supports the -F option; it selects the output of all fields with
+           NL terminators (the -F0 option pair selects the output of all fields
+           with NUL terminators).  For compatibility reasons neither -F nor -F0
+           select the raw device field.
+
+           These are the fields that lsof will produce.  The single character
+           listed first is the field identifier.
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to list the PID and the file name of all open files for a specific process?
+  manpageQuestion3: Can you provide an example of using lsof with the -F option to select specific fields for output?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\na\t file access mode\n\t    c\t process command name (all characters from proc or\n\t\t user structure)\n\t    C\t file structure share count\n\t    d\t file's device character code\n\t    D\t file's major/minor device number (0x<hexadecimal>)\n\t    f\t file descriptor (always selected)\n\t    F\t file structure address (0x<hexadecimal>)\n\t    G\t file flaGs (0x<hexadecimal>; names if +fg follows)\n\t    g\t process group ID\n\t    i\t file's inode number\n\t    K\t tasK ID\n\t    k\t link count\n\t    l\t file's lock status\n\t    L\t process login name\n\t    m\t marker between repeated output\n\t    M\t the task comMand name\n\t    n\t file name, comment, Internet address\n\t    N\t node identifier (ox<hexadecimal>\n\t    o\t file's offset (decimal)\n\t    p\t process ID (always selected)\n\t    P\t protocol name\n\t    r\t raw device number (0x<hexadecimal>)\n\t    R\t parent process ID\n\t    s\t file's size (decimal)\n\t    S\t file's stream identification\n\t    t\t file's type\n\t    T\t TCP/TPI information, identified by prefixes (the\n\t\t `=' is part of the prefix):\n\t\t     QR=<read queue size>\n\t\t     QS=<send queue size>\n\t\t     SO=<socket options and values> (not all dialects)\n\t\t     SS=<socket states> (not all dialects)\n\t\t     ST=<connection state>\n\t\t     TF=<TCP flags and values> (not all dialects)\n\t\t     WR=<window read size>  (not all dialects)\n\t\t     WW=<window write size>  (not all dialects)\n\t\t (TCP/TPI information isn't reported for all supported\n\t\t   UNIX dialects. The -h or -? help output for the\n\t\t   -T option will show what TCP/TPI reporting can be\n\t\t   requested.)\n\t    u\t process user ID\n\t    z\t Solaris 10 and higher zone name\n\t    Z\t SELinux security context (inhibited when SELinux is disabled)\n\t    0\t use NUL field terminator character in place of NL\n\t    1-9  dialect-specific field identifiers (The output\n\t\t of -F? identifies the information to be found\n\t\t in dialect-specific fields.)"
+  manpageQuestion1: What is the primary purpose of the lsof tool?
+  manpageQuestion2: How would you use lsof to display the file descriptors and process information for all open files by a specific process ID?
+  manpageQuestion3: Can you provide an example of using lsof to list the TCP connection details for all active connections on a system?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.
+
+
+
+    Manpage text:
+
+    You can get on-line help information on these characters and their
+           descriptions by specifying the -F?  option pair.  (Escape the `?'
+           character as your shell requires.)  Additional information on field
+           content can be found in the OUTPUT section.
+
+           As an example, ``-F pcfn'' will select the process ID (`p'), command
+           name (`c'), file descriptor (`f') and file name (`n') fields with an NL
+           field terminator character; ``-F pcfn0'' selects the same output with a
+           NUL (000) field terminator character.
+
+           Lsof doesn't produce all fields for every process or file set, only
+           those that are available.  Some fields are mutually exclusive: file
+           device characters and file major/minor device numbers; file inode
+           number and protocol name; file name and stream identification; file
+           size and offset.  One or the other member of these mutually exclusive
+           sets will appear in field output, but not both.
+
+           Normally lsof ends each field with a NL (012) character.  The 0 (zero)
+           field identifier character may be specified to change the field
+           terminator character to a NUL (000).  A NUL terminator may be easier to
+           process with xargs (1), for example, or with programs whose quoting
+           mechanisms may not easily cope with the range of characters in the
+           field output.  When the NUL field terminator is in use, lsof ends each
+           process and file set with a NL (012).
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to list the process ID, command name, file descriptor, and file name for all open files, using a newline as the field terminator?
+  manpageQuestion3: What is the effect of using the -F 0 option in lsof, and how would you use it to process the output with xargs?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.
+
+
+
+    Manpage text:
+
+    Three aids to producing programs that can process lsof field output are
+           included in the lsof distribution.  The first is a C header file,
+           lsof_fields.h, that contains symbols for the field identification
+           characters, indexes for storing them in a table, and explanation
+           strings that may be compiled into programs.  Lsof uses this header
+           file.
+
+           The second aid is a set of sample scripts that process field output,
+           written in awk, Perl 4, and Perl 5.  They're located in the scripts
+           subdirectory of the lsof distribution.
+
+           The third aid is the C library used for the lsof test suite.  The test
+           suite is written in C and uses field output to validate the correct
+           operation of lsof.  The library can be found in the tests/LTlib.c file
+           of the lsof distribution.  The library uses the first aid, the
+           lsof_fields.h header file.
+
+    BLOCKS AND TIMEOUTS
+           Lsof can be blocked by some kernel functions that it uses - lstat(2),
+           readlink(2), and stat(2).  These functions are stalled in the kernel,
+           for example, when the hosts where mounted NFS file systems reside
+           become inaccessible.
+  manpageQuestion1: What is the primary purpose of the lsof tool?
+  manpageQuestion2: How can you use lsof to list all open files for a specific process ID?
+  manpageQuestion3: What is the role of the lsof_fields.h header file in the lsof distribution?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nLsof attempts to break these blocks with timers and child processes,\n       but the techniques are not wholly reliable.  When lsof does manage to\n       break a block, it will report the break with an error message.  The\n       messages may be suppressed with the -t and -w options.\n\n       The default timeout value may be displayed with the -h or -?  option,\n       and it may be changed with the -S [t] option.  The minimum for t is two\n       seconds, but you should avoid small values, since slow system\n       responsiveness can cause short timeouts to expire unexpectedly and\n       perhaps stop lsof before it can produce any output.\n\n       When lsof has to break a block during its access of mounted file system\n       information, it normally continues, although with less information\n       available to display about open files.\n\n       Lsof can also be directed to avoid the protection of timers and child\n       processes when using the kernel functions that might block by\n       specifying the -O option.  While this will allow lsof to start up with\n       less overhead, it exposes lsof completely to the kernel situations that\n       might block it.\tUse this option cautiously."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you modify the default timeout value for lsof to ensure it doesn't expire too quickly?
+  manpageQuestion3: What option should be used with lsof to avoid the protection of timers and child processes when accessing kernel functions that might block?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nAVOIDING KERNEL BLOCKS\n       You can use the -b option to tell lsof to avoid using kernel functions\n       that would block.  Some cautions apply.\n\n       First, using this option usually requires that your system supply\n       alternate device numbers in place of the device numbers that lsof would\n       normally obtain with the lstat(2) and stat(2) kernel functions.\tSee\n       the ALTERNATE DEVICE NUMBERS section for more information on alternate\n       device numbers.\n\n       Second, you can't specify names for lsof to locate unless they're file\n       system names.  This is because lsof needs to know the device and inode\n       numbers of files listed with names in the lsof options, and the -b\n       option prevents lsof from obtaining them.  Moreover, since lsof only\n       has device numbers for the file systems that have alternates, its\n       ability to locate files on file systems depends completely on the\n       availability and accuracy of the alternates.  If no alternates are\n       available, or if they're incorrect, lsof won't be able to locate files\n       on the named file systems."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How would you use the -b option in lsof to avoid kernel blocking when listing open files?
+  manpageQuestion3: What are the limitations of using the -b option in lsof and how does it affect file location?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.
+
+
+
+    Manpage text:
+
+    Third, if the names of your file system directories that lsof obtains
+           from your system's mount table are symbolic links, lsof won't be able
+           to resolve the links.  This is because the -b option causes lsof to
+           avoid the kernel readlink(2) function it uses to resolve symbolic
+           links.
+
+           Finally, using the -b option causes lsof to issue warning messages when
+           it needs to use the kernel functions that the -b option directs it to
+           avoid.  You can suppress these messages by specifying the -w option,
+           but if you do, you won't see the alternate device numbers reported in
+           the warning messages.
+
+    ALTERNATE DEVICE NUMBERS
+           On some dialects, when lsof has to break a block because it can't get
+           information about a mounted file system via the lstat(2) and stat(2)
+           kernel functions, or because you specified the -b option, lsof can
+           obtain some of the information it needs - the device number and
+           possibly the file system type - from the system mount table.  When that
+           is possible, lsof will report the device number it obtained.  (You can
+           suppress the report by specifying the -w option.)
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you suppress warning messages when using the -b option with lsof?
+  manpageQuestion3: What is the effect of using the -b option with lsof when it cannot retrieve information about a mounted file system?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nYou can assist this process if your mount table is supported with an\n       /etc/mtab or /etc/mnttab file that contains an options field by adding\n       a ``dev=xxxx'' field for mount points that do not have one in their\n       options strings.  Note: you must be able to edit the file - i.e., some\n       mount tables like recent Solaris /etc/mnttab or Linux /proc/mounts are\n       read-only and can't be modified.\n\n       You may also be able to supply device numbers using the +m and +m m\n       options, provided they are supported by your dialect.  Check the output\n       of lsof's -h or -?  options to see if the +m and +m m options are\n       available.\n\n       The ``xxxx'' portion of the field is the hexadecimal value of the file\n       system's device number.\t(Consult the st_dev field of the output of the\n       lstat(2) and stat(2) functions for the appropriate values for your file\n       systems.)  Here's an example from a Sun Solaris 2.6 /etc/mnttab for a\n       file system remotely mounted via NFS:"
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you modify the mount table to include device numbers for file systems that lack them, and how does this help with lsof?
+  manpageQuestion3: Can you provide an example of using the +m and +m m options with lsof to specify device numbers for a file system?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nnfs  ignore,noquota,dev=2a40001\n\n       There's an advantage to having ``dev=xxxx'' entries in your mount table\n       file, especially for file systems that are mounted from remote NFS\n       servers.  When a remote server crashes and you want to identify its\n       users by running lsof on one of its clients, lsof probably won't be\n       able to get output from the lstat(2) and stat(2) functions for the file\n       system.\tIf it can obtain the file system's device number from the\n       mount table, it will be able to display the files open on the crashed\n       NFS server.\n\n       Some dialects that do not use an ASCII /etc/mtab or /etc/mnttab file\n       for the mount table may still provide an alternative device number in\n       their internal mount tables.  This includes AIX, Apple Darwin, FreeBSD,\n       NetBSD, OpenBSD, and Tru64 UNIX.  Lsof knows how to obtain the\n       alternative device number for these dialects and uses it when its\n       attempt to lstat(2) or stat(2) the file system is blocked."
+  manpageQuestion1: What is the primary purpose of the nfs option in the mount table entries?
+  manpageQuestion2: How can lsof be used to identify files open on a crashed NFS server when the device number is specified in the mount table?
+  manpageQuestion3: What is the significance of the 'dev=xxxx' entries in the mount table for NFS servers?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nIf you're not sure your dialect supplies alternate device numbers for\n       file systems from its mount table, use this lsof incantation to see if\n       it reports any alternate device numbers:\n\n\t      lsof -b\n\n       Look for standard error file warning messages that begin ``assuming\n       \"dev=xxxx\" from ...''.\n\nKERNEL NAME CACHE\n       Lsof is able to examine the kernel's name cache or use other kernel\n       facilities (e.g., the ADVFS 4.x tag_to_path() function under Tru64\n       UNIX) on some dialects for most file system types, excluding AFS, and\n       extract recently used path name components from it.  (AFS file system\n       path lookups don't use the kernel's name cache; some Solaris VxFS file\n       system operations apparently don't use it, either.)\n\n       Lsof reports the complete paths it finds in the NAME column.  If lsof\n       can't report all components in a path, it reports in the NAME column\n       the file system name, followed by a space, two `-' characters, another\n       space, and the name components it has located, separated by the `/'\n       character."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to check if your system reports alternate device numbers for file systems?
+  manpageQuestion3: What is the function of the -b option in lsof, and how does it help in diagnosing file system issues?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nWhen lsof is run in repeat mode - i.e., with the -r option specified -\n       the extent to which it can report path name components for the same\n       file may vary from cycle to cycle.  That's because other running\n       processes can cause the kernel to remove entries from its name cache\n       and replace them with others.\n\n       Lsof's use of the kernel name cache to identify the paths of files can\n       lead it to report incorrect components under some circumstances.  This\n       can happen when the kernel name cache uses device and node number as a\n       key (e.g., SCO OpenServer) and a key on a rapidly changing file system\n       is reused.  If the UNIX dialect's kernel doesn't purge the name cache\n       entry for a file when it is unlinked, lsof may find a reference to the\n       wrong entry in the cache.  The lsof FAQ (The FAQ section gives its\n       location.)  has more information on this situation.\n\n       Lsof can report path name components for these dialects:\n\n\t    FreeBSD\n\t    HP-UX\n\t    Linux\n\t    NetBSD\n\t    NEXTSTEP\n\t    OpenBSD\n\t    OPENSTEP\n\t    SCO OpenServer\n\t    SCO|Caldera UnixWare\n\t    Solaris\n\t    Tru64 UNIX"
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How does lsof handle changes in the kernel's name cache when running in repeat mode?
+  manpageQuestion3: Which UNIX dialects can lsof report path name components for, according to the manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nLsof can't report path name components for these dialects:\n\n\t    AIX\n\n       If you want to know why lsof can't report path name components for some\n       dialects, see the lsof FAQ (The FAQ section gives its location.)\n\nDEVICE CACHE FILE\n       Examining all members of the /dev (or /devices) node tree with stat(2)\n       functions can be time consuming.  What's more, the information that\n       lsof needs - device number, inode number, and path - rarely changes.\n\n       Consequently, lsof normally maintains an ASCII text file of cached /dev\n       (or /devices) information (exception: the /proc-based Linux lsof where\n       it's not needed.)  The local system administrator who builds lsof can\n       control the way the device cache file path is formed, selecting from\n       these options:\n\n\t    Path from the -D option;\n\t    Path from an environment variable;\n\t    System-wide path;\n\t    Personal path (the default);\n\t    Personal path, modified by an environment variable.\n\n       Consult the output of the -h, -D? , or -?  help options for the current\n       state of device cache support.  The help output lists the default\n       read-mode device cache file path that is in effect for the current\n       invocation of lsof.  The -D?  option output lists the read-only and\n       write device cache file paths, the names of any applicable environment\n       variables, and the personal device cache path format."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you configure lsof to use a custom device cache file path?
+  manpageQuestion3: What are the different ways lsof can determine the location of its device cache file?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.
+
+
+
+    Manpage text:
+
+    Lsof can detect that the current device cache file has been
+           accidentally or maliciously modified by integrity checks, including the
+           computation and verification of a sixteen bit Cyclic Redundancy Check
+           (CRC) sum on the file's contents.  When lsof senses something wrong
+           with the file, it issues a warning and attempts to remove the current
+           cache file and create a new copy, but only to a path that the process
+           can legitimately write.
+
+           The path from which a lsof process may attempt to read a device cache
+           file may not be the same as the path to which it can legitimately
+           write.  Thus when lsof senses that it needs to update the device cache
+           file, it may choose a different path for writing it from the path from
+           which it read an incorrect or outdated version.
+
+           If available, the -Dr option will inhibit the writing of a new device
+           cache file.  (It's always available when specified without a path name
+           argument.)
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to detect and correct a corrupted device cache file?
+  manpageQuestion3: What is the effect of using the -Dr option with lsof?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.
+
+
+
+    Manpage text:
+
+    When a new device is added to the system, the device cache file may
+           need to be recreated.  Since lsof compares the mtime of the device
+           cache file with the mtime and ctime of the /dev (or /devices)
+           directory, it usually detects that a new device has been added; in that
+           case lsof issues a warning message and attempts to rebuild the device
+           cache file.
+
+           Whenever lsof writes a device cache file, it sets its ownership to the
+           real UID of the executing process, and its permission modes to 0600,
+           this restricting its reading and writing to the file's owner.
+
+    LSOF PERMISSIONS THAT AFFECT DEVICE CACHE FILE ACCESS
+           Two permissions of the lsof executable affect its ability to access
+           device cache files.  The permissions are set by the local system
+           administrator when lsof is installed.
+
+           The first and rarer permission is setuid-root.  It comes into effect
+           when lsof is executed; its effective UID is then root, while its real
+           (i.e., that of the logged-on user) UID is not.  The lsof distribution
+           recommends that versions for these dialects run setuid-root.
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you configure lsof to run with setuid-root permissions for enhanced system access?
+  manpageQuestion3: What steps should be taken to ensure lsof can properly rebuild the device cache file after a new device is added?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nHP-UX 11.11 and 11.23\n\t    Linux\n\n       The second and more common permission is setgid.  It comes into effect\n       when the effective group IDentification number (GID) of the lsof\n       process is set to one that can access kernel memory devices - e.g.,\n       ``kmem'', ``sys'', or ``system''.\n\n       An lsof process that has setgid permission usually surrenders the\n       permission after it has accessed the kernel memory devices.  When it\n       does that, lsof can allow more liberal device cache path formations.\n       The lsof distribution recommends that versions for these dialects run\n       setgid and be allowed to surrender setgid permission.\n\n\t    AIX 5.[12] and 5.3-ML1\n\t    Apple Darwin 7.x Power Macintosh systems\n\t    FreeBSD 4.x, 4.1x, 5.x and [6789].x for x86-based systems\n\t    FreeBSD 5.x, [6789].x and 1[012].8for Alpha, AMD64 and Sparc64\n\t\tbased systems\n\t    HP-UX 11.00\n\t    NetBSD 1.[456], 2.x and 3.x for Alpha, x86, and SPARC-based\n\t\tsystems\n\t    NEXTSTEP 3.[13] for NEXTSTEP architectures\n\t    OpenBSD 2.[89] and 3.[0-9] for x86-based systems\n\t    OPENSTEP 4.x\n\t    SCO OpenServer Release 5.0.6 for x86-based systems\n\t    SCO|Caldera UnixWare 7.1.4 for x86-based systems\n\t    Solaris 2.6, 8, 9 and 10\n\t    Tru64 UNIX 5.1"
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to list all open files on a system with setgid permissions enabled?
+  manpageQuestion3: Can you provide an example of using lsof to access kernel memory devices on a Darwin system?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\n(Note: lsof for AIX 5L and above needs setuid-root permission if its -X\n       option is used.)\n\n       Lsof for these dialects does not support a device cache, so the\n       permissions given to the executable don't apply to the device cache\n       file.\n\n\t    Linux\n\nDEVICE CACHE FILE PATH FROM THE -D OPTION\n       The -D option provides limited means for specifying the device cache\n       file path.  Its ?  function will report the read-only and write device\n       cache file paths that lsof will use.\n\n       When the -D b, r, and u functions are available, you can use them to\n       request that the cache file be built in a specific location (b[path]);\n       read but not rebuilt (r[path]); or read and rebuilt (u[path]).  The b,\n       r, and u functions are restricted under some conditions.  They are\n       restricted when the lsof process is setuid-root.  The path specified\n       with the r function is always read-only, even when it is available.\n\n       The b, r, and u functions are also restricted when the lsof process\n       runs setgid and lsof doesn't surrender the setgid permission.  (See the\n       LSOF PERMISSIONS THAT AFFECT DEVICE CACHE FILE ACCESS section for a\n       list of implementations that normally don't surrender their setgid\n       permission.)"
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use the -D option with lsof to specify a custom path for the device cache file?
+  manpageQuestion3: What are the restrictions on using the b, r, and u functions with the -D option in lsof?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.
+
+
+
+    Manpage text:
+
+    A further -D function, i (for ignore), is always available.
+
+           When available, the b function tells lsof to read device information
+           from the kernel with the stat(2) function and build a device cache file
+           at the indicated path.
+
+           When available, the r function tells lsof to read the device cache
+           file, but not update it.  When a path argument accompanies -Dr, it
+           names the device cache file path.  The r function is always available
+           when it is specified without a path name argument.  If lsof is not
+           running setuid-root and surrenders its setgid permission, a path name
+           argument may accompany the r function.
+
+           When available, the u function tells lsof to attempt to read and use
+           the device cache file.  If it can't read the file, or if it finds the
+           contents of the file incorrect or outdated, it will read information
+           from the kernel, and attempt to write an updated version of the device
+           cache file, but only to a path it considers legitimate for the lsof
+           process effective and real UIDs.
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use the -Dr option with lsof to read a device cache file without updating it?
+  manpageQuestion3: What is the function of the -u option in lsof and how does it handle outdated device cache files?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.
+
+
+
+    Manpage text:
+
+    DEVICE CACHE PATH FROM AN ENVIRONMENT VARIABLE
+           Lsof's second choice for the device cache file is the contents of the
+           LSOFDEVCACHE environment variable.  It avoids this choice if the lsof
+           process is setuid-root, or the real UID of the process is root.
+
+           A further restriction applies to a device cache file path taken from
+           the LSOFDEVCACHE environment variable: lsof will not write a device
+           cache file to the path if the lsof process doesn't surrender its setgid
+           permission.  (See the LSOF PERMISSIONS THAT AFFECT DEVICE CACHE FILE
+           ACCESS section for information on implementations that don't surrender
+           their setgid permission.)
+
+           The local system administrator can disable the use of the LSOFDEVCACHE
+           environment variable or change its name when building lsof.  Consult
+           the output of -D?  for the environment variable's name.
+
+    SYSTEM-WIDE DEVICE CACHE PATH
+           The local system administrator may choose to have a system-wide device
+           cache file when building lsof.  That file will generally be constructed
+           by a special system administration procedure when the system is booted
+           or when the contents of /dev or /devices) changes.  If defined, it is
+           lsof's third device cache file path choice.
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you configure lsof to use a custom device cache file specified by the LSOFDEVCACHE environment variable?
+  manpageQuestion3: What are the conditions under which lsof will not use the LSOFDEVCACHE environment variable for device caching?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.
+
+
+
+    Manpage text:
+
+    You can tell that a system-wide device cache file is in effect for your
+           local installation by examining the lsof help option output - i.e., the
+           output from the -h or -?  option.
+
+           Lsof will never write to the system-wide device cache file path by
+           default.  It must be explicitly named with a -D function in a
+           root-owned procedure.  Once the file has been written, the procedure
+           must change its permission modes to 0644 (owner-read and owner-write,
+           group-read, and other-read).
+
+    PERSONAL DEVICE CACHE PATH (DEFAULT)
+           The default device cache file path of the lsof distribution is one
+           recorded in the home directory of the real UID that executes lsof.
+           Added to the home directory is a second path component of the form
+           .lsof_hostname.
+
+           This is lsof's fourth device cache file path choice, and is usually the
+           default.  If a system-wide device cache file path was defined when lsof
+           was built, this fourth choice will be applied when lsof can't find the
+           system-wide device cache file.  This is the only time lsof uses two
+           paths when reading the device cache file.
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you configure lsof to use a system-wide device cache file instead of the default personal device cache path?
+  manpageQuestion3: What is the default path used by lsof for its personal device cache file?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.
+
+
+
+    Manpage text:
+
+    The hostname part of the second component is the base name of the
+           executing host, as returned by gethostname(2).  The base name is
+           defined to be the characters preceding the first `.' in the
+           gethostname(2) output, or all the gethostname(2) output if it contains
+           no `.'.
+
+           The device cache file belongs to the user ID and is readable and
+           writable by the user ID alone - i.e., its modes are 0600.  Each
+           distinct real user ID on a given host that executes lsof has a distinct
+           device cache file.  The hostname part of the path distinguishes device
+           cache files in an NFS-mounted home directory into which device cache
+           files are written from several different hosts.
+
+           The personal device cache file path formed by this method represents a
+           device cache file that lsof will attempt to read, and will attempt to
+           write should it not exist or should its contents be incorrect or
+           outdated.
+
+           The -Dr option without a path name argument will inhibit the writing of
+           a new device cache file.
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use the -Dr option with lsof to prevent writing a new device cache file?
+  manpageQuestion3: What is the role of the hostname part in lsof's device cache file path?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nThe -D?\toption will list the format specification for constructing the\n       personal device cache file.  The conversions used in the format\n       specification are described in the 00DCACHE file of the lsof\n       distribution.\n\nMODIFIED PERSONAL DEVICE CACHE PATH\n       If this option is defined by the local system administrator when lsof\n       is built, the LSOFPERSDCPATH environment variable contents may be used\n       to add a component of the personal device cache file path.\n\n       The LSOFPERSDCPATH variable contents are inserted in the path at the\n       place marked by the local system administrator with the ``%p''\n       conversion in the HASPERSDC format specification of the dialect's\n       machine.h header file.  (It's placed right after the home directory in\n       the default lsof distribution.)\n\n       Thus, for example, if LSOFPERSDCPATH contains ``LSOF'', the home\n       directory is ``/Homes/abe'', the host name is ``lsof.itap.purdue.edu'',\n       and the HASPERSDC format is the default (``%h/%p.lsof_%L''), the\n       modified personal device cache file path is:"
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How would you use the -D? option with lsof to construct a personal device cache file format specification?
+  manpageQuestion3: Can you provide an example of modifying the personal device cache file path using the LSOFPERSDCPATH environment variable with lsof?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.
+
+
+
+    Manpage text:
+
+    /Homes/abe/LSOF/.lsof_vic
+
+           The LSOFPERSDCPATH environment variable is ignored when the lsof
+           process is setuid-root or when the real UID of the process is root.
+
+           Lsof will not write to a modified personal device cache file path if
+           the lsof process doesn't surrender setgid permission.  (See the LSOF
+           PERMISSIONS THAT AFFECT DEVICE CACHE FILE ACCESS section for a list of
+           implementations that normally don't surrender their setgid permission.)
+
+           If, for example, you want to create a sub-directory of personal device
+           cache file paths by using the LSOFPERSDCPATH environment variable to
+           name it, and lsof doesn't surrender its setgid permission, you will
+           have to allow lsof to create device cache files at the standard
+           personal path and move them to your subdirectory with shell commands.
+
+           The local system administrator may: disable this option when lsof is
+           built; change the name of the environment variable from LSOFPERSDCPATH
+           to something else; change the HASPERSDC format to include the personal
+           path component in another place; or exclude the personal path component
+           entirely.  Consult the output of the -D?  option for the environment
+           variable's name and the HASPERSDC format specification.
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you ensure that lsof writes to a custom device cache file path when it doesn't have setgid permission?
+  manpageQuestion3: What steps should be taken to modify the behavior of lsof regarding personal device cache file paths?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nDIAGNOSTICS\n       Errors are identified with messages on the standard error file.\n\n       Lsof returns a one (1) if any error was detected, including the failure\n       to locate command names, file names, Internet addresses or files, login\n       names, NFS files, PIDs, PGIDs, or UIDs it was asked to list.  If the -V\n       option is specified, lsof will indicate the search items it failed to\n       list.\n\n       It returns a zero (0) if no errors were detected and if it was able to\n       list some information about all the specified search arguments.\n\n       When lsof cannot open access to /dev (or /devices) or one of its\n       subdirectories, or get information on a file in them with stat(2), it\n       issues a warning message and continues.\tThat lsof will issue warning\n       messages about inaccessible files in /dev (or /devices) is indicated in\n       its help output - requested with the -h or >B -?  options -  with the\n       message:\n\n\t    Inaccessible /dev warnings are enabled."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How would you use lsof to list all open files for a specific process with PID 1234?
+  manpageQuestion3: Can you provide an example of using lsof to check for inaccessible files in the /dev directory?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nThe warning message may be suppressed with the -w option.  It may also\n       have been suppressed by the system administrator when lsof was compiled\n       by the setting of the WARNDEVACCESS definition.\tIn this case, the\n       output from the help options will include the message:\n\n\t    Inaccessible /dev warnings are disabled.\n\n       Inaccessible device warning messages usually disappear after lsof has\n       created a working device cache file.\n\nEXAMPLES\n       For a more extensive set of examples, documented more fully, see the\n       00QUICKSTART file of the lsof distribution.\n\n       To list all open files, use:\n\n\t      lsof\n\n       To list all open Internet, x.25 (HP-UX), and UNIX domain files, use:\n\n\t      lsof -i -U\n\n       To list all open IPv4 network files in use by the process whose PID is\n       1234, use:\n\n\t      lsof -i 4 -a -p 1234\n\n       Presuming the UNIX dialect supports IPv6, to list only open IPv6\n       network files, use:\n\n\t      lsof -i 6\n\n       To list all files using any protocol on ports 513, 514, or 515 of host\n       wonderland.cc.purdue.edu, use:"
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to list all open files associated with the process having PID 1234?
+  manpageQuestion3: What command would you use to display all IPv6 network files that are currently open on a system?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nlsof -i @wonderland.cc.purdue.edu:513-515\n\n       To list all files using any protocol on any port of mace.cc.purdue.edu\n       (cc.purdue.edu is the default domain), use:\n\n\t      lsof -i @mace\n\n       To list all open files for login name ``abe'', or user ID 1234, or\n       process 456, or process 123, or process 789, use:\n\n\t      lsof -p 456,123,789 -u 1234,abe\n\n       To list all open files on device /dev/hd4, use:\n\n\t      lsof /dev/hd4\n\n       To find the process that has /u/abe/foo open, use:\n\n\t      lsof /u/abe/foo\n\n       To send a SIGHUP to the processes that have /u/abe/bar open, use:\n\n\t      kill -HUP `lsof -t /u/abe/bar`\n\n       To find any open file, including an open UNIX domain socket file, with\n       the name /dev/log, use:\n\n\t      lsof /dev/log\n\n       To find processes with open files on the NFS file system named\n       /nfs/mount/point whose server is inaccessible, and presuming your mount\n       table supplies the device number for /nfs/mount/point, use:\n\n\t      lsof -b /nfs/mount/point"
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can I use lsof to find all processes that have an open file named /u/abe/foo?
+  manpageQuestion3: Can you provide an example of using lsof to send a SIGHUP signal to all processes that have an open file named /u/abe/bar?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nTo do the preceding search with warning messages suppressed, use:\n\n\t      lsof -bw /nfs/mount/point\n\n       To ignore the device cache file, use:\n\n\t      lsof -Di\n\n       To obtain PID and command name field output for each process, file\n       descriptor, file device number, and file inode number for each file of\n       each process, use:\n\n\t      lsof -FpcfDi\n\n       To list the files at descriptors 1 and 3 of every process running the\n       lsof command for login ID ``abe'' every 10 seconds, use:\n\n\t      lsof -c lsof -a -d 1 -d 3 -u abe -r10\n\n       To list the current working directory of processes running a command\n       that is exactly four characters long and has an 'o' or 'O' in character\n       three, use this regular expression form of the -c c option:\n\n\t      lsof -c /^..o.$/i -a -d cwd\n\n       To find an IP version 4 socket file by its associated numeric dot-form\n       address, use:\n\n\t      lsof -i@128.210.15.17\n\n       To find an IP version 6 socket file (when the UNIX dialect supports\n       IPv6) by its associated numeric colon-form address, use:"
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to suppress warning messages when searching for files on a specific NFS mount point?
+  manpageQuestion3: Can you provide an example of using lsof to list the current working directory of processes running a command that is exactly four characters long and has an 'o' or 'O' in the third character?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nlsof -i@[0:1:2:3:4:5:6:7]\n\n       To find an IP version 6 socket file (when the UNIX dialect supports\n       IPv6) by an associated numeric colon-form address that has a run of\n       zeroes in it - e.g., the loop-back address - use:\n\n\t      lsof -i@[::1]\n\n       To obtain a repeat mode marker line that contains the current time,\n       use:\n\n\t      lsof -rm====%T====\n\n       To add spaces to the previous marker line, use:\n\n\t      lsof -r \"m==== %T ====\"\n\nBUGS\n       Since lsof reads kernel memory in its search for open files, rapid\n       changes in kernel memory may produce unpredictable results.\n\n       When a file has multiple record locks, the lock status character\n       (following the file descriptor) is derived from a test of the first\n       lock structure, not from any combination of the individual record locks\n       that might be described by multiple lock structures.\n\n       Lsof can't search for files with restrictive access permissions by name\n       unless it is installed with root set-UID permission.  Otherwise it is\n       limited to searching for files to which its user or its set-GID group\n       (if any) has access permission."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to find an IPv6 socket file associated with the loop-back address?
+  manpageQuestion3: What command would you use to add a repeat mode marker line with the current time using lsof?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.
+
+
+
+    Manpage text:
+
+    The display of the destination address of a raw socket (e.g., for ping)
+           depends on the UNIX operating system.  Some dialects store the
+           destination address in the raw socket's protocol control block, some do
+           not.
+
+           Lsof can't always represent Solaris device numbers in the same way that
+           ls(1) does.  For example, the major and minor device numbers that the
+           lstat(2) and stat(2) functions report for the directory on which CD-ROM
+           files are mounted (typically /cdrom) are not the same as the ones that
+           it reports for the device on which CD-ROM files are mounted (typically
+           /dev/sr0).  (Lsof reports the directory numbers.)
+
+           The support for /proc file systems is available only for BSD and Tru64
+           UNIX dialects, Linux, and dialects derived from SYSV R4 - e.g.,
+           FreeBSD, NetBSD, OpenBSD, Solaris, UnixWare.
+
+           Some /proc file items - device number, inode number, and file size -
+           are unavailable in some dialects.  Searching for files in a /proc file
+           system may require that the full path name be specified.
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to display information about all open files associated with a specific process ID?
+  manpageQuestion3: What are the limitations of lsof when dealing with /proc file systems across different UNIX dialects?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nNo text (txt) file descriptors are displayed for Linux processes.  All\n       entries for files other than the current working directory, the root\n       directory, and numerical file descriptors are labeled mem descriptors.\n\n       Lsof can't search for Tru64 UNIX named pipes by name, because their\n       kernel implementation of lstat(2) returns an improper device number for\n       a named pipe.\n\n       Lsof can't report fully or correctly on HP-UX 9.01, 10.20, and 11.00\n       locks because of insufficient access to kernel data or errors in the\n       kernel data.  See the lsof FAQ (The FAQ section gives its location.)\n       for details.\n\n       The AIX SMT file type is a fabrication.\tIt's made up for file\n       structures whose type (15) isn't defined in the AIX\n       /usr/include/sys/file.h header file.  One way to create such file\n       structures is to run X clients with the DISPLAY variable set to\n       ``:0.0''.\n\n       The +|-f[cfgGn] option is not supported under /proc-based Linux lsof,\n       because it doesn't read kernel structures from kernel memory."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How would you use lsof to list all open files for a specific process with PID 1234?
+  manpageQuestion3: Can you provide an example of using lsof to display the memory descriptors associated with all processes on a system?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nENVIRONMENT\n       Lsof may access these environment variables.\n\n       LANG\t     defines a language locale.  See setlocale(3) for the\n\t\t     names of other variables that can be used in place of\n\t\t     LANG - e.g., LC_ALL, LC_TYPE, etc.\n\n       LSOFDEVCACHE  defines the path to a device cache file.  See the DEVICE\n\t\t     CACHE PATH FROM AN ENVIRONMENT VARIABLE section for more\n\t\t     information.\n\n       LSOFPERSDCPATH\n\t\t     defines the middle component of a modified personal\n\t\t     device cache file path.  See the MODIFIED PERSONAL DEVICE\n\t\t     CACHE PATH section for more information.\n\nFAQ\n       Frequently-asked questions and their answers (an FAQ) are available in\n       the 00FAQ file of the lsof distribution.\n\n       That file is also available via anonymous ftp from lsof.itap.purdue.edu\n       at pub/tools/unix/lsofFAQ.  The URL is:\n\n\t      ftp://lsof.itap.purdue.edu/pub/tools/unix/lsof/FAQ\n\nFILES\n       /dev/kmem     kernel virtual memory device\n\n       /dev/mem      physical memory device"
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to display all open files for processes running as the root user?
+  manpageQuestion3: What command would you use to list all open files by their device and inode numbers using lsof?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\n/dev/swap     system paging device\n\n       .lsof_hostname\n\t\t     lsof's device cache file (The suffix, hostname, is the\n\t\t     first component of the host's name returned by\n\t\t     gethostname(2).)\n\nAUTHORS\n       Lsof was written by Victor A.Abell <abe@purdue.edu> of Purdue\n       University.  Many others have contributed to lsof.  They're listed in\n       the 00CREDITS file of the lsof distribution.\n\nDISTRIBUTION\n       The latest distribution of lsof is available via anonymous ftp from the\n       host lsof.itap.purdue.edu.  You'll find the lsof distribution in the\n       pub/tools/unix/lsof directory.\n\n       You can also use this URL:\n\n\t      ftp://lsof.itap.purdue.edu/pub/tools/unix/lsof\n\n       Lsof is also mirrored elsewhere.  When you access lsof.itap.purdue.edu\n       and change to its pub/tools/unix/lsof directory, you'll be given a list\n       of some mirror sites.  The pub/tools/unix/lsof directory also contains\n       a more complete list in its mirrors file.  Use mirrors with caution -\n       not all mirrors always have the latest lsof revision."
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to list all open files for the process with PID 1234?
+  manpageQuestion3: What command would you use to display the device cache file associated with the hostname 'myserver.example.com' using lsof?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.
+
+
+
+    Manpage text:
+
+    Some pre-compiled Lsof executables are available on
+           lsof.itap.purdue.edu, but their use is discouraged - it's better that
+           you build your own from the sources.  If you feel you must use a
+           pre-compiled executable, please read the cautions that appear in the
+           README files of the pub/tools/unix/lsof/binaries subdirectories and in
+           the 00* files of the distribution.
+
+           More information on the lsof distribution can be found in its
+           README.lsof_<version> file.  If you intend to get the lsof distribution
+           and build it, please read README.lsof_<version> and the other 00* files
+           of the distribution before sending questions to the author.
+
+    SEE ALSO
+           Not all the following manual pages may exist in every UNIX dialect to
+           which lsof has been ported.
+
+           access(2), awk(1), crash(1), fattach(3C), ff(1), fstat(8), fuser(1),
+           gethostname(2), isprint(3), kill(1), localtime(3), lstat(2),
+           modload(8), mount(8), netstat(1), ofiles(8L), perl(1), ps(1),
+           readlink(2), setlocale(3), stat(2), strftime(3), time(2), uname(1).
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How can you use lsof to list all open files for a specific process with PID 1234?
+  manpageQuestion3: Can you provide an example of using lsof to monitor file usage on a specific device, such as /dev/sda1?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lsof`.\n\n\n\nManpage text:\n\nRevision-4.91\t\t\t       LSOF(8)"
+  manpageQuestion1: What is the primary purpose of the lsof command?
+  manpageQuestion2: How would you use lsof to list all open files for a specific process with PID 1234?
+  manpageQuestion3: Can you provide an example of using lsof to display the open files associated with a particular user account, such as 'user1'?
+

@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `takeover_ip`.\n\n\n\nManpage text:\n\nTAKEOVER_IP(8)\t\t    System Manager's Manual\t\tTAKEOVER_IP(8)\n\nNAME\n       takeover_ip - broadcast virtual IP information for Xsan\n\nSYNOPSIS\n       /System/Library/Filesystems/acfs.fs/Contents/lib/takeover_ip\n\t      -d_device_name -m_mac_address -i_ipv4_ip\n\nDESCRIPTION\n       takeover_ip provides a mechanism for sending a gratuitous arp reply\n       when the secondary node in an HA pair takes over as primary and\n       activates the configured virtual IPs (VIPs).\n\n       This is typically used by the startup/shutdown scripts, not by an\n       administrator.  Only use when recommended by Apple Support.\n\nFLAGS\n       -h     Display help\n\n       -d device_name\n\t      The device name of the network interface the VIP is on\n\n       -m mac_address\n\t      Mac address of network device the VIP is on\n\n       -i ipv4_ip\n\t      IPv4 address for VIP\n\nLIMITATIONS\n       Only the Linux platform is supported with takeover_ip since it requires\n       an HA pair.\n\nFILES\n       /Library/Preferences/Xsan/ha_vip.txt"
+  manpageQuestion1: What is the primary purpose of the takeover_ip command?
+  manpageQuestion2: How would you use the takeover_ip command to broadcast a virtual IP address for an HA pair?
+  manpageQuestion3: Can you provide an example of using the takeover_ip command with specific parameters for a network interface and IP address?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `takeover_ip`.\n\n\n\nManpage text:\n\nSEE ALSO\n       cvfs(8), vip_control(8), cnvt2ha.sh(8)\n\nXsan File System\t\t December 2021\t\t\tTAKEOVER_IP(8)"
+  manpageQuestion1: What is the primary purpose of the takeover_ip command?
+  manpageQuestion2: How would you use the takeover_ip command to take over an IP address on a system?
+  manpageQuestion3: Can you provide an example of using the takeover_ip command in a script to automate IP address takeover?
+

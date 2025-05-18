@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `photoanalysisd`.\n\n\n\nManpage text:\n\nphotoanalysisd(8)\t    System Manager's Manual\t     photoanalysisd(8)\n\nNAME\n     photoanalysisd – The macOS photo library analysis agent.\n\nDESCRIPTION\n     photoanalysisd is the photo library analysis agent.  It handles\n     background processing of photo libraries for Memories, People and scene\n     or object based search.\n\nSEE ALSO\n     cloudphotod(8), photolibraryd(8)\n\nmacOS\t\t\t       November 2, 2016 \t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the photoanalysisd tool?
+  manpageQuestion2: How would you configure or manage the photoanalysisd service on a macOS system?
+  manpageQuestion3: What are the key functions of photoanalysisd in relation to macOS photo libraries?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `GamePolicyAgent`.\n\n\n\nManpage text:\n\nGAMEPOLICYAGENT(8)\t    System Manager's Manual\t    GAMEPOLICYAGENT(8)\n\nNAME\n     GamePolicyAgent – Assists gamepolicyd in user optimization of system\n     performance for running game processes, manages UI elements.\n\nSYNOPSIS\n     takes no arguments, and users should not launch it manually.\n\nDESCRIPTION\n     Assists gamepolicyd in user optimization of system performance by\n     monitoring currently running games and adjusting system resources.\n\nHISTORY\n     GamePolicyAgent first appeared in macOS 14.0.\n\nDarwin\t\t\t       December 7, 2022 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the GamePolicyAgent tool?
+  manpageQuestion2: How would you use GamePolicyAgent to optimize system performance for running game processes?
+  manpageQuestion3: Can you provide an example of using GamePolicyAgent to manage UI elements during game sessions?
+

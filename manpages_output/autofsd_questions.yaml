@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `autofsd`.\n\n\n\nManpage text:\n\nAUTOFSD(8)\t\t    System Manager's Manual\t\t    AUTOFSD(8)\n\nNAME\n     autofsd – daemon to update autofs mounts on network changes\n\nSYNOPSIS\n     /usr/libexec/autofsd\n\nDESCRIPTION\n     autofsd runs automount(8), and then waits for network configuration\n     change events and, when such an event occurs, re-runs automount(8) to\n     update the mounts to reflect the current automounter maps.\n\nSEE ALSO\n     automount(8), automountd(8), configd(8)\n\nDarwin\t\t\t\t July 13, 2006\t\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the autofsd tool?
+  manpageQuestion2: How would you use autofsd to ensure that autofs mounts are updated when network configurations change?
+  manpageQuestion3: Can you describe the typical workflow of the autofsd daemon in relation to autofs?
+

@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `intelligentroutingd`.\n\n\n\nManpage text:\n\nintelligentroutingd(1)\t    General Commands Manual\tintelligentroutingd(1)\n\nNAME\n     intelligentroutingd, Other_name_for_same_program(), Yet another name for\n     the same program. – This line parsed for whatis database.\n\nSYNOPSIS\n     intelligentroutingd, [-abcd] [-a path] [file] [file ...] arg0 arg2 ...\n\nDESCRIPTION\n     Use the .Nm macro to refer to your program throughout the man page like\n     such: intelligentroutingd, Underlining is accomplished with the .Ar macro\n     like this: underlined text.\n\n     A list of items with descriptions:\n\n     item a   Description of item a\n\n     item b   Description of item b\n\n     A list of flags and their descriptions:\n\n     -a       Description of -a flag\n\n     -b       Description of -b flag\n\nFILES\n     /usr/share/file_name\n     /System/Library/LaunchDaemons/com.apple.intelligentroutingd.plist\n\t\t\t\t\t\t   FILE_1 description\n     /Users/joeuser/Library/really_long_file_name  FILE_2 description\n\nSEE ALSO\n     a(1), b(1), c(1), a(2), b(2), a(3), b(3)"
+  manpageQuestion1: What is the primary purpose of the intelligentroutingd tool?
+  manpageQuestion2: How would you use the -a flag with intelligentroutingd to specify a custom path for processing files?
+  manpageQuestion3: Can you provide an example of using intelligentroutingd with multiple files and the -b flag to process them?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `intelligentroutingd`.\n\n\n\nManpage text:\n\nDarwin\t\t\t\t   10/13/22\t\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the intelligentroutingd tool?
+  manpageQuestion2: How would you use intelligentroutingd to configure dynamic routing on a macOS system?
+  manpageQuestion3: Can you provide an example of using intelligentroutingd to monitor and manage network routing tables in real-time?
+

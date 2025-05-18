@@ -1,0 +1,59 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `AssetCacheLocatorUtil`.\n\n\n\nManpage text:\n\nAssetCacheLocatorUtil(8)    System Manager's Manual   AssetCacheLocatorUtil(8)\n\nNAME\n     AssetCacheLocatorUtil – Utility for reporting information about macOS\n     Content Caches\n\nSYNOPSIS\n     AssetCacheLocatorUtil [-j|--json]\n\nDESCRIPTION\n     AssetCacheLocatorUtil reports information related to macOS Content Caches\n     running on the computer or on the local network.\n\n     Some of the information that AssetCacheLocatorUtil reports depends on the\n     current network configuration, and on the user running it.  It might\n     produce different results for different users, on different client\n     devices, or on different networks.  Applications that use content caches\n     might choose ones other than the ones AssetCacheLocatorUtil reports due\n     to factors beyond its knowledge, such as iCloud affinity.\n\n     AssetCacheLocatorUtil reports the following information separately for\n     system daemons and for the current user:\n\n     Availability hint\n\t     The system can temporarily save a hint about whether or not there\n\t     might be content caches on the computer or on the local network.\n\t     AssetCacheLocatorUtil prints that saved hint if it is available."
+  manpageQuestion1: What is the primary purpose of the AssetCacheLocatorUtil tool?
+  manpageQuestion2: How would you use AssetCacheLocatorUtil to retrieve information about macOS Content Caches in JSON format?
+  manpageQuestion3: Can you provide an example of using AssetCacheLocatorUtil to check the availability hint for content caches on a macOS system?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `AssetCacheLocatorUtil`.\n\n\n\nManpage text:\n\nSaved content caches\n\t     The system can temporarily save information about content caches\n\t     it has previously found on the computer or on the local network.\n\t     AssetCacheLocatorUtil prints that saved information if it is\n\t     available.\n\n     Refreshed content caches\n\t     AssetCacheLocatorUtil forces the system to search for content\n\t     caches on the computer and on the local network and to refresh\n\t     the saved information above.  It then prints the results.\n\n     Saved and refreshed public IP address ranges\n\t     If your network administrator has configured public IP address\n\t     ranges in DNS, which the system uses when looking up content\n\t     caches, AssetCacheLocatorUtil prints saved and refreshed\n\t     information about those ranges.\n\n     Saved and refreshed favored server ranges\n\t     If your network administrator has configured favored server\n\t     ranges in DNS, which the system uses when looking up content\n\t     caches, AssetCacheLocatorUtil prints saved and refreshed\n\t     information about those ranges."
+  manpageQuestion1: What is the primary purpose of the AssetCacheLocatorUtil tool?
+  manpageQuestion2: How would you use AssetCacheLocatorUtil to force the system to refresh content caches and print the results?
+  manpageQuestion3: Can you provide an example of using AssetCacheLocatorUtil to display saved and refreshed information about favored server ranges?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `AssetCacheLocatorUtil`.
+
+
+
+    Manpage text:
+
+    AssetCacheLocatorUtil then reports the reachability status of all of the
+         content caches it found.  If the computer cannot communicate with a
+         content cache over the local network then it cannot request files from
+         that content cache.  However, just because the computer can "ping" a
+         content cache does not imply that that content cache will serve requests
+         sent from this computer.
+
+         The --json option prints the results in machine-parseable JSON format to
+         stdout.
+
+    WARNINGS
+         AssetCacheLocatorUtil also reports warnings about potential issues it
+         discovers.
+
+         The Apple cloud service with which content caches register limits the
+         number of content caches on a network.  This limit can change at any
+         time.  If a larger number of content caches are available on a network
+         than the cloud allows, client devices might not always choose the "best"
+         content cache.  AssetCacheLocatorUtil warns when it detects this
+         possibility.  The number of content caches available on a network can be
+         reduced by changing the settings of some of the content caches, using
+         System Settings > Sharing > Content Caching > press the option key >
+         Advanced Options... > Clients > Cache content for:.
+  manpageQuestion1: What is the primary purpose of the AssetCacheLocatorUtil tool?
+  manpageQuestion2: How can you use AssetCacheLocatorUtil to get the reachability status of content caches in JSON format?
+  manpageQuestion3: What should a user do if AssetCacheLocatorUtil warns about potential issues with the number of content caches on a network?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `AssetCacheLocatorUtil`.\n\n\n\nManpage text:\n\nAssetCacheLocatorUtil warns when it detects content caches with different\n     ranks.  The exact value and meaning of each rank is defined by the Apple\n     cloud service with which content caches register, and can change at any\n     time, but client devices use only the content caches with the lowest-\n     numbered rank available to them.  A content cache's rank can be changed\n     by adjusting its settings, using System Settings > Sharing > Content\n     Caching > press the option key > Advanced Options... > Clients > Cache\n     content for:.  A content cache on the same computer as the client always\n     has the lowest-numbered rank.\n\n     Having content caches in different ranks can be intentional or\n     accidental, depending on your organization.  AssetCacheLocatorUtil warns\n     about mixed ranks in case it is accidental.  An example of an intentional\n     use of mixed ranks is when a school has a content cache that caches\n     content for devices using the same local networks and the school's\n     district office has another content cache that caches content for devices\n     using the same public IP address.\tClient devices in the school use the\n     school's content cache.  Client devices in a different school in the same\n     district use the district's content cache."
+  manpageQuestion1: What is the primary purpose of the AssetCacheLocatorUtil tool?
+  manpageQuestion2: How can you use AssetCacheLocatorUtil to check for mixed ranks in content caches?
+  manpageQuestion3: What is an example of a scenario where AssetCacheLocatorUtil would be intentionally used to manage content cache ranks?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `AssetCacheLocatorUtil`.\n\n\n\nManpage text:\n\nEvery content cache must have a unique GUID.  AssetCacheLocatorUtil warns\n     when it finds content caches in your organization with duplicate GUIDs.\n     A content cache's GUID can be changed by stopping the content cache,\n     running the following command in Terminal as an admin user, and then\n     restarting it: sudo -u _assetcache defaults write\n     /Library/Preferences/com.apple.AssetCache.plist ServerGUID = `uuidgen`\n\n     When public IP address ranges are configured but the client device's\n     public IP address is not in the configured ranges, this could prevent the\n     device from using your organization's content caches.\n     AssetCacheLocatorUtil warns about this condition.\tTo configure custom\n     public IP address ranges use System Settings > Sharing > Content Caching\n     > press the option key > Advanced Options... > Clients > My local\n     networks: and set DNS TXT records appropriately.\n\n     Your network administrator can designate some content caches as\n     \"favored.\"  AssetCacheLocatorUtil warns when it finds content caches that\n     are not favored, with the exception of a content cache on the same\n     computer as the client.  Client devices use only favored content caches\n     when any are available."
+  manpageQuestion1: What is the primary purpose of the AssetCacheLocatorUtil tool?
+  manpageQuestion2: How can you change a content cache's GUID using the AssetCacheLocatorUtil tool?
+  manpageQuestion3: What should be done if a client device's public IP address is not within the configured public IP address ranges for content caching?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `AssetCacheLocatorUtil`.\n\n\n\nManpage text:\n\nThe system can temporarily mark content caches as \"unhealthy\" after\n     attempts to use a content cache fail due to either HTTP error responses\n     or network errors.  Each client device maintains its own health records\n     for each content cache.  Client devices use only healthy content caches.\n     AssetCacheLocatorUtil warns when any of the content caches it finds are\n     unhealthy.  Note that when AssetCacheLocatorUtil refreshes the list of\n     content caches, it also resets the health of every content cache it finds\n     to \"healthy.\"\n\nSEE ALSO\n     System Settings > Sharing > Content Caching, AssetCacheManagerUtil(8)\n\nmacOS\t\t\t\t    8/1/19\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the AssetCacheLocatorUtil tool?
+  manpageQuestion2: How can you use AssetCacheLocatorUtil to check for unhealthy content caches on a macOS system?
+  manpageQuestion3: What does AssetCacheLocatorUtil do when it refreshes the list of content caches?
+

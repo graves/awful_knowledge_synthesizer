@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ctkbind`.\n\n\n\nManpage text:\n\nctkbind(8)\t\t    System Manager's Manual\t\t    ctkbind(8)\n\nNAME\n     ctkbind – SmartCard pairing tool\n\nDESCRIPTION\n     ctkbind is a SmartCard paring tool that associates a user with a\n     SmartCard public key.\n\n     The ctkbind command should not be run directly.\n\nmacOS 15.3\t\t       February 15, 2017\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the ctkbind tool?
+  manpageQuestion2: How would you use ctkbind to associate a user with a SmartCard public key?
+  manpageQuestion3: Can you explain the typical usage scenario for the ctkbind command?
+

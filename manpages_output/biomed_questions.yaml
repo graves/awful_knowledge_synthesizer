@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `biomed`.\n\n\n\nManpage text:\n\nbiomed(8)\t\t    System Manager's Manual\t\t     biomed(8)\n\nNAME\n     biomed – Biome operation graph execution daemon\n\nDESCRIPTION\n     biomed accepts downstream subscriptions for real time event processing.\n\nSEE ALSO\n     BiomeAgent(8) biomesyncd(8)\n\n\nDarwin\t\t\t       December 23, 2020\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the biomed tool?
+  manpageQuestion2: How would you use biomed to set up a downstream subscription for real-time event processing?
+  manpageQuestion3: Can you explain the relationship between biomed and other related daemons like BiomeAgent and biomesyncd?
+

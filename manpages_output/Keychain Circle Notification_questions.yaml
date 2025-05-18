@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `Keychain Circle Notification`.\n\n\n\nManpage text:\n\nKeychain Circle Notification(8) \t\t       System Manager's Manual\n\nNAME\n     Keychain Circle Notification – Part of iCloud Keychain syncing.\n\nDESCRIPTION\n     Keychain Circle Notification Part of iCloud Keychain syncing.\n\nmacOS 15.3\t\t       November 2, 2016 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the Keychain Circle Notification tool?
+  manpageQuestion2: How would you use Keychain Circle Notification to manage notifications related to iCloud Keychain syncing?
+  manpageQuestion3: Can you explain the role of Keychain Circle Notification in the context of iCloud Keychain synchronization?
+

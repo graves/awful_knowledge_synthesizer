@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `taskinfo`.\n\n\n\nManpage text:\n\nTASKINFO(1)\t\t    General Commands Manual\t\t   TASKINFO(1)\n\nNAME\n     taskinfo – display policy information from kernel\n\nSYNOPSIS\n     taskinfo [--threads] [--dq] [--boosts] [process name | pid]\n\nDESCRIPTION\n     The taskinfo utility gathers and displays policy information from the\n     kernel.  It is not indended to be run directly by users.\n\nOS X\t\t\t       January 24, 1984 \t\t\t  OS X"
+  manpageQuestion1: What is the primary purpose of the taskinfo command?
+  manpageQuestion2: How can you use taskinfo to display policy information for a specific process named "Firefox"?
+  manpageQuestion3: Can you provide an example of using taskinfo with the --threads option to display thread information for a process with PID 1234?
+

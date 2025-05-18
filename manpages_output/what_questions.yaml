@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `what`.\n\n\n\nManpage text:\n\nWHAT(1) \t\t    General Commands Manual\t\t       WHAT(1)\n\nNAME\n     what – show what versions of object modules were used to construct a file\n\nSYNOPSIS\n     what [-qs] [file ...]\n\nDESCRIPTION\n     The what utility searches each specified file for sequences of the form\n     “@(#)” as inserted by the SCCS source code control system.  It prints the\n     remainder of the string following this marker, up to a NUL character,\n     newline, double quote, ‘>’ character, or backslash.\n\n     The following options are available:\n\n     -q      Only output the match text, rather than formatting it.\n\n     -s      Stop searching each file after the first match.\n\nEXIT STATUS\n     Exit status is 0 if any matches were found, otherwise 1.\n\nSEE ALSO\n     ident(1), strings(1)\n\nSTANDARDS\n     The what utility conforms to IEEE Std 1003.1-2001 (“POSIX.1”).  The -q\n     option is a non-standard FreeBSD extension which may not be available on\n     other operating systems.\n\nHISTORY\n     The what command appeared in 4.0BSD."
+  manpageQuestion1: What is the primary purpose of the what command?
+  manpageQuestion2: How can you use the what command to find the version information of a specific file without additional formatting?
+  manpageQuestion3: What is the command to stop searching a file after the first match when using the what utility?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `what`.\n\n\n\nManpage text:\n\nBUGS\n     This is a rewrite of the SCCS command of the same name, and behavior may\n     not be identical.\n\nmacOS 15.3\t\t       December 14, 2006\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the `what` command?
+  manpageQuestion2: How can you use the `what` command to search for man pages related to network configuration?
+  manpageQuestion3: What is the typical use case for the `what` command in a macOS environment?
+

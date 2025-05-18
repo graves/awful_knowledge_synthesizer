@@ -1,0 +1,61 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `kextlibs`.\n\n\n\nManpage text:\n\nKEXTLIBS(8)\t\t    System Manager's Manual\t\t   KEXTLIBS(8)\n\nNAME\n     kextlibs – find OSBundleLibraries needed by a kext\n\nSYNOPSIS\n     kextlibs [options] [--] kext ...\n\nDEPRECATED\n     The kextlibs utility has been deprecated.\tPlease use the kmutil(8)\n     equivalent: kmutil libraries.\n\nDESCRIPTION\n     The kextlibs utility searches for library kexts that define symbols\n     needed for linking by kext, printing their bundle identifiers and\n     versions to stdout.  If the kext has a multiple-architecture executable,\n     libraries are resolved for each architecture.  If any symbols are not\n     found, or are found in multiple libraries, the numbers of such symbols\n     are printed to standard error after the library kext information for each\n     architecture.\n\n     A handy use of kextlibs is to run it with just the -xml flag and pipe the\n     output to pbcopy(1); if the exit status is zero (indicating no undefined\n     or multiply-defined symbols), you can open your kext's Info.plist file in\n     a text editor and paste the library declarations over the\n     OSBundleLibraries property."
+  manpageQuestion1: What is the primary purpose of the kextlibs utility?
+  manpageQuestion2: How can you use kextlibs to find the required libraries for a kext and generate an XML output that can be copied to a macOS application's Info.plist file?
+  manpageQuestion3: What is the most common use case for kextlibs when working with macOS kernel extensions?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `kextlibs`.\n\n\n\nManpage text:\n\nYou can use kextlibs to find libraries for older releases of macOS using\n     the -repository option to specify an extensions folder to search other\n     than the extensions directories for the root volume (although releases\n     prior to Mac OS X 10.6 (Snow Leopard) don't check for architecture-\n     specific properties, so be sure to check the output and edit as needed).\n     If you don't explicitly specify a repository directory, kextlibs searches\n     the root volume's /System/Library/Extensions and /Library/Extensions\n     directories.\n\nOPTIONS\n     -h, -help\n\t      Print a help message describing each option flag and exit with a\n\t      success result, regardless of any other options on the command\n\t      line.\n\n     -all-symbols\n\t      Print reports on all symbols that remain undefined, all symbols\n\t      that have been resolved in one library kext each, and all\n\t      symbols that have multiple definitions in different library\n\t      kexts.  Equivalent to specifying all of -undef-symbols,\n\t      -onedef-symbols, and -multdef-symbols.  Normally only the number\n\t      of missing and duplicate symbols is printed."
+  manpageQuestion1: What is the primary purpose of the kextlibs tool?
+  manpageQuestion2: How can you use kextlibs to find libraries for a macOS release other than the root volume's extensions directories?
+  manpageQuestion3: What command would you use with kextlibs to generate a detailed report on all undefined, single-defined, and multiple-defined symbols across library kexts?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `kextlibs`.\n\n\n\nManpage text:\n\n-c, -compatible-versions\n\t      Print the compatible version rather than the current version.\n\n     -multdef-symbols\n\t      Print all undefined symbols from kext found in more than one\n\t      library kext, followed by those library kexts' bundle\n\t      identifiers and versions (or compatible versions if\n\t      -compatible-versions was specified).  Normally only the number\n\t      of multiply-defined symbols is printed.\n\n     -non-kpi\n\t      Search the compatibility kext, com.apple.kernel.6.0, rather than\n\t      any of the com.apple.kpi.* system kexts.\tUse of this option is\n\t      not recommended: The exact kernel component (mach, bsd, libkern,\n\t      or iokit) cannot be determined, and the compatible version of\n\t      com.apple.kernel is locked to its current version, so kexts\n\t      linking against it can only load against that exact version.\n\n     -onedef-symbols\n\t      Print all undefined symbols from kext found in exactly one\n\t      library kext, followed by that library kext's bundle identifier\n\t      and version (or compatible version if -compatible-versions was\n\t      specified).  Normally nothing is printed about symbols that are\n\t      found once."
+  manpageQuestion1: What is the primary purpose of the kextlibs tool?
+  manpageQuestion2: How can you use kextlibs to identify all undefined symbols that are defined in more than one library kext?
+  manpageQuestion3: Can you provide an example of using kextlibs with the -non-kpi option to search for compatibility kexts?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `kextlibs`.\n\n\n\nManpage text:\n\n-r directory, -repository directory\n\t      Search directory for dependencies.  This option may be specified\n\t      multiple times.  You can use this to get library declarations\n\t      relative to a set of extensions other than those of the running\n\t      system (such as for a different release of macOS), or to include\n\t      a side directory of library kexts.  Note: If you specify a\n\t      directory with this option, the system extensions folders are\n\t      not implicitly searched.\tSee -system-extensions.\n\n     -e, -system-extensions\n\t      Add /System/Library/Extensions and /Library/Extensions to the\n\t      list of directories to search.  If you don't specify any\n\t      directories or kexts, this is used by default.\n\n     -undef-symbols\n\t      Print all undefined symbols from kext that can't be found in any\n\t      library kexts.  Normally only the number of symbols not found is\n\t      printed.\n\n     -unsupported\n\t      Search unsupported library kexts for symbols (by default they\n\t      are not searched)."
+  manpageQuestion1: What is the primary purpose of the kextlibs tool?
+  manpageQuestion2: How can you use kextlibs to search for dependencies in a custom directory along with the default system extensions?
+  manpageQuestion3: What command would you use to list all undefined symbols from a kext that cannot be found in any library kexts?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `kextlibs`.\n\n\n\nManpage text:\n\n-v [0-6 | 0x####], -verbose [0-6 | 0x####]\n\t      Verbose mode; print information about program operation.\tHigher\n\t      levels of verbosity include all lower levels.  You can specify a\n\t      level from 0-6, or a hexadecimal log specification (as described\n\t      in kext_logging(8)). For kextlibs, the decimal levels 1-6\n\t      generally have little effect.\n\n     -xml     Print an XML fragment to stdout suitable for copying and pasting\n\t      directly into an Info.plist file.  This option prints\n\t      information about libraries to stdout, and then prints\n\t      information about symbols to stderr. In XML mode, if the\n\t      libraries for all architectures are the same, only one set of\n\t      OSBundleLibraries is printed; if any differ from any others,\n\t      architecture-specific listings for all architectures are printed\n\t      (OSBundleLibraries_i386, OSBundleLibraries_x86_64, and so on).\n\n     --       End of options.\n\nFILES\n     /System/Library/Extensions/  The standard system repository of kernel\n\t\t\t\t  extensions.\n     /Library/Extensions/\t  The standard repository of non Apple kernel\n\t\t\t\t  extensions."
+  manpageQuestion1: What is the primary purpose of the kextlibs tool?
+  manpageQuestion2: How can you use the -xml option with kextlibs to generate an XML fragment suitable for an Info.plist file?
+  manpageQuestion3: What is the function of the -v option in kextlibs and how can it be used to set verbose logging level?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `kextlibs`.
+
+
+
+    Manpage text:
+
+    DIAGNOSTICS
+         The kextlibs utility exits with a status of 0 on completion if all
+         undefined symbols are found exactly once; with a status of 1 if any
+         undefined symbols remain, or with a status of 2 if any symbols are found
+         in more than one library kext (whether or not any undefined symbols
+         remain), and with another nonzero status on some other problem.
+
+    BUGS
+         kextlibs uses a simple algorithm of string matching to resolve symbols,
+         and does not apply any of the patching that the full link process does.
+         This can cause it to fail when searching for symbols in a kext built
+         against an SDK for a prior release of macOS than the one on which
+         kextlibs is being used.  In such cases, you can run kextlibs against the
+         Extensions folder of that prior release using the -repository option.
+
+         Many single-letter options are inconsistent in meaning with (or directly
+         contradictory to) the same letter options in other kext tools.
+
+    SEE ALSO
+         kmutil(8), kernelmanagerd(8), kextutil(8), kextfind(8), kext_logging(8)
+  manpageQuestion1: What is the primary purpose of the kextlibs utility?
+  manpageQuestion2: How can you use kextlibs to check for undefined symbols in a.kext file?
+  manpageQuestion3: What is the function of the -repository option in kextlibs and when would it be useful?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `kextlibs`.\n\n\n\nManpage text:\n\nDarwin\t\t\t       November 14, 2012\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the kextlibs tool?
+  manpageQuestion2: How would you use kextlibs to list all available kernel extensions on a macOS system?
+  manpageQuestion3: Can you provide an example of using kextlibs to load a specific kernel extension named 'com.apple.driver.AppleUSBHostController'?
+

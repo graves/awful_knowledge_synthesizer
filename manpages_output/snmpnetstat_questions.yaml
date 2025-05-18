@@ -1,0 +1,66 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snmpnetstat`.\n\n\n\nManpage text:\n\nSNMPNETSTAT(1)\t\t\t   Net-SNMP\t\t\tSNMPNETSTAT(1)\n\nNAME\n       snmpnetstat - display networking status and configuration information\n       from a network entity via SNMP\n\nSYNOPSIS\n       snmpnetstat [COMMON OPTIONS] [-Ca] [-Cn] AGENT\n       snmpnetstat [COMMON OPTIONS] [-Ci] [-Co] [-Cr] [-Cn] [-Cs] AGENT\n       snmpnetstat [COMMON OPTIONS] [-Ci] [-Cn] [-CI interface] AGENT\n       [interval]\n       snmpnetstat [COMMON OPTIONS] [-Ca] [-Cn] [-Cs] [-Cp protocol] AGENT\n\nDESCRIPTION\n       The snmpnetstat command symbolically displays the values of various\n       network-related information retrieved from a remote system using the\n       SNMP protocol.  There are a number of output formats, depending on the\n       options for the information presented.  The first form of the command\n       displays a list of active sockets.  The second form presents the values\n       of other network-related information according to the option selected.\n       Using the third form, with an interval specified, snmpnetstat will\n       continuously display the information regarding packet traffic on the\n       configured network interfaces.  The fourth form displays statistics\n       about the named protocol."
+  manpageQuestion1: What is the primary purpose of the snmpnetstat tool?
+  manpageQuestion2: How would you use snmpnetstat to display real-time packet traffic statistics on all network interfaces?
+  manpageQuestion3: Can you provide an example of using snmpnetstat to display statistics for the TCP protocol on a remote system?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snmpnetstat`.\n\n\n\nManpage text:\n\nsnmpnetstat will issue GETBULK requests to query for information if at\n       least protocol version v2 is used.\n\n       AGENT identifies a target SNMP agent, which is instrumented to monitor\n       the given objects.  At its simplest, the AGENT specification will\n       consist of a hostname or an IPv4 address. In this situation, the\n       command will attempt communication with the agent, using UDP/IPv4 to\n       port 161 of the given target host. See snmpcmd(1) for a full list of\n       the possible formats for AGENT.\n\nOPTIONS\n       The options have the following meaning:\n\n       COMMON OPTIONS\n\tPlease see snmpcmd(1) for a list of possible values for common options\n       as well as their descriptions.\n\n       -Ca With the default display, show the state of all sockets; normally\n       sockets used by server processes are not shown.\n\n       -Ci Show the state of all of the network interfaces.  The  interface\n       display\tprovides  a  table  of cumulative statistics regarding packets\n       transferred, errors, and collisions.  The  network addresses of the\n       interface and the maximum transmission unit (``mtu'') are also\n       displayed."
+  manpageQuestion1: What is the primary purpose of the snmpnetstat command?
+  manpageQuestion2: How can you use snmpnetstat to display the state of all network interfaces?
+  manpageQuestion3: What is the function of the -Ca option in snmpnetstat?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snmpnetstat`.
+
+
+
+    Manpage text:
+
+    -Co Show an abbreviated interface status, giving octets in place of
+           packets.  This is useful when enquiring virtual interfaces (such as
+           Frame-Relay circuits) on a router.
+
+           -CI interface Show information only about this interface; used with an
+           interval as described below.
+
+           -Cn Show network addresses as numbers (normally snmpnetstat interprets
+           addresses and attempts to display them symbolically).  This option may
+           be used with any of the display formats.
+
+           -Cp protocol Show statistics about protocol, which is either a well-
+           known name for a protocol or an alias for it.  Some protocol names and
+           aliases are listed in the file /etc/protocols.  A null response
+           typically means that there are no interesting numbers to report.  The
+           program will complain if protocol is unknown or if there is no
+           statistics routine for it.
+
+           -Cs Show per-protocol statistics.  When used with the -Cr option, show
+           routing statistics instead.
+  manpageQuestion1: What is the primary purpose of the snmpnetstat tool?
+  manpageQuestion2: How can you use snmpnetstat to display abbreviated interface status with octet counts instead of packet counts?
+  manpageQuestion3: Can you provide an example of using snmpnetstat to show network addresses as numbers for a specific interface?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snmpnetstat`.\n\n\n\nManpage text:\n\n-Cr Show the routing tables.  When -Cs is also present, show per-\n       protocol routing statistics instead of the routing tables.\n\n       -CR repeaters For GETBULK requests, repeaters specifies the max-\n       repeaters value to use.\n\n       When  snmpnetstat is invoked with an interval argument, it displays a\n       running count of statistics related to  network interfaces.  interval\n       is the number of seconds between reporting of statistics.\n\n       The Active Sockets Display (default)\n\n       The default display, for active sockets, shows the local and remote\n       addresses, protocol, and the internal state  of the   protocol.\n       Address\t formats   are\t of  the  form ``host.port'' or\n       ``network.port'' if  a  socket's  address specifies  a  network\tbut no\n       specific host address.  When known, the host and network addresses are\n       displayed symbolically according   to  the  data  bases /etc/hosts and\n       /etc/networks, respectively.  If a symbolic  name  for  an address  is\n       unknown, or if the -Cn option is specified, the address is printed\n       numerically, according to  the  address family.\tFor more information\n       regarding the Internet ``dot format,'' refer  to inet(3N).\n       Unspecified,  or  ``wildcard'', addresses and ports appear as ``*''."
+  manpageQuestion1: What is the primary purpose of the snmpnetstat command?
+  manpageQuestion2: How would you use snmpnetstat to display routing tables and per-protocol statistics simultaneously?
+  manpageQuestion3: Can you provide an example of using snmpnetstat to monitor network interface statistics every 5 seconds?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snmpnetstat`.\n\n\n\nManpage text:\n\nThe Interface Display\n\n       The  interface  display\tprovides  a  table  of cumulative statistics\n       regarding packets transferred, errors, and col- lisions.   The  network\n       addresses of the interface and the maximum transmission unit (``mtu'')\n       are also displayed.\n\n       The Routing Table Display\n\n       The routing table display indicates the\tavailable  routes and  their\n       status.\t Each route consists of a destination host or network and a\n       gateway to use in  forwarding  pack- ets.   The flags field shows the\n       state of the route (``U'' if ``up''), whether the route is  to  a\n       gateway\t(``G''), whether  the  route  was created dynamically by a\n       redirect (``D''), and whether the route\thas  been  modified  by  a\n       redirect  (``M'').   Direct  routes  are  created for each interface\n       attached to the local host;  the  gateway  field for  such entries\n       shows the address of the outgoing inter- face.  The interface entry\n       indicates the network interface utilized for the route."
+  manpageQuestion1: What is the primary purpose of the snmpnetstat command?
+  manpageQuestion2: How can you display the interface statistics and routing table using snmpnetstat?
+  manpageQuestion3: Can you explain how to use snmpnetstat to view the routing table and interpret the flags field?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snmpnetstat`.\n\n\n\nManpage text:\n\nThe Interface Display with an Interval\n\n       When snmpnetstat is invoked with an interval argument, it displays a\n       running count of statistics related to  network interfaces.   This\n       display\tconsists  of a column for the primary interface and a column\n       summarizing information for all\tinterfaces.   The  primary  interface\n       may be replaced with another interface with the -CI option.  The first\n       line of each screen of information contains a summary since the system\n       was last rebooted.  Subsequent lines of output show values accumulated\n       over the preceding interval.\n\n       The Active Sockets Display for a Single Protocol\n\n       When a protocol is specified with the -Cp option, the information\n       displayed is similar to that in the default display for active sockets,\n       except the display is limited to the given protocol.\n\nEXAMPLES\n       Example of using snmpnetstat to display active sockets (default):\n\n       % snmpnetstat -v 2c -c public -Ca testhost"
+  manpageQuestion1: What is the primary purpose of the snmpnetstat tool?
+  manpageQuestion2: How can you use snmpnetstat to display active sockets for the TCP protocol?
+  manpageQuestion3: Can you provide an example of using snmpnetstat to monitor network interface statistics with a specified interval?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snmpnetstat`.\n\n\n\nManpage text:\n\nActive Internet (tcp) Connections (including servers)\n       Proto Local Address\t\t  Foreign Address\t\t  (state)\n       tcp   *.echo\t\t\t   *.*\t\t\t\t  LISTEN\n       tcp   *.discard\t\t\t   *.*\t\t\t\t  LISTEN\n       tcp   *.daytime\t\t\t   *.*\t\t\t\t  LISTEN\n       tcp   *.chargen\t\t\t   *.*\t\t\t\t  LISTEN\n       tcp   *.ftp\t\t\t   *.*\t\t\t\t  LISTEN\n       tcp   *.telnet\t\t\t   *.*\t\t\t\t  LISTEN\n       tcp   *.smtp\t\t\t   *.*\t\t\t\t  LISTEN\n       ...\n\n       Active Internet (udp) Connections\n       Proto Local Address\n       udp    *.echo\n       udp    *.discard\n       udp    *.daytime\n       udp    *.chargen\n       udp    *.time\n       ...\n\n       % snmpnetstat -v 2c -c public -Ci testhost\n\n       Name\tMtu Network    Address\t\tIpkts\tIerrs\t Opkts Oerrs Queue\n       eri0    1500 10.6.9/24  testhost     170548881  245601\t687976\t   0\t0\n       lo0     8232 127        localhost      7530982\t    0  7530982\t   0\t0\n\n       Example of using snmpnetstat to show statistics about a specific\n       protocol:\n\n       % snmpnetstat -v 2c -c public -Cp tcp testhost"
+  manpageQuestion1: What is the primary purpose of the snmpnetstat tool?
+  manpageQuestion2: How would you use snmpnetstat to display statistics for TCP connections on a remote host called testhost?
+  manpageQuestion3: Can you provide an example of using snmpnetstat to show the statistics for UDP connections on a remote host called testhost?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snmpnetstat`.\n\n\n\nManpage text:\n\nActive Internet (tcp) Connections\n       Proto Local Address\t\t  Foreign Address\t\t  (state)\n       tcp   *.echo\t\t\t   *.*\t\t\t\t  LISTEN\n       tcp   *.discard\t\t\t   *.*\t\t\t\t  LISTEN\n       tcp   *.daytime\t\t\t   *.*\t\t\t\t  LISTEN\n       tcp   *.chargen\t\t\t   *.*\t\t\t\t  LISTEN\n       tcp   *.ftp\t\t\t   *.*\t\t\t\t  LISTEN\n       tcp   *.telnet\t\t\t   *.*\t\t\t\t  LISTEN\n       tcp   *.smtp\t\t\t   *.*\t\t\t\t  LISTEN\n       ...\n\nSEE ALSO\n       snmpcmd(1), iostat(1), vmstat(1), hosts(5), networks(5), protocols(5),\n       services(5).\n\nBUGS\n       The notion of errors is ill-defined.\n\nV5.6.2.1\t\t\t  20 Jan 2010\t\t\tSNMPNETSTAT(1)"
+  manpageQuestion1: What is the primary purpose of the snmpnetstat command?
+  manpageQuestion2: How can you use snmpnetstat to display the status of TCP connections on a macOS system?
+  manpageQuestion3: What is the function of the snmpnetstat command in relation to system monitoring and network diagnostics?
+

@@ -1,0 +1,209 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlaix`.\n\n\n\nManpage text:\n\nPERLAIX(1)\t       Perl Programmers Reference Guide \t    PERLAIX(1)"
+  manpageQuestion1: What is the primary purpose of the perlaix tool?
+  manpageQuestion2: How would you use perlaix to perform a specific task related to Perl programming?
+  manpageQuestion3: Can you provide an example of using perlaix to debug a Perl script?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlaix`.
+
+
+
+    Manpage text:
+
+    NAME
+           perlaix - Perl version 5 on IBM AIX (UNIX) systems
+
+    DESCRIPTION
+           This document describes various features of IBM's UNIX operating system
+           AIX that will affect how Perl version 5 (hereafter just Perl) is
+           compiled and/or runs.
+
+       Compiling Perl 5 on AIX
+           For information on compilers on older versions of AIX, see "Compiling
+           Perl 5 on older AIX versions up to 4.3.3".
+
+           When compiling Perl, you must use an ANSI C compiler. AIX does not ship
+           an ANSI compliant C compiler with AIX by default, but binary builds of
+           gcc for AIX are widely available. A version of gcc is also included in
+           the AIX Toolbox which is shipped with AIX.
+
+       Supported Compilers
+           Currently all versions of IBM's "xlc", "xlc_r", "cc", "cc_r" or "vac"
+           ANSI/C compiler will work for building Perl if that compiler works on
+           your system.
+
+           If you plan to link Perl to any module that requires thread-support,
+           like DBD::Oracle, it is better to use the _r version of the compiler.
+           This will not build a threaded Perl, but a thread-enabled Perl. See
+           also "Threaded Perl" later on.
+  manpageQuestion1: What is the primary purpose of the perlaix resource?
+  manpageQuestion2: What compiler should I use to compile Perl 5 on AIX systems?
+  manpageQuestion3: How can I ensure that Perl is thread-enabled when compiling it on AIX?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlaix`.\n\n\n\nManpage text:\n\nAs of writing (2010-09) only the IBM XL C for AIX or IBM XL C/C++ for\n       AIX compiler is supported by IBM on AIX 5L/6.1/7.1.\n\n       The following compiler versions are currently supported by IBM:\n\n\t   IBM XL C and IBM XL C/C++ V8, V9, V10, V11\n\n       The XL C for AIX is integrated in the XL C/C++ for AIX compiler and\n       therefore also supported.\n\n       If you choose XL C/C++ V9 you need APAR IZ35785 installed otherwise the\n       integrated SDBM_File do not compile correctly due to an optimization\n       bug. You can circumvent this problem by adding -qipa to the\n       optimization flags (-Doptimize='-O -qipa').  The PTF for APAR IZ35785\n       which solves this problem is available from IBM (April 2009 PTF for XL\n       C/C++ Enterprise Edition for AIX, V9.0).\n\n       If you choose XL C/C++ V11 you need the April 2010 PTF (or newer)\n       installed otherwise you will not get a working Perl version.\n\n       Perl can be compiled with either IBM's ANSI C compiler or with gcc.\n       The former is recommended, as not only it can compile Perl with no\n       difficulty, but also can take advantage of features listed later that\n       require the use of IBM compiler-specific command-line flags."
+  manpageQuestion1: What is the primary purpose of the `perlaix` resource?
+  manpageQuestion2: What steps are required to compile Perl on AIX using XL C/C++ V9?
+  manpageQuestion3: How can one ensure compatibility when using XL C/C++ V11 for compiling Perl on AIX?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlaix`.\n\n\n\nManpage text:\n\nIf you decide to use gcc, make sure your installation is recent and\n       complete, and be sure to read the Perl INSTALL file for more gcc-\n       specific details. Please report any hoops you had to jump through to\n       the development team.\n\n   Incompatibility with AIX Toolbox lib gdbm\n       If the AIX Toolbox version of lib gdbm < 1.8.3-5 is installed on your\n       system then Perl will not work. This library contains the header files\n       /opt/freeware/include/gdbm/dbm.h|ndbm.h which conflict with the AIX\n       system versions. The lib gdbm will be automatically removed from the\n       wanted libraries if the presence of one of these two header files is\n       detected. If you want to build Perl with GDBM support then please\n       install at least gdbm-devel-1.8.3-5 (or higher).\n\n   Perl 5 was successfully compiled and tested on:\n\tPerl   | AIX Level\t     | Compiler Level\t       | w th | w/o th\n\t-------+---------------------+-------------------------+------+-------\n\t5.12.2 |5.1 TL9 32 bit\t     | XL C/C++ V7\t       | OK   | OK\n\t5.12.2 |5.1 TL9 64 bit\t     | XL C/C++ V7\t       | OK   | OK\n\t5.12.2 |5.2 TL10 SP8 32 bit  | XL C/C++ V8\t       | OK   | OK\n\t5.12.2 |5.2 TL10 SP8 32 bit  | gcc 3.2.2\t       | OK   | OK\n\t5.12.2 |5.2 TL10 SP8 64 bit  | XL C/C++ V8\t       | OK   | OK\n\t5.12.2 |5.3 TL8 SP8 32 bit   | XL C/C++ V9 + IZ35785   | OK   | OK\n\t5.12.2 |5.3 TL8 SP8 32 bit   | gcc 4.2.4\t       | OK   | OK\n\t5.12.2 |5.3 TL8 SP8 64 bit   | XL C/C++ V9 + IZ35785   | OK   | OK\n\t5.12.2 |5.3 TL10 SP3 32 bit  | XL C/C++ V11 + Apr 2010 | OK   | OK\n\t5.12.2 |5.3 TL10 SP3 64 bit  | XL C/C++ V11 + Apr 2010 | OK   | OK\n\t5.12.2 |6.1 TL1 SP7 32 bit   | XL C/C++ V10\t       | OK   | OK\n\t5.12.2 |6.1 TL1 SP7 64 bit   | XL C/C++ V10\t       | OK   | OK\n\t5.13   |7.1 TL0 SP1 32 bit   | XL C/C++ V11 + Jul 2010 | OK   | OK\n\t5.13   |7.1 TL0 SP1 64 bit   | XL C/C++ V11 + Jul 2010 | OK   | OK"
+  manpageQuestion1: What is the primary purpose of the perlaix resource?
+  manpageQuestion2: What steps should be taken to ensure compatibility when compiling Perl on AIX using gcc?
+  manpageQuestion3: What is the minimum version of gdbm-devel required to build Perl with GDBM support on AIX?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlaix`.\n\n\n\nManpage text:\n\nw th   = with thread support\n\tw/o th = without thread support\n\tOK     = tested\n\n       Successfully tested means that all \"make test\" runs finish with a\n       result of 100% OK. All tests were conducted with -Duseshrplib set.\n\n       All tests were conducted on the oldest supported AIX technology level\n       with the latest support package applied. If the tested AIX version is\n       out of support (AIX 4.3.3, 5.1, 5.2) then the last available support\n       level was used.\n\n   Building Dynamic Extensions on AIX\n       Starting from Perl 5.7.2 (and consequently 5.8.x / 5.10.x / 5.12.x) and\n       AIX 4.3 or newer Perl uses the AIX native dynamic loading interface in\n       the so called runtime linking mode instead of the emulated interface\n       that was used in Perl releases 5.6.1 and earlier or, for AIX releases\n       4.2 and earlier. This change does break backward compatibility with\n       compiled modules from earlier Perl releases. The change was made to\n       make Perl more compliant with other applications like Apache/mod_perl\n       which are using the AIX native interface. This change also enables the\n       use of C++ code with static constructors and destructors in Perl\n       extensions, which was not possible using the emulated interface."
+  manpageQuestion1: What is the primary purpose of the `perlaix` resource?
+  manpageQuestion2: How can you configure the build of Perl extensions for AIX to include thread support?
+  manpageQuestion3: What does the `OK` status indicate in the context of testing Perl extensions on AIX?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlaix`.
+
+
+
+    Manpage text:
+
+    It is highly recommended to use the new interface.
+
+       Using Large Files with Perl
+           Should yield no problems.
+
+       Threaded Perl
+           Should yield no problems with AIX 5.1 / 5.2 / 5.3 / 6.1 / 7.1.
+
+           IBM uses the AIX system Perl (V5.6.0 on AIX 5.1 and V5.8.2 on AIX 5.2 /
+           5.3 and 6.1; V5.8.8 on AIX 5.3 TL11 and AIX 6.1 TL4; V5.10.1 on AIX
+           7.1) for some AIX system scripts. If you switch the links in /usr/bin
+           from the AIX system Perl (/usr/opt/perl5) to the newly build Perl then
+           you get the same features as with the IBM AIX system Perl if the
+           threaded options are used.
+
+           The threaded Perl build works also on AIX 5.1 but the IBM Perl build
+           (Perl v5.6.0) is not threaded on AIX 5.1.
+
+           Perl 5.12 an newer is not compatible with the IBM fileset perl.libext.
+
+       64-bit Perl
+           If your AIX system is installed with 64-bit support, you can expect
+           64-bit configurations to work. If you want to use 64-bit Perl on AIX
+           6.1 you need an APAR for a libc.a bug which affects (n)dbm_XXX
+           functions.  The APAR number for this problem is IZ39077.
+  manpageQuestion1: What is the primary purpose of the perlaix resource?
+  manpageQuestion2: How can one configure Perl on AIX to support threaded execution?
+  manpageQuestion3: What are the compatibility considerations when using Perl 5.12 or newer on AIX?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlaix`.\n\n\n\nManpage text:\n\nIf you need more memory (larger data segment) for your Perl programs\n       you can set:\n\n\t   /etc/security/limits\n\t   default:\t\t       (or your user)\n\t       data = -1\t       (default is 262144 * 512 byte)\n\n       With the default setting the size is limited to 128MB.  The -1 removes\n       this limit. If the \"make test\" fails please change your\n       /etc/security/limits as stated above.\n\n   Long doubles\n       IBM calls its implementation of long doubles 128-bit, but it is not the\n       IEEE 128-bit (\"quadruple precision\") which would give 116 bit of\n       mantissa (nor it is implemented in hardware), instead it's a special\n       software implementation called \"double-double\", which gives 106 bits of\n       mantissa.\n\n       There seem to be various problems in this long double implementation.\n       If Configure detects this brokenness, it will disable the long double\n       support.  This can be overridden with explicit \"-Duselongdouble\" (or\n       \"-Dusemorebits\", which enables both long doubles and 64 bit integers).\n       If you decide to enable long doubles, for most of the broken things\n       Perl has implemented workarounds, but the handling of the special\n       values infinity and NaN remains badly broken: for example infinity plus\n       zero results in NaN."
+  manpageQuestion1: What is the primary purpose of the `perlaix` resource?
+  manpageQuestion2: How can you configure Perl to use long doubles on a macOS system?
+  manpageQuestion3: What should be done if Perl's long double implementation is found to be broken?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlaix`.\n\n\n\nManpage text:\n\nRecommended Options AIX 5.1/5.2/5.3/6.1 and 7.1 (threaded/32-bit)\n       With the following options you get a threaded Perl version which passes\n       all make tests in threaded 32-bit mode, which is the default\n       configuration for the Perl builds that AIX ships with.\n\n\t   rm config.sh\n\t   ./Configure \\\n\t   -d \\\n\t   -Dcc=cc_r \\\n\t   -Duseshrplib \\\n\t   -Dusethreads \\\n\t   -Dprefix=/usr/opt/perl5_32\n\n       The -Dprefix option will install Perl in a directory parallel to the\n       IBM AIX system Perl installation.\n\n   Recommended Options AIX 5.1/5.2/5.3/6.1 and 7.1 (32-bit)\n       With the following options you get a Perl version which passes all make\n       tests in 32-bit mode.\n\n\t   rm config.sh\n\t   ./Configure \\\n\t   -d \\\n\t   -Dcc=cc_r \\\n\t   -Duseshrplib \\\n\t   -Dprefix=/usr/opt/perl5_32\n\n       The -Dprefix option will install Perl in a directory parallel to the\n       IBM AIX system Perl installation.\n\n   Recommended Options AIX 5.1/5.2/5.3/6.1 and 7.1 (threaded/64-bit)\n       With the following options you get a threaded Perl version which passes\n       all make tests in 64-bit mode."
+  manpageQuestion1: What is the primary purpose of the `perlaix` resource?
+  manpageQuestion2: How can you configure the Perl installation on AIX 5.1/5.2/5.3/6.1 and 7.1 to be a threaded version compatible with 32-bit mode?
+  manpageQuestion3: What are the key configuration options used to install a 64-bit threaded Perl version on AIX 5.1/5.2/5.3/6.1 and 7.1?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlaix`.\n\n\n\nManpage text:\n\nexport OBJECT_MODE=64 / setenv OBJECT_MODE 64 (depending on your shell)\n\n\trm config.sh\n\t./Configure \\\n\t-d \\\n\t-Dcc=cc_r \\\n\t-Duseshrplib \\\n\t-Dusethreads \\\n\t-Duse64bitall \\\n\t-Dprefix=/usr/opt/perl5_64\n\n   Recommended Options AIX 5.1/5.2/5.3/6.1 and 7.1 (64-bit)\n       With the following options you get a Perl version which passes all make\n       tests in 64-bit mode.\n\n\texport OBJECT_MODE=64 / setenv OBJECT_MODE 64 (depending on your shell)\n\n\trm config.sh\n\t./Configure \\\n\t-d \\\n\t-Dcc=cc_r \\\n\t-Duseshrplib \\\n\t-Duse64bitall \\\n\t-Dprefix=/usr/opt/perl5_64\n\n       The -Dprefix option will install Perl in a directory parallel to the\n       IBM AIX system Perl installation.\n\n       If you choose gcc to compile 64-bit Perl then you need to add the\n       following option:\n\n\t   -Dcc='gcc -maix64'\n\n   Compiling Perl 5 on AIX 7.1.0\n       A regression in AIX 7 causes a failure in make test in Time::Piece\n       during daylight savings time.  APAR IV16514 provides the fix for this.\n       A quick test to see if it's required, assuming it is currently daylight\n       savings in Eastern Time, would be to run \" TZ=EST5 date +%Z \".  This\n       will come back with \"EST\" normally, but nothing if you have the\n       problem."
+  manpageQuestion1: What is the primary purpose of the perlaix resource?
+  manpageQuestion2: How can you configure and compile Perl 5 on AIX 7.1.0 to ensure compatibility with 64-bit mode?
+  manpageQuestion3: What steps are required to compile Perl 5 on AIX 5.1/5.2/5.3/6.1 and 7.1 using a 64-bit build?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlaix`.\n\n\n\nManpage text:\n\nCompiling Perl 5 on older AIX versions up to 4.3.3\n       Due to the fact that AIX 4.3.3 reached end-of-service in December 31,\n       2003 this information is provided as is. The Perl versions prior to\n       Perl 5.8.9 could be compiled on AIX up to 4.3.3 with the following\n       settings (your mileage may vary):\n\n       When compiling Perl, you must use an ANSI C compiler. AIX does not ship\n       an ANSI compliant C-compiler with AIX by default, but binary builds of\n       gcc for AIX are widely available.\n\n       At the moment of writing, AIX supports two different native C\n       compilers, for which you have to pay: xlC and vac. If you decide to use\n       either of these two (which is quite a lot easier than using gcc), be\n       sure to upgrade to the latest available patch level. Currently:\n\n\t   xlC.C     3.1.4.10 or 3.6.6.0 or 4.0.2.2 or 5.0.2.9 or 6.0.0.3\n\t   vac.C     4.4.0.3  or 5.0.2.6 or 6.0.0.1\n\n       note that xlC has the OS version in the name as of version 4.0.2.0, so\n       you will find xlC.C for AIX-5.0 as package"
+  manpageQuestion1: What is the primary purpose of the perlaix resource?
+  manpageQuestion2: What are the recommended C compilers for compiling Perl 5 on AIX versions up to 4.3.3?
+  manpageQuestion3: How can one compile Perl 5 prior to version 5.8.9 on AIX 4.3.3 using the recommended compiler settings?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlaix`.
+
+
+
+    Manpage text:
+
+    xlC.aix50.rte   5.0.2.0 or 6.0.0.3
+
+           subversions are not the same "latest" on all OS versions. For example,
+           the latest xlC-5 on aix41 is 5.0.2.9, while on aix43, it is 5.0.2.7.
+
+           Perl can be compiled with either IBM's ANSI C compiler or with gcc.
+           The former is recommended, as not only can it compile Perl with no
+           difficulty, but also can take advantage of features listed later that
+           require the use of IBM compiler-specific command-line flags.
+
+           The IBM's compiler patch levels 5.0.0.0 and 5.0.1.0 have compiler
+           optimization bugs that affect compiling perl.c and regcomp.c,
+           respectively.  If Perl's configuration detects those compiler patch
+           levels, optimization is turned off for the said source code files.
+           Upgrading to at least 5.0.2.0 is recommended.
+
+           If you decide to use gcc, make sure your installation is recent and
+           complete, and be sure to read the Perl INSTALL file for more gcc-
+           specific details. Please report any hoops you had to jump through to
+           the development team.
+  manpageQuestion1: What is the primary purpose of the perlaix resource?
+  manpageQuestion2: How can you compile Perl using IBM's ANSI C compiler on AIX?
+  manpageQuestion3: What should you do if your IBM compiler is at patch level 5.0.1.0 when compiling Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlaix`.\n\n\n\nManpage text:\n\nOS level\n       Before installing the patches to the IBM C-compiler you need to know\n       the level of patching for the Operating System. IBM's command 'oslevel'\n       will show the base, but is not always complete (in this example oslevel\n       shows 4.3.NULL, whereas the system might run most of 4.3.THREE):\n\n\t   # oslevel\n\t   4.3.0.0\n\t   # lslpp -l | grep 'bos.rte '\n\t   bos.rte\t     4.3.3.75  COMMITTED  Base Operating System Runtime\n\t   bos.rte\t      4.3.2.0  COMMITTED  Base Operating System Runtime\n\t   #\n\n       The same might happen to AIX 5.1 or other OS levels. As a side note,\n       Perl cannot be built without bos.adt.syscalls and bos.adt.libm\n       installed\n\n\t   # lslpp -l | egrep \"syscalls|libm\"\n\t   bos.adt.libm      5.1.0.25  COMMITTED  Base Application Development\n\t   bos.adt.syscalls  5.1.0.36  COMMITTED  System Calls Application\n\t   #\n\n   Building Dynamic Extensions on AIX < 5L\n       AIX supports dynamically loadable objects as well as shared libraries.\n       Shared libraries by convention end with the suffix .a, which is a bit\n       misleading, as an archive can contain static as well as dynamic\n       members.  For Perl dynamically loaded objects we use the .so suffix\n       also used on many other platforms."
+  manpageQuestion1: What is the primary purpose of the perlaix resource?
+  manpageQuestion2: How can you check the current OS level and verify if the necessary components for building Perl are installed on an AIX system?
+  manpageQuestion3: What is the significance of using the .so suffix when building dynamic extensions for Perl on AIX versions below 5L?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlaix`.
+
+
+
+    Manpage text:
+
+    Note that starting from Perl 5.7.2 (and consequently 5.8.0) and AIX 4.3
+           or newer Perl uses the AIX native dynamic loading interface in the so
+           called runtime linking mode instead of the emulated interface that was
+           used in Perl releases 5.6.1 and earlier or, for AIX releases 4.2 and
+           earlier.  This change does break backward compatibility with compiled
+           modules from earlier Perl releases.  The change was made to make Perl
+           more compliant with other applications like Apache/mod_perl which are
+           using the AIX native interface. This change also enables the use of C++
+           code with static constructors and destructors in Perl extensions, which
+           was not possible using the emulated interface.
+
+       The IBM ANSI C Compiler
+           All defaults for Configure can be used.
+
+           If you've chosen to use vac 4, be sure to run 4.4.0.3. Older versions
+           will turn up nasty later on. For vac 5 be sure to run at least 5.0.1.0,
+           but vac 5.0.2.6 or up is highly recommended. Note that since IBM has
+           removed vac 5.0.2.1 through 5.0.2.5 from the software depot, these
+           versions should be considered obsolete.
+  manpageQuestion1: What is the primary purpose of the perlaix resource?
+  manpageQuestion2: How does the perlaix resource handle compatibility issues when using different versions of Perl on AIX?
+  manpageQuestion3: What are the recommended compiler versions for using perlaix with AIX 4.3 and later?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlaix`.\n\n\n\nManpage text:\n\nHere's a brief lead of how to upgrade the compiler to the latest level.\n       Of course this is subject to changes.  You can only upgrade versions\n       from ftp-available updates if the first three digit groups are the same\n       (in where you can skip intermediate unlike the patches in the developer\n       snapshots of Perl), or to one version up where the \"base\" is available.\n       In other words, the AIX compiler patches are cumulative.\n\n\tvac.C.4.4.0.1 => vac.C.4.4.0.3\tis OK\t  (vac.C.4.4.0.2 not needed)\n\txlC.C.3.1.3.3 => xlC.C.3.1.4.10 is NOT OK (xlC.C.3.1.4.0 is not\n\t\t\t\t\t\t\t\t     available)\n\n\t# ftp ftp.software.ibm.com\n\tConnected to service.boulder.ibm.com.\n\t: welcome message ...\n\tName (ftp.software.ibm.com:merijn): anonymous\n\t331 Guest login ok, send your complete e-mail address as password.\n\tPassword:\n\t... accepted login stuff\n\tftp> cd /aix/fixes/v4/\n\tftp> dir other other.ll\n\toutput to local-file: other.ll? y\n\t200 PORT command successful.\n\t150 Opening ASCII mode data connection for /bin/ls.\n\t226 Transfer complete.\n\tftp> dir xlc xlc.ll\n\toutput to local-file: xlc.ll? y\n\t200 PORT command successful.\n\t150 Opening ASCII mode data connection for /bin/ls.\n\t226 Transfer complete.\n\tftp> bye\n\t... goodbye messages\n\t# ls -l *.ll\n\t-rw-rw-rw-   1 merijn\tsystem\t  1169432 Nov  2 17:29 other.ll\n\t-rw-rw-rw-   1 merijn\tsystem\t    29170 Nov  2 17:29 xlc.ll"
+  manpageQuestion1: What is the primary purpose of the perlaix resource?
+  manpageQuestion2: How would you upgrade the AIX compiler using the perlaix resource?
+  manpageQuestion3: Can you provide an example of how to retrieve and download the xlc.ll file using perlaix?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlaix`.\n\n\n\nManpage text:\n\nOn AIX 4.2 using xlC, we continue:\n\n\t# lslpp -l | fgrep 'xlC.C '\n\t  xlC.C \t\t    3.1.4.9  COMMITTED\tC for AIX Compiler\n\t  xlC.C \t\t    3.1.4.0  COMMITTED\tC for AIX Compiler\n\t# grep 'xlC.C.3.1.4.*.bff' xlc.ll\n\t-rw-r--r--   1 45776101 1\t6286336 Jul 22 1996  xlC.C.3.1.4.1.bff\n\t-rw-rw-r--   1 45776101 1\t6173696 Aug 24 1998  xlC.C.3.1.4.10.bff\n\t-rw-r--r--   1 45776101 1\t6319104 Aug 14 1996  xlC.C.3.1.4.2.bff\n\t-rw-r--r--   1 45776101 1\t6316032 Oct 21 1996  xlC.C.3.1.4.3.bff\n\t-rw-r--r--   1 45776101 1\t6315008 Dec 20 1996  xlC.C.3.1.4.4.bff\n\t-rw-rw-r--   1 45776101 1\t6178816 Mar 28 1997  xlC.C.3.1.4.5.bff\n\t-rw-rw-r--   1 45776101 1\t6188032 May 22 1997  xlC.C.3.1.4.6.bff\n\t-rw-rw-r--   1 45776101 1\t6191104 Sep  5 1997  xlC.C.3.1.4.7.bff\n\t-rw-rw-r--   1 45776101 1\t6185984 Jan 13 1998  xlC.C.3.1.4.8.bff\n\t-rw-rw-r--   1 45776101 1\t6169600 May 27 1998  xlC.C.3.1.4.9.bff\n\t# wget ftp://ftp.software.ibm.com/aix/fixes/v4/xlc/xlC.C.3.1.4.10.bff\n\t#\n\n       On AIX 4.3 using vac, we continue:\n\n\t# lslpp -l | grep 'vac.C '\n\t vac.C\t\t\t    5.0.2.2  COMMITTED\tC for AIX Compiler\n\t vac.C\t\t\t    5.0.2.0  COMMITTED\tC for AIX Compiler\n\t# grep 'vac.C.5.0.2.*.bff' other.ll\n\t-rw-rw-r--   1 45776101 1\t13592576 Apr 16 2001  vac.C.5.0.2.0.bff\n\t-rw-rw-r--   1 45776101 1\t14133248 Apr  9 2002  vac.C.5.0.2.3.bff\n\t-rw-rw-r--   1 45776101 1\t14173184 May 20 2002  vac.C.5.0.2.4.bff\n\t-rw-rw-r--   1 45776101 1\t14192640 Nov 22 2002  vac.C.5.0.2.6.bff\n\t# wget ftp://ftp.software.ibm.com/aix/fixes/v4/other/vac.C.5.0.2.6.bff\n\t#"
+  manpageQuestion1: What is the primary purpose of the `perlaix` resource?
+  manpageQuestion2: How can you obtain the latest version of the `xlC.C` compiler for AIX 4.2 using the provided instructions?
+  manpageQuestion3: What is the process for downloading the `vac.C.5.0.2.6.bff` file for AIX 4.3 using the `wget` command?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlaix`.\n\n\n\nManpage text:\n\nLikewise on all other OS levels. Then execute the following command,\n       and fill in its choices\n\n\t# smit install_update\n\t -> Install and Update from LATEST Available Software\n\t * INPUT device / directory for software [ vac.C.5.0.2.6.bff\t]\n\t [ OK ]\n\t [ OK ]\n\n       Follow the messages ... and you're done.\n\n       If you like a more web-like approach, a good start point can be\n       <http://www14.software.ibm.com/webapp/download/downloadaz.jsp> and\n       click \"C for AIX\", and follow the instructions.\n\n   The usenm option\n       If linking miniperl\n\n\tcc -o miniperl ... miniperlmain.o opmini.o perl.o ... -lm -lc ...\n\n       causes error like this\n\n\tld: 0711-317 ERROR: Undefined symbol: .aintl\n\tld: 0711-317 ERROR: Undefined symbol: .copysignl\n\tld: 0711-317 ERROR: Undefined symbol: .syscall\n\tld: 0711-317 ERROR: Undefined symbol: .eaccess\n\tld: 0711-317 ERROR: Undefined symbol: .setresuid\n\tld: 0711-317 ERROR: Undefined symbol: .setresgid\n\tld: 0711-317 ERROR: Undefined symbol: .setproctitle\n\tld: 0711-345 Use the -bloadmap or -bnoquiet option to obtain more\n\t\t\t\t\t\t\t\t   information."
+  manpageQuestion1: What is the primary purpose of the perlaix resource?
+  manpageQuestion2: How can you resolve the linking errors when using miniperl on AIX?
+  manpageQuestion3: What is the recommended method for downloading and installing software on AIX?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlaix`.\n\n\n\nManpage text:\n\nyou could retry with\n\n\tmake realclean\n\trm config.sh\n\t./Configure -Dusenm ...\n\n       which makes Configure to use the \"nm\" tool when scanning for library\n       symbols, which usually is not done in AIX.\n\n       Related to this, you probably should not use the \"-r\" option of\n       Configure in AIX, because that affects of how the \"nm\" tool is used.\n\n   Using GNU's gcc for building Perl\n       Using gcc-3.x (tested with 3.0.4, 3.1, and 3.2) now works out of the\n       box, as do recent gcc-2.9 builds available directly from IBM as part of\n       their Linux compatibility packages, available here:\n\n\t http://www.ibm.com/servers/aix/products/aixos/linux/\n\n   Using Large Files with Perl < 5L\n       Should yield no problems.\n\n   Threaded Perl < 5L\n       Threads seem to work OK, though at the moment not all tests pass when\n       threads are used in combination with 64-bit configurations.\n\n       You may get a warning when doing a threaded build:\n\n\t \"pp_sys.c\", line 4640.39: 1506-280 (W) Function argument assignment\n\t between types \"unsigned char*\" and \"const void*\" is not allowed."
+  manpageQuestion1: What is the primary purpose of the `perlaix` resource?
+  manpageQuestion2: How can you configure Perl for AIX to use the 'nm' tool when scanning for library symbols?
+  manpageQuestion3: What are some considerations when building Perl on AIX with large files or threaded support?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlaix`.\n\n\n\nManpage text:\n\nThe exact line number may vary, but if the warning (W) comes from a\n       line line this\n\n\t hent = PerlSock_gethostbyaddr(addr, (Netdb_hlen_t) addrlen, addrtype);\n\n       in the \"pp_ghostent\" function, you may ignore it safely.  The warning\n       is caused by the reentrant variant of gethostbyaddr() having a slightly\n       different prototype than its non-reentrant variant, but the difference\n       is not really significant here.\n\n   64-bit Perl < 5L\n       If your AIX is installed with 64-bit support, you can expect 64-bit\n       configurations to work. In combination with threads some tests might\n       still fail.\n\n   AIX 4.2 and extensions using C++ with statics\n       In AIX 4.2 Perl extensions that use C++ functions that use statics may\n       have problems in that the statics are not getting initialized.  In\n       newer AIX releases this has been solved by linking Perl with the libC_r\n       library, but unfortunately in AIX 4.2 the said library has an obscure\n       bug where the various functions related to time (such as time() and\n       gettimeofday()) return broken values, and therefore in AIX 4.2 Perl is\n       not linked against the libC_r."
+  manpageQuestion1: What is the primary purpose of the perlaix resource?
+  manpageQuestion2: How can one address the warning related to the reentrant variant of gethostbyaddr() in AIX?
+  manpageQuestion3: What is a known issue with Perl extensions on AIX 4.2 that uses C++ functions with statics?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlaix`.\n\n\n\nManpage text:\n\nAUTHORS\n       Rainer Tammer <tammer@tammer.net>\n\nperl v5.34.1\t\t\t  2022-02-19\t\t\t    PERLAIX(1)"
+  manpageQuestion1: What is the primary purpose of the perlaix command?
+  manpageQuestion2: 'How would you use perlaix to process a file named ''input.txt'' and output the results to ''output.txt''? '
+  manpageQuestion3: Can you provide an example of using perlaix with specific options to handle a particular type of input or output?
+

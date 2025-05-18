@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dmesg`.\n\n\n\nManpage text:\n\nDMESG(8)\t\t    System Manager's Manual\t\t      DMESG(8)\n\nNAME\n     dmesg – display the system message buffer\n\nSYNOPSIS\n     dmesg [-M core] [-N system]\n\nDESCRIPTION\n     Dmesg displays the contents of the system message buffer.\tThis command\n     needs to be run as root.\n\nSEE ALSO\n     syslogd(8)\n\nHISTORY\n     The dmesg command appeared in 4.0BSD.\n\nBSD 4\t\t\t\t June 5, 1993\t\t\t\t BSD 4"
+  manpageQuestion1: What is the primary purpose of the dmesg command?
+  manpageQuestion2: How can you use dmesg to display the system message buffer on a specific node in a multi-node system?
+  manpageQuestion3: What is the function of the -M core option when using dmesg?
+

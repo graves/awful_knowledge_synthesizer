@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pkreporter`.\n\n\n\nManpage text:\n\npkreporter(8)\t\t    System Manager's Manual\t\t pkreporter(8)\n\nNAME\n     pkreporter – inventories and reports PlugIn state.\n\nSYNOPSIS\n     pkreporter [-v]\n\nDESCRIPTION\n     pkreporter runs once per week to inventory and report PlugIn state.\n\n     -v       Enable verbose output.\n\nSEE ALSO\n     pluginkit(8) xpc(3)\n\nBUGS\n     None yet.\n\nHISTORY\n     pkreporter was first introduced in OS X 10.10.\n\nDarwin\t\t\t\t    6/22/14\t\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the pkreporter tool?
+  manpageQuestion2: How would you use pkreporter to generate a verbose report of PlugIn state?
+  manpageQuestion3: Can you explain the functionality of pkreporter and its schedule?
+

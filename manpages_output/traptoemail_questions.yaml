@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `traptoemail`.\n\n\n\nManpage text:\n\ntraptoemail(1)\t\t\t   Net-SNMP\t\t\ttraptoemail(1)\n\nNAME\n       traptoemail - snmptrapd handler script to convert snmp traps into\n       emails\n\nSYNOPSIS\n       traptoemail [-f FROM] [-s SMTPSERVER] ADDRESSES\n\nDESCRIPTION\n       converts snmp traps into email messages.\n\nOPTIONS\n       -f FROM\n\t      sender address, defaults to \"root\"\n\n       -s SMTPSERVER\n\t      SMTP server, defaults to \"localhost\"\n\n       ADDRESSES\n\t      recipient addresses\n\nV5.6.2.1\t\t\t  16 Nov 2006\t\t\ttraptoemail(1)"
+  manpageQuestion1: What is the primary purpose of the traptoemail tool?
+  manpageQuestion2: How would you configure traptoemail to send SNMP traps as emails with a custom sender address and SMTP server?
+  manpageQuestion3: Can you provide an example of using traptoemail to send an SNMP trap email to multiple recipients with default settings?
+

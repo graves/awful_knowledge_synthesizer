@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `logkextloadsd`.\n\n\n\nManpage text:\n\nLOGKEXTLOADSD(8)\t    System Manager's Manual\t      LOGKEXTLOADSD(8)\n\nNAME\n     logkextloadsd – logs information about the kexts that get loaded\n\nSYNOPSIS\n     logkextloadsd\n\nDESCRIPTION\n     The logkextloadsd command should not be run directly.\n\nSEE ALSO\n\nmacOS 15.3\t\t       November 12, 2012\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the logkextloadsd command?
+  manpageQuestion2: How would you use logkextloadsd to monitor the loading of kernel extensions during system boot?
+  manpageQuestion3: Can you describe the typical use case for the logkextloadsd command in a macOS environment?
+

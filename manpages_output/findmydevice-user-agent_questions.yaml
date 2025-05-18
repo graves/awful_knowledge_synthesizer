@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `findmydevice-user-agent`.\n\n\n\nManpage text:\n\nfindmydevice-user-agent(8)  System Manager's Manual findmydevice-user-agent(8)\n\nNAME\n     findmydevice-user-agent – Find My Mac user agent\n\nSYNOPSIS\n     findmydevice-user-agent\n\nDESCRIPTION\n     findmydevice-user-agent is the user agent for Find My Mac.\n\n     There are no configuration options to findmydevice-user-agent.  Users\n     should not run it manually.\n\nMac OS X\t\t\t    1/11/14\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the findmydevice-user-agent tool?
+  manpageQuestion2: How would you use findmydevice-user-agent to retrieve the user agent string for Find My Mac?
+  manpageQuestion3: Can you explain why users are advised not to run the findmydevice-user-agent command manually?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sysdiagnosed`.\n\n\n\nManpage text:\n\nsysdiagnosed(8) \t    System Manager's Manual\t       sysdiagnosed(8)\n\nNAME\n     sysdiagnosed – launchd daemon for the sysdiagnose cli tool\n\nSYNOPSIS\n     sysdiagnosed\n\nDESCRIPTION\n     sysdiagnosed should not be invoked manually. Instead, see `man\n     sysdiagnose` for information on the cli tool\n\nmacOS 15.3\t\t       February 22, 2023\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the sysdiagnosed resource?
+  manpageQuestion2: How would you use the sysdiagnosed daemon to manage system diagnostics data?
+  manpageQuestion3: Can you explain the relationship between sysdiagnosed and the sysdiagnose command-line tool?
+

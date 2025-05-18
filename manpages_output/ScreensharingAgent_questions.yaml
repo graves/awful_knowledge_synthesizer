@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ScreensharingAgent`.\n\n\n\nManpage text:\n\nScreensharingAgent(8)\t    System Manager's Manual\t ScreensharingAgent(8)\n\nNAME\n     ScreensharingAgent – communicates with screensharingd to provide access\n     to a user session.\n\nDESCRIPTION\n     The ScreensharingAgent command should not be run directly. Enable Screen\n     Sharing or Remote Management to use this service.\n\nmacOS 15.3\t\t       November 2, 2016 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the ScreensharingAgent tool?
+  manpageQuestion2: How would you configure Screen Sharing to use the ScreensharingAgent service?
+  manpageQuestion3: What are the common system configurations required to utilize ScreensharingAgent effectively?
+

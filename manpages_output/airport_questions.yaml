@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `airport`.\n\n\n\nManpage text:\n\nairport(8)\t\t    System Manager's Manual\t\t    airport(8)\n\nNAME\n     airport – get information for 802.11 interface\n\nSYNOPSIS\n     airport\n\nDESCRIPTION\n     airport manages 802.11 interfaces.  airport more information needed here.\n\nmacOS 15.3\t\t\t   2/1/2010\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the airport command?
+  manpageQuestion2: How would you use the airport command to display information about all 802.11 interfaces on a macOS system?
+  manpageQuestion3: Can you provide an example of using the airport command to configure a wireless network interface with specific settings?
+

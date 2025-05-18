@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `StorageManagementService`.\n\n\n\nManpage text:\n\nStorageManagementService(8)\t\t\t       System Manager's Manual\n\nNAME\n     StorageManagementService – Storage Management\n\nSYNOPSIS\n     StorageManagementService\n\nDESCRIPTION\n     StorageManagementService is the system daemon backing the Storage section\n     of System Preferences.\n\n     There are no configuration options to StorageManagementService, and users\n     should not run StorageManagementService manually.\n\nmacOS\t\t\t\t   05/09/22\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the StorageManagementService?
+  manpageQuestion2: How would you check if the StorageManagementService is running on a macOS system?
+  manpageQuestion3: Can you explain why users should not run StorageManagementService manually?
+

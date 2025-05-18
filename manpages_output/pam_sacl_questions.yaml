@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pam_sacl`.\n\n\n\nManpage text:\n\npam_sacl(8)\t\t    System Manager's Manual\t\t   pam_sacl(8)\n\nNAME\n     pam_sacl – Service Access Control List PAM module\n\nSYNOPSIS\n     [service-name] function-class control-flag pam_sacl [options]\n\nDESCRIPTION\n     The Service Access Control List PAM module supports the account\n     management function class.  In terms of the function-class parameter,\n     this is the “account” class.\n\n     The Service Access Control List account management module verifies that\n     the authenticated user is permitted access by checking the username\n     against the the SACL of the service named by the sacl_service option.\n\n     The following option must be passed to this account module:\n\n     sacl_service=SERVICE\n\t     This option names the SACL that the username should be checked\n\t     against.  SERVICE should be the literal name of the service (e.g.\n\t     “sacl_service=smb”).\n\n     The following options may be passed to the account module:\n\n     allow_trustacct\n\t     Always allow access to computer trust accounts."
+  manpageQuestion1: What is the primary purpose of the pam_sacl module?
+  manpageQuestion2: How would you configure the pam_sacl module to check a username against the SACL for the 'smb' service?
+  manpageQuestion3: Can you explain how to use the allow_trustacct option with the pam_sacl module?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pam_sacl`.\n\n\n\nManpage text:\n\ndebug   Debug information will be printed to the system log.\n\nSEE ALSO\n     pam.conf(5), pam(8)\n\nmacOS 15.3\t\t       February 7, 2009 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the pam_sacl resource?
+  manpageQuestion2: How can you enable debug information output for the pam_sacl resource?
+  manpageQuestion3: What is the relationship between the pam_sacl resource and the pam.conf file?
+

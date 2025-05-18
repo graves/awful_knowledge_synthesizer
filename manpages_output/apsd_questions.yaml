@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `apsd`.\n\n\n\nManpage text:\n\nAPSD(8) \t\t    System Manager's Manual\t\t       APSD(8)\n\nNAME\n     apsd – Apple Push Notification service daemon\n\nSYNOPSIS\n     apsd\n\nDESCRIPTION\n     apsd ApplePushService daemon for Apple Push Notification service.\tThis\n     is part of the ApplePushService framework.\n\n     There are no configuration options to apsd.  Users should not run apsd\n     manually.\n\nMac OS X\t\t       February 10, 2009\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the apsd command?
+  manpageQuestion2: How would you use the apsd command to manage Apple Push Notification service?
+  manpageQuestion3: Can you explain the typical usage scenario for the apsd command in a macOS environment?
+

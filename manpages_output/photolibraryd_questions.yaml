@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `photolibraryd`.\n\n\n\nManpage text:\n\nphotolibraryd(8)\t    System Manager's Manual\t      photolibraryd(8)\n\nNAME\n     photolibraryd – The macOS photo library agent.\n\nDESCRIPTION\n     photolibraryd is the photo library agent.\tIt handles all photo library\n     requests.\n\nSEE ALSO\n     cloudphotod(8), mstreamd(8), photoanalysisd(8)\n\nmacOS\t\t\t       November 2, 2016 \t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the photolibraryd tool?
+  manpageQuestion2: How would you use photolibraryd to manage photo library requests?
+  manpageQuestion3: Can you describe the role of photolibraryd in the macOS photo library system?
+

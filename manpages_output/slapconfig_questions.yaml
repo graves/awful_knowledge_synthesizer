@@ -1,0 +1,62 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `slapconfig`.\n\n\n\nManpage text:\n\nslapconfig(8)\t\t    System Manager's Manual\t\t slapconfig(8)\n\nNAME\n     slapconfig -- tool to configure slapd and related daemons\n\nSYNOPSIS\n     slapconfig command [command-options] [-q]\n\nDESCRIPTION\n     slapconfig is a utility for configuring slapd. It must be run by root.\n\nUSAGE\n     -q \t\t   suppress prompts.\n\n   Queries\n     -defaultsuffix\t   Returns the default suffix which is based on the\n\t\t\t   machine's DNS name, or hostname if DNS is not\n\t\t\t   available.\n\n     -getclientconfig\t   Returns whether this machine is an LDAP client, not\n\t\t\t   a client, or advanced.\n\n     -getldapconfig\t   Returns the LDAP server settings.\n\n     -getmacosxodpolicy    Returns a property list containing the directory\n\t\t\t   binding settings.\n\n     -getmasterconfig\t   Returns the list of replicas and replication\n\t\t\t   interval.\n\n     -getpasswordserveraddress\n\t\t\t   Returns the IP address of the default password\n\t\t\t   server.\n\n     -getreplicaconfig\t   Returns the master address and last update date.\n\n     -getstyle\t\t   Returns whether configuration is master, replica,\n\t\t\t   client, or standalone."
+  manpageQuestion1: What is the primary purpose of the slapconfig tool?
+  manpageQuestion2: How would you use slapconfig to retrieve the default suffix based on the machine's DNS name?
+  manpageQuestion3: Can you provide an example of using slapconfig to check if the machine is configured as an LDAP client or not?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `slapconfig`.\n\n\n\nManpage text:\n\n-help\t\t   Print usage information.\n\n     -ver\t\t   Displays version information.\n\n   Setup\n     -addreplica [--serverID num] [--guid\n     D1C9C376-D940-404D-9941-7AD24E6A37DA] ⟨replica-address⟩\n     Adds a replication link with the specified server.  The serverID and GUID\n     of the remote machine you'd like to replicate with.  The serverID and\n     GUID can be viewed in the target machine's computer record.  Replication\n     links are unidirectional, the corresponding command should be run on the\n     target server as well to get full replication working.  Caution should be\n     exercised with this command, it is best to avoid replication loops.\n\n     -changeip ⟨old-ip⟩ ⟨new-ip⟩ [⟨old-host⟩ ⟨new-host⟩]\n     Updates configuration records and files to contain the new host\n     information.  It does not change the IP address in Network preferences.\n\n     -createldapmasterandadmin [--allow_local_realm] [--certAuthName ⟨Cert\n     Auth Name⟩] [--certAdminEmail ⟨Cert Admin Email⟩] [--certOrgName ⟨Cert\n     Org Name⟩] ⟨new-admin⟩ ⟨new-fullname⟩ ⟨new-uid⟩ [⟨search base suffix⟩\n     [⟨realm⟩]]\n     Creates a new master LDAP server. Copies the root account to the new\n     master domain. Creates a new directory node administrator."
+  manpageQuestion1: What is the primary purpose of the slapconfig tool?
+  manpageQuestion2: How would you use slapconfig to add a replication link with a specified serverID and GUID?
+  manpageQuestion3: Can you provide an example of using slapconfig to create a new LDAP master server with specific administrative details?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `slapconfig`.
+
+
+
+    Manpage text:
+
+    -createreplica [--certAdminEmail ⟨Cert Admin Email⟩] ⟨master IP or name⟩
+         ⟨admin user⟩
+         Create a new replica from an existing LDAP master.
+
+         -createrootcertauthority ⟨Certificate Authority Name⟩ ⟨Certificate
+         Authority Admin Email⟩ ⟨Certificate Authority Organization Name⟩
+         Create a CA on the OD master.
+
+         -destroyldapserver [diradmin]
+         Turns off the LDAP server and deletes its database.  The optional
+         argument of the diradmin account name will then prompt for the diradmin
+         password and will inform all replication peers of the server's
+         destruction.
+
+         -promotereplica ⟨admin-user⟩ ⟨archive-path⟩
+         Converts an existing replica into a master using the current database.
+         Path to an archive from the master can given in order to add the root
+         CA's keys to the promoted master.
+
+         -removereplica [--guid D1C9C376-D940-404D-9941-7AD24E6A37DA]
+         -⟨replica-address⟩
+         Removes a replication link with the specified server.  The GUID of the
+         remote server being removed should be passed in with the --guid option.
+         Replication links are unidirectional, so the corresponding command should
+         be run on the target server to remove the other half of an existing
+         replication link.
+  manpageQuestion1: What is the primary purpose of the slapconfig tool?
+  manpageQuestion2: How would you use slapconfig to create a new LDAP replica from an existing master server?
+  manpageQuestion3: Can you provide an example of using slapconfig to remove a replication link from a server?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `slapconfig`.\n\n\n\nManpage text:\n\n-setclient\n     Configures the machine to bind using DHCP if it is not already a client.\n\n     -setldapconfig [-maxresults ⟨maximum search results⟩] [-searchtimeout\n     timeout] [-ssl on|off] [-sslidentity ⟨identity name⟩] [-sslserialnumber\n     ⟨certificate serial number⟩] [-sslsha1fingerprint ⟨certificate sha1\n     fingerprint as a hex encoded colon separated string⟩]\n     Applies the specified settings and restarts slapd. Settings not specified\n     are unchanged.\n\n     -setstandalone\n     Configures the machine to only use the local directory.\n\n     -setmacosxodpolicy [-binding [disabled|enabled|required] [] -cleartext\n     [blocked|allowed] [] -encrypt [yes|no] [] -sign [yes|no] []\n     -clientcaching [yes|no] [] -man-in-middle [blocked|allowed]]\n     Sets directory binding options.\n\n     -startldapserver\t   Configures launchd to run slapd.\n\n     -stopldapserver\t   Configures launchd not to run slapd.\n\n     -updateaddresses\t   Merges new interfaces into the list of LDAP\n\t\t\t   replicas."
+  manpageQuestion1: What is the primary purpose of the slapconfig tool?
+  manpageQuestion2: How would you use slapconfig to configure the machine to bind using DHCP and set a maximum of 100 search results with a timeout of 5 seconds, enabling SSL with the identity 'ldapcert' and serial number 1234567890?
+  manpageQuestion3: Can you provide an example of using slapconfig to set the machine to only use the local directory and enable client caching for LDAP?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `slapconfig`.\n\n\n\nManpage text:\n\nPassword Server\n     -startpasswordserver  Sets up a launchd plist file and starts the\n\t\t\t   password server.\n\n     -stoppasswordserver   Sets the launchd plist file to be disabled and\n\t\t\t   stops the password server.\n\n   Runtime\n     -enableslapdlog\t   Turns on the LDAP server logging to\n\t\t\t   /var/log/slapd.log.\n\n     -setfullsyncmode [yes | no]\n\t\t\t   The LDAP server defaults to running in a \"full sync\n\t\t\t   mode\" to ensure database transactions are fully\n\t\t\t   flushed to disk.  This improves data integrity in\n\t\t\t   the event of a power loss, but can result in slower\n\t\t\t   performance when importing large datasets.  Setting\n\t\t\t   this option to no disables this functionality\n\t\t\t   temporarily in order to speed up large imports.\n\t\t\t   After the import has been completed, this option\n\t\t\t   should be set back to yes for normal operation.\n\n   Backup and Restore\n     -backupdb ⟨archive-path⟩\n     Creates an archive containing the LDAP, Password Server and Kerberos\n     databases. It also contains Certificate Authority related data."
+  manpageQuestion1: What is the primary purpose of the slapconfig tool?
+  manpageQuestion2: How would you use slapconfig to stop the password server and disable the LDAP server logging?
+  manpageQuestion3: Can you provide an example of using slapconfig to create a backup archive for the LDAP, Password Server, and Kerberos databases?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `slapconfig`.\n\n\n\nManpage text:\n\n-restoredb ⟨archive-path⟩\n     Restores a directory to the backed-up state.\n\nENVIRONMENT\n     The environment variable SSOUtilDebugLevel can be set to change the\n     verbosity of the log.  Valid values are [0-9]. The default value is 1.\n\nFILES\n     /usr/sbin/slapconfig\n\nSEE ALSO\n     DirectoryService(1), slapd(8)\n\nMacOSX\t\t\t\tThu Feb 20 2003 \t\t\tMacOSX"
+  manpageQuestion1: What is the primary purpose of the slapconfig tool?
+  manpageQuestion2: How would you use slapconfig to restore a directory from an archive?
+  manpageQuestion3: What environment variable can be used to control the verbosity of slapconfig's logging, and what are its valid values?
+

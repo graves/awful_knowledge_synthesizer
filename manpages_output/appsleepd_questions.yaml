@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `appsleepd`.\n\n\n\nManpage text:\n\nAPPSLEEPD(8)\t\t    System Manager's Manual\t\t  APPSLEEPD(8)\n\nNAME\n     appsleepd – app sleep daemon\n\nSYNOPSIS\n     appsleepd\n\nDESCRIPTION\n     appsleepd provides app sleep services.\n\n     There are no configuration options to appsleepd.  Users should not run\n     appsleepd manually.\n\nMac OS X\t\t       February 1, 2013 \t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the appsleepd tool?
+  manpageQuestion2: How would you use appsleepd to manage application sleep settings on a macOS system?
+  manpageQuestion3: Can you explain the role of appsleepd in the context of macOS system operations?
+

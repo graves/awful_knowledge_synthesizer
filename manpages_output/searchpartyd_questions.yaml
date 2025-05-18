@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `searchpartyd`.\n\n\n\nManpage text:\n\nsearchpartyd(8) \t    System Manager's Manual\t       searchpartyd(8)\n\nNAME\n     searchpartyd – searchparty daemon\n\nSYNOPSIS\n     searchpartyd\n\nDESCRIPTION\n     searchpartyd is a daemon.\n\n     There are no configuration options to searchpartyd.  Users should not run\n     it manually.\n\nMac OS X\t\t\t    1/11/14\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the searchpartyd tool?
+  manpageQuestion2: How would you use searchpartyd to manage search-related tasks on a macOS system?
+  manpageQuestion3: Can you explain the typical usage scenario for the searchpartyd daemon?
+

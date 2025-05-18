@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ReportMemoryException`.\n\n\n\nManpage text:\n\nReportMemoryException(8)    System Manager's Manual   ReportMemoryException(8)\n\nNAME\n     ReportMemoryException – generates memory usage diagnostic logs\n\nSYNOPSIS\n     ReportMemoryException\n\nDESCRIPTION\n     The ReportMemoryException command is a system service which should only\n     be launched by launchd. It generates memory usage diagnostic logs as\n     indicated by system events such as memory limit violations.\n\nmacOS 15.3\t\t\t April 9, 2018\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the ReportMemoryException command?
+  manpageQuestion2: How would you use the ReportMemoryException command to generate memory usage diagnostic logs when a memory limit violation occurs?
+  manpageQuestion3: Can you explain the typical scenario in which the ReportMemoryException command is invoked by launchd?
+

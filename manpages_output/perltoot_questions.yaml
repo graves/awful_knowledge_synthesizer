@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perltoot`.\n\n\n\nManpage text:\n\nPERLTOOT(1)\t       Perl Programmers Reference Guide \t   PERLTOOT(1)\n\n\nNAME\n       perltoot - Links to information on object-oriented programming in Perl\n\nDESCRIPTION\n       For information on OO programming with Perl, please see perlootut and\n       perlobj.\n\n       (The above documents supersede the tutorial that was formerly here in\n       perltoot.)\n\nperl v5.34.1\t\t\t  2022-02-19\t\t\t   PERLTOOT(1)"
+  manpageQuestion1: What is the primary purpose of the perltoot resource?
+  manpageQuestion2: How would you use perltoot to access information on object-oriented programming in Perl?
+  manpageQuestion3: Can you explain the relationship between perltoot and the perlootut and perlobj resources?
+

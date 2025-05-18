@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `captiveagent`.\n\n\n\nManpage text:\n\ncaptiveagent(8) \t    System Manager's Manual\t       captiveagent(8)\n\n\n\nNAME\n     captiveagent – Daemon to detect and process captive networks.\n\nDESCRIPTION\n     captiveagent This daemon issues HTTP requests to determine whether the\n     network contains a captive web portal. It may also perform HTTPS\n     transactions to login to and logout from the web portal.\n\nmacOS 15.3\t\t       February 16, 2017\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the captiveagent daemon?
+  manpageQuestion2: How does the captiveagent daemon determine if a network has a captive web portal?
+  manpageQuestion3: What are the main functions of the captiveagent daemon in the context of network authentication?
+

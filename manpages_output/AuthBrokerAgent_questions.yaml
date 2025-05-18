@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `AuthBrokerAgent`.\n\n\n\nManpage text:\n\nAuthBrokerAgent(8)\t    System Manager's Manual\t    AuthBrokerAgent(8)\n\nNAME\n     AuthBrokerAgent – The proxy credential daemon\n\nDESCRIPTION\n     AuthBrokerAgent manages HTTP(S) proxy credentials.\n\n     There are no configuration options to AuthBrokerAgent. Users should not\n     run AuthBrokerAgent manually.\n\nmacOS 15.3\t\t       December 7, 2016 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the AuthBrokerAgent tool?
+  manpageQuestion2: How would you use AuthBrokerAgent to manage HTTP(S) proxy credentials?
+  manpageQuestion3: Can you provide an example of using AuthBrokerAgent to handle automatic credential management for a web browser?
+

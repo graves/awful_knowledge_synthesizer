@@ -1,0 +1,56 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dbmmanage`.\n\n\n\nManpage text:\n\nDBMMANAGE(1)\t\t\t   dbmmanage\t\t\t  DBMMANAGE(1)\n\n\n\nNAME\n       dbmmanage - Manage user authentication files in DBM format\n\n\nSYNOPSIS\n       dbmmanage [ encoding ] filename add|adduser|check|delete|update\n       username [ encpasswd [ group[,group...] [ comment ] ] ]\n\n\n       dbmmanage filename view [ username ]\n\n\n       dbmmanage filename import\n\n\n\nSUMMARY\n       dbmmanage is used to create and update the DBM format files used to\n       store usernames and password for basic authentication of HTTP users via\n       mod_authn_dbm. Resources available from the Apache HTTP server can be\n       restricted to just the users listed in the files created by dbmmanage.\n       This program can only be used when the usernames are stored in a DBM\n       file. To use a flat-file database see htpasswd.\n\n\n       Another tool to maintain a DBM password database is htdbm.\n\n\n       This manual page only lists the command line arguments. For details of\n       the directives necessary to configure user authentication in httpd see\n       the httpd manual, which is part of the Apache distribution or can be\n       found at http://httpd.apache.org/."
+  manpageQuestion1: What is the primary purpose of the dbmmanage command?
+  manpageQuestion2: How would you use dbmmanage to add a new user with the username 'jane' and password 'secret123' to a file named 'users.dbm'?
+  manpageQuestion3: Can you provide an example of using dbmmanage to view the details of a specific user, such as 'bob', from the 'users.dbm' file?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dbmmanage`.\n\n\n\nManpage text:\n\nOPTIONS\n       filename\n\t      The filename of the DBM format file. Usually without the\n\t      extension .db, .pag, or .dir.\n\n       username\n\t      The user for which the operations are performed. The username\n\t      may not contain a colon (:).\n\n       encpasswd\n\t      This is the already hashed password to use for the update and\n\t      add commands. You may use a hyphen (-) if you want to get\n\t      prompted for the password, but fill in the fields afterwards.\n\t      Additionally when using the update command, a period (.) keeps\n\t      the original password untouched.\n\n       group  A group, which the user is member of. A groupname may not\n\t      contain a colon (:). You may use a hyphen (-) if you don't want\n\t      to assign the user to a group, but fill in the comment field.\n\t      Additionally when using the update command, a period (.) keeps\n\t      the original groups untouched.\n\n       comment\n\t      This is the place for your opaque comments about the user, like\n\t      realname, mailaddress or such things. The server will ignore\n\t      this field."
+  manpageQuestion1: What is the primary purpose of the dbmmanage command?
+  manpageQuestion2: How would you use dbmmanage to update a user's password in the DBM file without changing their group?
+  manpageQuestion3: Can you provide an example of using dbmmanage to add a new user with a hashed password and a comment field?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dbmmanage`.\n\n\n\nManpage text:\n\nEncodings\n       -d     crypt hashing (default, except on Win32, Netware)\n\n       -m     MD5 hashing (default on Win32, Netware)\n\n       -s     SHA1 hashing\n\n       -p     plaintext (not recommended)\n\n\n   Commands\n       add    Adds an entry for username to filename using the hashed password\n\t      encpasswd. dbmmanage passwords.dat add rbowen foKntnEF3KSXA\n\n       adduser\n\t      Asks for a password and then adds an entry for username to\n\t      filename. dbmmanage passwords.dat adduser krietz\n\n       check  Asks for a password and then checks if username is in filename\n\t      and if it's password matches the specified one. dbmmanage\n\t      passwords.dat check rbowen\n\n       delete Deletes the username entry from filename. dbmmanage\n\t      passwords.dat delete rbowen\n\n       import Reads username:password entries (one per line) from STDIN and\n\t      adds them to filename. The passwords already have to be crypted.\n\n       update Same as the adduser command, except that it makes sure username\n\t      already exists in filename. dbmmanage passwords.dat update\n\t      rbowen\n\n       view   Just displays the contents of the DBM file. If you specify a\n\t      username, it displays the particular record only. dbmmanage\n\t      passwords.dat view"
+  manpageQuestion1: What is the primary purpose of the dbmmanage utility?
+  manpageQuestion2: How would you use dbmmanage to add a new user with the username 'johndoe' and hashed password 'abc123'?
+  manpageQuestion3: Can you provide an example of using dbmmanage to check if the username 'admin' exists in the password file and verify its password?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dbmmanage`.
+
+
+
+    Manpage text:
+
+    BUGS
+           One should be aware that there are a number of different DBM file
+           formats in existence, and with all likelihood, libraries for more than
+           one format may exist on your system. The three primary examples are
+           SDBM, NDBM, the GNU project's GDBM, and Berkeley DB 2. Unfortunately,
+           all these libraries use different file formats, and you must make sure
+           that the file format used by filename is the same format that dbmmanage
+           expects to see. dbmmanage currently has no way of determining what type
+           of DBM file it is looking at. If used against the wrong format, will
+           simply return nothing, or may create a different DBM file with a
+           different name, or at worst, it may corrupt the DBM file if you were
+           attempting to write to it.
+
+
+           dbmmanage has a list of DBM format preferences, defined by the
+           @AnyDBM::ISA array near the beginning of the program. Since we prefer
+           the Berkeley DB 2 file format, the order in which dbmmanage will look
+           for system libraries is Berkeley DB 2, then NDBM, then GDBM and then
+           SDBM. The first library found will be the library dbmmanage will
+           attempt to use for all DBM file transactions. This ordering is slightly
+           different than the standard @AnyDBM::ISA ordering in Perl, as well as
+           the ordering used by the simple dbmopen() call in Perl, so if you use
+           any other utilities to manage your DBM files, they must also follow
+           this preference ordering. Similar care must be taken if using programs
+           in other languages, like C, to access these files.
+  manpageQuestion1: What is the primary purpose of the dbmmanage command?
+  manpageQuestion2: How can you ensure that dbmmanage uses the Berkeley DB 2 format when working with a DBM file?
+  manpageQuestion3: What are the potential risks of using dbmmanage on a DBM file with an incompatible format?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dbmmanage`.\n\n\n\nManpage text:\n\nOne can usually use the file program supplied with most Unix systems to\n       see what format a DBM file is in.\n\n\nApache HTTP Server\t\t  2018-07-06\t\t\t  DBMMANAGE(1)"
+  manpageQuestion1: What is the primary purpose of the dbmmanage command?
+  manpageQuestion2: How would you use dbmmanage to check the format of a DBM file named 'mydbmfile.dbm'?
+  manpageQuestion3: Can you provide an example of using dbmmanage to list the contents of a DBM file?
+

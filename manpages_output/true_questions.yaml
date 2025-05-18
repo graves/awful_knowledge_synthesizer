@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `true`.\n\n\n\nManpage text:\n\nTRUE(1) \t\t    General Commands Manual\t\t       TRUE(1)\n\nNAME\n     true – return true value\n\nSYNOPSIS\n     true\n\nDESCRIPTION\n     The true utility always returns with an exit code of zero.\n\n     Some shells may provide a builtin true command which is identical to this\n     utility.  Consult the builtin(1) manual page.\n\nSEE ALSO\n     builtin(1), csh(1), false(1), sh(1)\n\nSTANDARDS\n     The true utility is expected to be IEEE Std 1003.2 (“POSIX.2”)\n     compatible.\n\nmacOS 15.3\t\t\t June 9, 1993\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the true command?
+  manpageQuestion2: How would you use the true command in a shell script to ensure a command sequence always succeeds?
+  manpageQuestion3: Can you explain the difference between using the built-in true command in a shell and the external true utility?
+

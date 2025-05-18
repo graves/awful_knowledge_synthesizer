@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `gbk`.\n\n\n\nManpage text:\n\nGBK(5)\t\t\t      File Formats Manual\t\t\tGBK(5)\n\nNAME\n     gbk – Guojia biaozhun kuozhan (GBK) encoding method for Chinese text\n\nSYNOPSIS\n     ENCODING \"GBK\"\n\nDESCRIPTION\n     GBK is a backwards-compatible extension of the GB 2312-1980 encoding\n     method for Chinese text, which adds the characters defined in the Unified\n     Han portion of the Unicode 2.1 standard.\n\n     Multibyte characters in the GBK encoding can be one byte or two bytes\n     long.  GB 11383-1981 (ASCII) characters are represented by single bytes\n     in the range 0x00 to 0x7F.  Chinese characters are represented by two\n     bytes, beginning with a byte in the range 0x80-0xFE and ending with a\n     byte in the range 0x40-0xFE.\n\nSEE ALSO\n     euc(5), gb18030(5), gb2312(5), utf8(5)\n\n     The Unicode Standard, Version 2.1, The Unicode Consortium, 1999.\n\n     Chinese National Standard GB 18030-2000: Information Technology --\n     Chinese ideograms coded character set for information interchange --\n     Extension for the basic set, March 2000."
+  manpageQuestion1: What is the primary purpose of the gbk encoding method?
+  manpageQuestion2: How would you use the gbk encoding to convert a string of Chinese characters into its byte representation?
+  manpageQuestion3: Can you explain how the gbk encoding handles multibyte characters compared to other encodings like UTF-8?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `gbk`.\n\n\n\nManpage text:\n\nSTANDARDS\n     GBK is not a standard, but has been superseded by GB 18030-2000.\n\nmacOS 15.3\t\t\tAugust 10, 2003 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the gbk resource?
+  manpageQuestion2: How would you use the gbk resource to convert a string from GBK encoding to UTF-8?
+  manpageQuestion3: Can you provide an example of using the gbk resource to decode a GBK-encoded byte sequence into a string?
+

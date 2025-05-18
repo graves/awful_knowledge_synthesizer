@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sampleproc`.\n\n\n\nManpage text:\n\nsampleproc(1m)\t\t\t USER COMMANDS\t\t\tsampleproc(1m)\n\nNAME\n       sampleproc - sample processes on the CPUs. Uses DTrace.\n\nSYNOPSIS\n       sampleproc [hertz]\n\nDESCRIPTION\n       This program samples which process is on each CPU, at a particular\n       configurable rate. This can be used as an estimate for which process is\n       consuming the most CPU time.\n\n       Since this uses DTrace, only users with root privileges can run this\n       command.\n\nEXAMPLES\n       Sample at 100 hertz,\n\t      # sampleproc\n\n       Sample at 400 hertz,\n\t      # sampleproc 400\n\nFIELDS\n       PID    process ID\n\n       COMMAND\n\t      command name\n\n       COUNT  number of samples\n\n       PERCENT\n\t      percent of CPU usage\n\nBASED ON\n       /usr/demo/dtrace/prof.d\n\nDOCUMENTATION\n       DTrace Guide \"profile Provider\" chapter (docs.sun.com)\n\n       See the DTraceToolkit for further documentation under the Docs\n       directory. The DTraceToolkit docs may include full worked examples with\n       verbose descriptions explaining the output.\n\nEXIT\n       sampleproc will sample until Ctrl-C is hit.\n\nSEE ALSO\n       dtrace(1M)"
+  manpageQuestion1: What is the primary purpose of the sampleproc command?
+  manpageQuestion2: How can you use sampleproc to sample CPU activity at 400 hertz?
+  manpageQuestion3: What does the sampleproc command output include, and how can it be used to estimate CPU usage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sampleproc`.\n\n\n\nManpage text:\n\nversion 0.70\t\t\t June 9, 2005\t\t\tsampleproc(1m)"
+  manpageQuestion1: What is the primary purpose of the sampleproc tool?
+  manpageQuestion2: How would you use sampleproc to display the process ID of the current process?
+  manpageQuestion3: Can you provide an example of using sampleproc to monitor the memory usage of a specific process?
+

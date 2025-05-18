@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pam_uwtmp`.\n\n\n\nManpage text:\n\npam_uwtmp(8)\t\t    System Manager's Manual\t\t  pam_uwtmp(8)\n\nNAME\n     pam_uwtmp – User Accounting PAM module\n\nSYNOPSIS\n     [service-name] function-class control-flag pam_uwtmp [options]\n\nDESCRIPTION\n     The User Accounting PAM module supports the session management function\n     class.  In terms of the function-class parameter, this is the “session”\n     class.\n\n     The User Accounting session management module updates the system's user\n     accounting database when a users logs in or out of the system.\n\nSEE ALSO\n     pam.conf(5), pam(8) utmpx(5)\n\nmacOS 15.3\t\t       February 7, 2009 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the pam_uwtmp tool?
+  manpageQuestion2: How would you use pam_uwtmp to update the user accounting database when a user logs in?
+  manpageQuestion3: Can you provide an example of using pam_uwtmp to record user activity during a session?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `CommCenterRootHelper`.\n\n\n\nManpage text:\n\nCommCenterRootHelper(8)     System Manager's Manual    CommCenterRootHelper(8)\n\nNAME\n     CommCenterRootHelper – Helper to CommCenter(8)\n\nDESCRIPTION\n     CommCenterRootHelper helps CommCenter(8) provide functionality to allow\n     phone calls to be made and received on the Mac.  See\n\n     https://support.apple.com/kb/PH18756\n\n     CommCenterRootHelper should not be directly invoked.\n\nSEE ALSO\n     CommCenter(8)\n\nmacOS 15.3\t\t\tApril 11, 2017\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the CommCenterRootHelper tool?
+  manpageQuestion2: How would you use CommCenterRootHelper to enable phone call functionality on a macOS system?
+  manpageQuestion3: Can you explain the role of CommCenterRootHelper in relation to the CommCenter command?
+

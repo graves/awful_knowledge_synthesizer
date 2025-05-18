@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `swtransparency-sysdiagnose`.\n\n\n\nManpage text:\n\ntransparency-sysdiagnose(1)\t\t\t       General Commands Manual\n\nNAME\n     swtransparency-sysdiagnose – sysdiagnose information for software\n     transparency project\n\nSYNOPSIS\n     gathers sysdiagnose information for transparency\n\nDESCRIPTION\n     Gathers sysdiagnose information for transparency\n\nSEE ALSO\n     a(transparencyd)\n\nDarwin\t\t\t\t    2/13/24\t\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the swtransparency-sysdiagnose command?
+  manpageQuestion2: How would you use the swtransparency-sysdiagnose command to gather sysdiagnose information for software transparency?
+  manpageQuestion3: Can you provide an example of using the swtransparency-sysdiagnose command in a script to collect transparency-related sysdiagnose data?
+

@@ -1,0 +1,50 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pcap-savefile`.\n\n\n\nManpage text:\n\nPCAP-SAVEFILE(5@)\t\t\t\t\t     PCAP-SAVEFILE(5@)\n\nNAME\n       pcap-savefile - libpcap savefile format\n\nDESCRIPTION\n       NOTE: applications and libraries should, if possible, use libpcap to\n       read savefiles, rather than having their own code to read savefiles.\n       If, in the future, a new file format is supported by libpcap,\n       applications and libraries using libpcap to read savefiles will be able\n       to read the new format of savefiles, but applications and libraries\n       using their own code to read savefiles will have to be changed to\n       support the new file format.\n\n       ``Savefiles'' read and written by libpcap and applications using\n       libpcap start with a per-file header.  The format of the per-file\n       header is:\n\n\t      ┌──────────────────────────────┐\n\t      │        Magic number\t     │\n\t      ├──────────────┬───────────────┤\n\t      │Major version │ Minor version │\n\t      ├──────────────┴───────────────┤\n\t      │      Time zone offset\t     │\n\t      ├──────────────────────────────┤\n\t      │     Time stamp accuracy      │\n\t      ├──────────────────────────────┤\n\t      │       Snapshot length\t     │\n\t      ├──────────────────────────────┤\n\t      │   Link-layer header type     │\n\t      └──────────────────────────────┘\n       The per-file header length is 24 octets."
+  manpageQuestion1: What is the primary purpose of the pcap-savefile format?
+  manpageQuestion2: How can developers ensure compatibility with future file formats when working with pcap-savefile?
+  manpageQuestion3: What is the structure of the per-file header in a pcap-savefile?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pcap-savefile`.
+
+
+
+    Manpage text:
+
+    All fields in the per-file header are in the byte order of the host
+           writing the file.  Normally, the first field in the per-file header is
+           a 4-byte magic number, with the value 0xa1b2c3d4.  The magic number,
+           when read by a host with the same byte order as the host that wrote the
+           file, will have the value 0xa1b2c3d4, and, when read by a host with the
+           opposite byte order as the host that wrote the file, will have the
+           value 0xd4c3b2a1.  That allows software reading the file to determine
+           whether the byte order of the host that wrote the file is the same as
+           the byte order of the host on which the file is being read, and thus
+           whether the values in the per-file and per-packet headers need to be
+           byte-swapped.
+
+           If the magic number has the value 0xa1b23c4d (with the two nibbles of
+           the two lower-order bytes of the magic number swapped), which would be
+           read as 0xa1b23c4d by a host with the same byte order as the host that
+           wrote the file and as 0x4d3cb2a1 by a host with the opposite byte order
+           as the host that wrote the file, the file format is the same as for
+           regular files, except that the time stamps for packets are given in
+           seconds and nanoseconds rather than seconds and microseconds.
+  manpageQuestion1: What is the primary purpose of the pcap-savefile utility?
+  manpageQuestion2: How can you create a PCAP file with timestamps in seconds and nanoseconds using pcap-savefile?
+  manpageQuestion3: What is the significance of the magic number 0xa1b2c3d4 in pcap-savefile files?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pcap-savefile`.\n\n\n\nManpage text:\n\nFollowing this are:\n\n\t      A 2-byte file format major version number; the current version\n\t      number is 2.\n\n\t      A 2-byte file format minor version number; the current version\n\t      number is 4.\n\n\t      A 4-byte time zone offset; this is always 0.\n\n\t      A 4-byte number giving the accuracy of time stamps in the file;\n\t      this is always 0.\n\n\t      A 4-byte number giving the \"snapshot length\" of the capture;\n\t      packets longer than the snapshot length are truncated to the\n\t      snapshot length, so that, if the snapshot length is N, only the\n\t      first N bytes of a packet longer than N bytes will be saved in\n\t      the capture.\n\n\t      a 4-byte number giving the link-layer header type for packets in\n\t      the capture; see pcap-linktype(7) for the LINKTYPE_ values that\n\t      can appear in this field.\n\n       Following the per-file header are zero or more packets; each packet\n       begins with a per-packet header, which is immediately followed by the\n       raw packet data.  The format of the per-packet header is:"
+  manpageQuestion1: What is the primary purpose of the pcap-savefile tool?
+  manpageQuestion2: How would you use pcap-savefile to save a network capture with a snapshot length of 1500 bytes and a link-layer header type of LINKTYPE_ETHERNET?
+  manpageQuestion3: Can you provide an example of using pcap-savefile to save a network capture with a specific time zone offset and timestamp accuracy?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pcap-savefile`.\n\n\n\nManpage text:\n\n┌──────────────────────────────────────────────┐\n\t      │ \t Time stamp, seconds value\t     │\n\t      ├──────────────────────────────────────────────┤\n\t      │Time stamp, microseconds or nanoseconds value │\n\t      ├──────────────────────────────────────────────┤\n\t      │       Length of captured packet data\t     │\n\t      ├──────────────────────────────────────────────┤\n\t      │   Un-truncated length of the packet data     │\n\t      └──────────────────────────────────────────────┘\n       The per-packet header length is 16 octets.\n\n       All fields in the per-packet header are in the byte order of the host\n       writing the file.  The per-packet header begins with a time stamp\n       giving the approximate time the packet was captured; the time stamp\n       consists of a 4-byte value, giving the time in seconds since January 1,\n       1970, 00:00:00 UTC, followed by a 4-byte value, giving the time in\n       microseconds or nanoseconds since that second, depending on the magic\n       number in the file header.  Following that are a 4-byte value giving\n       the number of bytes of captured data that follow the per-packet header\n       and a 4-byte value giving the number of bytes that would have been\n       present had the packet not been truncated by the snapshot length.  The\n       two lengths will be equal if the number of bytes of packet data are\n       less than or equal to the snapshot length."
+  manpageQuestion1: What is the primary purpose of the pcap-savefile tool?
+  manpageQuestion2: How would you use the pcap-savefile tool to save a packet capture with specific timestamp granularity (microseconds) and snapshot length?
+  manpageQuestion3: Can you explain how the per-packet header in pcap-savefile files is structured and what each field represents?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pcap-savefile`.\n\n\n\nManpage text:\n\nSEE ALSO\n       pcap(3PCAP)\n\n\t\t\t\t 24 April 2020\t\t     PCAP-SAVEFILE(5@)"
+  manpageQuestion1: What is the primary purpose of the pcap-savefile tool?
+  manpageQuestion2: How would you use pcap-savefile to save a packet capture session to a file?
+  manpageQuestion3: Can you provide an example of using pcap-savefile to capture and save network traffic from a specific interface?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `LiveTranscriptionAgent`.\n\n\n\nManpage text:\n\nLiveTranscriptionAgent(8)   System Manager's Manual  LiveTranscriptionAgent(8)\n\nNAME\n     LiveTranscriptionAgent – Live Transcription Launch Agent\n\nDESCRIPTION\n     Captures user's audio and renders as text via audio input\n\nmacOS 15.3\t\t       October 21, 2021 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the LiveTranscriptionAgent tool?
+  manpageQuestion2: How would you use LiveTranscriptionAgent to start a live transcription service for audio input?
+  manpageQuestion3: Can you describe the typical use case for LiveTranscriptionAgent in a macOS environment?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `metrickitd`.\n\n\n\nManpage text:\n\nmetrickitd(8)\t\t    System Manager's Manual\t\t metrickitd(8)\n\nNAME\n     metrickitd – manages processing and vending of structured app specific\n     metrics through MetricKit\n\nDESCRIPTION\n     The metrickitd daemon works only within the context of a launchd job and\n     should not be run from the command line.\n\nmacOS 15.3\t\t       October 29, 2018 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the metrickitd daemon?
+  manpageQuestion2: How can the metrickitd daemon be managed on a macOS system?
+  manpageQuestion3: What are the key responsibilities of the metrickitd daemon in the context of MetricKit?
+

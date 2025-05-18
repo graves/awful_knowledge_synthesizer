@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `null`.\n\n\n\nManpage text:\n\nNULL(4) \t\t     Device Drivers Manual\t\t       NULL(4)\n\nNAME\n     null – the null device\n\nDESCRIPTION\n     The null device accepts and reads data as any ordinary (and willing) file\n     - but throws it away. The length of the null device is always zero.\n\nFILES\n     /dev/null\n\nHISTORY\n     A null device appeared in Version 7 AT&T UNIX.\n\nmacOS 15.3\t\t\t June 5, 1993\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the null device?
+  manpageQuestion2: How would you use the null device to discard output from a command?
+  manpageQuestion3: Can you explain how the null device is typically used in system programming?
+

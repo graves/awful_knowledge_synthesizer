@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `locationd`.\n\n\n\nManpage text:\n\nlocationd(8)\t\t    System Manager's Manual\t\t  locationd(8)\n\nNAME\n     locationd – location services daemon\n\nDESCRIPTION\n     locationd obtains geographic location and manages the authorization for\n     apps, daemons and widgets that request location updates.\n\nSEE ALSO\n     CoreLocationAgent(8)\n\nMac OS X\t\t       November 10, 2016\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the locationd service?
+  manpageQuestion2: How does locationd manage authorization for apps requesting location updates?
+  manpageQuestion3: What role does locationd play in the context of CoreLocationAgent?
+

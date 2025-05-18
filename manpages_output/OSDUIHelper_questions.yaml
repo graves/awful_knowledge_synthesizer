@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `OSDUIHelper`.\n\n\n\nManpage text:\n\nOSDUIHelper(8)\t\t    System Manager's Manual\t\tOSDUIHelper(8)\n\nNAME\n     OSDUIHelper – OSDFramework UI helper.\n\nDESCRIPTION\n     OSDUIHelper UI Helper inside OSDFramework responsible for drawing on\n     screen graphics such as volume/brightness up/down. This command is not\n     intended to be invoked directly. Radar component is OSDFramework/X.\n\nMac OS X\t\t       November 2, 2016 \t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the OSDUIHelper tool?
+  manpageQuestion2: How would you use OSDUIHelper to control the volume on a macOS system?
+  manpageQuestion3: Can you explain how OSDUIHelper integrates with the OSDFramework to manage screen graphics?
+

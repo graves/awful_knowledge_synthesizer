@@ -1,0 +1,66 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `docidx_lang_intro`.\n\n\n\nManpage text:\n\ndocidx_lang_intro(n)\t      Documentation tools\t  docidx_lang_intro(n)\n\n______________________________________________________________________________\n\nNAME\n       docidx_lang_intro - docidx language introduction\n\nDESCRIPTION\n       This document is an informal introduction to version 1 of the docidx\n       markup language based on a multitude of examples. After reading this a\n       writer should be ready to understand the two parts of the formal\n       specification, i.e. the docidx language syntax specification and the\n       docidx language command reference.\n\n   FUNDAMENTALS\n       While the docidx markup language is quite similar to the doctools\n       markup language, in the broadest terms possible, there is one key\n       difference. An index consists essentially only of markup commands, with\n       no plain text interspersed between them, except for whitespace.\n\n       Each markup command is a Tcl command surrounded by a matching pair of [\n       and ]. Inside of these delimiters the usual rules for a Tcl command\n       apply with regard to word quotation, nested commands, continuation\n       lines, etc. I.e."
+  manpageQuestion1: What is the primary purpose of the docidx_lang_intro tool?
+  manpageQuestion2: How would you use the docidx_lang_intro to understand the syntax of the docidx markup language?
+  manpageQuestion3: Can you explain how to use the docidx_lang_intro to learn about the commands available in the docidx language?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `docidx_lang_intro`.\n\n\n\nManpage text:\n\n... [key {markup language}] ...\n\n\n\t ... [manpage thefile \\\\\n\t\t {file description}] ...\n\n\n   BASIC STRUCTURE\n       The most simple document which can be written in docidx is\n\n\t   [index_begin GROUPTITLE TITLE]\n\t   [index_end]\n\n\n       Not very useful, but valid. This also shows us that all docidx\n       documents consist of only one part where we will list all keys and\n       their references.\n\n       A more useful index will contain at least keywords, or short 'keys',\n       i.e. the phrases which were indexed. So:\n\n       [index_begin GROUPTITLE TITLE]\n       [key markup]\n       [key {semantic markup}]]\n       [key {docidx markup}]\n       [key {docidx language}]\n       [key {docidx commands}]\n       [index_end]\n\n\n       In the above example the command key is used to declare the keyword\n       phrases we wish to be part of the index.\n\n       However a truly useful index does not only list the keyword phrases,\n       but will also contain references to documents associated with the\n       keywords. Here is a made-up index for all the manpages in the module\n       base64:\n\n       [index_begin tcllib/base64 {De- & Encoding}]\n       [key base64]\n       [manpage base64]\n       [key encoding]\n       [manpage base64]\n       [manpage uuencode]\n       [manpage yencode]\n       [key uuencode]\n       [manpage uuencode]\n       [key yEnc]\n       [manpage yencode]\n       [key ydecode]\n       [manpage yencode]\n       [key yencode]\n       [manpage yencode]\n       [index_end]"
+  manpageQuestion1: What is the primary purpose of the docidx_lang_intro tool?
+  manpageQuestion2: How would you create a simple docidx document that indexes the keywords 'markup' and 'semantic markup', and includes references to a manpage named 'example.txt'?
+  manpageQuestion3: Can you provide an example of a docidx document that indexes the keywords 'encoding' and 'uuencode', and links them to the manpages 'base64', 'uuencode', and 'yencode'?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `docidx_lang_intro`.\n\n\n\nManpage text:\n\nIn the above example the command manpage is used to insert references\n       to documents, using symbolic file names, with each command belonging to\n       the last key command coming before it.\n\n       The other command to insert references is url. In contrast to manpage\n       it uses explicit (possibly format-specific) urls to describe the\n       location of the referenced document. As such this command is intended\n       for the creation of references to external documents which could not be\n       handled in any other way.\n\n   ADVANCED STRUCTURE\n       In all previous examples we fudged a bit regarding the markup actually\n       allowed to be used before the index_begin command opening the document.\n\n       Instead of only whitespace the two templating commands include and vset\n       are also allowed, to enable the writer to either set and/or import\n       configuration settings relevant to the table of contents. I.e. it is\n       possible to write\n\n       [include FILE]\n       [vset VAR VALUE]\n       [index_begin GROUPTITLE TITLE]\n       [index_end]\n\n       Even more important, these two commands are allowed anywhere where a\n       markup command is allowed, without regard for any other structure.\n\n       [index_begin GROUPTITLE TITLE]\n       [include FILE]\n       [vset VAR VALUE]\n       [index_end]\n\n       The only restriction include has to obey is that the contents of the\n       included file must be valid at the place of the inclusion. I.e. a file\n       included before index_begin may contain only the templating commands\n       vset and include, a file included after a key may contain only manape\n       or url references, and other keys, etc.\n\n   ESCAPES\n       Beyond the 6 commands shown so far we have two more available.  However\n       their function is not the marking up of index structure, but the\n       insertion of characters, namely [ and ].  These commands, lb and rb\n       respectively, are required because our use of [ and ] to bracket markup\n       commands makes it impossible to directly use [ and ] within the text.\n\n       Our example of their use are the sources of the last sentence in the\n       previous paragraph, with some highlighting added.\n\n\t ...\n\t These commands, [cmd lb] and [cmd lb] respectively, are required\n\t because our use of [lb] and [rb] to bracket markup commands makes it\n\t impossible to directly use [lb] and [rb] within the text.\n\t ..."
+  manpageQuestion1: What is the primary purpose of the docidx_lang_intro tool?
+  manpageQuestion2: How can you include a configuration file in a document using the docidx_lang_intro commands?
+  manpageQuestion3: What is the purpose of the lb and rb commands in the docidx_lang_intro format?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `docidx_lang_intro`.
+
+
+
+    Manpage text:
+
+    FURTHER READING
+           Now that this document has been digested the reader, assumed to be a
+           writer of documentation should be fortified enough to be able to
+           understand the formal docidx language syntax specification as well.
+           From here on out the docidx language command reference will also serve
+           as the detailed specification and cheat sheet for all available
+           commands and their syntax.
+
+           To be able to validate a document while writing it, it is also
+           recommended to familiarize oneself with Tclapps' ultra-configurable
+           dtp.
+
+           On the other hand, docidx is perfectly suited for the automatic
+           generation from doctools documents, and this is the route Tcllib's easy
+           and simple dtplite goes, creating an index for a set of documents
+           behind the scenes, without the writer having to do so on their own.
+
+    BUGS, IDEAS, FEEDBACK
+           This document, will undoubtedly contain bugs and other problems.
+           Please report such in the category doctools of the Tcllib SF Trackers
+           [http://sourceforge.net/tracker/?group_id=12883].  Please also report
+           any ideas for enhancements you may have.
+
+    SEE ALSO
+           docidx_intro, docidx_lang_cmdref, docidx_lang_syntax
+
+    KEYWORDS
+           docidx commands, docidx language, docidx markup, docidx syntax, markup,
+           semantic markup
+
+    CATEGORY
+           Documentation tools
+
+    COPYRIGHT
+           Copyright (c) 2007-2009 Andreas Kupries <andreas_kupries@users.sourceforge.net>
+  manpageQuestion1: What is the primary purpose of the docidx_lang_intro resource?
+  manpageQuestion2: How can a writer validate their documentation while using docidx commands?
+  manpageQuestion3: What is the main advantage of using docidx for automatic document generation?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `docidx_lang_intro`.\n\n\n\nManpage text:\n\ndoctools\t\t\t      1.0\t\t  docidx_lang_intro(n)"
+  manpageQuestion1: What is the primary purpose of the docidx_lang_intro tool?
+  manpageQuestion2: How would you use docidx_lang_intro to introduce a new language into the documentation system?
+  manpageQuestion3: Can you provide an example of using docidx_lang_intro to configure the documentation system for a specific programming language?
+

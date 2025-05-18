@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `appstored`.\n\n\n\nManpage text:\n\nAPPSTORED(8)\t\t    System Manager's Manual\t\t  APPSTORED(8)\n\nNAME\n     appstored\n\nSYNOPSIS\n     appstored – App Store support daemon\n\nDESCRIPTION\n     appstored provides support for App Store.\n\nmacOS\t\t\t\t  2018-03-01\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the appstored resource?
+  manpageQuestion2: How would you start the appstored daemon if it is not running?
+  manpageQuestion3: What is the function of the appstored resource in the context of macOS system operations?
+

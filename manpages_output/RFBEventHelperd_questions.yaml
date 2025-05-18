@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `RFBEventHelperd`.\n\n\n\nManpage text:\n\nRFBEventHelperd(8)\t    System Manager's Manual\t    RFBEventHelperd(8)\n\nNAME\n     RFBEventHelperd – Screen Sharing app helper daemon\n\nDESCRIPTION\n     RFBEventHelperd is used by the Screen Sharing app.\n\n     The RFBEventHelperd command should not be run directly.\n\nmacOS\t\t\t\t April 8, 2017\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the RFBEventHelperd tool?
+  manpageQuestion2: How would you use RFBEventHelperd in a system environment?
+  manpageQuestion3: Can you explain the typical usage scenario for RFBEventHelperd in macOS?
+

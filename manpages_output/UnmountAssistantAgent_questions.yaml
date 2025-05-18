@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `UnmountAssistantAgent`.\n\n\n\nManpage text:\n\nUnmountAssistantAgent(8)    System Manager's Manual   UnmountAssistantAgent(8)\n\nNAME\n     UnmountAssistantAgent – Provides help when a disk can't be ejected.\n\nDESCRIPTION\n     UnmountAssistantAgent displays a dialog telling a user which process is\n     preventing a disk eject. If the process can't be quit by the user, it\n     will offer an option to force eject the disk.\n\nmacOS 15.3\t\t\tApril 20, 2017\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the UnmountAssistantAgent tool?
+  manpageQuestion2: How does UnmountAssistantAgent assist a user in ejecting a disk that is being prevented by another process?
+  manpageQuestion3: Can you explain how the UnmountAssistantAgent interacts with the system to determine which processes are preventing a disk from being ejected?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `USBAgent`.\n\n\n\nManpage text:\n\nUSBAgent(8)\t\t    System Manager's Manual\t\t   USBAgent(8)\n\nNAME\n     USBAgent – Agent for USB devices.\n\nSYNOPSIS\n     NONE (launched by launchd)\n\nDESCRIPTION\n     USBAgent allows the system to to present notifications related to USB\n     devices.\n\n     This command is not intended to be invoked directly.\n\nFILES\n     /usr/libexec/USBAgent\n\nSEE ALSO\n     launchd(8) usbd(8)\n\nHISTORY\n     The USBAgent daemon first appeared in OS X 10.9.\n\nOS X\t\t\t       November 16, 2012\t\t\t  OS X"
+  manpageQuestion1: What is the primary purpose of the USBAgent tool?
+  manpageQuestion2: How would you use USBAgent to manage USB device notifications on a macOS system?
+  manpageQuestion3: Can you explain the role of USBAgent in the context of macOS system management?
+

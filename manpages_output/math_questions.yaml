@@ -1,0 +1,191 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `math`.\n\n\n\nManpage text:\n\nMATH(3) \t\t   Library Functions Manual\t\t       MATH(3)\n\nNAME\n     math – mathematical library functions\n\nSYNOPSIS\n     #include <math.h>\n\nDESCRIPTION\n     The header file math.h provides function prototypes and macros for\n     working with floating point values.\n\n     Each math.h function is provided in three variants: single, double and\n     extended precision.  The single and double precision variants operate on\n     IEEE-754 single and double precision values, which correspond to the C\n     types float and double, respectively.\n\n     On Intel Macs, the C type long double corresponds to 80-bit IEEE-754\n     double extended precision.  On iOS devices using ARM processors, long\n     double is mapped to double, as there is no hardware-supported wider type.\n\n     Details of the floating point formats can be found via \"man float\".\n\n     Users who need to repeatedly perform the same calculation on a large set\n     of data will probably find that the vector math library (composed of\n     vMathLib and vForce) yields better performance for their needs than\n     sequential calls to the libm."
+  manpageQuestion1: What is the primary purpose of the math library functions?
+  manpageQuestion2: How would you use the math library to perform a calculation involving floating-point numbers?
+  manpageQuestion3: Can you explain how the math library handles different precision levels for floating-point operations on Intel Macs versus iOS devices?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `math`.
+
+
+
+    Manpage text:
+
+    Users who need to perform mathematical operations on complex floating-
+         point numbers should consult the man pages for the complex portion of the
+         math library, via "man complex".
+
+    LIST OF FUNCTIONS
+         Each of the functions that use floating-point values are provided in
+         single, double, and extended precision; the double precision prototypes
+         are listed here.  The man pages for the individual functions provide more
+         details on their use, special cases, and prototypes for their single and
+         extended precision versions.
+
+         int fpclassify(double)
+         int isfinite(double)
+         int isinf(double)
+         int isnan(double)
+         int isnormal(double)
+         int signbit(double)
+
+         These function-like macros are used to classify a single floating-point
+         argument.
+
+         double copysign(double, double)
+         double nextafter(double, double)
+
+         copysign(x, y) returns the value equal in magnitude to x with the sign of
+         y.  nextafter(x, y) returns the next floating-point number after x in the
+         direction of y.  Both are correctly-rounded.
+  manpageQuestion1: What is the primary purpose of the math resource in macOS?
+  manpageQuestion2: How can you use the math library to determine if a floating-point number is infinite?
+  manpageQuestion3: Can you provide an example of using the math library to copy the sign of one floating-point number to another?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `math`.\n\n\n\nManpage text:\n\ndouble nan(const char *tag)\n\n     The nan() function returns a quiet NaN, without raising the invalid flag.\n\n     double ceil(double)\n     double floor(double)\n     double nearbyint(double)\n     double rint(double)\n     double round(double)\n     long int lrint(double)\n     long int lround(double)\n     long long int llrint(double)\n     long long int llround(double)\n     double trunc(double)\n\n     These functions provide various means to round floating-point values to\n     integral values.  They are correctly rounded.\n\n     double fmod(double, double)\n     double remainder(double, double)\n     double remquo(double x, double y, int *)\n\n     These return a remainder of the division of x by y with an integral\n     quotient.\tremquo() additionally provides access to a few lower bits of\n     the quotient.  They are correctly rounded.\n\n     double fdim(double, double)\n     double fmax(double, double)\n     double fmin(double, double)\n\n     fmax(x, y) and fmin(x, y) return the maximum and minimum of x and y,\n     respectively.  fdim(x, y) returns the positive difference of x and y. All\n     are correctly rounded."
+  manpageQuestion1: What is the primary purpose of the math library functions described in the manpage?
+  manpageQuestion2: How can you use the fmax function to find the maximum of two floating-point numbers?
+  manpageQuestion3: Can you provide an example of using the rint function to round a floating-point number to the nearest integer?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `math`.\n\n\n\nManpage text:\n\ndouble fma(double x, double y, double z)\n\n     fma(x, y, z) computes the value (x*y) + z as though without intermediate\n     rounding.\tIt is correctly rounded.\n\n     double fabs(double)\n     double sqrt(double)\n     double cbrt(double)\n     double hypot(double, double)\n\n     fabs(x), sqrt(x), and cbrt(x) return the absolute value, square root, and\n     cube root of x, respectively.  hypot(x, y) returns sqrt(x*x + y*y).\n     fabs() and sqrt() are correctly rounded.\n\n     double exp(double)\n     double exp2(double)\n     double __exp10(double)\n     double expm1(double)\n\n     exp(x), exp2(x), __exp10(x), and expm1(x) return e**x, 2**x, 10**x, and\n     e**x - 1, respectively.\n\n     double log(double)\n     double log2(double)\n     double log10(double)\n     double log1p(double)\n\n     log(x), log2(x), and log10(x) return the natural, base-2, and base-10\n     logarithms of x, respectively.  log1p(x) returns the natural log of 1+x.\n\n     double logb(double)\n     int ilogb(double)\n\n     logb(x) and ilogb(x) return the exponent of x."
+  manpageQuestion1: What is the primary purpose of the math library functions listed in the manpage?
+  manpageQuestion2: How would you use the fma function to compute (x*y) + z without intermediate rounding?
+  manpageQuestion3: Can you provide an example of using the sqrt function to calculate the square root of a number?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `math`.
+
+
+
+    Manpage text:
+
+    double modf(double, double *)
+         double frexp(double, int *)
+
+         modf(x, &y) returns the fractional part of x and stores the integral part
+         in y.  frexp(x, &n) returns the mantissa of x and stores the exponent in
+         n. They are correctly rounded.
+
+         double ldexp(double, int)
+         double scalbn(double, int)
+         double scalbln(double, long int)
+
+         ldexp(x, n), scalbn(x, n), and scalbln(x, n) return x*2**n.  They are
+         correctly rounded.
+
+         double pow(double, double)
+
+         pow(x,y) returns x raised to the power y.
+
+         double cos(double)
+         double sin(double)
+         double tan(double)
+
+         cos(x), sin(x), and tan(x) return the cosine, sine and tangent of x,
+         respectively.  Note that x is interpreted as specifying an angle in
+         radians.
+
+         double cosh(double)
+         double sinh(double)
+         double tanh(double)
+
+         cosh(x), sinh(x), and tanh(x) return the hyperbolic cosine, hyperbolic
+         sine and hyperbolic tangent of x, respectively.
+
+         double acos(double)
+         double asin(double)
+         double atan(double)
+         double atan2(double, double)
+  manpageQuestion1: What is the primary purpose of the math library functions described in the manpage?
+  manpageQuestion2: How would you use the pow function to calculate 2 raised to the power of 3?
+  manpageQuestion3: Can you provide an example of using the cos function to compute the cosine of π/2 radians?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `math`.
+
+
+
+    Manpage text:
+
+    acos(x), asin(x), and atan(x) return the inverse cosine, inverse sine and
+         inverse tangent of x, respectively.  Note that the result is an angle in
+         radians.  atan2(y, x) returns the inverse tangent of y/x in radians, with
+         sign chosen according to the quadrant of (x,y).
+
+         double acosh(double)
+         double asinh(double)
+         double atanh(double)
+
+         acosh(x), asinh(x), and atanh(x) return the inverse hyperbolic cosine,
+         inverse hyperbolic sine and inverse hyperbolic tangent of x,
+         respectively.
+
+         double tgamma(double)
+         double lgamma(double)
+
+         tgamma(x) and lgamma(x) return the values of the gamma function and its
+         logarithm evalutated at x, respectively.
+
+         double j0(double)
+         double j1(double)
+         double jn(int, double)
+         double y0(double)
+         double y1(double)
+         double yn(int, double)
+
+         j0(x), j1(x), and jn(x) return the values of the zeroth, first, and nth
+         Bessel function of the first kind evaluated at x, respectively.  y0(x),
+         y1(x), and yn(x) return the values of the zeroth, first, and nth Bessel
+         function of the second kind evaluated at x, respectively.
+  manpageQuestion1: What is the primary purpose of the math library functions described in the manpage?
+  manpageQuestion2: How would you use the acos function to calculate the inverse cosine of a value and return the result in radians?
+  manpageQuestion3: Can you provide an example of using the tgamma function to compute the gamma function of a given number?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `math`.
+
+
+
+    Manpage text:
+
+    double erf(double)
+         double erfc(double)
+
+         erf(x) and erfc(x) return the values of the error function and the
+         complementary error function evaluated at x, respectively.
+
+    MATHEMATICAL CONSTANTS
+         In addition to the functions listed above, math.h defines a number of
+         useful constants, listed below.
+
+         CONSTANT  VALUE
+         M_E       base of natural logarithm, e
+         M_LOG2E   log2(e)
+         M_LOG10E  log10(e)
+         M_LN2     ln(2)
+         M_LN10    ln(10)
+         M_PI      pi
+         M_PI_2    pi / 2
+         M_PI_4    pi / 4
+         M_1_PI    1 / pi
+         M_2_PI    2 / pi
+         M_2_SQRTPI2 / sqrt(pi)
+         M_SQRT2   sqrt(2)
+         M_SQRT1_2 sqrt(1/2)
+
+    IEEE STANDARD 754 FLOATING-POINT ARITHMETIC
+         The libm functions declared in math.h provide mathematical library
+         functions in single-, double-, and extended-precision IEEE-754 floating-
+         point formats on Intel macs, and in single- and double-precision IEEE-754
+         floating-point formats on PowerPC macs.
+
+    SEE ALSO
+         float(3), complex(3)
+  manpageQuestion1: What is the primary purpose of the math library functions and constants?
+  manpageQuestion2: How would you compute the error function of a value using the math library?
+  manpageQuestion3: Can you provide an example of accessing a mathematical constant like pi from the math library?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `math`.\n\n\n\nManpage text:\n\nSTANDARDS\n     The <math.h> functions conform to the ISO/IEC 9899:2011 standard.\n\nmacOS 15.3\t\t\tAugust 16, 2012 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the math resource?
+  manpageQuestion2: How would you use the math resource to perform a mathematical operation?
+  manpageQuestion3: Can you describe the standards that the math resource conforms to?
+

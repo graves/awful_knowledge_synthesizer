@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `corecaptured`.\n\n\n\nManpage text:\n\ncorecaptured(8) \t    System Manager's Manual\t       corecaptured(8)\n\nNAME\n     corecaptured – corecaptured daemon\n\nSYNOPSIS\n     corecaptured\n\nDESCRIPTION\n     corecaptured Captures WiFi logs when a failure is reported. It shutdown\n     itself after 1 min of inactivity of log collection.\n\nmacOS 15.3\t\t       February 27, 2017\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the corecaptured daemon?
+  manpageQuestion2: How would you start the corecaptured daemon to capture WiFi logs when a failure is reported?
+  manpageQuestion3: What happens to the corecaptured daemon after it has been running for 1 minute with no log activity?
+

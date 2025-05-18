@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `nesessionmanager`.\n\n\n\nManpage text:\n\nnesessionmanager(8)\t    System Manager's Manual\t   nesessionmanager(8)\n\nNAME\n     nesessionmanager – Daemon responsible for running and managing Network\n     Extension sessions\n\nDESCRIPTION\n     nesessionmanager is part of the Network Extension framework. It is\n     responsible for starting and stopping Network Extension sessions and for\n     setting up and maintaining network configuration and policy associated\n     with Network Extension sessions.\n\n     Types of Network Extension sessions include:\n\n     •\t VPN\n\n     •\t Content Filter\n\nmacOS 15.3\t\t\t March 3, 2017\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the nesessionmanager daemon?
+  manpageQuestion2: How does nesessionmanager handle the lifecycle of Network Extension sessions such as VPNs?
+  manpageQuestion3: What role does nesessionmanager play in managing network configuration and policy for Network Extension sessions?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `avbdeviced`.\n\n\n\nManpage text:\n\navbdeviced(1)\t\t    General Commands Manual\t\t avbdeviced(1)\n\nNAME\n     avbdeviced – peristent entity management for AVB.\n\nSYNOPSIS\n     avbdeviced\n\nDESCRIPTION\n     The avbdeviced executable is used for the managment of persistent AVB\n     entities which are advertised by the Mac.\n\n     avbdeviced is launched automatically by launched as needed on demand and\n     should not be launched manually.\n\nFILES\n     /Library/Application_Support/Apple/com.apple.avbdeviced.devices\tconfigured\n\t\t\t\t\t\t\t\t\tEntities\n     /Library/Application_Support/Apple/com.apple.avbdeviced.entityIDs\tallocated\n\t\t\t\t\t\t\t\t\tEntity\n\t\t\t\t\t\t\t\t\tIDs\n\nDarwin\t\t\t\t    2/10/14\t\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the avbdeviced tool?
+  manpageQuestion2: How would you use avbdeviced to manage persistent AVB entities on a macOS system?
+  manpageQuestion3: Can you provide an example of how avbdeviced is configured to manage AVB entities?
+

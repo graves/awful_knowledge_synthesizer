@@ -1,0 +1,64 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pdisk`.\n\n\n\nManpage text:\n\nPDISK(8)\t\t    System Manager's Manual\t\t      PDISK(8)\n\nNAME\n     pdisk – Apple partition table editor\n\nSYNOPSIS\n     pdisk [-acdfhilLrv] [--abbr] [--compute_size] [--debug] [--fname]\n\t   [--help] [--interactive] [--list] [--logical] [--readonly]\n\t   [--version] [device ...]\n\nDESCRIPTION\n     pdisk is a menu driven program which partitions disks using the standard\n     Apple disk partitioning scheme described in \"Inside Macintosh: Devices\".\n     It does not support the Intel/DOS partitioning scheme supported by\n     fdisk(8).\n\n     Supported options are:\n     -a\n     --abbr\t       Abbreviate the partition types shown in the partition\n\t\t       list.\n     -c\n     --compute_size    Causes pdisk to always ignore the device size listed in\n\t\t       the partition table and compute the device size by\n\t\t       other means.\n     -d\n     --debug\t       Turns on debugging.  Doesn't add that much output, but\n\t\t       does add a new command ‘x’ to the editing commands that\n\t\t       accesses an eclectic bunch of undocumented\n\t\t       functionality.\n     -f\n     --fname\t       Show HFS volume names instead of partition name when\n\t\t       available.\n     -h\n     --help\t       Prints a short help message.\n     -i\n     --interactive     Causes pdisk to go into an interactive mode similar to\n\t\t       the MacOS version of the program.\n     -l\n     --list\t       If no device argument is given, pdisk tries to list\n\t\t       partition tables for all available drives.  Otherwise,\n\t\t       pdisk lists the partition tables for the specified\n\t\t       devices.\n     -L\n     --logical\t       Show partition limits in logical blocks.  Default is\n\t\t       physical blocks.\n     -r\n     --readonly        Prevents pdisk from writing to the device.\n     -v\n     --version\t       Prints the version number of pdisk."
+  manpageQuestion1: What is the primary purpose of the pdisk command?
+  manpageQuestion2: How can you use pdisk to list the partition tables of all available drives?
+  manpageQuestion3: What command would you use to prevent pdisk from writing to a specified device while editing its partition table?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pdisk`.\n\n\n\nManpage text:\n\nEditing Partition Tables\n     An argument which is simply the name of a device indicates that pdisk\n     should edit the partition table of that device.\n\n     The current top level editing commands are:\n\n\t   C\t(create with type also specified)\n\t   c\tcreate new partition\n\t   d\tdelete a partition\n\t   h\tcommand help\n\t   i\tinitialize partition map\n\t   n\t(re)name a partition\n\t   P\t(print ordered by base address)\n\t   p\tprint the partition table\n\t   q\tquit editing (don't save changes)\n\t   r\treorder partition entry in map\n\t   s\tchange size of partition map\n\t   t\tchange the type of an existing partition\n\t   w\twrite the partition table\n\n     Commands which take arguments prompt for each argument in turn.  You can\n     also type any number of the arguments separated by spaces and those\n     prompts will be skipped.  The only exception to typeahead are the\n     confirmation prompts on the i and w commands, since if we expect you to\n     confirm the decision, we shouldn't undermine that by allowing you to be\n     precipitate about it."
+  manpageQuestion1: What is the primary purpose of the pdisk utility?
+  manpageQuestion2: How would you use pdisk to create a new partition with the type '83' on the device /dev/disk0?
+  manpageQuestion3: Can you provide an example of using pdisk to print the partition table for the device /dev/disk1?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pdisk`.\n\n\n\nManpage text:\n\nPartitions are always specified by their number, which is the index of\n     the partition entry in the partition map.\tMost of the commands will\n     change the index numbers of all partitions after the affected partition.\n     You are advised to print the table as frequently as necessary.\n\n     The c (create new partition) command is the only one with complicated\n     arguments.  The first argument is the base address (in blocks) of the\n     partition.  Besides a raw number, you can also specify a partition number\n     followed by the letter ‘p’ to indicate that the first block of the new\n     partition should be the same as the first block of that existing free\n     space partition.  The second argument is the length of the partition in\n     blocks.  This can be a raw number or can be a partition number followed\n     by the letter ‘p’ to use the size of that partition or can be a number\n     followed by ‘k’, ‘m’, or ‘g’ to indicate the size in kilobytes,\n     megabytes, or gigabytes respectively.  (These are powers of 1024, of\n     course, not powers of 1000.)  The third argument is the name of the\n     partition.  This can be a single word without quotes, or a string\n     surrounded by single or double quotes."
+  manpageQuestion1: What is the primary purpose of the pdisk utility?
+  manpageQuestion2: How would you create a new partition starting at block 1024 with a length of 512 blocks and the name 'DataPartition'?
+  manpageQuestion3: Can you provide an example of using pdisk to create a partition that uses the size of an existing free space partition (partition number 3) and name it 'Backup'?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pdisk`.
+
+
+
+    Manpage text:
+
+    The C command is similar to the c command, with the addition of a
+         partition type argument after the other arguments.
+
+         The i (initalize) command prompts for the size of the device.
+
+         The n (name) command allows the name of a partition to be changed.
+
+         The r (reorder) command allows the index number of partitions to be
+         changed.  The index numbers are constrained to be a contiguous sequence.
+
+         The t (change partition type) command allows the type of a partition to
+         be changed.
+
+         The w (write) command writes the partition map out.
+
+    SEE ALSO
+         fdisk(8), gpt(8), newfs(8)
+
+    HISTORY
+         The pdisk utility was originally developed for MkLinux.
+
+    AUTHORS
+         Eryk Vershen
+
+    BUGS
+         Some people believe there should really be just one disk partitioning
+         utility.
+
+         Filesystem volume names are out of place in a partition utility.  This
+         utility supports HFS volume names, but not volume names of any other
+         filesystem types.
+
+         The --logical option has not been heavily tested.
+  manpageQuestion1: What is the primary purpose of the pdisk utility?
+  manpageQuestion2: How can you use pdisk to change the partition type of an existing partition?
+  manpageQuestion3: What is the process for writing the current partition map to disk using pdisk?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pdisk`.\n\n\n\nManpage text:\n\nmacOS 15.3\t\t\tApril 24, 2003\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the pdisk tool?
+  manpageQuestion2: How would you use pdisk to display information about a specific disk partition?
+  manpageQuestion3: Can you provide an example of using pdisk to check the disk usage and partition details on a macOS system?
+

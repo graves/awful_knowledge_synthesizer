@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `FDERecoveryAgent`.\n\n\n\nManpage text:\n\nFDERECOVERYAGENT(8)\t    System Manager's Manual\t   FDERECOVERYAGENT(8)\n\nNAME\n     FDERecoveryAgent – Full Disk Encryption Key Recovery Transmission Agent\n\nSYNOPSIS\n     FDERecoveryAgent\n\nDESCRIPTION\n     FDERecoveryAgent sends encrypted CoreStorage key recovery information to\n     Apple.  It is run only when \"Store the recovery key with Apple\" is\n     selected, and even then only if the information could not be transmitted\n     when that option was first selected.\n\nFILES\n     /System/Library/LaunchDaemons/com.apple.security.FDERecoveryAgent.plist\n\nSEE ALSO\n     diskutil(8)\n\nOS X\t\t\t      January 17th, 2011\t\t\t  OS X"
+  manpageQuestion1: What is the primary purpose of the FDERecoveryAgent tool?
+  manpageQuestion2: How is the FDERecoveryAgent typically used in a system administration context?
+  manpageQuestion3: Under what circumstances is the FDERecoveryAgent launched by the system?
+

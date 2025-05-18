@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `watchdogd`.\n\n\n\nManpage text:\n\nWATCHDOGD(8)\t\t    System Manager's Manual\t\t  WATCHDOGD(8)\n\nNAME\n     watchdogd – watchdog daemon\n\nDESCRIPTION\n     watchdogd ensures that the system is healthy and able to make forward\n     progress throughout the system lifecycle.\n     If watchdogd or the Watchdog KEXT determine that the system is unhealthy\n     they will attempt to take corrective action and ultimately may panic the\n     system to get it back to a usable state.\n\n     This command is not intended to be invoked directly.\n\n\nDarwin\t\t\t       November 9, 2018 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the watchdogd tool?
+  manpageQuestion2: How would you use watchdogd to ensure system health during boot?
+  manpageQuestion3: Can you explain how the watchdogd daemon contributes to system stability?
+

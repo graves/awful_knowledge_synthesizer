@@ -1,0 +1,460 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nPERLVMS(1)\t       Perl Programmers Reference Guide \t    PERLVMS(1)"
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How would you use the perlvms resource to perform a specific task in Perl programming?
+  manpageQuestion3: Can you provide an example of using the perlvms resource to achieve a particular functionality in Perl?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.
+
+
+
+    Manpage text:
+
+    NAME
+           perlvms - VMS-specific documentation for Perl
+
+    DESCRIPTION
+           Gathered below are notes describing details of Perl 5's behavior on
+           VMS.  They are a supplement to the regular Perl 5 documentation, so we
+           have focussed on the ways in which Perl 5 functions differently under
+           VMS than it does under Unix, and on the interactions between Perl and
+           the rest of the operating system.  We haven't tried to duplicate
+           complete descriptions of Perl features from the main Perl
+           documentation, which can be found in the [.pod] subdirectory of the
+           Perl distribution.
+
+           We hope these notes will save you from confusion and lost sleep when
+           writing Perl scripts on VMS.  If you find we've missed something you
+           think should appear here, please don't hesitate to drop a line to
+           vmsperl@perl.org.
+
+    Installation
+           Directions for building and installing Perl 5 can be found in the file
+           README.vms in the main source directory of the Perl distribution.
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How can one find installation instructions for Perl 5 on VMS?
+  manpageQuestion3: What is the main focus of the documentation provided by perlvms?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.
+
+
+
+    Manpage text:
+
+    Organization of Perl Images
+       Core Images
+           During the build process, three Perl images are produced.  Miniperl.Exe
+           is an executable image which contains all of the basic functionality of
+           Perl, but cannot take advantage of Perl XS extensions and has a hard-
+           wired list of library locations for loading pure-Perl modules.  It is
+           used extensively to build and test Perl and various extensions, but is
+           not installed.
+
+           Most of the complete Perl resides in the shareable image PerlShr.Exe,
+           which provides a core to which the Perl executable image and all Perl
+           extensions are linked. It is generally located via the logical name
+           PERLSHR.  While it's possible to put the image in SYS$SHARE to make it
+           loadable, that's not recommended. And while you may wish to INSTALL the
+           image for performance reasons, you should not install it with
+           privileges; if you do, the result will not be what you expect as image
+           privileges are disabled during Perl start-up.
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How can you locate the shareable Perl image PerlShr.Exe on a VMS system?
+  manpageQuestion3: What are the recommended practices for handling the PerlShr.Exe image on a VMS system?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.
+
+
+
+    Manpage text:
+
+    Finally, Perl.Exe is an executable image containing the main entry
+           point for Perl, as well as some initialization code.  It should be
+           placed in a public directory, and made world executable.  In order to
+           run Perl with command line arguments, you should define a foreign
+           command to invoke this image.
+
+       Perl Extensions
+           Perl extensions are packages which provide both XS and Perl code to add
+           new functionality to perl.  (XS is a meta-language which simplifies
+           writing C code which interacts with Perl, see perlxs for more details.)
+           The Perl code for an extension is treated like any other library module
+           - it's made available in your script through the appropriate "use" or
+           "require" statement, and usually defines a Perl package containing the
+           extension.
+
+           The portion of the extension provided by the XS code may be connected
+           to the rest of Perl in either of two ways.  In the static
+           configuration, the object code for the extension is linked directly
+           into PerlShr.Exe, and is initialized whenever Perl is invoked.  In the
+           dynamic configuration, the extension's machine code is placed into a
+           separate shareable image, which is mapped by Perl's DynaLoader when the
+           extension is "use"d or "require"d in your script.  This allows you to
+           maintain the extension as a separate entity, at the cost of keeping
+           track of the additional shareable image.  Most extensions can be set up
+           as either static or dynamic.
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How can Perl extensions be utilized in a script to add new functionality?
+  manpageQuestion3: What are the two main methods for integrating Perl extensions into Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nThe source code for an extension usually resides in its own directory.\n       At least three files are generally provided: Extshortname.xs (where\n       Extshortname is the portion of the extension's name following the last\n       \"::\"), containing the XS code, Extshortname.pm, the Perl library module\n       for the extension, and Makefile.PL, a Perl script which uses the\n       \"MakeMaker\" library modules supplied with Perl to generate a\n       Descrip.MMS file for the extension.\n\n   Installing static extensions\n       Since static extensions are incorporated directly into PerlShr.Exe,\n       you'll have to rebuild Perl to incorporate a new extension.  You should\n       edit the main Descrip.MMS or Makefile you use to build Perl, adding the\n       extension's name to the \"ext\" macro, and the extension's object file to\n       the \"extobj\" macro.  You'll also need to build the extension's object\n       file, either by adding dependencies to the main Descrip.MMS, or using a\n       separate Descrip.MMS for the extension.\tThen, rebuild PerlShr.Exe to\n       incorporate the new code."
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How would you install a static extension in PerlShr.Exe using perlvms?
+  manpageQuestion3: Can you explain the role of the Makefile.PL file in the perlvms resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nFinally, you'll need to copy the extension's Perl library module to the\n       [.Extname] subdirectory under one of the directories in @INC, where\n       Extname is the name of the extension, with all \"::\" replaced by \".\"\n       (e.g.  the library module for extension Foo::Bar would be copied to a\n       [.Foo.Bar] subdirectory).\n\n   Installing dynamic extensions\n       In general, the distributed kit for a Perl extension includes a file\n       named Makefile.PL, which is a Perl program which is used to create a\n       Descrip.MMS file which can be used to build and install the files\n       required by the extension.  The kit should be unpacked into a directory\n       tree not under the main Perl source directory, and the procedure for\n       building the extension is simply\n\n\t   $ perl Makefile.PL  ! Create Descrip.MMS\n\t   $ mmk\t       ! Build necessary files\n\t   $ mmk test\t       ! Run test code, if supplied\n\t   $ mmk install       ! Install into public Perl tree\n\n       VMS support for this process in the current release of Perl is\n       sufficient to handle most extensions.  (See the MakeMaker documentation\n       for more details on installation options for extensions.)"
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How would you install a Perl extension on VMS using the provided installation steps?
+  manpageQuestion3: What is the recommended location for copying a Perl extension's library module to ensure it is accessible during installation?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\n•   the [.Lib.Auto.Arch$PVersExtname] subdirectory of one of the\n\t   directories in @INC (where PVers is the version of Perl you're\n\t   using, as supplied in $], with '.' converted to '_'), or\n\n       •   one of the directories in @INC, or\n\n       •   a directory which the extensions Perl library module passes to the\n\t   DynaLoader when asking it to map the shareable image, or\n\n       •   Sys$Share or Sys$Library.\n\n       If the shareable image isn't in any of these places, you'll need to\n       define a logical name Extshortname, where Extshortname is the portion\n       of the extension's name after the last \"::\", which translates to the\n       full file specification of the shareable image.\n\nFile specifications\n   Syntax\n       We have tried to make Perl aware of both VMS-style and Unix-style file\n       specifications wherever possible.  You may use either style, or both,\n       on the command line and in scripts, but you may not combine the two\n       styles within a single file specification.  VMS Perl interprets Unix\n       pathnames in much the same way as the CRTL (e.g. the first component of\n       an absolute path is read as the device name for the VMS file\n       specification).\tThere are a set of functions provided in the\n       \"VMS::Filespec\" package for explicit interconversion between VMS and\n       Unix syntax; its documentation provides more details."
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How would you configure Perl to look for VMS-specific extensions in a custom directory?
+  manpageQuestion3: Can you explain how to handle file specifications when using Perl on VMS systems?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.
+
+
+
+    Manpage text:
+
+    We've tried to minimize the dependence of Perl library modules on Unix
+           syntax, but you may find that some of these, as well as some scripts
+           written for Unix systems, will require that you use Unix syntax, since
+           they will assume that '/' is the directory separator, etc.  If you find
+           instances of this in the Perl distribution itself, please let us know,
+           so we can try to work around them.
+
+           Also when working on Perl programs on VMS, if you need a syntax in a
+           specific operating system format, then you need either to check the
+           appropriate DECC$ feature logical, or call a conversion routine to
+           force it to that format.
+
+           The feature logical name DECC$FILENAME_UNIX_REPORT modifies traditional
+           Perl behavior in the conversion of file specifications from Unix to VMS
+           format in order to follow the extended character handling rules now
+           expected by the CRTL.  Specifically, when this feature is in effect,
+           the "./.../" in a Unix path is now translated to "[.^.^.^.]" instead of
+           the traditional VMS "[...]".  To be compatible with what MakeMaker
+           expects, if a VMS path cannot be translated to a Unix path, it is
+           passed through unchanged, so "unixify("[...]")" will return "[...]".
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How can you configure Perl to handle file paths differently when working on VMS systems?
+  manpageQuestion3: What is the effect of setting the DECC$FILENAME_UNIX_REPORT feature logical in a VMS environment when using Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nThere are several ambiguous cases where a conversion routine cannot\n       determine whether an input filename is in Unix format or in VMS format,\n       since now both VMS and Unix file specifications may have characters in\n       them that could be mistaken for syntax delimiters of the other type. So\n       some pathnames simply cannot be used in a mode that allows either type\n       of pathname to be present.  Perl will tend to assume that an ambiguous\n       filename is in Unix format.\n\n       Allowing \".\" as a version delimiter is simply incompatible with\n       determining whether a pathname is in VMS format or in Unix format with\n       extended file syntax.  There is no way to know whether \"perl-5.8.6\" is\n       a Unix \"perl-5.8.6\" or a VMS \"perl-5.8;6\" when passing it to unixify()\n       or vmsify().\n\n       The DECC$FILENAME_UNIX_REPORT logical name controls how Perl interprets\n       filenames to the extent that Perl uses the CRTL internally for many\n       purposes, and attempts to follow CRTL conventions for reporting\n       filenames.  The DECC$FILENAME_UNIX_ONLY feature differs in that it\n       expects all filenames passed to the C run-time to be already in Unix\n       format.\tThis feature is not yet supported in Perl since Perl uses\n       traditional OpenVMS file specifications internally and in the test\n       harness, and it is not yet clear whether this mode will be useful or\n       useable.  The feature logical name DECC$POSIX_COMPLIANT_PATHNAMES is\n       new with the RMS Symbolic Link SDK and included with OpenVMS v8.3, but\n       is not yet supported in Perl."
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How does Perl handle ambiguous filenames when converting between Unix and VMS formats?
+  manpageQuestion3: What is the role of the DECC$FILENAME_UNIX_REPORT logical name in Perl's filename interpretation?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.
+
+
+
+    Manpage text:
+
+    Filename Case
+           Perl enables DECC$EFS_CASE_PRESERVE and DECC$ARGV_PARSE_STYLE by
+           default.  Note that the latter only takes effect when extended parse is
+           set in the process in which Perl is running.  When these features are
+           explicitly disabled in the environment or the CRTL does not support
+           them, Perl follows the traditional CRTL behavior of downcasing command-
+           line arguments and returning file specifications in lower case only.
+
+           N. B.  It is very easy to get tripped up using a mixture of other
+           programs, external utilities, and Perl scripts that are in varying
+           states of being able to handle case preservation.  For example, a file
+           created by an older version of an archive utility or a build utility
+           such as MMK or MMS may generate a filename in all upper case even on an
+           ODS-5 volume.  If this filename is later retrieved by a Perl script or
+           module in a case preserving environment, that upper case name may not
+           match the mixed-case or lower-case expectations of the Perl code.  Your
+           best bet is to follow an all-or-nothing approach to case preservation:
+           either don't use it at all, or make sure your entire toolchain and
+           application environment support and use it.
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How can you ensure that Perl handles filename case preservation correctly when using the DECC$ARGV_PARSE_STYLE feature?
+  manpageQuestion3: What are the potential issues that may arise when mixing different tools that handle filename case preservation in varying ways?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.
+
+
+
+    Manpage text:
+
+    OpenVMS Alpha v7.3-1 and later and all version of OpenVMS I64 support
+           case sensitivity as a process setting (see "SET PROCESS
+           /CASE_LOOKUP=SENSITIVE"). Perl does not currently support case
+           sensitivity on VMS, but it may in the future, so Perl programs should
+           use the "File::Spec->case_tolerant" method to determine the state, and
+           not the $^O variable.
+
+       Symbolic Links
+           When built on an ODS-5 volume with symbolic links enabled, Perl by
+           default supports symbolic links when the requisite support is available
+           in the filesystem and CRTL (generally 64-bit OpenVMS v8.3 and later).
+           There are a number of limitations and caveats to be aware of when
+           working with symbolic links on VMS.  Most notably, the target of a
+           valid symbolic link must be expressed as a Unix-style path and it must
+           exist on a volume visible from your POSIX root (see the "SHOW ROOT"
+           command in DCL help).  For further details on symbolic link
+           capabilities and requirements, see chapter 12 of the CRTL manual that
+           ships with OpenVMS v8.3 or later.
+  manpageQuestion1: What is the primary purpose of the `perlvms` resource?
+  manpageQuestion2: How can a Perl script on OpenVMS determine if case sensitivity is enabled for file operations?
+  manpageQuestion3: What are the requirements for using symbolic links in a Perl script on OpenVMS?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nWildcard expansion\n       File specifications containing wildcards are allowed both on the\n       command line and within Perl globs (e.g. \"<*.c>\").  If the wildcard\n       filespec uses VMS syntax, the resultant filespecs will follow VMS\n       syntax; if a Unix-style filespec is passed in, Unix-style filespecs\n       will be returned.  Similar to the behavior of wildcard globbing for a\n       Unix shell, one can escape command line wildcards with double quotation\n       marks \"\"\" around a perl program command line argument.  However, owing\n       to the stripping of \"\"\" characters carried out by the C handling of\n       argv you will need to escape a construct such as this one (in a\n       directory containing the files PERL.C, PERL.EXE, PERL.H, and PERL.OBJ):\n\n\t   $ perl -e \"print join(' ',@ARGV)\" perl.*\n\t   perl.c perl.exe perl.h perl.obj\n\n       in the following triple quoted manner:\n\n\t   $ perl -e \"print join(' ',@ARGV)\" \"\"\"perl.*\"\"\"\n\t   perl.*\n\n       In both the case of unquoted command line arguments or in calls to\n       \"glob()\" VMS wildcard expansion is performed. (csh-style wildcard\n       expansion is available if you use \"File::Glob::glob\".)  If the wildcard\n       filespec contains a device or directory specification, then the\n       resultant filespecs will also contain a device and directory;\n       otherwise, device and directory information are removed.  VMS-style\n       resultant filespecs will contain a full device and directory, while\n       Unix-style resultant filespecs will contain only as much of a directory\n       path as was present in the input filespec.  For example, if your\n       default directory is Perl_Root:[000000], the expansion of \"[.t]*.*\"\n       will yield filespecs  like \"perl_root:[t]base.dir\", while the expansion\n       of \"t/*/*\" will yield filespecs like \"t/base.dir\".  (This is done to\n       match the behavior of glob expansion performed by Unix shells.)"
+  manpageQuestion1: What is the primary purpose of the perlvms utility?
+  manpageQuestion2: How can you use perlvms to expand the wildcard pattern 'perl.*' in a VMS-style filespec?
+  manpageQuestion3: Can you provide an example of using perlvms to handle a wildcard pattern that includes a directory specification, such as 't/*/*', and explain the resulting filespecs?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.
+
+
+
+    Manpage text:
+
+    Similarly, the resultant filespec will contain the file version only if
+           one was present in the input filespec.
+
+       Pipes
+           Input and output pipes to Perl filehandles are supported; the "file
+           name" is passed to lib$spawn() for asynchronous execution.  You should
+           be careful to close any pipes you have opened in a Perl script, lest
+           you leave any "orphaned" subprocesses around when Perl exits.
+
+           You may also use backticks to invoke a DCL subprocess, whose output is
+           used as the return value of the expression.  The string between the
+           backticks is handled as if it were the argument to the "system"
+           operator (see below).  In this case, Perl will wait for the subprocess
+           to complete before continuing.
+
+           The mailbox (MBX) that perl can create to communicate with a pipe
+           defaults to a buffer size of 8192 on 64-bit systems, 512 on VAX.  The
+           default buffer size is adjustable via the logical name PERL_MBX_SIZE
+           provided that the value falls between 128 and the SYSGEN parameter
+           MAXBUF inclusive.  For example, to set the mailbox size to 32767 use
+           "$ENV{'PERL_MBX_SIZE'} = 32767;" and then open and use pipe constructs.
+           An alternative would be to issue the command:
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How can you use perlvms to execute a DCL subprocess and capture its output in a Perl script?
+  manpageQuestion3: What is the default mailbox buffer size for perlvms on 64-bit systems, and how can it be adjusted?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.
+
+
+
+    Manpage text:
+
+    $ Define PERL_MBX_SIZE 32767
+
+           before running your wide record pipe program.  A larger value may
+           improve performance at the expense of the BYTLM UAF quota.
+
+    PERL5LIB and PERLLIB
+           The PERL5LIB and PERLLIB environment elements work as documented in
+           perl, except that the element separator is, by default, '|' instead of
+           ':'.  However, when running under a Unix shell as determined by the
+           logical name "GNV$UNIX_SHELL", the separator will be ':' as on Unix
+           systems. The directory specifications may use either VMS or Unix
+           syntax.
+
+    The Perl Forked Debugger
+           The Perl forked debugger places the debugger commands and output in a
+           separate X-11 terminal window so that commands and output from multiple
+           processes are not mixed together.
+
+           Perl on VMS supports an emulation of the forked debugger when Perl is
+           run on a VMS system that has X11 support installed.
+
+           To use the forked debugger, you need to have the default display set to
+           an X-11 Server and some environment variables set that Unix expects.
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How can you configure PERL5LIB and PERLLIB on VMS to use a custom directory separator?
+  manpageQuestion3: What are the requirements for using the Perl forked debugger on a VMS system?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nThe forked debugger requires the environment variable \"TERM\" to be\n       \"xterm\", and the environment variable \"DISPLAY\" to exist.  \"xterm\" must\n       be in lower case.\n\n\t $define TERM \"xterm\"\n\n\t $define DISPLAY \"hostname:0.0\"\n\n       Currently the value of \"DISPLAY\" is ignored.  It is recommended that it\n       be set to be the hostname of the display, the server and screen in Unix\n       notation.  In the future the value of DISPLAY may be honored by Perl\n       instead of using the default display.\n\n       It may be helpful to always use the forked debugger so that script I/O\n       is separated from debugger I/O.\tYou can force the debugger to be\n       forked by assigning a value to the logical name <PERLDB_PIDS> that is\n       not a process identification number.\n\n\t $define PERLDB_PIDS XXXX\n\nPERL_VMS_EXCEPTION_DEBUG\n       The PERL_VMS_EXCEPTION_DEBUG being defined as \"ENABLE\" will cause the\n       VMS debugger to be invoked if a fatal exception that is not otherwise\n       handled is raised.  The purpose of this is to allow debugging of\n       internal Perl problems that would cause such a condition."
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How can you configure the forked debugger in perlvms to ensure proper environment variables are set?
+  manpageQuestion3: What is the effect of defining the PERL_VMS_EXCEPTION_DEBUG environment variable as "ENABLE" in the perlvms resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nThis allows the programmer to look at the execution stack and variables\n       to find out the cause of the exception.\tAs the debugger is being\n       invoked as the Perl interpreter is about to do a fatal exit, continuing\n       the execution in debug mode is usually not practical.\n\n       Starting Perl in the VMS debugger may change the program execution\n       profile in a way that such problems are not reproduced.\n\n       The \"kill\" function can be used to test this functionality from within\n       a program.\n\n       In typical VMS style, only the first letter of the value of this\n       logical name is actually checked in a case insensitive mode, and it is\n       considered enabled if it is the value \"T\",\"1\" or \"E\".\n\n       This logical name must be defined before Perl is started.\n\nCommand line\n   I/O redirection and backgrounding\n       Perl for VMS supports redirection of input and output on the command\n       line, using a subset of Bourne shell syntax:\n\n       •   \"<file\" reads stdin from \"file\","
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How can you redirect input from a file when running the perlvms command?
+  manpageQuestion3: What are the valid values for the logical name that enables the VMS debugger in perlvms?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.
+
+
+
+    Manpage text:
+
+    •   ">file" writes stdout to "file",
+
+           •   ">>file" appends stdout to "file",
+
+           •   "2>file" writes stderr to "file",
+
+           •   "2>>file" appends stderr to "file", and
+
+           •   "2>&1" redirects stderr to stdout.
+
+           In addition, output may be piped to a subprocess, using the character
+           '|'.  Anything after this character on the command line is passed to a
+           subprocess for execution; the subprocess takes the output of Perl as
+           its input.
+
+           Finally, if the command line ends with '&', the entire command is run
+           in the background as an asynchronous subprocess.
+
+       Command line switches
+           The following command line switches behave differently under VMS than
+           described in perlrun.  Note also that in order to pass uppercase
+           switches to Perl, you need to enclose them in double-quotes on the
+           command line, since the CRTL downcases all unquoted strings.
+
+           On newer 64 bit versions of OpenVMS, a process setting now controls if
+           the quoting is needed to preserve the case of command line arguments.
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How would you redirect both standard output and standard error to the same file using perlvms?
+  manpageQuestion3: Can you provide an example of running a Perl script in the background with perlvms?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\n-i  If the \"-i\" switch is present but no extension for a backup copy is\n\t   given, then inplace editing creates a new version of a file; the\n\t   existing copy is not deleted.  (Note that if an extension is given,\n\t   an existing file is renamed to the backup file, as is the case\n\t   under other operating systems, so it does not remain as a previous\n\t   version under the original filename.)\n\n       -S  If the \"-S\" or \"-\"S\"\" switch is present and the script name does\n\t   not contain a directory, then Perl translates the logical name\n\t   DCL$PATH as a searchlist, using each translation as a directory in\n\t   which to look for the script.  In addition, if no file type is\n\t   specified, Perl looks in each directory for a file matching the\n\t   name specified, with a blank type, a type of .pl, and a type of\n\t   .com, in that order.\n\n       -u  The \"-u\" switch causes the VMS debugger to be invoked after the\n\t   Perl program is compiled, but before it has run.  It does not\n\t   create a core dump file."
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How would you use the -i switch with perlvms to perform inplace editing without deleting the original file?
+  manpageQuestion3: Can you provide an example of using the -S switch with perlvms to search for a Perl script in multiple directories?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nPerl functions\n       As of the time this document was last revised, the following Perl\n       functions were implemented in the VMS port of Perl (functions marked\n       with * are discussed in more detail below):\n\n\t   file tests*, abs, alarm, atan, backticks*, binmode*, bless,\n\t   caller, chdir, chmod, chown, chomp, chop, chr,\n\t   close, closedir, cos, crypt*, defined, delete, die, do, dump*,\n\t   each, endgrent, endpwent, eof, eval, exec*, exists, exit, exp,\n\t   fileno, flock  getc, getgrent*, getgrgid*, getgrnam, getlogin,\n\t   getppid, getpwent*, getpwnam*, getpwuid*, glob, gmtime*, goto,\n\t   grep, hex, ioctl, import, index, int, join, keys, kill*,\n\t   last, lc, lcfirst, lchown*, length, link*, local, localtime, log,\n\t   lstat, m//, map, mkdir, my, next, no, oct, open, opendir, ord,\n\t   pack, pipe, pop, pos, print, printf, push, q//, qq//, qw//,\n\t   qx//*, quotemeta, rand, read, readdir, readlink*, redo, ref,\n\t   rename, require, reset, return, reverse, rewinddir, rindex,\n\t   rmdir, s///, scalar, seek, seekdir, select(internal),\n\t   select (system call)*, setgrent, setpwent, shift, sin, sleep,\n\t   socketpair, sort, splice, split, sprintf, sqrt, srand, stat,\n\t   study, substr, symlink*, sysread, system*, syswrite, tell,\n\t   telldir, tie, time, times*, tr///, uc, ucfirst, umask,\n\t   undef, unlink*, unpack, untie, unshift, use, utime*,\n\t   values, vec, wait, waitpid*, wantarray, warn, write, y///"
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How can you use perlvms to perform a specific Perl function that is implemented in the VMS port?
+  manpageQuestion3: Can you provide an example of using perlvms to access a system call-related Perl function?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nThe following functions were not implemented in the VMS port, and\n       calling them produces a fatal error (usually) or undefined behavior\n       (rarely, we hope):\n\n\t   chroot, dbmclose, dbmopen, fork*, getpgrp, getpriority,\n\t   msgctl, msgget, msgsend, msgrcv, semctl,\n\t   semget, semop, setpgrp, setpriority, shmctl, shmget,\n\t   shmread, shmwrite, syscall\n\n       The following functions are available on Perls compiled with Dec C 5.2\n       or greater and running VMS 7.0 or greater:\n\n\t   truncate\n\n       The following functions are available on Perls built on VMS 7.2 or\n       greater:\n\n\t   fcntl (without locking)\n\n       The following functions may or may not be implemented, depending on\n       what type of socket support you've built into your copy of Perl:\n\n\t   accept, bind, connect, getpeername,\n\t   gethostbyname, getnetbyname, getprotobyname,\n\t   getservbyname, gethostbyaddr, getnetbyaddr,\n\t   getprotobynumber, getservbyport, gethostent,\n\t   getnetent, getprotoent, getservent, sethostent,\n\t   setnetent, setprotoent, setservent, endhostent,\n\t   endnetent, endprotoent, endservent, getsockname,\n\t   getsockopt, listen, recv, select(system call)*,\n\t   send, setsockopt, shutdown, socket"
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How can a user check which functions are available in the Perls compiled for VMS 7.2 or greater?
+  manpageQuestion3: What is an example of a function that might not be reliably available in the Perls ported to VMS?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nThe following function is available on Perls built on 64 bit OpenVMS\n       v8.2 with hard links enabled on an ODS-5 formatted build disk.  CRTL\n       support is in principle available as of OpenVMS v7.3-1, and better\n       configuration support could detect this.\n\n\t   link\n\n       The following functions are available on Perls built on 64 bit OpenVMS\n       v8.2 and later.\tCRTL support is in principle available as of OpenVMS\n       v7.3-2, and better configuration support could detect this.\n\n\t  getgrgid, getgrnam, getpwnam, getpwuid,\n\t  setgrent, ttyname\n\n       The following functions are available on Perls built on 64 bit OpenVMS\n       v8.2 and later.\n\n\t  statvfs, socketpair\n\n       File tests\n\t   The tests \"-b\", \"-B\", \"-c\", \"-C\", \"-d\", \"-e\", \"-f\", \"-o\", \"-M\",\n\t   \"-s\", \"-S\", \"-t\", \"-T\", and \"-z\" work as advertised.  The return\n\t   values for \"-r\", \"-w\", and \"-x\" tell you whether you can actually\n\t   access the file; this may not reflect the UIC-based file\n\t   protections.  Since real and effective UIC don't differ under VMS,\n\t   \"-O\", \"-R\", \"-W\", and \"-X\" are equivalent to \"-o\", \"-r\", \"-w\", and\n\t   \"-x\".  Similarly, several other tests, including \"-A\", \"-g\", \"-k\",\n\t   \"-l\", \"-p\", and \"-u\", aren't particularly meaningful under VMS, and\n\t   the values returned by these tests reflect whatever your CRTL\n\t   \"stat()\" routine does to the equivalent bits in the st_mode field.\n\t   Finally, \"-d\" returns true if passed a device specification without\n\t   an explicit directory (e.g. \"DUA1:\"), as well as if passed a\n\t   directory."
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How can you check if a file has readable permissions using the perlvms resource?
+  manpageQuestion3: What functions are available on Perls built on 64 bit OpenVMS v8.2 and later?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nThere are DECC feature logical names AND ODS-5 volume attributes\n\t   that also control what values are returned for the date fields.\n\n\t   Note: Some sites have reported problems when using the file-access\n\t   tests (\"-r\", \"-w\", and \"-x\") on files accessed via DEC's DFS.\n\t   Specifically, since DFS does not currently provide access to the\n\t   extended file header of files on remote volumes, attempts to\n\t   examine the ACL fail, and the file tests will return false, with $!\n\t   indicating that the file does not exist.  You can use \"stat\" on\n\t   these files, since that checks UIC-based protection only, and then\n\t   manually check the appropriate bits, as defined by your C\n\t   compiler's stat.h, in the mode value it returns, if you need an\n\t   approximation of the file's protections.\n\n       backticks\n\t   Backticks create a subprocess, and pass the enclosed string to it\n\t   for execution as a DCL command.  Since the subprocess is created\n\t   directly via \"lib$spawn()\", any valid DCL command string may be\n\t   specified."
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How can you use backticks in DCL to execute a subprocess and retrieve its output?
+  manpageQuestion3: What is the recommended approach for checking file access permissions on files accessed via DEC's DFS?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nbinmode FILEHANDLE\n\t   The \"binmode\" operator will attempt to insure that no translation\n\t   of carriage control occurs on input from or output to this\n\t   filehandle.\tSince this involves reopening the file and then\n\t   restoring its file position indicator, if this function returns\n\t   FALSE, the underlying filehandle may no longer point to an open\n\t   file, or may point to a different position in the file than before\n\t   \"binmode\" was called.\n\n\t   Note that \"binmode\" is generally not necessary when using normal\n\t   filehandles; it is provided so that you can control I/O to existing\n\t   record-structured files when necessary.  You can also use the\n\t   \"vmsfopen\" function in the VMS::Stdio extension to gain finer\n\t   control of I/O to files and devices with different record\n\t   structures.\n\n       crypt PLAINTEXT, USER\n\t   The \"crypt\" operator uses the \"sys$hash_password\" system service to\n\t   generate the hashed representation of PLAINTEXT. If USER is a valid\n\t   username, the algorithm and salt values are taken from that user's\n\t   UAF record.\tIf it is not, then the preferred algorithm and a salt\n\t   of 0 are used.  The quadword encrypted value is returned as an\n\t   8-character string."
+  manpageQuestion1: What is the primary purpose of the perlvms module?
+  manpageQuestion2: How would you use the crypt operator in perlvms to hash a plaintext password with the user's specified algorithm and salt?
+  manpageQuestion3: Can you provide an example of using binmode to ensure binary mode is enabled for a filehandle in perlvms?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nThe value returned by \"crypt\" may be compared against the encrypted\n\t   password from the UAF returned by the \"getpw*\" functions, in order\n\t   to authenticate users.  If you're going to do this, remember that\n\t   the encrypted password in the UAF was generated using uppercase\n\t   username and password strings; you'll have to upcase the arguments\n\t   to \"crypt\" to insure that you'll get the proper value:\n\n\t       sub validate_passwd {\n\t\t   my($user,$passwd) = @_;\n\t\t   my($pwdhash);\n\t\t   if ( !($pwdhash = (getpwnam($user))[1]) ||\n\t\t\t  $pwdhash ne crypt(\"\\U$passwd\",\"\\U$name\") ) {\n\t\t       intruder_alert($name);\n\t\t   }\n\t\t   return 1;\n\t       }\n\n       die \"die\" will force the native VMS exit status to be an SS$_ABORT code\n\t   if neither of the $! or $? status values are ones that would cause\n\t   the native status to be interpreted as being what VMS classifies as\n\t   SEVERE_ERROR severity for DCL error handling.\n\n\t   When \"PERL_VMS_POSIX_EXIT\" is active (see \"$?\" below), the native\n\t   VMS exit status value will have either one of the $! or $? or $^E\n\t   or the Unix value 255 encoded into it in a way that the effective\n\t   original value can be decoded by other programs written in C,\n\t   including Perl and the GNV package.\tAs per the normal non-VMS\n\t   behavior of \"die\" if either $! or $? are non-zero, one of those\n\t   values will be encoded into a native VMS status value.  If both of\n\t   the Unix status values are 0, and the $^E value is set one of ERROR\n\t   or SEVERE_ERROR severity, then the $^E value will be used as the\n\t   exit code as is.  If none of the above apply, the Unix value of 255\n\t   will be encoded into a native VMS exit status value."
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How can you ensure that the encrypted password generated by 'crypt' matches the one stored in the UAF system?
+  manpageQuestion3: What is the effect of using 'die' in a Perl script on VMS systems, and how does it interact with exit status codes?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nPlease note a significant difference in the behavior of \"die\" in\n\t   the \"PERL_VMS_POSIX_EXIT\" mode is that it does not force a VMS\n\t   SEVERE_ERROR status on exit.  The Unix exit values of 2 through 255\n\t   will be encoded in VMS status values with severity levels of\n\t   SUCCESS.  The Unix exit value of 1 will be encoded in a VMS status\n\t   value with a severity level of ERROR.  This is to be compatible\n\t   with how the VMS C library encodes these values.\n\n\t   The minimum severity level set by \"die\" in \"PERL_VMS_POSIX_EXIT\"\n\t   mode may be changed to be ERROR or higher in the future depending\n\t   on the results of testing and further review.\n\n\t   See \"$?\" for a description of the encoding of the Unix value to\n\t   produce a native VMS status containing it.\n\n       dump\n\t   Rather than causing Perl to abort and dump core, the \"dump\"\n\t   operator invokes the VMS debugger.  If you continue to execute the\n\t   Perl program under the debugger, control will be transferred to the\n\t   label specified as the argument to \"dump\", or, if no label was\n\t   specified, back to the beginning of the program.  All other state\n\t   of the program (e.g. values of variables, open file handles) are\n\t   not affected by calling \"dump\"."
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How does the 'dump' operator in perlvms differ from the default behavior of causing Perl to abort and dump core?
+  manpageQuestion3: What is the effect of using the 'PERL_VMS_POSIX_EXIT' mode on the behavior of the 'die' function in perlvms?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nexec LIST\n\t   A call to \"exec\" will cause Perl to exit, and to invoke the command\n\t   given as an argument to \"exec\" via \"lib$do_command\".  If the\n\t   argument begins with '@' or '$' (other than as part of a filespec),\n\t   then it is executed as a DCL command.  Otherwise, the first token\n\t   on the command line is treated as the filespec of an image to run,\n\t   and an attempt is made to invoke it (using .Exe and the process\n\t   defaults to expand the filespec) and pass the rest of \"exec\"'s\n\t   argument to it as parameters.  If the token has no file type, and\n\t   matches a file with null type, then an attempt is made to determine\n\t   whether the file is an executable image which should be invoked\n\t   using \"MCR\" or a text file which should be passed to DCL as a\n\t   command procedure.\n\n       fork\n\t   While in principle the \"fork\" operator could be implemented via\n\t   (and with the same rather severe limitations as) the CRTL \"vfork()\"\n\t   routine, and while some internal support to do just that is in\n\t   place, the implementation has never been completed, making \"fork\"\n\t   currently unavailable.  A true kernel \"fork()\" is expected in a\n\t   future version of VMS, and the pseudo-fork based on interpreter\n\t   threads may be available in a future version of Perl on VMS (see\n\t   perlfork).  In the meantime, use \"system\", backticks, or piped\n\t   filehandles to create subprocesses."
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How would you use the 'exec' function in perlvms to run a DCL command?
+  manpageQuestion3: Can you provide an example of using the 'exec' function in perlvms to launch an executable image with parameters?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\ngetpwent\n       getpwnam\n       getpwuid\n\t   These operators obtain the information described in perlfunc, if\n\t   you have the privileges necessary to retrieve the named user's UAF\n\t   information via \"sys$getuai\".  If not, then only the $name, $uid,\n\t   and $gid items are returned.  The $dir item contains the login\n\t   directory in VMS syntax, while the $comment item contains the login\n\t   directory in Unix syntax. The $gcos item contains the owner field\n\t   from the UAF record.  The $quota item is not used.\n\n       gmtime\n\t   The \"gmtime\" operator will function properly if you have a working\n\t   CRTL \"gmtime()\" routine, or if the logical name\n\t   SYS$TIMEZONE_DIFFERENTIAL is defined as the number of seconds which\n\t   must be added to UTC to yield local time.  (This logical name is\n\t   defined automatically if you are running a version of VMS with\n\t   built-in UTC support.)  If neither of these cases is true, a\n\t   warning message is printed, and \"undef\" is returned.\n\n       kill\n\t   In most cases, \"kill\" is implemented via the undocumented system\n\t   service $SIGPRC, which has the same calling sequence as $FORCEX,\n\t   but throws an exception in the target process rather than forcing\n\t   it to call $EXIT.  Generally speaking, \"kill\" follows the behavior\n\t   of the CRTL's \"kill()\" function, but unlike that function can be\n\t   called from within a signal handler.  Also, unlike the \"kill\" in\n\t   some versions of the CRTL, Perl's \"kill\" checks the validity of the\n\t   signal passed in and returns an error rather than attempting to\n\t   send an unrecognized signal."
+  manpageQuestion1: What is the primary purpose of the `perlvms` resource?
+  manpageQuestion2: How can you use `perlvms` to retrieve user information in VMS syntax?
+  manpageQuestion3: What is the function of the `kill` operator in `perlvms` and how does it differ from other implementations?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nAlso, negative signal values don't do anything special under VMS;\n\t   they're just converted to the corresponding positive value.\n\n       qx//\n\t   See the entry on \"backticks\" above.\n\n       select (system call)\n\t   If Perl was not built with socket support, the system call version\n\t   of \"select\" is not available at all.  If socket support is present,\n\t   then the system call version of \"select\" functions only for file\n\t   descriptors attached to sockets.  It will not provide information\n\t   about regular files or pipes, since the CRTL \"select()\" routine\n\t   does not provide this functionality.\n\n       stat EXPR\n\t   Since VMS keeps track of files according to a different scheme than\n\t   Unix, it's not really possible to represent the file's ID in the\n\t   \"st_dev\" and \"st_ino\" fields of a \"struct stat\".  Perl tries its\n\t   best, though, and the values it uses are pretty unlikely to be the\n\t   same for two different files.  We can't guarantee this, though, so\n\t   caveat scriptor.\n\n       system LIST\n\t   The \"system\" operator creates a subprocess, and passes its\n\t   arguments to the subprocess for execution as a DCL command.\tSince\n\t   the subprocess is created directly via \"lib$spawn()\", any valid DCL\n\t   command string may be specified.  If the string begins with '@', it\n\t   is treated as a DCL command unconditionally.  Otherwise, if the\n\t   first token contains a character used as a delimiter in file\n\t   specification (e.g. \":\" or \"]\"), an attempt is made to expand it\n\t   using  a default type of .Exe and the process defaults, and if\n\t   successful, the resulting file is invoked via \"MCR\". This allows\n\t   you to invoke an image directly simply by passing the file\n\t   specification to \"system\", a common Unixish idiom.  If the token\n\t   has no file type, and matches a file with null type, then an\n\t   attempt is made to determine whether the file is an executable\n\t   image which should be invoked using \"MCR\" or a text file which\n\t   should be passed to DCL as a command procedure."
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How does the 'system' operator in perlvms handle command execution on VMS?
+  manpageQuestion3: What is the behavior of negative signal values in perlvms?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nIf LIST consists of the empty string, \"system\" spawns an\n\t   interactive DCL subprocess, in the same fashion as typing SPAWN at\n\t   the DCL prompt.\n\n\t   Perl waits for the subprocess to complete before continuing\n\t   execution in the current process.  As described in perlfunc, the\n\t   return value of \"system\" is a fake \"status\" which follows POSIX\n\t   semantics unless the pragma \"use vmsish 'status'\" is in effect; see\n\t   the description of $? in this document for more detail.\n\n       time\n\t   The value returned by \"time\" is the offset in seconds from\n\t   01-JAN-1970 00:00:00 (just like the CRTL's times() routine), in\n\t   order to make life easier for code coming in from the POSIX/Unix\n\t   world.\n\n       times\n\t   The array returned by the \"times\" operator is divided up according\n\t   to the same rules the CRTL \"times()\" routine.  Therefore, the\n\t   \"system time\" elements will always be 0, since there is no\n\t   difference between \"user time\" and \"system\" time under VMS, and the\n\t   time accumulated by a subprocess may or may not appear separately\n\t   in the \"child time\" field, depending on whether \"times()\" keeps\n\t   track of subprocesses separately.  Note especially that the VAXCRTL\n\t   (at least) keeps track only of subprocesses spawned using \"fork()\"\n\t   and \"exec()\"; it will not accumulate the times of subprocesses\n\t   spawned via pipes, \"system()\", or backticks."
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How can you use the 'system' function in perlvms to spawn an interactive DCL subprocess and wait for it to complete?
+  manpageQuestion3: Can you explain how the 'times' function in perlvms differs from the 'time' function in terms of returning timing information?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nunlink LIST\n\t   \"unlink\" will delete the highest version of a file only; in order\n\t   to delete all versions, you need to say\n\n\t       1 while unlink LIST;\n\n\t   You may need to make this change to scripts written for a Unix\n\t   system which expect that after a call to \"unlink\", no files with\n\t   the names passed to \"unlink\" will exist.  (Note: This can be\n\t   changed at compile time; if you \"use Config\" and\n\t   $Config{'d_unlink_all_versions'} is \"define\", then \"unlink\" will\n\t   delete all versions of a file on the first call.)\n\n\t   \"unlink\" will delete a file if at all possible, even if it requires\n\t   changing file protection (though it won't try to change the\n\t   protection of the parent directory).  You can tell whether you've\n\t   got explicit delete access to a file by using the\n\t   \"VMS::Filespec::candelete\" operator.  For instance, in order to\n\t   delete only files to which you have delete access, you could say\n\t   something like\n\n\t       sub safe_unlink {\n\t\t   my($file,$num);\n\t\t   foreach $file (@_) {\n\t\t       next unless VMS::Filespec::candelete($file);\n\t\t       $num += unlink $file;\n\t\t   }\n\t\t   $num;\n\t       }"
+  manpageQuestion1: What is the primary purpose of the `unlink` function in the `perlvms` module?
+  manpageQuestion2: How can you modify a script to delete all versions of a file using `unlink`?
+  manpageQuestion3: What is the recommended approach to ensure that only files with delete access are deleted using `unlink`?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\n(or you could just use \"VMS::Stdio::remove\", if you've installed\n\t   the VMS::Stdio extension distributed with Perl). If \"unlink\" has to\n\t   change the file protection to delete the file, and you interrupt it\n\t   in midstream, the file may be left intact, but with a changed ACL\n\t   allowing you delete access.\n\n\t   This behavior of \"unlink\" is to be compatible with POSIX behavior\n\t   and not traditional VMS behavior.\n\n       utime LIST\n\t   This operator changes only the modification time of the file (VMS\n\t   revision date) on ODS-2 volumes and ODS-5 volumes without access\n\t   dates enabled. On ODS-5 volumes with access dates enabled, the true\n\t   access time is modified.\n\n       waitpid PID,FLAGS\n\t   If PID is a subprocess started by a piped \"open()\" (see open),\n\t   \"waitpid\" will wait for that subprocess, and return its final\n\t   status value in $?.\tIf PID is a subprocess created in some other\n\t   way (e.g.  SPAWNed before Perl was invoked), \"waitpid\" will simply\n\t   check once per second whether the process has completed, and return\n\t   when it has.  (If PID specifies a process that isn't a subprocess\n\t   of the current process, and you invoked Perl with the \"-w\" switch,\n\t   a warning will be issued.)"
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How would you use perlvms to remove a file while ensuring that any potential ACL changes are handled properly?
+  manpageQuestion3: Can you provide an example of using perlvms to modify the modification time of a file on ODS-5 volumes with access dates enabled?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nReturns PID on success, -1 on error.  The FLAGS argument is ignored\n\t   in all cases.\n\nPerl variables\n       The following VMS-specific information applies to the indicated\n       \"special\" Perl variables, in addition to the general information in\n       perlvar.  Where there is a conflict, this information takes precedence.\n\n       %ENV\n\t   The operation of the %ENV array depends on the translation of the\n\t   logical name PERL_ENV_TABLES.  If defined, it should be a search\n\t   list, each element of which specifies a location for %ENV elements.\n\t   If you tell Perl to read or set the element \"$ENV{\"name\"}\", then\n\t   Perl uses the translations of PERL_ENV_TABLES as follows:\n\n\t   CRTL_ENV\n\t       This string tells Perl to consult the CRTL's internal \"environ\"\n\t       array of key-value pairs, using name as the key.  In most\n\t       cases, this contains only a few keys, but if Perl was invoked\n\t       via the C \"exec[lv]e()\" function, as is the case for some\n\t       embedded Perl applications or when running under a shell such\n\t       as GNV bash, the \"environ\" array may have been populated by the\n\t       calling program."
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How can you access environment variables in a VMS-specific way using perlvms?
+  manpageQuestion3: What is the function of the PERL_ENV_TABLES logical name in the context of perlvms?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nCLISYM_[LOCAL]\n\t       A string beginning with \"CLISYM_\"tells Perl to consult the\n\t       CLI's symbol tables, using name as the name of the symbol.\n\t       When reading an element of %ENV, the local symbol table is\n\t       scanned first, followed by the global symbol table..  The\n\t       characters following \"CLISYM_\" are significant when an element\n\t       of %ENV is set or deleted: if the complete string is\n\t       \"CLISYM_LOCAL\", the change is made in the local symbol table;\n\t       otherwise the global symbol table is changed.\n\n\t   Any other string\n\t       If an element of PERL_ENV_TABLES translates to any other\n\t       string, that string is used as the name of a logical name\n\t       table, which is consulted using name as the logical name.  The\n\t       normal search order of access modes is used.\n\n\t   PERL_ENV_TABLES is translated once when Perl starts up; any changes\n\t   you make while Perl is running do not affect the behavior of %ENV.\n\t   If PERL_ENV_TABLES is not defined, then Perl defaults to consulting\n\t   first the logical name tables specified by LNM$FILE_DEV, and then\n\t   the CRTL \"environ\" array.  This default order is reversed when the\n\t   logical name GNV$UNIX_SHELL is defined, such as when running under\n\t   GNV bash."
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How can you use perlvms to modify a logical name table when setting an environment variable in Perl?
+  manpageQuestion3: Can you explain how the PERL_ENV_TABLES environment variable affects Perl's handling of %ENV when using perlvms?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nFor operations on %ENV entries based on logical names or DCL\n\t   symbols, the key string is treated as if it were entirely\n\t   uppercase, regardless of the case actually specified in the Perl\n\t   expression. Entries in %ENV based on the CRTL's environ array\n\t   preserve the case of the key string when stored, and lookups are\n\t   case sensitive.\n\n\t   When an element of %ENV is read, the locations to which\n\t   PERL_ENV_TABLES points are checked in order, and the value obtained\n\t   from the first successful lookup is returned.  If the name of the\n\t   %ENV element contains a semi-colon, it and any characters after it\n\t   are removed.  These are ignored when the CRTL \"environ\" array or a\n\t   CLI symbol table is consulted.  However, the name is looked up in a\n\t   logical name table, the suffix after the semi-colon is treated as\n\t   the translation index to be used for the lookup.   This lets you\n\t   look up successive values for search list logical names.  For\n\t   instance, if you say\n\n\t      $  Define STORY  once,upon,a,time,there,was\n\t      $  perl -e \"for ($i = 0; $i <= 6; $i++) \" -\n\t      _$ -e \"{ print $ENV{'story;'.$i},' '}\""
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How does perlvms handle case sensitivity when accessing %ENV entries based on logical names or DCL symbols?
+  manpageQuestion3: Can you explain how the semi-colon feature in perlvms allows for successive lookups of values for search list logical names?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nPerl will print \"ONCE UPON A TIME THERE WAS\", assuming, of course,\n\t   that PERL_ENV_TABLES is set up so that the logical name \"story\" is\n\t   found, rather than a CLI symbol or CRTL \"environ\" element with the\n\t   same name.\n\n\t   When an element of %ENV is set to a defined string, the\n\t   corresponding definition is made in the location to which the first\n\t   translation of PERL_ENV_TABLES points.  If this causes a logical\n\t   name to be created, it is defined in supervisor mode.  (The same is\n\t   done if an existing logical name was defined in executive or kernel\n\t   mode; an existing user or supervisor mode logical name is reset to\n\t   the new value.)  If the value is an empty string, the logical\n\t   name's translation is defined as a single \"NUL\" (ASCII \"\\0\")\n\t   character, since a logical name cannot translate to a zero-length\n\t   string.  (This restriction does not apply to CLI symbols or CRTL\n\t   \"environ\" values; they are set to the empty string.)\n\n\t   When an element of %ENV is set to \"undef\", the element is looked up\n\t   as if it were being read, and if it is found, it is deleted.  (An\n\t   item \"deleted\" from the CRTL \"environ\" array is set to the empty\n\t   string.)  Using \"delete\" to remove an element from %ENV has a\n\t   similar effect, but after the element is deleted, another attempt\n\t   is made to look up the element, so an inner-mode logical name or a\n\t   name in another location will replace the logical name just\n\t   deleted. In either case, only the first value found searching\n\t   PERL_ENV_TABLES is altered.\tIt is not possible at present to\n\t   define a search list logical name via %ENV."
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How does the perlvms resource handle setting an environment variable to an empty string?
+  manpageQuestion3: What is the effect of using the 'delete' function on an element of %ENV in the context of perlvms?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nThe element $ENV{DEFAULT} is special: when read, it returns Perl's\n\t   current default device and directory, and when set, it resets them,\n\t   regardless of the definition of PERL_ENV_TABLES.  It cannot be\n\t   cleared or deleted; attempts to do so are silently ignored.\n\n\t   Note that if you want to pass on any elements of the C-local\n\t   environ array to a subprocess which isn't started by fork/exec, or\n\t   isn't running a C program, you can \"promote\" them to logical names\n\t   in the current process, which will then be inherited by all\n\t   subprocesses, by saying\n\n\t       foreach my $key (qw[C-local keys you want promoted]) {\n\t\t   my $temp = $ENV{$key}; # read from C-local array\n\t\t   $ENV{$key} = $temp;\t  # and define as logical name\n\t       }\n\n\t   (You can't just say $ENV{$key} = $ENV{$key}, since the Perl\n\t   optimizer is smart enough to elide the expression.)\n\n\t   Don't try to clear %ENV by saying \"%ENV = ();\", it will throw a\n\t   fatal error.  This is equivalent to doing the following from DCL:"
+  manpageQuestion1: What is the primary purpose of the `perlvms` resource?
+  manpageQuestion2: How can you ensure that elements of the C-local environ array are passed to a subprocess in Perl?
+  manpageQuestion3: What is the correct way to handle the $ENV{DEFAULT} variable in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nDELETE/LOGICAL *\n\n\t   You can imagine how bad things would be if, for example, the\n\t   SYS$MANAGER or SYS$SYSTEM logical names were deleted.\n\n\t   At present, the first time you iterate over %ENV using \"keys\", or\n\t   \"values\",  you will incur a time penalty as all logical names are\n\t   read, in order to fully populate %ENV.  Subsequent iterations will\n\t   not reread logical names, so they won't be as slow, but they also\n\t   won't reflect any changes to logical name tables caused by other\n\t   programs.\n\n\t   You do need to be careful with the logical names representing\n\t   process-permanent files, such as \"SYS$INPUT\" and \"SYS$OUTPUT\".  The\n\t   translations for these logical names are prepended with a two-byte\n\t   binary value (0x1B 0x00) that needs to be stripped off if you want\n\t   to use it. (In previous versions of Perl it wasn't possible to get\n\t   the values of these logical names, as the null byte acted as an\n\t   end-of-string marker)\n\n       $!  The string value of $! is that returned by the CRTL's strerror()\n\t   function, so it will include the VMS message for VMS-specific\n\t   errors.  The numeric value of $! is the value of \"errno\", except if\n\t   errno is EVMSERR, in which case $! contains the value of\n\t   vaxc$errno.\tSetting $! always sets errno to the value specified.\n\t   If this value is EVMSERR, it also sets vaxc$errno to 4 (NONAME-F-\n\t   NOMSG), so that the string value of $! won't reflect the VMS error\n\t   message from before $! was set."
+  manpageQuestion1: What is the primary purpose of the `perlvms` resource?
+  manpageQuestion2: How can you retrieve the string representation of the last VMS error using `perlvms`?
+  manpageQuestion3: What is the process for handling logical names that represent process-permanent files in `perlvms`?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\n$^E This variable provides direct access to VMS status values in\n\t   vaxc$errno, which are often more specific than the generic Unix-\n\t   style error messages in $!.\tIts numeric value is the value of\n\t   vaxc$errno, and its string value is the corresponding VMS message\n\t   string, as retrieved by sys$getmsg().  Setting $^E sets vaxc$errno\n\t   to the value specified.\n\n\t   While Perl attempts to keep the vaxc$errno value to be current, if\n\t   errno is not EVMSERR, it may not be from the current operation.\n\n       $?  The \"status value\" returned in $? is synthesized from the actual\n\t   exit status of the subprocess in a way that approximates POSIX\n\t   wait(5) semantics, in order to allow Perl programs to portably test\n\t   for successful completion of subprocesses.  The low order 8 bits of\n\t   $? are always 0 under VMS, since the termination status of a\n\t   process may or may not have been generated by an exception.\n\n\t   The next 8 bits contain the termination status of the program.\n\n\t   If the child process follows the convention of C programs compiled\n\t   with the _POSIX_EXIT macro set, the status value will contain the\n\t   actual value of 0 to 255 returned by that program on a normal exit."
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How would you retrieve the VMS-specific error code associated with the last operation using perlvms?
+  manpageQuestion3: Can you explain how to interpret the status value returned by perlvms when checking the exit code of a subprocess?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nWith the _POSIX_EXIT macro set, the Unix exit value of zero is\n\t   represented as a VMS native status of 1, and the Unix values from 2\n\t   to 255 are encoded by the equation:\n\n\t      VMS_status = 0x35a000 + (unix_value * 8) + 1.\n\n\t   And in the special case of Unix value 1 the encoding is:\n\n\t      VMS_status = 0x35a000 + 8 + 2 + 0x10000000.\n\n\t   For other termination statuses, the severity portion of the\n\t   subprocess's exit status is used: if the severity was success or\n\t   informational, these bits are all 0; if the severity was warning,\n\t   they contain a value of 1; if the severity was error or fatal\n\t   error, they contain the actual severity bits, which turns out to be\n\t   a value of 2 for error and 4 for severe_error.  Fatal is another\n\t   term for the severe_error status.\n\n\t   As a result, $? will always be zero if the subprocess's exit status\n\t   indicated successful completion, and non-zero if a warning or error\n\t   occurred or a program compliant with encoding _POSIX_EXIT values\n\t   was run and set a status."
+  manpageQuestion1: What is the primary purpose of the perlvms tool?
+  manpageQuestion2: How would you use perlvms to convert a Unix exit value of 5 to its corresponding VMS status?
+  manpageQuestion3: Can you explain how the perlvms tool handles a Unix exit value of 1 to convert it into a VMS status?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nHow can you tell the difference between a non-zero status that is\n\t   the result of a VMS native error status or an encoded Unix status?\n\t   You can not unless you look at the ${^CHILD_ERROR_NATIVE} value.\n\t   The ${^CHILD_ERROR_NATIVE} value returns the actual VMS status\n\t   value and check the severity bits. If the severity bits are equal\n\t   to 1, then if the numeric value for $? is between 2 and 255 or 0,\n\t   then $? accurately reflects a value passed back from a Unix\n\t   application.  If $? is 1, and the severity bits indicate a VMS\n\t   error (2), then $? is from a Unix application exit value.\n\n\t   In practice, Perl scripts that call programs that return\n\t   _POSIX_EXIT type status values will be expecting those values, and\n\t   programs that call traditional VMS programs will either be\n\t   expecting the previous behavior or just checking for a non-zero\n\t   status.\n\n\t   And success is always the value 0 in all behaviors.\n\n\t   When the actual VMS termination status of the child is an error,\n\t   internally the $! value will be set to the closest Unix errno value\n\t   to that error so that Perl scripts that test for error messages\n\t   will see the expected Unix style error message instead of a VMS\n\t   message."
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How can you determine if a non-zero exit status from a child process in Perl is due to a VMS native error or an encoded Unix status?
+  manpageQuestion3: What is the significance of the ${^CHILD_ERROR_NATIVE} variable in Perl when handling child processes under VMS?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nConversely, when setting $? in an END block, an attempt is made to\n\t   convert the POSIX value into a native status intelligible to the\n\t   operating system upon exiting Perl.\tWhat this boils down to is\n\t   that setting $? to zero results in the generic success value\n\t   SS$_NORMAL, and setting $? to a non-zero value results in the\n\t   generic failure status SS$_ABORT.  See also \"exit\" in perlport.\n\n\t   With the \"PERL_VMS_POSIX_EXIT\" logical name defined as \"ENABLE\",\n\t   setting $? will cause the new value to be encoded into $^E so that\n\t   either the original parent or child exit status values\n\t    0 to 255 can be automatically recovered by C programs expecting\n\t   _POSIX_EXIT behavior.  If both a parent and a child exit value are\n\t   non-zero, then it will be assumed that this is actually a VMS\n\t   native status value to be passed through.  The special value of\n\t   0xFFFF is almost a NOOP as it will cause the current native VMS\n\t   status in the C library to become the current native Perl VMS\n\t   status, and is handled this way as it is known to not be a valid\n\t   native VMS status value.  It is recommend that only values in the\n\t   range of normal Unix parent or child status numbers, 0 to 255 are\n\t   used."
+  manpageQuestion1: What is the primary purpose of the `perlvms` resource?
+  manpageQuestion2: How does setting $? in an END block with PERL_VMS_POSIX_EXIT affect the exit status conversion?
+  manpageQuestion3: What is the recommended usage of 0xFFFF when using PERL_VMS_POSIX_EXIT?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nThe pragma \"use vmsish 'status'\" makes $? reflect the actual VMS\n\t   exit status instead of the default emulation of POSIX status\n\t   described above.  This pragma also disables the conversion of non-\n\t   zero values to SS$_ABORT when setting $? in an END block (but zero\n\t   will still be converted to SS$_NORMAL).\n\n\t   Do not use the pragma \"use vmsish 'status'\" with\n\t   \"PERL_VMS_POSIX_EXIT\" enabled, as they are at times requesting\n\t   conflicting actions and the consequence of ignoring this advice\n\t   will be undefined to allow future improvements in the POSIX exit\n\t   handling.\n\n\t   In general, with \"PERL_VMS_POSIX_EXIT\" enabled, more detailed\n\t   information will be available in the exit status for DCL scripts or\n\t   other native VMS tools, and will give the expected information for\n\t   Posix programs.  It has not been made the default in order to\n\t   preserve backward compatibility.\n\n\t   N.B. Setting \"DECC$FILENAME_UNIX_REPORT\" implicitly enables\n\t   \"PERL_VMS_POSIX_EXIT\".\n\n       $|  Setting $| for an I/O stream causes data to be flushed all the way\n\t   to disk on each write (i.e. not just to the underlying RMS buffers\n\t   for a file).  In other words, it's equivalent to calling fflush()\n\t   and fsync() from C."
+  manpageQuestion1: What is the primary purpose of the `perlvms` resource?
+  manpageQuestion2: How would you use the `use vmsish 'status'` pragma to make $? reflect the actual VMS exit status instead of POSIX emulation?
+  manpageQuestion3: Can you explain how to configure $| for an I/O stream in Perl on VMS to ensure data is flushed immediately to disk?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlvms`.\n\n\n\nManpage text:\n\nStandard modules with VMS-specific differences\n   SDBM_File\n       SDBM_File works properly on VMS. It has, however, one minor difference.\n       The database directory file created has a .sdbm_dir extension rather\n       than a .dir extension. .dir files are VMS filesystem directory files,\n       and using them for other purposes could cause unacceptable problems.\n\nRevision date\n       Please see the git repository for revision history.\n\nAUTHOR\n       Charles Bailey  bailey@cor.newman.upenn.edu Craig Berry\n       craigberry@mac.com Dan Sugalski\tdan@sidhe.org John Malmberg\n       wb8tyw@qsl.net\n\nperl v5.34.1\t\t\t  2022-02-19\t\t\t    PERLVMS(1)"
+  manpageQuestion1: What is the primary purpose of the perlvms resource?
+  manpageQuestion2: How would you use the SDBM_File module in Perl on VMS, and what is the difference in file extension compared to other systems?
+  manpageQuestion3: What information can be found in the revision date section of the perlvms manpage?
+

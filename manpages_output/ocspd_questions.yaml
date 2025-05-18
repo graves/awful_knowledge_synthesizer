@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ocspd`.\n\n\n\nManpage text:\n\nocspd(1)\t\t    General Commands Manual\t\t      ocspd(1)\n\nNAME\n     ocspd – OCSP and CRL Daemon\n\nSYNOPSIS\n     ocspd\n\nDESCRIPTION\n     ocspd performs caching and network fetching of Certificate Revocation\n     Lists (CRLs) and Online Certificate Status Protocol (OCSP) responses. It\n     is used by Security.framework during certificate verification.\n     Security.framework communicates with ocspd via a private RPC interface.\n     When Security.framework determines that a CRL is needed, or that it needs\n     to perform an OCSP transaction, it performs an RPC to ocspd which then\n     examines its cache to see if the appropriate CRL or OCSP response exists\n     and is still valid. If so, that entity is returned to Security.framework.\n     If no entry is found in cache, ocspd obtains it from the network, saving\n     the result in cache before returning it to Security.framework.\n\n     This command is not intended to be invoked directly.\n\nFILES\n     /private/var/db/crls/crlcache.db\tCRL cache\n     /private/var/db/crls/ocspcache.db\tOCSP response cache"
+  manpageQuestion1: What is the primary purpose of the ocspd tool?
+  manpageQuestion2: How would you use ocspd in a system environment where it is not intended to be invoked directly?
+  manpageQuestion3: Can you describe the role of ocspd in the context of certificate verification within macOS?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ocspd`.\n\n\n\nManpage text:\n\nHISTORY\n     ocspd was first introduced in Mac OS X version 10.4 (Tiger).\n\nDarwin\t\t\t       Thurs Mar 31 2005\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the ocspd tool?
+  manpageQuestion2: How would you use ocspd to set a specific power management setting on a Mac?
+  manpageQuestion3: Can you provide an example of using ocspd to query the current power management status on a Mac?
+

@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `path_helper`.\n\n\n\nManpage text:\n\npath_helper(8)\t\t    System Manager's Manual\t\tpath_helper(8)\n\nNAME\n     path_helper – helper for constructing PATH environment variable\n\nSYNOPSIS\n     path_helper [-c | -s]\n\nDESCRIPTION\n     The path_helper utility reads the contents of the files in the\n     directories /etc/paths.d and /etc/manpaths.d and appends their contents\n     to the PATH and MANPATH environment variables respectively.  (The MANPATH\n     environment variable will not be modified unless it is already set in the\n     environment.)\n\n     Files in these directories should contain one path element per line.\n\n     Prior to reading these directories, default PATH and MANPATH values are\n     obtained from the files /etc/paths and /etc/manpaths respectively.\n\n     Options:\n\n     -c      Generate C-shell commands on stdout.  This is the default if\n\t     SHELL ends with \"csh\".\n\n     -s      Generate Bourne shell commands on stdout.\tThis is the default if\n\t     SHELL does not end with \"csh\".\n\nNOTE\n     The path_helper utility should not be invoked directly.  It is intended\n     only for use by the shell profile."
+  manpageQuestion1: What is the primary purpose of the path_helper utility?
+  manpageQuestion2: How can you use path_helper to generate shell commands for the C-shell when running in a shell that ends with 'csh'?
+  manpageQuestion3: Can you provide an example of using path_helper to append paths from /etc/paths.d to the PATH environment variable?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `path_helper`.\n\n\n\nManpage text:\n\nMac OS X\t\t\tMarch 15, 2007\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the path_helper tool?
+  manpageQuestion2: How can you use path_helper to set the PATH environment variable for a specific process?
+  manpageQuestion3: Can you provide an example of using path_helper to modify the PATH environment variable in a shell script?
+

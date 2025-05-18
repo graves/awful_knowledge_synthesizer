@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `fontmover`.\n\n\n\nManpage text:\n\nfontmover(8)\t\t    System Manager's Manual\t\t  fontmover(8)\n\nNAME\n     fontmover – Mac OS X system font mover\n\nSYNOPSIS\n     fontmover -d\n\nDESCRIPTION\n     fontmover is a helper tool that moves fonts around on behalf of the font\n     server.\n\n     Users should not run fontmover manually.\n\nSEE ALSO\n     fontd(8)\n\nHISTORY\n     The fontmover tool first appeared in MacOS X 10.6.\n\nMac OS X\t\t\t  2009-09-01\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the fontmover tool?
+  manpageQuestion2: How would you use fontmover to move fonts on a Mac OS X system?
+  manpageQuestion3: Can you explain the typical use case for running fontmover?
+

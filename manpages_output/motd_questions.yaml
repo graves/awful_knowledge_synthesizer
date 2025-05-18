@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `motd`.\n\n\n\nManpage text:\n\nMOTD(5) \t\t      File Formats Manual\t\t       MOTD(5)\n\nNAME\n     motd – file containing message(s) of the day\n\nDESCRIPTION\n     The file /etc/motd is normally displayed by login(1) after a user has\n     logged in but before the shell is run.  It is generally used for\n     important system-wide announcements.\n\n     Individual users may suppress the display of this file by creating a file\n     named “.hushlogin” in their home directories.\n\nFILES\n     /etc/motd\n\nEXAMPLES\n     Welcome to the University of East Westia\n\n     Make sure you have a .forward file...\n\n     4/17    Machine will be down for backups all day Saturday.\n\nSEE ALSO\n     login(1)\n\nmacOS 15.3\t\t       December 28, 1994\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the motd file?
+  manpageQuestion2: How can a user suppress the display of the motd message when logging in?
+  manpageQuestion3: What is the default location of the motd file on a macOS system?
+

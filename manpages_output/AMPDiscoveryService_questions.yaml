@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `AMPDiscoveryService`.\n\n\n\nManpage text:\n\nAMPDISCOVERYSERVICE(8)\t    System Manager's Manual\tAMPDISCOVERYSERVICE(8)\n\nNAME\n     AMPDiscoveryService – The discovery service for managing iOS/iPod device\n     discovery\n\nSYNOPSIS\n     AMPDiscoveryService\n\nDESCRIPTION\n     AMPDiscoveryService is a per-user daemon which discovers attached\n     iOS/iPod devices.\n\n     There are no configuration options to AMPDiscoveryService.  Users should\n     not run AMPDiscoveryService it manually.\n\nMac OS X\t\t       December 6, 2018 \t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the AMPDiscoveryService tool?
+  manpageQuestion2: How would you use AMPDiscoveryService to manage iOS device discovery on a macOS system?
+  manpageQuestion3: Can you explain the role of AMPDiscoveryService in the context of macOS device management?
+

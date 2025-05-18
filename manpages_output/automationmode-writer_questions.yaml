@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `automationmode-writer`.\n\n\n\nManpage text:\n\nautomationmode-writer(8)    System Manager's Manual   automationmode-writer(8)\n\nNAME\n     automationmode-writer – Daemon entitled to enable or disable UI\n     automation\n\nDESCRIPTION\n     automationmode-writer enables UI automation for authorized and entitled\n     clients.\n\nDarwin\t\t\t\t6 January, 2021 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the automationmode-writer daemon?
+  manpageQuestion2: How would you use the automationmode-writer to enable UI automation for an authorized client?
+  manpageQuestion3: Can you explain the role of the automationmode-writer in managing UI automation permissions on macOS?
+

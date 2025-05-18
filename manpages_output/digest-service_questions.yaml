@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `digest-service`.\n\n\n\nManpage text:\n\nDIGEST-SERVICE(8)\t    System Manager's Manual\t     DIGEST-SERVICE(8)\n\nNAME\n     digest-service – handles server side authentication of digest protocols\n     in the GSS-API suite.\n\nSYNOPSIS\n     digest-service [-v | --version]\n\nDESCRIPTION\n     digest-service handles server side authentication of digest protocol in\n     the GSS-API suite .\n\nHeimdal \t\t       November 13, 2018\t\t       Heimdal"
+  manpageQuestion1: What is the primary purpose of the digest-service command?
+  manpageQuestion2: How would you check the version of the digest-service program?
+  manpageQuestion3: What is the main function of the digest-service in the context of GSS-API?
+

@@ -1,0 +1,76 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ipptool`.\n\n\n\nManpage text:\n\nipptool(1)\t\t\t  Apple Inc.\t\t\t    ipptool(1)\n\nNAME\n       ipptool - perform internet printing protocol requests\n\nSYNOPSIS\n       ipptool [ --help ] [ --ippserver filename ] [\n       --stop-after-include-error ] [ --version ] [ -4 ] [ -6 ] [ -C ] [ -E ]\n       [ -I ] [ -L ] [ -P filename.plist ] [ -S ] [ -T seconds ] [ -V version\n       ] [ -X ] [ -c ] [ -d name=value ] [ -f filename ] [ -h ] [ -i seconds ]\n       [ -n repeat-count ] [ -q ] [ -t ] [ -v ] printer-uri testfile [ ...\n       testfile ]\n\nDESCRIPTION\n       ipptool sends IPP requests to the specified printer-uri and tests\n       and/or displays the results.  Each named testfile defines one or more\n       requests, including the expected response status, attributes, and\n       values.\tOutput is either a plain text, formatted text, CSV, or XML\n       report on the standard output, with a non-zero exit status indicating\n       that one or more tests have failed.  The testfile format is described\n       in ipptoolfile(5).\n\nOPTIONS\n       The following options are recognized by ipptool:"
+  manpageQuestion1: What is the primary purpose of the ipptool command?
+  manpageQuestion2: How can you use ipptool to send an IPP request to a printer at the URI 'ipp://localhost:631/printers/MyPrinter' and test a PDF file named 'test.pdf'?
+  manpageQuestion3: Can you provide an example of using ipptool to check the status of a printer with the URI 'ipp://192.168.1.100:631/printers/HP_LaserJet'
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ipptool`.\n\n\n\nManpage text:\n\n--help\n\t    Shows program help.\n\n       --ippserver filename\n\t    Specifies that the test results should be written to the named\n\t    ippserver attributes file.\n\n       --stop-after-include-error\n\t    Tells ipptool to stop if an error occurs in an included file.\n\t    Normally ipptool will continue with subsequent tests after the\n\t    INCLUDE directive.\n\n       --version\n\t    Shows the version of ipptool being used.\n\n       -4   Specifies that ipptool must connect to the printer or server using\n\t    IPv4.\n\n       -6   Specifies that ipptool must connect to the printer or server using\n\t    IPv6.\n\n       -C   Specifies that requests should be sent using the HTTP/1.1\n\t    \"Transfer-Encoding: chunked\" header, which is required for\n\t    conformance by all versions of IPP.  The default is to use\n\t    \"Transfer-Encoding: chunked\" for requests with attached files and\n\t    \"Content-Length:\" for requests without attached files.\n\n       -E   Forces TLS encryption when connecting to the server using the HTTP\n\t    \"Upgrade\" header."
+  manpageQuestion1: What is the primary purpose of the ipptool command?
+  manpageQuestion2: How can you use ipptool to connect to a printer using IPv4 protocol?
+  manpageQuestion3: What is the function of the --stop-after-include-error option in ipptool?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ipptool`.\n\n\n\nManpage text:\n\n-I   Specifies that ipptool will continue past errors.\n\n       -L   Specifies that requests should be sent using the HTTP/1.0\n\t    \"Content-Length:\" header, which is required for conformance by all\n\t    versions of IPP.  The default is to use \"Transfer-Encoding:\n\t    chunked\" for requests with attached files and \"Content-Length:\"\n\t    for requests without attached files.\n\n       -P_filename.plist\n\t    Specifies that the test results should be written to the named XML\n\t    (Apple plist) file in addition to the regular test report (-t).\n\t    This option is incompatible with the -i (interval) and -n\n\t    (repeat-count) options.\n\n       -S   Forces (dedicated) TLS encryption when connecting to the server.\n\n       -T_seconds\n\t    Specifies a timeout for IPP requests in seconds.\n\n       -V_version\n\t    Specifies the default IPP version to use: 1.0, 1.1, 2.0, 2.1, or\n\t    2.2. If not specified, version 1.1 is used.\n\n       -X   Specifies that XML (Apple plist) output is desired instead of the\n\t    plain text report.\tThis option is incompatible with the -i\n\t    (interval) and -n (repeat-count) options."
+  manpageQuestion1: What is the primary purpose of the ipptool command?
+  manpageQuestion2: How can you configure ipptool to use TLS encryption when connecting to an IPP server?
+  manpageQuestion3: What command-line option would you use with ipptool to specify a timeout for IPP requests?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ipptool`.\n\n\n\nManpage text:\n\n-c   Specifies that CSV (comma-separated values) output is desired\n\t    instead of the plain text output.\n\n       -d_name=value\n\t    Defines the named variable.\n\n       -f_filename\n\t    Defines the default request filename for tests.\n\n       -h   Validate HTTP response headers.\n\n       -i_seconds\n\t    Specifies that the (last) testfile should be repeated at the\n\t    specified interval.  This option is incompatible with the -X (XML\n\t    plist output) option.\n\n       -l   Specifies that plain text output is desired.\n\n       -n_repeat-count\n\t    Specifies that the (last) testfile should be repeated the\n\t    specified number of times.\tThis option is incompatible with the\n\t    -X (XML plist output) option.\n\n       -q   Be quiet and produce no output.\n\n       -t   Specifies that CUPS test report output is desired instead of the\n\t    plain text output.\n\n       -v   Specifies that all request and response attributes should be\n\t    output in CUPS test mode (-t).  This is the default for XML\n\t    output."
+  manpageQuestion1: What is the primary purpose of the ipptool command?
+  manpageQuestion2: How can you use ipptool to generate CSV output for a specific testfile?
+  manpageQuestion3: What command would you use to run ipptool in quiet mode and repeat a testfile 5 times?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ipptool`.
+
+
+
+    Manpage text:
+
+    EXIT STATUS
+           The ipptool program returns 0 if all tests were successful and 1
+           otherwise.
+
+    FILES
+           The following standard files are available:
+           color.jpg
+           create-printer-subscription.test
+           document-a4.pdf
+           document-a4.ps
+           document-letter.pdf
+           document-letter.ps
+           get-completed-jobs.test
+           get-jobs.test
+           get-notifications.test
+           get-printer-attributes.test
+           get-subscriptions.test
+           gray.jpg
+           ipp-1.1.test
+           ipp-2.0.test
+           ipp-2.1.test
+           ipp-2.2.test
+           ipp-everywhere.test
+           onepage-a4.pdf
+           onepage-a4.ps
+           onepage-letter.pdf
+           onepage-letter.ps
+           print-job.test
+           print-job-deflate.test
+           print-job-gzip.test
+           testfile.jpg
+           testfile.pcl
+           testfile.pdf
+           testfile.ps
+           testfile.txt
+           validate-job.test
+
+    CONFORMING TO
+           The ipptool program is unique to CUPS and conforms to the Internet
+           Printing Protocol up to version 2.2.
+  manpageQuestion1: What is the primary purpose of the ipptool command?
+  manpageQuestion2: How can you use ipptool to test the functionality of a CUPS printer driver?
+  manpageQuestion3: Can you provide an example of using ipptool to validate a print job against the IPP protocol?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ipptool`.\n\n\n\nManpage text:\n\nEXAMPLES\n       Get a list of completed jobs for \"myprinter\":\n\n\t   ipptool ipp://localhost/printers/myprinter get-completed-jobs.test\n\n       Send email notifications to \"user@example.com\" when \"myprinter\"\n       changes:\n\n\t   ipptool -d recipient=mailto:user@example.com \\\n\t       ipp://localhost/printers/myprinter create-printer-subscription.test\n\nSEE ALSO\n       ipptoolfile(5), IANA IPP Registry\n       (http://www.iana.org/assignments/ipp-registrations), PWG Internet\n       Printing Protocol Workgroup (http://www.pwg.org/ipp) RFC 8011\n       (http://tools.ietf.org/html/rfc8011),\n\nCOPYRIGHT\n       Copyright © 2007-2019 by Apple Inc.\n\n26 April 2019\t\t\t     CUPS\t\t\t    ipptool(1)"
+  manpageQuestion1: What is the primary purpose of the ipptool command?
+  manpageQuestion2: How would you use ipptool to retrieve a list of completed jobs for a specific printer?
+  manpageQuestion3: Can you provide an example of using ipptool to set up a printer subscription that sends email notifications to a specific address?
+

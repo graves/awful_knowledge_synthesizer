@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `analyticsd`.\n\n\n\nManpage text:\n\nANALYTICSD(8)\t\t    System Manager's Manual\t\t ANALYTICSD(8)\n\nNAME\n     analyticsd – Diagnostics and Usage\n\nSYNOPSIS\n     analyticsd\n\nDESCRIPTION\n     analyticsd is a system daemon that collects diagnostics and usage data\n     locally for users that have opted in.\n\n     There are no configuration options to analyticsd, and users should not\n     run analyticsd manually.\n\nSEE ALSO\n     brctl(1)\n\nMac OS X\t\t\t   22/04/14\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the analyticsd tool?
+  manpageQuestion2: How would you check if the analyticsd daemon is running on a macOS system?
+  manpageQuestion3: What should users avoid when dealing with the analyticsd service?
+

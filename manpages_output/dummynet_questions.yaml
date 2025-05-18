@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dummynet`.\n\n\n\nManpage text:\n\nDUMMYNET(4)\t\t     Device Drivers Manual\t\t   DUMMYNET(4)\n\nNAME\n     dummynet – traffic shaper, bandwidth manager and delay emulator\n\nDESCRIPTION\n     dummynet is a system facility that permits the control of traffic going\n     through the various network interfaces, by applying bandwidth and queue\n     size limitations, implementing different scheduling and queue management\n     policies, and emulating delays and losses.\n\n     The user interface for dummynet is implemented by the dnctl program, so\n     the reader is referred to the dnctl(8) manpage for a complete description\n     of the capabilities of dummynet and on how to use it.\n\nSEE ALSO\n     dnctl(8), setsockopt(2), bridge(4), ip(4), sysctl(8)\n\nHISTORY\n     dummynet was initially implemented as a testing tool for TCP congestion\n     control by Luigi Rizzo ⟨luigi@iet.unipi.it⟩, as described on ACM Computer\n     Communication Review, Jan.97 issue.  Later it has been then modified to\n     work at the ip and bridging level, integrated with the IPFW packet\n     filter, and extended to support multiple queueing and scheduling\n     policies."
+  manpageQuestion1: What is the primary purpose of the dummynet tool?
+  manpageQuestion2: How can dnctl be used to set a bandwidth limit of 10 Mbps on the eth0 interface?
+  manpageQuestion3: What command would you use with dnctl to introduce a 500ms delay on traffic passing through the lo0 interface?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dummynet`.\n\n\n\nManpage text:\n\nDarwin\t\t\t       October 28, 2002 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the dummynet tool?
+  manpageQuestion2: How would you use dummynet to simulate a network delay of 500 milliseconds for a specific traffic class?
+  manpageQuestion3: Can you provide an example of using dummynet to set up a traffic shaping rule that limits the bandwidth of a specific interface to 1 Mbps?
+

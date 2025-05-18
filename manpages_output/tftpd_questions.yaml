@@ -1,0 +1,65 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tftpd`.\n\n\n\nManpage text:\n\nTFTPD(8)\t\t    System Manager's Manual\t\t      TFTPD(8)\n\nNAME\n     tftpd – Internet Trivial File Transfer Protocol server\n\nSYNOPSIS\n     tftpd [-cdCilnow] [-F strftime-format] [-s directory] [-u user]\n\t   [-U umask] [directory ...]\n\nDESCRIPTION\n     The tftpd utility is a server which supports the Internet Trivial File\n     Transfer Protocol (RFC 1350).  The TFTP server operates at the port\n     indicated in the ‘tftp’ service description; see services(5).  This\n     server should not be started manually; instead, it should be run using\n     launchd(8) using the plist /System/Library/LaunchDaemons/tftp.plist.  It\n     may be started using the launchctl(1) load command; refer to the\n     documentation for that utility for more information.\n\n     The use of tftp(1) does not require an account or password on the remote\n     system.  Due to the lack of authentication information, tftpd will allow\n     only publicly readable files to be accessed.  Files containing the string\n     “/../” or starting with “../” are not allowed.  Files may be written only\n     if they already exist and are publicly writable.  Note that this extends\n     the concept of “public” to include all users on all hosts that can be\n     reached through the network; this may not be appropriate on all systems,\n     and its implications should be considered before enabling tftp service.\n     The server should have the user ID with the lowest possible privilege."
+  manpageQuestion1: What is the primary purpose of the tftpd command?
+  manpageQuestion2: How can you configure tftpd to listen on a specific directory and run with a specific user ID?
+  manpageQuestion3: What are the security considerations when using tftpd without authentication?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tftpd`.\n\n\n\nManpage text:\n\nAccess to files may be restricted by invoking tftpd with a list of\n     directories by including up to 20 pathnames as server program arguments\n     in /System/Library/LaunchDaemons/tftp.plist.  In this case access is\n     restricted to files whose names are prefixed by the one of the given\n     directories.  The given directories are also treated as a search path for\n     relative filename requests.\n\n     The -s option provides additional security by changing the root directory\n     of tftpd, thereby prohibiting accesses to outside of the specified\n     directory.  Because chroot(2) requires super-user privileges, tftpd must\n     be run as root.  However, after performing the chroot(2) call, tftpd will\n     set its user ID to that of the specified user, or “nobody” if no -u\n     option is specified.\n\n     The options are:\n\n     -c      Changes the default root directory of a connecting host via\n\t     chroot(2) based on the connecting IP address.  This prevents\n\t     multiple clients from writing to the same file at the same time.\n\t     If the directory does not exist, the client connection is\n\t     refused.  The -s option is required for -c and the specified\n\t     directory is used as a base."
+  manpageQuestion1: What is the primary purpose of the tftpd resource?
+  manpageQuestion2: How can you configure tftpd to restrict file access to specific directories using the -s option?
+  manpageQuestion3: What is the effect of using the -c option with tftpd, and how does it enhance security?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tftpd`.\n\n\n\nManpage text:\n\n-C      Operates the same as -c except it falls back to directory\n\t     specified via -s if a directory does not exist for the client's\n\t     IP.\n\n     -F      Use this strftime(3) compatible format string for the creation of\n\t     the suffix if -W is specified.  By default the string \"%Y%m%d\" is\n\t     used.\n\n     -d, -d [value]\n\t     Enables debug output.  If value is not specified, then the debug\n\t     level is increased by one for each instance of -d which is\n\t     specified.\n\n\t     If value is specified, then the debug level is set to value.  The\n\t     debug level is a bitmask implemented in\n\t     src/libexec/tftpd/tftp-utils.h.  Valid values are 0 (DEBUG_NONE),\n\t     1 (DEBUG_PACKETS), 2, (DEBUG_SIMPLE), 4 (DEBUG_OPTIONS), and 8\n\t     (DEBUG_ACCESS).  Multiple debug values can be combined in the\n\t     bitmask by logically OR'ing the values.  For example, specifying\n\t     -d 15 will enable all the debug values.\n\n     -i      Ignored for backward compatibility.\n\n     -l      Log all requests using syslog(3) with the facility of LOG_FTP.\n\t     Note: Logging of LOG_FTP messages must also be enabled in the\n\t     syslog configuration file, syslog.conf(5)."
+  manpageQuestion1: What is the primary purpose of the tftpd command?
+  manpageQuestion2: How can you configure tftpd to use a custom strftime format for file suffixes when using the -W option?
+  manpageQuestion3: What command options can be used to enable debug output in tftpd and how do they work?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tftpd`.\n\n\n\nManpage text:\n\n-n      Suppress negative acknowledgement of requests for nonexistent\n\t     relative filenames.\n\n     -o      Disable support for RFC2347 style TFTP Options.\n\n     -s directory\n\t     Cause tftpd to change its root directory to directory.  After\n\t     doing that but before accepting commands, tftpd will switch\n\t     credentials to an unprivileged user.\n\n     -u user\n\t     Switch credentials to user (default “nobody”) when the -s option\n\t     is used.  The user must be specified by name, not a numeric UID.\n\n     -U umask\n\t     Set the umask for newly created files.  The default is 022\n\t     (S_IWGRP | S_IWOTH).\n\n     -w      Allow write requests to create new files.\tBy default tftpd\n\t     requires that the file specified in a write request exist.  Note\n\t     that this only works in directories writable by the user\n\t     specified with -u option\n\n     -W      As -w but append a YYYYMMDD.nn sequence number to the end of the\n\t     filename.\tNote that the string YYYYMMDD can be changed with the\n\t     -F option."
+  manpageQuestion1: What is the primary purpose of the tftpd command?
+  manpageQuestion2: How can you configure tftpd to allow write requests and append a date-based sequence number to filenames?
+  manpageQuestion3: What command can be used to set the umask for newly created files in tftpd?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tftpd`.
+
+
+
+    Manpage text:
+
+    SEE ALSO
+         launchctl(1), tftp(1), chroot(2), syslog(3), launchd.plist(5),
+         services(5), syslog.conf(5), launchd(8)
+
+         The following RFC's are supported:
+
+         RFC 1350: The TFTP Protocol (Revision 2).
+
+         RFC 2347: TFTP Option Extension.
+
+         RFC 2348: TFTP Blocksize Option.
+
+         RFC 2349: TFTP Timeout Interval and Transfer Size Options.
+
+         RFC 7440: TFTP Windowsize Option.
+
+         The non-standard rollover and blksize2 TFTP options are mentioned here:
+
+         Extending TFTP, http://www.compuphase.com/tftp.htm.
+
+    HISTORY
+         The tftpd utility appeared in 4.2BSD; the -s option was introduced in
+         FreeBSD 2.2, the -u option was introduced in FreeBSD 4.2, the -c option
+         was introduced in FreeBSD 4.3, and the -F and -W options were introduced
+         in FreeBSD 7.4.
+
+         Support for Timeout Interval and Transfer Size Options (RFC2349) was
+         introduced in FreeBSD 5.0, support for the TFTP Blocksize Option
+         (RFC2348) and the blksize2 option was introduced in FreeBSD 7.4.
+  manpageQuestion1: What is the primary purpose of the tftpd utility?
+  manpageQuestion2: How can you configure tftpd to serve files from a specified directory using the -s option?
+  manpageQuestion3: What command-line options are available in tftpd to extend its functionality according to RFC standards?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tftpd`.\n\n\n\nManpage text:\n\nEdwin Groothuis <edwin@FreeBSD.org> performed a major rewrite of the\n     tftpd and tftp(1) code to support RFC2348.\n\n     Support for the windowsize option (RFC7440) was introduced in\n     FreeBSD 13.0.\n\nNOTES\n     Files larger than 33,553,919 octets (65535 blocks, last one <512 octets)\n     cannot be correctly transferred without client and server supporting\n     blocksize negotiation (RFCs 2347 and 2348), or the non-standard TFTP\n     rollover option.  As a kludge, tftpd accepts a sequence of block number\n     which wrap to zero after 65535, even if the rollover option is not\n     specified.\n\n     Many tftp clients will not transfer files over 16,776,703 octets (32767\n     blocks), as they incorrectly count the block number using a signed rather\n     than unsigned 16-bit integer.\n\nmacOS 15.3\t\t\t March 2, 2020\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the tftpd resource?
+  manpageQuestion2: How does tftpd handle the transfer of large files when blocksize negotiation is not supported?
+  manpageQuestion3: What is the significance of the RFC2347 and RFC2348 standards in the context of tftpd's functionality?
+

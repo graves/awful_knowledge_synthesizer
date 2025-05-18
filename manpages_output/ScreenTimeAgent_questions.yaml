@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ScreenTimeAgent`.\n\n\n\nManpage text:\n\nSCREENTIMEAGENT(8)\t    System Manager's Manual\t    SCREENTIMEAGENT(8)\n\nNAME\n     ScreenTimeAgent – Screen Time Agent\n\nDESCRIPTION\n     ScreenTimeAgent supports the Screen Time feature.\n\nmacOS\t\t\t       December 21, 2018\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the ScreenTimeAgent tool?
+  manpageQuestion2: How would you configure ScreenTimeAgent to enforce screen time limits on a specific application?
+  manpageQuestion3: Can you explain how ScreenTimeAgent interacts with the system to manage screen time settings?
+

@@ -1,0 +1,115 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `bigfloat`.\n\n\n\nManpage text:\n\nmath::bigfloat(n)\t       Tcl Math Library \t     math::bigfloat(n)\n\n______________________________________________________________________________\n\nNAME\n       math::bigfloat - Arbitrary precision floating-point numbers\n\nSYNOPSIS\n       package require Tcl  8.5\n\n       package require math::bigfloat  ?2.0.1?\n\n       fromstr number ?trailingZeros?\n\n       tostr ?-nosci? number\n\n       fromdouble double ?decimals?\n\n       todouble number\n\n       isInt number\n\n       isFloat number\n\n       int2float integer ?decimals?\n\n       add x y\n\n       sub x y\n\n       mul x y\n\n       div x y\n\n       mod x y\n\n       abs x\n\n       opp x\n\n       pow x n\n\n       iszero x\n\n       equal x y\n\n       compare x y\n\n       sqrt x\n\n       log x\n\n       exp x\n\n       cos x\n\n       sin x\n\n       tan x\n\n       cotan x\n\n       acos x\n\n       asin x\n\n       atan x\n\n       cosh x\n\n       sinh x\n\n       tanh x\n\n       pi n\n\n       rad2deg radians\n\n       deg2rad degrees\n\n       round x\n\n       ceil x\n\n       floor x\n\n______________________________________________________________________________\n\nDESCRIPTION\n       The bigfloat package provides arbitrary precision floating-point math\n       capabilities to the Tcl language. It is designed to work with Tcl 8.5,\n       but for Tcl 8.4 is provided an earlier version of this package.\tSee\n       WHAT ABOUT TCL 8.4 ? for more explanations.  By convention, we will\n       talk about the numbers treated in this library as :\n\n       •      BigFloat for floating-point numbers of arbitrary length.\n\n       •      integers for arbitrary length signed integers, just as basic\n\t      integers since Tcl 8.5.\n\n       Each BigFloat is an interval, namely [m-d, m+d], where m is the\n       mantissa and d the uncertainty, representing the limitation of that\n       number's precision.  This is why we call such mathematics interval\n       computations.  Just take an example in physics : when you measure a\n       temperature, not all digits you read are significant. Sometimes you\n       just cannot trust all digits - not to mention if doubles (f.p. numbers)\n       can handle all these digits.  BigFloat can handle this problem -\n       trusting the digits you get - plus the ability to store numbers with an\n       arbitrary precision.  BigFloats are internally represented at Tcl\n       lists: this package provides a set of procedures operating against the\n       internal representation in order to :\n\n       •      perform math operations on BigFloats and (optionnaly) with\n\t      integers.\n\n       •      convert BigFloats from their internal representations to\n\t      strings, and vice versa.\n\nINTRODUCTION\n       fromstr number ?trailingZeros?\n\t      Converts number into a BigFloat. Its precision is at least the\n\t      number of digits provided by number.  If the number contains\n\t      only digits and eventually a minus sign, it is considered as an\n\t      integer. Subsequently, no conversion is done at all.\n\n\t      trailingZeros - the number of zeros to append at the end of the\n\t      floating-point number to get more precision. It cannot be\n\t      applied to an integer.\n\n\t      # x and y are BigFloats : the first string contained a dot, and the second an e sign\n\t      set x [fromstr -1.000000]\n\t      set y [fromstr 2000e30]\n\t      # let's see how we get integers\n\t      set t 20000000000000\n\t      # the old way (package 1.2) is still supported for backwards compatibility :\n\t      set m [fromstr 10000000000]\n\t      # but we do not need fromstr for integers anymore\n\t      set n -39\n\t      # t, m and n are integers"
+  manpageQuestion1: What is the primary purpose of the math::bigfloat package?
+  manpageQuestion2: How would you convert the string '123.456789' into a BigFloat using the math::bigfloat package?
+  manpageQuestion3: Can you demonstrate how to perform a floating-point addition using the math::bigfloat package with two BigFloat numbers?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `bigfloat`.\n\n\n\nManpage text:\n\nThe number's last digit is considered by the procedure to be\n\t      true at +/-1, For example, 1.00 is the interval [0.99, 1.01],\n\t      and 0.43 the interval [0.42, 0.44].  The Pi constant may be\n\t      approximated by the number \"3.1415\".  This string could be\n\t      considered as the interval [3.1414 , 3.1416] by fromstr.\tSo,\n\t      when you mean 1.0 as a double, you may have to write 1.000000 to\n\t      get enough precision.  To learn more about this subject, see\n\t      PRECISION.\n\n\t      For example :\n\n\t      set x [fromstr 1.0000000000]\n\t      # the next line does the same, but smarter\n\t      set y [fromstr 1. 10]\n\n\n       tostr ?-nosci? number\n\t      Returns a string form of a BigFloat, in which all digits are\n\t      exacts.  All exact digits means a rounding may occur, for\n\t      example to zero, if the uncertainty interval does not clearly\n\t      show the true digits.  number may be an integer, causing the\n\t      command to return exactly the input argument.  With the -nosci\n\t      option, the number returned is never shown in scientific\n\t      notation, i.e. not like '3.4523e+5' but like '345230.'.\n\n\t      puts [tostr [fromstr 0.99999]] ;# 1.0000\n\t      puts [tostr [fromstr 1.00001]] ;# 1.0000\n\t      puts [tostr [fromstr 0.002]] ;# 0.e-2\n\n\t      See PRECISION for that matter.  See also iszero for how to\n\t      detect zeros, which is useful when performing a division.\n\n       fromdouble double ?decimals?\n\t      Converts a double (a simple floating-point value) to a BigFloat,\n\t      with exactly decimals digits.  Without the decimals argument, it\n\t      behaves like fromstr.  Here, the only important feature you\n\t      might care of is the ability to create BigFloats with a fixed\n\t      number of decimals.\n\n\t      tostr [fromstr 1.111 4]\n\t      # returns : 1.111000 (3 zeros)\n\t      tostr [fromdouble 1.111 4]\n\t      # returns : 1.111"
+  manpageQuestion1: What is the primary purpose of the bigfloat command in macOS?
+  manpageQuestion2: How can you convert a double-precision floating-point number to a BigFloat with exactly 4 decimal places using the bigfloat command?
+  manpageQuestion3: Can you provide an example of converting the hexadecimal value 0x1A2B3C4D to its unsigned integer representation using bigfloat?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `bigfloat`.\n\n\n\nManpage text:\n\ntodouble number\n\t      Returns a double, that may be used in expr, from a BigFloat.\n\n       isInt number\n\t      Returns 1 if number is an integer, 0 otherwise.\n\n       isFloat number\n\t      Returns 1 if number is a BigFloat, 0 otherwise.\n\n       int2float integer ?decimals?\n\t      Converts an integer to a BigFloat with decimals trailing zeros.\n\t      The default, and minimal, number of decimals is 1.  When\n\t      converting back to string, one decimal is lost:\n\n\t      set n 10\n\t      set x [int2float $n]; # like fromstr 10.0\n\t      puts [tostr $x]; # prints \"10.\"\n\t      set x [int2float $n 3]; # like fromstr 10.000\n\t      puts [tostr $x]; # prints \"10.00\"\n\n\nARITHMETICS\n       add x y\n\n       sub x y\n\n       mul x y\n\t      Return the sum, difference and product of x by y.  x - may be\n\t      either a BigFloat or an integer y - may be either a BigFloat or\n\t      an integer When both are integers, these commands behave like\n\t      expr.\n\n       div x y\n\n       mod x y\n\t      Return the quotient and the rest of x divided by y.  Each\n\t      argument (x and y) can be either a BigFloat or an integer, but\n\t      you cannot divide an integer by a BigFloat Divide by zero throws\n\t      an error.\n\n       abs x  Returns the absolute value of x\n\n       opp x  Returns the opposite of x\n\n       pow x n\n\t      Returns x taken to the nth power.  It only works if n is an\n\t      integer.\tx might be a BigFloat or an integer.\n\nCOMPARISONS\n       iszero x\n\t      Returns 1 if x is :\n\n\t      •      a BigFloat close enough to zero to raise \"divide by\n\t\t     zero\".\n\n\t      •      the integer 0.\n       See here how numbers that are close to zero are converted to strings:\n\n       tostr [fromstr 0.001] ; # -> 0.e-2\n       tostr [fromstr 0.000000] ; # -> 0.e-5\n       tostr [fromstr -0.000001] ; # -> 0.e-5\n       tostr [fromstr 0.0] ; # -> 0.\n       tostr [fromstr 0.002] ; # -> 0.e-2\n\n       set a [fromstr 0.002] ; # uncertainty interval : 0.001, 0.003\n       tostr  $a ; # 0.e-2\n       iszero $a ; # false\n\n       set a [fromstr 0.001] ; # uncertainty interval : 0.000, 0.002\n       tostr  $a ; # 0.e-2\n       iszero $a ; # true"
+  manpageQuestion1: What is the primary purpose of the bigfloat resource?
+  manpageQuestion2: How can you convert an integer to a BigFloat with two decimal places using the bigfloat commands?
+  manpageQuestion3: What is the result of performing a division operation using bigfloat commands, and how does it handle division by zero?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `bigfloat`.\n\n\n\nManpage text:\n\nequal x y\n\t      Returns 1 if x and y are equal, 0 elsewhere.\n\n       compare x y\n\t      Returns 0 if both BigFloat arguments are equal, 1 if x is\n\t      greater than y, and -1 if x is lower than y.  You would not be\n\t      able to compare an integer to a BigFloat : the operands should\n\t      be both BigFloats, or both integers.\n\nANALYSIS\n       sqrt x\n\n       log x\n\n       exp x\n\n       cos x\n\n       sin x\n\n       tan x\n\n       cotan x\n\n       acos x\n\n       asin x\n\n       atan x\n\n       cosh x\n\n       sinh x\n\n       tanh x The above functions return, respectively, the following : square\n\t      root, logarithm, exponential, cosine, sine, tangent, cotangent,\n\t      arc cosine, arc sine, arc tangent, hyperbolic cosine, hyperbolic\n\t      sine, hyperbolic tangent, of a BigFloat named x.\n\n       pi n   Returns a BigFloat representing the Pi constant with n digits\n\t      after the dot.  n is a positive integer.\n\n       rad2deg radians\n\n       deg2rad degrees\n\t      radians - angle expressed in radians (BigFloat)\n\n\t      degrees - angle expressed in degrees (BigFloat)\n\n\t      Convert an angle from radians to degrees, and vice versa.\n\nROUNDING\n       round x\n\n       ceil x\n\n       floor x\n\t      The above functions return the x BigFloat, rounded like with the\n\t      same mathematical function in expr, and returns it as an\n\t      integer.\n\nPRECISION\n       How do conversions work with precision ?\n\n       •      When a BigFloat is converted from string, the internal\n\t      representation holds its uncertainty as 1 at the level of the\n\t      last digit.\n\n       •      During computations, the uncertainty of each result is\n\t      internally computed the closest to the reality, thus saving the\n\t      memory used.\n\n       •      When converting back to string, the digits that are printed are\n\t      not subject to uncertainty. However, some rounding is done, as\n\t      not doing so causes severe problems.\n\n       Uncertainties are kept in the internal representation of the number ;\n       it is recommended to use tostr only for outputting data (on the screen\n       or in a file), and NEVER call fromstr with the result of tostr.\tIt is\n       better to always keep operands in their internal representation.  Due\n       to the internals of this library, the uncertainty interval may be\n       slightly wider than expected, but this should not cause false digits.\n\n       Now you may ask this question : What precision am I going to get after\n       calling add, sub, mul or div?  First you set a number from the string\n       representation and, by the way, its uncertainty is set:\n\n       set a [fromstr 1.230]\n       # $a belongs to [1.229, 1.231]\n       set a [fromstr 1.000]\n       # $a belongs to [0.999, 1.001]\n       # $a has a relative uncertainty of 0.1% : 0.001(the uncertainty)/1.000(the medium value)\n\n       The uncertainty of the sum, or the difference, of two numbers, is the\n       sum of their respective uncertainties.\n\n       set a [fromstr 1.230]\n       set b [fromstr 2.340]\n       set sum [add $a $b]]\n       # the result is : [3.568, 3.572] (the last digit is known with an uncertainty of 2)\n       tostr $sum ; # 3.57\n\n       But when, for example, we add or substract an integer to a BigFloat,\n       the relative uncertainty of the result is unchanged. So it is desirable\n       not to convert integers to BigFloats:\n\n       set a [fromstr 0.999999999]\n       # now something dangerous\n       set b [fromstr 2.000]\n       # the result has only 3 digits\n       tostr [add $a $b]\n\n       # how to keep precision at its maximum\n       puts [tostr [add $a 2]]"
+  manpageQuestion1: What is the primary purpose of the bigfloat resource?
+  manpageQuestion2: How can you convert a BigFloat value to its string representation while maintaining precision?
+  manpageQuestion3: What is the correct way to perform a comparison between two BigFloat numbers using the bigfloat resource?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `bigfloat`.
+
+
+
+    Manpage text:
+
+    For multiplication and division, the relative uncertainties of the
+           product or the quotient, is the sum of the relative uncertainties of
+           the operands.  Take care of division by zero : check each divider with
+           iszero.
+
+           set num [fromstr 4.00]
+           set denom [fromstr 0.01]
+
+           puts [iszero $denom];# true
+           set quotient [div $num $denom];# error : divide by zero
+
+           # opposites of our operands
+           puts [compare $num [opp $num]]; # 1
+           puts [compare $denom [opp $denom]]; # 0 !!!
+           # No suprise ! 0 and its opposite are the same...
+
+           Effects of the precision of a number considered equal to zero to the
+           cos function:
+
+           puts [tostr [cos [fromstr 0. 10]]]; # -> 1.000000000
+           puts [tostr [cos [fromstr 0. 5]]]; # -> 1.0000
+           puts [tostr [cos [fromstr 0e-10]]]; # -> 1.000000000
+           puts [tostr [cos [fromstr 1e-10]]]; # -> 1.000000000
+
+           BigFloats with different internal representations may be converted to
+           the same string.
+
+           For most analysis functions (cosine, square root, logarithm, etc.),
+           determining the precision of the result is difficult.  It seems however
+           that in many cases, the loss of precision in the result is of one or
+           two digits.  There are some exceptions : for example,
+
+           tostr [exp [fromstr 100.0 10]]
+           # returns : 2.688117142e+43 which has only 10 digits of precision, although the entry
+           # has 14 digits of precision.
+  manpageQuestion1: What is the primary purpose of the bigfloat resource?
+  manpageQuestion2: How can you check if a BigFloat value is zero before performing division to avoid a divide-by-zero error?
+  manpageQuestion3: Can you demonstrate how to compute the cosine of a very small number using bigfloat and show the result with high precision?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `bigfloat`.
+
+
+
+    Manpage text:
+
+    WHAT ABOUT TCL 8.4 ?
+           If your setup do not provide Tcl 8.5 but supports 8.4, the package can
+           still be loaded, switching back to math::bigfloat 1.2. Indeed, an
+           important function introduced in Tcl 8.5 is required - the ability to
+           handle bignums, that we can do with expr.  Before 8.5, this ability was
+           provided by several packages, including the pure-Tcl math::bignum
+           package provided by tcllib.  In this case, all you need to know, is
+           that arguments to the commands explained here, are expected to be in
+           their internal representation.  So even with integers, you will need to
+           call fromstr and tostr in order to convert them between string and
+           internal representations.
+
+           #
+           # with Tcl 8.5
+           # ============
+           set a [pi 20]
+           # round returns an integer and 'everything is a string' applies to integers
+           # whatever big they are
+           puts [round [mul $a 10000000000]]
+           #
+           # the same with Tcl 8.4
+           # =====================
+           set a [pi 20]
+           # bignums (arbitrary length integers) need a conversion hook
+           set b [fromstr 10000000000]
+           # round returns a bignum:
+           # before printing it, we need to convert it with 'tostr'
+           puts [tostr [round [mul $a $b]]]
+  manpageQuestion1: What is the primary purpose of the bigfloat package in Tcl?
+  manpageQuestion2: How can you use the bigfloat package to calculate the value of π with 20 decimal places and then round it to the nearest integer?
+  manpageQuestion3: Can you demonstrate how to multiply a bigfloat number by a large integer using the bigfloat package in Tcl 8.4?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `bigfloat`.\n\n\n\nManpage text:\n\nNAMESPACES AND OTHER PACKAGES\n       We have not yet discussed about namespaces because we assumed that you\n       had imported public commands into the global namespace, like this:\n\n       namespace import ::math::bigfloat::*\n\n       If you matter much about avoiding names conflicts, I considere it\n       should be resolved by the following :\n\n       package require math::bigfloat\n       # beware: namespace ensembles are not available in Tcl 8.4\n       namespace eval ::math::bigfloat {namespace ensemble create -command ::bigfloat}\n       # from now, the bigfloat command takes as subcommands all original math::bigfloat::* commands\n       set a [bigfloat sub [bigfloat fromstr 2.000] [bigfloat fromstr 0.530]]\n       puts [bigfloat tostr $a]\n\n\nEXAMPLES\n       Guess what happens when you are doing some astronomy. Here is an\n       example :\n\n       # convert acurrate angles with a millisecond-rated accuracy\n       proc degree-angle {degrees minutes seconds milliseconds} {\n\t   set result 0\n\t   set div 1\n\t   foreach factor {1 1000 60 60} var [list $milliseconds $seconds $minutes $degrees] {\n\t       # we convert each entry var into milliseconds\n\t       set div [expr {$div*$factor}]\n\t       incr result [expr {$var*$div}]\n\t   }\n\t   return [div [int2float $result] $div]\n       }\n       # load the package\n       package require math::bigfloat\n       namespace import ::math::bigfloat::*\n       # work with angles : a standard formula for navigation (taking bearings)\n       set angle1 [deg2rad [degree-angle 20 30 40   0]]\n       set angle2 [deg2rad [degree-angle 21  0 50 500]]\n       set opposite3 [deg2rad [degree-angle 51\t0 50 500]]\n       set sinProduct [mul [sin $angle1] [sin $angle2]]\n       set cosProduct [mul [cos $angle1] [cos $angle2]]\n       set angle3 [asin [add [mul $sinProduct [cos $opposite3]] $cosProduct]]\n       puts \"angle3 : [tostr [rad2deg $angle3]]\""
+  manpageQuestion1: What is the primary purpose of the bigfloat package in Tcl?
+  manpageQuestion2: How can you use the bigfloat package to perform high-precision arithmetic on astronomical calculations?
+  manpageQuestion3: Can you demonstrate how to convert a string representation of a number into a bigfloat value and then perform a mathematical operation using the package?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `bigfloat`.\n\n\n\nManpage text:\n\nBUGS, IDEAS, FEEDBACK\n       This document, and the package it describes, will undoubtedly contain\n       bugs and other problems.  Please report such in the category math ::\n       bignum :: float of the Tcllib SF Trackers\n       [http://sourceforge.net/tracker/?group_id=12883].  Please also report\n       any ideas for enhancements you may have for either package and/or\n       documentation.\n\nKEYWORDS\n       computations, floating-point, interval, math, multiprecision, tcl\n\nCATEGORY\n       Mathematics\n\nCOPYRIGHT\n       Copyright (c) 2004-2008, by Stephane Arnold <stephanearnold at yahoo dot fr>\n\n\nmath\t\t\t\t     2.0.1\t\t     math::bigfloat(n)"
+  manpageQuestion1: What is the primary purpose of the bigfloat resource?
+  manpageQuestion2: How would you use the bigfloat package to perform high-precision floating-point arithmetic in Tcl?
+  manpageQuestion3: Can you provide an example of using the math::bigfloat command to convert a string representation of a large number into a big float?
+

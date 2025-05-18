@@ -1,0 +1,66 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sc_auth`.\n\n\n\nManpage text:\n\nsc_auth(8)\t\t    System Manager's Manual\t\t    sc_auth(8)\n\nNAME\n     sc_auth – SmartCard authorization setup script\n\nSYNOPSIS\n     sc_auth pair   [-v] -u user -h hash\n     sc_auth unpair [-v] [-u user] [-h hash]\n     sc_auth pairing_ui [-v] [-f] [-s enable|disable|status]\n     sc_auth identities\n     sc_auth list   [-v] [-u user] [-d domain]\n     sc_auth changepin [-t tokenid] [-u]\n     sc_auth verifypin [-t tokenid] [-p PIN]\n     sc_auth enable_for_login -c class-id\n     sc_auth filevault -o operation [-u user] [-h hash]\n\n   CTK Identity\n     sc_auth create-ctk-identity -l label\n\t     -k p-256|p-384|p-521|p-256-ne|p-384-ne [-t bio|none] [-N CN]\n\t     [-E emailAddress] [-U OU] [-O O] [-L L] [-S ST] [-C C]\n     sc_auth delete-ctk-identity -h hash\n     sc_auth delete-all-ctk-identities\n     sc_auth list-ctk-identities [-t sha1|sha256|ssh] [-e hex|b64]\n     sc_auth import-ctk-identities -f fileName [-t bio|none] [-p password]\n     sc_auth export-ctk-identity -h hash -f fileName [-p password]\n     sc_auth create-ctk-csr -h hash -f fileName [-N CN] [-E emailAddress]\n\t     [-U OU] [-O O] [-L L] [-S ST] [-C C]\n     sc_auth import-ctk-certificate -f fileName"
+  manpageQuestion1: What is the primary purpose of the sc_auth command?
+  manpageQuestion2: How would you use sc_auth to create a CTK identity with a P-256 key and label 'MyID'?
+  manpageQuestion3: Can you provide an example of using sc_auth to import a CTK identity from a file named 'identity.pem'?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sc_auth`.
+
+
+
+    Manpage text:
+
+    Legacy Support
+         sc_auth accept [-v] [-u user] [-d domain] -k keyname
+         sc_auth accept [-v] [-u user] [-d domain] -h hash
+         sc_auth remove [-v] [-u user] [-d domain]
+         sc_auth hash   [-k keyname]
+
+    DESCRIPTION
+         Configures a local user account to permit authentication using a
+         supported SmartCard.  Authentication is via asymmetric key (also known as
+         public-key) encryption.
+
+       CTK Identity
+         CTK Identity allows to create and manipulate CryptoTokenKit identities.
+         CryptoTokenKit identities can use non-exportable or exportable private
+         keys. The non-exportable private key is protected by the Secure Enclave
+         and the key never leves the Secure Enclave in open form. The exportable
+         private key is encrypted with Elliptic Curve Encryption Standard Variable
+         IVX963 algorithm which is backed by a Secure Enclave key. CryptoTokenKit
+         Identities and private keys can be used for TLS authentication, email
+         protection and SSL using ssh-keychain(8) library.
+  manpageQuestion1: What is the primary purpose of the sc_auth command?
+  manpageQuestion2: How can you use the sc_auth command to accept a SmartCard authentication with a specific keyname?
+  manpageQuestion3: What is the process for removing a SmartCard authentication entry associated with a particular user and domain using sc_auth?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sc_auth`.\n\n\n\nManpage text:\n\nLegacy Support\n     Performs the legacy actions.\n\nCOMMANDS\n     pair [-v] -u user -h hash Associate a user with a public key. Because\n     user's keychain will be modified to be unlockable by a key, SmartCard\n     with that key must be present in the reader. The key to use has to be\n     specified by its hash.\n\n\t    -v\t     Verbose mode\n\t    -u user  Specifies the user account.\n\t    -h hash  Specifies a public key using its hash\n\n     unpair [-v] [-u user] [-h hash] Remove association with a user and\n     keychain. If no specific hash is provided, all associations with a user\n     are removed.\n\n\t    -v\t     Verbose mode\n\t    -u user  Specifies the user account.\n\t    -h hash  Specifies a public key using its hash\n\n     pairing_ui [-v] [-f] [-s enable|disable|status] Enable, disable and force\n     to display pairing dialog when card with unpaired identities is inserted.\n\n\t    -v\t     Verbose mode\n\t    -f\t     Force to display pairing dialog\n\t    -s enable|disable|status\n\t\t     Enable, disable or provide status for pairing dialog"
+  manpageQuestion1: What is the primary purpose of the sc_auth command-line tool?
+  manpageQuestion2: How would you use sc_auth to associate a user with a public key using its hash?
+  manpageQuestion3: Can you provide an example of using sc_auth to remove all associations for a specific user account?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sc_auth`.\n\n\n\nManpage text:\n\nidentities List all identities on all SmartCards and display appropriate\n     associations with users (for associated keys) or key names (for\n     unassociated keys).\n     list [-v] [-u user] [-d domain] List all public keys associated with a\n     user.\n\n\t    -v\t     Verbose mode\n\t    -u user  Specifies the user account.\n\t    -d domain\n\t\t     Specifies the directory domain containing the user\n\t\t     account\n     changepin [-t tokenid] [-u] Change or unblock SmartCard PIN.  This\n     command works only for Personal Identity Verification (PIV) SmartCards.\n\n\t    -u\t     Unblock PIN using PUK\n\t    -t tokenid\n\t\t     Specifies a token by tokenID\n     verifypin [-t tokenid] [-p PIN] Verify SmartCard PIN. This command works\n     only for Personal Identity Verification (PIV) SmartCards.\n\n\t    -t tokenid\n\t\t     Specifies a token by tokenID\n\t    -p PIN   Specifies SmartCard PIN\n     enable_for_login [-c class-id] Enable the app extension for login and\n     make the token available to the system for authentication."
+  manpageQuestion1: What is the primary purpose of the sc_auth command?
+  manpageQuestion2: How would you use sc_auth to list all public keys associated with a specific user account in a given domain?
+  manpageQuestion3: Can you provide an example of using sc_auth to unblock a SmartCard PIN with a specific token ID?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sc_auth`.\n\n\n\nManpage text:\n\n-c class-id\n\t\t     Specifies a token by  'com.apple.ctk.class-id' from\n\t\t     Info.plist\n     filevault -o status|enable|disable [-u user] [-h hash] Manage SmartCard\n     support for FileVault unlock.\n\n\t    -o status|enable|disable\n\t\t     Use status to query the status of SmartCard support for\n\t\t     FileVault unlock for the specified user (current user by\n\t\t     default) enable/disable to activate/deactivate SmartCard\n\t\t     support for FileVault unlock\n\t    -u user  Specifies the user account.\n\t    -h hash  Specifies a public key using its hash\n\nCOMMANDS - CTK Identity\n     create-ctk-identity -l label -k p-256|p-384|p-521|p-256-ne|p-384-ne [-t\n     bio|none] [-N CN] [-E emailAddress] [-U OU] [-O O] [-L L] [-S ST] [-C C]\n     Create an CTK Identity.\n\n\t    -l label\n\t\t     Specifies the key label\n\t    -k p-256|p-384|p-521|p-256-ne|p-384-ne\n\t\t     Specifies the key type. The \"-ne\" suffix means non-\n\t\t     exportable variant of key\n\t    -t bio|none\n\t\t     Specifies private key protection\n\t    -N CN    Specifies certificate Common Name. If not specified the\n\t\t     label is used instead\n\t    -E emailAddress\n\t\t     Specifies certificate Email Address\n\t    -U OU    Specifies certificate Organizational Unit Name\n\t    -O O     Specifies certificate Organization Name\n\t    -L L     Specifies certificate Locality Name\n\t    -S ST    Specifies certificate State Or Province Name\n\t    -C C     Specifies certificate Country Name"
+  manpageQuestion1: What is the primary purpose of the sc_auth command-line tool?
+  manpageQuestion2: How can you use sc_auth to enable SmartCard support for FileVault unlock on the current user?
+  manpageQuestion3: What command would you use to create a CTK Identity with a label 'MyKey', using the p-256 key type and none protection for the private key?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sc_auth`.\n\n\n\nManpage text:\n\ndelete-ctk-identity -h hash Delete an CTK Identity.\n\n\t    -h hash  Specifies the identity by its public key hash\n\n     delete-all-ctk-identities Delete all CTK Identities.\n\n     list-ctk-identities [-t sha1|sha256 |ssh] [-e hex|b64] List all CTK\n     identities.\n\n\t    -t sha1|sha256|ssh\n\t\t     Specifies used alghorithm for public key hash. SHA-1,\n\t\t     SHA-256 and SHA-256 compatible with SSH.\n\t    -e hex|b64\n\t\t     Specifies public key hash encoding, hexadecimal or Base64\n\n     import-ctk-identities -f fileName [-t bio|none] [-p password] Import one\n     or more Identities from a PKCS#12 archive.\n\n\t    -f fileName\n\t\t     Specifies the PKCS#12 file\n\t    -t bio|none\n\t\t     Specifies private key protection.\n\t    -p password\n\t\t     Specifies password for PKCS#12 archive\n\n     export-ctk-identity -h hash -f fileName [-p password] Export one CTK\n     Identity in to the PKCS#12 archive.\n\n\t    -h hash Specifies the CTK Identity by its public key hash\n\t    -f fileName\n\t\t     Specifies the PKCS#12 file\n\t    -p password\n\t\t     Specifies password for PKCS#12 archive"
+  manpageQuestion1: What is the primary purpose of the sc_auth commands?
+  manpageQuestion2: How would you use the list-ctk-identities command to display CTK identities with SHA-256 hashes in hexadecimal format?
+  manpageQuestion3: Can you provide an example of using the export-ctk-identity command to export a CTK identity to a PKCS#12 archive with a specified password?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sc_auth`.\n\n\n\nManpage text:\n\ncreate-ctk-csr -h hash -f fileName [-N CN] [-E emailAddress] [-U OU] [-O\n     O] [-L L] [-S ST] [-C C] Create an PEM formated Certificate Signing\n     Request (CSR)\n\n\t    -h hash Specifies the CTK Identity by its public key hash\n\t    -f fileName\n\t\t     Specifies the CSR file\n\t    -N CN    Specifies certificate Common Name. If not specified the\n\t\t     label is used instead\n\t    -E emailAddress\n\t\t     Specifies Email Address\n\t    -U OU    Specifies Organizational Unit Name\n\t    -O O     Specifies Organization Name\n\t    -L L     Specifies Locality Name\n\t    -S ST    Specifies State Or Province Name\n\t    -C C     Specifies Country Name\n\n     import-ctk-certificate -f fileName Import an PEM formated Certificate\n\n\t    -f fileName\n\t\t     Specifies the certificate file name\n\nCOMMANDS - Legacy Support\n     accept [-v] [-u user] [-d domain] -k keyname -h hash Associate a user\n     with a public key on a card.  The key to use can be specified either by\n     its name or its hash.\n\n\t    -v\t     Verbose mode\n\t    -u user  Specifies the user account.\n\t    -d domain\n\t\t     Specifies the directory domain containing the user\n\t\t     account\n\t    -k keyname\n\t\t     Specifies a public key using its name\n\t    -k hash  Specifies a public key using its hash"
+  manpageQuestion1: What is the primary purpose of the sc_auth resource?
+  manpageQuestion2: How would you use the create-ctk-csr command to generate a Certificate Signing Request (CSR) with a specified Common Name and Email Address?
+  manpageQuestion3: Can you provide an example of using the import-ctk-certificate command to import a PEM formatted certificate into the system?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sc_auth`.\n\n\n\nManpage text:\n\nremove [-v] [-u user] [-d domain] Remove all public keys associated with\n     a user.\n\n\t    -v\t     Verbose mode\n\t    -u user  Specifies the user account.\n\t    -d domain\n\t\t     Specifies the directory domain containing the user\n\t\t     account\n\n     hash [-k keyname] Print hashes for all keys on all inserted cards.\n\n\t    -k keyname\n\t\t     Specifies a public key using its name\n\nNOTES\n     sc_auth is a shell script.  It is intended to be modified by\n     administrators to suit their local environments.\n\n     sc_auth is only known to work with a local directory.  Consult the\n     script's source for some limited guidance to using remote directories.\n\nSEE ALSO\n     SmartCardServices(7), SmartCardServices-legacy(7), pam_smartcard(8),\n     ssh-keychain(8)\n\nMacOSX\t\t\t       December 11, 2006\t\t\tMacOSX"
+  manpageQuestion1: What is the primary purpose of the sc_auth tool?
+  manpageQuestion2: How would you use sc_auth to remove all public keys associated with a user named 'john_doe' in the domain '/Users/john_doe'?
+  manpageQuestion3: Can you provide an example of using sc_auth to print hashes for a public key named 'id_rsa'?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `watchlistd`.\n\n\n\nManpage text:\n\nWATCHLISTD(8)\t\t    System Manager's Manual\t\t WATCHLISTD(8)\n\nNAME\n     watchlistd\n\nSYNOPSIS\n     watchlistd – Support daemon for Apple TV app\n\nDESCRIPTION\n     watchlistd provides support for Apple TV app\n\nmacOS\t\t\t\t  2020-12-01\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the watchlistd daemon?
+  manpageQuestion2: How does the watchlistd daemon function within the macOS system?
+  manpageQuestion3: What is the role of watchlistd in relation to the Apple TV app?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `AppleQEMUGuestAgent`.\n\n\n\nManpage text:\n\nAppleQEMUGuestAgent(8)\t    System Manager's Manual\tAppleQEMUGuestAgent(8)\n\nNAME\n     AppleQEMUGuestAgent – implements support for QMP commands and events.\n\nDESCRIPTION\n     The AppleQEMUGuestAgent daemon works only within the context of a launchd\n     job and should not be run from the command line.\n\nMac OS X\t\t\t June 12, 2018\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the AppleQEMUGuestAgent?
+  manpageQuestion2: How is AppleQEMUGuestAgent typically used in a system environment?
+  manpageQuestion3: What are the key considerations when deploying AppleQEMUGuestAgent on a macOS system?
+

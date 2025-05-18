@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tk_menuBar`.\n\n\n\nManpage text:\n\ntk_menuBar(n)\t\t     Tk Built-In Commands\t\t tk_menuBar(n)\n\n______________________________________________________________________________\n\nNAME\n       tk_menuBar, tk_bindForTraversal - Obsolete support for menu bars\n\nSYNOPSIS\n       tk_menuBar frame ?menu menu ...?\n\n       tk_bindForTraversal arg arg ...\n______________________________________________________________________________\n\n\nDESCRIPTION\n       These procedures were used in Tk 3.6 and earlier releases to help\n       manage pulldown menus and to implement keyboard traversal of menus.  In\n       Tk 4.0 and later releases they are no longer needed.  Stubs for these\n       procedures have been retained for backward compatibility, but they have\n       no effect.  You should remove calls to these procedures from your code,\n       since eventually the procedures will go away.\n\n       From Tk 8.0 onwards, you should instead construct your menubar as a\n       normal menu and then attach it to the toplevel of your choice using the\n       -menu option of that widget."
+  manpageQuestion1: What is the primary purpose of the tk_menuBar command?
+  manpageQuestion2: How would you use the tk_menuBar command to create a menu bar in an older version of Tk?
+  manpageQuestion3: What is the recommended approach for creating a menu bar in modern versions of Tk?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tk_menuBar`.\n\n\n\nManpage text:\n\nSEE ALSO\n       menu(n), toplevel(n)\n\n\nKEYWORDS\n       keyboard traversal, menu, menu bar, post\n\nTk\t\t\t\t\t\t\t\t tk_menuBar(n)"
+  manpageQuestion1: What is the primary purpose of the tk_menuBar resource in Tcl/Tk?
+  manpageQuestion2: How can you create a menu bar with multiple menus using the tk_menuBar command?
+  manpageQuestion3: What is the function of the 'post' keyword in the context of tk_menuBar?
+

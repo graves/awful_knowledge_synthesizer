@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `launchservicesd`.\n\n\n\nManpage text:\n\nlaunchservicesd(8)\t    System Manager's Manual\t    launchservicesd(8)\n\nNAME\n     launchservicesd\n\nSYNOPSIS\n     launchservicesd [--server]\n\nDESCRIPTION\n     launchservicesd is used internally by MacOS X to track and coordinate\n     information about the running applications on the system.\n\nFILES\n     /System/Library/CoreServices/launchservicesd\n\nSEE ALSO\n     lsappinfo(8)\n\nHISTORY\n     launchservicesd was introduced in MacOS 10.9.\n\nDarwin\t\t\t\t   04/01/13\t\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the launchservicesd tool?
+  manpageQuestion2: How would you use launchservicesd to interact with the system's application information?
+  manpageQuestion3: Can you describe a scenario where launchservicesd would be essential for managing application data on macOS?
+

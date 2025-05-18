@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `appinstalld`.\n\n\n\nManpage text:\n\nappinstalld(8)\t\t    System Manager's Manual\t\tappinstalld(8)\n\nNAME\n     appinstalld – macOS IPA installation daemon\n\nDESCRIPTION\n     appinstalld is used by the system during IPA installation. It should not\n     be invoked manually.\n\nSEE ALSO\n     installcoordinationd(8), installd(8), installer(8), pkgutil(1),\n     system_installd(8),\n\nmacOS 15.3\t\t       November 7, 2019 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the appinstalld tool?
+  manpageQuestion2: How would you use appinstalld in the context of macOS IPA installation?
+  manpageQuestion3: Can you describe a typical scenario where appinstalld is utilized during the macOS system update process?
+

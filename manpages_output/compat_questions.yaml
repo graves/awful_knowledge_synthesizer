@@ -1,0 +1,73 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `compat`.\n\n\n\nManpage text:\n\nCOMPAT(5)\t\t      File Formats Manual\t\t     COMPAT(5)\n\nNAME\n     compat – manipulate compatibility settings\n\nSYNOPSIS\n     COMMAND_MODE=legacy|unix2003\n     SYSTEM_VERSION_COMPAT=1\n\n     #define _POSIX_C_SOURCE\n     #define _DARWIN_C_SOURCE\n     #define _NONSTD_SOURCE\n     defined(__LP64__)\n\n     #include <sys/cdefs.h>\n\n     defined(_DARWIN_FEATURE_UNIX_CONFORMANCE)\n\nDESCRIPTION\n     Setting the environment variable COMMAND_MODE to the value legacy causes\n     utility programs to behave as closely to Mac OS X 10.3's utility programs\n     as possible.  When in this mode all of 10.3's flags are accepted, and in\n     some cases extra flags are accepted, but no flags that were used in 10.3\n     will have been removed or changed in meaning.  Any behavioral changes in\n     this mode are documented in the LEGACY sections of the individual\n     utilities.\n\n     Setting the environment variable COMMAND_MODE to the value unix2003\n     causes utility programs to obey the Version 3 of the Single UNIX\n     Specification (“SUSv3”) standards even if doing so would alter the\n     behavior of flags used in 10.3."
+  manpageQuestion1: What is the primary purpose of the compat resource in macOS?
+  manpageQuestion2: How would you set the COMMAND_MODE environment variable to 'legacy' to ensure utility programs behave as closely to Mac OS X 10.3's utilities as possible?
+  manpageQuestion3: Can you provide an example of using the SYSTEM_VERSION_COMPAT setting to allow utility programs to comply with SUSv3 standards?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `compat`.
+
+
+
+    Manpage text:
+
+    The value of COMMAND_MODE is case insensitive and if it is unset or set
+         to something other than legacy or unix2003 it behaves as if it were set
+         to unix2003.
+
+         Setting the environment variable SYSTEM_VERSION_COMPAT to 1 causes the
+         system version to be reported as 10.16 when running on macOS 11 or later.
+
+    COMPILATION
+         Defining _NONSTD_SOURCE will result in a compilation error.  This is no
+         longer supported.
+
+         Defining _POSIX_C_SOURCE or _DARWIN_C_SOURCE causes library and kernel
+         calls to conform to the SUSv3 standards even if doing so would alter the
+         behavior of functions used in 10.3.  Defining _POSIX_C_SOURCE also
+         removes functions, types, and other interfaces that are not part of SUSv3
+         from the normal C namespace, unless _DARWIN_C_SOURCE is also defined
+         (i.e., _DARWIN_C_SOURCE is _POSIX_C_SOURCE with non-POSIX extensions).
+         In any of these cases, the _DARWIN_FEATURE_UNIX_CONFORMANCE feature macro
+         will be defined to the SUS conformance level (it is undefined otherwise).
+  manpageQuestion1: What is the primary purpose of the 'compat' resource in macOS?
+  manpageQuestion2: How does setting the environment variable SYSTEM_VERSION_COMPAT to 1 affect system version reporting on macOS 11 or later?
+  manpageQuestion3: What is the effect of defining _POSIX_C_SOURCE or _DARWIN_C_SOURCE in the context of macOS compilation?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `compat`.
+
+
+
+    Manpage text:
+
+    Starting in Mac OS X 10.5, if none of the macros _NONSTD_SOURCE,
+         _POSIX_C_SOURCE or _DARWIN_C_SOURCE are defined, and the environment
+         variable MACOSX_DEPLOYMENT_TARGET is either undefined or set to 10.5 or
+         greater (or equivalently, the clang(1) option -mmacosx-version-min is
+         either not specified or set to 10.5 or greater), then UNIX conformance
+         will be on by default, and non-POSIX extensions will also be available
+         (this is the equivalent of defining _DARWIN_C_SOURCE).
+
+         In order to provide both legacy and conformance versions of functions,
+         two versions of affected functions are provided.  Legacy variants have
+         symbol names with no suffix in order to maintain ABI compatibility.
+         Conformance versions have a $UNIX2003 suffix appended to their symbol
+         name.  These $UNIX2003 suffixes are automatically appended by the
+         compiler tool-chain and should not be used directly.
+
+         All currently supported platforms only have conformance variants
+         available and do not have the legacy $UNIX2003 suffix.
+  manpageQuestion1: What is the primary purpose of the `compat` resource on macOS?
+  manpageQuestion2: How does the `compat` resource ensure compatibility between different versions of macOS?
+  manpageQuestion3: What is the role of the $UNIX2003 suffix in the context of the `compat` resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `compat`.\n\n\n\nManpage text:\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\tuser defines\t deployment │ namespace      conformance      suffix\n\t\t\t   target   │\n      ──────────────────────────────┼────────────────────────────────────────\n      (none)\t\t   (any)    │\tfull\t  SUSv3 conformance   (none)\n      _NONSTD_SOURCE\t   (any)    │\t\t     (error)\n      _DARWIN_C_SOURCE\t   (any)    │\tfull\t  SUSv3 conformance   (none)\n      _POSIX_C_SOURCE\t   (any)    │  strict\t  SUSv3 conformance   (none)\n      ──────────────────────────────┴────────────────────────────────────────\n\nSTANDARDS\n     With COMMAND_MODE set to anything other than legacy, utility functions\n     conform to Version 3 of the Single UNIX Specification (“SUSv3”).\n\n     With _POSIX_C_SOURCE or _DARWIN_C_SOURCE system and library calls conform\n     to Version 3 of the Single UNIX Specification (“SUSv3”).\n\nBUGS\n     Different parts of a program can be compiled with different compatibility\n     settings.\tThe resultant program will normally work as expected, for\n     example a regex created by the SUSv3 regcomp(3) can be passed to the\n     legacy regfree(3) with no unexpected results.  Some cases are less clear\n     cut, for example what does the programmer intend when they use the SUSv3\n     regcomp(3) to compile a regex, but the legacy regexec(3) to execute it?\n     Any interpretation will surprise someone."
+  manpageQuestion1: What is the primary purpose of the `compat` resource on macOS?
+  manpageQuestion2: How can you ensure that a program compiled with `compat` adheres to SUSv3 conformance standards?
+  manpageQuestion3: What are the potential issues when different parts of a program are compiled with varying compatibility settings?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `compat`.\n\n\n\nManpage text:\n\nDarwin\t\t\t\t July 21, 2020\t\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the compat resource?
+  manpageQuestion2: How would you use the compat resource to ensure compatibility with older versions of macOS?
+  manpageQuestion3: Can you provide an example of using the compat resource to configure system settings for compatibility with legacy applications?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `uarppersonalizationd`.\n\n\n\nManpage text:\n\nUARPPERSONALIZATIOND(8)     System Manager's Manual    UARPPERSONALIZATIOND(8)\n\nNAME\n     uarppersonalizationd – Personalize firmware for all tatsu audiences\n\nSYNOPSIS\n     uarppersonalizationd\n\nmacOS 15.3\t\t\t April 1, 2024\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the uarppersonalizationd tool?
+  manpageQuestion2: How would you use uarppersonalizationd to personalize firmware for a new tatsu audience?
+  manpageQuestion3: Can you provide an example of using uarppersonalizationd to apply default settings for all tatsu audiences?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `nehelper`.\n\n\n\nManpage text:\n\nnehelper(8)\t\t    System Manager's Manual\t\t   nehelper(8)\n\nNAME\n     nehelper – Helper daemon for the Network Extension framework\n\nDESCRIPTION\n     nehelper is part of the Network Extension framework. It is responsible\n     for vending the Network Extension configuration to Network Extension\n     clients and applying changes to the Network Extension configuration.\n\nmacOS 15.3\t\t\t March 3, 2017\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the nehelper tool?
+  manpageQuestion2: How would you use nehelper to manage Network Extension configurations on a macOS system?
+  manpageQuestion3: Can you describe the role of nehelper in the Network Extension framework?
+

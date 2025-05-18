@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `backupd-helper`.\n\n\n\nManpage text:\n\nBACKUPD-HELPER(8)\t    System Manager's Manual\t     BACKUPD-HELPER(8)\n\nNAME\n     backupd-helper – Time Machine backup daemon helper\n\nDESCRIPTION\n     backupd-helper assists the Time Machine backup daemon with scheduling and\n     initiating Time Machine backups when appropriate.\n\n     Users should not run backupd-helper manually.\n\nSEE ALSO\n     backupd(8), tmutil(8)\n\nmacOS\t\t\t       November 10, 2016\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the backupd-helper tool?
+  manpageQuestion2: How would you use backupd-helper to assist with Time Machine backups?
+  manpageQuestion3: Can you explain the role of backupd-helper in the Time Machine backup process?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `installerauthagent`.\n\n\n\nManpage text:\n\nINSTALLERAUTHAGENT(8)\t    System Manager's Manual\t INSTALLERAUTHAGENT(8)\n\n\n\nNAME\n     installerauthagent – macOS installation\n\nDESCRIPTION\n     installerauthagent is a system agent that collects credentials for\n     installation.\n\n     There are no configuration options to installerauthagent, and users\n     should not run installerauthagent manually.\n\nMac OS X\t\t\t    5/5/17\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the installerauthagent tool?
+  manpageQuestion2: How would you use installerauthagent to collect credentials for a macOS installation?
+  manpageQuestion3: Can you explain the typical usage scenario of installerauthagent in a macOS installation process?
+

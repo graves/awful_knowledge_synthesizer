@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `AEServer`.\n\n\n\nManpage text:\n\nAEServer()\t\t\t\t\t\t\t    AEServer()\n\nNAME\n       AEServer\n\n       AEServer(8) -- System-wide daemon which recevies incoming (remote)\n       AppleEvents\n\nDESCRIPTION\n       AEServer acts as a system-wide daemon when Remote AppleEvents is\n       enabled, allowing other computers to send AppleEvents to applications\n       on this machine.\n\n\n\n\nSEE ALSO\n       aeutil, appeleventsd\n\nFILES\n       /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/AE.framework/Support/AEServer\n\n       /System/Library/LaunchDaemons/com.apple.eppc.appleevents.plist\n\n\t\t\t\t January 2017\t\t\t    AEServer()"
+  manpageQuestion1: What is the primary purpose of the AEServer tool?
+  manpageQuestion2: How would you start the AEServer daemon to enable remote AppleEvent communication on a macOS system?
+  manpageQuestion3: What is the role of the AEServer in the context of AppleEvents on a macOS system?
+

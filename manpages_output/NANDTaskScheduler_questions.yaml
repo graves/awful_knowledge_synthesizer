@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `NANDTaskScheduler`.\n\n\n\nManpage text:\n\nNANDTASKSCHEDULER(8)\t    System Manager's Manual\t  NANDTASKSCHEDULER(8)\n\nNAME\n     NANDTaskScheduler – Daemon to periodically refresh data on NAND\n\nSYNOPSIS\n     takes no arguments, and users should not launch it manually.\n\nDESCRIPTION\n     NANDTaskScheduler periodically runs in background to refresh data stored\n     on NAND to improve data retention\n\nHISTORY\n     first appeared in macOS 13.0\n\nDarwin\t\t\t       Feburary 17, 2022\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the NANDTaskScheduler daemon?
+  manpageQuestion2: How would you check if the NANDTaskScheduler is currently running on a macOS system?
+  manpageQuestion3: What is the recommended procedure for ensuring that NANDTaskScheduler runs periodically on a macOS system?
+

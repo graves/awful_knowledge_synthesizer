@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `findmybeaconingd`.\n\n\n\nManpage text:\n\nFindMyBeaconDaemon(8)\t    System Manager's Manual\t FindMyBeaconDaemon(8)\n\nNAME\n     FindMyBeaconDaemon – Daemon to manage local Mac FindMy beaconing.\n\nSYNOPSIS\n     FindMyBeaconDaemon\n\nDESCRIPTION\n     FindMyBeaconDaemon is a daemon.\n\n     There are no configuration options to FindMyBeaconDaemon.\tUsers should\n     not run it manually.\n\nMacOS\t\t\t\t    1/11/14\t\t\t\t MacOS"
+  manpageQuestion1: What is the primary purpose of the FindMyBeaconDaemon tool?
+  manpageQuestion2: How would you use FindMyBeaconDaemon to manage local Mac FindMy beaconing?
+  manpageQuestion3: Can you provide an example of using FindMyBeaconDaemon to configure beaconing settings on a macOS system?
+

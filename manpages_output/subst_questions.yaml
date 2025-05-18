@@ -1,0 +1,47 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `subst`.\n\n\n\nManpage text:\n\nsubst(n)\t\t     Tcl Built-In Commands\t\t      subst(n)\n\n______________________________________________________________________________\n\nNAME\n       subst - Perform backslash, command, and variable substitutions\n\nSYNOPSIS\n       subst ?-nobackslashes? ?-nocommands? ?-novariables? string\n______________________________________________________________________________\n\nDESCRIPTION\n       This command performs variable substitutions, command substitutions,\n       and backslash substitutions on its string argument and returns the\n       fully-substituted result.  The substitutions are performed in exactly\n       the same way as for Tcl commands.  As a result, the string argument is\n       actually substituted twice, once by the Tcl parser in the usual fashion\n       for Tcl commands, and again by the subst command.\n\n       If any of the -nobackslashes, -nocommands, or -novariables are\n       specified, then the corresponding substitutions are not performed.  For\n       example, if -nocommands is specified, command substitution is not\n       performed:  open and close brackets are treated as ordinary characters\n       with no special interpretation."
+  manpageQuestion1: What is the primary purpose of the subst command in Tcl?
+  manpageQuestion2: How would you use the subst command to perform backslash and variable substitutions on a string without performing command substitutions?
+  manpageQuestion3: Can you provide an example of using the subst command to substitute variables and commands in a Tcl script?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `subst`.
+
+
+
+    Manpage text:
+
+    Note that the substitution of one kind can include substitution of
+           other kinds.  For example, even when the -novariables option is
+           specified, command substitution is performed without restriction.  This
+           means that any variable substitution necessary to complete the command
+           substitution will still take place.  Likewise, any command substitution
+           necessary to complete a variable substitution will take place, even
+           when -nocommands is specified.  See the EXAMPLES below.
+
+           If an error occurs during substitution, then subst will return that
+           error.  If a break exception occurs during command or variable
+           substitution, the result of the whole substitution will be the string
+           (as substituted) up to the start of the substitution that raised the
+           exception.  If a continue exception occurs during the evaluation of a
+           command or variable substitution, an empty string will be substituted
+           for that entire command or variable substitution (as long as it is
+           well-formed Tcl.)  If a return exception occurs, or any other return
+           code is returned during command or variable substitution, then the
+           returned value is substituted for that substitution.  See the EXAMPLES
+           below.  In this way, all exceptional return codes are “caught” by
+           subst.  The subst command itself will either return an error, or will
+           complete successfully.
+  manpageQuestion1: What is the primary purpose of the `subst` command in macOS?
+  manpageQuestion2: How can you use the `subst` command to perform variable substitution in a shell script while ensuring that all necessary substitutions are carried out even if exceptions occur?
+  manpageQuestion3: Can you provide an example of using `subst` to handle command substitution with the `-nocommands` option and demonstrate how exceptions during substitution are handled?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `subst`.\n\n\n\nManpage text:\n\nEXAMPLES\n       When it performs its substitutions, subst does not give any special\n       treatment to double quotes or curly braces (except within command\n       substitutions) so the script\n\t      set a 44\n\t      subst {xyz {$a}}\n       returns “xyz {44}”, not “xyz {$a}” and the script\n\t      set a \"p\\} q \\{r\"\n\t      subst {xyz {$a}}\n       returns “xyz {p} q {r}”, not “xyz {p\\} q \\{r}”.\n\n       When command substitution is performed, it includes any variable\n       substitution necessary to evaluate the script.\n\t      set a 44\n\t      subst -novariables {$a [format $a]}\n       returns “$a 44”, not “$a $a”.  Similarly, when variable substitution is\n       performed, it includes any command substitution necessary to retrieve\n       the value of the variable.\n\t      proc b {} {return c}\n\t      array set a {c c [b] tricky}\n\t      subst -nocommands {[b] $a([b])}\n       returns “[b] c”, not “[b] tricky”.\n\n       The continue and break exceptions allow command substitutions to\n       prevent substitution of the rest of the command substitution and the\n       rest of string respectively, giving script authors more options when\n       processing text using subst.  For example, the script\n\t      subst {abc,[break],def}\n       returns “abc,”, not “abc,,def” and the script\n\t      subst {abc,[continue;expr {1+2}],def}\n       returns “abc,,def”, not “abc,3,def”."
+  manpageQuestion1: What is the primary purpose of the subst command?
+  manpageQuestion2: How would you use the subst command to perform variable substitution on a string like "xyz {$a}" where $a is set to 44?
+  manpageQuestion3: Can you provide an example of using the subst command with command substitution to evaluate a script like {[b] $a([b])} where proc b returns 'c' and array a is set as {c c [b] tricky}?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `subst`.\n\n\n\nManpage text:\n\nOther exceptional return codes substitute the returned value\n\t      subst {abc,[return foo;expr {1+2}],def}\n       returns “abc,foo,def”, not “abc,3,def” and\n\t      subst {abc,[return -code 10 foo;expr {1+2}],def}\n       also returns “abc,foo,def”, not “abc,3,def”.\n\nSEE ALSO\n       Tcl(n), eval(n), break(n), continue(n)\n\nKEYWORDS\n       backslash substitution, command substitution, variable substitution\n\nTcl\t\t\t\t      7.4\t\t\t      subst(n)"
+  manpageQuestion1: What is the primary purpose of the `subst` command in Tcl?
+  manpageQuestion2: How can you use the `subst` command to substitute the output of a Tcl expression within a string?
+  manpageQuestion3: Can you provide an example of using `subst` to substitute a command's return value into a string?
+

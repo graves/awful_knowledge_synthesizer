@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `parentalcontrolsd`.\n\n\n\nManpage text:\n\nparentalcontrolsd(8)\t    System Manager's Manual\t  parentalcontrolsd(8)\n\nNAME\n     parentalcontrolsd – Parental Controls helper process.\n\nSYNOPSIS\n     parentalcontrolsd\n\nDESCRIPTION\n     parentalcontrolsd is used by Parental Controls to manage and track\n     restricted users.\n\nNOTE\n     parentalcontrolsd should not be invoked directly. It is intended only for\n     use by Parental Controls.\n\nmacOS\t\t\t       October 28, 2016 \t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the parentalcontrolsd tool?
+  manpageQuestion2: How would you use parentalcontrolsd to manage restricted users in macOS?
+  manpageQuestion3: Can you explain the role of parentalcontrolsd in the Parental Controls system?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `CommCenter`.\n\n\n\nManpage text:\n\nCommCenter(8)\t\t    System Manager's Manual\t\t CommCenter(8)\n\nNAME\n     CommCenter – Provides functionality to allow the Mac to make and receive\n     phone calls.\n\nDESCRIPTION\n     CommCenter provides functionality to allow phone calls to be made and\n     received on the Mac.  See\n\n     https://support.apple.com/kb/PH18756\n\n     CommCenter should not be directly invoked.\n\nmacOS 15.3\t\t\tMarch 31, 2017\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the CommCenter utility?
+  manpageQuestion2: How can CommCenter be used to manage phone call functionality on a Mac system?
+  manpageQuestion3: Is it possible to directly invoke CommCenter for managing phone calls, and if so, how?
+

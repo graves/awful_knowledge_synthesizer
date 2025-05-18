@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `logd_helper`.\n\n\n\nManpage text:\n\nlogd_helper(8)\t\t    System Manager's Manual\t\tlogd_helper(8)\n\nNAME\n     logd_helper – unified logging system daemon helper\n\nDESCRIPTION\n     logd_helper is a helper daemon that performs various services for\n     logd(8).\n\n     logd_helper should not be invoked directly.  It is intended only for use\n     by logd(8).\n\nSEE ALSO\n     logd(8)\n\nDarwin\t\t\t       December 10, 2019\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the logd_helper tool?
+  manpageQuestion2: How would you use logd_helper in a system context, and what are its main functions?
+  manpageQuestion3: Can you explain the role of logd_helper in relation to the logd(8) daemon?
+

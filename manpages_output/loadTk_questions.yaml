@@ -1,0 +1,42 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `loadTk`.\n\n\n\nManpage text:\n\nSafe Tk(n)\t\t     Tk Built-In Commands\t\t    Safe Tk(n)\n\n______________________________________________________________________________\n\nNAME\n       loadTk - Load Tk into a safe interpreter.\n\nSYNOPSIS\n       ::safe::loadTk slave ?-use windowId? ?-display displayName?\n______________________________________________________________________________\n\nDESCRIPTION\n       Safe Tk is based on Safe Tcl, which provides a mechanism that allows\n       restricted and mediated access to auto-loading and packages for safe\n       interpreters.  Safe Tk adds the ability to configure the interpreter\n       for safe Tk operations and load Tk into safe interpreters.\n\n       The ::safe::loadTk command initializes the required data structures in\n       the named safe interpreter and then loads Tk into it.  The interpreter\n       must have been created with ::safe::interpCreate or have been\n       initialized with ::safe::interpInit.  The command returns the name of\n       the safe interpreter.  If -use is specified, the window identified by\n       the specified system dependent identifier windowId is used to contain\n       the “.” window of the safe interpreter; it can be any valid id,\n       eventually referencing a window belonging to another application. As a\n       convenience, if the window you plan to use is a Tk Window of the\n       application you can use the window name (e.g. .x.y) instead of its\n       window Id ([winfo id .x.y]).  When -use is not specified, a new\n       toplevel window is created for the “.” window of the safe interpreter.\n       On X11 if you want the embedded window to use another display than the\n       default one, specify it with -display.  See the SECURITY ISSUES section\n       below for implementation details."
+  manpageQuestion1: What is the primary purpose of the loadTk command?
+  manpageQuestion2: How would you use loadTk to load Tk into a safe interpreter with a specific window ID?
+  manpageQuestion3: Can you provide an example of using loadTk to initialize a safe interpreter with default settings?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `loadTk`.
+
+
+
+    Manpage text:
+
+    SECURITY ISSUES
+           Please read the safe manual page for Tcl to learn about the basic
+           security considerations for Safe Tcl.
+
+           ::safe::loadTk adds the value of tk_library taken from the master
+           interpreter to the virtual access path of the safe interpreter so that
+           auto-loading will work in the safe interpreter.
+
+           Tk initialization is now safe with respect to not trusting the slave's
+           state for startup. ::safe::loadTk registers the slave's name so when
+           the Tk initialization (Tk_SafeInit) is called and in turn calls the
+           master's ::safe::InitTk it will return the desired argv equivalent
+           (-use windowId, correct -display, etc.)
+
+           When -use is not used, the new toplevel created is specially decorated
+           so the user is always aware that the user interface presented comes
+           from a potentially unsafe code and can easily delete the corresponding
+           interpreter.
+
+           On X11, conflicting -use and -display are likely to generate a fatal X
+           error.
+  manpageQuestion1: What is the primary purpose of the loadTk command in the context of Tcl and Safe Tcl?
+  manpageQuestion2: How does ::safe::loadTk ensure that Tk initialization is safe in a secure environment?
+  manpageQuestion3: What are the security considerations when using ::safe::loadTk with Tk initialization on X11?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `loadTk`.\n\n\n\nManpage text:\n\nSEE ALSO\n       safe(n), interp(n), library(n), load(n), package(n), source(n),\n       unknown(n)\n\n\nKEYWORDS\n       alias, auto-loading, auto_mkindex, load, master interpreter, safe\n       interpreter, slave interpreter, source\n\n\nTk\t\t\t\t      8.0\t\t\t    Safe Tk(n)"
+  manpageQuestion1: What is the primary purpose of the loadTk command?
+  manpageQuestion2: How would you use loadTk to load a Tcl package into the current interpreter?
+  manpageQuestion3: Can you provide an example of using loadTk to automatically load a Tcl package and its dependencies?
+

@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lpmove`.\n\n\n\nManpage text:\n\nlpmove(8)\t\t\t  Apple Inc.\t\t\t     lpmove(8)\n\nNAME\n       lpmove - move a job or all jobs to a new destination\n\nSYNOPSIS\n       lpmove [ -E ] [ -h server[:port] ] [ -U username ] job destination\n       lpmove [ -E ] [ -h server[:port] ] [ -U username ] source destination\n\nDESCRIPTION\n       lpmove moves the specified job or all jobs from source to destination.\n       job can be the job ID number or the old destination and job ID.\n\nOPTIONS\n       The lpmove command supports the following options:\n\n       -E   Forces encryption when connecting to the server.\n\n       -U username\n\t    Specifies an alternate username.\n\n       -h server[:port]\n\t    Specifies an alternate server.\n\nEXAMPLES\n       Move job 123 from \"oldprinter\" to \"newprinter\":\n\n\t   lpmove 123 newprinter\n\n\t\t   or\n\n\t   lpmove oldprinter-123 newprinter\n\n       Move all jobs from \"oldprinter\" to \"newprinter\":\n\n\t   lpmove oldprinter newprinter\n\nSEE ALSO\n       cancel(1), lp(1), lpr(1), lprm(1),\n       CUPS Online Help (http://localhost:631/help)"
+  manpageQuestion1: What is the primary purpose of the lpmove command?
+  manpageQuestion2: How would you use the lpmove command to move all jobs from a printer named 'oldprinter' to a printer named 'newprinter'?
+  manpageQuestion3: Can you provide an example of using the lpmove command to move a specific job with ID 456 from the printer 'printerA' to the printer 'printerB'?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `lpmove`.\n\n\n\nManpage text:\n\nCOPYRIGHT\n       Copyright © 2007-2019 by Apple Inc.\n\n26 April 2019\t\t\t     CUPS\t\t\t     lpmove(8)"
+  manpageQuestion1: What is the primary purpose of the lpmove command?
+  manpageQuestion2: How can you use the lpmove command to move a print job from one printer to another?
+  manpageQuestion3: What is the general syntax for using lpmove with default options to transfer a print job?
+

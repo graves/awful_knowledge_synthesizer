@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `naturallanguaged`.\n\n\n\nManpage text:\n\nnaturallanguaged(8)\t    System Manager's Manual\t   naturallanguaged(8)\n\nNAME\n     naturallanguaged – System post editing daemon\n\nDESCRIPTION\n     Handles post editing requests from applications to check user text.\n\nmacOS, iOS\t\t\t June 1, 2021\t\t\t    macOS, iOS"
+  manpageQuestion1: What is the primary purpose of the naturallanguaged tool?
+  manpageQuestion2: How would you use the naturallanguaged daemon to check user text for spelling and grammar errors?
+  manpageQuestion3: Can you describe a scenario where the naturallanguaged daemon would be most useful in an application's workflow?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `osadecompile`.\n\n\n\nManpage text:\n\nOSADECOMPILE(1) \t    General Commands Manual\t       OSADECOMPILE(1)\n\nNAME\n     osadecompile – display compiled AppleScripts or other OSA language\n     scripts\n\nSYNOPSIS\n     osadecompile file\n\nDESCRIPTION\n     osadecompile writes the source text of the specified compiled script file\n     to standard output.  There are no options; the correct language component\n     is determined from the contents of the script file itself.\n\nSEE ALSO\n     osacompile(1), osascript(1), osalang(1)\n\nMac OS X\t\t\tAugust 15, 2006 \t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the osadecompile tool?
+  manpageQuestion2: How would you use osadecompile to display the source text of a compiled AppleScript file named "MyScript.scpt"?
+  manpageQuestion3: Can you provide an example of using osadecompile to analyze a compiled OSA script file and determine its language component?
+

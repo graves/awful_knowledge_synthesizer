@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `uptime`.\n\n\n\nManpage text:\n\nUPTIME(1)\t\t    General Commands Manual\t\t     UPTIME(1)\n\nNAME\n     uptime – show how long system has been running\n\nSYNOPSIS\n     uptime\n\nDESCRIPTION\n     The uptime utility displays the current time, the length of time the\n     system has been up, the number of users, and the load average of the\n     system over the last 1, 5, and 15 minutes.\n\nEXAMPLES\n\t   $ uptime\n\t   11:23AM  up\t3:01, 8 users, load averages: 21.09, 15.43, 12.79\n\nSEE ALSO\n     w(1)\n\nHISTORY\n     The uptime command appeared in 3.0BSD.\n\nmacOS 15.3\t\t\tAugust 18, 2020 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the uptime command?
+  manpageQuestion2: How would you use the uptime command to check the system's current uptime and load averages?
+  manpageQuestion3: Can you provide an example of using the uptime command to display system information including the number of users and load averages?
+

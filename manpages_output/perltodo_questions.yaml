@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perltodo`.\n\n\n\nManpage text:\n\nPERLTODO(1)\t       Perl Programmers Reference Guide \t   PERLTODO(1)\n\n\nNAME\n       perltodo - Link to the Perl to-do list\n\nDESCRIPTION\n       The Perl 5 to-do list is maintained in the git repository, and can be\n       viewed at <https://github.com/Perl/perl5/blob/blead/Porting/todo.pod>.\n\n       (The to-do list used to be here in perltodo. That has stopped, as\n       installing a snapshot that becomes increasingly out of date isn't that\n       useful to anyone.)\n\nperl v5.34.1\t\t\t  2022-02-19\t\t\t   PERLTODO(1)"
+  manpageQuestion1: What is the primary purpose of the perltodo tool?
+  manpageQuestion2: How can I access the Perl 5 to-do list using perltodo?
+  manpageQuestion3: What is the current status of the perltodo tool in relation to the Perl 5 to-do list?
+

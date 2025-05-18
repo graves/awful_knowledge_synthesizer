@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ecosystemanalyticsd`.\n\n\n\nManpage text:\n\necosystemanalyticsd(8)\t    System Manager's Manual\tecosystemanalyticsd(8)\n\nNAME\n     ecosystemanalyticsd – Analyzes which frameworks and APIs are used by 3rd\n     party applications\n\nDESCRIPTION\n     ecosystemanalyticsd analyzes 3rd party applications to determine API\n     usage.  The reports are used by Apple to improve its products.  Users who\n     need support should use http://www.apple.com/support or other authorized\n     support channels.\tDevelopers who are ADC members should report bugs\n     using Feedback Assistant.app in order to allow for two way communication\n     between Apple and the bug reporter.\n\nmacOS\t\t\t\t May 25, 2023\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the ecosystemanalyticsd tool?
+  manpageQuestion2: How can developers report bugs to Apple using the ecosystemanalyticsd tool?
+  manpageQuestion3: What is the role of ecosystemanalyticsd in Apple's product improvement process?
+

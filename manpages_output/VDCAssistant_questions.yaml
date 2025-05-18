@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `VDCAssistant`.\n\n\n\nManpage text:\n\nVDCAssistant(8) \t    System Manager's Manual\t       VDCAssistant(8)\n\nNAME\n     VDCAssistant – CoreMediaIO DAL Assistant Process.\n\nDESCRIPTION\n     VDCAssistant is used by the CoreMediaIO Device Abstraction Layer Plug-In\n     that provides video capture from some models of Apple FaceTime cameras\n     and external third-party USB VDC-class cameras using AVFoundation Capture\n     APIs.  The process allows multiple applications to simultaneously capture\n     from the same camera.\n\nmacOS 15.3\t\t       November 11, 2016\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the VDCAssistant tool?
+  manpageQuestion2: How would you use VDCAssistant to enable simultaneous video capture from a FaceTime camera for multiple applications?
+  manpageQuestion3: Can you describe the role of VDCAssistant in managing video capture through AVFoundation APIs on macOS?
+

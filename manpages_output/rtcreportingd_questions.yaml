@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `rtcreportingd`.\n\n\n\nManpage text:\n\nRTCREPORTINGDD(8)\t    System Manager's Manual\t     RTCREPORTINGDD(8)\n\nNAME\n     rtcreportingd – Diagnostics and Usage Reporting\n\nSYNOPSIS\n     rtcreportingd\n\nDESCRIPTION\n     rtcreportingd is a system daemon that collects diagnostics and usage\n     telemetry data locally for users that have opted in for reporting.\n\n     There are no configuration options to rtcreportingd, and users should not\n     run rtcreportingd manually.\n\nmacOS\t\t\t\t     2021\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the rtcreportingd tool?
+  manpageQuestion2: How would you check if rtcreportingd is running on a macOS system?
+  manpageQuestion3: What are the key characteristics of rtcreportingd as a system daemon?
+

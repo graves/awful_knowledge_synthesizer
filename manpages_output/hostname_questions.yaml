@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `hostname`.\n\n\n\nManpage text:\n\nHOSTNAME(1)\t\t    General Commands Manual\t\t   HOSTNAME(1)\n\nNAME\n     hostname – set or print name of current host system\n\nSYNOPSIS\n     hostname [-f] [-s | -d] [name-of-host]\n\nDESCRIPTION\n     The hostname utility prints the name of the current host.\tThe super-user\n     can set the hostname by supplying an argument.  To keep the hostname\n     between reboots, run ‘scutil --set HostName name-of-host’.\n\n     Options:\n\n     -f    Include domain information in the printed name.  This is the\n\t   default behavior.\n\n     -s    Trim off any domain information from the printed name.\n\n     -d    Only print domain information.\n\nEXAMPLES\n     Set the host name of the machine and check the result:\n\n\t   $ hostname beastie.localdomain.org\n\t   $ hostname\n\t   beastie.localdomain.org\n\n     Do not show domain information:\n\n\t   $ hostname -s\n\t   beastie\n\n     Show only domain information:\n\n\t   $ hostname -d\n\t   localdomain.org\n\nSEE ALSO\n     gethostname(3), scutil(8)\n\nHISTORY\n     The hostname command appeared in 4.2BSD."
+  manpageQuestion1: What is the primary purpose of the hostname command?
+  manpageQuestion2: How can you use the hostname command to set a new host name without including domain information?
+  manpageQuestion3: Can you provide an example of using the hostname command with the -d option to display only the domain information?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `hostname`.\n\n\n\nManpage text:\n\nmacOS 15.3\t\t\tOctober 5, 2020 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the hostname command?
+  manpageQuestion2: How can you use the hostname command to display the fully qualified domain name of a macOS system?
+  manpageQuestion3: Can you provide an example of using the hostname command with the -s option to display only the system name?
+

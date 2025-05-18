@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `wait4path`.\n\n\n\nManpage text:\n\nWAIT4PATH(1)\t\t    General Commands Manual\t\t  WAIT4PATH(1)\n\nNAME\n     wait4path – wait for given path to show up in the namespace\n\nSYNOPSIS\n     wait4path ⟨path⟩\n\nDESCRIPTION\n     The wait4path program simply checks to see if the given path exists, and\n     if so, it exits.  Otherwise, it sleeps until the mount table is updated\n     and checks again.\tThe program will loop indefinitely until the path\n     shows up in the file system namespace.\n\nDarwin\t\t\t       December 14, 2013\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the wait4path command?
+  manpageQuestion2: How would you use wait4path to wait for a specific file path, such as /Users/username/Documents/myfile.txt, to become available in the namespace?
+  manpageQuestion3: Can you provide an example of using wait4path to monitor a network-mounted directory until it is accessible?
+

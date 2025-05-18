@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `eapolcfg_auth`.\n\n\n\nManpage text:\n\neapolcfg_auth(8)\t    System Manager's Manual\t      eapolcfg_auth(8)\n\n\n\nNAME\n     eapolcfg_auth – A launch-on-demand daemon used to configure EAP over LAN\n     (EAPOL).\n\nDESCRIPTION\n     eapolcfg_auth This launch-on-demand daemon allows an authorized process\n     to perform privileged EAPOL configuration operations.  The operations\n     include specifying credentials to use when EAPOL is running in system\n     mode.\n\nmacOS 15.3\t\t\t  May 3, 2017\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the eapolcfg_auth tool?
+  manpageQuestion2: How can an authorized process use eapolcfg_auth to configure EAPOL with specific credentials?
+  manpageQuestion3: What is the role of eapolcfg_auth in macOS system mode EAPOL operations?
+

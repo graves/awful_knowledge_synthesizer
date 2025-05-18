@@ -1,0 +1,63 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `fsmpm`.\n\n\n\nManpage text:\n\nFSMPM(8)\t\t    System Manager's Manual\t\t      FSMPM(8)\n\nNAME\n       fsmpm - Xsan File System Port Mapper daemon\n\nSYNOPSIS\n       fsmpm [-nc] [host-ip [debug [sync [diskscan [extHA]]]]]\n\nDESCRIPTION\n       The FSM Portmapper is a server daemon residing on each Xsan File System\n       client and server. It registers an RPC identifier to the system's\n       portmap daemon. The fsmpm publishes a well known port where the Xsan\n       File System Manager (FSM) daemons can register their volume name and\n       port access number. All clients then talk to their local FSS port\n       mapper to discover access information for their associated service.\n       This process runs in the background and is started at boot time. It is\n       enabled or disabled (along with the volume) via chkconfig(8) or init.d\n       using the acfs key word.\n\nOPTIONS\n       Apple Internal Use Only - contact support before adding or modifying\n       command line arguments to fsmpm.  Changes from the defaults may result\n       in intermittent or total failure of Xsan.  Options may change abruptly\n       between releases."
+  manpageQuestion1: What is the primary purpose of the fsmpm daemon?
+  manpageQuestion2: How would you start the fsmpm daemon with the -nc option and specify a host IP address of 192.168.1.100?
+  manpageQuestion3: Can you explain the role of the acfs keyword in managing the fsmpm daemon via init.d or chkconfig?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `fsmpm`.\n\n\n\nManpage text:\n\n-n     Don't send a SIGQUIT signal to fsm processes that appear to be\n\t      hung; normally if an fsm process doesn't exit within 60 seconds\n\t      after breaking the connection to the fsmpm, the fsmpm sends a\n\t      SIGQUIT signal to the fsm.\n\n       -c     Assume the client kernel module has not been loaded and skip any\n\t      operations related to it.\n\n       host-ip\n\t      The IP address used to access this host.\tThe default is to try\n\t      to resolve the system's hostname to an address. If set to 127.1,\n\t      no nameserver will be used and no heartbeats will be sent.\n\t      (default: no hostname)\n\n       debug  Bitmask specifying which debug messages to print. (default: 0)\n\n       sync   The name of a file whose creation is used to detect when the\n\t      fsmpm has successfully started.  (default: no file)\n\n       diskscan\n\t      How often (in seconds) to rescan for changed paths.  0 disables\n\t      the disk scan.  (default: 0)\n\n       extHA  External HA mode prevents the fsmpm from automatically starting\n\t      FSMs in the fsmlist, as well as disabling calls for elections.\n\t      1 enables external HA mode; 0 disables it.  (default: 0)"
+  manpageQuestion1: What is the primary purpose of the fsmpm command-line tool?
+  manpageQuestion2: How can you prevent fsmpm from automatically starting FSMs and disable election calls when using external HA mode?
+  manpageQuestion3: What command-line option should be used to specify the IP address of a host when interacting with fsmpm?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `fsmpm`.
+
+
+
+    Manpage text:
+
+    NOTE: Defaults specified with '--'.
+
+    FSNAMESERVERS
+           The fsmpm reads the file /Library/Preferences/Xsan/fsnameservers to
+           establish file system name servers for the Xsan file system services.
+           This list is used to coordinate the whereabouts of Xsan file system
+           servers.
+
+           A name server list must be established on each client that has Xsan
+           installed so that all clients can discover the location of the Xsan FSM
+           servers. It is important that this list is consistent across the SAN.
+           Inconsistent fsnameservers configuration may result in the inability
+           for some clients to find a file system service. See fsnameservers(4)
+           for specifics of the file format.
+
+    FSMLIST
+           The fsmpm is responsible for launching the FSM daemon(s). If
+           /Library/Preferences/Xsan/fsmlist exists then the fsmpm reads from the
+           list file and starts the FSM daemons that are specified. If no
+           /Library/Preferences/Xsan/fsmlist file exists then the fsmpm tries to
+           launch the FSM daemon for the volume named default. See fsmlist(4) for
+           specifics of the file format.
+  manpageQuestion1: What is the primary purpose of the fsmpm resource?
+  manpageQuestion2: How does fsmpm determine which FSM daemons to launch?
+  manpageQuestion3: What is the role of the /Library/Preferences/Xsan/fsnameservers file in relation to fsmpm?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `fsmpm`.\n\n\n\nManpage text:\n\nUnique Identifier (UUID)\n       The fsmpm creates or accesses the /Library/Preferences/Xsan/snfs_uuid\n       file. This contains a Xsan unique identifier (UUID) for this host.  The\n       file should not initially exist on a host that deploys StorNext.  If\n       configuration information is copied from one host to another, this file\n       should either not be copied or be deleted on the new host.\n\nENVIRONMENT\n       These variables are for use by Apple support personnel only.\n\n       FSMPM_MAX_LOGFILES\n\t  Controls the number of old nssdbg.out log files that will be saved\n\t  by fsmpm when the current log file reaches its maximum size.\tThe\n\t  default is 4.\n\n       FSMPM_MAX_LOGSIZE\n\t  Controls the maximum size that the nssdbg.out file can grow to\n\t  before a new log file will be started.  The value is a number\n\t  followed by an optional suffix (K for Kilobytes, M for Megabytes, G\n\t  for Gigabytes), or the string unlimited, indicating that the file\n\t  can grow without bound.  The default is 1M and the minimum is 64K."
+  manpageQuestion1: What is the primary purpose of the fsmpm tool?
+  manpageQuestion2: How would you configure fsmpm to limit the maximum size of the nssdbg.out log file to 512MB?
+  manpageQuestion3: What is the default number of old nssdbg.out log files that fsmpm will save when the current log file reaches its maximum size?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `fsmpm`.\n\n\n\nManpage text:\n\nFSMPM_ACTIVE_FSM_CLIENT_TIMEOUT\n\t  Adjusts the logic that determines when an FSM should be considered\n\t  lost and an election started to determine a new active FSM. The\n\t  value is specified in seconds.\n\nDEBUG\n       Debugging traces are written to the file\n       /Library/Logs/Xsan/debug/nssdbg.out.  The amount of debug information\n       is controlled by the /Library/Logs/Xsan/debug/verbose file.  This file\n       contains the list of debug traces to turn on.  If the file does not\n       exist, none of the optional debug traces are enabled.  Blank lines and\n       comments that begin with a # are ignored.  Everything else is treated\n       as a name for what debug traces to turn on.  Names are separated by\n       whitespace or commas, and may be listed on multiple lines.  Unknown\n       names are silently ignored.\n\n       general\n\t      Print general trace information.\tThis include information about\n\t      acquiring port numbers for coordinators, listing FSMs, mapping\n\t      IDs hostnames, disk requests, portmap inquiries, device event\n\t      handlers, and other events."
+  manpageQuestion1: What is the primary purpose of the FSMPM_ACTIVE_FSM_CLIENT_TIMEOUT resource?
+  manpageQuestion2: How can you enable general debugging traces for the FSMPM tool?
+  manpageQuestion3: What is the effect of modifying the FSMPM_ACTIVE_FSM_CLIENT_TIMEOUT value?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `fsmpm`.\n\n\n\nManpage text:\n\ninput  Print a trace for every NSS packet received.\n\n       output Print a trace for every NSS packet sent.\n\n       mbr    Print traces about Heartbeat Membership changes.\n\n       vote   Print traces about FSM elections.\n\n       ldap_cred\n\t      Print traces for LDAP credential processing.\n\n       proxy  Print traces about proxy processing (Distributed LAN client).\n\n       cctl   Print traces about the cluster-wide central control (nss_cctl).\n\n       hamon_reset\n\t      Print traces for HAMON resets.\n\n       helper Print traces about starting and stopping helper processes.\n\n       ahb    Print traces about NSS accelerated heartbeats.\n\n       protobuf\n\t      Print details of all NSS2 packets as they are created and\n\t      parsed.\n\n       all    Enable all debug tracing\n\n       Numeric values are also recognized as specific debug bits to set.  This\n       is mainly for backwards compatibility.  A value of -1 or 0xffffffff is\n       the same as specifying all.\n\n       If there are no recognized names or numeric values in the verbose file,\n       e.g. if it exists but is empty, then the mbr and vote traces will be\n       enabled."
+  manpageQuestion1: What is the primary purpose of the fsmpm tool?
+  manpageQuestion2: How can you use fsmpm to enable debug tracing for all NSS packets, both received and sent?
+  manpageQuestion3: Can you provide an example of using fsmpm to specifically trace Heartbeat Membership changes and LDAP credential processing?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `fsmpm`.\n\n\n\nManpage text:\n\nAn example of a verbose file:\n\n\t  # Comments are ignored\n\t  vote, mbr # Turn on the vote and membership traces\n\t     general\n\t  foo bar # Unknown items are silently ignored\n\n\t  # These are very noisy\n\t  #input\n\t  #output\n\n\t  0x1000 # turn on an undefined bit\n\nFILES\n       /Library/Preferences/Xsan/fsnameservers\n       /Library/Preferences/Xsan/fsforeignservers\n       /Library/Preferences/Xsan/fsmlist\n       /Library/Preferences/Xsan/nss_cctl*.xml\n       /Library/Logs/Xsan/debug/nssdbg.out\n       /Library/Logs/Xsan/debug/snfs_uuid\n       /Library/Logs/Xsan/debug/verbose\n\nNOTES\n       When a SIGHUP signal is received, the configuration files will be re-\n       read.  This allows, for example, the FSM list to be modified, or\n       debugging levels to be changed.\n\nSEE ALSO\n       fsm(8), fsnameservers(4), fsmlist(4), nss_cctl(4), portmap(8),\n       rpcinfo(8)\n\nXsan File System\t\t February 2019\t\t\t      FSMPM(8)"
+  manpageQuestion1: What is the primary purpose of the fsmpm command?
+  manpageQuestion2: How can you configure fsmpm to enable detailed debugging output for the Xsan file system?
+  manpageQuestion3: What is the function of the /Library/Preferences/Xsan/fsmlist file in relation to fsmpm?
+

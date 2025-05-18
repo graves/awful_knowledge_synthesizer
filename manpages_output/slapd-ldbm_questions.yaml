@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `slapd-ldbm`.\n\n\n\nManpage text:\n\nSLAPD-LDBM(5)\t\t      File Formats Manual\t\t SLAPD-LDBM(5)\n\nNAME\n       slapd-ldbm - Discontinued LDBM backend to slapd\n\nSYNOPSIS\n       /etc/openldap/slapd.conf\n\nDESCRIPTION\n       LDBM was the original database backend to slapd(8), and was supported\n       up to OpenLDAP 2.3.  It has been superseded by the more robust BDB and\n       HDB backends.\n\n\nSEE ALSO\n       slapd(8), slapd-bdb(5), slapd.backends(5).\n\nACKNOWLEDGEMENTS\n       OpenLDAP Software is developed and maintained by The OpenLDAP Project\n       <http://www.openldap.org/>.  OpenLDAP Software is derived from\n       University of Michigan LDAP 3.3 Release.\n\nOpenLDAP 2.4.28 \t\t  2011/11/24\t\t\t SLAPD-LDBM(5)"
+  manpageQuestion1: What is the primary purpose of the slapd-ldbm resource?
+  manpageQuestion2: How is the slapd-ldbm backend typically configured in a macOS system?
+  manpageQuestion3: Why is the slapd-ldbm backend considered outdated compared to other LDAP backends?
+

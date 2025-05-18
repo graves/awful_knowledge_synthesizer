@@ -1,0 +1,86 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `@TSET@`.\n\n\n\nManpage text:\n\n@TSET@(1)\t\t    General Commands Manual\t\t     @TSET@(1)\n\nNAME\n       @TSET@, reset - terminal initialization\n\nSYNOPSIS\n       @TSET@ [-IQVcqrsw] [-] [-e ch] [-i ch] [-k ch] [-m mapping] [terminal]\n       reset [-IQVcqrsw] [-] [-e ch] [-i ch] [-k ch] [-m mapping] [terminal]\n\nDESCRIPTION\n       Tset initializes terminals.  Tset first determines the type of terminal\n       that you are using.  This determination is done as follows, using the\n       first terminal type found.\n\n       1. The terminal argument specified on the command line.\n\n       2. The value of the TERM environmental variable.\n\n       3. (BSD systems only.) The terminal type associated with the standard\n       error output device in the /etc/ttys file.  (On System-V-like UNIXes\n       and systems using that convention, getty does this job by setting TERM\n       according to the type passed to it by /etc/inittab.)\n\n       4. The default terminal type, “unknown”.\n\n       If the terminal type was not specified on the command-line, the -m\n       option mappings are then applied (see the section TERMINAL TYPE MAPPING\n       for more information).  Then, if the terminal type begins with a\n       question mark (“?”), the user is prompted for confirmation of the\n       terminal type.  An empty response confirms the type, or, another type\n       can be entered to specify a new type.  Once the terminal type has been\n       determined, the terminfo entry for the terminal is retrieved.  If no\n       terminfo entry is found for the type, the user is prompted for another\n       terminal type."
+  manpageQuestion1: What is the primary purpose of the @TSET@ command?
+  manpageQuestion2: How can you use @TSET@ to reset the terminal with a custom mapping for special keys?
+  manpageQuestion3: What is the process for determining the terminal type when using @TSET@ without specifying a terminal argument?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `@TSET@`.\n\n\n\nManpage text:\n\nOnce the terminfo entry is retrieved, the window size, backspace,\n       interrupt and line kill characters (among many other things) are set\n       and the terminal and tab initialization strings are sent to the\n       standard error output.  Finally, if the erase, interrupt and line kill\n       characters have changed, or are not set to their default values, their\n       values are displayed to the standard error output.  Use the -c or -w\n       option to select only the window sizing versus the other\n       initialization.\tIf neither option is given, both are assumed.\n\n       When invoked as reset, @TSET@ sets cooked and echo modes, turns off\n       cbreak and raw modes, turns on newline translation and resets any unset\n       special characters to their default values before doing the terminal\n       initialization described above.\tThis is useful after a program dies\n       leaving a terminal in an abnormal state.  Note, you may have to type\n\n\t   <LF>reset<LF>\n\n       (the line-feed character is normally control-J) to get the terminal to\n       work, as carriage-return may no longer work in the abnormal state.\n       Also, the terminal will often not echo the command."
+  manpageQuestion1: What is the primary purpose of the @TSET@ tool?
+  manpageQuestion2: How would you use @TSET@ to reset the terminal to its default state after a program has left it in an abnormal state?
+  manpageQuestion3: Can you provide an example of using @TSET@ with the -c option to only perform window sizing and initialization?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `@TSET@`.\n\n\n\nManpage text:\n\nThe options are as follows:\n\n       -c   Set control characters and modes.\n\n       -e   Set the erase character to ch.\n\n       -I   Do not send the terminal or tab initialization strings to the\n\t    terminal.\n\n       -i   Set the interrupt character to ch.\n\n       -k   Set the line kill character to ch.\n\n       -m   Specify a mapping from a port type to a terminal.  See the section\n\t    TERMINAL TYPE MAPPING for more information.\n\n       -Q   Do not display any values for the erase, interrupt and line kill\n\t    characters.  Normally @TSET@ displays the values for control\n\t    characters which differ from the system's default values.\n\n       -q   The terminal type is displayed to the standard output, and the\n\t    terminal is not initialized in any way.  The option `-' by itself\n\t    is equivalent but archaic.\n\n       -r   Print the terminal type to the standard error output.\n\n       -s   Print the sequence of shell commands to initialize the environment\n\t    variable TERM to the standard output.  See the section SETTING THE\n\t    ENVIRONMENT for details."
+  manpageQuestion1: What is the primary purpose of the @TSET@ command?
+  manpageQuestion2: How would you use @TSET@ to set the interrupt character to a specific value and display the terminal type?
+  manpageQuestion3: Can you provide an example of using @TSET@ to display the terminal type without initializing it and suppress the output of control character values?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `@TSET@`.\n\n\n\nManpage text:\n\n-V   reports the version of ncurses which was used in this program, and\n\t    exits.\n\n       -w   Resize the window to match the size deduced via setupterm.\n\t    Normally this has no effect, unless setupterm is not able to\n\t    detect the window size.\n\n       The arguments for the -e, -i, and -k options may either be entered as\n       actual characters or by using the `hat' notation, i.e., control-h may\n       be specified as “^H” or “^h”.\n\nSETTING THE ENVIRONMENT\n       It is often desirable to enter the terminal type and information about\n       the terminal's capabilities into the shell's environment.  This is done\n       using the -s option.\n\n       When the -s option is specified, the commands to enter the information\n       into the shell's environment are written to the standard output.  If\n       the SHELL environmental variable ends in “csh”, the commands are for\n       csh, otherwise, they are for sh.  Note, the csh commands set and unset\n       the shell variable noglob, leaving it unset.  The following line in the\n       .login or .profile files will initialize the environment correctly:"
+  manpageQuestion1: What is the primary purpose of the @TSET@ tool?
+  manpageQuestion2: How can you use @TSET@ to set the terminal type and capabilities in the shell environment?
+  manpageQuestion3: What is the function of the -w option in @TSET@ and when is it particularly useful?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `@TSET@`.
+
+
+
+    Manpage text:
+
+    eval `@TSET@ -s options ... `
+
+    TERMINAL TYPE MAPPING
+           When the terminal is not hardwired into the system (or the current
+           system information is incorrect) the terminal type derived from the
+           /etc/ttys file or the TERM environmental variable is often something
+           generic like network, dialup, or unknown.  When @TSET@ is used in a
+           startup script it is often desirable to provide information about the
+           type of terminal used on such ports.
+
+           The purpose of the -m option is to map from some set of conditions to a
+           terminal type, that is, to tell @TSET@ “If I'm on this port at a
+           particular speed, guess that I'm on that kind of terminal”.
+
+           The argument to the -m option consists of an optional port type, an
+           optional operator, an optional baud rate specification, an optional
+           colon (“:”) character and a terminal type.  The port type is a string
+           (delimited by either the operator or the colon character).  The
+           operator may be any combination of “>”, “<”, “@”, and “!”; “>” means
+           greater than, “<” means less than, “@” means equal to and “!” inverts
+           the sense of the test.  The baud rate is specified as a number and is
+           compared with the speed of the standard error output (which should be
+           the control terminal).  The terminal type is a string.
+  manpageQuestion1: What is the primary purpose of the @TSET@ utility?
+  manpageQuestion2: How can you use @TSET@ with the -m option to map a port type and baud rate to a specific terminal type?
+  manpageQuestion3: Can you provide an example of using @TSET@ to determine the terminal type based on a baud rate and port type?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `@TSET@`.\n\n\n\nManpage text:\n\nIf the terminal type is not specified on the command line, the -m\n       mappings are applied to the terminal type.  If the port type and baud\n       rate match the mapping, the terminal type specified in the mapping\n       replaces the current type.  If more than one mapping is specified, the\n       first applicable mapping is used.\n\n       For example, consider the following mapping: dialup>9600:vt100.\tThe\n       port type is dialup , the operator is >, the baud rate specification is\n       9600, and the terminal type is vt100.  The result of this mapping is to\n       specify that if the terminal type is dialup, and the baud rate is\n       greater than 9600 baud, a terminal type of vt100 will be used.\n\n       If no baud rate is specified, the terminal type will match any baud\n       rate.  If no port type is specified, the terminal type will match any\n       port type.  For example, -m dialup:vt100 -m :?xterm will cause any\n       dialup port, regardless of baud rate, to match the terminal type vt100,\n       and any non-dialup port type to match the terminal type ?xterm.\tNote,\n       because of the leading question mark, the user will be queried on a\n       default port as to whether they are actually using an xterm terminal."
+  manpageQuestion1: What is the primary purpose of the @TSET@ resource?
+  manpageQuestion2: How would you use @TSET@ to map a dialup port with a baud rate of 14400 to the terminal type vt100?
+  manpageQuestion3: Can you provide an example of using @TSET@ to configure a non-dialup port to match the terminal type ?xterm, requiring user confirmation?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `@TSET@`.\n\n\n\nManpage text:\n\nNo whitespace characters are permitted in the -m option argument.\n       Also, to avoid problems with meta-characters, it is suggested that the\n       entire -m option argument be placed within single quote characters, and\n       that csh users insert a backslash character (“\\”) before any\n       exclamation marks (“!”).\n\nHISTORY\n       The @TSET@ command appeared in BSD 3.0.\tThe ncurses implementation was\n       lightly adapted from the 4.4BSD sources for a terminfo environment by\n       Eric S. Raymond <esr@snark.thyrsus.com>.\n\nCOMPATIBILITY\n       The @TSET@ utility has been provided for backward-compatibility with\n       BSD environments (under most modern UNIXes, /etc/inittab and getty(1)\n       can set TERM appropriately for each dial-up line; this obviates what\n       was @TSET@'s most important use).  This implementation behaves like\n       4.4BSD tset, with a few exceptions specified here.\n\n       The -S option of BSD tset no longer works; it prints an error message\n       to stderr and dies.  The -s option only sets TERM, not TERMCAP.\tBoth\n       of these changes are because the TERMCAP variable is no longer\n       supported under terminfo-based ncurses, which makes @TSET@ -S useless\n       (we made it die noisily rather than silently induce lossage)."
+  manpageQuestion1: What is the primary purpose of the @TSET@ command?
+  manpageQuestion2: How should the -m option be used in @TSET@ to avoid issues with special characters?
+  manpageQuestion3: What is the significance of the -S option in BSD tset, and why was it removed in @TSET@?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `@TSET@`.\n\n\n\nManpage text:\n\nThere was an undocumented 4.4BSD feature that invoking tset via a link\n       named `TSET` (or via any other name beginning with an upper-case\n       letter) set the terminal to use upper-case only.  This feature has been\n       omitted.\n\n       The -A, -E, -h, -u and -v options were deleted from the @TSET@ utility\n       in 4.4BSD.  None of them were documented in 4.3BSD and all are of\n       limited utility at best.  The -a, -d, and -p options are similarly not\n       documented or useful, but were retained as they appear to be in\n       widespread use.\tIt is strongly recommended that any usage of these\n       three options be changed to use the -m option instead.  The -n option\n       remains, but has no effect.  The -adnp options are therefore omitted\n       from the usage summary above.\n\n       It is still permissible to specify the -e, -i, and -k options without\n       arguments, although it is strongly recommended that such usage be fixed\n       to explicitly specify the character."
+  manpageQuestion1: What is the primary purpose of the @TSET@ utility?
+  manpageQuestion2: How would you use @TSET@ to set the terminal to use only uppercase characters?
+  manpageQuestion3: Can you provide an example of using @TSET@ with the -m option to configure terminal settings?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `@TSET@`.\n\n\n\nManpage text:\n\nAs of 4.4BSD, executing @TSET@ as reset no longer implies the -Q\n       option.\tAlso, the interaction between the - option and the terminal\n       argument in some historic implementations of @TSET@ has been removed.\n\nENVIRONMENT\n       The @TSET@ command uses these environment variables:\n\n       SHELL\n\t    tells @TSET@ whether to initialize TERM using sh or csh syntax.\n\n       TERM Denotes your terminal type.  Each terminal type is distinct,\n\t    though many are similar.\n\n       TERMCAP\n\t    may denote the location of a termcap database.  If it is not an\n\t    absolute pathname, e.g., begins with a `/', @TSET@ removes the\n\t    variable from the environment before looking for the terminal\n\t    description.\n\nFILES\n       /etc/ttys\n\t    system port name to terminal type mapping database (BSD versions\n\t    only).\n\n       /usr/share/terminfo\n\t    terminal capability database\n\nSEE ALSO\n       csh(1), sh(1), stty(1), curs_terminfo(3X), tty(4), terminfo(5),\n       ttys(5), environ(7)\n\n       This describes ncurses version 5.7 (patch 20081102)."
+  manpageQuestion1: What is the primary purpose of the @TSET@ command?
+  manpageQuestion2: How would you use @TSET@ to set the terminal type to 'xterm-256color' and initialize TERM using csh syntax?
+  manpageQuestion3: Can you provide an example of using @TSET@ to remove the TERMCAP environment variable before searching for terminal descriptions?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `@TSET@`.
+
+
+
+    Manpage text:
+
+    @TSET@(1)
+  manpageQuestion1: What is the primary purpose of the @TSET@ tool?
+  manpageQuestion2: How would you use @TSET@ to convert the hexadecimal value 0x1A2B3C4D to its unsigned integer representation?
+  manpageQuestion3: Can you provide an example of using @TSET@ to convert the unsigned integer 2153678901 to its corresponding four-character code format?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `systemstats_boot`.\n\n\n\nManpage text:\n\nSYSTEMSTATS_BOOT(8)\t    System Manager's Manual\t   SYSTEMSTATS_BOOT(8)\n\nNAME\n     systemstats_boot – initialize system stats\n\nSYNOPSIS\n     systemstats_boot\n\nDESCRIPTION\n     The systemstats_boot command should not be run directly.\n\nSEE ALSO\n     systemstats(8)\n\nmacOS 15.3\t\t\tApril 20, 2015\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the systemstats_boot command?
+  manpageQuestion2: How would you use the systemstats_boot command to initialize system stats?
+  manpageQuestion3: Can you provide an example of using the systemstats_boot command in a script to initialize system stats before running other diagnostics?
+

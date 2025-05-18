@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `assessmentagent`.\n\n\n\nManpage text:\n\nassessmentagent(8)\t    System Manager's Manual\t    assessmentagent(8)\n\nNAME\n     assessmentagent – Assessment Mode's coordination agent\n\nDESCRIPTION\n     assessmentagent is Assessment Mode's coordination agent.  assessmentagent\n     supports applications that use Assessment Mode.\n\nmacOS 15.3\t\t       December 6, 2019 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the assessmentagent tool?
+  manpageQuestion2: How does assessmentagent facilitate applications in Assessment Mode?
+  manpageQuestion3: What role does assessmentagent play in the macOS system when Assessment Mode is active?
+

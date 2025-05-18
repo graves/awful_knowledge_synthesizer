@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `whoami`.\n\n\n\nManpage text:\n\nWHOAMI(1)\t\t    General Commands Manual\t\t     WHOAMI(1)\n\nNAME\n     whoami – display effective user id\n\nSYNOPSIS\n     whoami\n\nDESCRIPTION\n     The whoami utility has been obsoleted by the id(1) utility, and is\n     equivalent to “id -un”.  The command “id -p” is suggested for normal\n     interactive use.\n\n     The whoami utility displays your effective user ID as a name.\n\nEXIT STATUS\n     The whoami utility exits 0 on success, and >0 if an error occurs.\n\nSEE ALSO\n     id(1)\n\nmacOS 15.3\t\t\t June 6, 1993\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the whoami command?
+  manpageQuestion2: How can you use the whoami command to determine your effective user ID?
+  manpageQuestion3: What is the recommended alternative to the whoami command according to the manpage?
+

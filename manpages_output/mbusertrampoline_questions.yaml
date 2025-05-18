@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mbusertrampoline`.\n\n\n\nManpage text:\n\nmbusertrampoline(8)\t    System Manager's Manual\t   mbusertrampoline(8)\n\nNAME\n     mbusertrampoline – helper for the Setup Assistant application.\n\nDESCRIPTION\n     mbusertrampoline is used by the Setup Assistant application to bridge\n     calls between the _mbsetupuser and the actual user. It is not meant to be\n     invoked directly.\n\nmacOS 15.3\t\t       November 10, 2016\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the mbusertrampoline tool?
+  manpageQuestion2: How would you use mbusertrampoline in the context of the Setup Assistant application?
+  manpageQuestion3: Can you explain the role of mbusertrampoline in facilitating communication between the Setup Assistant and the actual user?
+

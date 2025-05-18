@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `macerror`.\n\n\n\nManpage text:\n\nMACERROR(1)\t      User Contributed Perl Documentation\t   MACERROR(1)\n\n\nNAME\n       macerror\n\nSYNOPSIS\n       % macerror -23\n\nDESCRIPTION\n       The macerror script translates Mac error numbers into their symbolic\n       name and description.\n\nSEE ALSO\n       Mac::Errors\n\nAUTHOR\n       Chris Nandor, pudge@pobox.com\n\nCOPYRIGHT\n       Copryright 2002, Chris Nandor, All rights reserved\n\n       You may use this under the same terms as Perl itself.\n\nperl v5.34.0\t\t\t  2018-06-20\t\t\t   MACERROR(1)"
+  manpageQuestion1: What is the primary purpose of the macerror tool?
+  manpageQuestion2: How would you use the macerror script to convert the Mac error number -17 to its symbolic name and description?
+  manpageQuestion3: Can you provide an example of using the macerror script to translate the Mac error number -128 into its corresponding symbolic representation?
+

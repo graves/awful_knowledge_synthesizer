@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `viewdiagnostic`.\n\n\n\nManpage text:\n\nVIEWDIAGNOSTIC(1)\t    General Commands Manual\t     VIEWDIAGNOSTIC(1)\n\nNAME\n     viewdiagnostic – Visualize diagnostic reports\n\nSYNOPSIS\n     viewdiagnostic path\n\nDESCRIPTION\n     viewdiagnostic translates crash reports and other diagnostic reports into\n     a textual representation for improved visualization.  Tools that parse\n     data from the report should use its as-written format instead.\n\nmacOS 15.3\t\t       January 29, 2024 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the viewdiagnostic tool?
+  manpageQuestion2: How can you use viewdiagnostic to visualize a crash report located at /var/crash/123456789.dmp?
+  manpageQuestion3: What is the function of the viewdiagnostic command when dealing with diagnostic reports?
+

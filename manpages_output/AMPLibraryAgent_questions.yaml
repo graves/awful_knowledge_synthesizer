@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `AMPLibraryAgent`.\n\n\n\nManpage text:\n\nAMPLIBRARYAGENT(8)\t    System Manager's Manual\t    AMPLIBRARYAGENT(8)\n\nNAME\n     AMPLibraryAgent – The media library agent for Music.app and TV.app.\n\nSYNOPSIS\n     AMPLibraryAgent\n\nDESCRIPTION\n     AMPLibraryAgent is a per-user daemon which manages the user's media.\n\n     There are no configuration options to AMPLibraryAgent.  Users should not\n     run AMPLibraryAgent it manually.\n\nMac OS X\t\t       December 6, 2018 \t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the AMPLibraryAgent tool?
+  manpageQuestion2: How would you check if the AMPLibraryAgent is running on a macOS system?
+  manpageQuestion3: What should users avoid doing regarding the AMPLibraryAgent?
+

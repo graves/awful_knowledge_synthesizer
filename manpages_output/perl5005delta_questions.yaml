@@ -1,0 +1,427 @@
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.
+
+
+
+    Manpage text:
+
+    PERL5005DELTA(1)       Perl Programmers Reference Guide       PERL5005DELTA(1)
+  manpageQuestion1: What is the primary purpose of the perl5005delta tool?
+  manpageQuestion2: How would you use perl5005delta to modify a Perl script to be compatible with older versions of Perl?
+  manpageQuestion3: Can you provide an example of using perl5005delta to check if a Perl script is compatible with Perl 5.005?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.
+
+
+
+    Manpage text:
+
+    NAME
+           perl5005delta - what's new for perl5.005
+
+    DESCRIPTION
+           This document describes differences between the 5.004 release and this
+           one.
+
+    About the new versioning system
+           Perl is now developed on two tracks: a maintenance track that makes
+           small, safe updates to released production versions with emphasis on
+           compatibility; and a development track that pursues more aggressive
+           evolution.  Maintenance releases (which should be considered production
+           quality) have subversion numbers that run from 1 to 49, and development
+           releases (which should be considered "alpha" quality) run from 50 to
+           99.
+
+           Perl 5.005 is the combined product of the new dual-track development
+           scheme.
+
+    Incompatible Changes
+       WARNING:  This version is not binary compatible with Perl 5.004.
+           Starting with Perl 5.004_50 there were many deep and far-reaching
+           changes to the language internals.  If you have dynamically loaded
+           extensions that you built under perl 5.003 or 5.004, you can continue
+           to use them with 5.004, but you will need to rebuild and reinstall
+           those extensions to use them 5.005.  See INSTALL for detailed
+           instructions on how to upgrade.
+  manpageQuestion1: What is the primary purpose of the perl5005delta tool?
+  manpageQuestion2: How would you use the perl5005delta tool to understand changes between Perl 5.004 and Perl 5.005?
+  manpageQuestion3: Can you explain the significance of the dual-track development system mentioned in the perl5005delta documentation?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.\n\n\n\nManpage text:\n\nDefault installation structure has changed\n       The new Configure defaults are designed to allow a smooth upgrade from\n       5.004 to 5.005, but you should read INSTALL for a detailed discussion\n       of the changes in order to adapt them to your system.\n\n   Perl Source Compatibility\n       When none of the experimental features are enabled, there should be\n       very few user-visible Perl source compatibility issues.\n\n       If threads are enabled, then some caveats apply. @_ and $_ become\n       lexical variables.  The effect of this should be largely transparent to\n       the user, but there are some boundary conditions under which user will\n       need to be aware of the issues.\tFor example, \"local(@_)\" results in a\n       \"Can't localize lexical variable @_ ...\" message.  This may be enabled\n       in a future version.\n\n       Some new keywords have been introduced.\tThese are generally expected\n       to have very little impact on compatibility.  See \"New \"INIT\" keyword\",\n       \"New \"lock\" keyword\", and \"New \"qr//\" operator\"."
+  manpageQuestion1: What is the primary purpose of the perl5005delta resource?
+  manpageQuestion2: How can users ensure compatibility when upgrading from Perl 5.004 to 5.005?
+  manpageQuestion3: What changes in Perl 5.005 affect the behavior of lexical variables like @_ and $_?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.\n\n\n\nManpage text:\n\nCertain barewords are now reserved.  Use of these will provoke a\n       warning if you have asked for them with the \"-w\" switch.  See \"\"our\" is\n       now a reserved word\".\n\n   C Source Compatibility\n       There have been a large number of changes in the internals to support\n       the new features in this release.\n\n       •   Core sources now require ANSI C compiler\n\n\t   An ANSI C compiler is now required to build perl.  See INSTALL.\n\n       •   All Perl global variables must now be referenced with an explicit\n\t   prefix\n\n\t   All Perl global variables that are visible for use by extensions\n\t   now have a \"PL_\" prefix.  New extensions should \"not\" refer to perl\n\t   globals by their unqualified names.\tTo preserve sanity, we provide\n\t   limited backward compatibility for globals that are being widely\n\t   used like \"sv_undef\" and \"na\" (which should now be written as\n\t   \"PL_sv_undef\", \"PL_na\" etc.)\n\n\t   If you find that your XS extension does not compile anymore because\n\t   a perl global is not visible, try adding a \"PL_\" prefix to the\n\t   global and rebuild."
+  manpageQuestion1: What is the primary purpose of the perl5005delta resource?
+  manpageQuestion2: How can you ensure compatibility with the new internal changes in perl5005delta when writing XS extensions?
+  manpageQuestion3: What is the recommended way to reference Perl global variables in extensions that are visible for use by extensions?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.\n\n\n\nManpage text:\n\nIt is strongly recommended that all functions in the Perl API that\n\t   don't begin with \"perl\" be referenced with a \"Perl_\" prefix.  The\n\t   bare function names without the \"Perl_\" prefix are supported with\n\t   macros, but this support may cease in a future release.\n\n\t   See perlapi.\n\n       •   Enabling threads has source compatibility issues\n\n\t   Perl built with threading enabled requires extensions to use the\n\t   new \"dTHR\" macro to initialize the handle to access per-thread\n\t   data.  If you see a compiler error that talks about the variable\n\t   \"thr\" not being declared (when building a module that has XS code),\n\t   you need to add \"dTHR;\" at the beginning of the block that elicited\n\t   the error.\n\n\t   The API function \"perl_get_sv(\"@\",GV_ADD)\" should be used instead\n\t   of directly accessing perl globals as \"GvSV(errgv)\".  The API call\n\t   is backward compatible with existing perls and provides source\n\t   compatibility with threading is enabled.\n\n\t   See \"C Source Compatibility\" for more information."
+  manpageQuestion1: What is the main purpose of the perl5005delta resource?
+  manpageQuestion2: How can one ensure source compatibility when using functions in the Perl API that do not start with 'perl'?
+  manpageQuestion3: What is the recommended approach for initializing thread handles in Perl when threading is enabled?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.\n\n\n\nManpage text:\n\nBinary Compatibility\n       This version is NOT binary compatible with older versions.  All\n       extensions will need to be recompiled.  Further binaries built with\n       threads enabled are incompatible with binaries built without.  This\n       should largely be transparent to the user, as all binary incompatible\n       configurations have their own unique architecture name, and extension\n       binaries get installed at unique locations.  This allows coexistence of\n       several configurations in the same directory hierarchy.\tSee INSTALL.\n\n   Security fixes may affect compatibility\n       A few taint leaks and taint omissions have been corrected.  This may\n       lead to \"failure\" of scripts that used to work with older versions.\n       Compiling with -DINCOMPLETE_TAINTS provides a perl with minimal amounts\n       of changes to the tainting behavior.  But note that the resulting perl\n       will have known insecurities.\n\n       Oneliners with the \"-e\" switch do not create temporary files anymore."
+  manpageQuestion1: What is the primary purpose of the perl5005delta resource?
+  manpageQuestion2: How can you compile a Perl script with minimal changes to tainting behavior?
+  manpageQuestion3: What is the effect of using the -e switch with oneliners in perl5005delta?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.
+
+
+
+    Manpage text:
+
+    Relaxed new mandatory warnings introduced in 5.004
+           Many new warnings that were introduced in 5.004 have been made
+           optional.  Some of these warnings are still present, but perl's new
+           features make them less often a problem.  See "New Diagnostics".
+
+       Licensing
+           Perl has a new Social Contract for contributors.  See Porting/Contract.
+
+           The license included in much of the Perl documentation has changed.
+           Most of the Perl documentation was previously under the implicit GNU
+           General Public License or the Artistic License (at the user's choice).
+           Now much of the documentation unambiguously states the terms under
+           which it may be distributed.  Those terms are in general much less
+           restrictive than the GNU GPL.  See perl and the individual perl
+           manpages listed therein.
+
+    Core Changes
+       Threads
+           WARNING: Threading is considered an experimental feature.  Details of
+           the implementation may change without notice.  There are known
+           limitations and some bugs.  These are expected to be fixed in future
+           versions.
+  manpageQuestion1: What is the primary purpose of the perl5005delta resource?
+  manpageQuestion2: How can you use perl5005delta to manage licensing changes in Perl documentation?
+  manpageQuestion3: What are the key considerations when using threading features with perl5005delta?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.\n\n\n\nManpage text:\n\nSee README.threads.\n\n   Compiler\n       WARNING: The Compiler and related tools are considered experimental.\n       Features may change without notice, and there are known limitations and\n       bugs.  Since the compiler is fully external to perl, the default\n       configuration will build and install it.\n\n       The Compiler produces three different types of transformations of a\n       perl program.  The C backend generates C code that captures perl's\n       state just before execution begins.  It eliminates the compile-time\n       overheads of the regular perl interpreter, but the run-time performance\n       remains comparatively the same.\tThe CC backend generates optimized C\n       code equivalent to the code path at run-time.  The CC backend has\n       greater potential for big optimizations, but only a few optimizations\n       are implemented currently.  The Bytecode backend generates a platform\n       independent bytecode representation of the interpreter's state just\n       before execution.  Thus, the Bytecode back end also eliminates much of\n       the compilation overhead of the interpreter."
+  manpageQuestion1: What is the primary purpose of the perl5005delta tool?
+  manpageQuestion2: How can the perl5005delta compiler be used to generate optimized C code equivalent to a program's runtime execution path?
+  manpageQuestion3: What are the different types of transformations that the perl5005delta compiler can produce for a Perl program?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.\n\n\n\nManpage text:\n\nThe compiler comes with several valuable utilities.\n\n       \"B::Lint\" is an experimental module to detect and warn about suspicious\n       code, especially the cases that the \"-w\" switch does not detect.\n\n       \"B::Deparse\" can be used to demystify perl code, and understand how\n       perl optimizes certain constructs.\n\n       \"B::Xref\" generates cross reference reports of all definition and use\n       of variables, subroutines and formats in a program.\n\n       \"B::Showlex\" show the lexical variables used by a subroutine or file at\n       a glance.\n\n       \"perlcc\" is a simple frontend for compiling perl.\n\n       See \"ext/B/README\", B, and the respective compiler modules.\n\n   Regular Expressions\n       Perl's regular expression engine has been seriously overhauled, and\n       many new constructs are supported.  Several bugs have been fixed.\n\n       Here is an itemized summary:\n\n       Many new and improved optimizations\n\t   Changes in the RE engine:\n\n\t\t   Unneeded nodes removed;\n\t\t   Substrings merged together;\n\t\t   New types of nodes to process (SUBEXPR)* and similar expressions\n\t\t       quickly, used if the SUBEXPR has no side effects and matches\n\t\t       strings of the same length;\n\t\t   Better optimizations by lookup for constant substrings;\n\t\t   Better search for constants substrings anchored by $ ;"
+  manpageQuestion1: What is the primary purpose of the 'perl5005delta' resource?
+  manpageQuestion2: How can 'perlcc' be used to compile a Perl script into an optimized binary format?
+  manpageQuestion3: What is the function of 'B::Lint' and in what scenarios would it be most useful?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.\n\n\n\nManpage text:\n\nChanges in Perl code using RE engine:\n\n\t\t   More optimizations to s/longer/short/;\n\t\t   study() was not working;\n\t\t   /blah/ may be optimized to an analogue of index() if $& $` $' not seen;\n\t\t   Unneeded copying of matched-against string removed;\n\t\t   Only matched part of the string is copying if $` $' were not seen;\n\n       Many bug fixes\n\t   Note that only the major bug fixes are listed here.\tSee Changes\n\t   for others.\n\n\t\t   Backtracking might not restore start of $3.\n\t\t   No feedback if max count for * or + on \"complex\" subexpression\n\t\t       was reached, similarly (but at compile time) for {3,34567}\n\t\t   Primitive restrictions on max count introduced to decrease a\n\t\t       possibility of a segfault;\n\t\t   (ZERO-LENGTH)* could segfault;\n\t\t   (ZERO-LENGTH)* was prohibited;\n\t\t   Long REs were not allowed;\n\t\t   /RE/g could skip matches at the same position after a\n\t\t     zero-length match;\n\n       New regular expression constructs\n\t   The following new syntax elements are supported:\n\n\t\t   (?<=RE)\n\t\t   (?<!RE)\n\t\t   (?{ CODE })\n\t\t   (?i-x)\n\t\t   (?i:RE)\n\t\t   (?(COND)YES_RE|NO_RE)\n\t\t   (?>RE)\n\t\t   \\z"
+  manpageQuestion1: What is the primary purpose of the perl5005delta resource?
+  manpageQuestion2: How does the perl5005delta resource improve the performance of regular expressions in Perl?
+  manpageQuestion3: What new regular expression constructs were introduced in the perl5005delta resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.\n\n\n\nManpage text:\n\nNew operator for precompiled regular expressions\n\t   See \"New \"qr//\" operator\".\n\n       Other improvements\n\t\t   Better debugging output (possibly with colors),\n\t\t       even from non-debugging Perl;\n\t\t   RE engine code now looks like C, not like assembler;\n\t\t   Behaviour of RE modifiable by `use re' directive;\n\t\t   Improved documentation;\n\t\t   Test suite significantly extended;\n\t\t   Syntax [:^upper:] etc., reserved inside character classes;\n\n       Incompatible changes\n\t\t   (?i) localized inside enclosing group;\n\t\t   $( is not interpolated into RE any more;\n\t\t   /RE/g may match at the same position (with non-zero length)\n\t\t       after a zero-length match (bug fix).\n\n       See perlre and perlop.\n\n   Improved malloc()\n       See banner at the beginning of \"malloc.c\" for details.\n\n   Quicksort is internally implemented\n       Perl now contains its own highly optimized qsort() routine.  The new\n       qsort() is resistant to inconsistent comparison functions, so Perl's\n       \"sort()\" will not provoke coredumps any more when given poorly written\n       sort subroutines.  (Some C library \"qsort()\"s that were being used\n       before used to have this problem.)  In our testing, the new \"qsort()\"\n       required the minimal number of pair-wise compares on average, among all\n       known \"qsort()\" implementations."
+  manpageQuestion1: What is the primary purpose of the perl5005delta resource?
+  manpageQuestion2: How would you use the perl5005delta tool to perform a new operator for precompiled regular expressions?
+  manpageQuestion3: Can you provide an example of using the perl5005delta resource to improve debugging output in Perl scripts?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.
+
+
+
+    Manpage text:
+
+    See "perlfunc/sort".
+
+       Reliable signals
+           Perl's signal handling is susceptible to random crashes, because
+           signals arrive asynchronously, and the Perl runtime is not reentrant at
+           arbitrary times.
+
+           However, one experimental implementation of reliable signals is
+           available when threads are enabled.  See "Thread::Signal".  Also see
+           INSTALL for how to build a Perl capable of threads.
+
+       Reliable stack pointers
+           The internals now reallocate the perl stack only at predictable times.
+           In particular, magic calls never trigger reallocations of the stack,
+           because all reentrancy of the runtime is handled using a "stack of
+           stacks".  This should improve reliability of cached stack pointers in
+           the internals and in XSUBs.
+
+       More generous treatment of carriage returns
+           Perl used to complain if it encountered literal carriage returns in
+           scripts.  Now they are mostly treated like whitespace within program
+           text.  Inside string literals and here documents, literal carriage
+           returns are ignored if they occur paired with linefeeds, or get
+           interpreted as whitespace if they stand alone.  This behavior means
+           that literal carriage returns in files should be avoided.  You can get
+           the older, more compatible (but less generous) behavior by defining the
+           preprocessor symbol "PERL_STRICT_CR" when building perl.  Of course,
+           all this has nothing whatever to do with how escapes like "\r" are
+           handled within strings.
+  manpageQuestion1: What is the primary purpose of the perl5005delta resource?
+  manpageQuestion2: How can one enable reliable signal handling in Perl using threads?
+  manpageQuestion3: What is the impact of the 'More generous treatment of carriage returns' feature in Perl?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.
+
+
+
+    Manpage text:
+
+    Note that this doesn't somehow magically allow you to keep all text
+           files in DOS format.  The generous treatment only applies to files that
+           perl itself parses.  If your C compiler doesn't allow carriage returns
+           in files, you may still be unable to build modules that need a C
+           compiler.
+
+       Memory leaks
+           "substr", "pos" and "vec" don't leak memory anymore when used in lvalue
+           context.  Many small leaks that impacted applications that embed
+           multiple interpreters have been fixed.
+
+       Better support for multiple interpreters
+           The build-time option "-DMULTIPLICITY" has had many of the details
+           reworked.  Some previously global variables that should have been per-
+           interpreter now are.  With care, this allows interpreters to call each
+           other.  See the "PerlInterp" extension on CPAN.
+
+       Behavior of local() on array and hash elements is now well-defined
+           See "Temporary Values via local()" in perlsub.
+
+       "%!" is transparently tied to the Errno module
+           See perlvar, and Errno.
+  manpageQuestion1: What is the primary purpose of the perl5005delta utility?
+  manpageQuestion2: How can the perl5005delta tool be used to address memory leaks in Perl programs?
+  manpageQuestion3: What improvements does the perl5005delta tool provide for managing multiple Perl interpreters?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.
+
+
+
+    Manpage text:
+
+    Pseudo-hashes are supported
+           See perlref.
+
+       "EXPR foreach EXPR" is supported
+           See perlsyn.
+
+       Keywords can be globally overridden
+           See perlsub.
+
+       $^E is meaningful on Win32
+           See perlvar.
+
+       "foreach (1..1000000)" optimized
+           "foreach (1..1000000)" is now optimized into a counting loop.  It does
+           not try to allocate a 1000000-size list anymore.
+
+       "Foo::" can be used as implicitly quoted package name
+           Barewords caused unintuitive behavior when a subroutine with the same
+           name as a package happened to be defined.  Thus, "new Foo @args", use
+           the result of the call to "Foo()" instead of "Foo" being treated as a
+           literal.  The recommended way to write barewords in the indirect object
+           slot is "new Foo:: @args".  Note that the method "new()" is called with
+           a first argument of "Foo", not "Foo::" when you do that.
+
+       "exists $Foo::{Bar::}" tests existence of a package
+           It was impossible to test for the existence of a package without
+           actually creating it before.  Now "exists $Foo::{Bar::}" can be used to
+           test if the "Foo::Bar" namespace has been created.
+  manpageQuestion1: What is the primary purpose of the perl5005delta resource?
+  manpageQuestion2: How can you optimize a 'foreach' loop that iterates over a large range of numbers using perl5005delta?
+  manpageQuestion3: Can you explain how to test if a specific package namespace has been created using perl5005delta?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.\n\n\n\nManpage text:\n\nBetter locale support\n       See perllocale.\n\n   Experimental support for 64-bit platforms\n       Perl5 has always had 64-bit support on systems with 64-bit longs.\n       Starting with 5.005, the beginnings of experimental support for systems\n       with 32-bit long and 64-bit 'long long' integers has been added.  If\n       you add -DUSE_LONG_LONG to your ccflags in config.sh (or manually\n       define it in perl.h) then perl will be built with 'long long' support.\n       There will be many compiler warnings, and the resultant perl may not\n       work on all systems.  There are many other issues related to third-\n       party extensions and libraries.\tThis option exists to allow people to\n       work on those issues.\n\n   prototype() returns useful results on builtins\n       See \"prototype\" in perlfunc.\n\n   Extended support for exception handling\n       \"die()\" now accepts a reference value, and $@ gets set to that value in\n       exception traps.  This makes it possible to propagate exception\n       objects.  This is an undocumented experimental feature."
+  manpageQuestion1: What is the primary purpose of the perl5005delta resource?
+  manpageQuestion2: How can you enable experimental support for 64-bit platforms when building Perl with the perl5005delta resource?
+  manpageQuestion3: What is the effect of the experimental support for exception handling in perl5005delta?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.
+
+
+
+    Manpage text:
+
+    Re-blessing in DESTROY() supported for chaining DESTROY() methods
+           See "Destructors" in perlobj.
+
+       All "printf" format conversions are handled internally
+           See "printf" in perlfunc.
+
+       New "INIT" keyword
+           "INIT" subs are like "BEGIN" and "END", but they get run just before
+           the perl runtime begins execution.  e.g., the Perl Compiler makes use
+           of "INIT" blocks to initialize and resolve pointers to XSUBs.
+
+       New "lock" keyword
+           The "lock" keyword is the fundamental synchronization primitive in
+           threaded perl.  When threads are not enabled, it is currently a noop.
+
+           To minimize impact on source compatibility this keyword is "weak",
+           i.e., any user-defined subroutine of the same name overrides it, unless
+           a "use Thread" has been seen.
+
+       New "qr//" operator
+           The "qr//" operator, which is syntactically similar to the other quote-
+           like operators, is used to create precompiled regular expressions.
+           This compiled form can now be explicitly passed around in variables,
+           and interpolated in other regular expressions.  See perlop.
+  manpageQuestion1: What is the primary purpose of the perl5005delta resource?
+  manpageQuestion2: How can you use the qr// operator to create a precompiled regular expression in Perl?
+  manpageQuestion3: What is the function of the 'lock' keyword in threaded Perl, and how does it differ from non-threaded environments?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.
+
+
+
+    Manpage text:
+
+    "our" is now a reserved word
+           Calling a subroutine with the name "our" will now provoke a warning
+           when using the "-w" switch.
+
+       Tied arrays are now fully supported
+           See Tie::Array.
+
+       Tied handles support is better
+           Several missing hooks have been added.  There is also a new base class
+           for TIEARRAY implementations.  See Tie::Array.
+
+       4th argument to substr
+           substr() can now both return and replace in one operation.  The
+           optional 4th argument is the replacement string.  See "substr" in
+           perlfunc.
+
+       Negative LENGTH argument to splice
+           splice() with a negative LENGTH argument now work similar to what the
+           LENGTH did for substr().  Previously a negative LENGTH was treated as
+           0.  See "splice" in perlfunc.
+
+       Magic lvalues are now more magical
+           When you say something like "substr($x, 5) = "hi"", the scalar returned
+           by substr() is special, in that any modifications to it affect $x.
+           (This is called a 'magic lvalue' because an 'lvalue' is something on
+           the left side of an assignment.)  Normally, this is exactly what you
+           would expect to happen, but Perl uses the same magic if you use
+           substr(), pos(), or vec() in a context where they might be modified,
+           like taking a reference with "\" or as an argument to a sub that
+           modifies @_.  In previous versions, this 'magic' only went one way, but
+           now changes to the scalar the magic refers to ($x in the above example)
+           affect the magic lvalue too. For instance, this code now acts
+           differently:
+  manpageQuestion1: What is the primary purpose of the `perl5005delta` resource?
+  manpageQuestion2: How can you modify a scalar value using magic lvalues in Perl with the `substr` function?
+  manpageQuestion3: What is the effect of using a negative LENGTH argument with the `splice` function in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.\n\n\n\nManpage text:\n\n$x = \"hello\";\n\t   sub printit {\n\t       $x = \"g'bye\";\n\t       print $_[0], \"\\n\";\n\t   }\n\t   printit(substr($x, 0, 5));\n\n       In previous versions, this would print \"hello\", but it now prints\n       \"g'bye\".\n\n   <> now reads in records\n       If $/ is a reference to an integer, or a scalar that holds an integer,\n       <> will read in records instead of lines. For more info, see \"$/\" in\n       perlvar.\n\nSupported Platforms\n       Configure has many incremental improvements.  Site-wide policy for\n       building perl can now be made persistent, via Policy.sh.  Configure\n       also records the command-line arguments used in config.sh.\n\n   New Platforms\n       BeOS is now supported.  See README.beos.\n\n       DOS is now supported under the DJGPP tools.  See README.dos (installed\n       as perldos on some systems).\n\n       MiNT is now supported.  See README.mint.\n\n       MPE/iX is now supported.  See README.mpeix.\n\n       MVS (aka OS390, aka Open Edition) is now supported.  See README.os390\n       (installed as perlos390 on some systems)."
+  manpageQuestion1: What is the primary purpose of the perl5005delta tool?
+  manpageQuestion2: How would you use perl5005delta to modify a string variable within a subroutine?
+  manpageQuestion3: Can you provide an example of using perl5005delta to read records from a file instead of lines?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.\n\n\n\nManpage text:\n\nStratus VOS is now supported.  See README.vos.\n\n   Changes in existing support\n       Win32 support has been vastly enhanced.\tSupport for Perl Object, a C++\n       encapsulation of Perl.  GCC and EGCS are now supported on Win32.  See\n       README.win32, aka perlwin32.\n\n       VMS configuration system has been rewritten.  See README.vms (installed\n       as README_vms on some systems).\n\n       The hints files for most Unix platforms have seen incremental\n       improvements.\n\nModules and Pragmata\n   New Modules\n       B   Perl compiler and tools.  See B.\n\n       Data::Dumper\n\t   A module to pretty print Perl data.\tSee Data::Dumper.\n\n       Dumpvalue\n\t   A module to dump perl values to the screen. See Dumpvalue.\n\n       Errno\n\t   A module to look up errors more conveniently.  See Errno.\n\n       File::Spec\n\t   A portable API for file operations.\n\n       ExtUtils::Installed\n\t   Query and manage installed modules.\n\n       ExtUtils::Packlist\n\t   Manipulate .packlist files.\n\n       Fatal\n\t   Make functions/builtins succeed or die."
+  manpageQuestion1: What is the primary purpose of the perl5005delta resource?
+  manpageQuestion2: How can you use the Data::Dumper module to pretty-print a Perl data structure?
+  manpageQuestion3: What is the function of the ExtUtils::Installed module in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.\n\n\n\nManpage text:\n\nIPC::SysV\n\t   Constants and other support infrastructure for System V IPC\n\t   operations in perl.\n\n       Test\n\t   A framework for writing test suites.\n\n       Tie::Array\n\t   Base class for tied arrays.\n\n       Tie::Handle\n\t   Base class for tied handles.\n\n       Thread\n\t   Perl thread creation, manipulation, and support.\n\n       attrs\n\t   Set subroutine attributes.\n\n       fields\n\t   Compile-time class fields.\n\n       re  Various pragmata to control behavior of regular expressions.\n\n   Changes in existing modules\n       Benchmark\n\t   You can now run tests for x seconds instead of guessing the right\n\t   number of tests to run.\n\n\t   Keeps better time.\n\n       Carp\n\t   Carp has a new function cluck(). cluck() warns, like carp(), but\n\t   also adds a stack backtrace to the error message, like confess().\n\n       CGI CGI has been updated to version 2.42.\n\n       Fcntl\n\t   More Fcntl constants added: F_SETLK64, F_SETLKW64, O_LARGEFILE for\n\t   large (more than 4G) file access (the 64-bit support is not yet\n\t   working, though, so no need to get overly excited),\n\t   Free/Net/OpenBSD locking behaviour flags F_FLOCK, F_POSIX, Linux\n\t   F_SHLCK, and O_ACCMODE: the mask of O_RDONLY, O_WRONLY, and O_RDWR."
+  manpageQuestion1: What is the primary purpose of the IPC::SysV module?
+  manpageQuestion2: How can you use the 'Test' framework in Perl to write and run test suites?
+  manpageQuestion3: What new functionality was added to the Carp module in Perl according to the manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.\n\n\n\nManpage text:\n\nMath::Complex\n\t   The accessors methods Re, Im, arg, abs, rho, theta, methods can\n\t   ($z->Re()) now also act as mutators ($z->Re(3)).\n\n       Math::Trig\n\t   A little bit of radial trigonometry (cylindrical and spherical)\n\t   added, for example the great circle distance.\n\n       POSIX\n\t   POSIX now has its own platform-specific hints files.\n\n       DB_File\n\t   DB_File supports version 2.x of Berkeley DB.  See\n\t   \"ext/DB_File/Changes\".\n\n       MakeMaker\n\t   MakeMaker now supports writing empty makefiles, provides a way to\n\t   specify that site umask() policy should be honored.\tThere is also\n\t   better support for manipulation of .packlist files, and getting\n\t   information about installed modules.\n\n\t   Extensions that have both architecture-dependent and architecture-\n\t   independent files are now always installed completely in the\n\t   architecture-dependent locations.  Previously, the shareable parts\n\t   were shared both across architectures and across perl versions and\n\t   were therefore liable to be overwritten with newer versions that\n\t   might have subtle incompatibilities."
+  manpageQuestion1: What is the primary purpose of the perl5005delta resource?
+  manpageQuestion2: How can the perl5005delta resource be used to manage makefile generation with MakeMaker?
+  manpageQuestion3: What is the significance of the changes in DB_File related to Berkeley DB version support?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.\n\n\n\nManpage text:\n\nCPAN\n\t   See perlmodinstall and CPAN.\n\n       Cwd Cwd::cwd is faster on most platforms.\n\nUtility Changes\n       \"h2ph\" and related utilities have been vastly overhauled.\n\n       \"perlcc\", a new experimental front end for the compiler is available.\n\n       The crude GNU \"configure\" emulator is now called \"configure.gnu\" to\n       avoid trampling on \"Configure\" under case-insensitive filesystems.\n\n       \"perldoc\" used to be rather slow.  The slower features are now\n       optional.  In particular, case-insensitive searches need the \"-i\"\n       switch, and recursive searches need \"-r\".  You can set these switches\n       in the \"PERLDOC\" environment variable to get the old behavior.\n\nDocumentation Changes\n       Config.pm now has a glossary of variables.\n\n       Porting/patching.pod has detailed instructions on how to create and\n       submit patches for perl.\n\n       perlport specifies guidelines on how to write portably.\n\n       perlmodinstall describes how to fetch and install modules from \"CPAN\"\n       sites."
+  manpageQuestion1: What is the primary purpose of the perl5005delta tool?
+  manpageQuestion2: How would you use perl5005delta to enable case-insensitive searches in perldoc?
+  manpageQuestion3: Can you provide an example of using perl5005delta to configure the perldoc tool for recursive searches?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.\n\n\n\nManpage text:\n\nSome more Perl traps are documented now.  See perltrap.\n\n       perlopentut gives a tutorial on using open().\n\n       perlreftut gives a tutorial on references.\n\n       perlthrtut gives a tutorial on threads.\n\nNew Diagnostics\n       Ambiguous call resolved as CORE::%s(), qualify as such or use &\n\t   (W) A subroutine you have declared has the same name as a Perl\n\t   keyword, and you have used the name without qualification for\n\t   calling one or the other.  Perl decided to call the builtin because\n\t   the subroutine is not imported.\n\n\t   To force interpretation as a subroutine call, either put an\n\t   ampersand before the subroutine name, or qualify the name with its\n\t   package.  Alternatively, you can import the subroutine (or pretend\n\t   that it's imported with the \"use subs\" pragma).\n\n\t   To silently interpret it as the Perl operator, use the \"CORE::\"\n\t   prefix on the operator (e.g. \"CORE::log($x)\") or by declaring the\n\t   subroutine to be an object method (see \"attrs\").\n\n       Bad index while coercing array into hash\n\t   (F) The index looked up in the hash found as the 0'th element of a\n\t   pseudo-hash is not legal.  Index values must be at 1 or greater.\n\t   See perlref."
+  manpageQuestion1: What is the primary purpose of the perl5005delta resource?
+  manpageQuestion2: How can you resolve an ambiguous subroutine call in Perl where a subroutine name conflicts with a keyword?
+  manpageQuestion3: What is the error message and how can it be resolved when coercing an array into a hash with an invalid index?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.\n\n\n\nManpage text:\n\nBareword \"%s\" refers to nonexistent package\n\t   (W) You used a qualified bareword of the form \"Foo::\", but the\n\t   compiler saw no other uses of that namespace before that point.\n\t   Perhaps you need to predeclare a package?\n\n       Can't call method \"%s\" on an undefined value\n\t   (F) You used the syntax of a method call, but the slot filled by\n\t   the object reference or package name contains an undefined value.\n\t   Something like this will reproduce the error:\n\n\t       $BADREF = 42;\n\t       process $BADREF 1,2,3;\n\t       $BADREF->process(1,2,3);\n\n       Can't check filesystem of script \"%s\" for nosuid\n\t   (P) For some reason you can't check the filesystem of the script\n\t   for nosuid.\n\n       Can't coerce array into hash\n\t   (F) You used an array where a hash was expected, but the array has\n\t   no information on how to map from keys to array indices.  You can\n\t   do that only with arrays that have a hash reference at index 0.\n\n       Can't goto subroutine from an eval-string\n\t   (F) The \"goto subroutine\" call can't be used to jump out of an eval\n\t   \"string\".  (You can use it to jump out of an eval {BLOCK}, but you\n\t   probably don't want to.)"
+  manpageQuestion1: What is the primary purpose of the perl5005delta resource?
+  manpageQuestion2: How can you resolve the error 'Can't call method "%s" on an undefined value' in Perl?
+  manpageQuestion3: What is the meaning of the warning 'Bareword "%s" refers to nonexistent package' in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.\n\n\n\nManpage text:\n\nCan't localize pseudo-hash element\n\t   (F) You said something like \"local $ar->{'key'}\", where $ar is a\n\t   reference to a pseudo-hash.\tThat hasn't been implemented yet, but\n\t   you can get a similar effect by localizing the corresponding array\n\t   element directly: \"local $ar->[$ar->[0]{'key'}]\".\n\n       Can't use %%! because Errno.pm is not available\n\t   (F) The first time the %! hash is used, perl automatically loads\n\t   the Errno.pm module. The Errno module is expected to tie the %!\n\t   hash to provide symbolic names for $! errno values.\n\n       Cannot find an opnumber for \"%s\"\n\t   (F) A string of a form \"CORE::word\" was given to prototype(), but\n\t   there is no builtin with the name \"word\".\n\n       Character class syntax [. .] is reserved for future extensions\n\t   (W) Within regular expression character classes ([]) the syntax\n\t   beginning with \"[.\" and ending with \".]\" is reserved for future\n\t   extensions.\tIf you need to represent those character sequences\n\t   inside a regular expression character class, just quote the square\n\t   brackets with the backslash: \"\\[.\" and \".\\]\"."
+  manpageQuestion1: What is the primary purpose of the perl5005delta resource?
+  manpageQuestion2: How can you localize a pseudo-hash element in Perl using an alternative approach?
+  manpageQuestion3: What is the recommended way to handle the error message 'Cannot find an opnumber for "%s"' when using prototype()?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.\n\n\n\nManpage text:\n\nCharacter class syntax [: :] is reserved for future extensions\n\t   (W) Within regular expression character classes ([]) the syntax\n\t   beginning with \"[:\" and ending with \":]\" is reserved for future\n\t   extensions.\tIf you need to represent those character sequences\n\t   inside a regular expression character class, just quote the square\n\t   brackets with the backslash: \"\\[:\" and \":\\]\".\n\n       Character class syntax [= =] is reserved for future extensions\n\t   (W) Within regular expression character classes ([]) the syntax\n\t   beginning with \"[=\" and ending with \"=]\" is reserved for future\n\t   extensions.\tIf you need to represent those character sequences\n\t   inside a regular expression character class, just quote the square\n\t   brackets with the backslash: \"\\[=\" and \"=\\]\".\n\n       %s: Eval-group in insecure regular expression\n\t   (F) Perl detected tainted data when trying to compile a regular\n\t   expression that contains the \"(?{ ... })\" zero-width assertion,\n\t   which is unsafe.  See \"(?{ code })\" in perlre, and perlsec."
+  manpageQuestion1: What is the primary purpose of the perl5005delta resource?
+  manpageQuestion2: 'How can I represent the character sequence [:'
+  manpageQuestion3: 'What is the security implication of using the %s: Eval-group in regular expressions?'
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.\n\n\n\nManpage text:\n\n%s: Eval-group not allowed, use re 'eval'\n\t   (F) A regular expression contained the \"(?{ ... })\" zero-width\n\t   assertion, but that construct is only allowed when the \"use re\n\t   'eval'\" pragma is in effect.  See \"(?{ code })\" in perlre.\n\n       %s: Eval-group not allowed at run time\n\t   (F) Perl tried to compile a regular expression containing the \"(?{\n\t   ... })\" zero-width assertion at run time, as it would when the\n\t   pattern contains interpolated values.  Since that is a security\n\t   risk, it is not allowed.  If you insist, you may still do this by\n\t   explicitly building the pattern from an interpolated string at run\n\t   time and using that in an eval().  See \"(?{ code })\" in perlre.\n\n       Explicit blessing to '' (assuming package main)\n\t   (W) You are blessing a reference to a zero length string.  This has\n\t   the effect of blessing the reference into the package main.\tThis\n\t   is usually not what you want.  Consider providing a default target\n\t   package, e.g. bless($ref, $p || 'MyPackage');"
+  manpageQuestion1: What is the primary purpose of the perl5005delta resource?
+  manpageQuestion2: How can you use perl5005delta to handle the 'Eval-group not allowed' error in regular expressions?
+  manpageQuestion3: What is the recommended approach for blessing a reference to a zero-length string in perl5005delta?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.\n\n\n\nManpage text:\n\nIllegal hex digit ignored\n\t   (W) You may have tried to use a character other than 0 - 9 or A - F\n\t   in a hexadecimal number.  Interpretation of the hexadecimal number\n\t   stopped before the illegal character.\n\n       No such array field\n\t   (F) You tried to access an array as a hash, but the field name used\n\t   is not defined.  The hash at index 0 should map all valid field\n\t   names to array indices for that to work.\n\n       No such field \"%s\" in variable %s of type %s\n\t   (F) You tried to access a field of a typed variable where the type\n\t   does not know about the field name.\tThe field names are looked up\n\t   in the %FIELDS hash in the type package at compile time.  The\n\t   %FIELDS hash is usually set up with the 'fields' pragma.\n\n       Out of memory during ridiculously large request\n\t   (F) You can't allocate more than 2^31+\"small amount\" bytes.\tThis\n\t   error is most likely to be caused by a typo in the Perl program.\n\t   e.g., $arr[time] instead of $arr[$time].\n\n       Range iterator outside integer range\n\t   (F) One (or both) of the numeric arguments to the range operator\n\t   \"..\" are outside the range which can be represented by integers\n\t   internally.\tOne possible workaround is to force Perl to use\n\t   magical string increment by prepending \"0\" to your numbers."
+  manpageQuestion1: What is the primary purpose of the perl5005delta resource?
+  manpageQuestion2: How would you handle an error related to an illegal hex digit in a Perl script?
+  manpageQuestion3: What is the solution for the 'Range iterator outside integer range' error in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.\n\n\n\nManpage text:\n\nRecursive inheritance detected while looking for method '%s' %s\n\t   (F) More than 100 levels of inheritance were encountered while\n\t   invoking a method.  Probably indicates an unintended loop in your\n\t   inheritance hierarchy.\n\n       Reference found where even-sized list expected\n\t   (W) You gave a single reference where Perl was expecting a list\n\t   with an even number of elements (for assignment to a hash). This\n\t   usually means that you used the anon hash constructor when you\n\t   meant to use parens. In any case, a hash requires key/value pairs.\n\n\t       %hash = { one => 1, two => 2, };   # WRONG\n\t       %hash = [ qw/ an anon array / ];   # WRONG\n\t       %hash = ( one => 1, two => 2, );   # right\n\t       %hash = qw( one 1 two 2 );\t\t  # also fine\n\n       Undefined value assigned to typeglob\n\t   (W) An undefined value was assigned to a typeglob, a la \"*foo =\n\t   undef\".  This does nothing.\tIt's possible that you really mean\n\t   \"undef *foo\".\n\n       Use of reserved word \"%s\" is deprecated\n\t   (D) The indicated bareword is a reserved word.  Future versions of\n\t   perl may use it as a keyword, so you're better off either\n\t   explicitly quoting the word in a manner appropriate for its context\n\t   of use, or using a different name altogether.  The warning can be\n\t   suppressed for subroutine names by either adding a \"&\" prefix, or\n\t   using a package qualifier, e.g. \"&our()\", or \"Foo::our()\"."
+  manpageQuestion1: What is the primary purpose of the perl5005delta tool?
+  manpageQuestion2: How can you address the 'Reference found where even-sized list expected' warning in Perl using proper syntax?
+  manpageQuestion3: What is the correct way to undefine a typeglob in Perl according to the manpage warnings?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.\n\n\n\nManpage text:\n\nperl: warning: Setting locale failed.\n\t   (S) The whole warning message will look something like:\n\n\t\t  perl: warning: Setting locale failed.\n\t\t  perl: warning: Please check that your locale settings:\n\t\t\t  LC_ALL = \"En_US\",\n\t\t\t  LANG = (unset)\n\t\t      are supported and installed on your system.\n\t\t  perl: warning: Falling back to the standard locale (\"C\").\n\n\t   Exactly what were the failed locale settings varies.  In the above\n\t   the settings were that the LC_ALL was \"En_US\" and the LANG had no\n\t   value.  This error means that Perl detected that you and/or your\n\t   system administrator have set up the so-called variable system but\n\t   Perl could not use those settings.  This was not dead serious,\n\t   fortunately: there is a \"default locale\" called \"C\" that Perl can\n\t   and will use, the script will be run.  Before you really fix the\n\t   problem, however, you will get the same error message each time you\n\t   run Perl.  How to really fix the problem can be found in \"LOCALE\n\t   PROBLEMS\" in perllocale."
+  manpageQuestion1: What is the primary purpose of the perl5005delta resource?
+  manpageQuestion2: How can you resolve locale-related warnings when using perl5005delta?
+  manpageQuestion3: What is the default behavior of perl5005delta when locale settings are not properly configured?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.\n\n\n\nManpage text:\n\nObsolete Diagnostics\n       Can't mktemp()\n\t   (F) The mktemp() routine failed for some reason while trying to\n\t   process a -e switch.  Maybe your /tmp partition is full, or\n\t   clobbered.\n\n\t   Removed because -e doesn't use temporary files any more.\n\n       Can't write to temp file for -e: %s\n\t   (F) The write routine failed for some reason while trying to\n\t   process a -e switch.  Maybe your /tmp partition is full, or\n\t   clobbered.\n\n\t   Removed because -e doesn't use temporary files any more.\n\n       Cannot open temporary file\n\t   (F) The create routine failed for some reason while trying to\n\t   process a -e switch.  Maybe your /tmp partition is full, or\n\t   clobbered.\n\n\t   Removed because -e doesn't use temporary files any more.\n\n       regexp too big\n\t   (F) The current implementation of regular expressions uses shorts\n\t   as address offsets within a string.\tUnfortunately this means that\n\t   if the regular expression compiles to longer than 32767, it'll blow\n\t   up.\tUsually when you want a regular expression this big, there is\n\t   a better way to do it with multiple statements.  See perlre."
+  manpageQuestion1: What is the primary purpose of the perl5005delta resource?
+  manpageQuestion2: How can you handle situations where the perl5005delta tool encounters issues with temporary file operations?
+  manpageQuestion3: What are the common reasons for errors related to regular expressions in perl5005delta and how can they be avoided?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.
+
+
+
+    Manpage text:
+
+    Configuration Changes
+           You can use "Configure -Uinstallusrbinperl" which causes installperl to
+           skip installing perl also as /usr/bin/perl.  This is useful if you
+           prefer not to modify /usr/bin for some reason or another but harmful
+           because many scripts assume to find Perl in /usr/bin/perl.
+
+    BUGS
+           If you find what you think is a bug, you might check the headers of
+           recently posted articles in the comp.lang.perl.misc newsgroup.  There
+           may also be information at http://www.perl.com/perl/ , the Perl Home
+           Page.
+
+           If you believe you have an unreported bug, please run the perlbug
+           program included with your release.  Make sure you trim your bug down
+           to a tiny but sufficient test case.  Your bug report, along with the
+           output of "perl -V", will be sent off to <perlbug@perl.com> to be
+           analysed by the Perl porting team.
+
+    SEE ALSO
+           The Changes file for exhaustive details on what changed.
+
+           The INSTALL file for how to build Perl.
+  manpageQuestion1: What is the primary purpose of the perl5005delta resource?
+  manpageQuestion2: How can you configure Perl to avoid installing it as /usr/bin/perl?
+  manpageQuestion3: What steps should be taken if a bug is found in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5005delta`.\n\n\n\nManpage text:\n\nThe README file for general stuff.\n\n       The Artistic and Copying files for copyright information.\n\nHISTORY\n       Written by Gurusamy Sarathy <gsar@activestate.com>, with many\n       contributions from The Perl Porters.\n\n       Send omissions or corrections to <perlbug@perl.com>.\n\nperl v5.34.1\t\t\t  2022-02-19\t\t      PERL5005DELTA(1)"
+  manpageQuestion1: What is the primary purpose of the perl5005delta resource?
+  manpageQuestion2: How would you use the perl5005delta resource to perform a specific task?
+  manpageQuestion3: Can you provide an example of using the perl5005delta resource in a practical scenario?
+

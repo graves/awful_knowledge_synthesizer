@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `trustevaluationagent`.\n\n\n\nManpage text:\n\ntrustevaluationagent(8)     System Manager's Manual    trustevaluationagent(8)\n\nNAME\n     trustevaluationagent – LaunchAgent that performs trust evaluations\n\nSYNOPSIS\n     trustevaluationagent\n\nDESCRIPTION\n     trustevaluationagent provides services for evaluating trust in\n     certificates for all processes on the system.\n\n     This command is not intended to be invoked directly.\n\nmacOS 15.3\t\t\tThu Feb 16 2017 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the trustevaluationagent tool?
+  manpageQuestion2: How would you use trustevaluationagent to evaluate the trust of a certificate in a system process?
+  manpageQuestion3: Can you explain the typical use case for trustevaluationagent in a macOS environment?
+

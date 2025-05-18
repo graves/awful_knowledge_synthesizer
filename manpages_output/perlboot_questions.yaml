@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlboot`.\n\n\n\nManpage text:\n\nPERLBOOT(1)\t       Perl Programmers Reference Guide \t   PERLBOOT(1)\n\n\nNAME\n       perlboot - Links to information on object-oriented programming in Perl\n\nDESCRIPTION\n       For information on OO programming with Perl, please see perlootut and\n       perlobj.\n\n       (The above documents supersede the tutorial that was formerly here in\n       perlboot.)\n\nperl v5.34.1\t\t\t  2022-02-19\t\t\t   PERLBOOT(1)"
+  manpageQuestion1: What is the primary purpose of the perlboot command?
+  manpageQuestion2: How would you use the perlboot tool to access information on object-oriented programming in Perl?
+  manpageQuestion3: Can you explain the role of perlboot in relation to other Perl documentation resources like perlootut and perlobj?
+

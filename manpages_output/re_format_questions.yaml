@@ -1,0 +1,214 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `re_format`.\n\n\n\nManpage text:\n\nRE_FORMAT(7)\t       Miscellaneous Information Manual \t  RE_FORMAT(7)\n\nNAME\n     re_format – POSIX 1003.2 regular expressions\n\nDESCRIPTION\n     Regular expressions (“REs”), as defined in IEEE Std 1003.2 (“POSIX.2”),\n     come in two forms: modern REs (roughly those of egrep(1); 1003.2 calls\n     these “extended” REs) and obsolete REs (roughly those of ed(1); 1003.2\n     “basic” REs).  Obsolete REs mostly exist for backward compatibility in\n     some old programs; they will be discussed at the end.  IEEE Std 1003.2\n     (“POSIX.2”) leaves some aspects of RE syntax and semantics open; `‡'\n     marks decisions on these aspects that may not be fully portable to other\n     IEEE Std 1003.2 (“POSIX.2”) implementations.\n\n     A (modern) RE is one‡ or more non-empty‡ branches, separated by ‘|’.  It\n     matches anything that matches one of the branches.\n\n     A branch is one‡ or more pieces, concatenated.  It matches a match for\n     the first, followed by a match for the second, etc.\n\n     A piece is an atom possibly followed by a single‡ ‘*’, ‘+’, ‘?’, or\n     bound.  An atom followed by ‘*’ matches a sequence of 0 or more matches\n     of the atom.  An atom followed by ‘+’ matches a sequence of 1 or more\n     matches of the atom.  An atom followed by ‘?’ matches a sequence of 0 or\n     1 matches of the atom."
+  manpageQuestion1: What is the primary purpose of the re_format utility?
+  manpageQuestion2: How can you use re_format to match a string that contains one or more occurrences of the word 'example'?
+  manpageQuestion3: What is the correct syntax to use re_format for matching an optional single occurrence of a character 'a' followed by any number of 'b's?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `re_format`.
+
+
+
+    Manpage text:
+
+    A bound is ‘{’ followed by an unsigned decimal integer, possibly followed
+         by ‘,’ possibly followed by another unsigned decimal integer, always
+         followed by ‘}’.  The integers must lie between 0 and RE_DUP_MAX (255‡)
+         inclusive, and if there are two of them, the first may not exceed the
+         second.  An atom followed by a bound containing one integer i and no
+         comma matches a sequence of exactly i matches of the atom.  An atom
+         followed by a bound containing one integer i and a comma matches a
+         sequence of i or more matches of the atom.  An atom followed by a bound
+         containing two integers i and j matches a sequence of i through j
+         (inclusive) matches of the atom.
+
+         An atom is a regular expression enclosed in ‘()’ (matching a match for
+         the regular expression), an empty set of ‘()’ (matching the null
+         string)‡, a bracket expression (see below), ‘.’ (matching any single
+         character), ‘^’ (matching the null string at the beginning of a line),
+         ‘$’ (matching the null string at the end of a line), a ‘\’ followed by
+         one of the characters ‘^.[$()|*+?{\’ (matching that character taken as an
+         ordinary character), a ‘\’ followed by any other character‡ (matching
+         that character taken as an ordinary character, as if the ‘\’ had not been
+         present‡), or a single character with no other significance (matching
+         that character).  A ‘{’ followed by a character other than a digit is an
+         ordinary character, not the beginning of a bound‡.  It is illegal to end
+         an RE with ‘\’.
+  manpageQuestion1: What is the primary purpose of the re_format resource?
+  manpageQuestion2: How would you use re_format to create a regular expression that matches exactly 3 occurrences of the atom ‘(a+)’?
+  manpageQuestion3: Can you provide an example of using re_format to define a regex that matches between 2 and 5 occurrences of the atom ‘(b*)’?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `re_format`.
+
+
+
+    Manpage text:
+
+    A bracket expression is a list of characters enclosed in ‘[]’.  It
+         normally matches any single character from the list (but see below).  If
+         the list begins with ‘^’, it matches any single character (but see below)
+         not from the rest of the list.  If two characters in the list are
+         separated by ‘-’, this is shorthand for the full range of characters
+         between those two (inclusive) in the collating sequence, e.g. ‘[0-9]’ in
+         ASCII matches any decimal digit.  It is illegal‡ for two ranges to share
+         an endpoint, e.g. ‘a-c-e’.  Ranges are very collating-sequence-dependent,
+         and portable programs should avoid relying on them.
+
+         To include a literal ‘]’ in the list, make it the first character
+         (following a possible ‘^’).  To include a literal ‘-’, make it the first
+         or last character, or the second endpoint of a range.  To use a literal
+         ‘-’ as the first endpoint of a range, enclose it in ‘[.’ and ‘.]’ to make
+         it a collating element (see below).  With the exception of these and some
+         combinations using ‘[’ (see next paragraphs), all other special
+         characters, including ‘\’, lose their special significance within a
+         bracket expression.
+  manpageQuestion1: What is the primary purpose of the re_format resource?
+  manpageQuestion2: How can you create a bracket expression that matches any single character not in the list ‘a-z’?
+  manpageQuestion3: Can you provide an example of using a bracket expression to match any uppercase letter or digit?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `re_format`.
+
+
+
+    Manpage text:
+
+    Within a bracket expression, a collating element (a character, a multi-
+         character sequence that collates as if it were a single character, or a
+         collating-sequence name for either) enclosed in ‘[.’ and ‘.]’ stands for
+         the sequence of characters of that collating element.  The sequence is a
+         single element of the bracket expression's list.  A bracket expression
+         containing a multi-character collating element can thus match more than
+         one character, e.g. if the collating sequence includes a ‘ch’ collating
+         element, then the RE ‘[[.ch.]]*c’ matches the first five characters of
+         ‘chchcc’.
+
+         Within a bracket expression, a collating element enclosed in ‘[=’ and
+         ‘=]’ is an equivalence class, standing for the sequences of characters of
+         all collating elements equivalent to that one, including itself.  (If
+         there are no other equivalent collating elements, the treatment is as if
+         the enclosing delimiters were ‘[.’ and ‘.]’.) For example, if ‘x’ and ‘y’
+         are the members of an equivalence class, then ‘[[=x=]]’, ‘[[=y=]]’, and
+         ‘[xy]’ are all synonymous.  An equivalence class may not‡ be an endpoint
+         of a range.
+  manpageQuestion1: What is the primary purpose of the re_format resource?
+  manpageQuestion2: How would you use re_format to match a collating element like ‘ch’ in a regular expression?
+  manpageQuestion3: Can you provide an example of using re_format to create an equivalence class for characters ‘x’ and ‘y’ in a regular expression?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `re_format`.\n\n\n\nManpage text:\n\nWithin a bracket expression, the name of a character class enclosed in\n     ‘[:’ and ‘:]’ stands for the list of all characters belonging to that\n     class.  Standard character class names are:\n\n\t   alnum    digit    punct\n\t   alpha    graph    space\n\t   blank    lower    upper\n\t   cntrl    print    xdigit\n\n     These stand for the character classes defined in ctype(3).  A locale may\n     provide others.  A character class may not be used as an endpoint of a\n     range.\n\n     A bracketed expression like ‘[[:class:]]’ can be used to match a single\n     character that belongs to a character class.  The reverse, matching any\n     character that does not belong to a specific class, the negation operator\n     of bracket expressions may be used: ‘[^[:class:]]’.\n\n     There are two special cases‡ of bracket expressions: the bracket\n     expressions ‘[[:<:]]’ and ‘[[:>:]]’ match the null string at the\n     beginning and end of a word respectively.\tA word is defined as a\n     sequence of word characters which is neither preceded nor followed by\n     word characters.  A word character is an alnum character (as defined by\n     ctype(3)) or an underscore.  This is an extension, compatible with but\n     not specified by IEEE Std 1003.2 (“POSIX.2”), and should be used with\n     caution in software intended to be portable to other systems."
+  manpageQuestion1: What is the primary purpose of the re_format resource?
+  manpageQuestion2: How would you use re_format to create a regular expression that matches any word character?
+  manpageQuestion3: Can you provide an example of using re_format to create a regular expression that matches the null string at the beginning of a word?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `re_format`.\n\n\n\nManpage text:\n\nIn the event that an RE could match more than one substring of a given\n     string, the RE matches the one starting earliest in the string.  If the\n     RE could match more than one substring starting at that point, it matches\n     the longest.  Subexpressions also match the longest possible substrings,\n     subject to the constraint that the whole match be as long as possible,\n     with subexpressions starting earlier in the RE taking priority over ones\n     starting later.  Note that higher-level subexpressions thus take priority\n     over their lower-level component subexpressions.\n\n     Match lengths are measured in characters, not collating elements.\tA null\n     string is considered longer than no match at all.\tFor example, ‘bb*’\n     matches the three middle characters of ‘abbbc’,\n     ‘(wee|week)(knights|nights)’ matches all ten characters of ‘weeknights’,\n     when ‘(.*).*’ is matched against ‘abc’ the parenthesized subexpression\n     matches all three characters, and when ‘(a*)*’ is matched against ‘bc’\n     both the whole RE and the parenthesized subexpression match the null\n     string."
+  manpageQuestion1: What is the primary purpose of the re_format resource?
+  manpageQuestion2: How does re_format handle cases where a regular expression could match multiple substrings in a string?
+  manpageQuestion3: Can you explain how re_format determines the length of a match when there are multiple possible subexpressions?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `re_format`.\n\n\n\nManpage text:\n\nIf case-independent matching is specified, the effect is much as if all\n     case distinctions had vanished from the alphabet.\tWhen an alphabetic\n     that exists in multiple cases appears as an ordinary character outside a\n     bracket expression, it is effectively transformed into a bracket\n     expression containing both cases, e.g. ‘x’ becomes ‘[xX]’.  When it\n     appears inside a bracket expression, all case counterparts of it are\n     added to the bracket expression, so that (e.g.)  ‘[x]’ becomes ‘[xX]’ and\n     ‘[^x]’ becomes ‘[^xX]’.\n\n     No particular limit is imposed on the length of REs‡.  Programs intended\n     to be portable should not employ REs longer than 256 bytes, as an\n     implementation can refuse to accept such REs and remain POSIX-compliant.\n\n     Obsolete (“basic”) regular expressions differ in several respects.  ‘|’\n     is an ordinary character and there is no equivalent for its\n     functionality.  ‘+’ and ‘?’ are ordinary characters, and their\n     functionality can be expressed using bounds (‘{1,}’ or ‘{0,1}’\n     respectively).  Also note that ‘x+’ in modern REs is equivalent to ‘xx*’.\n     The delimiters for bounds are ‘\\{’ and ‘\\}’, with ‘{’ and ‘}’ by\n     themselves ordinary characters.  The parentheses for nested\n     subexpressions are ‘\\(’ and ‘\\)’, with ‘(’ and ‘)’ by themselves ordinary\n     characters.  ‘^’ is an ordinary character except at the beginning of the\n     RE or‡ the beginning of a parenthesized subexpression, ‘$’ is an ordinary\n     character except at the end of the RE or‡ the end of a parenthesized\n     subexpression, and ‘*’ is an ordinary character if it appears at the\n     beginning of the RE or the beginning of a parenthesized subexpression\n     (after a possible leading ‘^’).  Finally, there is one new type of atom,\n     a back reference: ‘\\’ followed by a non-zero decimal digit d matches the\n     same sequence of characters matched by the dth parenthesized\n     subexpression (numbering subexpressions by the positions of their opening\n     parentheses, left to right), so that (e.g.)  ‘\\([bc]\\)\\1’ matches ‘bb’ or\n     ‘cc’ but not ‘bc’."
+  manpageQuestion1: What is the primary purpose of the re_format tool?
+  manpageQuestion2: How can you modify a regular expression to make it case-insensitive when using re_format?
+  manpageQuestion3: Can you explain how the back reference feature works in re_format and provide an example of its usage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `re_format`.\n\n\n\nManpage text:\n\nENHANCED FEATURES\n     When the REG_ENHANCED flag is passed to one of the regcomp() variants,\n     additional features are activated.  Like the enhanced regex\n     implementations in scripting languages such as perl(1) and python(1),\n     these additional features may conflict with the IEEE Std 1003.2\n     (“POSIX.2”) standards in some ways.  Use this with care in situations\n     which require portability (including to past versions of the Mac OS X\n     using the previous regex implementation).\n\n     For enhanced basic REs, ‘+’, ‘?’ and ‘|’ remain regular characters, but\n     ‘\\+’, ‘\\?’ and ‘\\|’ have the same special meaning as the unescaped\n     characters do for extended REs, i.e., one or more matches, zero or one\n     matches and alteration, respectively.  For enhanced extended REs, back\n     references are available.\tAdditional enhanced features are listed below.\n\n     Within a bracket expression, most characters lose their magic.  This also\n     applies to the additional enhanced features, which don't operate inside a\n     bracket expression."
+  manpageQuestion1: What is the primary purpose of the `re_format` resource?
+  manpageQuestion2: How can you enable enhanced regex features in `re_format` to support more advanced pattern matching?
+  manpageQuestion3: What are the implications of using enhanced regex features in `re_format` when portability across different systems is a concern?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `re_format`.\n\n\n\nManpage text:\n\nAssertions (available for both enhanced basic and enhanced extended REs)\n     In addition to ‘^’ and ‘$’ (the assertions that match the null string at\n     the beginning and end of line, respectively), the following assertions\n     become available:\n\n\t   \\<\t   Matches the null string at the beginning of a word.\tThis\n\t\t   is equivalent to ‘[[:<:]]’.\n\n\t   \\>\t   Matches the null string at the end of a word.  This is\n\t\t   equivalent to ‘[[:>:]]’.\n\n\t   \\b\t   Matches the null string at a word boundary (either the\n\t\t   beginning or end of a word).\n\n\t   \\B\t   Matches the null string where there is no word boundary.\n\t\t   This is the opposite of ‘\\b’.\n\n   Shortcuts (available for both enhanced basic and enhanced extended REs)\n     The following shortcuts can be used to replace more complicated bracket\n     expressions.\n\n\t   \\d\t   Matches a digit character.  This is equivalent to\n\t\t   ‘[[:digit:]]’.\n\n\t   \\D\t   Matches a non-digit character.  This is equivalent to\n\t\t   ‘[^[:digit:]]’.\n\n\t   \\s\t   Matches a space character.  This is equivalent to\n\t\t   ‘[[:space:]]’."
+  manpageQuestion1: What is the primary purpose of the re_format tool?
+  manpageQuestion2: How would you use re_format to match a word boundary in a regular expression?
+  manpageQuestion3: Can you provide an example of using re_format to match a non-digit character in a regular expression?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `re_format`.\n\n\n\nManpage text:\n\n\\S\t   Matches a non-space character.  This is equivalent to\n\t\t   ‘[^[:space:]]’.\n\n\t   \\w\t   Matches a word character.  This is equivalent to\n\t\t   ‘[[:alnum:]_]’.\n\n\t   \\W\t   Matches a non-word character.  This is equivalent to\n\t\t   ‘[^[:alnum:]_]’.\n\n   Literal Sequences (available for both enhanced basic and enhanced extended\n   REs)\n     Literals are normally just ordinary characters that are matched directly.\n     Under enhanced mode, certain character sequences are converted to\n     specific literals.\n\n\t   \\a\t   The “bell” character (ASCII code 7).\n\n\t   \\e\t   The “escape” character (ASCII code 27).\n\n\t   \\f\t   The “form-feed” character (ASCII code 12).\n\n\t   \\n\t   The “new-line/line-feed” character (ASCII code 10).\n\n\t   \\r\t   The “carriage-return” character (ASCII code 13).\n\n\t   \\t\t   The “horizontal-tab” character (ASCII code 9).\n\n     Literals can also be specified directly, using their wide character\n     values.  Note that when matching a multibyte character string, the\n     string's bytes are converted to wide character before comparing.  This\n     means that a single literal wide character value may match more than one\n     string byte, depending on the locale's wide character encoding."
+  manpageQuestion1: What is the primary purpose of the re_format resource?
+  manpageQuestion2: How would you use re_format to match any non-space character in a regular expression?
+  manpageQuestion3: Can you provide an example of using re_format to match the horizontal-tab character (\t) in a regular expression?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `re_format`.\n\n\n\nManpage text:\n\n\\xx..\t\t      An arbitray eight-bit value.  The x..\n\t\t\t\t      sequence represents zero, one or two\n\t\t\t\t      hexadecimal digits.  (Note: if x.. is\n\t\t\t\t      less than two hexadecimal digits, and\n\t\t\t\t      the character following this sequence\n\t\t\t\t      happens to be a hexadecimal digit, use\n\t\t\t\t      the (following) brace form to avoid\n\t\t\t\t      confusion.)\n\n\t   \\x{x..}\t\t      An arbitrary, up to 32-bit value.  The\n\t\t\t\t      x.. sequence is an arbitrary sequence of\n\t\t\t\t      hexadecimal digits that is long enough\n\t\t\t\t      to represent the necessary value.\n\n   Inline Literal Mode (available for both enhanced basic and enhanced\n   extended REs)\n     A ‘\\Q’ sequence causes literal (“quote”) mode to be entered, while ‘\\E’\n     ends literal mode, and returns to normal regular expression processing.\n     This is similar to specifying the REG_NOSPEC (or REG_LITERAL) option to\n     regcomp(), except that rather than applying to the whole RE string, it\n     only applies to the part between the ‘\\Q’ and ‘\\E’.  Note that it is not\n     possible to have a ‘\\E’ in the middle of an inline literal range, as that\n     would terminate literal mode prematurely."
+  manpageQuestion1: What is the primary purpose of the re_format resource?
+  manpageQuestion2: How would you use re_format to match a sequence of eight-bit values represented by hexadecimal digits?
+  manpageQuestion3: Can you provide an example of using re_format to process a range of up to 32-bit values in inline literal mode?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `re_format`.
+
+
+
+    Manpage text:
+
+    Minimal Repetitions (available for enhanced extended REs only)
+         By default, the repetition operators, ‘*’, bound, ‘?’ and ‘+’ are greedy;
+         they try to match as many times as possible.  In enhanced mode, appending
+         a ‘?’ to a repetition operator makes it minimal (or ungreedy); it tries
+         to match the fewest number of times (including zero times, as
+         appropriate).
+
+         For example, against the string ‘aaa’, the RE ‘a*’ would match the entire
+         string, while ‘a*?’ would match the null string at the beginning of the
+         line (matches zero times).  Likewise, against the string ‘ababab’, the RE
+         ‘.*b’, would also match the entire string, while ‘.*?b’ would only match
+         the first two characters.
+
+         The regcomp() flag REG_UNGREEDY will make the regular (greedy) repetition
+         operators ungreedy by default.  Appending ‘?’ makes them greedy again.
+
+         Note that minimal repetitions are not specified by an official standard,
+         so there may be differences between different implementations.  In the
+         current implementation, minimal repetitions have a high precedence, and
+         can cause other standards requirements to be violated.  For instance, on
+         the string ‘aaaaa’, the RE ‘(aaa??)*’ will only match the first four
+         characters, violating the rules that the longest possible match is made
+         and the longest subexpressions are matched.  Using ‘(aaa??)*$’ forces the
+         entire string to be matched.
+  manpageQuestion1: What is the primary purpose of the re_format resource?
+  manpageQuestion2: How can you modify a regular expression to make its repetition operators ungreedy by default?
+  manpageQuestion3: Can you provide an example of using minimal repetitions in a regular expression to match the beginning of a string with as few characters as possible?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `re_format`.
+
+
+
+    Manpage text:
+
+    Non-capturing Parenthesized Subexpressions (available for enhanced extended
+       REs only)
+         Normally, the match offsets to parenthesized subexpressions are recorded
+         in the pmatch array (that is, when REG_NOSUB is not specified, and nmatch
+         is large enough to encompass the parenthesized subexpression in
+         question).  In enhanced mode, if the first two characters following the
+         left parenthesis are ‘?:’, grouping of the remaining contents is done,
+         but the corresponding offsets are not recorded in the pmatch array.  For
+         example, against the string ‘fubar’, the RE ‘(fu)(bar)’ would have two
+         subexpression matches in pmatch; the first for ‘fu’ and the second for
+         ‘bar’.  But with the RE ‘(?:fu)(bar)’, there would only be one
+         subexpression match, that of ‘bar’.  Furthermore, against the string
+         ‘fufubar’, the RE ‘(?fu)*(bar)’ would again match the entire string, but
+         only ‘bar’ would be recorded in pmatch.
+
+       Inline Options (available for enhanced extended REs only)
+         Like the inline literal mode mentioned above, other options can be
+         switched on and off for part of a RE.  ‘(?o..)’ will turn on the options
+         specified in o.. (one or more options characters; see below), while
+         ‘(?-o..)’ will turn off the specified options, and ‘(?o1..-o2..)’ will
+         turn on the first set of options, and turn off the second set.
+  manpageQuestion1: What is the primary purpose of the re_format resource?
+  manpageQuestion2: How can you use re_format to create a non-capturing group in an extended regular expression?
+  manpageQuestion3: What is the function of inline options in re_format and how are they applied within a regular expression?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `re_format`.\n\n\n\nManpage text:\n\nThe available options are:\n\n\t   i\t  Turning on this option will ignore case during matching,\n\t\t  while turning off will restore case-sensitive matching.  If\n\t\t  REG_ICASE was specified to regcomp(), this option can be use\n\t\t  to turn that off.\n\n\t   n\t  Turn on or off special handling of the newline character.\n\t\t  If REG_NEWLINE was specified to regcomp(), this option can\n\t\t  be use to turn that off.\n\n\t   U\t  Turning on this option will make ungreedy repetitions the\n\t\t  default, while turning off will make greedy repetitions the\n\t\t  default.  If REG_UNGREEDY was specified to regcomp(), this\n\t\t  option can be use to turn that off.\n\n     The scope of the option change begins immediately following the right\n     parenthesis, but up to the end of the enclosing subexpression (if any).\n     Thus, for example, given the RE ‘(fu(?i)bar)baz’, the ‘fu’ portion\n     matches case sensitively, ‘bar’ matches case insensitively, and ‘baz’\n     matches case sensitively again (since is it outside the scope of the\n     subexpression in which the inline option was specified)."
+  manpageQuestion1: What is the primary purpose of the re_format resource?
+  manpageQuestion2: How can you modify the case sensitivity of a specific subexpression in a regular expression using re_format?
+  manpageQuestion3: What is the effect of using the 'U' option in re_format and how does it interact with the REG_UNGREEDY flag?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `re_format`.\n\n\n\nManpage text:\n\nThe inline options syntax can be combined with the non-capturing\n     parenthesized subexpression to limit the option scope to just that of the\n     subexpression.  Then, for example, ‘fu(?i:bar)baz’ is similar to the\n     previous example, except for the parenthesize subexpression around\n     ‘fu(?i)bar’ in the previous example.\n\n   Inline Comments (available for enhanced extended REs only)\n     The syntax ‘(?#comment)’ can be used to embed comments within a RE.  Note\n     that comment can not contain a right parenthesis.\tAlso note that while\n     syntactically, option characters can be added before the ‘#’ character,\n     they will be ignored.\n\nSEE ALSO\n     regex(3)\n\n     Regular Expression Notation, IEEE Std, 1003.2, section 2.8.\n\nBUGS\n     Having two kinds of REs is a botch.\n\n     The current IEEE Std 1003.2 (“POSIX.2”) spec says that ‘)’ is an ordinary\n     character in the absence of an unmatched ‘(’; this was an unintentional\n     result of a wording error, and change is likely.  Avoid relying on it."
+  manpageQuestion1: What is the primary purpose of the re_format resource?
+  manpageQuestion2: How can you use re_format to apply inline options to a specific subexpression in a regular expression?
+  manpageQuestion3: Can you explain how to add comments within a regular expression using re_format?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `re_format`.\n\n\n\nManpage text:\n\nBack references are a dreadful botch, posing major problems for efficient\n     implementations.  They are also somewhat vaguely defined (does\n     ‘a\\(\\(b\\)*\\2\\)*d’ match ‘abbbd’?).  Avoid using them.\n\n     IEEE Std 1003.2 (“POSIX.2”) specification of case-independent matching is\n     vague.  The “one case implies all cases” definition given above is\n     current consensus among implementors as to the right interpretation.\n\n     The bracket syntax for word boundaries is incredibly ugly.\n\nmacOS 15.3\t\t\t Sept 29, 2011\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the re_format resource?
+  manpageQuestion2: How would you use re_format to format a regular expression for case-insensitive matching on macOS?
+  manpageQuestion3: Can you provide an example of using re_format to handle word boundaries in a regular expression on macOS?
+

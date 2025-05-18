@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `bootparams`.\n\n\n\nManpage text:\n\nBOOTPARAMS(5)\t\t      File Formats Manual\t\t BOOTPARAMS(5)\n\nNAME\n     bootparams – boot parameter database\n\nSYNOPSIS\n     /etc/bootparams\n\nDESCRIPTION\n     Mac OS X no longer supports boot paramters.  The /etc/bootparams file is\n     unused.\n\nMac OS X\t\t       December 12, 2006\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the bootparams file?
+  manpageQuestion2: How would you use the bootparams file to configure a network boot parameter?
+  manpageQuestion3: Can you explain the current status of the bootparams file in Mac OS X?
+

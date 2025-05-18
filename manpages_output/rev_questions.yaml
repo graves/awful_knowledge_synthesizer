@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `rev`.\n\n\n\nManpage text:\n\nREV(1)\t\t\t    General Commands Manual\t\t\tREV(1)\n\nNAME\n     rev – reverse lines of a file\n\nSYNOPSIS\n     rev [file ...]\n\nDESCRIPTION\n     The rev utility copies the specified files to the standard output,\n     reversing the order of characters in every line.  If no files are\n     specified, the standard input is read.\n\nEXAMPLES\n     Reverse the text from stdin:\n\n\t   $ echo -e \"reverse \\t these\\ntwo lines\" | rev\n\t   eseht    esrever\n\t   senil owt\n\nmacOS 15.3\t\t\t June 27, 2020\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the rev command?
+  manpageQuestion2: How can you use the rev command to reverse the order of characters in each line of a file named 'input.txt'?
+  manpageQuestion3: Can you provide an example of using the rev command to reverse the lines of input from standard input and output the result to a file called 'reversed.txt'?
+

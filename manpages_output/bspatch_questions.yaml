@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `bspatch`.\n\n\n\nManpage text:\n\nBSPATCH(1)\t\t    General Commands Manual\t\t    BSPATCH(1)\n\nNAME\n     bspatch – apply a patch built with bsdiff(1)\n\nSYNOPSIS\n     bspatch oldfile newfile patchfile\n\nDESCRIPTION\n     The bspatch utility generates newfile from oldfile and patchfile where\n     patchfile is a binary patch built by bsdiff(1).\n\n     The bspatch utility uses memory equal to the size of oldfile plus the\n     size of newfile, but can tolerate a very small working set without a\n     dramatic loss of performance.\n\nSEE ALSO\n     bsdiff(1)\n\nAUTHORS\n     Colin Percival <cperciva@FreeBSD.org>\n\nBUGS\n     The bspatch utility does not verify that oldfile is the correct source\n     file for patchfile.  Attempting to apply a patch to the wrong file will\n     usually produce garbage; consequently it is strongly recommended that\n     users of bspatch verify that oldfile matches the source file from which\n     patchfile was built, by comparing cryptographic hashes, for example.\n     Users may also wish to verify after running bspatch that newfile matches\n     the target file from which was built."
+  manpageQuestion1: What is the primary purpose of the bspatch utility?
+  manpageQuestion2: How would you use bspatch to apply a patch file to an existing file?
+  manpageQuestion3: Can you provide an example of using bspatch to apply a patch to a source file and generate a new target file?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `bspatch`.\n\n\n\nManpage text:\n\nmacOS 15.3\t\t\t May 18, 2003\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the bspatch tool?
+  manpageQuestion2: How would you use bspatch to apply a patch file to an existing binary file?
+  manpageQuestion3: Can you provide an example of using bspatch to patch a macOS application with a specific patch file?
+

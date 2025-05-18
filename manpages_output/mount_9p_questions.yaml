@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mount_9p`.\n\n\n\nManpage text:\n\nMOUNT_9P(8)\t\t    System Manager's Manual\t\t   MOUNT_9P(8)\n\nNAME\n     mount_9p – mount a 9P volume\n\nSYNOPSIS\n     mount_9p [-r] fs_tag\n\nDESCRIPTION\n     The mount_9p command mounts the 9P filesystem associated with fs_tag.\n\n     The options are as follows:\n\n     -r \t   Mount filesystem as read-only.\n\nDIAGNOSTICS\n     The mount_9p utility exits 0 on success, and >0 if an error occurs.\n\nSEE ALSO\n     mount(2), unmount(2), fstab(5), mount(8)\n\nMac OS X\t\t\tApril 18, 2019\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the mount_9p command?
+  manpageQuestion2: How would you use mount_9p to mount a 9P volume as read-only?
+  manpageQuestion3: Can you provide an example of using mount_9p to mount a 9P volume with the default settings?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `TouchBarServer`.\n\n\n\nManpage text:\n\nTouchBarServer(8)\t    System Manager's Manual\t     TouchBarServer(8)\n\nNAME\n     TouchBarServer – Touch Bar render server\n\nDESCRIPTION\n     TouchBarServer provides Core Animation rendering services for\n     applications using the Touch Bar.\n\nmacOS\t\t\t\t April 1, 2017\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the TouchBarServer?
+  manpageQuestion2: How does TouchBarServer support applications that use the Touch Bar?
+  manpageQuestion3: What is the role of TouchBarServer in the macOS system?
+

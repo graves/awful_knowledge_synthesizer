@@ -1,0 +1,64 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ippeveprinter`.\n\n\n\nManpage text:\n\nippeveprinter(1)\t\t  Apple Inc.\t\t      ippeveprinter(1)\n\nNAME\n       ippeveprinter - an ipp everywhere printer application for cups\n\nSYNOPSIS\n       ippeveprinter [ --help ] [ --no-web-forms ] [ --pam-service service ] [\n       --version ] [ -2 ] [ -A ] [ -D device-uri ] [ -F output-type/subtype ]\n       [ -K keypath ] [ -M manufacturer ] [ -P filename.ppd ] [ -V ipp-version\n       ] [ -a filename.conf ] [ -c command ] [ -d spool-directory ] [ -f\n       type/subtype[,...] ] [ -i iconfile.png ] [ -k ] [ -l location ] [ -m\n       model ] [ -n hostname ] [ -p port ] [ -r subtype[,subtype] ] [ -s\n       speed[,color-speed] ] [ -v[vvv] ] service-name\n\nDESCRIPTION\n       ippeveprinter is a simple Internet Printing Protocol (IPP) server\n       conforming to the IPP Everywhere (PWG 5100.14) specification. It can be\n       used to test client software or act as a very basic print server that\n       runs a command for every job that is printed.\n\nOPTIONS\n       The following options are recognized by ippeveprinter:"
+  manpageQuestion1: What is the primary purpose of the ippeveprinter tool?
+  manpageQuestion2: How can you use ippeveprinter to set up a basic print server that runs a command for each printed job?
+  manpageQuestion3: What command would you use to configure ippeveprinter to act as an IPP server without web forms and specify a custom PPD file?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ippeveprinter`.\n\n\n\nManpage text:\n\n--help\n\t    Show program usage.\n\n       --no-web-forms\n\t    Disable the web interface forms used to update the media and\n\t    supply levels.\n\n       --pam-service service\n\t    Set the PAM service name.  The default service is \"cups\".\n\n       --version\n\t    Show the CUPS version.\n\n       -2   Report support for two-sided (duplex) printing.\n\n       -A   Enable authentication for the created printer.  ippeveprinter uses\n\t    PAM to authenticate HTTP Basic credentials.\n\n       -D device-uri\n\t    Set the device URI for print output.  The URI can be a filename,\n\t    directory, or a network socket URI of the form\n\t    \"socket://ADDRESS[:PORT]\" (where the default port number is 9100).\n\t    When specifying a directory, ippeveprinter will create an output\n\t    file using the job ID and name.\n\n       -F output-type/subtype[,...]\n\t    Specifies the output MIME media type.  The default is\n\t    \"application/postscript\" when the -P option is specified.\n\n       -M manufacturer\n\t    Set the manufacturer of the printer.  The default is \"Example\"."
+  manpageQuestion1: What is the primary purpose of the ippeveprinter tool?
+  manpageQuestion2: How would you use ippeveprinter to set the device URI to a local network socket at 192.168.1.100:9100 and enable authentication using PAM?
+  manpageQuestion3: Can you provide an example of using ippeveprinter to specify the manufacturer as 'HP' and set the output MIME type to 'application/postscript'?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ippeveprinter`.\n\n\n\nManpage text:\n\n-P filename.ppd\n\t    Load printer attributes from the specified PPD file.  This option\n\t    is typically used in conjunction with the ippeveps(7) printer\n\t    command (\"-c ippeveps\").\n\n       -V 1.1\n\n       -V 2.0\n\t    Specifies the maximum IPP version to report.  2.0 is the default.\n\n       -c command\n\t    Run the specified command for each document that is printed.  If\n\t    \"command\" is not an absolute path (\"/path/to/command\"),\n\t    ippeveprinter looks for the command in the \"command\" subdirectory\n\t    of the CUPS binary directory, typically /usr/lib/cups/command or\n\t    /usr/libexec/cups/command.\tThe cups-config(1) command can be used\n\t    to discover the correct binary directory (\"cups-config\n\t    --serverbin\").  In addition, the CUPS_SERVERBIN environment\n\t    variable can be used to override the default location of this\n\t    directory - see the cups(1) man page for more details.\n\n       -d spool-directory\n\t    Specifies the directory that will hold the print files.  The\n\t    default is a directory under the user's current temporary\n\t    directory."
+  manpageQuestion1: What is the primary purpose of the ippeveprinter command?
+  manpageQuestion2: How would you use ippeveprinter to print a document using the specified PPD file and set the maximum IPP version to 2.0?
+  manpageQuestion3: Can you provide an example of using ippeveprinter to specify a custom command for processing each printed document?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ippeveprinter`.\n\n\n\nManpage text:\n\n-f type/subtype[,...]\n\t    Specifies a list of MIME media types that the server will accept.\n\t    The default depends on the type of printer created.\n\n       -i iconfile.png\n\t    Specifies the printer icon file for the server.  The file must be\n\t    a PNG format image.  The default is an internally-provided PNG\n\t    image.\n\n       -k   Keeps the print documents in the spool directory rather than\n\t    deleting them.\n\n       -l location\n\t    Specifies the human-readable location string that is reported by\n\t    the server.  The default is the empty string.\n\n       -m model\n\t    Specifies the model name of the printer.  The default is\n\t    \"Printer\".\n\n       -n hostname\n\t    Specifies the hostname that is reported by the server.  The\n\t    default is the name returned by the hostname(1) command.\n\n       -p port\n\t    Specifies the port number to listen on.  The default is a user-\n\t    specific number from 8000 to 8999.\n\n       -r off\n\t    Turns off DNS-SD service advertisements entirely.\n\n       -r subtype[,subtype]\n\t    Specifies the DNS-SD subtype(s) to advertise.  Separate multiple\n\t    subtypes with a comma.  The default is \"_print\"."
+  manpageQuestion1: What is the primary purpose of the ippeveprinter tool?
+  manpageQuestion2: How would you configure the ippeveprinter to use a custom icon file and specify a different port number?
+  manpageQuestion3: Can you explain how to disable DNS-SD service advertisements for the ippeveprinter?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ippeveprinter`.\n\n\n\nManpage text:\n\n-s speed[,color-speed]\n\t    Specifies the printer speed in pages per minute.  If two numbers\n\t    are specified and the second number is greater than zero, the\n\t    server will report support for color printing.  The default is\n\t    \"10,0\".\n\n       -v[vvv]\n\t    Be (very) verbose when logging activity to standard error.\n\nEXIT STATUS\n       The ippeveprinter program returns 1 if it is unable to process the\n       command-line arguments or register the IPP service.  Otherwise\n       ippeveprinter will run continuously until terminated.\n\nCONFORMING TO\n       The ippeveprinter program is unique to CUPS and conforms to the IPP\n       Everywhere (PWG 5100.14) specification.\n\nENVIRONMENT\n       ippeveprinter adds environment variables starting with \"IPP_\" for all\n       IPP Job attributes in the print request.  For example, when executing a\n       command for an IPP Job containing the \"media\" Job Template attribute,\n       the \"IPP_MEDIA\" environment variable will be set to the value of that\n       attribute."
+  manpageQuestion1: What is the primary purpose of the ippeveprinter utility?
+  manpageQuestion2: How can you set the printer speed to 15 pages per minute and indicate support for color printing using ippeveprinter?
+  manpageQuestion3: What command-line option can be used to enable verbose logging for ippeveprinter?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ippeveprinter`.
+
+
+
+    Manpage text:
+
+    In addition, all IPP "xxx-default" and "pwg-xxx" Printer Description
+           attributes are added to the environment.  For example, the
+           "IPP_MEDIA_DEFAULT" environment variable will be set to the default
+           value for the "media" Job Template attribute.
+
+           Enumerated values are converted to their keyword equivalents.  For
+           example, a "print-quality" Job Template attribute with a enum value of
+           3 will become the "IPP_PRINT_QUALITY" environment variable with a value
+           of "draft".  This string conversion only happens for standard Job
+           Template attributes, currently "finishings", "orientation-requested",
+           and "print-quality".
+
+           Finally, the "CONTENT_TYPE" environment variable contains the MIME
+           media type of the document being printed, the "DEVICE_URI" environment
+           variable contains the device URI as specified with the "-D" option, the
+           "OUTPUT_FORMAT" environment variable contains the output MIME media
+           type, and the "PPD" environment variable contains the PPD filename as
+           specified with the "-P" option.
+  manpageQuestion1: What is the primary purpose of the ippeveprinter resource?
+  manpageQuestion2: How can you use ippeveprinter to set the default media type for a print job?
+  manpageQuestion3: What environment variables does ippeveprinter automatically set and what do they represent?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ippeveprinter`.\n\n\n\nManpage text:\n\nCOMMAND OUTPUT\n       Unless they communicate directly with a printer, print commands send\n       printer-ready data to the standard output.\n\n       Print commands can send messages back to ippeveprinter on the standard\n       error with one of the following prefixes:\n\n       ATTR: attribute=value[ attribute=value]\n\t    Sets the named attribute(s) to the given values.  Currently only\n\t    the \"job-impressions\" and \"job-impressions-completed\" Job Status\n\t    attributes and the \"marker-xxx\", \"printer-alert\", \"printer-alert-\n\t    description\", \"printer-supply\", and \"printer-supply-description\"\n\t    Printer Status attributes can be set.\n\n       DEBUG: Debugging message\n\t    Logs a debugging message if at least two -v's have been specified.\n\n       ERROR: Error message\n\t    Logs an error message and copies the message to the \"job-state-\n\t    message\" attribute.\n\n       INFO: Informational message\n\t    Logs an informational/progress message if -v has been specified\n\t    and copies the message to the \"job-state-message\" attribute unless\n\t    an error has been reported."
+  manpageQuestion1: What is the primary purpose of the ippeveprinter command?
+  manpageQuestion2: How can you use ippeveprinter to send an error message with the attribute 'job-impressions-completed' set to 100?
+  manpageQuestion3: What command-line flags can be used with ippeveprinter to enable debugging output and log informational messages?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ippeveprinter`.\n\n\n\nManpage text:\n\nSTATE: keyword[,keyword,...]\n\t    Sets the printer's \"printer-state-reasons\" attribute to the listed\n\t    keywords.\n\n       STATE: -keyword[,keyword,...]\n\t    Removes the listed keywords from the printer's \"printer-state-\n\t    reasons\" attribute.\n\n       STATE: +keyword[,keyword,...]\n\t    Adds the listed keywords to the printer's \"printer-state-reasons\"\n\t    attribute.\n\nEXAMPLES\n       Run ippeveprinter with a service name of My Cool Printer:\n\n\t   ippeveprinter \"My Cool Printer\"\n\n       Run the file(1) command whenever a job is sent to the server:\n\n\t   ippeveprinter -c /usr/bin/file \"My Cool Printer\"\n\nSEE ALSO\n       ippevepcl(7), ippeveps(7), PWG Internet Printing Protocol Workgroup\n       (http://www.pwg.org/ipp)\n\nCOPYRIGHT\n       Copyright © 2007-2019 by Apple Inc.\n\n2 December 2019 \t\t     CUPS\t\t      ippeveprinter(1)"
+  manpageQuestion1: What is the primary purpose of the ippeveprinter command?
+  manpageQuestion2: How can you configure ippeveprinter to run the file command when a job is sent to the server?
+  manpageQuestion3: Can you explain how to use ippeveprinter to add the keyword 'job-pending' to a printer's state reasons?
+

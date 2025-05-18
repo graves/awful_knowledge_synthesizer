@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `graphicssession`.\n\n\n\nManpage text:\n\ngraphicssession(1)\t    General Commands Manual\t    graphicssession(1)\n\nNAME\n     graphicssession – graphics session initialization utility\n\nSYNOPSIS\n     graphicssession\n\nDESCRIPTION\n     graphicssession is used by the Apple Mac OS X base system to initalize\n     graphics contexts. It should not be called directly.\n\nMac OS X\t\t       February 25, 2011\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the graphicssession utility?
+  manpageQuestion2: How would you use the graphicssession command to initialize graphics contexts in a system environment?
+  manpageQuestion3: Can you explain the typical usage scenario for the graphicssession tool in a Mac OS X system?
+

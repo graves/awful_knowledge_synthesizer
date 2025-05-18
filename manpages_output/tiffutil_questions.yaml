@@ -1,0 +1,41 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tiffutil`.\n\n\n\nManpage text:\n\nTIFFUTIL(1)\t\t    General Commands Manual\t\t   TIFFUTIL(1)\n\nNAME\n     tiffutil - manipulates tiff files\n\nSYNOPSIS\n     tiffutil <option> [<arguments>] [-out <outfile>]\n\nDESCRIPTION\n     tiffutil lets you manipulate TIFF files. The list of options (also\n     available by running the program without any options) follows:\n\n     tiffutil -none\t\tinfile\t\t\t[-out outfile]\n\t      -lzw\t\tinfile\t\t\t[-out outfile]\n\t      -packbits \tinfile\t\t\t[-out outfile]\n\t      -cat\t\tinfile1 [infile2 ...]\t[-out outfile]\n\t      -catnosizecheck\tinfile1 [infile2 ...]\t[-out outfile]\n\t      -cathidpicheck\tinfile1 [infile2 ...]\t[-out outfile]\n\t      -extract\t\tnum infile\t\t[-out outfile]\n\t      -info\t\tinfile\n\t      -verboseinfo\tinfile\n\t      -dump\t\tinfile\n\n     -none, -lzw, and -packbits options specify the compression format to be\n     applied to the images in the TIFF file.  -none specifies no compression;\n     -packbits specifies PackBits compression; -lzw specifies standard Lempel-\n     Ziv & Welch compression (no prediction scheme)."
+  manpageQuestion1: What is the primary purpose of the tiffutil command?
+  manpageQuestion2: How would you use tiffutil to apply PackBits compression to a TIFF file called 'input.tiff' and save the output as 'output.tiff'?
+  manpageQuestion3: Can you provide an example of using tiffutil to extract a specific page from a multi-page TIFF file and save it as a new file?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tiffutil`.
+
+
+
+    Manpage text:
+
+    -cat allows combining multiple TIFF files into one.  The images are
+         copied without any change in tag values. If the real sizes (pixel size
+         divided by dpi) of the images being combined are not the same, a warning
+         will be generated. This makes sure that NSImage can successfully choose
+         the right size image out of the generated TIFF file. Use -catnosizecheck
+         to bypass the size check.
+
+         -cathidpicheck can be used to write an output file conforming to Apple's
+         guidelines for resolution independent bitmap images, and will generate
+         warnings if the supplied images do not have the recommended size
+         relationship. For best results, ensure that the larger file has a
+         filename of the form <basename>@2x.png.
+
+         -extract allows extracting an individual image from a TIFF file; specify
+         num = 0 for the first image in the file.
+
+         -info prints information about TIFF images. -verboseinfo is the same,
+         except most of the tables are displayed in full. -dump simply lists all
+         of the tags in the file without trying to interpret them; it is handy
+         when trying to figure out why a TIFF file won't load or display properly.
+  manpageQuestion1: What is the primary purpose of the tiffutil command?
+  manpageQuestion2: How can you use tiffutil to combine multiple TIFF files into a single file without checking the size compatibility?
+  manpageQuestion3: What command can be used to extract the second image from a TIFF file and save it as a new file?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tiffutil`.\n\n\n\nManpage text:\n\nFor options which write images out, the output goes to \"out.tiff\" unless\n     an output file name is specified after a -out keyword.  This keyword and\n     the file must be the last items on the command line. -info, -verboseinfo,\n     and -dump write their output to the standard output.\n\n     If there are multiple images in a TIFF file the specified operation will\n     be performed on all of them.\n\n     SECURITY NOTE: This version of tiffutil SHOULD NOT be used with untrusted\n     files.\n\nCREDITS\n     Parts of tiffutil were based on the freely distributable \"tiffcp\" and\n     \"tiffinfo\" programs written by Sam Leffler and made available with v3.0\n     of his excellent TIFF library. The TIFF library and the tiffcp and\n     tiffinfo programs are:\n       Copyright (c) 1988, 1989, 1990, 1991, 1992 Sam Leffler\n       Copyright (c) 1991, 1992 Silicon Graphics, Inc.\n\nmacOS\t\t\t       September 2, 2010\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the tiffutil command?
+  manpageQuestion2: How would you use tiffutil to convert a TIFF file named 'input.tiff' to a new file called 'output.tiff' while also displaying detailed information about the file?
+  manpageQuestion3: Can you provide an example of using tiffutil to process all images in a multi-page TIFF file and save the modified output as 'processed.tiff'?
+

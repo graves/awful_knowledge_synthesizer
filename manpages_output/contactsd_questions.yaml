@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `contactsd`.\n\n\n\nManpage text:\n\ncontactsd(8)\t\t    System Manager's Manual\t\t  contactsd(8)\n\nNAME\n     contactsd – contactsd daemon\n\nDESCRIPTION\n     contactsd manages the information in your contacts database. It provides\n     functionality to apps using the Contacts API and performs various\n     background maintenance tasks.\n\n     This command is not intended to be invoked directly.\n\nmacOS\t\t\t\tJanuary 1, 2022 \t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the contactsd tool?
+  manpageQuestion2: How would you use contactsd to manage contacts in the Contacts API?
+  manpageQuestion3: Can you explain the role of contactsd in performing background maintenance tasks for the contacts database?
+

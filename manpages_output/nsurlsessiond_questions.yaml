@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `nsurlsessiond`.\n\n\n\nManpage text:\n\nnsurlsessiond(8)\t    System Manager's Manual\t      nsurlsessiond(8)\n\nNAME\n     nsurlsessiond – The background NSURLSession daemon\n\nSYNOPSIS\n     nsurlsessiond\n\nDESCRIPTION\n     nsurlsessiond is a per-user daemon that performs tasks for background-\n     configured NSURLSessions.\n\n     There are no configuration options to nsurlsessiond.  Users should not\n     run nsurlsessiond manually.\n\nMac OS X\t\t\t    2/11/13\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the nsurlsessiond daemon?
+  manpageQuestion2: How can users interact with the nsurlsessiond daemon to manage background NSURLSessions?
+  manpageQuestion3: What are the key characteristics of nsurlsessiond that make it suitable for managing NSURLSessions in a background process?
+

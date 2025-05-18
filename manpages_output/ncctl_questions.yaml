@@ -1,0 +1,85 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ncctl`.\n\n\n\nManpage text:\n\nNCCTL(1)\t\t    General Commands Manual\t\t      NCCTL(1)\n\nNAME\n     ncctl – Control NFS kernel credentials\n\nSYNOPSIS\n     ncctl [-Pvh] {{init | set} [-F] -p principal | {destroy | unset} |\n\t   {list | get}} [path ...]\n     ncinit [-PvhF] -p principal [path ...]\n     ncdestroy [-Pvh] [path ...]\n     nclist [-Pvh] [path ...]\n\nDESCRIPTION\n     ncctl controls the caller's kernel Kerberos credentials for any of the\n     specified path's associated NFS mounts.  If no paths are specified then\n     all the caller's associated credentials for all NFS file systems are\n     acted upon by the command given.\n\n     When an NFS file system is mounted using Kerberos through the “sec=”\n     option or by the export specified on the server, the resulting session\n     context is stored in a table for each mount. If the user decides to\n     finish his or her session or chooses to use a different credential, then\n     ncctl can be called to invalidate or change those credentials in the\n     kernel.\n\n     ncctl supports the following commands:"
+  manpageQuestion1: What is the primary purpose of the ncctl tool?
+  manpageQuestion2: How would you use ncctl to destroy all kernel credentials associated with NFS mounts?
+  manpageQuestion3: Can you provide an example of using ncctl to list all NFS mounts and their associated credentials?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ncctl`.\n\n\n\nManpage text:\n\ninit, set\t      Set the mount or mounts to obtain credentials form the\n\t\t      associated principal. Any current credential is unset.\n\n     destroy, unset   Unset the current credentials on the mount or mounts.\n\n     list, get\t      List the principal(s) set on the mount or mounts for\n\t\t      this session. If no principal was set, then display\n\t\t      “Default credential” followed by “[from ⟨principal\n\t\t      name⟩]” if the access succeeded and “[kinit needed]” if\n\t\t      not.  If there has been no access to the file system\n\t\t      then display “Credentials are not set”.\n\n     Note the second synopsis is equivalent to\n\t     ncctl [-Pv] {init | set} [-F] -p principal\n     The third synopsis is equivalent to\n\t     ncctl [-Pv] {destroy | unset}\n     And the last synopsis is equivalent to\n\t     ncctl [-Pv] {list | get}\n\n     Kerberos keeps a collection of credentials which can be seen by using\n\n\t   klist -A.\n\n     The current default credential can be seen with klist without any\n     arguments.  kswitch can be used to switch the default to a different\n     Kerberos credential.  kdestroy can be use to remove all or a particular\n     Kerberos credential.  New Kerberos credentials can be obtain and added to\n     the collection by calling kinit and those credentials can be used when\n     accessing the mount.  See kinit(1), klist(1), kswitch(1), and\n     kdestroy(1)."
+  manpageQuestion1: What is the primary purpose of the ncctl command?
+  manpageQuestion2: How can you use ncctl to set a new credential for the current mount?
+  manpageQuestion3: Can you explain how to list the currently set principals for a mount using ncctl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ncctl`.\n\n\n\nManpage text:\n\nncctl can set any principal from the associated Kerberos credentials or\n     can destroy and unset credentials currently on the mount. When accessing\n     a Kerberos mounted NFS file system, if no principal is set on the mount,\n     when the kernel needs credentials it will make an up call to the gssd\n     daemon and what ever the default credentials are available at the time\n     will be used.\n\n     The options are as follows:\n\n     -h, --help       Print a help summary of the command and then exit.\n\n     -v, --verbose    Be verbose and show what file system is being operated\n\t\t      on and any resulting errors.\n\n     -P, --nofollow   If the trailing component resolves to a symbolic link do\n\t\t      not resolve the link but use the current path to\n\t\t      determine any associate NFS file system.\n\n     -p, --principal ⟨principal⟩\n\t\t      For the init, set and ncinit commands set the principal\n\t\t      to ⟨principal⟩.  This option is required for theses\n\t\t      commands. This option is not valid for other commands."
+  manpageQuestion1: What is the primary purpose of the ncctl command?
+  manpageQuestion2: How would you use ncctl to set a Kerberos principal for an NFS mount?
+  manpageQuestion3: Can you provide an example of using ncctl with the --verbose option to debug a Kerberos credential issue?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ncctl`.\n\n\n\nManpage text:\n\n-F, --force      For the init, set and ncinit commands to not check the\n\t\t      presence of the required principal in the Kerberos cache\n\t\t      collection.  This may be useful if Kerberos credentials\n\t\t      will be obtain later.\n\t\t      WARNING: If the credential is incorrectly set it may not\n\t\t      work and no access to the file system will ever be\n\t\t      allowed until another set or unset operation takes\n\t\t      place.  This option is not valid for other commands.\n\nEXAMPLES\n     If leaving for the day:\n\n      $ kdestroy -A\n      $ ncdestroy\n\n     Lets say a user does\n\n      $ kinit user@FOO.COM\n\n     And through the automounter access a path\n     /Network/Serves/someserver/Sources/foo/bar where the mount of\n     /Network/Servers/someserver/Sources/foo was done with user@FOO.COM.\n\n      $ cat /Network/Servers/someserver/Sources/foo/bar\n      cat: /Network/Servers/someserver/Sources/foo/bar: Permission denied\n\n     The user realizes that in order to have access on the server his identity\n     should be user2@BAR.COM. So:"
+  manpageQuestion1: What is the primary purpose of the ncctl command?
+  manpageQuestion2: How can the ncctl command be used to set a principal without checking the Kerberos cache for required credentials?
+  manpageQuestion3: What is an example of using ncctl in a scenario where a user needs to switch their Kerberos principal after accessing a remote file system?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ncctl`.\n\n\n\nManpage text:\n\n$ kinit user2@BAR.COM\n      $ ncctl set -p user2@BAR.COM\n\n     Now the local user can access bar. To see your credentials\n\n     $ nclist\n     /Network/Servers/someserver/Sources/foo: user2@BAR.COM\n\n     If the user destroys his credentials and then acquires new ones\n\n     $ ncdestroy\n     $ nclist -v\n     /private/tmp/mp\t\t\t: No credentials are set.\n     /Network/Servers/xs1/release\t: NFS mount is not using Kerberos.\n     $ kinit user\n     user@FOO.COM's password: ******\n     $ klist\n     Credentials cache: API:648E3003-0A6B-4BB3-8447-1D5034F98EAE\n\t     Principal: user@FOO.COM\n\n       Issued\t\t     Expires\t\t   Principal\n     Dec 15 13:57:57 2014  Dec 15 23:57:57 2014  krbtgt/FOO.COM@FOO.COM\n     $ ls /private/tmp/mp\n     filesystemui.socket=    sysdiagnose.tar.gz      x\n     mtrecorder/\t     systemstats/\t     z\n     $ nclist\n     /private/tmp/mp\t\t     : Default credential [from user@FOO.COM]\n\nNOTES\n     As mentioned above credentials are per session, so the console session's\n     credential cache collection is separate for a collections of credentials\n     obtain in an ssh session even by the same user.  Kerberos will set the\n     default credential with klist or kswitch.\tHowever, the default\n     credential can change without the user's knowledge, because of renewals\n     or some other script or program in the user's session is run and does a\n     kswitch (krb5_cc_set_default_name()) or kinit on the user's behalf.\n     kinit may not prompt for a password if the Kerberos password for the\n     principal is in the user's keychain."
+  manpageQuestion1: What is the primary purpose of the ncctl command in macOS?
+  manpageQuestion2: How can you use ncctl to set a specific credential for a particular path, such as /private/tmp/mp?
+  manpageQuestion3: What is the process for destroying existing credentials and setting new ones using ncctl?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ncctl`.
+
+
+
+    Manpage text:
+
+    ncctl with the set command will allow a user to change the mapping of the
+         local user identity to a different one on the server. It is up to the
+         user to decide which identity will be used.
+
+         Previous versions of gssd daemon would attempt to select credentials if
+         they were not set, by choosing credentials in the same realm as the
+         server. This was imperfect and that has been removed. There may be
+         multiple credentials in the same realm or a user may prefer a cross realm
+         principal. It is highly recommended that after accessing a mount
+         (typically through the automounter) that if the user has access to
+         multiple credentials to set the credential on the mount that they want to
+         use. The current default credential will be used by the automounter on
+         first mount. If you do not explicitly set the credentials to use, then if
+         the server expires the credential, the client will use the current
+         default credential at the time of renewal and that may be a different
+         identity.
+  manpageQuestion1: What is the primary purpose of the ncctl set command?
+  manpageQuestion2: How would you use ncctl to change the local user identity mapping for a specific mount point?
+  manpageQuestion3: Can you explain how to set the default credential for use with an automounted directory?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ncctl`.
+
+
+
+    Manpage text:
+
+    If using mount directly a user can select what credential to use for the
+         mount and subsequently there after (at least until a new ncctl set
+         command is run) by using the principal=⟨principal⟩ option. It is also
+         possible to select the realm to use with the realm=⟨realm⟩ option. The
+         latter can be useful to administrators in automounter maps.
+
+         There is currently no way to remember what the chosen identity is for a
+         given mount after its been unmounted. So for automounted mounts a
+         reference it taken on the mount point so unmounts will not happen until
+         all credentials on a mount with a set principal have been destroyed.
+         Forced unmounts will not be effected.  nclist or ncctl get can be used to
+         see what credentials are actually being used and ncdestroy or ncctl unset
+         can be used to destroy that session's credential. Accessing the mount
+         after its credentials have been destroyed will cause the default
+         credential to be used until the next ncinit or ncctl set Default
+         credentials for an automounted NFS mount will not prevent the unmounting
+         of the file system.
+  manpageQuestion1: What is the primary purpose of the ncctl resource?
+  manpageQuestion2: How can you set a specific principal and realm for a mount using ncctl?
+  manpageQuestion3: What is the process to destroy credentials associated with an automounted NFS mount using ncctl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ncctl`.\n\n\n\nManpage text:\n\nDIAGNOSTICS\n     The ncctl command will exit with 1 if any of the supplied paths doesn't\n     exist or there is an error returned for any path tried. If all paths\n     exist and no errors are returned the exit status will be 0.\n\nSEE ALSO\n     kdestroy(1), kinit(1), klist(1), kswitch(1), mount_nfs(8)\n\nBUGS\n     There should be an option to kdestroy to destroy cached NFS contexts.\n\nmacOS 15.3\t\t       January 14, 2015 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the ncctl command?
+  manpageQuestion2: How would you use ncctl to manage NFS contexts on a macOS system?
+  manpageQuestion3: What is the exit status of ncctl when all specified paths exist without errors?
+

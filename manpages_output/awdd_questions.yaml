@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `awdd`.\n\n\n\nManpage text:\n\nAWDD(8) \t\t    System Manager's Manual\t\t       AWDD(8)\n\nNAME\n     awdd – Diagnostics and Usage\n\nSYNOPSIS\n     awdd\n\nDESCRIPTION\n     awdd is a system daemon that collects diagnostics and usage data locally\n     for users that have opted in.\n\n     There are no configuration options to awdd, and users should not run awdd\n     manually.\n\nSEE ALSO\n     brctl(1)\n\nMac OS X\t\t\t   22/04/14\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the awdd tool?
+  manpageQuestion2: How would you use the awdd command to collect diagnostics and usage data?
+  manpageQuestion3: Can you explain the role of awdd in a macOS system?
+

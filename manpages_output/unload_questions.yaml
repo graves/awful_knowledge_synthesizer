@@ -1,0 +1,56 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `unload`.\n\n\n\nManpage text:\n\nunload(n)\t\t     Tcl Built-In Commands\t\t     unload(n)\n\n______________________________________________________________________________\n\nNAME\n       unload - Unload machine code\n\nSYNOPSIS\n       unload ?switches? fileName\n       unload ?switches? fileName packageName\n       unload ?switches? fileName packageName interp\n______________________________________________________________________________\n\nDESCRIPTION\n       This command tries to unload shared libraries previously loaded with\n       load from the application's address space.  fileName is the name of the\n       file containing the library file to be unload;  it must be the same as\n       the filename provided to load for loading the library.  The packageName\n       argument is the name of the package (as determined by or passed to\n       load), and is used to compute the name of the unload procedure; if not\n       supplied, it is computed from fileName in the same manner as load.  The\n       interp argument is the path name of the interpreter from which to\n       unload the package (see the interp manual entry for details); if interp\n       is omitted, it defaults to the interpreter in which the unload command\n       was invoked."
+  manpageQuestion1: What is the primary purpose of the unload command in Tcl?
+  manpageQuestion2: How would you use the unload command to remove a shared library named 'mylib.so' that was loaded with the load command?
+  manpageQuestion3: Can you provide an example of using the unload command to remove a shared library associated with the package 'mypackage'?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `unload`.\n\n\n\nManpage text:\n\nIf the initial arguments to unload start with - then they are treated\n       as switches.  The following switches are currently supported:\n\n       -nocomplain\n\t      Suppresses all error messages. If this switch is given, unload\n\t      will never report an error.\n\n       -keeplibrary\n\t      This switch will prevent unload from issuing the operating\n\t      system call that will unload the library from the process.\n\n       --     Marks the end of switches.  The argument following this one will\n\t      be treated as a fileName even if it starts with a -.\n\n   UNLOAD OPERATION\n       When a file containing a shared library is loaded through the load\n       command, Tcl associates two reference counts to the library file. The\n       first counter shows how many times the library has been loaded into\n       normal (trusted) interpreters while the second describes how many times\n       the library has been loaded into safe interpreters. As a file\n       containing a shared library can be loaded only once by Tcl (with the\n       first load call on the file), these counters track how many\n       interpreters use the library.  Each subsequent call to load after the\n       first simply increments the proper reference count."
+  manpageQuestion1: What is the primary purpose of the unload command?
+  manpageQuestion2: How can you suppress all error messages when using the unload command?
+  manpageQuestion3: What is the function of the -- option when using the unload command?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `unload`.
+
+
+
+    Manpage text:
+
+    unload works in the opposite direction. As a first step, unload will
+           check whether the library is unloadable: an unloadable library exports
+           a special unload procedure. The name of the unload procedure is
+           determined by packageName and whether or not the target interpreter is
+           a safe one.  For normal interpreters the name of the initialization
+           procedure will have the form pkg_Unload, where pkg is the same as
+           packageName except that the first letter is converted to upper case and
+           all other letters are converted to lower case.  For example, if
+           packageName is foo or FOo, the initialization procedure's name will be
+           Foo_Unload.  If the target interpreter is a safe interpreter, then the
+           name of the initialization procedure will be pkg_SafeUnload instead of
+           pkg_Unload.
+
+           If unload determines that a library is not unloadable (or unload
+           functionality has been disabled during compilation), an error will be
+           returned.  If the library is unloadable, then unload will call the
+           unload procedure. If the unload procedure returns TCL_OK, unload will
+           proceed and decrease the proper reference count (depending on the
+           target interpreter type). When both reference counts have reached 0,
+           the library will be detached from the process.
+  manpageQuestion1: What is the primary purpose of the unload command?
+  manpageQuestion2: How can you use the unload command to remove a library that is marked as unloadable?
+  manpageQuestion3: What is the process for determining the correct name of the unload procedure when using the unload command?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `unload`.\n\n\n\nManpage text:\n\nUNLOAD HOOK PROTOTYPE\n       The unload procedure must match the following prototype:\n\t      typedef int Tcl_PackageUnloadProc(Tcl_Interp *interp, int flags);\n\n       The interp argument identifies the interpreter from which the library\n       is to be unloaded.  The unload procedure must return TCL_OK or\n       TCL_ERROR to indicate whether or not it completed successfully;\tin the\n       event of an error it should set the interpreter's result to point to an\n       error message.  In this case, the result of the unload command will be\n       the result returned by the unload procedure.\n\n       The flags argument can be either TCL_UNLOAD_DETACH_FROM_INTERPRETER or\n       TCL_UNLOAD_DETACH_FROM_PROCESS. In case the library will remain\n       attached to the process after the unload procedure returns (i.e.\n       because the library is used by other interpreters),\n       TCL_UNLOAD_DETACH_FROM_INTERPRETER will be defined. However, if the\n       library is used only by the target interpreter and the library will be\n       detached from the application as soon as the unload procedure returns,\n       the flags argument will be set to TCL_UNLOAD_DETACH_FROM_PROCESS."
+  manpageQuestion1: What is the primary purpose of the unload hook prototype in Tcl?
+  manpageQuestion2: How would you define an unload procedure for a Tcl package that needs to detach from the process after unloading?
+  manpageQuestion3: Can you explain how the flags argument in the unload procedure affects the behavior of the Tcl interpreter when unloading a package?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `unload`.\n\n\n\nManpage text:\n\nNOTES\n       The unload command cannot unload libraries that are statically linked\n       with the application.  If fileName is an empty string, then the\n       packageName argument must be specified.\n\n       If packageName is omitted or specified as an empty string, Tcl tries to\n       guess the name of the package.  This may be done differently on\n       different platforms.  The default guess, which is used on most UNIX\n       platforms, is to take the last element of fileName, strip off the first\n       three characters if they are lib, and use any following alphabetic and\n       underline characters as the module name.  For example, the command\n       unload libxyz4.2.so uses the module name xyz and the command unload\n       bin/last.so {} uses the module name last.\n\nPORTABILITY ISSUES\n       Unix\n\t      Not all unix operating systems support library unloading. Under\n\t      such an operating system unload returns an error (unless\n\t      -nocomplain has been specified).\n\nBUGS\n       If the same file is loaded by different fileNames, it will be loaded\n       into the process's address space multiple times.  The behavior of this\n       varies from system to system (some systems may detect the redundant\n       loads, others may not). In case a library has been silently detached by\n       the operating system (and as a result Tcl thinks the library is still\n       loaded), it may be dangerous to use unload on such a library (as the\n       library will be completely detached from the application while some\n       interpreters will continue to use it)."
+  manpageQuestion1: What is the primary purpose of the 'unload' command?
+  manpageQuestion2: How can you use the 'unload' command to remove a library that is not statically linked with the application?
+  manpageQuestion3: What happens if you attempt to unload a library on a Unix system that does not support library unloading?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `unload`.\n\n\n\nManpage text:\n\nEXAMPLE\n       If an unloadable module in the file foobar.dll had been loaded using\n       the load command like this (on Windows):\n\t      load c:/some/dir/foobar.dll\n       then it would be unloaded like this:\n\t      unload c:/some/dir/foobar.dll\n\n       This allows a C code module to be installed temporarily into a long-\n       running Tcl program and then removed again (either because it is no\n       longer needed or because it is being updated with a new version)\n       without having to shut down the overall Tcl process.\n\nSEE ALSO\n       info sharedlibextension, load(n), safe(n)\n\nKEYWORDS\n       binary code, unloading, safe interpreter, shared library\n\nTcl\t\t\t\t      8.5\t\t\t     unload(n)"
+  manpageQuestion1: What is the primary purpose of the `unload` command in Tcl?
+  manpageQuestion2: How would you use the `unload` command to remove a shared library module named 'mylib.dll' that was previously loaded?
+  manpageQuestion3: What is the function of the `unload` command in the context of managing shared libraries in Tcl?
+

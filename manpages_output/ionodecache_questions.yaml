@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ionodecache`.\n\n\n\nManpage text:\n\nionodecache(8)\t\t    System Manager's Manual\t\tionodecache(8)\n\nNAME\n     ionodecache – IOKit node caching daemon\n\nDESCRIPTION\n     ionodecache maintains an on-disk cache of device memory mappings that can\n     be used to help determine the cause of system crashes. It is not meant to\n     be invoked directly.\n\nmacOS 15.3\t\t\t May 10, 2017\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the ionodecache tool?
+  manpageQuestion2: How can ionodecache be used to assist in diagnosing system crashes?
+  manpageQuestion3: Can you explain the role of ionodecache in managing device memory mappings on a macOS system?
+

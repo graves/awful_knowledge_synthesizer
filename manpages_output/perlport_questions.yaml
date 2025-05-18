@@ -1,0 +1,721 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nPERLPORT(1)\t       Perl Programmers Reference Guide \t   PERLPORT(1)"
+  manpageQuestion1: What is the primary purpose of the perlport utility?
+  manpageQuestion2: How can you use perlport to check if a specific Perl module is compatible with a given version of Perl?
+  manpageQuestion3: Can you provide an example of using perlport to generate a portability report for a Perl script?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.
+
+
+
+    Manpage text:
+
+    NAME
+           perlport - Writing portable Perl
+
+    DESCRIPTION
+           Perl runs on numerous operating systems.  While most of them share much
+           in common, they also have their own unique features.
+
+           This document is meant to help you to find out what constitutes
+           portable Perl code.  That way once you make a decision to write
+           portably, you know where the lines are drawn, and you can stay within
+           them.
+
+           There is a tradeoff between taking full advantage of one particular
+           type of computer and taking advantage of a full range of them.
+           Naturally, as you broaden your range and become more diverse, the
+           common factors drop, and you are left with an increasingly smaller area
+           of common ground in which you can operate to accomplish a particular
+           task.  Thus, when you begin attacking a problem, it is important to
+           consider under which part of the tradeoff curve you want to operate.
+           Specifically, you must decide whether it is important that the task
+           that you are coding has the full generality of being portable, or
+           whether to just get the job done right now.  This is the hardest choice
+           to be made.  The rest is easy, because Perl provides many choices,
+           whichever way you want to approach your problem.
+  manpageQuestion1: What is the primary purpose of the perlport tool?
+  manpageQuestion2: How can one use perlport to determine if a Perl script is compatible with multiple operating systems?
+  manpageQuestion3: What are the key considerations when writing portable Perl code according to the perlport documentation?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nLooking at it another way, writing portable code is usually about\n       willfully limiting your available choices.  Naturally, it takes\n       discipline and sacrifice to do that.  The product of portability and\n       convenience may be a constant.  You have been warned.\n\n       Be aware of two important points:\n\n       Not all Perl programs have to be portable\n\t   There is no reason you should not use Perl as a language to glue\n\t   Unix tools together, or to prototype a Macintosh application, or to\n\t   manage the Windows registry.  If it makes no sense to aim for\n\t   portability for one reason or another in a given program, then\n\t   don't bother.\n\n       Nearly all of Perl already is portable\n\t   Don't be fooled into thinking that it is hard to create portable\n\t   Perl code.  It isn't.  Perl tries its level-best to bridge the gaps\n\t   between what's available on different platforms, and all the means\n\t   available to use those features.  Thus almost all Perl code runs on\n\t   any machine without modification.  But there are some significant\n\t   issues in writing portable code, and this document is entirely\n\t   about those issues."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you ensure that a Perl program is portable across different operating systems?
+  manpageQuestion3: What are the key considerations when writing portable Perl code according to the perlport documentation?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.
+
+
+
+    Manpage text:
+
+    Here's the general rule: When you approach a task commonly done using a
+           whole range of platforms, think about writing portable code.  That way,
+           you don't sacrifice much by way of the implementation choices you can
+           avail yourself of, and at the same time you can give your users lots of
+           platform choices.  On the other hand, when you have to take advantage
+           of some unique feature of a particular platform, as is often the case
+           with systems programming (whether for Unix, Windows, VMS, etc.),
+           consider writing platform-specific code.
+
+           When the code will run on only two or three operating systems, you may
+           need to consider only the differences of those particular systems.  The
+           important thing is to decide where the code will run and to be
+           deliberate in your decision.
+
+           The material below is separated into three main sections: main issues
+           of portability ("ISSUES"), platform-specific issues ("PLATFORMS"), and
+           built-in Perl functions that behave differently on various ports
+           ("FUNCTION IMPLEMENTATIONS").
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can Perl code be made portable across different operating systems according to the perlport documentation?
+  manpageQuestion3: What are some considerations when writing platform-specific Perl code as described in the perlport manpage?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.
+
+
+
+    Manpage text:
+
+    This information should not be considered complete; it includes
+           possibly transient information about idiosyncrasies of some of the
+           ports, almost all of which are in a state of constant evolution.  Thus,
+           this material should be considered a perpetual work in progress ("<IMG
+           SRC="yellow_sign.gif" ALT="Under Construction">").
+
+    ISSUES
+       Newlines
+           In most operating systems, lines in files are terminated by newlines.
+           Just what is used as a newline may vary from OS to OS.  Unix
+           traditionally uses "\012", one type of DOSish I/O uses "\015\012",
+           Mac OS uses "\015", and z/OS uses "\025".
+
+           Perl uses "\n" to represent the "logical" newline, where what is
+           logical may depend on the platform in use.  In MacPerl, "\n" always
+           means "\015".  On EBCDIC platforms, "\n" could be "\025" or "\045".  In
+           DOSish perls, "\n" usually means "\012", but when accessing a file in
+           "text" mode, perl uses the ":crlf" layer that translates it to (or
+           from) "\015\012", depending on whether you're reading or writing. Unix
+           does the same thing on ttys in canonical mode.  "\015\012" is commonly
+           referred to as CRLF.
+  manpageQuestion1: What is the primary purpose of the perlport tool?
+  manpageQuestion2: How would you use perlport to handle newline conversions between different operating systems?
+  manpageQuestion3: Can you explain how perlport manages newline representations on EBCDIC platforms?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.
+
+
+
+    Manpage text:
+
+    To trim trailing newlines from text lines use "chomp".  With default
+           settings that function looks for a trailing "\n" character and thus
+           trims in a portable way.
+
+           When dealing with binary files (or text files in binary mode) be sure
+           to explicitly set $/ to the appropriate value for your file format
+           before using "chomp".
+
+           Because of the "text" mode translation, DOSish perls have limitations
+           in using "seek" and "tell" on a file accessed in "text" mode.  Stick to
+           "seek"-ing to locations you got from "tell" (and no others), and you
+           are usually free to use "seek" and "tell" even in "text" mode.  Using
+           "seek" or "tell" or other file operations may be non-portable.  If you
+           use "binmode" on a file, however, you can usually "seek" and "tell"
+           with arbitrary values safely.
+
+           A common misconception in socket programming is that "\n eq \012"
+           everywhere.  When using protocols such as common Internet protocols,
+           "\012" and "\015" are called for specifically, and the values of the
+           logical "\n" and "\r" (carriage return) are not reliable.
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you use perlport to handle trailing newlines in a text file?
+  manpageQuestion3: What should be done to ensure reliable handling of newline characters in a text file using perlport?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nprint $socket \"Hi there, client!\\r\\n\";      # WRONG\n\t   print $socket \"Hi there, client!\\015\\012\";  # RIGHT\n\n       However, using \"\\015\\012\" (or \"\\cM\\cJ\", or \"\\x0D\\x0A\") can be tedious\n       and unsightly, as well as confusing to those maintaining the code.  As\n       such, the \"Socket\" module supplies the Right Thing for those who want\n       it.\n\n\t   use Socket qw(:DEFAULT :crlf);\n\t   print $socket \"Hi there, client!$CRLF\"      # RIGHT\n\n       When reading from a socket, remember that the default input record\n       separator $/ is \"\\n\", but robust socket code will recognize as either\n       \"\\012\" or \"\\015\\012\" as end of line:\n\n\t   while (<$socket>) {\t# NOT ADVISABLE!\n\t       # ...\n\t   }\n\n       Because both CRLF and LF end in LF, the input record separator can be\n       set to LF and any CR stripped later.  Better to write:\n\n\t   use Socket qw(:DEFAULT :crlf);\n\t   local($/) = LF;\t# not needed if $/ is already \\012\n\n\t   while (<$socket>) {\n\t       s/$CR?$LF/\\n/;\t# not sure if socket uses LF or CRLF, OK\n\t   #   s/\\015?\\012/\\n/; # same thing\n\t   }"
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you send a CRLF (Carriage Return + Line Feed) line ending via the Socket module in Perl?
+  manpageQuestion3: What is a recommended way to handle line endings when reading from a socket in Perl using the Socket module?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nThis example is preferred over the previous one--even for Unix\n       platforms--because now any \"\\015\"'s (\"\\cM\"'s) are stripped out (and\n       there was much rejoicing).\n\n       Similarly, functions that return text data--such as a function that\n       fetches a web page--should sometimes translate newlines before\n       returning the data, if they've not yet been translated to the local\n       newline representation.\tA single line of code will often suffice:\n\n\t   $data =~ s/\\015?\\012/\\n/g;\n\t   return $data;\n\n       Some of this may be confusing.  Here's a handy reference to the ASCII\n       CR and LF characters.  You can print it out and stick it in your\n       wallet.\n\n\t   LF  eq  \\012  eq  \\x0A  eq  \\cJ  eq\tchr(10)  eq  ASCII 10\n\t   CR  eq  \\015  eq  \\x0D  eq  \\cM  eq\tchr(13)  eq  ASCII 13\n\n\t\t    | Unix | DOS  | Mac  |\n\t       ---------------------------\n\t       \\n   |  LF  |  LF  |  CR  |\n\t       \\r   |  CR  |  CR  |  LF  |\n\t       \\n * |  LF  | CRLF |  CR  |\n\t       \\r * |  CR  |  CR  |  LF  |\n\t       ---------------------------\n\t       * text-mode STDIO"
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you use perlport to handle newline translations between different operating systems?
+  manpageQuestion3: What is the recommended way to ensure consistent newline handling in Perl scripts when dealing with cross-platform data?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nThe Unix column assumes that you are not accessing a serial line (like\n       a tty) in canonical mode.  If you are, then CR on input becomes \"\\n\",\n       and \"\\n\" on output becomes CRLF.\n\n       These are just the most common definitions of \"\\n\" and \"\\r\" in Perl.\n       There may well be others.  For example, on an EBCDIC implementation\n       such as z/OS (OS/390) or OS/400 (using the ILE, the PASE is ASCII-\n       based) the above material is similar to \"Unix\" but the code numbers\n       change:\n\n\t   LF  eq  \\025  eq  \\x15  eq  \\cU  eq\tchr(21)  eq  CP-1047 21\n\t   LF  eq  \\045  eq  \\x25  eq\t\tchr(37)  eq  CP-0037 37\n\t   CR  eq  \\015  eq  \\x0D  eq  \\cM  eq\tchr(13)  eq  CP-1047 13\n\t   CR  eq  \\015  eq  \\x0D  eq  \\cM  eq\tchr(13)  eq  CP-0037 13\n\n\t\t    | z/OS | OS/400 |\n\t       ----------------------\n\t       \\n   |  LF  |  LF    |\n\t       \\r   |  CR  |  CR    |\n\t       \\n * |  LF  |  LF    |\n\t       \\r * |  CR  |  CR    |\n\t       ----------------------\n\t       * text-mode STDIO\n\n   Numbers endianness and Width\n       Different CPUs store integers and floating point numbers in different\n       orders (called endianness) and widths (32-bit and 64-bit being the most\n       common today).  This affects your programs when they attempt to\n       transfer numbers in binary format from one CPU architecture to another,\n       usually either \"live\" via network connection, or by storing the numbers\n       to secondary storage such as a disk file or tape."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you configure Perl to handle different newline conventions when working with serial lines in canonical mode?
+  manpageQuestion3: Can you explain how Perl handles endianness and width differences when transferring integers between different CPU architectures?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nConflicting storage orders make an utter mess out of the numbers.  If a\n       little-endian host (Intel, VAX) stores 0x12345678 (305419896 in\n       decimal), a big-endian host (Motorola, Sparc, PA) reads it as\n       0x78563412 (2018915346 in decimal).  Alpha and MIPS can be either:\n       Digital/Compaq used/uses them in little-endian mode; SGI/Cray uses them\n       in big-endian mode.  To avoid this problem in network (socket)\n       connections use the \"pack\" and \"unpack\" formats \"n\" and \"N\", the\n       \"network\" orders.  These are guaranteed to be portable.\n\n       As of Perl 5.10.0, you can also use the \">\" and \"<\" modifiers to force\n       big- or little-endian byte-order.  This is useful if you want to store\n       signed integers or 64-bit integers, for example.\n\n       You can explore the endianness of your platform by unpacking a data\n       structure packed in native format such as:\n\n\t   print unpack(\"h*\", pack(\"s2\", 1, 2)), \"\\n\";\n\t   # '10002000' on e.g. Intel x86 or Alpha 21064 in little-endian mode\n\t   # '00100020' on e.g. Motorola 68040"
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you use the perlport tool to determine the endianness of your platform?
+  manpageQuestion3: Can you provide an example of using perlport to force big-endian byte order when packing and unpacking data?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nIf you need to distinguish between endian architectures you could use\n       either of the variables set like so:\n\n\t   $is_big_endian   = unpack(\"h*\", pack(\"s\", 1)) =~ /01/;\n\t   $is_little_endian = unpack(\"h*\", pack(\"s\", 1)) =~ /^1/;\n\n       Differing widths can cause truncation even between platforms of equal\n       endianness.  The platform of shorter width loses the upper parts of the\n       number.\tThere is no good solution for this problem except to avoid\n       transferring or storing raw binary numbers.\n\n       One can circumnavigate both these problems in two ways.\tEither\n       transfer and store numbers always in text format, instead of raw\n       binary, or else consider using modules like \"Data::Dumper\" and\n       \"Storable\" (included as of Perl 5.8).  Keeping all data as text\n       significantly simplifies matters.\n\n   Files and Filesystems\n       Most platforms these days structure files in a hierarchical fashion.\n       So, it is reasonably safe to assume that all platforms support the\n       notion of a \"path\" to uniquely identify a file on the system.  How that\n       path is really written, though, differs considerably."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you determine if a system is using big-endian or little-endian architecture using perlport?
+  manpageQuestion3: What are two alternative methods to handle binary data transfer and storage in Perl to avoid issues related to endianness and width differences?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.
+
+
+
+    Manpage text:
+
+    Although similar, file path specifications differ between Unix,
+           Windows, Mac OS, OS/2, VMS, VOS, RISC OS, and probably others.  Unix,
+           for example, is one of the few OSes that has the elegant idea of a
+           single root directory.
+
+           DOS, OS/2, VMS, VOS, and Windows can work similarly to Unix with "/" as
+           path separator, or in their own idiosyncratic ways (such as having
+           several root directories and various "unrooted" device files such NIL:
+           and LPT:).
+
+           Mac OS 9 and earlier used ":" as a path separator instead of "/".
+
+           The filesystem may support neither hard links ("link") nor symbolic
+           links ("symlink", "readlink", "lstat").
+
+           The filesystem may support neither access timestamp nor change
+           timestamp (meaning that about the only portable timestamp is the
+           modification timestamp), or one second granularity of any timestamps
+           (e.g. the FAT filesystem limits the time granularity to two seconds).
+
+           The "inode change timestamp" (the "-C" filetest) may really be the
+           "creation timestamp" (which it is not in Unix).
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you handle file path differences between Unix and Mac OS 9 when using perlport?
+  manpageQuestion3: What are the limitations of file timestamp support that perlport should be aware of when porting code across different operating systems?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nVOS perl can emulate Unix filenames with \"/\" as path separator.\tThe\n       native pathname characters greater-than, less-than, number-sign, and\n       percent-sign are always accepted.\n\n       RISC OS perl can emulate Unix filenames with \"/\" as path separator, or\n       go native and use \".\" for path separator and \":\" to signal filesystems\n       and disk names.\n\n       Don't assume Unix filesystem access semantics: that read, write, and\n       execute are all the permissions there are, and even if they exist, that\n       their semantics (for example what do \"r\", \"w\", and \"x\" mean on a\n       directory) are the Unix ones.  The various Unix/POSIX compatibility\n       layers usually try to make interfaces like \"chmod\" work, but sometimes\n       there simply is no good mapping.\n\n       The \"File::Spec\" modules provide methods to manipulate path\n       specifications and return the results in native format for each\n       platform.  This is often unnecessary as Unix-style paths are understood\n       by Perl on every supported platform, but if you need to produce native\n       paths for a native utility that does not understand Unix syntax, or if\n       you are operating on paths or path components in unknown (and thus\n       possibly native) syntax, \"File::Spec\" is your friend.  Here are two\n       brief examples:"
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you use perlport to handle file paths on RISC OS while maintaining Unix-style path separators?
+  manpageQuestion3: Can you provide an example of using perlport's File::Spec module to generate a native path for a RISC OS system?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nuse File::Spec::Functions;\n\t   chdir(updir());\t  # go up one directory\n\n\t   # Concatenate a path from its components\n\t   my $file = catfile(updir(), 'temp', 'file.txt');\n\t   # on Unix:\t '../temp/file.txt'\n\t   # on Win32:\t '..\\temp\\file.txt'\n\t   # on VMS:\t '[-.temp]file.txt'\n\n       In general, production code should not have file paths hardcoded.\n       Making them user-supplied or read from a configuration file is better,\n       keeping in mind that file path syntax varies on different machines.\n\n       This is especially noticeable in scripts like Makefiles and test\n       suites, which often assume \"/\" as a path separator for subdirectories.\n\n       Also of use is \"File::Basename\" from the standard distribution, which\n       splits a pathname into pieces (base filename, full path to directory,\n       and file suffix).\n\n       Even when on a single platform (if you can call Unix a single\n       platform), remember not to count on the existence or the contents of\n       particular system-specific files or directories, like /etc/passwd,\n       /etc/sendmail.conf, /etc/resolv.conf, or even /tmp/.  For example,\n       /etc/passwd may exist but not contain the encrypted passwords, because\n       the system is using some form of enhanced security.  Or it may not\n       contain all the accounts, because the system is using NIS. If code does\n       need to rely on such a file, include a description of the file and its\n       format in the code's documentation, then make it easy for the user to\n       override the default location of the file."
+  manpageQuestion1: What is the primary purpose of the `File::Spec::Functions` module in Perl?
+  manpageQuestion2: How can you use the `catfile()` function to construct a file path that is platform-independent?
+  manpageQuestion3: What is the recommended approach for handling file paths in production code according to the manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nDon't assume a text file will end with a newline.  They should, but\n       people forget.\n\n       Do not have two files or directories of the same name with different\n       case, like test.pl and Test.pl, as many platforms have case-insensitive\n       (or at least case-forgiving) filenames.\tAlso, try not to have non-word\n       characters (except for \".\") in the names, and keep them to the 8.3\n       convention, for maximum portability, onerous a burden though this may\n       appear.\n\n       Likewise, when using the \"AutoSplit\" module, try to keep your functions\n       to 8.3 naming and case-insensitive conventions; or, at the least, make\n       it so the resulting files have a unique (case-insensitively) first 8\n       characters.\n\n       Whitespace in filenames is tolerated on most systems, but not all, and\n       even on systems where it might be tolerated, some utilities might\n       become confused by such whitespace.\n\n       Many systems (DOS, VMS ODS-2) cannot have more than one \".\" in their\n       filenames."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you ensure portability when naming files and directories in a Perl project?
+  manpageQuestion3: What are some best practices for handling filenames with special characters in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nDon't assume \">\" won't be the first character of a filename.  Always\n       use the three-arg version of \"open\":\n\n\t   open my $fh, '<', $existing_file) or die $!;\n\n       Two-arg \"open\" is magic and can translate characters like \">\", \"<\", and\n       \"|\" in filenames, which is usually the wrong thing to do.  \"sysopen\"\n       and three-arg \"open\" don't have this problem.\n\n       Don't use \":\" as a part of a filename since many systems use that for\n       their own semantics (Mac OS Classic for separating pathname components,\n       many networking schemes and utilities for separating the nodename and\n       the pathname, and so on).  For the same reasons, avoid \"@\", \";\" and\n       \"|\".\n\n       Don't assume that in pathnames you can collapse two leading slashes\n       \"//\" into one: some networking and clustering filesystems have special\n       semantics for that.  Let the operating system sort it out.\n\n       The portable filename characters as defined by ANSI C are\n\n\ta b c d e f g h i j k l m n o p q r s t u v w x y z\n\tA B C D E F G H I J K L M N O P Q R S T U V W X Y Z\n\t0 1 2 3 4 5 6 7 8 9\n\t. _ -"
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How should one correctly open a file in Perl to avoid issues with special characters in filenames?
+  manpageQuestion3: What are the recommended practices for handling filename characters in Perl to ensure portability across different operating systems?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.
+
+
+
+    Manpage text:
+
+    and "-" shouldn't be the first character.  If you want to be
+           hypercorrect, stay case-insensitive and within the 8.3 naming
+           convention (all the files and directories have to be unique within one
+           directory if their names are lowercased and truncated to eight
+           characters before the ".", if any, and to three characters after the
+           ".", if any).  (And do not use "."s in directory names.)
+
+       System Interaction
+           Not all platforms provide a command line.  These are usually platforms
+           that rely primarily on a Graphical User Interface (GUI) for user
+           interaction.  A program requiring a command line interface might not
+           work everywhere.  This is probably for the user of the program to deal
+           with, so don't stay up late worrying about it.
+
+           Some platforms can't delete or rename files held open by the system,
+           this limitation may also apply to changing filesystem metainformation
+           like file permissions or owners.  Remember to "close" files when you
+           are done with them.  Don't "unlink" or "rename" an open file.  Don't
+           "tie" or "open" a file already tied or opened; "untie" or "close" it
+           first.
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How would you use perlport to ensure that a file name adheres to the 8.3 naming convention on a Windows system?
+  manpageQuestion3: What are some considerations when using perlport on platforms that do not support command line interfaces?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nDon't open the same file more than once at a time for writing, as some\n       operating systems put mandatory locks on such files.\n\n       Don't assume that write/modify permission on a directory gives the\n       right to add or delete files/directories in that directory.  That is\n       filesystem specific: in some filesystems you need write/modify\n       permission also (or even just) in the file/directory itself.  In some\n       filesystems (AFS, DFS) the permission to add/delete directory entries\n       is a completely separate permission.\n\n       Don't assume that a single \"unlink\" completely gets rid of the file:\n       some filesystems (most notably the ones in VMS) have versioned\n       filesystems, and \"unlink\" removes only the most recent one (it doesn't\n       remove all the versions because by default the native tools on those\n       platforms remove just the most recent version, too).  The portable\n       idiom to remove all the versions of a file is\n\n\t   1 while unlink \"file\";"
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you ensure that a file is not opened multiple times for writing in Perl?
+  manpageQuestion3: What is a portable way to remove all versions of a file in a filesystem that supports versioning?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.
+
+
+
+    Manpage text:
+
+    This will terminate if the file is undeletable for some reason
+           (protected, not there, and so on).
+
+           Don't count on a specific environment variable existing in %ENV.  Don't
+           count on %ENV entries being case-sensitive, or even case-preserving.
+           Don't try to clear %ENV by saying "%ENV = ();", or, if you really have
+           to, make it conditional on "$^O ne 'VMS'" since in VMS the %ENV table
+           is much more than a per-process key-value string table.
+
+           On VMS, some entries in the %ENV hash are dynamically created when
+           their key is used on a read if they did not previously exist.  The
+           values for $ENV{HOME}, $ENV{TERM}, $ENV{PATH}, and $ENV{USER}, are
+           known to be dynamically generated.  The specific names that are
+           dynamically generated may vary with the version of the C library on
+           VMS, and more may exist than are documented.
+
+           On VMS by default, changes to the %ENV hash persist after perl exits.
+           Subsequent invocations of perl in the same process can inadvertently
+           inherit environment settings that were meant to be temporary.
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you handle situations where a file is undeletable during the execution of perlport?
+  manpageQuestion3: What are some important considerations when working with the %ENV hash in perlport on VMS systems?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nDon't count on signals or %SIG for anything.\n\n       Don't count on filename globbing.  Use \"opendir\", \"readdir\", and\n       \"closedir\" instead.\n\n       Don't count on per-program environment variables, or per-program\n       current directories.\n\n       Don't count on specific values of $!, neither numeric nor especially\n       the string values. Users may switch their locales causing error\n       messages to be translated into their languages.\tIf you can trust a\n       POSIXish environment, you can portably use the symbols defined by the\n       \"Errno\" module, like \"ENOENT\".  And don't trust on the values of $! at\n       all except immediately after a failed system call.\n\n   Command names versus file pathnames\n       Don't assume that the name used to invoke a command or program with\n       \"system\" or \"exec\" can also be used to test for the existence of the\n       file that holds the executable code for that command or program.\n       First, many systems have \"internal\" commands that are built-in to the\n       shell or OS and while these commands can be invoked, there is no\n       corresponding file.  Second, some operating systems (e.g., Cygwin,\n       DJGPP, OS/2, and VOS) have required suffixes for executable files;\n       these suffixes are generally permitted on the command name but are not\n       required.  Thus, a command like \"perl\" might exist in a file named\n       perl, perl.exe, or perl.pm, depending on the operating system.  The\n       variable $Config{_exe} in the \"Config\" module holds the executable\n       suffix, if any.\tThird, the VMS port carefully sets up $^X and\n       $Config{perlpath} so that no further processing is required.  This is\n       just as well, because the matching regular expression used below would\n       then have to deal with a possible trailing version number in the VMS\n       file name."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How would you ensure that a command name is correctly resolved to its executable file path on different operating systems?
+  manpageQuestion3: What are the key differences between relying on system variables like $! and using portable error handling in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nTo convert $^X to a file pathname, taking account of the requirements\n       of the various operating system possibilities, say:\n\n\tuse Config;\n\tmy $thisperl = $^X;\n\tif ($^O ne 'VMS') {\n\t    $thisperl .= $Config{_exe}\n\t\tunless $thisperl =~ m/\\Q$Config{_exe}\\E$/i;\n\t}\n\n       To convert $Config{perlpath} to a file pathname, say:\n\n\tuse Config;\n\tmy $thisperl = $Config{perlpath};\n\tif ($^O ne 'VMS') {\n\t    $thisperl .= $Config{_exe}\n\t\tunless $thisperl =~ m/\\Q$Config{_exe}\\E$/i;\n\t}\n\n   Networking\n       Don't assume that you can reach the public Internet.\n\n       Don't assume that there is only one way to get through firewalls to the\n       public Internet.\n\n       Don't assume that you can reach outside world through any other port\n       than 80, or some web proxy.  ftp is blocked by many firewalls.\n\n       Don't assume that you can send email by connecting to the local SMTP\n       port.\n\n       Don't assume that you can reach yourself or any node by the name\n       'localhost'.  The same goes for '127.0.0.1'.  You will have to try\n       both."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you convert $^X to a file pathname using the perlport resource?
+  manpageQuestion3: What are some important considerations when working with networking in the perlport resource?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.
+
+
+
+    Manpage text:
+
+    Don't assume that the host has only one network card, or that it can't
+           bind to many virtual IP addresses.
+
+           Don't assume a particular network device name.
+
+           Don't assume a particular set of "ioctl"s will work.
+
+           Don't assume that you can ping hosts and get replies.
+
+           Don't assume that any particular port (service) will respond.
+
+           Don't assume that "Sys::Hostname" (or any other API or command) returns
+           either a fully qualified hostname or a non-qualified hostname: it all
+           depends on how the system had been configured.  Also remember that for
+           things such as DHCP and NAT, the hostname you get back might not be
+           very useful.
+
+           All the above don'ts may look daunting, and they are, but the key is to
+           degrade gracefully if one cannot reach the particular network service
+           one wants.  Croaking or hanging do not look very professional.
+
+       Interprocess Communication (IPC)
+           In general, don't directly access the system in code meant to be
+           portable.  That means, no "system", "exec", "fork", "pipe", "``" or
+           "qx//", "open" with a "|", nor any of the other things that makes being
+           a Perl hacker worth being.
+  manpageQuestion1: What is the general purpose of the perlport resource?
+  manpageQuestion2: How can you ensure that a Perl script gracefully handles network service failures without relying on specific system APIs?
+  manpageQuestion3: What are some best practices for writing portable Perl code that avoids direct system interactions?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nCommands that launch external processes are generally supported on most\n       platforms (though many of them do not support any type of forking).\n       The problem with using them arises from what you invoke them on.\n       External tools are often named differently on different platforms, may\n       not be available in the same location, might accept different\n       arguments, can behave differently, and often present their results in a\n       platform-dependent way.\tThus, you should seldom depend on them to\n       produce consistent results.  (Then again, if you're calling \"netstat\n       -a\", you probably don't expect it to run on both Unix and CP/M.)\n\n       One especially common bit of Perl code is opening a pipe to sendmail:\n\n\t   open(my $mail, '|-', '/usr/lib/sendmail -t')\n\t       or die \"cannot fork sendmail: $!\";\n\n       This is fine for systems programming when sendmail is known to be\n       available.  But it is not fine for many non-Unix systems, and even some\n       Unix systems that may not have sendmail installed.  If a portable\n       solution is needed, see the various distributions on CPAN that deal\n       with it.  \"Mail::Mailer\" and \"Mail::Send\" in the \"MailTools\"\n       distribution are commonly used, and provide several mailing methods,\n       including \"mail\", \"sendmail\", and direct SMTP (via \"Net::SMTP\") if a\n       mail transfer agent is not available.  \"Mail::Sendmail\" is a standalone\n       module that provides simple, platform-independent mailing."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you use perlport to handle email sending on a system where sendmail may not be available?
+  manpageQuestion3: What are some alternative modules recommended by the manpage for handling email in Perl on different platforms?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nThe Unix System V IPC (\"msg*(), sem*(), shm*()\") is not available even\n       on all Unix platforms.\n\n       Do not use either the bare result of \"pack(\"N\", 10, 20, 30, 40)\" or\n       bare v-strings (such as \"v10.20.30.40\") to represent IPv4 addresses:\n       both forms just pack the four bytes into network order.\tThat this\n       would be equal to the C language \"in_addr\" struct (which is what the\n       socket code internally uses) is not guaranteed.\tTo be portable use the\n       routines of the \"Socket\" module, such as \"inet_aton\", \"inet_ntoa\", and\n       \"sockaddr_in\".\n\n       The rule of thumb for portable code is: Do it all in portable Perl, or\n       use a module (that may internally implement it with platform-specific\n       code, but exposes a common interface).\n\n   External Subroutines (XS)\n       XS code can usually be made to work with any platform, but dependent\n       libraries, header files, etc., might not be readily available or\n       portable, or the XS code itself might be platform-specific, just as\n       Perl code might be.  If the libraries and headers are portable, then it\n       is normally reasonable to make sure the XS code is portable, too."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can one ensure portability when using XS code in Perl?
+  manpageQuestion3: What are the recommended methods for handling IPv4 addresses in portable Perl code?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nA different type of portability issue arises when writing XS code:\n       availability of a C compiler on the end-user's system.  C brings with\n       it its own portability issues, and writing XS code will expose you to\n       some of those.  Writing purely in Perl is an easier way to achieve\n       portability.\n\n   Standard Modules\n       In general, the standard modules work across platforms.\tNotable\n       exceptions are the \"CPAN\" module (which currently makes connections to\n       external programs that may not be available), platform-specific modules\n       (like \"ExtUtils::MM_VMS\"), and DBM modules.\n\n       There is no one DBM module available on all platforms.  \"SDBM_File\" and\n       the others are generally available on all Unix and DOSish ports, but\n       not in MacPerl, where only \"NDBM_File\" and \"DB_File\" are available.\n\n       The good news is that at least some DBM module should be available, and\n       \"AnyDBM_File\" will use whichever module it can find.  Of course, then\n       the code needs to be fairly strict, dropping to the greatest common\n       factor (e.g., not exceeding 1K for each record), so that it will work\n       with any DBM module.  See AnyDBM_File for more details."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you ensure that your Perl code is compatible with different platforms when using standard modules?
+  manpageQuestion3: What are the limitations of using DBM modules across different platforms according to the perlport manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nTime and Date\n       The system's notion of time of day and calendar date is controlled in\n       widely different ways.  Don't assume the timezone is stored in\n       $ENV{TZ}, and even if it is, don't assume that you can control the\n       timezone through that variable.\tDon't assume anything about the three-\n       letter timezone abbreviations (for example that MST would be the\n       Mountain Standard Time, it's been known to stand for Moscow Standard\n       Time).  If you need to use timezones, express them in some unambiguous\n       format like the exact number of minutes offset from UTC, or the POSIX\n       timezone format.\n\n       Don't assume that the epoch starts at 00:00:00, January 1, 1970,\n       because that is OS- and implementation-specific.  It is better to store\n       a date in an unambiguous representation.  The ISO 8601 standard defines\n       YYYY-MM-DD as the date format, or YYYY-MM-DDTHH:MM:SS (that's a literal\n       \"T\" separating the date from the time).\tPlease do use the ISO 8601\n       instead of making us guess what date 02/03/04 might be.\tISO 8601 even\n       sorts nicely as-is.  A text representation (like \"1987-12-18\") can be\n       easily converted into an OS-specific value using a module like\n       \"Time::Piece\" (see \"Date Parsing\" in Time::Piece) or \"Date::Parse\".  An\n       array of values, such as those returned by \"localtime\", can be\n       converted to an OS-specific representation using \"Time::Local\"."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you convert a text date in ISO 8601 format to an OS-specific time value using Perl?
+  manpageQuestion3: What are the best practices for handling time zones in Perl programs according to the manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nWhen calculating specific times, such as for tests in time or date\n       modules, it may be appropriate to calculate an offset for the epoch.\n\n\t   use Time::Local qw(timegm);\n\t   my $offset = timegm(0, 0, 0, 1, 0, 1970);\n\n       The value for $offset in Unix will be 0, but in Mac OS Classic will be\n       some large number.  $offset can then be added to a Unix time value to\n       get what should be the proper value on any system.\n\n   Character sets and character encoding\n       Assume very little about character sets.\n\n       Assume nothing about numerical values (\"ord\", \"chr\") of characters.  Do\n       not use explicit code point ranges (like \"\\xHH-\\xHH)\".  However,\n       starting in Perl v5.22, regular expression pattern bracketed character\n       class ranges specified like \"qr/[\\N{U+HH}-\\N{U+HH}]/\" are portable, and\n       starting in Perl v5.24, the same ranges are portable in \"tr///\".  You\n       can portably use symbolic character classes like \"[:print:]\".\n\n       Do not assume that the alphabetic characters are encoded contiguously\n       (in the numeric sense).\tThere may be gaps.  Special coding in Perl,\n       however, guarantees that all subsets of \"qr/[A-Z]/\", \"qr/[a-z]/\", and\n       \"qr/[0-9]/\" behave as expected.\t\"tr///\" behaves the same for these\n       ranges.\tIn patterns, any ranges specified with end points using the\n       \"\\N{...}\" notations ensures character set portability, but it is a bug\n       in Perl v5.22 that this isn't true of \"tr///\", fixed in v5.24."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How would you use perlport to handle character encoding in a cross-platform Perl script?
+  manpageQuestion3: Can you provide an example of using perlport to calculate a time offset for compatibility between Unix and Mac OS Classic systems?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nDo not assume anything about the ordering of the characters.  The\n       lowercase letters may come before or after the uppercase letters; the\n       lowercase and uppercase may be interlaced so that both \"a\" and \"A\" come\n       before \"b\"; the accented and other international characters may be\n       interlaced so that ae comes before \"b\".\tUnicode::Collate can be used\n       to sort this all out.\n\n   Internationalisation\n       If you may assume POSIX (a rather large assumption), you may read more\n       about the POSIX locale system from perllocale.  The locale system at\n       least attempts to make things a little bit more portable, or at least\n       more convenient and native-friendly for non-English users.  The system\n       affects character sets and encoding, and date and time\n       formatting--amongst other things.\n\n       If you really want to be international, you should consider Unicode.\n       See perluniintro and perlunicode for more information.\n\n       By default Perl assumes your source code is written in an 8-bit ASCII\n       superset. To embed Unicode characters in your strings and regexes, you\n       can use the \"\\x{HH}\" or (more portably) \"\\N{U+HH}\" notations. You can\n       also use the \"utf8\" pragma and write your code in UTF-8, which lets you\n       use Unicode characters directly (not just in quoted constructs but also\n       in identifiers)."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you enable Perl to handle Unicode characters in your source code?
+  manpageQuestion3: What steps should be taken to ensure internationalization support in Perl programs?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nSystem Resources\n       If your code is destined for systems with severely constrained (or\n       missing!) virtual memory systems then you want to be especially mindful\n       of avoiding wasteful constructs such as:\n\n\t   my @lines = <$very_large_file>;\t      # bad\n\n\t   while (<$fh>) {$file .= $_}\t\t      # sometimes bad\n\t   my $file = join('', <$fh>);\t\t      # better\n\n       The last two constructs may appear unintuitive to most people.  The\n       first repeatedly grows a string, whereas the second allocates a large\n       chunk of memory in one go.  On some systems, the second is more\n       efficient than the first.\n\n   Security\n       Most multi-user platforms provide basic levels of security, usually\n       implemented at the filesystem level.  Some, however, unfortunately do\n       not.  Thus the notion of user id, or \"home\" directory, or even the\n       state of being logged-in, may be unrecognizable on many platforms.  If\n       you write programs that are security-conscious, it is usually best to\n       know what type of system you will be running under so that you can\n       write code explicitly for that platform (or class of platforms)."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you optimize memory usage when reading a large file in Perl on systems with limited virtual memory?
+  manpageQuestion3: What considerations should be made when writing security-conscious Perl programs for different platforms?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nDon't assume the Unix filesystem access semantics: the operating system\n       or the filesystem may be using some ACL systems, which are richer\n       languages than the usual \"rwx\".\tEven if the \"rwx\" exist, their\n       semantics might be different.\n\n       (From the security viewpoint, testing for permissions before attempting\n       to do something is silly anyway: if one tries this, there is potential\n       for race conditions. Someone or something might change the permissions\n       between the permissions check and the actual operation.\tJust try the\n       operation.)\n\n       Don't assume the Unix user and group semantics: especially, don't\n       expect $< and $> (or $( and $)) to work for switching identities (or\n       memberships).\n\n       Don't assume set-uid and set-gid semantics.  (And even if you do, think\n       twice: set-uid and set-gid are a known can of security worms.)\n\n   Style\n       For those times when it is necessary to have platform-specific code,\n       consider keeping the platform-specific code in one place, making\n       porting to other platforms easier.  Use the \"Config\" module and the\n       special variable $^O to differentiate platforms, as described in\n       \"PLATFORMS\"."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you handle platform-specific code in Perl scripts using the perlport resource?
+  manpageQuestion3: What are some key considerations when dealing with Unix filesystem permissions in Perl scripts according to the perlport manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nBeware of the \"else syndrome\":\n\n\t if ($^O eq 'MSWin32') {\n\t   # code that assumes Windows\n\t } else {\n\t   # code that assumes Linux\n\t }\n\n       The \"else\" branch should be used for the really ultimate fallback, not\n       for code specific to some platform.\n\n       Be careful in the tests you supply with your module or programs.\n       Module code may be fully portable, but its tests might not be.  This\n       often happens when tests spawn off other processes or call external\n       programs to aid in the testing, or when (as noted above) the tests\n       assume certain things about the filesystem and paths.  Be careful not\n       to depend on a specific output style for errors, such as when checking\n       $! after a failed system call.  Using $! for anything else than\n       displaying it as output is doubtful (though see the \"Errno\" module for\n       testing reasonably portably for error value). Some platforms expect a\n       certain output format, and Perl on those platforms may have been\n       adjusted accordingly.  Most specifically, don't anchor a regex when\n       testing an error value."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you ensure that your Perl module's test scripts are portable across different operating systems?
+  manpageQuestion3: What should you avoid when writing test scripts for Perl modules to ensure portability?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.
+
+
+
+    Manpage text:
+
+    CPAN Testers
+           Modules uploaded to CPAN are tested by a variety of volunteers on
+           different platforms.  These CPAN testers are notified by mail of each
+           new upload, and reply to the list with PASS, FAIL, NA (not applicable
+           to this platform), or UNKNOWN (unknown), along with any relevant
+           notations.
+
+           The purpose of the testing is twofold: one, to help developers fix any
+           problems in their code that crop up because of lack of testing on other
+           platforms; two, to provide users with information about whether a given
+           module works on a given platform.
+
+           Also see:
+
+           •   Mailing list: cpan-testers-discuss@perl.org
+
+           •   Testing results: <https://www.cpantesters.org/>
+
+    PLATFORMS
+           Perl is built with a $^O variable that indicates the operating system
+           it was built on.  This was implemented to help speed up code that would
+           otherwise have to "use Config" and use the value of $Config{osname}.
+           Of course, to get more detailed information about the system, looking
+           into %Config is certainly recommended.
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you check the testing results for a specific Perl module on different platforms using perlport?
+  manpageQuestion3: What information does the $^O variable provide in Perl, and how is it related to platform testing?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\n%Config cannot always be trusted, however, because it was built at\n       compile time.  If perl was built in one place, then transferred\n       elsewhere, some values may be wrong.  The values may even have been\n       edited after the fact.\n\n   Unix\n       Perl works on a bewildering variety of Unix and Unix-like platforms\n       (see e.g. most of the files in the hints/ directory in the source code\n       kit).  On most of these systems, the value of $^O (hence\n       $Config{osname}, too) is determined either by lowercasing and stripping\n       punctuation from the first field of the string returned by typing\n       \"uname -a\" (or a similar command) at the shell prompt or by testing the\n       file system for the presence of uniquely named files such as a kernel\n       or header file.\tHere, for example, are a few of the more popular Unix\n       flavors:\n\n\t   uname\t $^O\t    $Config{archname}\n\t   --------------------------------------------\n\t   AIX\t\t aix\t    aix\n\t   BSD/OS\t bsdos\t    i386-bsdos\n\t   Darwin\t darwin     darwin\n\t   DYNIX/ptx\t dynixptx   i386-dynixptx\n\t   FreeBSD\t freebsd    freebsd-i386\n\t   Haiku\t haiku\t    BePC-haiku\n\t   Linux\t linux\t    arm-linux\n\t   Linux\t linux\t    armv5tel-linux\n\t   Linux\t linux\t    i386-linux\n\t   Linux\t linux\t    i586-linux\n\t   Linux\t linux\t    ppc-linux\n\t   HP-UX\t hpux\t    PA-RISC1.1\n\t   IRIX \t irix\t    irix\n\t   Mac OS X\t darwin     darwin\n\t   NeXT 3\t next\t    next-fat\n\t   NeXT 4\t next\t    OPENSTEP-Mach\n\t   openbsd\t openbsd    i386-openbsd\n\t   OSF1 \t dec_osf    alpha-dec_osf\n\t   reliantunix-n svr4\t    RM400-svr4\n\t   SCO_SV\t sco_sv     i386-sco_sv\n\t   SINIX-N\t svr4\t    RM400-svr4\n\t   sn4609\t unicos     CRAY_C90-unicos\n\t   sn6521\t unicosmk   t3e-unicosmk\n\t   sn9617\t unicos     CRAY_J90-unicos\n\t   SunOS\t solaris    sun4-solaris\n\t   SunOS\t solaris    i86pc-solaris\n\t   SunOS4\t sunos\t    sun4-sunos"
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you determine the architecture and operating system of a Unix system using perlport?
+  manpageQuestion3: What are the common values for $^O and $Config{archname} when running Perl on a Linux system with an i586 architecture?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nBecause the value of $Config{archname} may depend on the hardware\n       architecture, it can vary more than the value of $^O.\n\n   DOS and Derivatives\n       Perl has long been ported to Intel-style microcomputers running under\n       systems like PC-DOS, MS-DOS, OS/2, and most Windows platforms you can\n       bring yourself to mention (except for Windows CE, if you count that).\n       Users familiar with COMMAND.COM or CMD.EXE style shells should be aware\n       that each of these file specifications may have subtle differences:\n\n\t   my $filespec0 = \"c:/foo/bar/file.txt\";\n\t   my $filespec1 = \"c:\\\\foo\\\\bar\\\\file.txt\";\n\t   my $filespec2 = 'c:\\foo\\bar\\file.txt';\n\t   my $filespec3 = 'c:\\\\foo\\\\bar\\\\file.txt';\n\n       System calls accept either \"/\" or \"\\\" as the path separator.  However,\n       many command-line utilities of DOS vintage treat \"/\" as the option\n       prefix, so may get confused by filenames containing \"/\".  Aside from\n       calling any external programs, \"/\" will work just fine, and probably\n       better, as it is more consistent with popular usage, and avoids the\n       problem of remembering what to backwhack and what not to."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How would you handle file specifications in a DOS-style environment using Perl to avoid issues with path separators?
+  manpageQuestion3: Can you provide an example of using Perl to make system calls with path separators that are compatible with DOS-based systems?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.
+
+
+
+    Manpage text:
+
+    The DOS FAT filesystem can accommodate only "8.3" style filenames.
+           Under the "case-insensitive, but case-preserving" HPFS (OS/2) and NTFS
+           (NT) filesystems you may have to be careful about case returned with
+           functions like "readdir" or used with functions like "open" or
+           "opendir".
+
+           DOS also treats several filenames as special, such as AUX, PRN, NUL,
+           CON, COM1, LPT1, LPT2, etc.  Unfortunately, sometimes these filenames
+           won't even work if you include an explicit directory prefix.  It is
+           best to avoid such filenames, if you want your code to be portable to
+           DOS and its derivatives.  It's hard to know what these all are,
+           unfortunately.
+
+           Users of these operating systems may also wish to make use of scripts
+           such as pl2bat.bat to put wrappers around your scripts.
+
+           Newline ("\n") is translated as "\015\012" by the I/O system when
+           reading from and writing to files (see "Newlines").
+           "binmode($filehandle)" will keep "\n" translated as "\012" for that
+           filehandle.  "binmode" should always be used for code that deals with
+           binary data.  That's assuming you realize in advance that your data is
+           in binary.  General-purpose programs should often assume nothing about
+           their data.
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you ensure that newline characters are properly handled when reading from or writing to files in Perl on DOS-based systems?
+  manpageQuestion3: What are some common filenames that should be avoided when writing portable Perl code for DOS and its derivatives?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nThe $^O variable and the $Config{archname} values for various DOSish\n       perls are as follows:\n\n\t   OS\t\t  $^O\t    $Config{archname}  ID    Version\n\t   ---------------------------------------------------------\n\t   MS-DOS\t  dos\t    ?\n\t   PC-DOS\t  dos\t    ?\n\t   OS/2 \t  os2\t    ?\n\t   Windows 3.1\t  ?\t    ?\t\t       0     3 01\n\t   Windows 95\t  MSWin32   MSWin32-x86        1     4 00\n\t   Windows 98\t  MSWin32   MSWin32-x86        1     4 10\n\t   Windows ME\t  MSWin32   MSWin32-x86        1     ?\n\t   Windows NT\t  MSWin32   MSWin32-x86        2     4 xx\n\t   Windows NT\t  MSWin32   MSWin32-ALPHA      2     4 xx\n\t   Windows NT\t  MSWin32   MSWin32-ppc        2     4 xx\n\t   Windows 2000   MSWin32   MSWin32-x86        2     5 00\n\t   Windows XP\t  MSWin32   MSWin32-x86        2     5 01\n\t   Windows 2003   MSWin32   MSWin32-x86        2     5 02\n\t   Windows Vista  MSWin32   MSWin32-x86        2     6 00\n\t   Windows 7\t  MSWin32   MSWin32-x86        2     6 01\n\t   Windows 7\t  MSWin32   MSWin32-x64        2     6 01\n\t   Windows 2008   MSWin32   MSWin32-x86        2     6 01\n\t   Windows 2008   MSWin32   MSWin32-x64        2     6 01\n\t   Windows CE\t  MSWin32   ?\t\t       3\n\t   Cygwin\t  cygwin    cygwin"
+  manpageQuestion1: What is the primary purpose of the perlport tool or its associated variables?
+  manpageQuestion2: How can you determine the architecture name for a Perl installation on Windows 95 using perlport?
+  manpageQuestion3: What command or method would you use to find the operating system identifier for a Perl environment running on Windows 2003?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nThe various MSWin32 Perl's can distinguish the OS they are running on\n       via the value of the fifth element of the list returned from\n       \"Win32::GetOSVersion()\".  For example:\n\n\t   if ($^O eq 'MSWin32') {\n\t       my @os_version_info = Win32::GetOSVersion();\n\t       print +('3.1','95','NT')[$os_version_info[4]],\"\\n\";\n\t   }\n\n       There are also \"Win32::IsWinNT()|Win32/Win32::IsWinNT()\",\n       \"Win32::IsWin95()|Win32/Win32::IsWin95()\", and \"Win32::GetOSName()\";\n       try \"perldoc Win32\".  The very portable \"POSIX::uname()\" will work too:\n\n\t   c:\\> perl -MPOSIX -we \"print join '|', uname\"\n\t   Windows NT|moonru|5.0|Build 2195 (Service Pack 2)|x86\n\n       Errors set by Winsock functions are now put directly into $^E, and the\n       relevant \"WSAE*\" error codes are now exported from the Errno and POSIX\n       modules for testing this against.\n\n       The previous behavior of putting the errors (converted to POSIX-style\n       \"E*\" error codes since Perl 5.20.0) into $! was buggy due to the non-\n       equivalence of like-named Winsock and POSIX error constants, a\n       relationship between which has unfortunately been established in one\n       way or another since Perl 5.8.0."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you determine if a Perl script is running on a Windows NT system using the Win32::GetOSVersion() function?
+  manpageQuestion3: Can you provide an example of using the POSIX::uname() function to retrieve information about the operating system in a Perl script?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nThe new behavior provides a much more robust solution for checking\n       Winsock errors in portable software without accidentally matching POSIX\n       tests that were intended for other OSes and may have different meanings\n       for Winsock.\n\n       The old behavior is currently retained, warts and all, for backwards\n       compatibility, but users are encouraged to change any code that tests\n       $! against \"E*\" constants for Winsock errors to instead test $^E\n       against \"WSAE*\" constants.  After a suitable deprecation period, which\n       started with Perl 5.24, the old behavior may be removed, leaving $!\n       unchanged after Winsock function calls, to avoid any possible confusion\n       over which error variable to check.\n\n       Also see:\n\n       •   The djgpp environment for DOS, <http://www.delorie.com/djgpp/> and\n\t   perldos.\n\n       •   The EMX environment for DOS, OS/2, etc. emx@iaehv.nl,\n\t   <ftp://hobbes.nmsu.edu/pub/os2/dev/emx/>  Also perlos2.\n\n       •   Build instructions for Win32 in perlwin32, or under the Cygnus\n\t   environment in perlcygwin."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How does the perlport resource address compatibility issues between different operating systems?
+  manpageQuestion3: What is the significance of the change in behavior regarding Winsock error checking in perlport?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\n•   The \"Win32::*\" modules in Win32.\n\n       •   The ActiveState Pages, <https://www.activestate.com/>\n\n       •   The Cygwin environment for Win32; README.cygwin (installed as\n\t   perlcygwin), <https://www.cygwin.com/>\n\n       •   The U/WIN environment for Win32,\n\t   <http://www.research.att.com/sw/tools/uwin/>\n\n       •   Build instructions for OS/2, perlos2\n\n   VMS\n       Perl on VMS is discussed in perlvms in the Perl distribution.\n\n       The official name of VMS as of this writing is OpenVMS.\n\n       Interacting with Perl from the Digital Command Language (DCL) shell\n       often requires a different set of quotation marks than Unix shells do.\n       For example:\n\n\t   $ perl -e \"print \"\"Hello, world.\\n\"\"\"\n\t   Hello, world.\n\n       There are several ways to wrap your Perl scripts in DCL .COM files, if\n       you are so inclined.  For example:\n\n\t   $ write sys$output \"Hello from DCL!\"\n\t   $ if p1 .eqs. \"\"\n\t   $ then perl -x 'f$environment(\"PROCEDURE\")\n\t   $ else perl -x - 'p1 'p2 'p3 'p4 'p5 'p6 'p7 'p8\n\t   $ deck/dollars=\"__END__\"\n\t   #!/usr/bin/perl"
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How would you use perlport to configure Perl for a Windows environment using Cygwin?
+  manpageQuestion3: Can you provide an example of how to run a Perl script from the DCL shell on VMS?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nprint \"Hello from Perl!\\n\";\n\n\t   __END__\n\t   $ endif\n\n       Do take care with \"$ ASSIGN/nolog/user SYS$COMMAND: SYS$INPUT\" if your\n       Perl-in-DCL script expects to do things like \"$read = <STDIN>;\".\n\n       The VMS operating system has two filesystems, designated by their on-\n       disk structure (ODS) level: ODS-2 and its successor ODS-5.  The initial\n       port of Perl to VMS pre-dates ODS-5, but all current testing and\n       development assumes ODS-5 and its capabilities, including case\n       preservation, extended characters in filespecs, and names up to 8192\n       bytes long.\n\n       Perl on VMS can accept either VMS- or Unix-style file specifications as\n       in either of the following:\n\n\t   $ perl -ne \"print if /perl_setup/i\" SYS$LOGIN:LOGIN.COM\n\t   $ perl -ne \"print if /perl_setup/i\" /sys$login/login.com\n\n       but not a mixture of both as in:\n\n\t   $ perl -ne \"print if /perl_setup/i\" sys$login:/login.com\n\t   Can't open sys$login:/login.com: file specification syntax error"
+  manpageQuestion1: What is the primary purpose of the perlport tool?
+  manpageQuestion2: How would you use perlport to process a VMS-style file specification like SYS$LOGIN:LOGIN.COM?
+  manpageQuestion3: Can you provide an example of using perlport to handle a Unix-style file specification like /sys$login/login.com on VMS?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nIn general, the easiest path to portability is always to specify\n       filenames in Unix format unless they will need to be processed by\n       native commands or utilities.  Because of this latter consideration,\n       the File::Spec module by default returns native format specifications\n       regardless of input format.  This default may be reversed so that\n       filenames are always reported in Unix format by specifying the\n       \"DECC$FILENAME_UNIX_REPORT\" feature logical in the environment.\n\n       The file type, or extension, is always present in a VMS-format file\n       specification even if it's zero-length.\tThis means that, by default,\n       \"readdir\" will return a trailing dot on a file with no extension, so\n       where you would see \"a\" on Unix you'll see \"a.\" on VMS.\tHowever, the\n       trailing dot may be suppressed by enabling the\n       \"DECC$READDIR_DROPDOTNOTYPE\" feature in the environment (see the CRTL\n       documentation on feature logical names).\n\n       What \"\\n\" represents depends on the type of file opened.  It usually\n       represents \"\\012\" but it could also be \"\\015\", \"\\012\", \"\\015\\012\",\n       \"\\000\", \"\\040\", or nothing depending on the file organization and\n       record format.  The \"VMS::Stdio\" module provides access to the special\n       \"fopen()\" requirements of files with unusual attributes on VMS."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How would you configure Perl to always return filenames in Unix format regardless of the environment?
+  manpageQuestion3: What is the effect of enabling the 'DECC$READDIR_DROPDOTNOTYPE' feature in Perl's environment?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nThe value of $^O on OpenVMS is \"VMS\".  To determine the architecture\n       that you are running on refer to $Config{archname}.\n\n       On VMS, perl determines the UTC offset from the\n       \"SYS$TIMEZONE_DIFFERENTIAL\" logical name.  Although the VMS epoch began\n       at 17-NOV-1858 00:00:00.00, calls to \"localtime\" are adjusted to count\n       offsets from 01-JAN-1970 00:00:00.00, just like Unix.\n\n       Also see:\n\n       •   README.vms (installed as README_vms), perlvms\n\n       •   vmsperl list, vmsperl-subscribe@perl.org\n\n       •   vmsperl on the web, <http://www.sidhe.org/vmsperl/index.html>\n\n       •   VMS Software Inc. web site, <http://www.vmssoftware.com>\n\n   VOS\n       Perl on VOS (also known as OpenVOS) is discussed in README.vos in the\n       Perl distribution (installed as perlvos).  Perl on VOS can accept\n       either VOS- or Unix-style file specifications as in either of the\n       following:\n\n\t   $ perl -ne \"print if /perl_setup/i\" >system>notices\n\t   $ perl -ne \"print if /perl_setup/i\" /system/notices"
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you determine the architecture information for a Perl installation on VMS?
+  manpageQuestion3: What are the file specification conventions supported by Perl on VOS?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nor even a mixture of both as in:\n\n\t   $ perl -ne \"print if /perl_setup/i\" >system/notices\n\n       Even though VOS allows the slash character to appear in object names,\n       because the VOS port of Perl interprets it as a pathname delimiting\n       character, VOS files, directories, or links whose names contain a slash\n       character cannot be processed.  Such files must be renamed before they\n       can be processed by Perl.\n\n       Older releases of VOS (prior to OpenVOS Release 17.0) limit file names\n       to 32 or fewer characters, prohibit file names from starting with a \"-\"\n       character, and prohibit file names from containing \" \" (space) or any\n       character from the set \"!#%&'()*;<=>?\".\n\n       Newer releases of VOS (OpenVOS Release 17.0 or later) support a feature\n       known as extended names.  On these releases, file names can contain up\n       to 255 characters, are prohibited from starting with a \"-\" character,\n       and the set of prohibited characters is reduced to \"#%*<>?\".  There are\n       restrictions involving spaces and apostrophes:  these characters must\n       not begin or end a name, nor can they immediately precede or follow a\n       period.\tAdditionally, a space must not immediately precede another\n       space or hyphen.  Specifically, the following character combinations\n       are prohibited:\tspace-space, space-hyphen, period-space, space-period,\n       period-apostrophe, apostrophe-period, leading or trailing space, and\n       leading or trailing apostrophe.\tAlthough an extended file name is\n       limited to 255 characters, a path name is still limited to 256\n       characters."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How would you use perlport to process a file named 'my/file.txt' on VOS?
+  manpageQuestion3: What are the restrictions on file names in older versions of VOS when using Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nThe value of $^O on VOS is \"vos\".  To determine the architecture that\n       you are running on refer to $Config{archname}.\n\n       Also see:\n\n       •   README.vos (installed as perlvos)\n\n       •   The VOS mailing list.\n\n\t   There is no specific mailing list for Perl on VOS.  You can contact\n\t   the Stratus Technologies Customer Assistance Center (CAC) for your\n\t   region, or you can use the contact information located in the\n\t   distribution files on the Stratus Anonymous FTP site.\n\n       •   Stratus Technologies on the web at <http://www.stratus.com>\n\n       •   VOS Open-Source Software on the web at\n\t   <http://ftp.stratus.com/pub/vos/vos.html>\n\n   EBCDIC Platforms\n       v5.22 core Perl runs on z/OS (formerly OS/390).\tTheoretically it could\n       run on the successors of OS/400 on AS/400 minicomputers as well as\n       VM/ESA, and BS2000 for S/390 Mainframes.  Such computers use EBCDIC\n       character sets internally (usually Character Code Set ID 0037 for\n       OS/400 and either 1047 or POSIX-BC for S/390 systems)."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can I determine the architecture of my VOS system using perlport?
+  manpageQuestion3: What are the EBCDIC platforms that support core Perl versions 5.22 and earlier?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nThe rest of this section may need updating, but we don't know what it\n       should say.  Please submit comments to\n       <https://github.com/Perl/perl5/issues>.\n\n       On the mainframe Perl currently works under the \"Unix system services\n       for OS/390\" (formerly known as OpenEdition), VM/ESA OpenEdition, or the\n       BS200 POSIX-BC system (BS2000 is supported in Perl 5.6 and greater).\n       See perlos390 for details.  Note that for OS/400 there is also a port\n       of Perl 5.8.1/5.10.0 or later to the PASE which is ASCII-based (as\n       opposed to ILE which is EBCDIC-based), see perlos400.\n\n       As of R2.5 of USS for OS/390 and Version 2.3 of VM/ESA these Unix sub-\n       systems do not support the \"#!\" shebang trick for script invocation.\n       Hence, on OS/390 and VM/ESA Perl scripts can be executed with a header\n       similar to the following simple script:\n\n\t   : # use perl\n\t       eval 'exec /usr/local/bin/perl -S $0 ${1+\"$@\"}'\n\t\t   if 0;\n\t   #!/usr/local/bin/perl     # just a comment really"
+  manpageQuestion1: What is the primary purpose of the perlport tool?
+  manpageQuestion2: How would you use perlport to check compatibility of a Perl script with different operating systems?
+  manpageQuestion3: Can you provide an example of a Perl script that is compatible with OS/390 and VM/ESA systems?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nprint \"Hello from perl!\\n\";\n\n       OS/390 will support the \"#!\" shebang trick in release 2.8 and beyond.\n       Calls to \"system\" and backticks can use POSIX shell syntax on all S/390\n       systems.\n\n       On the AS/400, if PERL5 is in your library list, you may need to wrap\n       your Perl scripts in a CL procedure to invoke them like so:\n\n\t   BEGIN\n\t     CALL PGM(PERL5/PERL) PARM('/QOpenSys/hello.pl')\n\t   ENDPGM\n\n       This will invoke the Perl script hello.pl in the root of the QOpenSys\n       file system.  On the AS/400 calls to \"system\" or backticks must use CL\n       syntax.\n\n       On these platforms, bear in mind that the EBCDIC character set may have\n       an effect on what happens with some Perl functions (such as \"chr\",\n       \"pack\", \"print\", \"printf\", \"ord\", \"sort\", \"sprintf\", \"unpack\"), as well\n       as bit-fiddling with ASCII constants using operators like \"^\", \"&\" and\n       \"|\", not to mention dealing with socket interfaces to ASCII computers\n       (see \"Newlines\")."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How would you invoke a Perl script on an AS/400 system using the CL procedure as described in the manpage?
+  manpageQuestion3: What are some considerations when using Perl on EBCDIC systems like OS/390 or AS/400?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nFortunately, most web servers for the mainframe will correctly\n       translate the \"\\n\" in the following statement to its ASCII equivalent\n       (\"\\r\" is the same under both Unix and z/OS):\n\n\t   print \"Content-type: text/html\\r\\n\\r\\n\";\n\n       The values of $^O on some of these platforms include:\n\n\t   uname\t $^O\t    $Config{archname}\n\t   --------------------------------------------\n\t   OS/390\t os390\t    os390\n\t   OS400\t os400\t    os400\n\t   POSIX-BC\t posix-bc   BS2000-posix-bc\n\n       Some simple tricks for determining if you are running on an EBCDIC\n       platform could include any of the following (perhaps all):\n\n\t   if (\"\\t\" eq \"\\005\")\t{ print \"EBCDIC may be spoken here!\\n\"; }\n\n\t   if (ord('A') == 193) { print \"EBCDIC may be spoken here!\\n\"; }\n\n\t   if (chr(169) eq 'z') { print \"EBCDIC may be spoken here!\\n\"; }\n\n       One thing you may not want to rely on is the EBCDIC encoding of\n       punctuation characters since these may differ from code page to code\n       page (and once your module or script is rumoured to work with EBCDIC,\n       folks will want it to work with all EBCDIC character sets)."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you determine if a Perl script is running on an EBCDIC platform using the perlport resource?
+  manpageQuestion3: What are some of the values that $^O can take on mainframe operating systems according to the perlport manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nAlso see:\n\n       •   perlos390, perlos400, perlbs2000, perlebcdic.\n\n       •   The perl-mvs@perl.org list is for discussion of porting issues as\n\t   well as general usage issues for all EBCDIC Perls.  Send a message\n\t   body of \"subscribe perl-mvs\" to majordomo@perl.org.\n\n       •   AS/400 Perl information at <http://as400.rochester.ibm.com/> as\n\t   well as on CPAN in the ports/ directory.\n\n   Acorn RISC OS\n       Because Acorns use ASCII with newlines (\"\\n\") in text files as \"\\012\"\n       like Unix, and because Unix filename emulation is turned on by default,\n       most simple scripts will probably work \"out of the box\".  The native\n       filesystem is modular, and individual filesystems are free to be case-\n       sensitive or insensitive, and are usually case-preserving.  Some native\n       filesystems have name length limits, which file and directory names are\n       silently truncated to fit.  Scripts should be aware that the standard\n       filesystem currently has a name length limit of 10 characters, with up\n       to 77 items in a directory, but other filesystems may not impose such\n       limitations."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you find information about porting Perl to different operating systems?
+  manpageQuestion3: What are some recommendations for writing scripts that work across different operating systems when using Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nNative filenames are of the form\n\n\t   Filesystem#Special_Field::DiskName.$.Directory.Directory.File\n\n       where\n\n\t   Special_Field is not usually present, but may contain . and $ .\n\t   Filesystem =~ m|[A-Za-z0-9_]|\n\t   DsicName   =~ m|[A-Za-z0-9_/]|\n\t   $ represents the root directory\n\t   . is the path separator\n\t   @ is the current directory (per filesystem but machine global)\n\t   ^ is the parent directory\n\t   Directory and File =~ m|[^\\0- \"\\.\\$\\%\\&:\\@\\\\^\\|\\177]+|\n\n       The default filename translation is roughly \"tr|/.|./|\", swapping dots\n       and slashes.\n\n       Note that \"\"ADFS::HardDisk.$.File\" ne 'ADFS::HardDisk.$.File'\" and that\n       the second stage of \"$\" interpolation in regular expressions will fall\n       foul of the $. variable if scripts are not careful.\n\n       Logical paths specified by system variables containing comma-separated\n       search lists are also allowed; hence \"System:Modules\" is a valid\n       filename, and the filesystem will prefix \"Modules\" with each section of\n       \"System$Path\" until a name is made that points to an object on disk.\n       Writing to a new file \"System:Modules\" would be allowed only if\n       \"System$Path\" contains a single item list.  The filesystem will also\n       expand system variables in filenames if enclosed in angle brackets, so\n       \"<System$Dir>.Modules\" would look for the file\n       \"$ENV{'System$Dir'} . 'Modules'\".  The obvious implication of this is\n       that fully qualified filenames can start with \"<>\" and the three-\n       argument form of \"open\" should always be used."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you use perlport to handle filenames with special characters like $ and . in the Special_Field?
+  manpageQuestion3: Can you provide an example of using perlport to expand a system variable in a filename, such as converting "<System$Dir>.Modules" into an actual file path?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nBecause \".\" was in use as a directory separator and filenames could not\n       be assumed to be unique after 10 characters, Acorn implemented the C\n       compiler to strip the trailing \".c\" \".h\" \".s\" and \".o\" suffix from\n       filenames specified in source code and store the respective files in\n       subdirectories named after the suffix.  Hence files are translated:\n\n\t   foo.h\t   h.foo\n\t   C:foo.h\t   C:h.foo\t  (logical path variable)\n\t   sys/os.h\t   sys.h.os\t  (C compiler groks Unix-speak)\n\t   10charname.c    c.10charname\n\t   10charname.o    o.10charname\n\t   11charname_.c   c.11charname   (assuming filesystem truncates at 10)\n\n       The Unix emulation library's translation of filenames to native assumes\n       that this sort of translation is required, and it allows a user-defined\n       list of known suffixes that it will transpose in this fashion.  This\n       may seem transparent, but consider that with these rules foo/bar/baz.h\n       and foo/bar/h/baz both map to foo.bar.h.baz, and that \"readdir\" and\n       \"glob\" cannot and do not attempt to emulate the reverse mapping.  Other\n       \".\"'s in filenames are translated to \"/\"."
+  manpageQuestion1: What is the primary purpose of the perlport tool?
+  manpageQuestion2: How can you configure perlport to handle filenames with specific suffixes for translation?
+  manpageQuestion3: What is the behavior of perlport when translating filenames with multiple '.' characters?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nAs implied above, the environment accessed through %ENV is global, and\n       the convention is that program specific environment variables are of\n       the form \"Program$Name\".  Each filesystem maintains a current\n       directory, and the current filesystem's current directory is the global\n       current directory.  Consequently, sociable programs don't change the\n       current directory but rely on full pathnames, and programs (and\n       Makefiles) cannot assume that they can spawn a child process which can\n       change the current directory without affecting its parent (and everyone\n       else for that matter).\n\n       Because native operating system filehandles are global and are\n       currently allocated down from 255, with 0 being a reserved value, the\n       Unix emulation library emulates Unix filehandles.  Consequently, you\n       can't rely on passing \"STDIN\", \"STDOUT\", or \"STDERR\" to your children.\n\n       The desire of users to express filenames of the form \"<Foo$Dir>.Bar\" on\n       the command line unquoted causes problems, too: \"``\" command output\n       capture has to perform a guessing game.\tIt assumes that a string\n       \"<[^<>]+\\$[^<>]>\" is a reference to an environment variable, whereas\n       anything else involving \"<\" or \">\" is redirection, and generally\n       manages to be 99% right.  Of course, the problem remains that scripts\n       cannot rely on any Unix tools being available, or that any tools found\n       have Unix-like command line arguments."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How would you use perlport to handle environment variables with special characters like <Foo$Dir> in a command line?
+  manpageQuestion3: Can you provide an example of using perlport to manage filehandles when spawning a child process in Perl?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.
+
+
+
+    Manpage text:
+
+    Extensions and XS are, in theory, buildable by anyone using free tools.
+           In practice, many don't, as users of the Acorn platform are used to
+           binary distributions.  MakeMaker does run, but no available make
+           currently copes with MakeMaker's makefiles; even if and when this
+           should be fixed, the lack of a Unix-like shell will cause problems with
+           makefile rules, especially lines of the form "cd sdbm && make all", and
+           anything using quoting.
+
+           "RISC OS" is the proper name for the operating system, but the value in
+           $^O is "riscos" (because we don't like shouting).
+
+       Other perls
+           Perl has been ported to many platforms that do not fit into any of the
+           categories listed above.  Some, such as AmigaOS, QNX, Plan 9, and VOS,
+           have been well-integrated into the standard Perl source code kit.  You
+           may need to see the ports/ directory on CPAN for information, and
+           possibly binaries, for the likes of: aos, Atari ST, lynxos, riscos,
+           Novell Netware, Tandem Guardian, etc.  (Yes, we know that some of these
+           OSes may fall under the Unix category, but we are not a standards
+           body.)
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can one determine if a particular platform is supported by Perl ports?
+  manpageQuestion3: What are some examples of platforms where Perl has been well-integrated into the standard source code kit?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nSome approximate operating system names and their $^O values in the\n       \"OTHER\" category include:\n\n\t   OS\t\t $^O\t    $Config{archname}\n\t   ------------------------------------------\n\t   Amiga DOS\t amigaos    m68k-amigos\n\n       See also:\n\n       •   Amiga, README.amiga (installed as perlamiga).\n\n       •   A free perl5-based PERL.NLM for Novell Netware is available in\n\t   precompiled binary and source code form from\n\t   <http://www.novell.com/> as well as from CPAN.\n\n       •   Plan 9, README.plan9\n\nFUNCTION IMPLEMENTATIONS\n       Listed below are functions that are either completely unimplemented or\n       else have been implemented differently on various platforms.  Preceding\n       each description will be, in parentheses, a list of platforms that the\n       description applies to.\n\n       The list may well be incomplete, or even wrong in some places.  When in\n       doubt, consult the platform-specific README files in the Perl source\n       distribution, and any other documentation resources accompanying a\n       given port."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can one obtain a precompiled binary version of Perl for Novell Netware?
+  manpageQuestion3: What are some functions that may be unimplemented or have different implementations across various platforms according to the perlport manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nBe aware, moreover, that even among Unix-ish systems there are\n       variations.\n\n       For many functions, you can also query %Config, exported by default\n       from the \"Config\" module.  For example, to check whether the platform\n       has the \"lstat\" call, check $Config{d_lstat}.  See Config for a full\n       description of available variables.\n\n   Alphabetical Listing of Perl Functions\n       -X      (Win32) \"-w\" only inspects the read-only file attribute\n\t       (FILE_ATTRIBUTE_READONLY), which determines whether the\n\t       directory can be deleted, not whether it can be written to.\n\t       Directories always have read and write access unless denied by\n\t       discretionary access control lists (DACLs).\n\n\t       (VMS) \"-r\", \"-w\", \"-x\", and \"-o\" tell whether the file is\n\t       accessible, which may not reflect UIC-based file protections.\n\n\t       (RISC OS) \"-s\" by name on an open file will return the space\n\t       reserved on disk, rather than the current extent.  \"-s\" on an\n\t       open filehandle returns the current size."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you check if a Unix-like system has the 'lstat' function using perlport?
+  manpageQuestion3: What is the difference between using '-r' and '-w' on a file in a Windows environment according to perlport?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\n(Win32, VMS, RISC OS) \"-R\", \"-W\", \"-X\", \"-O\" are\n\t       indistinguishable from \"-r\", \"-w\", \"-x\", \"-o\".\n\n\t       (Win32, VMS, RISC OS) \"-g\", \"-k\", \"-l\", \"-u\", \"-A\" are not\n\t       particularly meaningful.\n\n\t       (Win32) \"-l\" returns true for both symlinks and directory\n\t       junctions.\n\n\t       (VMS, RISC OS) \"-p\" is not particularly meaningful.\n\n\t       (VMS) \"-d\" is true if passed a device spec without an explicit\n\t       directory.\n\n\t       (Win32) \"-x\" (or \"-X\") determine if a file ends in one of the\n\t       executable suffixes.  \"-S\" is meaningless.\n\n\t       (RISC OS) \"-x\" (or \"-X\") determine if a file has an executable\n\t       file type.\n\n       alarm   (Win32) Emulated using timers that must be explicitly polled\n\t       whenever Perl wants to dispatch \"safe signals\" and therefore\n\t       cannot interrupt blocking system calls.\n\n       atan2   (Tru64, HP-UX 10.20) Due to issues with various CPUs, math\n\t       libraries, compilers, and standards, results for \"atan2\" may\n\t       vary depending on any combination of the above.\tPerl attempts\n\t       to conform to the Open Group/IEEE standards for the results\n\t       returned from \"atan2\", but cannot force the issue if the system\n\t       Perl is run on does not allow it."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you use perlport to handle file path differences between different operating systems like Win32 and VMS?
+  manpageQuestion3: Can you explain how the -x flag behaves differently on Win32, VMS, and RISC OS when using perlport?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nThe current version of the standards for \"atan2\" is available\n\t       at\n\t       <http://www.opengroup.org/onlinepubs/009695399/functions/atan2.html>.\n\n       binmode (RISC OS) Meaningless.\n\n\t       (VMS) Reopens file and restores pointer; if function fails,\n\t       underlying filehandle may be closed, or pointer may be in a\n\t       different position.\n\n\t       (Win32) The value returned by \"tell\" may be affected after the\n\t       call, and the filehandle may be flushed.\n\n       chdir   (Win32) The current directory reported by the system may\n\t       include any symbolic links specified to chdir().\n\n       chmod   (Win32) Only good for changing \"owner\" read-write access;\n\t       \"group\" and \"other\" bits are meaningless.\n\n\t       (RISC OS) Only good for changing \"owner\" and \"other\" read-write\n\t       access.\n\n\t       (VOS) Access permissions are mapped onto VOS access-control\n\t       list changes.\n\n\t       (Cygwin) The actual permissions set depend on the value of the\n\t       \"CYGWIN\" variable in the SYSTEM environment settings."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How would you use perlport to handle file mode changes on a Win32 system?
+  manpageQuestion3: Can you provide an example of using perlport to manage directory changes on a RISC OS system?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\n(Android) Setting the exec bit on some locations (generally\n\t       /sdcard) will return true but not actually set the bit.\n\n\t       (VMS) A mode argument of zero sets permissions to the user's\n\t       default permission mask rather than disabling all permissions.\n\n       chown   (Plan 9, RISC OS) Not implemented.\n\n\t       (Win32) Does nothing, but won't fail.\n\n\t       (VOS) A little funky, because VOS's notion of ownership is a\n\t       little funky.\n\n       chroot  (Win32, VMS, Plan 9, RISC OS, VOS) Not implemented.\n\n       crypt   (Win32) May not be available if library or source was not\n\t       provided when building perl.\n\n\t       (Android) Not implemented.\n\n       dbmclose\n\t       (VMS, Plan 9, VOS) Not implemented.\n\n       dbmopen (VMS, Plan 9, VOS) Not implemented.\n\n       dump    (RISC OS) Not useful.\n\n\t       (Cygwin, Win32) Not supported.\n\n\t       (VMS) Invokes VMS debugger.\n\n       exec    (Win32) \"exec LIST\" without the use of indirect object syntax\n\t       (\"exec PROGRAM LIST\") may fall back to trying the shell if the\n\t       first \"spawn()\" fails."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How would you use the perlport resource to handle file permissions on Android?
+  manpageQuestion3: Can you provide an example of using the perlport resource to execute a program on Win32 systems?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nNote that the list form of exec() is emulated since the Win32\n\t       API CreateProcess() accepts a simple string rather than an\n\t       array of command-line arguments.  This may have security\n\t       implications for your code.\n\n\t       (SunOS, Solaris, HP-UX) Does not automatically flush output\n\t       handles on some platforms.\n\n       exit    (VMS) Emulates Unix \"exit\" (which considers \"exit 1\" to\n\t       indicate an error) by mapping the 1 to \"SS$_ABORT\" (44).  This\n\t       behavior may be overridden with the pragma \"use vmsish 'exit'\".\n\t       As with the CRTL's \"exit()\" function, \"exit 0\" is also mapped\n\t       to an exit status of \"SS$_NORMAL\" (1); this mapping cannot be\n\t       overridden.  Any other argument to \"exit\" is used directly as\n\t       Perl's exit status.  On VMS, unless the future POSIX_EXIT mode\n\t       is enabled, the exit code should always be a valid VMS exit\n\t       code and not a generic number.  When the POSIX_EXIT mode is\n\t       enabled, a generic number will be encoded in a method\n\t       compatible with the C library _POSIX_EXIT macro so that it can\n\t       be decoded by other programs, particularly ones written in C,\n\t       like the GNV package."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you configure Perl to emulate Unix exit behavior on VMS systems?
+  manpageQuestion3: What is the significance of the POSIX_EXIT mode when using the exit function on VMS?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\n(Solaris) \"exit\" resets file pointers, which is a problem when\n\t       called from a child process (created by \"fork\") in \"BEGIN\".  A\n\t       workaround is to use \"POSIX::_exit\".\n\n\t\t   exit unless $Config{archname} =~ /\\bsolaris\\b/;\n\t\t   require POSIX;\n\t\t   POSIX::_exit(0);\n\n       fcntl   (Win32) Not implemented.\n\n\t       (VMS) Some functions available based on the version of VMS.\n\n       flock   (VMS, RISC OS, VOS) Not implemented.\n\n       fork    (AmigaOS, RISC OS, VMS) Not implemented.\n\n\t       (Win32) Emulated using multiple interpreters.  See perlfork.\n\n\t       (SunOS, Solaris, HP-UX) Does not automatically flush output\n\t       handles on some platforms.\n\n       getlogin\n\t       (RISC OS) Not implemented.\n\n       getpgrp (Win32, VMS, RISC OS) Not implemented.\n\n       getppid (Win32, RISC OS) Not implemented.\n\n       getpriority\n\t       (Win32, VMS, RISC OS, VOS) Not implemented.\n\n       getpwnam\n\t       (Win32) Not implemented.\n\n\t       (RISC OS) Not useful.\n\n       getgrnam\n\t       (Win32, VMS, RISC OS) Not implemented."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you handle the issue of the 'exit' function resetting file pointers in a child process on Solaris?
+  manpageQuestion3: What are some of the operating systems where certain functions like 'fork' and 'flock' are not implemented in perlport?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\ngetnetbyname\n\t       (Android, Win32, Plan 9) Not implemented.\n\n       getpwuid\n\t       (Win32) Not implemented.\n\n\t       (RISC OS) Not useful.\n\n       getgrgid\n\t       (Win32, VMS, RISC OS) Not implemented.\n\n       getnetbyaddr\n\t       (Android, Win32, Plan 9) Not implemented.\n\n       getprotobynumber\n\t       (Android) Not implemented.\n\n       getpwent\n\t       (Android, Win32) Not implemented.\n\n       getgrent\n\t       (Android, Win32, VMS) Not implemented.\n\n       gethostbyname\n\t       (Irix 5) \"gethostbyname('localhost')\" does not work everywhere:\n\t       you may have to use \"gethostbyname('127.0.0.1')\".\n\n       gethostent\n\t       (Win32) Not implemented.\n\n       getnetent\n\t       (Android, Win32, Plan 9) Not implemented.\n\n       getprotoent\n\t       (Android, Win32, Plan 9) Not implemented.\n\n       getservent\n\t       (Win32, Plan 9) Not implemented.\n\n       seekdir (Android) Not implemented.\n\n       sethostent\n\t       (Android, Win32, Plan 9, RISC OS) Not implemented.\n\n       setnetent\n\t       (Win32, Plan 9, RISC OS) Not implemented."
+  manpageQuestion1: What is the primary purpose of the listed functions in the manpage?
+  manpageQuestion2: What is a common issue with using gethostbyname on Irix 5?
+  manpageQuestion3: Which functions are marked as 'Not implemented' across different operating systems?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nsetprotoent\n\t       (Android, Win32, Plan 9, RISC OS) Not implemented.\n\n       setservent\n\t       (Plan 9, Win32, RISC OS) Not implemented.\n\n       endpwent\n\t       (Win32) Not implemented.\n\n\t       (Android) Either not implemented or a no-op.\n\n       endgrent\n\t       (Android, RISC OS, VMS, Win32) Not implemented.\n\n       endhostent\n\t       (Android, Win32) Not implemented.\n\n       endnetent\n\t       (Android, Win32, Plan 9) Not implemented.\n\n       endprotoent\n\t       (Android, Win32, Plan 9) Not implemented.\n\n       endservent\n\t       (Plan 9, Win32) Not implemented.\n\n       getsockopt\n\t       (Plan 9) Not implemented.\n\n       glob    This operator is implemented via the \"File::Glob\" extension on\n\t       most platforms.\tSee File::Glob for portability information.\n\n       gmtime  In theory, \"gmtime\" is reliable from -2**63 to 2**63-1.\n\t       However, because work-arounds in the implementation use\n\t       floating point numbers, it will become inaccurate as the time\n\t       gets larger.  This is a bug and will be fixed in the future."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you use the glob operator in Perl on platforms where it is not natively implemented?
+  manpageQuestion3: What are the limitations of using the gmtime function in Perl for very large time values?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\n(VOS) Time values are 32-bit quantities.\n\n       ioctl   (VMS) Not implemented.\n\n\t       (Win32) Available only for socket handles, and it does what the\n\t       \"ioctlsocket()\" call in the Winsock API does.\n\n\t       (RISC OS) Available only for socket handles.\n\n       kill    (RISC OS) Not implemented, hence not useful for taint checking.\n\n\t       (Win32) \"kill\" doesn't send a signal to the identified process\n\t       like it does on Unix platforms.\tInstead \"kill($sig, $pid)\"\n\t       terminates the process identified by $pid, and makes it exit\n\t       immediately with exit status $sig.  As in Unix, if $sig is 0\n\t       and the specified process exists, it returns true without\n\t       actually terminating it.\n\n\t       (Win32) \"kill(-9, $pid)\" will terminate the process specified\n\t       by $pid and recursively all child processes owned by it.  This\n\t       is different from the Unix semantics, where the signal will be\n\t       delivered to all processes in the same process group as the\n\t       process specified by $pid."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you use the perlport resource to handle time values on different operating systems?
+  manpageQuestion3: Can you provide an example of using the perlport resource to manage process termination on Windows?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\n(VMS) A pid of -1 indicating all processes on the system is not\n\t       currently supported.\n\n       link    (RISC OS, VOS) Not implemented.\n\n\t       (AmigaOS) Link count not updated because hard links are not\n\t       quite that hard (They are sort of half-way between hard and\n\t       soft links).\n\n\t       (Win32) Hard links are implemented on Win32 under NTFS only.\n\t       They are natively supported on Windows 2000 and later.  On\n\t       Windows NT they are implemented using the Windows POSIX\n\t       subsystem support and the Perl process will need Administrator\n\t       or Backup Operator privileges to create hard links.\n\n\t       (VMS) Available on 64 bit OpenVMS 8.2 and later.\n\n       localtime\n\t       \"localtime\" has the same range as \"gmtime\", but because time\n\t       zone rules change, its accuracy for historical and future times\n\t       may degrade but usually by no more than an hour.\n\n       lstat   (RISC OS) Not implemented.\n\n\t       (Win32) Treats directory junctions as symlinks."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you use perlport to handle time zone differences when working with local and UTC times?
+  manpageQuestion3: What are the key system-specific differences in hard link behavior that perlport accounts for across different operating systems?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nmsgctl\n       msgget\n       msgsnd\n       msgrcv  (Android, Win32, VMS, Plan 9, RISC OS, VOS) Not implemented.\n\n       open    (RISC OS) Open modes \"|-\" and \"-|\" are unsupported.\n\n\t       (SunOS, Solaris, HP-UX) Opening a process does not\n\t       automatically flush output handles on some platforms.\n\n\t       (Win32) Both of modes \"|-\" and \"-|\" are supported, but the list\n\t       form is emulated since the Win32 API CreateProcess() accepts a\n\t       simple string rather than an array of arguments.  This may have\n\t       security implications for your code.\n\n       readlink\n\t       (VMS, RISC OS) Not implemented.\n\n\t       (Win32) readlink() on a directory junction returns the object\n\t       name, not a simple path.\n\n       rename  (Win32) Can't move directories between directories on different\n\t       logical volumes.\n\n       rewinddir\n\t       (Win32) Will not cause \"readdir\" to re-read the directory\n\t       stream.\tThe entries already read before the \"rewinddir\" call\n\t       will just be returned again from a cache buffer."
+  manpageQuestion1: What is the primary purpose of the msgctl, msgget, msgsnd, msgrcv functions in Unix-like systems?
+  manpageQuestion2: How does the behavior of the open function differ across different operating systems according to the manpage?
+  manpageQuestion3: What are the limitations or special behaviors of the rename function on Win32 systems as described in the manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nselect  (Win32, VMS) Only implemented on sockets.\n\n\t       (RISC OS) Only reliable on sockets.\n\n\t       Note that the \"select FILEHANDLE\" form is generally portable.\n\n       semctl\n       semget\n       semop   (Android, Win32, VMS, RISC OS) Not implemented.\n\n       setgrent\n\t       (Android, VMS, Win32, RISC OS) Not implemented.\n\n       setpgrp (Win32, VMS, RISC OS, VOS) Not implemented.\n\n       setpriority\n\t       (Win32, VMS, RISC OS, VOS) Not implemented.\n\n       setpwent\n\t       (Android, Win32, RISC OS) Not implemented.\n\n       setsockopt\n\t       (Plan 9) Not implemented.\n\n       shmctl\n       shmget\n       shmread\n       shmwrite\n\t       (Android, Win32, VMS, RISC OS) Not implemented.\n\n       sleep   (Win32) Emulated using synchronization functions such that it\n\t       can be interrupted by \"alarm\", and limited to a maximum of\n\t       4294967 seconds, approximately 49 days.\n\n       socketpair\n\t       (RISC OS) Not implemented.\n\n\t       (VMS) Available on 64 bit OpenVMS 8.2 and later."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you check if a particular system function is implemented on a given platform using perlport?
+  manpageQuestion3: Can you provide an example of how to use perlport to determine the availability of the 'socketpair' function on a specific operating system?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nstat    Platforms that do not have \"rdev\", \"blksize\", or \"blocks\" will\n\t       return these as '', so numeric comparison or manipulation of\n\t       these fields may cause 'not numeric' warnings.\n\n\t       (Mac OS X) \"ctime\" not supported on UFS.\n\n\t       (Win32) \"ctime\" is creation time instead of inode change time.\n\n\t       (VMS) \"dev\" and \"ino\" are not necessarily reliable.\n\n\t       (RISC OS) \"mtime\", \"atime\" and \"ctime\" all return the last\n\t       modification time.  \"dev\" and \"ino\" are not necessarily\n\t       reliable.\n\n\t       (OS/2) \"dev\", \"rdev\", \"blksize\", and \"blocks\" are not\n\t       available.  \"ino\" is not meaningful and will differ between\n\t       stat calls on the same file.\n\n\t       (Cygwin) Some versions of cygwin when doing a \"stat(\"foo\")\" and\n\t       not finding it may then attempt to \"stat(\"foo.exe\")\".\n\n       symlink (RISC OS) Not implemented.\n\n\t       (Win32) Requires either elevated permissions or developer mode\n\t       and a sufficiently recent version of Windows 10. You can check\n\t       whether the current process has the required privileges using\n\t       the Win32::IsSymlinkCreationAllowed() function."
+  manpageQuestion1: What is the primary purpose of the stat command in the context of file system operations?
+  manpageQuestion2: How can you check if a file is a symbolic link on Windows using the stat command?
+  manpageQuestion3: What are the platform-specific differences in the behavior of the stat command when used on different operating systems?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nSince Windows needs to know whether the target is a directory\n\t       or not when creating the link the target Perl will only create\n\t       the link as a directory link when the target exists and is a\n\t       directory.\n\n\t       (VMS) Implemented on 64 bit VMS 8.3.  VMS requires the symbolic\n\t       link to be in Unix syntax if it is intended to resolve to a\n\t       valid path.\n\n       syscall (Win32, VMS, RISC OS, VOS) Not implemented.\n\n       sysopen (Mac OS, OS/390) The traditional 0, 1, and 2 MODEs are\n\t       implemented with different numeric values on some systems.  The\n\t       flags exported by \"Fcntl\" (\"O_RDONLY\", \"O_WRONLY\", \"O_RDWR\")\n\t       should work everywhere though.\n\n       system  (Win32) As an optimization, may not call the command shell\n\t       specified in $ENV{PERL5SHELL}.  \"system(1, @args)\" spawns an\n\t       external process and immediately returns its process\n\t       designator, without waiting for it to terminate.  Return value\n\t       may be used subsequently in \"wait\" or \"waitpid\".  Failure to\n\t       \"spawn()\" a subprocess is indicated by setting $? to \"255 <<\n\t       8\".  $? is set in a way compatible with Unix (i.e. the exit\n\t       status of the subprocess is obtained by \"$? >> 8\", as described\n\t       in the documentation)."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you use perlport to handle file operations on different operating systems?
+  manpageQuestion3: What are the common system calls and their behaviors across different platforms as described in the perlport manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nNote that the list form of system() is emulated since the Win32\n\t       API CreateProcess() accepts a simple string rather than an\n\t       array of command-line arguments.  This may have security\n\t       implications for your code.\n\n\t       (RISC OS) There is no shell to process metacharacters, and the\n\t       native standard is to pass a command line terminated by \"\\n\"\n\t       \"\\r\" or \"\\0\" to the spawned program.  Redirection such as \">\n\t       foo\" is performed (if at all) by the run time library of the\n\t       spawned program.  \"system LIST\" will call the Unix emulation\n\t       library's \"exec\" emulation, which attempts to provide emulation\n\t       of the stdin, stdout, stderr in force in the parent, provided\n\t       the child program uses a compatible version of the emulation\n\t       library.  \"system SCALAR\" will call the native command line\n\t       directly and no such emulation of a child Unix program will\n\t       occur.  Mileage will vary.\n\n\t       (Win32) \"system LIST\" without the use of indirect object syntax\n\t       (\"system PROGRAM LIST\") may fall back to trying the shell if\n\t       the first \"spawn()\" fails."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How does the perlport resource handle system command execution on different operating systems like Windows and RISC OS?
+  manpageQuestion3: What are the differences in behavior between using 'system LIST' and 'system SCALAR' in perlport when executing commands on various platforms?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\n(SunOS, Solaris, HP-UX) Does not automatically flush output\n\t       handles on some platforms.\n\n\t       (VMS) As with Win32, \"system(1, @args)\" spawns an external\n\t       process and immediately returns its process designator without\n\t       waiting for the process to terminate.  In this case the return\n\t       value may be used subsequently in \"wait\" or \"waitpid\".\n\t       Otherwise the return value is POSIX-like (shifted up by 8\n\t       bits), which only allows room for a made-up value derived from\n\t       the severity bits of the native 32-bit condition code (unless\n\t       overridden by \"use vmsish 'status'\").  If the native condition\n\t       code is one that has a POSIX value encoded, the POSIX value\n\t       will be decoded to extract the expected exit value.  For more\n\t       details see \"$?\" in perlvms.\n\n       telldir (Android) Not implemented.\n\n       times   (Win32) \"Cumulative\" times will be bogus.  On anything other\n\t       than Windows NT or Windows 2000, \"system\" time will be bogus,\n\t       and \"user\" time is actually the time returned by the \"clock()\"\n\t       function in the C runtime library."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How does perlport handle system calls on different operating systems such as VMS and Win32?
+  manpageQuestion3: What are the implications of using perlport on Android for the telldir function?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\n(RISC OS) Not useful.\n\n       truncate\n\t       (Older versions of VMS) Not implemented.\n\n\t       (VOS) Truncation to same-or-shorter lengths only.\n\n\t       (Win32) If a FILEHANDLE is supplied, it must be writable and\n\t       opened in append mode (i.e., use \"open(my $fh, '>>',\n\t       'filename')\" or \"sysopen(my $fh, ..., O_APPEND|O_RDWR)\".  If a\n\t       filename is supplied, it should not be held open elsewhere.\n\n       umask   Returns \"undef\" where unavailable.\n\n\t       (AmigaOS) \"umask\" works but the correct permissions are set\n\t       only when the file is finally closed.\n\n       utime   (VMS, RISC OS) Only the modification time is updated.\n\n\t       (Win32) May not behave as expected.  Behavior depends on the C\n\t       runtime library's implementation of \"utime()\", and the\n\t       filesystem being used.  The FAT filesystem typically does not\n\t       support an \"access time\" field, and it may limit timestamps to\n\t       a granularity of two seconds.\n\n       wait\n       waitpid (Win32) Can only be applied to process handles returned for\n\t       processes spawned using \"system(1, ...)\" or pseudo processes\n\t       created with \"fork\"."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can you use perlport to handle file truncation on Win32 systems?
+  manpageQuestion3: What are the limitations of using the umask function in perlport on AmigaOS?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\n(RISC OS) Not useful.\n\nSupported Platforms\n       The following platforms are known to build Perl 5.12 (as of April 2010,\n       its release date) from the standard source code distribution available\n       at <http://www.cpan.org/src>\n\n       Linux (x86, ARM, IA64)\n       HP-UX\n       AIX\n       Win32\n\t   Windows 2000\n\t   Windows XP\n\t   Windows Server 2003\n\t   Windows Vista\n\t   Windows Server 2008\n\t   Windows 7\n       Cygwin\n\t   Some tests are known to fail:\n\n\t   •   ext/XS-APItest/t/call_checker.t - see\n\t       <https://github.com/Perl/perl5/issues/10750>\n\n\t   •   dist/I18N-Collate/t/I18N-Collate.t\n\n\t   •   ext/Win32CORE/t/win32core.t - may fail on recent cygwin\n\t       installs.\n\n       Solaris (x86, SPARC)\n       OpenVMS\n\t   Alpha (7.2 and later)\n\t   I64 (8.2 and later)\n       NetBSD\n       FreeBSD\n       Debian GNU/kFreeBSD\n       Haiku\n       Irix (6.5. What else?)\n       OpenBSD\n       Dragonfly BSD\n       Midnight BSD\n       QNX Neutrino RTOS (6.5.0)\n       MirOS BSD\n       Stratus OpenVOS (17.0 or later)\n\t   Caveats:"
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: Which platforms are known to be supported for building Perl 5.12 from source?
+  manpageQuestion3: What are some of the known issues or caveats when using perlport on certain platforms?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\ntime_t issues that may or may not be fixed\n       Stratus VOS / OpenVOS\n       AIX\n       Android\n       FreeMINT\n\t   Perl now builds with FreeMiNT/Atari. It fails a few tests, that\n\t   needs some investigation.\n\n\t   The FreeMiNT port uses GNU dld for loadable module capabilities. So\n\t   ensure you have that library installed when building perl.\n\nEOL Platforms\n   (Perl 5.20)\n       The following platforms were supported by a previous version of Perl\n       but have been officially removed from Perl's source code as of 5.20:\n\n       AT&T 3b1\n\n   (Perl 5.14)\n       The following platforms were supported up to 5.10.  They may still have\n       worked in 5.12, but supporting code has been removed for 5.14:\n\n       Windows 95\n       Windows 98\n       Windows ME\n       Windows NT4\n\n   (Perl 5.12)\n       The following platforms were supported by a previous version of Perl\n       but have been officially removed from Perl's source code as of 5.12:\n\n       Atari MiNT\n       Apollo Domain/OS\n       Apple Mac OS 8/9\n       Tenon Machten"
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How would you check for time_t issues related to specific operating systems when using perlport?
+  manpageQuestion3: Can you provide an example of how to determine which platforms have been officially removed from Perl's source code as of a specific version?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nSupported Platforms (Perl 5.8)\n       As of July 2002 (the Perl release 5.8.0), the following platforms were\n       able to build Perl from the standard source code distribution available\n       at <http://www.cpan.org/src/>\n\n\t       AIX\n\t       BeOS\n\t       BSD/OS\t       (BSDi)\n\t       Cygwin\n\t       DG/UX\n\t       DOS DJGPP       1)\n\t       DYNIX/ptx\n\t       EPOC R5\n\t       FreeBSD\n\t       HI-UXMPP        (Hitachi) (5.8.0 worked but we didn't know it)\n\t       HP-UX\n\t       IRIX\n\t       Linux\n\t       Mac OS Classic\n\t       Mac OS X        (Darwin)\n\t       MPE/iX\n\t       NetBSD\n\t       NetWare\n\t       NonStop-UX\n\t       ReliantUNIX     (formerly SINIX)\n\t       OpenBSD\n\t       OpenVMS\t       (formerly VMS)\n\t       Open UNIX       (Unixware) (since Perl 5.8.1/5.9.0)\n\t       OS/2\n\t       OS/400\t       (using the PASE) (since Perl 5.8.1/5.9.0)\n\t       POSIX-BC        (formerly BS2000)\n\t       QNX\n\t       Solaris\n\t       SunOS 4\n\t       SUPER-UX        (NEC)\n\t       Tru64 UNIX      (formerly DEC OSF/1, Digital UNIX)\n\t       UNICOS\n\t       UNICOS/mk\n\t       UTS\n\t       VOS / OpenVOS\n\t       Win95/98/ME/2K/XP 2)\n\t       WinCE\n\t       z/OS\t       (formerly OS/390)\n\t       VM/ESA"
+  manpageQuestion1: What is the primary purpose of the perlport tool?
+  manpageQuestion2: How would you use perlport to check if Perl 5.8 can be built on a Mac OS X system?
+  manpageQuestion3: Can you provide an example of using perlport to verify the compatibility of Perl 5.8 with a specific platform like Linux?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\n1) in DOS mode either the DOS or OS/2 ports can be used\n\t       2) compilers: Borland, MinGW (GCC), VC6\n\n       The following platforms worked with the previous releases (5.6 and\n       5.7), but we did not manage either to fix or to test these in time for\n       the 5.8.0 release.  There is a very good chance that many of these will\n       work fine with the 5.8.0.\n\n\t       BSD/OS\n\t       DomainOS\n\t       Hurd\n\t       LynxOS\n\t       MachTen\n\t       PowerMAX\n\t       SCO SV\n\t       SVR4\n\t       Unixware\n\t       Windows 3.1\n\n       Known to be broken for 5.8.0 (but 5.6.1 and 5.7.2 can be used):\n\n\t       AmigaOS 3\n\n       The following platforms have been known to build Perl from source in\n       the past (5.005_03 and earlier), but we haven't been able to verify\n       their status for the current release, either because the\n       hardware/software platforms are rare or because we don't have an active\n       champion on these platforms--or both.  They used to work, though, so go\n       ahead and try compiling them, and let\n       <https://github.com/Perl/perl5/issues> know of any trouble."
+  manpageQuestion1: What is the primary purpose of the perlport tool?
+  manpageQuestion2: How can one determine which platforms are supported for the current Perl 5.8.0 release?
+  manpageQuestion3: What is the status of AmigaOS 3 for Perl 5.8.0?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\n3b1\n\t       A/UX\n\t       ConvexOS\n\t       CX/UX\n\t       DC/OSx\n\t       DDE SMES\n\t       DOS EMX\n\t       Dynix\n\t       EP/IX\n\t       ESIX\n\t       FPS\n\t       GENIX\n\t       Greenhills\n\t       ISC\n\t       MachTen 68k\n\t       MPC\n\t       NEWS-OS\n\t       NextSTEP\n\t       OpenSTEP\n\t       Opus\n\t       Plan 9\n\t       RISC/os\n\t       SCO ODT/OSR\n\t       Stellar\n\t       SVR2\n\t       TI1500\n\t       TitanOS\n\t       Ultrix\n\t       Unisys Dynix\n\n       The following platforms have their own source code distributions and\n       binaries available via <http://www.cpan.org/ports/>\n\n\t\t\t\t       Perl release\n\n\t       OS/400 (ILE)\t       5.005_02\n\t       Tandem Guardian\t       5.004\n\n       The following platforms have only binaries available via\n       <http://www.cpan.org/ports/index.html> :\n\n\t\t\t\t       Perl release\n\n\t       Acorn RISCOS\t       5.005_02\n\t       AOS\t\t       5.002\n\t       LynxOS\t\t       5.004_02\n\n       Although we do suggest that you always build your own Perl from the\n       source code, both for maximal configurability and for security, in case\n       you are in a hurry you can check <http://www.cpan.org/ports/index.html>\n       for binary distributions."
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can I find binary distributions of Perl for specific platforms using perlport?
+  manpageQuestion3: What is the recommended approach for obtaining Perl distributions for different platforms according to the perlport documentation?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.
+
+
+
+    Manpage text:
+
+    SEE ALSO
+           perlaix, perlamiga, perlbs2000, perlcygwin, perldos, perlebcdic,
+           perlfreebsd, perlhurd, perlhpux, perlirix, perlmacos, perlmacosx,
+           perlnetware, perlos2, perlos390, perlos400, perlplan9, perlqnx,
+           perlsolaris, perltru64, perlunicode, perlvms, perlvos, perlwin32, and
+           Win32.
+
+    AUTHORS / CONTRIBUTORS
+           Abigail <abigail@abigail.be>, Charles Bailey <bailey@newman.upenn.edu>,
+           Graham Barr <gbarr@pobox.com>, Tom Christiansen <tchrist@perl.com>,
+           Nicholas Clark <nick@ccl4.org>, Thomas Dorner <Thomas.Dorner@start.de>,
+           Andy Dougherty <doughera@lafayette.edu>, Dominic Dunlop
+           <domo@computer.org>, Neale Ferguson <neale@vma.tabnsw.com.au>, David J.
+           Fiander <davidf@mks.com>, Paul Green <Paul.Green@stratus.com>, M.J.T.
+           Guy <mjtg@cam.ac.uk>, Jarkko Hietaniemi <jhi@iki.fi>, Luther Huffman
+           <lutherh@stratcom.com>, Nick Ing-Simmons <nick@ing-simmons.net>,
+           Andreas J. Koenig <a.koenig@mind.de>, Markus Laker
+           <mlaker@contax.co.uk>, Andrew M. Langmead <aml@world.std.com>, Lukas
+           Mai <l.mai@web.de>, Larry Moore <ljmoore@freespace.net>, Paul Moore
+           <Paul.Moore@uk.origin-it.com>, Chris Nandor <pudge@pobox.com>, Matthias
+           Neeracher <neeracher@mac.com>, Philip Newton <pne@cpan.org>, Gary Ng
+           <71564.1743@CompuServe.COM>, Tom Phoenix <rootbeer@teleport.com>, Andre
+           Pirard <A.Pirard@ulg.ac.be>, Peter Prymmer <pvhp@forte.com>, Hugo van
+           der Sanden <hv@crypt0.demon.co.uk>, Gurusamy Sarathy
+           <gsar@activestate.com>, Paul J. Schinder <schinder@pobox.com>, Michael
+           G Schwern <schwern@pobox.com>, Dan Sugalski <dan@sidhe.org>, Nathan
+           Torkington <gnat@frii.com>, John Malmberg <wb8tyw@qsl.net>
+  manpageQuestion1: What is the primary purpose of the perlport resource?
+  manpageQuestion2: How can perlport be used to check compatibility with different operating systems?
+  manpageQuestion3: Can you explain how perlport helps in porting Perl to various platforms?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlport`.\n\n\n\nManpage text:\n\nperl v5.34.1\t\t\t  2022-02-19\t\t\t   PERLPORT(1)"
+  manpageQuestion1: What is the primary purpose of the perlport command?
+  manpageQuestion2: How would you use perlport to check if a specific Perl version is supported on your system?
+  manpageQuestion3: Can you provide an example of using perlport to determine the compatibility of a Perl module with a particular version of Perl?
+

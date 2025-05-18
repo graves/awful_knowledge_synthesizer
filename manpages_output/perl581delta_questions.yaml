@@ -1,0 +1,484 @@
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.
+
+
+
+    Manpage text:
+
+    PERL581DELTA(1)        Perl Programmers Reference Guide        PERL581DELTA(1)
+  manpageQuestion1: What is the primary purpose of the perl581delta tool?
+  manpageQuestion2: How would you use perl581delta to compare the output of Perl 5.8.1 with a newer version?
+  manpageQuestion3: Can you provide an example of using perl581delta to test compatibility between Perl 5.8.1 and a newer version?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.\n\n\n\nManpage text:\n\nNAME\n       perl581delta - what is new for perl v5.8.1\n\nDESCRIPTION\n       This document describes differences between the 5.8.0 release and the\n       5.8.1 release.\n\n       If you are upgrading from an earlier release such as 5.6.1, first read\n       the perl58delta, which describes differences between 5.6.0 and 5.8.0.\n\n       In case you are wondering about 5.6.1, it was bug-fix-wise rather\n       identical to the development release 5.7.1.  Confused?  This timeline\n       hopefully helps a bit: it lists the new major releases, their\n       maintenance releases, and the development releases.\n\n\t\t New\t Maintenance  Development\n\n\t\t 5.6.0\t\t\t\t   2000-Mar-22\n\t\t\t\t      5.7.0\t   2000-Sep-02\n\t\t\t 5.6.1\t\t\t   2001-Apr-08\n\t\t\t\t      5.7.1\t   2001-Apr-09\n\t\t\t\t      5.7.2\t   2001-Jul-13\n\t\t\t\t      5.7.3\t   2002-Mar-05\n\t\t 5.8.0\t\t\t\t   2002-Jul-18\n\t\t\t 5.8.1\t\t\t   2003-Sep-25\n\nIncompatible Changes\n   Hash Randomisation\n       Mainly due to security reasons, the \"random ordering\" of hashes has\n       been made even more random.  Previously while the order of hash\n       elements from keys(), values(), and each() was essentially random, it\n       was still repeatable.  Now, however, the order varies between different\n       runs of Perl."
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How can a user determine if they need to upgrade from Perl 5.8.0 to 5.8.1?
+  manpageQuestion3: What is a significant change in Perl 5.8.1 that affects hash behavior?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.\n\n\n\nManpage text:\n\nPerl has never guaranteed any ordering of the hash keys, and the\n       ordering has already changed several times during the lifetime of Perl\n       5.  Also, the ordering of hash keys has always been, and continues to\n       be, affected by the insertion order.\n\n       The added randomness may affect applications.\n\n       One possible scenario is when output of an application has included\n       hash data.  For example, if you have used the Data::Dumper module to\n       dump data into different files, and then compared the files to see\n       whether the data has changed, now you will have false positives since\n       the order in which hashes are dumped will vary.\tIn general the cure is\n       to sort the keys (or the values); in particular for Data::Dumper to use\n       the \"Sortkeys\" option.  If some particular order is really important,\n       use tied hashes: for example the Tie::IxHash module which by default\n       preserves the order in which the hash elements were added.\n\n       More subtle problem is reliance on the order of \"global destruction\".\n       That is what happens at the end of execution: Perl destroys all data\n       structures, including user data.  If your destructors (the DESTROY\n       subroutines) have assumed any particular ordering to the global\n       destruction, there might be problems ahead.  For example, in a\n       destructor of one object you cannot assume that objects of any other\n       class are still available, unless you hold a reference to them.\tIf the\n       environment variable PERL_DESTRUCT_LEVEL is set to a non-zero value, or\n       if Perl is exiting a spawned thread, it will also destruct the ordinary\n       references and the symbol tables that are no longer in use.  You can't\n       call a class method or an ordinary function on a class that has been\n       collected that way."
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How can you ensure consistent hash key ordering in Perl when using the Data::Dumper module?
+  manpageQuestion3: What are potential issues related to the order of global destruction in Perl and how can they be addressed?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.
+
+
+
+    Manpage text:
+
+    The hash randomisation is certain to reveal hidden assumptions about
+           some particular ordering of hash elements, and outright bugs: it
+           revealed a few bugs in the Perl core and core modules.
+
+           To disable the hash randomisation in runtime, set the environment
+           variable PERL_HASH_SEED to 0 (zero) before running Perl (for more
+           information see "PERL_HASH_SEED" in perlrun), or to disable the feature
+           completely in compile time, compile with "-DNO_HASH_SEED" (see
+           INSTALL).
+
+           See "Algorithmic Complexity Attacks" in perlsec for the original
+           rationale behind this change.
+
+       UTF-8 On Filehandles No Longer Activated By Locale
+           In Perl 5.8.0 all filehandles, including the standard filehandles, were
+           implicitly set to be in Unicode UTF-8 if the locale settings indicated
+           the use of UTF-8.  This feature caused too many problems, so the
+           feature was turned off and redesigned: see "Core Enhancements".
+
+       Single-number v-strings are no longer v-strings before "=>"
+           The version strings or v-strings (see "Version Strings" in perldata)
+           feature introduced in Perl 5.6.0 has been a source of some confusion--
+           especially when the user did not want to use it, but Perl thought it
+           knew better.  Especially troublesome has been the feature that before a
+           "=>" a version string (a "v" followed by digits) has been interpreted
+           as a v-string instead of a string literal.  In other words:
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How can you disable hash randomisation in Perl 5.8.1 delta?
+  manpageQuestion3: What change was made to the handling of version strings in Perl 5.8.1 delta?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.\n\n\n\nManpage text:\n\n%h = ( v65 => 42 );\n\n       has meant since Perl 5.6.0\n\n\t       %h = ( 'A' => 42 );\n\n       (at least in platforms of ASCII progeny)  Perl 5.8.1 restores the more\n       natural interpretation\n\n\t       %h = ( 'v65' => 42 );\n\n       The multi-number v-strings like v65.66 and 65.66.67 still continue to\n       be v-strings in Perl 5.8.\n\n   (Win32) The -C Switch Has Been Repurposed\n       The -C switch has changed in an incompatible way.  The old semantics of\n       this switch only made sense in Win32 and only in the \"use utf8\"\n       universe in 5.6.x releases, and do not make sense for the Unicode\n       implementation in 5.8.0.  Since this switch could not have been used by\n       anyone, it has been repurposed.\tThe behavior that this switch enabled\n       in 5.6.x releases may be supported in a transparent, data-dependent\n       fashion in a future release.\n\n       For the new life of this switch, see \"UTF-8 no longer default under\n       UTF-8 locales\", and \"-C\" in perlrun.\n\n   (Win32) The /d Switch Of cmd.exe\n       Perl 5.8.1 uses the /d switch when running the cmd.exe shell internally\n       for system(), backticks, and when opening pipes to external programs.\n       The extra switch disables the execution of AutoRun commands from the\n       registry, which is generally considered undesirable when running\n       external programs.  If you wish to retain compatibility with the older\n       behavior, set PERL5SHELL in your environment to \"cmd /x/c\"."
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How can you repurpose the -C switch in Perl 5.8.1 for Win32 platforms?
+  manpageQuestion3: Can you explain how Perl 5.8.1 handles the /d switch when running cmd.exe internally?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.\n\n\n\nManpage text:\n\nCore Enhancements\n   UTF-8 no longer default under UTF-8 locales\n       In Perl 5.8.0 many Unicode features were introduced.   One of them was\n       found to be of more nuisance than benefit: the automagic (and silent)\n       \"UTF-8-ification\" of filehandles, including the standard filehandles,\n       if the user's locale settings indicated use of UTF-8.\n\n       For example, if you had \"en_US.UTF-8\" as your locale, your STDIN and\n       STDOUT were automatically \"UTF-8\", in other words an implicit\n       binmode(..., \":utf8\") was made.\tThis meant that trying to print, say,\n       chr(0xff), ended up printing the bytes 0xc3 0xbf.  Hardly what you had\n       in mind unless you were aware of this feature of Perl 5.8.0.  The\n       problem is that the vast majority of people weren't: for example in\n       RedHat releases 8 and 9 the default locale setting is UTF-8, so all\n       RedHat users got UTF-8 filehandles, whether they wanted it or not.  The\n       pain was intensified by the Unicode implementation of Perl 5.8.0\n       (still) having nasty bugs, especially related to the use of s/// and\n       tr///.  (Bugs that have been fixed in 5.8.1)"
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How would you use perl581delta to address the issue of implicit UTF-8 processing in Perl 5.8.0?
+  manpageQuestion3: Can you provide an example of how perl581delta helps in avoiding unintended UTF-8 conversion when working with filehandles in Perl 5.8.0?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.
+
+
+
+    Manpage text:
+
+    Therefore a decision was made to backtrack the feature and change it
+           from implicit silent default to explicit conscious option.  The new
+           Perl command line option "-C" and its counterpart environment variable
+           PERL_UNICODE can now be used to control how Perl and Unicode interact
+           at interfaces like I/O and for example the command line arguments.  See
+           "-C" in perlrun and "PERL_UNICODE" in perlrun for more information.
+
+       Unsafe signals again available
+           In Perl 5.8.0 the so-called "safe signals" were introduced.  This means
+           that Perl no longer handles signals immediately but instead "between
+           opcodes", when it is safe to do so.  The earlier immediate handling
+           easily could corrupt the internal state of Perl, resulting in
+           mysterious crashes.
+
+           However, the new safer model has its problems too.  Because now an
+           opcode, a basic unit of Perl execution, is never interrupted but
+           instead let to run to completion, certain operations that can take a
+           long time now really do take a long time.  For example, certain network
+           operations have their own blocking and timeout mechanisms, and being
+           able to interrupt them immediately would be nice.
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How can you control Perl's interaction with Unicode using the perl581delta resource?
+  manpageQuestion3: What are the implications of using safe signals in Perl 5.8.0 according to the manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.\n\n\n\nManpage text:\n\nTherefore perl 5.8.1 introduces a \"backdoor\" to restore the pre-5.8.0\n       (pre-5.7.3, really) signal behaviour.  Just set the environment\n       variable PERL_SIGNALS to \"unsafe\", and the old immediate (and unsafe)\n       signal handling behaviour returns.  See \"PERL_SIGNALS\" in perlrun and\n       \"Deferred Signals (Safe Signals)\" in perlipc.\n\n       In completely unrelated news, you can now use safe signals with\n       POSIX::SigAction.  See \"POSIX::SigAction\" in POSIX.\n\n   Tied Arrays with Negative Array Indices\n       Formerly, the indices passed to \"FETCH\", \"STORE\", \"EXISTS\", and\n       \"DELETE\" methods in tied array class were always non-negative.  If the\n       actual argument was negative, Perl would call FETCHSIZE implicitly and\n       add the result to the index before passing the result to the tied array\n       method.\tThis behaviour is now optional.  If the tied array class\n       contains a package variable named $NEGATIVE_INDICES which is set to a\n       true value, negative values will be passed to \"FETCH\", \"STORE\",\n       \"EXISTS\", and \"DELETE\" unchanged."
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How can you configure Perl 5.8.1 to restore the pre-5.8.0 signal handling behavior?
+  manpageQuestion3: What is the effect of setting the $NEGATIVE_INDICES package variable in a tied array class?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.\n\n\n\nManpage text:\n\nlocal ${$x}\n       The syntaxes\n\n\t       local ${$x}\n\t       local @{$x}\n\t       local %{$x}\n\n       now do localise variables, given that the $x is a valid variable name.\n\n   Unicode Character Database 4.0.0\n       The copy of the Unicode Character Database included in Perl 5.8 has\n       been updated to 4.0.0 from 3.2.0.  This means for example that the\n       Unicode character properties are as in Unicode 4.0.0.\n\n   Deprecation Warnings\n       There is one new feature deprecation.  Perl 5.8.0 forgot to add some\n       deprecation warnings, these warnings have now been added.  Finally, a\n       reminder of an impending feature removal.\n\n       (Reminder) Pseudo-hashes are deprecated (really)\n\n       Pseudo-hashes were deprecated in Perl 5.8.0 and will be removed in Perl\n       5.10.0, see perl58delta for details.  Each attempt to access pseudo-\n       hashes will trigger the warning \"Pseudo-hashes are deprecated\".\tIf you\n       really want to continue using pseudo-hashes but not to see the\n       deprecation warnings, use:"
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How would you use the perl581delta tool to update the Unicode Character Database to version 4.0.0?
+  manpageQuestion3: Can you provide an example of using perl581delta to suppress deprecation warnings for pseudo-hashes in Perl 5.8?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.\n\n\n\nManpage text:\n\nno warnings 'deprecated';\n\n       Or you can continue to use the fields pragma, but please don't expect\n       the data structures to be pseudohashes any more.\n\n       (Reminder) 5.005-style threads are deprecated (really)\n\n       5.005-style threads (activated by \"use Thread;\") were deprecated in\n       Perl 5.8.0 and will be removed after Perl 5.8, see perl58delta for\n       details.  Each 5.005-style thread creation will trigger the warning\n       \"5.005 threads are deprecated\".\tIf you really want to continue using\n       the 5.005 threads but not to see the deprecation warnings, use:\n\n\t   no warnings 'deprecated';\n\n       (Reminder) The $* variable is deprecated (really)\n\n       The $* variable controlling multi-line matching has been deprecated and\n       will be removed after 5.8.  The variable has been deprecated for a long\n       time, and a deprecation warning \"Use of $* is deprecated\" is given, now\n       the variable will just finally be removed.  The functionality has been\n       supplanted by the \"/s\" and \"/m\" modifiers on pattern matching.  If you\n       really want to continue using the $*-variable but not to see the\n       deprecation warnings, use:"
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How can you suppress deprecation warnings when using 5.005-style threads in Perl?
+  manpageQuestion3: What is the deprecation status of the $* variable in Perl 5.8 and later versions?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.\n\n\n\nManpage text:\n\nno warnings 'deprecated';\n\n   Miscellaneous Enhancements\n       \"map\" in void context is no longer expensive. \"map\" is now context\n       aware, and will not construct a list if called in void context.\n\n       If a socket gets closed by the server while printing to it, the client\n       now gets a SIGPIPE.  While this new feature was not planned, it fell\n       naturally out of PerlIO changes, and is to be considered an accidental\n       feature.\n\n       PerlIO::get_layers(FH) returns the names of the PerlIO layers active on\n       a filehandle.\n\n       PerlIO::via layers can now have an optional UTF8 method to indicate\n       whether the layer wants to \"auto-:utf8\" the stream.\n\n       utf8::is_utf8() has been added as a quick way to test whether a scalar\n       is encoded internally in UTF-8 (Unicode).\n\nModules and Pragmata\n   Updated Modules And Pragmata\n       The following modules and pragmata have been updated since Perl 5.8.0:\n\n       base\n       B::Bytecode\n\t   In much better shape than it used to be.  Still far from perfect,\n\t   but maybe worth a try."
+  manpageQuestion1: What is the primary purpose of the perl581delta tool?
+  manpageQuestion2: How can you utilize the new PerlIO::get_layers function to retrieve active layers on a filehandle?
+  manpageQuestion3: What is the significance of the added utf8::is_utf8 function in Perl 5.8.1 delta?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.\n\n\n\nManpage text:\n\nB::Concise\n       B::Deparse\n       Benchmark\n\t   An optional feature, \":hireswallclock\", now allows for high\n\t   resolution wall clock times (uses Time::HiRes).\n\n       ByteLoader\n\t   See B::Bytecode.\n\n       bytes\n\t   Now has bytes::substr.\n\n       CGI\n       charnames\n\t   One can now have custom character name aliases.\n\n       CPAN\n\t   There is now a simple command line frontend to the CPAN.pm module\n\t   called cpan.\n\n       Data::Dumper\n\t   A new option, Pair, allows choosing the separator between hash keys\n\t   and values.\n\n       DB_File\n       Devel::PPPort\n       Digest::MD5\n       Encode\n\t   Significant updates on the encoding pragma functionality (tr/// and\n\t   the DATA filehandle, formats).\n\n\t   If a filehandle has been marked as to have an encoding, unmappable\n\t   characters are detected already during input, not later (when the\n\t   corrupted data is being used).\n\n\t   The ISO 8859-6 conversion table has been corrected (the 0x30..0x39\n\t   erroneously mapped to U+0660..U+0669, instead of U+0030..U+0039).\n\t   The GSM 03.38 conversion did not handle escape sequences correctly.\n\t   The UTF-7 encoding has been added (making Encode feature-complete\n\t   with Unicode::String)."
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How can you utilize the Encode module in Perl to handle character encoding conversions, particularly for ISO 8859-6 and UTF-7?
+  manpageQuestion3: What new features does the Data::Dumper module in Perl 5.8.1 introduce, and how can they be used to format hash data?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.\n\n\n\nManpage text:\n\nfields\n       libnet\n       Math::BigInt\n\t   A lot of bugs have been fixed since v1.60, the version included in\n\t   Perl v5.8.0. Especially noteworthy are the bug in Calc that caused\n\t   div and mod to fail for some large values, and the fixes to the\n\t   handling of bad inputs.\n\n\t   Some new features were added, e.g. the broot() method, you can now\n\t   pass parameters to config() to change some settings at runtime, and\n\t   it is now possible to trap the creation of NaN and infinity.\n\n\t   As usual, some optimizations took place and made the math overall a\n\t   tad faster. In some cases, quite a lot faster, actually. Especially\n\t   alternative libraries like Math::BigInt::GMP benefit from this. In\n\t   addition, a lot of the quite clunky routines like fsqrt() and\n\t   flog() are now much much faster.\n\n       MIME::Base64\n       NEXT\n\t   Diamond inheritance now works.\n\n       Net::Ping\n       PerlIO::scalar\n\t   Reading from non-string scalars (like the special variables, see\n\t   perlvar) now works."
+  manpageQuestion1: What is the primary purpose of the `perl581delta` resource?
+  manpageQuestion2: What new features were added to the Math::BigInt module in this version?
+  manpageQuestion3: How does the `perl581delta` resource improve performance in certain operations?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.\n\n\n\nManpage text:\n\npodlators\n       Pod::LaTeX\n       PodParsers\n       Pod::Perldoc\n\t   Complete rewrite.  As a side-effect, no longer refuses to startup\n\t   when run by root.\n\n       Scalar::Util\n\t   New utilities: refaddr, isvstring, looks_like_number,\n\t   set_prototype.\n\n       Storable\n\t   Can now store code references (via B::Deparse, so not foolproof).\n\n       strict\n\t   Earlier versions of the strict pragma did not check the parameters\n\t   implicitly passed to its \"import\" (use) and \"unimport\" (no)\n\t   routine.  This caused the false idiom such as:\n\n\t\t   use strict qw(@ISA);\n\t\t   @ISA = qw(Foo);\n\n\t   This however (probably) raised the false expectation that the\n\t   strict refs, vars and subs were being enforced (and that @ISA was\n\t   somehow \"declared\").  But the strict refs, vars, and subs are not\n\t   enforced when using this false idiom.\n\n\t   Starting from Perl 5.8.1, the above will cause an error to be\n\t   raised.  This may cause programs which used to execute seemingly\n\t   correctly without warnings and errors to fail when run under 5.8.1.\n\t   This happens because"
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How does the perl5811delta resource address issues with the strict pragma's parameter checking?
+  manpageQuestion3: What new functionalities were introduced in the perl581delta resource related to Scalar::Util and Storable?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.\n\n\n\nManpage text:\n\nuse strict qw(@ISA);\n\n\t   will now fail with the error:\n\n\t\t   Unknown 'strict' tag(s) '@ISA'\n\n\t   The remedy to this problem is to replace this code with the correct\n\t   idiom:\n\n\t\t   use strict;\n\t\t   use vars qw(@ISA);\n\t\t   @ISA = qw(Foo);\n\n       Term::ANSIcolor\n       Test::Harness\n\t   Now much more picky about extra or missing output from test\n\t   scripts.\n\n       Test::More\n       Test::Simple\n       Text::Balanced\n       Time::HiRes\n\t   Use of nanosleep(), if available, allows mixing subsecond sleeps\n\t   with alarms.\n\n       threads\n\t   Several fixes, for example for join() problems and memory leaks.\n\t   In some platforms (like Linux) that use glibc the minimum memory\n\t   footprint of one ithread has been reduced by several hundred\n\t   kilobytes.\n\n       threads::shared\n\t   Many memory leaks have been fixed.\n\n       Unicode::Collate\n       Unicode::Normalize\n       Win32::GetFolderPath\n       Win32::GetOSVersion\n\t   Now returns extra information.\n\nUtility Changes\n       The \"h2xs\" utility now produces a more modern layout:\n       Foo-Bar/lib/Foo/Bar.pm instead of Foo/Bar/Bar.pm.  Also, the\n       boilerplate test is now called t/Foo-Bar.t instead of t/1.t."
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How would you modify code to fix the 'Unknown 'strict' tag(s) '@ISA' error in perl5811delta?
+  manpageQuestion3: What changes have been made to the 'h2xs' utility in perl581delta?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.
+
+
+
+    Manpage text:
+
+    The Perl debugger (lib/perl5db.pl) has now been extensively documented
+           and bugs found while documenting have been fixed.
+
+           "perldoc" has been rewritten from scratch to be more robust and feature
+           rich.
+
+           "perlcc -B" works now at least somewhat better, while "perlcc -c" is
+           rather more broken.  (The Perl compiler suite as a whole continues to
+           be experimental.)
+
+    New Documentation
+           perl573delta has been added to list the differences between the (now
+           quite obsolete) development releases 5.7.2 and 5.7.3.
+
+           perl58delta has been added: it is the perldelta of 5.8.0, detailing the
+           differences between 5.6.0 and 5.8.0.
+
+           perlartistic has been added: it is the Artistic License in pod format,
+           making it easier for modules to refer to it.
+
+           perlcheat has been added: it is a Perl cheat sheet.
+
+           perlgpl has been added: it is the GNU General Public License in pod
+           format, making it easier for modules to refer to it.
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How can you access the documentation for changes between Perl 5.6.0 and 5.8.0?
+  manpageQuestion3: What is the significance of the 'perlcheat' documentation added to the Perl project?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.
+
+
+
+    Manpage text:
+
+    perlmacosx has been added to tell about the installation and use of
+           Perl in Mac OS X.
+
+           perlos400 has been added to tell about the installation and use of Perl
+           in OS/400 PASE.
+
+           perlreref has been added: it is a regular expressions quick reference.
+
+    Installation and Configuration Improvements
+           The Unix standard Perl location, /usr/bin/perl, is no longer
+           overwritten by default if it exists.  This change was very prudent
+           because so many Unix vendors already provide a /usr/bin/perl, but
+           simultaneously many system utilities may depend on that exact version
+           of Perl, so better not to overwrite it.
+
+           One can now specify installation directories for site and vendor man
+           and HTML pages, and site and vendor scripts.  See INSTALL.
+
+           One can now specify a destination directory for Perl installation by
+           specifying the DESTDIR variable for "make install".  (This feature is
+           slightly different from the previous "Configure -Dinstallprefix=...".)
+           See INSTALL.
+  manpageQuestion1: What is the primary purpose of the perl581delta tool?
+  manpageQuestion2: How can you install Perl to a custom destination directory on Mac OS X using the perl581delta tool?
+  manpageQuestion3: What are the key installation and configuration improvements introduced in perl581delta?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.\n\n\n\nManpage text:\n\ngcc versions 3.x introduced a new warning that caused a lot of noise\n       during Perl compilation: \"gcc -Ialreadyknowndirectory (warning:\n       changing search order)\".  This warning has now been avoided by\n       Configure weeding out such directories before the compilation.\n\n       One can now build subsets of Perl core modules by using the Configure\n       flags \"-Dnoextensions=...\" and \"-Donlyextensions=...\", see INSTALL.\n\n   Platform-specific enhancements\n       In Cygwin Perl can now be built with threads (\"Configure\n       -Duseithreads\").  This works with both Cygwin 1.3.22 and Cygwin 1.5.3.\n\n       In newer FreeBSD releases Perl 5.8.0 compilation failed because of\n       trying to use malloc.h, which in FreeBSD is just a dummy file, and a\n       fatal error to even try to use.\tNow malloc.h is not used.\n\n       Perl is now known to build also in Hitachi HI-UXMPP.\n\n       Perl is now known to build again in LynxOS.\n\n       Mac OS X now installs with Perl version number embedded in installation\n       directory names for easier upgrading of user-compiled Perl, and the\n       installation directories in general are more standard.  In other words,\n       the default installation no longer breaks the Apple-provided Perl.  On\n       the other hand, with \"Configure -Dprefix=/usr\" you can now really\n       replace the Apple-supplied Perl (please be careful)."
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How can you configure Perl to build only specific extensions using the Configure script?
+  manpageQuestion3: What changes were made to Perl's compatibility with Mac OS X in the perl581delta resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.\n\n\n\nManpage text:\n\nMac OS X now builds Perl statically by default.\tThis change was done\n       mainly for faster startup times.  The Apple-provided Perl is still\n       dynamically linked and shared, and you can enable the sharedness for\n       your own Perl builds by \"Configure -Duseshrplib\".\n\n       Perl has been ported to IBM's OS/400 PASE environment.  The best way to\n       build a Perl for PASE is to use an AIX host as a cross-compilation\n       environment.  See README.os400.\n\n       Yet another cross-compilation option has been added: now Perl builds on\n       OpenZaurus, a Linux distribution based on Mandrake + Embedix for the\n       Sharp Zaurus PDA.  See the Cross/README file.\n\n       Tru64 when using gcc 3 drops the optimisation for toke.c to \"-O2\"\n       because of gigantic memory use with the default \"-O3\".\n\n       Tru64 can now build Perl with the newer Berkeley DBs.\n\n       Building Perl on WinCE has been much enhanced, see README.ce and\n       README.perlce.\n\nSelected Bug Fixes\n   Closures, eval and lexicals\n       There have been many fixes in the area of anonymous subs, lexicals and\n       closures.  Although this means that Perl is now more \"correct\", it is\n       possible that some existing code will break that happens to rely on the\n       faulty behaviour.  In practice this is unlikely unless your code\n       contains a very complex nesting of anonymous subs, evals and lexicals."
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How can you enable shared library support when building Perl on macOS?
+  manpageQuestion3: What are some cross-compilation options available for building Perl on different platforms?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.\n\n\n\nManpage text:\n\nGeneric fixes\n       If an input filehandle is marked \":utf8\" and Perl sees illegal UTF-8\n       coming in when doing \"<FH>\", if warnings are enabled a warning is\n       immediately given - instead of being silent about it and Perl being\n       unhappy about the broken data later.  (The \":encoding(utf8)\" layer also\n       works the same way.)\n\n       binmode(SOCKET, \":utf8\") only worked on the input side, not on the\n       output side of the socket.  Now it works both ways.\n\n       For threaded Perls certain system database functions like getpwent()\n       and getgrent() now grow their result buffer dynamically, instead of\n       failing.  This means that at sites with lots of users and groups the\n       functions no longer fail by returning only partial results.\n\n       Perl 5.8.0 had accidentally broken the capability for users to define\n       their own uppercase<->lowercase Unicode mappings (as advertised by the\n       Camel).\tThis feature has been fixed and is also documented better."
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How does the perl581delta resource address the issue of illegal UTF-8 data in filehandles?
+  manpageQuestion3: What improvements were made to the socket handling in perl581delta?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.\n\n\n\nManpage text:\n\nIn 5.8.0 this\n\n\t       $some_unicode .= <FH>;\n\n       didn't work correctly but instead corrupted the data.  This has now\n       been fixed.\n\n       Tied methods like FETCH etc. may now safely access tied values, i.e.\n       resulting in a recursive call to FETCH etc.  Remember to break the\n       recursion, though.\n\n       At startup Perl blocks the SIGFPE signal away since there isn't much\n       Perl can do about it.  Previously this blocking was in effect also for\n       programs executed from within Perl.  Now Perl restores the original\n       SIGFPE handling routine, whatever it was, before running external\n       programs.\n\n       Linenumbers in Perl scripts may now be greater than 65536, or 2**16.\n       (Perl scripts have always been able to be larger than that, it's just\n       that the linenumber for reported errors and warnings have \"wrapped\n       around\".)  While scripts that large usually indicate a need to rethink\n       your code a bit, such Perl scripts do exist, for example as results\n       from generated code.  Now linenumbers can go all the way to 4294967296,\n       or 2**32."
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How has the handling of Unicode in Perl scripts been improved in this resource?
+  manpageQuestion3: What change was made to the SIGFPE signal handling in Perl as described by this manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.\n\n\n\nManpage text:\n\nPlatform-specific fixes\n       Linux\n\n       •   Setting $0 works again (with certain limitations that Perl cannot\n\t   do much about: see \"$0\" in perlvar)\n\n       HP-UX\n\n       •   Setting $0 now works.\n\n       VMS\n\n       •   Configuration now tests for the presence of \"poll()\", and IO::Poll\n\t   now uses the vendor-supplied function if detected.\n\n       •   A rare access violation at Perl start-up could occur if the Perl\n\t   image was installed with privileges or if there was an identifier\n\t   with the subsystem attribute set in the process's rightslist.\n\t   Either of these circumstances triggered tainting code that\n\t   contained a pointer bug.  The faulty pointer arithmetic has been\n\t   fixed.\n\n       •   The length limit on values (not keys) in the %ENV hash has been\n\t   raised from 255 bytes to 32640 bytes (except when the\n\t   PERL_ENV_TABLES setting overrides the default use of logical names\n\t   for %ENV).  If it is necessary to access these long values from\n\t   outside Perl, be aware that they are implemented using search list\n\t   logical names that store the value in pieces, each 255-byte piece\n\t   (up to 128 of them) being an element in the search list. When doing\n\t   a lookup in %ENV from within Perl, the elements are combined into a\n\t   single value.  The existing VMS-specific ability to access\n\t   individual elements of a search list logical name via the\n\t   $ENV{'foo;N'} syntax (where N is the search list index) is\n\t   unimpaired."
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How can perl581delta be used to address platform-specific issues on Linux and HP-UX systems?
+  manpageQuestion3: What changes were made to the %ENV hash on VMS systems with perl581delta?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.\n\n\n\nManpage text:\n\n•   The piping implementation now uses local rather than global DCL\n\t   symbols for inter-process communication.\n\n       •   File::Find could become confused when navigating to a relative\n\t   directory whose name collided with a logical name.  This problem\n\t   has been corrected by adding directory syntax to relative path\n\t   names, thus preventing logical name translation.\n\n       Win32\n\n       •   A memory leak in the fork() emulation has been fixed.\n\n       •   The return value of the ioctl() built-in function was accidentally\n\t   broken in 5.8.0.  This has been corrected.\n\n       •   The internal message loop executed by perl during blocking\n\t   operations sometimes interfered with messages that were external to\n\t   Perl.  This often resulted in blocking operations terminating\n\t   prematurely or returning incorrect results, when Perl was executing\n\t   under environments that could generate Windows messages.  This has\n\t   been corrected.\n\n       •   Pipes and sockets are now automatically in binary mode."
+  manpageQuestion1: What is the primary purpose of the perl581delta tool?
+  manpageQuestion2: How does the perl5811delta resource address issues with file navigation and logical names in Perl?
+  manpageQuestion3: What changes were made to the perl581delta resource regarding the handling of pipes and sockets?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.\n\n\n\nManpage text:\n\n•   The four-argument form of select() did not preserve $! (errno)\n\t   properly when there were errors in the underlying call.  This is\n\t   now fixed.\n\n       •   The \"CR CR LF\" problem of has been fixed, binmode(FH, \":crlf\") is\n\t   now effectively a no-op.\n\nNew or Changed Diagnostics\n       All the warnings related to pack() and unpack() were made more\n       informative and consistent.\n\n   Changed \"A thread exited while %d threads were running\"\n       The old version\n\n\t   A thread exited while %d other threads were still running\n\n       was misleading because the \"other\" included also the thread giving the\n       warning.\n\n   Removed \"Attempt to clear a restricted hash\"\n       It is not illegal to clear a restricted hash, so the warning was\n       removed.\n\n   New \"Illegal declaration of anonymous subroutine\"\n       You must specify the block of code for \"sub\".\n\n   Changed \"Invalid range \"%s\" in transliteration operator\"\n       The old version\n\n\t   Invalid [] range \"%s\" in transliteration operator"
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How does the perl5811delta resource address the issue of preserving $! when using the four-argument form of select()?
+  manpageQuestion3: What changes were made to the diagnostics related to pack() and unpack() in perl581delta?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.\n\n\n\nManpage text:\n\nwas simply wrong because there are no \"[] ranges\" in tr///.\n\n   New \"Missing control char name in \\c\"\n       Self-explanatory.\n\n   New \"Newline in left-justified string for %s\"\n       The padding spaces would appear after the newline, which is probably\n       not what you had in mind.\n\n   New \"Possible precedence problem on bitwise %c operator\"\n       If you think this\n\n\t   $x & $y == 0\n\n       tests whether the bitwise AND of $x and $y is zero, you will like this\n       warning.\n\n   New \"Pseudo-hashes are deprecated\"\n       This warning should have been already in 5.8.0, since they are.\n\n   New \"read() on %s filehandle %s\"\n       You cannot read() (or sysread()) from a closed or unopened filehandle.\n\n   New \"5.005 threads are deprecated\"\n       This warning should have been already in 5.8.0, since they are.\n\n   New \"Tied variable freed while still in use\"\n       Something pulled the plug on a live tied variable, Perl plays safe by\n       bailing out.\n\n   New \"To%s: illegal mapping '%s'\"\n       An illegal user-defined Unicode casemapping was specified."
+  manpageQuestion1: What is the primary purpose of the perl581delta tool?
+  manpageQuestion2: How would you use perl581delta to address the issue of 'Missing control char name in \\
+  manpageQuestion3: Can you provide an example of using perl581delta to handle the warning about 'Tied variable freed while still in use'?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.
+
+
+
+    Manpage text:
+
+    New "Use of freed value in iteration"
+           Something modified the values being iterated over.  This is not good.
+
+    Changed Internals
+           These news matter to you only if you either write XS code or like to
+           know about or hack Perl internals (using Devel::Peek or any of the
+           "B::" modules counts), or like to run Perl with the "-D" option.
+
+           The embedding examples of perlembed have been reviewed to be up to date
+           and consistent: for example, the correct use of PERL_SYS_INIT3() and
+           PERL_SYS_TERM().
+
+           Extensive reworking of the pad code (the code responsible for lexical
+           variables) has been conducted by Dave Mitchell.
+
+           Extensive work on the v-strings by John Peacock.
+
+           UTF-8 length and position cache: to speed up the handling of Unicode
+           (UTF-8) scalars, a cache was introduced.  Potential problems exist if
+           an extension bypasses the official APIs and directly modifies the PV of
+           an SV: the UTF-8 cache does not get cleared as it should.
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How does the perl581delta resource address issues related to iterating over modified values in Perl?
+  manpageQuestion3: What changes were made to the pad code in perl581delta and who is credited for this work?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.\n\n\n\nManpage text:\n\nAPIs obsoleted in Perl 5.8.0, like sv_2pv, sv_catpvn, sv_catsv,\n       sv_setsv, are again available.\n\n       Certain Perl core C APIs like cxinc and regatom are no longer available\n       at all to code outside the Perl core of the Perl core extensions.  This\n       is intentional.\tThey never should have been available with the shorter\n       names, and if you application depends on them, you should (be ashamed\n       and) contact perl5-porters to discuss what are the proper APIs.\n\n       Certain Perl core C APIs like \"Perl_list\" are no longer available\n       without their \"Perl_\" prefix.  If your XS module stops working because\n       some functions cannot be found, in many cases a simple fix is to add\n       the \"Perl_\" prefix to the function and the thread context \"aTHX_\" as\n       the first argument of the function call.  This is also how it should\n       always have been done: letting the Perl_-less forms to leak from the\n       core was an accident.  For cleaner embedding you can also force this\n       for all APIs by defining at compile time the cpp define\n       PERL_NO_SHORT_NAMES."
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How would you ensure that Perl core C APIs used in an XS module are correctly prefixed with 'Perl_' to avoid compatibility issues?
+  manpageQuestion3: What changes are required when moving from using shorter names like 'list' to the full 'Perl_list' API in Perl core extensions?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.
+
+
+
+    Manpage text:
+
+    Perl_save_bool() has been added.
+
+           Regexp objects (those created with "qr") now have S-magic rather than
+           R-magic.  This fixed regexps of the form /...(??{...;$x})/ to no longer
+           ignore changes made to $x.  The S-magic avoids dropping the caching
+           optimization and making (??{...}) constructs obscenely slow (and
+           consequently useless).  See also "Magic Variables" in perlguts.
+           Regexp::Copy was affected by this change.
+
+           The Perl internal debugging macros DEBUG() and DEB() have been renamed
+           to PERL_DEBUG() and PERL_DEB() to avoid namespace conflicts.
+
+           "-DL" removed (the leaktest had been broken and unsupported for years,
+           use alternative debugging mallocs or tools like valgrind and Purify).
+
+           Verbose modifier "v" added for "-DXv" and "-Dsv", see perlrun.
+
+    New Tests
+           In Perl 5.8.0 there were about 69000 separate tests in about 700 test
+           files, in Perl 5.8.1 there are about 77000 separate tests in about 780
+           test files.  The exact numbers depend on the Perl configuration and on
+           the operating system platform.
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How would you use the perl581delta resource to modify the behavior of regular expressions in Perl 5.8.1?
+  manpageQuestion3: Can you provide an example of how the perl581delta resource affects debugging macros in Perl 5.8.1?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.
+
+
+
+    Manpage text:
+
+    Known Problems
+           The hash randomisation mentioned in "Incompatible Changes" is
+           definitely problematic: it will wake dormant bugs and shake out bad
+           assumptions.
+
+           If you want to use mod_perl 2.x with Perl 5.8.1, you will need
+           mod_perl-1.99_10 or higher.  Earlier versions of mod_perl 2.x do not
+           work with the randomised hashes.  (mod_perl 1.x works fine.)  You will
+           also need Apache::Test 1.04 or higher.
+
+           Many of the rarer platforms that worked 100% or pretty close to it with
+           perl 5.8.0 have been left a little bit untended since their maintainers
+           have been otherwise busy lately, and therefore there will be more
+           failures on those platforms.  Such platforms include Mac OS Classic,
+           IBM z/OS (and other EBCDIC platforms), and NetWare.  The most common
+           Perl platforms (Unix and Unix-like, Microsoft platforms, and VMS) have
+           large enough testing and expert population that they are doing well.
+
+       Tied hashes in scalar context
+           Tied hashes do not currently return anything useful in scalar context,
+           for example when used as boolean tests:
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How would you address compatibility issues when using mod_perl 2.x with Perl 5.8.1?
+  manpageQuestion3: What is the issue with using tied hashes in scalar context according to the manpage?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.
+
+
+
+    Manpage text:
+
+    if (%tied_hash) { ... }
+
+           The current nonsensical behaviour is always to return false, regardless
+           of whether the hash is empty or has elements.
+
+           The root cause is that there is no interface for the implementors of
+           tied hashes to implement the behaviour of a hash in scalar context.
+
+       Net::Ping 450_service and 510_ping_udp failures
+           The subtests 9 and 18 of lib/Net/Ping/t/450_service.t, and the subtest
+           2 of lib/Net/Ping/t/510_ping_udp.t might fail if you have an unusual
+           networking setup.  For example in the latter case the test is trying to
+           send a UDP ping to the IP address 127.0.0.1.
+
+       B::C
+           The C-generating compiler backend B::C (the frontend being "perlcc -c")
+           is even more broken than it used to be because of the extensive lexical
+           variable changes.  (The good news is that B::Bytecode and ByteLoader
+           are better than they used to be.)
+
+    Platform Specific Problems
+       EBCDIC Platforms
+           IBM z/OS and other EBCDIC platforms continue to be problematic
+           regarding Unicode support.  Many Unicode tests are skipped when they
+           really should be fixed.
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How can one address potential failures in the Net::Ping module's test suite when testing UDP pings to 127.0.0.1?
+  manpageQuestion3: What are the known issues with EBCDIC platforms and Unicode support in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.\n\n\n\nManpage text:\n\nCygwin 1.5 problems\n       In Cygwin 1.5 the io/tell and op/sysio tests have failures for some yet\n       unknown reason.\tIn 1.5.5 the threads tests stress_cv, stress_re, and\n       stress_string are failing unless the environment variable PERLIO is set\n       to \"perlio\" (which makes also the io/tell failure go away).\n\n       Perl 5.8.1 does build and work well with Cygwin 1.3: with (uname -a)\n       \"CYGWIN_NT-5.0 ... 1.3.22(0.78/3/2) 2003-03-18 09:20 i686 ...\" a 100%\n       \"make test\"  was achieved with \"Configure -des -Duseithreads\".\n\n   HP-UX: HP cc warnings about sendfile and sendpath\n       With certain HP C compiler releases (e.g. B.11.11.02) you will get many\n       warnings like this (lines wrapped for easier reading):\n\n\t cc: \"/usr/include/sys/socket.h\", line 504: warning 562:\n\t   Redeclaration of \"sendfile\" with a different storage class specifier:\n\t     \"sendfile\" will have internal linkage.\n\t cc: \"/usr/include/sys/socket.h\", line 505: warning 562:\n\t   Redeclaration of \"sendpath\" with a different storage class specifier:\n\t     \"sendpath\" will have internal linkage."
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How can one address Cygwin 1.5 issues when using Perl 5.8.1?
+  manpageQuestion3: What steps are required to resolve HP-UX compiler warnings when using Perl 5.8.1 with certain versions of the HP C compiler?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.
+
+
+
+    Manpage text:
+
+    The warnings show up both during the build of Perl and during certain
+           lib/ExtUtils tests that invoke the C compiler.  The warning, however,
+           is not serious and can be ignored.
+
+       IRIX: t/uni/tr_7jis.t falsely failing
+           The test t/uni/tr_7jis.t is known to report failure under 'make test'
+           or the test harness with certain releases of IRIX (at least IRIX 6.5
+           and MIPSpro Compilers Version 7.3.1.1m), but if run manually the test
+           fully passes.
+
+       Mac OS X: no usemymalloc
+           The Perl malloc ("-Dusemymalloc") does not work at all in Mac OS X.
+           This is not that serious, though, since the native malloc works just
+           fine.
+
+       Tru64: No threaded builds with GNU cc (gcc)
+           In the latest Tru64 releases (e.g. v5.1B or later) gcc cannot be used
+           to compile a threaded Perl (-Duseithreads) because the system
+           "<pthread.h>" file doesn't know about gcc.
+
+       Win32: sysopen, sysread, syswrite
+           As of the 5.8.0 release, sysopen()/sysread()/syswrite() do not behave
+           like they used to in 5.6.1 and earlier with respect to "text" mode.
+           These built-ins now always operate in "binary" mode (even if sysopen()
+           was passed the O_TEXT flag, or if binmode() was used on the file
+           handle).  Note that this issue should only make a difference for disk
+           files, as sockets and pipes have always been in "binary" mode in the
+           Windows port.  As this behavior is currently considered a bug,
+           compatible behavior may be re-introduced in a future release.  Until
+           then, the use of sysopen(), sysread() and syswrite() is not supported
+           for "text" mode operations.
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How can users work around the issue where Perl's malloc does not function correctly on Mac OS X?
+  manpageQuestion3: What is the known issue with sysopen(), sysread(), and syswrite() in Perl 5.8.0 on Win32, and how is it described in the manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.\n\n\n\nManpage text:\n\nFuture Directions\n       The following things might happen in future.  The first publicly\n       available releases having these characteristics will be the developer\n       releases Perl 5.9.x, culminating in the Perl 5.10.0 release.  These are\n       our best guesses at the moment: we reserve the right to rethink.\n\n       •   PerlIO will become The Default.  Currently (in Perl 5.8.x) the\n\t   stdio library is still used if Perl thinks it can use certain\n\t   tricks to make stdio go really fast.  For future releases our goal\n\t   is to make PerlIO go even faster.\n\n       •   A new feature called assertions will be available.  This means that\n\t   one can have code called assertions sprinkled in the code: usually\n\t   they are optimised away, but they can be enabled with the \"-A\"\n\t   option.\n\n       •   A new operator \"//\" (defined-or) will be available.\tThis means\n\t   that one will be able to say\n\n\t       $a // $b\n\n\t   instead of\n\n\t      defined $a ? $a : $b\n\n\t   and\n\n\t      $c //= $d;\n\n\t   instead of"
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How can assertions be enabled in Perl using the perl581delta resource?
+  manpageQuestion3: What is the purpose of the new operator '//' in Perl as described in the manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.\n\n\n\nManpage text:\n\n$c = $d unless defined $c;\n\n\t   The operator will have the same precedence and associativity as\n\t   \"||\".  A source code patch against the Perl 5.8.1 sources will be\n\t   available in CPAN as authors/id/H/HM/HMBRAND/dor-5.8.1.diff.\n\n       •   \"unpack()\" will default to unpacking the $_.\n\n       •   Various Copy-On-Write techniques will be investigated in hopes of\n\t   speeding up Perl.\n\n       •   CPANPLUS, Inline, and Module::Build will become core modules.\n\n       •   The ability to write true lexically scoped pragmas will be\n\t   introduced.\n\n       •   Work will continue on the bytecompiler and byteloader.\n\n       •   v-strings as they currently exist are scheduled to be deprecated.\n\t   The v-less form (1.2.3) will become a \"version object\" when used\n\t   with \"use\", \"require\", and $VERSION.  $^V will also be a \"version\n\t   object\" so the printf(\"%vd\",...) construct will no longer be\n\t   needed.  The v-ful version (v1.2.3) will become obsolete.  The\n\t   equivalence of strings and v-strings (e.g.  that currently 5.8.0 is\n\t   equal to \"\\5\\8\\0\") will go away.  There may be no deprecation\n\t   warning for v-strings, though: it is quite hard to detect when\n\t   v-strings are being used safely, and when they are not."
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How can you use the 'unpack()' function in perl581delta to extract data from a string?
+  manpageQuestion3: What changes are planned for the versioning system in perl5811delta?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.
+
+
+
+    Manpage text:
+
+    •   5.005 Threads Will Be Removed
+
+           •   The $* Variable Will Be Removed (it was deprecated a long time ago)
+
+           •   Pseudohashes Will Be Removed
+
+    Reporting Bugs
+           If you find what you think is a bug, you might check the articles
+           recently posted to the comp.lang.perl.misc newsgroup and the perl bug
+           database at http://bugs.perl.org/ .  There may also be information at
+           http://www.perl.com/ , the Perl Home Page.
+
+           If you believe you have an unreported bug, please run the perlbug
+           program included with your release.  Be sure to trim your bug down to a
+           tiny but sufficient test case.  Your bug report, along with the output
+           of "perl -V", will be sent off to perlbug@perl.org to be analysed by
+           the Perl porting team.  You can browse and search the Perl 5 bugs at
+           http://bugs.perl.org/
+
+    SEE ALSO
+           The Changes file for exhaustive details on what changed.
+
+           The INSTALL file for how to build Perl.
+
+           The README file for general stuff.
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How can one report a bug found in perl581delta?
+  manpageQuestion3: What are the key changes or deprecations mentioned in the perl581delta manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl581delta`.\n\n\n\nManpage text:\n\nThe Artistic and Copying files for copyright information.\n\nperl v5.34.1\t\t\t  2022-02-19\t\t       PERL581DELTA(1)"
+  manpageQuestion1: What is the primary purpose of the perl581delta resource?
+  manpageQuestion2: How would you use perl581delta to apply a specific patch or update to your Perl installation?
+  manpageQuestion3: Can you provide an example of using perl581delta to update a Perl script with changes from a specific version to another?
+

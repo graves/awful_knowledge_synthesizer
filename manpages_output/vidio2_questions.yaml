@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `vidio2`.\n\n\n\nManpage text:\n\n()\t\t\t\t\t\t\t\t\t    ()\n\n\nSee the file\n../../../../System/Library/Filesystems/acfs.fs/Contents/man/man1/vidio.1.\n\n\n\t\t\t\t\t\t\t\t\t    ()"
+  manpageQuestion1: What is the primary purpose of the vidio2 tool?
+  manpageQuestion2: How would you use vidio2 to perform a specific operation related to video input?
+  manpageQuestion3: Can you provide an example of using vidio2 to configure video settings on a macOS system?
+

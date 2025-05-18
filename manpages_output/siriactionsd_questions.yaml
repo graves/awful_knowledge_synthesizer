@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `siriactionsd`.\n\n\n\nManpage text:\n\nsiriactionsd(8) \t    System Manager's Manual\t       siriactionsd(8)\n\nNAME\n     siriactionsd – Daemon for the Shortcuts application\n\nSYNOPSIS\n     siriactionsd\n\nDESCRIPTION\n     The siriactionsd daemon coordinates running and syncing of shortcuts\n     created in the Shortcuts application, among other Shortcuts-related\n     auxiliary tasks.\n\nmacOS\t\t\t       September 8, 2021\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the siriactionsd daemon?
+  manpageQuestion2: How does the siriactionsd daemon function in relation to the Shortcuts application?
+  manpageQuestion3: What is the role of the siriactionsd daemon in managing Shortcuts-related tasks?
+

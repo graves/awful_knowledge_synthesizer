@@ -1,0 +1,143 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pkgbuild`.\n\n\n\nManpage text:\n\npkgbuild(1)\t\t    General Commands Manual\t\t   pkgbuild(1)\n\nNAME\n     pkgbuild – Build a macOS Installer component package from on-disk files\n\nSYNOPSIS\n     pkgbuild [options] --root root-path [--component-plist plist-path]\n\t      package-output-path\n     pkgbuild --analyze --root root-path plist-output-path\n     pkgbuild [options] {--component component-path} package-output-path\n\nDESCRIPTION\n     A “component package” contains payload to be installed by the macOS\n     Installer. Although a component package can be installed on its own, it\n     is typically incorporated into a product archive, along with a\n     “distribution” and localized resources, using productbuild(1).\n\n     To create a product archive for submission to the Mac App Store, do not\n     use pkgbuild.  Instead, use productbuild(1) directly.\n\n     pkgbuild has three different modes, as shown in the SYNOPSIS above:\n\n     1.   Package a complete destination root. When you use xcodebuild(1) with\n\t  the install action, the result is a destination root, either under\n\t  /tmp, or in whatever location you specify with the Xcode DSTROOT\n\t  setting. Use the --root option to specify that destination root\n\t  directory to pkgbuild, and the entire contents of the directory tree\n\t  will be included in the output package."
+  manpageQuestion1: What is the primary purpose of the pkgbuild tool?
+  manpageQuestion2: How would you use pkgbuild to create a component package from a destination root directory?
+  manpageQuestion3: Can you provide an example of using pkgbuild in analyze mode to inspect a root directory?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pkgbuild`.\n\n\n\nManpage text:\n\n2.   Create a template component property list (analyze mode). You point\n\t  pkgbuild to a destination root as above, but instead of outputting a\n\t  package, pkgbuild outputs a component property list (see COMPONENT\n\t  PROPERTY LIST).  By editing this property list and specifying it\n\t  with --component-plist when you subsequently build the package, you\n\t  can control bundle-specific Installer behavior.\n\n     3.   Package one or more individual bundles. If you don't have a\n\t  destination root, you can use the --component option to specify one\n\t  or more bundles that should be incorporated into the package.  Note\n\t  that only bundles can be specified with --component.\n\nARGUMENTS AND OPTIONS\n     --root root-path\n\t     Package the entire contents of the directory tree at root-path,\n\t     typically a destination root created by xcodebuild(1).\n\n     --component component-path\n\t     The bundle at component-path is added to the package. Valid only\n\t     if you don't use --root.\n\n     --component-plist plist-path\n\t     If you specify --root, you can use --component-plist to identity\n\t     the bundles within that destination root, and control how the\n\t     macOS Installer handles those bundles. See more at COMPONENT\n\t     PROPERTY LIST.  If you add bundles and need to update your\n\t     component property list, you can specify the old version with\n\t     --component-plist when running pkgbuild with --analyze, and the\n\t     old settings will be propagated to the output for still-extant\n\t     bundles."
+  manpageQuestion1: What is the primary purpose of the pkgbuild tool?
+  manpageQuestion2: How would you use pkgbuild to package a destination root located at /Users/username/Library/Developer/Xcode/DerivedData/MyApp-xxx/Build/Products/Release-iphoneos/MyApp.app into a macOS package?
+  manpageQuestion3: Can you provide an example of using pkgbuild to analyze a destination root and generate a component property list for customizing installer behavior?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pkgbuild`.\n\n\n\nManpage text:\n\n--scripts scripts-path\n\t     Archive the entire contents of scripts-path as the package\n\t     scripts. If this directory contains scripts named preinstall\n\t     and/or postinstall, these will be ran as the top-level scripts of\n\t     the package. If you want to run scripts for specific bundles, you\n\t     must specify those in a component property list; see more at\n\t     COMPONENT PROPERTY LIST.  Any other files under scripts-path will\n\t     be used only if the top-level or component-specific scripts\n\t     invoke them. If the script needs to run for longer than 10\n\t     minutes, it should be added as a component-specific script with\n\t     the BundleInstallScriptTimeout component key added.\n\n     --nopayload\n\t     Indicates that the package will contain only scripts, with no\n\t     payload.\n\n     --identifier pkg-identifier\n\t     Specify a unique identifier for this package. The macOS Installer\n\t     recognizes a package as being an upgrade to an already-installed\n\t     package only if the package identifiers match, so it is advisable\n\t     to set a meaningful, consistent identifier when you build the\n\t     package.  pkgbuild will infer an identifier when building a\n\t     package from a single component, but will fail otherwise if the\n\t     identifier has not been set."
+  manpageQuestion1: What is the primary purpose of the pkgbuild command?
+  manpageQuestion2: How can you create a macOS package that includes only scripts and no payload using pkgbuild?
+  manpageQuestion3: What is the correct way to specify a unique identifier for a macOS package created with pkgbuild?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pkgbuild`.\n\n\n\nManpage text:\n\n--version pkg-version\n\t     Specify a version for the package. Packages with the same\n\t     identifier are compared using this version, to determine if the\n\t     package is an upgrade or downgrade. If you don't specify a\n\t     version, a default of zero is assumed, but this may prevent\n\t     proper upgrade/downgrade checking.\n\n     --install-location install-path\n\t     Specify the default install location for the contents of the\n\t     package. For example, if you specify a single application\n\t     component, you might specify an install-path of /Applications.\n\t     pkgbuild attempts to infer a sensible install path if this option\n\t     is not used, but it may not choose correctly. Note that whether\n\t     or not the default install location is actually used by the macOS\n\t     Installer depends on the distribution file you deploy with the\n\t     package.\n\n     --analyze\n\t     Instead of creating a package, create a template component\n\t     property list from the destination root given with --root.  See\n\t     COMPONENT PROPERTY LIST."
+  manpageQuestion1: What is the primary purpose of the pkgbuild tool?
+  manpageQuestion2: How would you use pkgbuild to specify a version of 1.2.3 for a package with the identifier 'com.example.app'?
+  manpageQuestion3: Can you provide an example of using pkgbuild to analyze a package and generate a component property list from the destination root provided?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pkgbuild`.\n\n\n\nManpage text:\n\n--prior pkg-path\n\t     In addition to the options above, you can also set the package\n\t     identifier, version and install location by pointing to a prior\n\t     version of the same package.  pkgbuild will read the package at\n\t     pkg-path and use the same package identifier and install location\n\t     contained therein. The version number in the prior package will\n\t     be converted to an integer and incremented, and the result used\n\t     for the new package. Note that pkgbuild makes no attempt to\n\t     verify that the prior package is in any way equivalent to the one\n\t     being built, so you must make sure you point it to a logically\n\t     equivalent package.\n\n     --filter filter-expression\n\t     By default, --root will include the entire contents of the given\n\t     root-path in the package payload, except for any .svn or CVS\n\t     directories, and any .DS_Store files. You can override these\n\t     default filters by specifying one or more --filter options. Each\n\t     filter-expression is an re_format(7) “extended” expression: any\n\t     path in the root which matches any of the given expressions will\n\t     be excluded from the package payload. (Note that specifying even\n\t     one --filter inhibits the default filters, so you must respecify\n\t     the default filters if you still want them to be used.)"
+  manpageQuestion1: What is the primary purpose of the pkgbuild utility?
+  manpageQuestion2: How can you use the --prior option with pkgbuild to create a new package based on an existing one, ensuring version numbering is incremented?
+  manpageQuestion3: What is the function of the --filter option in pkgbuild, and how can it be used to exclude specific files or directories from the package payload?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pkgbuild`.\n\n\n\nManpage text:\n\n--ownership (recommended | preserve | preserve-other)\n\t     By default, when the payload is archived into the package, the\n\t     recommended UID and GID will be applied to all files. (Generally,\n\t     this will be root:wheel, which ensures that files installed in\n\t     the system domain are root-owned, while files installed in the\n\t     user home directory will be owned by that user.) If you have\n\t     special ownership requirements, you should use chmod(1) to adjust\n\t     the ownership of the source files, and use --ownership preserve\n\t     so that pkgbuild archives the exact ownership of the on-disk\n\t     files. Alternatively, if you have just a few files to adjust,\n\t     --ownership preserve-other will apply the recommended UID and GID\n\t     to those files that are owned by the user running pkgbuild, but\n\t     leave other files unchanged. Note that pkgbuild never changes the\n\t     ownership of the actual on-disk files, only the ownership that is\n\t     archived into the package.\n\n     --large-payload\n\t     By default, packages that are created have a per-file size limit\n\t     associated with them.  This method instructs pkgbuild to\n\t     construct a package where the included payload format supports\n\t     large files.  A large file is defined as any file that is 8 GiB\n\t     or larger."
+  manpageQuestion1: What is the primary purpose of the pkgbuild tool?
+  manpageQuestion2: How would you use pkgbuild to preserve the ownership of specific files in a package?
+  manpageQuestion3: Can you provide an example of using pkgbuild to create a package that supports large files, such as those exceeding 8 GiB in size?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pkgbuild`.\n\n\n\nManpage text:\n\nWarning: The --large-payload option generates packages that are\n\t     only compatible with macOS Monterey (12.0) and above. Packages\n\t     using this feature will fail to install or extract on previous\n\t     releases.\tSpecifying this option requires the user to pass\n\t     [--min-os-version 12.0] or later to acknowledge this requirement.\n\n     --compression compression-mode\n\t     Allows control over the compression used for the package. This\n\t     option does not affect the compression used for plugins or\n\t     scripts. Not specifying this option will leave the chosen\n\t     compression algorithm up to the operating system. Two\n\t     compression-mode arguments are supported:\n\n\t       •   legacy forces a 10.5-compatible compression algorithm for\n\t\t   the package.\n\n\t       •   latest enables pkgbuild to automatically select newer, more\n\t\t   efficient compression algorithms based on what is provided\n\t\t   to [--min-os-version <version>].\n\n     --min-os-version os-version\n\t     Specifying a minimum OS version allows the system to create a\n\t     package with the latest supported features. Some features can\n\t     have major benefits such as a better compression ratio. However,\n\t     specifying a minimum version will make the package require that\n\t     version when presented to productbuild(1). Some of the options in\n\t     this tool require this argument to be provided."
+  manpageQuestion1: What is the primary purpose of the pkgbuild command?
+  manpageQuestion2: How would you use pkgbuild to create a package with the latest compression algorithms suitable for macOS 12.0 and above?
+  manpageQuestion3: Can you provide an example of using pkgbuild to set a minimum OS version of 10.5 and use legacy compression for the package?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pkgbuild`.\n\n\n\nManpage text:\n\n--sign identity-name\n\t     Adds a digital signature to the resulting package. See SIGNED\n\t     PACKAGES\n\n     --keychain keychain-path\n\t     Specify a specific keychain to search for the signing identity.\n\t     See SIGNED PACKAGES\n\n     --cert certificate-name\n\t     Specify an intermediate certificate to be embedded in the\n\t     package. See SIGNED_PACKAGES\n\n     --timestamp\n\t     Include a trusted timestamp with the signature. See\n\t     SIGNED_PACKAGES\n\n     --timestamp=none\n\t     Disable trusted timestamp, regardless of identity. See\n\t     SIGNED_PACKAGES\n\n     --quiet\n\t     Inhibits status messages on stdout. Any error messages are still\n\t     sent to stderr.\n\n     package-output-path\n\t     The path to which the package will be written.\n\n     plist-output-path\n\t     When --analyze is used, the path to which the template component\n\t     property list will be written.\n\nCOMPONENT PROPERTY LIST\n     When you package a destination root, you can use a component property\n     list to specify how bundles in that root should be handled by the macOS\n     Installer. This property list should be an array of dictionaries, where\n     each dictionary specifies a single bundle. The dictionary keys are as\n     follows:"
+  manpageQuestion1: What is the primary purpose of the pkgbuild command?
+  manpageQuestion2: How can you sign a package using pkgbuild and specify a custom keychain for finding the signing identity?
+  manpageQuestion3: Can you provide an example of using pkgbuild to generate a package with a component property list that specifies how bundles in the destination root should be handled?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pkgbuild`.\n\n\n\nManpage text:\n\nKey\t\t\t\tDescription\n     RootRelativeBundlePath\t\tPath to bundle relative to the destination root (string)\n     BundleIsRelocatable\t\tInstall bundle over previous version if moved by user? (bool)\n     BundleIsVersionChecked\t\tDon't install bundle if newer version on disk? (bool)\n     BundleHasStrictIdentifier\t\tRequire identical bundle identifiers at install path? (bool)\n     BundleOverwriteAction\t\tHow to treat existing on-disk version of bundle (string)\n     BundlePreInstallScriptPath \tRelative path to bundle-specific preinstall script\n     BundlePostInstallScriptPath\tRelative path to bundle-specific postinstall script\n     BundleInstallScriptTimeout \tDuration (in seconds) for how long the script may run before it\n\t\t\t\t\tis terminated (integer)\n     ChildBundles\t\t\tBundles under this bundle (array of dictionaries)\n\n     The easiest way to create a component property list is to use the\n     --analyze option and point pkgbuild at your current destination root. The\n     output will be a component property list with default attributes, which\n     you can then edit as needed. You can also specify a previous version of\n     your component property list when using --analyze, which will cause the\n     attributes of previously existing bundles to be propagated forward."
+  manpageQuestion1: What is the primary purpose of the pkgbuild command?
+  manpageQuestion2: How can you use pkgbuild to analyze an existing destination root and generate a component property list with default attributes?
+  manpageQuestion3: What are the key parameters used in pkgbuild to control bundle installation behavior, and how do they function?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pkgbuild`.
+
+
+
+    Manpage text:
+
+    BundleOverwriteAction specifies how an existing version of the bundle on
+         disk should be handled if the version in the package is installed.
+         Despite the name, both upgrade and update do no version checking.
+         Conditionally installing based on version is controlled entirely by
+         BundleIsVersionChecked. If you specify upgrade, the bundle in the package
+         atomically replaces any version on disk; this has the effect of deleting
+         old paths that no longer exist in the new version of the bundle.  If you
+         specify update, the bundle in the package overwrites the version on disk,
+         and any files not contained in the package will be left intact; this is
+         appropriate when you are delivering an update-only package.  Another
+         effect of update is that the package bundle will not be installed at all
+         if there is not already a version on disk; this allows a package to
+         deliver an update for an app that the user might have deleted.
+
+         BundlePreInstallScriptPath and BundlePostInstallScriptPath are meaningful
+         only if --scripts was used to specify a scripts directory. The paths
+         given by these keys must be relative to the scripts directory.
+  manpageQuestion1: What is the primary purpose of the `pkgbuild` command in macOS?
+  manpageQuestion2: How can you configure `pkgbuild` to overwrite an existing bundle on disk without deleting files that are not part of the new version?
+  manpageQuestion3: What is the effect of using the `BundleOverwriteAction` with the value 'update' in a `pkgbuild` command?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pkgbuild`.
+
+
+
+    Manpage text:
+
+    BundleInstallScriptTimeout defines how long the script is able to run
+         before the operating system terminates it with SIGKILL.  If this key is
+         not specified, the operating system default timeout is chosen, which is
+         currently 10 minutes but is also subject to change. This key is only
+         respected on versions of macOS newer than macOS 15.0.
+
+         ChildBundles can be used to represent nesting of bundles, but it does not
+         change the meaning of RootRelativeBundlePath within lower-level
+         dictionaries (i.e. it is always relative to the destination root).  If
+         you write a component property list manually, you do not need to use
+         ChildBundles at all; you can simply put all bundle dictionaries in the
+         top-level array.
+
+    SIGNED PACKAGES
+         When creating a package, you can optionally add a digital signature to
+         the package.  You will need to have a certificate and corresponding
+         private key -- together called an “identity” -- in one of your accessible
+         keychains. To add a signature, specify the name of the identity using the
+         --sign option. The identity's name is the same as the “Common Name” of
+         the certificate.
+  manpageQuestion1: What is the primary purpose of the pkgbuild command?
+  manpageQuestion2: How would you use the --sign option with pkgbuild to digitally sign a package using an identity named 'My Developer Certificate'?
+  manpageQuestion3: What is the effect of specifying the BundleInstallScriptTimeout key in a pkgbuild configuration?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pkgbuild`.
+
+
+
+    Manpage text:
+
+    If you want to search for the identity in a specific keychain, specify
+         the path to the keychain file using the --keychain option. Otherwise, the
+         default keychain search path is used.
+
+         pkgbuild will embed the signing certificate in the product archive, as
+         well as any intermediate certificates that are found in the keychain. If
+         you need to embed additional certificates to form a chain of trust
+         between the signing certificate and a trusted root certificate on the
+         system, use the --cert option to give the Common Name of the intermediate
+         certificate. Multiple --cert options may be used to embed multiple
+         intermediate certificates.
+
+         The signature can optionally include a trusted timestamp. This is enabled
+         by default when signing with a Developer ID identity, but it can be
+         enabled explicitly using the --timestamp option. A timestamp server must
+         be contacted to embed a trusted timestamp. If you aren't connected to the
+         Internet, you can use --timestamp=none to disable timestamps, even for a
+         Developer ID identity.
+  manpageQuestion1: What is the primary purpose of the pkgbuild command?
+  manpageQuestion2: How can you use the --cert option with pkgbuild to embed multiple intermediate certificates?
+  manpageQuestion3: What is the default behavior regarding trusted timestamps when using pkgbuild with a Developer ID identity?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pkgbuild`.\n\n\n\nManpage text:\n\nNote that if you are going to create a signed product with the resulting\n     package, using productbuild(1), there is no reason to sign the individual\n     package.\n\nEXAMPLES\n     pkgbuild --identifier com.sample.pkg.app --root /tmp/Sample.dst\n\t     Sample.pkg\n\n\t     Build the package Sample.pkg using the entire contents of the\n\t     destination root /tmp/Sample.dst.\n\n     pkgbuild --analyze --root /tmp/Sample.dst components.plist\n\n\t     Analyze the destination root /tmp/Sample.dst, and write a\n\t     template component property list to components.plist.\n\n     pkgbuild --identifier com.sample.pkg.app --root /tmp/Sample.dst\n\t     --component-plist components-edited.plist Sample.pkg\n\n\t     Build the package Sample.pkg using the destination root\n\t     /tmp/Sample.dst, using the bundle-specific behaviors indicated in\n\t     components-edited.plist.\n\n     pkgbuild --identifier com.sample.pkg.app --root /tmp/Sample.dst --sign\n\t     sample-identity Sample.pkg\n\n\t     Build the package Sample.pkg using the destination root\n\t     /tmp/Sample.dst, and sign the resulting package using the\n\t     identity sample-identity. You will be prompted to allow pkgbuild\n\t     to access the keychain item, unless Always Allow was chosen\n\t     previously."
+  manpageQuestion1: What is the primary purpose of the pkgbuild command?
+  manpageQuestion2: How can you use pkgbuild to create a package with a specific identifier and destination root?
+  manpageQuestion3: Can you provide an example of using pkgbuild to sign a package with a specified identity?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pkgbuild`.\n\n\n\nManpage text:\n\nSEE ALSO\n     productbuild(1), xcodebuild(1)\n\nmacOS\t\t\t\t July 1, 2021\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the pkgbuild command?
+  manpageQuestion2: How would you use pkgbuild to create a software package for macOS?
+  manpageQuestion3: Can you provide an example of using pkgbuild in a typical software development workflow?
+

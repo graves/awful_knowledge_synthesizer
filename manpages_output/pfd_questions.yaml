@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pfd`.\n\n\n\nManpage text:\n\npfd(8)\t\t\t    System Manager's Manual\t\t\tpfd(8)\n\nNAME\n     pfd – daemon for network firewall and Internet sharing configuration.\n\nSYNOPSIS\n     NONE (launched by launchd)\n\nDESCRIPTION\n     pfd is a system daemon which provides an interface to the kernel's\n     firewall and Internet Sharing subsystem on behalf of applications.\n\n     This command is not intended to be invoked directly.\n\nFILES\n     /usr/libexec/pfd\n\nSEE ALSO\n     launchd(8)\n\nOS X\t\t\t\t May 10, 2017\t\t\t\t  OS X"
+  manpageQuestion1: What is the primary purpose of the pfd tool?
+  manpageQuestion2: How would you configure the firewall using the pfd daemon?
+  manpageQuestion3: Can you explain how the pfd daemon is typically used in a macOS system?
+

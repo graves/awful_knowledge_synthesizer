@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `routined`.\n\n\n\nManpage text:\n\nroutined(8)\t\t    System Manager's Manual\t\t   routined(8)\n\nNAME\n     routined – A daemon that learns the historical location patterns of a\n     user.\n\nDESCRIPTION\n     routined is a per-user daemon that learns historical location patterns of\n     a user and predicts future visits to locations.\n\n     There are no configurations to routined, and users should not run\n     routined manually.\n\nmacOS 15.3\t\t       November 2, 2016 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the routined daemon?
+  manpageQuestion2: How does the routined daemon function in relation to user location data?
+  manpageQuestion3: What are the key characteristics of the routined daemon's operation?
+

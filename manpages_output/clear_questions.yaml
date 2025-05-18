@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `clear`.\n\n\n\nManpage text:\n\nclear(1)\t\t    General Commands Manual\t\t      clear(1)\n\nNAME\n       clear - clear the terminal screen\n\nSYNOPSIS\n       clear\n\nDESCRIPTION\n       clear clears your screen if this is possible, including its scrollback\n       buffer (if the extended \"E3\" capability is defined).  clear looks in\n       the environment for the terminal type and then in the terminfo database\n       to determine how to clear the screen.\n\n       clear ignores any command-line parameters that may be present.\n\nSEE ALSO\n       tput(1), terminfo(5)\n\n       This describes ncurses version 5.7 (patch 20081102).\n\n\t\t\t\t\t\t\t\t      clear(1)"
+  manpageQuestion1: What is the primary purpose of the clear command?
+  manpageQuestion2: How would you use the clear command to empty the terminal screen?
+  manpageQuestion3: Can you provide an example of using the clear command in a shell script to reset the terminal display?
+

@@ -1,0 +1,40 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `talk`.\n\n\n\nManpage text:\n\nTALK(1) \t\t    General Commands Manual\t\t       TALK(1)\n\nNAME\n     talk – talk to another user\n\nSYNOPSIS\n     talk person [ttyname]\n\nDESCRIPTION\n     The talk utility is a visual communication program which copies lines\n     from your terminal to that of another user.\n\n     Options available:\n\n     person   If you wish to talk to someone on your own machine, then person\n\t      is just the person's login name.\tIf you wish to talk to a user\n\t      on another host, then person is of the form ‘user@host’ or\n\t      ‘host!user’ or ‘host:user’.\n\n     ttyname  If you wish to talk to a user who is logged in more than once,\n\t      the ttyname argument may be used to indicate the appropriate\n\t      terminal name, where ttyname is of the form ‘ttyXX’.\n\n     When first called, talk sends the message\n\t   Message from TalkDaemon@his_machine...\n\t   talk: connection requested by your_name@your_machine.\n\t   talk: respond with: talk your_name@your_machine\n\n     to the user you wish to talk to.  At this point, the recipient of the\n     message should reply by typing"
+  manpageQuestion1: What is the primary purpose of the talk command?
+  manpageQuestion2: How would you use the talk command to initiate a conversation with a user named 'jane' on the same machine?
+  manpageQuestion3: Can you provide an example of using the talk command to communicate with a user 'bob' on a remote host 'example.com' via their terminal session?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `talk`.
+
+
+
+    Manpage text:
+
+    talk  your_name@your_machine
+
+         It does not matter from which machine the recipient replies, as long as
+         his login-name is the same.  Once communication is established, the two
+         parties may type simultaneously, with their output appearing in separate
+         windows.  Typing control-L ‘^L’ will cause the screen to be reprinted.
+         Typing control-D ‘^D’ will clear both parts of your screen to be cleared,
+         while the control-D character will be sent to the remote side (and just
+         displayed by this talk client).  Your erase, kill, and word kill
+         characters will behave normally.  To exit, just type your interrupt
+         character; talk then moves the cursor to the bottom of the screen and
+         restores the terminal to its previous state.
+
+         Permission to talk may be denied or granted by use of the mesg(1)
+         command.  At the outset talking is allowed.
+
+    CONFIGURATION
+         The talk utility relies on the talkd system daemon.  See talkd(8) for
+         information about enabling talkd.
+  manpageQuestion1: What is the primary purpose of the talk command?
+  manpageQuestion2: How can you initiate a real-time text conversation using the talk command with another user on a different machine?
+  manpageQuestion3: What is required for the talk command to function properly on a macOS system?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `talk`.\n\n\n\nManpage text:\n\nFILES\n     /etc/hosts      to find the recipient's machine\n     /var/run/utmpx  to find the recipient's tty\n\nSEE ALSO\n     mail(1), mesg(1), wall(1), who(1), write(1), talkd(8)\n\nHISTORY\n     The talk command appeared in 4.2BSD.\n\n     In FreeBSD 5.3, the default behaviour of talk was changed to treat local-\n     to-local talk requests as originating and terminating at localhost.\n     Before this change, it was required that the hostname (as per\n     gethostname(3)) resolved to a valid IPv4 address (via gethostbyname(3)),\n     making talk unsuitable for use in configurations where talkd(8) was bound\n     to the loopback interface (normally for security reasons).\n\nBUGS\n     The version of talk released with 4.3BSD uses a protocol that is\n     incompatible with the protocol used in the version released with 4.2BSD.\n\n     Multibyte characters are not recognized.\n\nmacOS 15.3\t\t       January 21, 2010 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the talk command?
+  manpageQuestion2: How can you use the talk command to initiate a conversation with another user on the same machine?
+  manpageQuestion3: What is the default behavior of the talk command in macOS 15.3, and how does it differ from previous versions?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `checkgid`.\n\n\n\nManpage text:\n\nCHECKGID(8)\t\t    System Manager's Manual\t\t   CHECKGID(8)\n\nNAME\n     checkgid – validate group identifiers\n\nSYNOPSIS\n     checkgid group ...\n\nDESCRIPTION\n     Given one or more group identifers on the command line (e.g., \"httpd\" or\n     \"#-1\"), figure out whether they'll be valid for the server to use at run-\n     time.\n\n     If a groupname isn't found, or we can't setgid() to it, return -1.  If\n     all groups are valid, return 0.\n\n     This may need to be run as the superuser for the setgid() to succeed;\n     running it as any other user may result in a false negative.\n\nSEE ALSO\n     httpd(8)\n\nmacOS 15.3\t\t       October 21, 2008 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the checkgid command?
+  manpageQuestion2: How would you use checkgid to validate a group identifier such as 'www-data'?
+  manpageQuestion3: Can you provide an example of using checkgid to validate multiple group identifiers, including a numeric group ID?
+

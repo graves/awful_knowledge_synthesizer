@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `productutil`.\n\n\n\nManpage text:\n\nproductutil(1)\t\t    General Commands Manual\t\tproductutil(1)\n\nNAME\n     productutil – product archive utility\n\nSYNOPSIS\n     productutil\n\nDESCRIPTION\n     productutil is used by Apple's developer tools for validating product\n     archives. It is not meant to be invoked directly.\n\nSEE ALSO\n     productbuild(1), pkgbuild(1)\n\nmacOS\t\t\t      September 15, 2010\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the productutil tool?
+  manpageQuestion2: How would you use productutil to validate a product archive?
+  manpageQuestion3: Can you provide an example of using productutil in conjunction with other Apple developer tools for package building?
+

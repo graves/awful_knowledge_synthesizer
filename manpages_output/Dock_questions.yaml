@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `Dock`.\n\n\n\nManpage text:\n\nDock(8) \t\t    System Manager's Manual\t\t       Dock(8)\n\nNAME\n     Dock – Provides the Dock interface for the system\n\nDESCRIPTION\n     Dock dock goose\n\n     There are no options for Dock, and users should not run Dock manually.\n\nmacOS\t\t\t\t July 4, 2018\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the Dock tool?
+  manpageQuestion2: How would you use the Dock tool to manage system interfaces?
+  manpageQuestion3: Can you explain the common usage of the Dock tool in macOS environments?
+

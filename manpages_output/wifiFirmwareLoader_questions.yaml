@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `wifiFirmwareLoader`.\n\n\n\nManpage text:\n\nwifiFirmwareLoader(8)\t    System Manager's Manual\t wifiFirmwareLoader(8)\n\nNAME\n     wifiFirmwareLoader – load wifi firmware to chip\n\nDESCRIPTION\n     wifiFirmwareLoader Load WiFi firmware, nvram, regulatory table and\n     download them to WiFi chip when system boot up.\n\nmacOS 15.3\t\t\tApril 19, 2017\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the wifiFirmwareLoader tool?
+  manpageQuestion2: How would you use wifiFirmwareLoader to load a WiFi firmware file during system boot?
+  manpageQuestion3: Can you describe the typical use case for wifiFirmwareLoader in a macOS system?
+

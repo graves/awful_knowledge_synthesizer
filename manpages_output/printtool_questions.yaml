@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `printtool`.\n\n\n\nManpage text:\n\nprinttool(8)\t\t    System Manager's Manual\t\t  printtool(8)\n\nNAME\n     printtool – a tool to configure the printing system\n\nSYNOPSIS\n     printtool [--reset] [-f]\n\nDESCRIPTION\n     A tool to perform privileged configuration operations on the printing\n     system.\n\n     The options are as follows:\n\n     --reset\n\t     Reset the printing system\n\n     -f      Do not prompt for confirmation\n\nFILES\n     /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/printtool\n\nHISTORY\n     First appeared in Mac OS 10.4. Reset command added in Mac OS 10.14\n\nDarwin\t\t\t       December 8, 2016 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the printtool command?
+  manpageQuestion2: How can you reset the printing system without being prompted for confirmation using printtool?
+  manpageQuestion3: What is the function of the --reset option in the printtool command?
+

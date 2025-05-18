@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `coreauthd`.\n\n\n\nManpage text:\n\ncoreauthd(8)\t\t    System Manager's Manual\t\t  coreauthd(8)\n\nNAME\n     coreauthd – LocalAuthentication daemon and agent\n\nDESCRIPTION\n     coreauthd is a system daemon or agent that provides LocalAuthentication\n     services. It maintains the authenticated contexts and presents the\n     authentication user interface.\n\n     The coreauthd command should not be run directly.\n\nmacOS 15.3\t\t       January 17, 2017 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the coreauthd tool?
+  manpageQuestion2: How would you use coreauthd to manage LocalAuthentication services on a macOS system?
+  manpageQuestion3: Can you describe the typical usage scenario for coreauthd in a macOS environment?
+

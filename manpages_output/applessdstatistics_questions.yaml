@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `applessdstatistics`.\n\n\n\nManpage text:\n\napplessdstatistics(8)\t    System Manager's Manual\t applessdstatistics(8)\n\nNAME\n     applessdstatistics -- Storage statistics daemon\n\nSYNOPSIS\n     applessdstatistics\n\nDESCRIPTION\n     applessdstatistics is a daemon which gathers statistics related to the\n     internal storage device.\n\nSEE ALSO\n\nMacOSX\t\t\t\tTue Apr 6 2010\t\t\t\tMacOSX"
+  manpageQuestion1: What is the primary purpose of the applessdstatistics daemon?
+  manpageQuestion2: How can you start or restart the applessdstatistics daemon on a macOS system?
+  manpageQuestion3: What kind of information does the applessdstatistics daemon collect regarding internal storage devices?
+

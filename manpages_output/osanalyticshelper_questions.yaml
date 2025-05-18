@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `osanalyticshelper`.\n\n\n\nManpage text:\n\nosanalyticshelper(8)\t    System Manager's Manual\t  osanalyticshelper(8)\n\nNAME\n     osanalyticshelper – Helper process for analytics and diagnostics\n\nDESCRIPTION\n     osanalyticshelper supports writing and reporting analytics and\n     diagnostics.  The reports are used by Apple to improve its products.\n     Users who need support should use http://www.apple.com/support or other\n     authorized support channels.  Developers who are ADC members should\n     report bugs using http://bugreporter.apple.com in order to allow for two\n     way communication between Apple and the bug reporter.\n\nSEE ALSO\n     SubmitDiagInfo(8)\n\nmacOS\t\t\t\t March 9, 2017\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the osanalyticshelper tool?
+  manpageQuestion2: How can developers report bugs to Apple using osanalyticshelper?
+  manpageQuestion3: What is the role of osanalyticshelper in Apple's product improvement process?
+

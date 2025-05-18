@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `gamepolicyd`.\n\n\n\nManpage text:\n\nGAMEPOLICYD(8)\t\t    System Manager's Manual\t\tGAMEPOLICYD(8)\n\nNAME\n     gamepolicyd – Optimizes system performance for running game processes.\n\nSYNOPSIS\n     takes no arguments, and users should not launch it manually.\n\nDESCRIPTION\n     Optimizes system performance by monitoring currently running games and\n     adjusting system resources.\n\nHISTORY\n     gamepolicyd first appeared in macOS 14.0.\n\nDarwin\t\t\t       December 7, 2022 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the gamepolicyd tool?
+  manpageQuestion2: How would you check if gamepolicyd is running on a macOS system?
+  manpageQuestion3: What is the main function of gamepolicyd in relation to system performance and gaming?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `attentionawarenessd`.\n\n\n\nManpage text:\n\nATTENTIONAWARENESSD(8)\t    System Manager's Manual\tATTENTIONAWARENESSD(8)\n\nNAME\n     attentionawarenessd – attention awareness daemon\n\nSYNOPSIS\n     takes no arguments, and users should not launch it manually.\n\nDESCRIPTION\n     Handles coordinating and scheduling of attention awareness requests\n\nHISTORY\n     First appeared in macOS 15\n\nDarwin\t\t\t       November 29, 2023\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the attentionawarenessd daemon?
+  manpageQuestion2: How would you check if the attentionawarenessd daemon is running on a macOS system?
+  manpageQuestion3: What is the recommended way to ensure that the attentionawarenessd daemon starts automatically at boot time on macOS?
+

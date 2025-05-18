@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `groups`.\n\n\n\nManpage text:\n\nGROUPS(1)\t\t    General Commands Manual\t\t     GROUPS(1)\n\nNAME\n     groups – show group memberships\n\nSYNOPSIS\n     groups [user]\n\nDESCRIPTION\n     The groups utility has been obsoleted by the id(1) utility, and is\n     equivalent to “id -Gn [user]”.  The command “id -p” is suggested for\n     normal interactive use.\n\n     The groups utility displays the groups to which you (or the optionally\n     specified user) belong.\n\nEXIT STATUS\n     The groups utility exits 0 on success, and >0 if an error occurs.\n\nEXAMPLES\n     Show groups the root user belongs to:\n\n\t   $ groups root\n\t   wheel operator\n\nSEE ALSO\n     id(1)\n\nmacOS 15.3\t\t\t June 6, 1993\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the groups command?
+  manpageQuestion2: How would you use the groups command to display the group memberships of a user named 'alice'?
+  manpageQuestion3: What is the recommended alternative to the groups command according to the manpage?
+

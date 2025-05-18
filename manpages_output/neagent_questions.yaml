@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `neagent`.\n\n\n\nManpage text:\n\nneagent(8)\t\t    System Manager's Manual\t\t    neagent(8)\n\nNAME\n     neagent – Host process for Network Extension plugins\n\nDESCRIPTION\n     neagent is part of the Network Extension framework. It is responsible for\n     hosting Network Extension plugins, including NEProvider app extensions.\n\n     Types of Network Extension plugins include:\n\n     •\t VPN\n\n     •\t Content Filter\n\nmacOS 15.3\t\t\t March 3, 2017\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the neagent tool?
+  manpageQuestion2: How would you use neagent in a system where Network Extension plugins are being developed?
+  manpageQuestion3: Can you describe the role of neagent in relation to Network Extension plugins?
+

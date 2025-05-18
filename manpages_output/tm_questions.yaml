@@ -1,0 +1,76 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tm`.\n\n\n\nManpage text:\n\ntm(n)\t\t\t     Tcl Built-In Commands\t\t\t tm(n)\n\n______________________________________________________________________________\n\nNAME\n       tm - Facilities for locating and loading of Tcl Modules\n\nSYNOPSIS\n       ::tcl::tm::path add ?path...?\n       ::tcl::tm::path remove ?path...?\n       ::tcl::tm::path list\n       ::tcl::tm::roots ?path...?\n______________________________________________________________________________\n\nDESCRIPTION\n       This document describes the facilities for locating and loading Tcl\n       Modules (see MODULE DEFINITION for the definition of a Tcl Module).\n       The following commands are supported:\n\n       ::tcl::tm::path add ?path...?\n\t      The paths are added at the head to the list of module paths, in\n\t      order of appearance. This means that the last argument ends up\n\t      as the new head of the list.\n\n\t      The command enforces the restriction that no path may be an\n\t      ancestor directory of any other path on the list. If any of the\n\t      new paths violates this restriction an error will be raised,\n\t      before any of the paths have been added. In other words, if only\n\t      one path argument violates the restriction then none will be\n\t      added."
+  manpageQuestion1: What is the primary purpose of the tm command in Tcl?
+  manpageQuestion2: How can you add multiple module paths to the Tcl module path list using the tm command?
+  manpageQuestion3: What is the function of the ::tcl::tm::roots command in Tcl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tm`.\n\n\n\nManpage text:\n\nIf a path is already present as is, no error will be raised and\n\t      no action will be taken.\n\n\t      Paths are searched later in the order of their appearance in the\n\t      list. As they are added to the front of the list they are\n\t      searched in reverse order of addition. In other words, the paths\n\t      added last are looked at first.\n\n       ::tcl::tm::path remove ?path...?\n\t      Removes the paths from the list of module paths. The command\n\t      silently ignores all paths which are not on the list.\n\n       ::tcl::tm::path list\n\t      Returns a list containing all registered module paths, in the\n\t      order that they are searched for modules.\n\n       ::tcl::tm::roots ?path...?\n\t      Similar to path add, and layered on top of it. This command\n\t      takes a list of paths, extends each with “tclX/site-tcl”, and\n\t      “tclX/X.y”, for major version X of the Tcl interpreter and minor\n\t      version y less than or equal to the minor version of the\n\t      interpreter, and adds the resulting set of paths to the list of\n\t      paths to search."
+  manpageQuestion1: What is the primary purpose of the tm command in Tcl?
+  manpageQuestion2: How can you add a custom module path to the list of search paths using the tm command?
+  manpageQuestion3: Can you explain how the order of module paths is determined when using the tm command?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tm`.\n\n\n\nManpage text:\n\nThis command is used internally by the system to set up the\n\t      system-specific default paths.\n\n\t      The command has been exposed to allow a build system to define\n\t      additional root paths beyond those described by this document.\n\nMODULE DEFINITION\n       A Tcl Module is a Tcl Package contained in a single file, and no other\n       files required by it. This file has to be sourceable. In other words, a\n       Tcl Module is always imported via:\n\t      source module_file\n\n       The load command is not directly used. This restriction is not an\n       actual limitation, as some may believe.\tEver since 8.4 the Tcl source\n       command reads only until the first ^Z character. This allows us to\n       combine an arbitrary Tcl script with arbitrary binary data into one\n       file, where the script processes the attached data in any it chooses to\n       fully import and activate the package.\n\n       The name of a module file has to match the regular expression:\n\t      ([_[:alpha:]][:_[:alnum:]]*)-([[:digit:]].*)\\.tm"
+  manpageQuestion1: What is the primary purpose of the `tm` command?
+  manpageQuestion2: How can you import a Tcl module using the `tm` command?
+  manpageQuestion3: What is the naming convention for Tcl module files according to the manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tm`.\n\n\n\nManpage text:\n\nThe first capturing parentheses provides the name of the package, the\n       second clause its version. In addition to matching the pattern, the\n       extracted version number must not raise an error when used in the\n       command:\n\t      package vcompare $version 0\n\nFINDING MODULES\n       The directory tree for storing Tcl modules is separate from other parts\n       of the filesystem and independent of auto_path.\n\n       Tcl Modules are searched for in all directories listed in the result of\n       the command ::tcl::tm::path list.  This is called the Module path.\n       Neither the auto_path nor the tcl_pkgPath variables are used.  All\n       directories on the module path have to obey one restriction:\n\n\t      For any two directories, neither is an ancestor directory of the\n\t      other.\n\n       This is required to avoid ambiguities in package naming. If for example\n       the two directories “foo/” and “foo/cool” were on the path a package\n       named cool::ice could be found via the names cool::ice or ice, the\n       latter potentially obscuring a package named ice, unqualified."
+  manpageQuestion1: What is the primary purpose of the `tm` command in Tcl?
+  manpageQuestion2: How would you use the `tm` command to ensure that a version number does not raise an error when used in the `package vcompare` command?
+  manpageQuestion3: What are the requirements for directories in the module path when using the `tm` command?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tm`.\n\n\n\nManpage text:\n\nBefore the search is started, the name of the requested package is\n       translated into a partial path, using the following algorithm:\n\n\t      All occurrences of “::” in the package name are replaced by the\n\t      appropriate directory separator character for the platform we\n\t      are on. On Unix, for example, this is “/”.\n\n       Example:\n\n\t      The requested package is encoding::base64. The generated partial\n\t      path is “encoding/base64”.\n\n       After this translation the package is looked for in all module paths,\n       by combining them one-by-one, first to last with the partial path to\n       form a complete search pattern. Note that the search algorithm rejects\n       all files where the filename does not match the regular expression\n       given in the section MODULE DEFINITION. For the remaining files provide\n       scripts are generated and added to the package ifneeded database.\n\n       The algorithm falls back to the previous unknown handler when none of\n       the found module files satisfy the request. If the request was\n       satisfied the fall-back is ignored."
+  manpageQuestion1: What is the primary purpose of the tm resource?
+  manpageQuestion2: How does tm translate a package name like encoding::base64 into a partial path?
+  manpageQuestion3: What is the process tm uses to locate and handle a package after translating its name into a partial path?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tm`.\n\n\n\nManpage text:\n\nNote that packages in module form have no control over the index and\n       provide scripts entered into the package database for them.  For a\n       module file MF the index script is always:\n\t      package ifneeded PNAME PVERSION [list source MF]\n       and the provide script embedded in the above is:\n\t      source MF\n\n       Both package name PNAME and package version PVERSION are extracted from\n       the filename MF according to the definition below:\n\t      MF = /module_path/PNAME′-PVERSION.tm\n\n       Where PNAME′ is the partial path of the module as defined in section\n       FINDING MODULES, and translated into PNAME by changing all directory\n       separators to “::”, and module_path is the path (from the list of paths\n       to search) that we found the module file under.\n\n       Note also that we are here creating a connection between package names\n       and paths. Tcl is case-sensitive when it comes to comparing package\n       names, but there are filesystems which are not, like NTFS. Luckily\n       these filesystems do store the case of the name, despite not using the\n       information when comparing."
+  manpageQuestion1: What is the primary purpose of the tm resource?
+  manpageQuestion2: How does the tm resource handle module files in terms of package indexing and script embedding?
+  manpageQuestion3: Can you explain the process by which tm extracts package names and versions from module filenames?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tm`.
+
+
+
+    Manpage text:
+
+    Given the above we allow the names for packages in Tcl modules to have
+           mixed-case, but also require that there are no collisions when
+           comparing names in a case-insensitive manner. In other words, if a
+           package Foo is deployed in the form of a Tcl Module, packages like foo,
+           fOo, etc. are not allowed anymore.
+
+    DEFAULT PATHS
+           The default list of paths on the module path is computed by a tclsh as
+           follows, where X is the major version of the Tcl interpreter and y is
+           less than or equal to the minor version of the Tcl interpreter.
+
+           All the default paths are added to the module path, even those paths
+           which do not exist. Non-existent paths are filtered out during actual
+           searches. This enables a user to create one of the paths searched when
+           needed and all running applications will automatically pick up any
+           modules placed in them.
+
+           The paths are added in the order as they are listed below, and for
+           lists of paths defined by an environment variable in the order they are
+           found in the variable.
+  manpageQuestion1: What is the primary purpose of the tm resource?
+  manpageQuestion2: How can you configure the default paths for Tcl modules using tm?
+  manpageQuestion3: What is the significance of case sensitivity in package names when using tm?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tm`.\n\n\n\nManpage text:\n\nSYSTEM SPECIFIC PATHS\n       file normalize [info library]/../tclX/X.y\n\t      In other words, the interpreter will look into a directory\n\t      specified by its major version and whose minor versions are less\n\t      than or equal to the minor version of the interpreter.\n\n\t      For example for Tcl 8.4 the paths searched are:\n\t\t     [info library]/../tcl8/8.4\n\t\t     [info library]/../tcl8/8.3\n\t\t     [info library]/../tcl8/8.2\n\t\t     [info library]/../tcl8/8.1\n\t\t     [info library]/../tcl8/8.0\n\n\t      This definition assumes that a package defined for Tcl X.y can\n\t      also be used by all interpreters which have the same major\n\t      number X and a minor number greater than y.\n\n       file normalize EXEC/tclX/X.y\n\t      Where EXEC is file normalize [info nameofexecutable]/../lib or\n\t      file normalize [::tcl::pkgconfig get libdir,runtime]\n\n\t      This sets of paths is handled equivalently to the set coming\n\t      before, except that it is anchored in EXEC_PREFIX.  For a build\n\t      with PREFIX = EXEC_PREFIX the two sets are identical."
+  manpageQuestion1: What is the primary purpose of the `tm` resource in macOS?
+  manpageQuestion2: How does the `tm` resource handle path normalization for Tcl packages?
+  manpageQuestion3: Can you explain how the `tm` resource determines the search paths for Tcl interpreters?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tm`.\n\n\n\nManpage text:\n\nSITE SPECIFIC PATHS\n       file normalize [info library]/../tclX/site-tcl\n\t      Note that this is always a single entry because X is always a\n\t      specific value (the current major version of Tcl).\n\n   USER SPECIFIC PATHS\n       $::env(TCLX_y_TM_PATH)\n\t      A list of paths, separated by either : (Unix) or ; (Windows).\n\t      This is user and site specific as this environment variable can\n\t      be set not only by the user's profile, but by system\n\t      configuration scripts as well.\n\n       $::env(TCLX.y_TM_PATH)\n\t      Same meaning and content as the previous variable. However the\n\t      use of dot '.' to separate major and minor version number makes\n\t      this name less to non-portable and its use is discouraged.\n\t      Support of this variable has been kept only for backward\n\t      compatibility with the original specification, i.e. TIP 189.\n\n       These paths are seen and therefore shared by all Tcl shells in the\n       $::env(PATH) of the user.\n\n       Note that X and y follow the general rules set out above. In other\n       words, Tcl 8.4, for example, will look at these 5 environment\n       variables:\n\t      $::env(TCL8.4_TM_PATH)  $::env(TCL8_4_TM_PATH)\n\t      $::env(TCL8.3_TM_PATH)  $::env(TCL8_3_TM_PATH)\n\t      $::env(TCL8.2_TM_PATH)  $::env(TCL8_2_TM_PATH)\n\t      $::env(TCL8.1_TM_PATH)  $::env(TCL8_1_TM_PATH)\n\t      $::env(TCL8.0_TM_PATH)  $::env(TCL8_0_TM_PATH)"
+  manpageQuestion1: What is the primary purpose of the tm resource?
+  manpageQuestion2: How can you set user-specific paths for the tm tool in a macOS environment?
+  manpageQuestion3: What are the different ways to specify Tcl version-specific paths for the tm tool?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tm`.\n\n\n\nManpage text:\n\nSEE ALSO\n       package(n), Tcl Improvement Proposal #189 “Tcl Modules” (online at\n       http://tip.tcl.tk/189.html), Tcl Improvement Proposal #190\n       “Implementation Choices for Tcl Modules” (online at\n       http://tip.tcl.tk/190.html)\n\nKEYWORDS\n       modules, package\n\nTcl\t\t\t\t      8.5\t\t\t\t tm(n)"
+  manpageQuestion1: What is the primary purpose of the tm resource?
+  manpageQuestion2: How would you use the tm resource to manage Tcl modules in a project?
+  manpageQuestion3: Can you explain how the tm resource relates to Tcl package management?
+

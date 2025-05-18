@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `xsandaily`.\n\n\n\nManpage text:\n\nXSANDAILY(8)\t\t    System Manager's Manual\t\t  XSANDAILY(8)\n\nNAME\n     xsandaily – Xsan daily notification service\n\nSYNOPSYS\n     xsandaily [volume]\n\nDESCRIPTION\n     xsandaily scans hosted Xsan volumes and generates free space and quota\n     related notifications.  It is invoked once daily by launchd(8).  If a\n     volume name is specified, xsandaily checks only the volume specified.\n     Otherwise, xsandaily scans all hosted Xsan volumes.\n\nSEE ALSO\n     launchd(8), xsand(8)\n\nXsan\t\t\t       January 25, 2017 \t\t\t  Xsan"
+  manpageQuestion1: What is the primary purpose of the xsandaily command?
+  manpageQuestion2: How would you use xsandaily to generate notifications for a specific Xsan volume named 'MyVolume'?
+  manpageQuestion3: Can you explain how xsandaily is typically scheduled to run daily on a macOS system?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `UASharedPasteboardProgressUI`.\n\n\n\nManpage text:\n\nUASharedPasteboardProgressUI(8) \t\t       System Manager's Manual\n\nNAME\n     UASharedPasteboardProgressUI – Progress UI Service for Universal\n     Clipboard\n\nDESCRIPTION\n     UASharedPasteboardProgressUI is used by useractivityd to display progress\n     to the user when a Universal Clipboard transfer is in progress.\n\nmacOS 15.3\t\t       October 25, 2016 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the UASharedPasteboardProgressUI service?
+  manpageQuestion2: How does the UASharedPasteboardProgressUI service interact with useractivityd to provide progress updates for Universal Clipboard transfers?
+  manpageQuestion3: What is the role of UASharedPasteboardProgressUI in managing user experience during Universal Clipboard operations?
+

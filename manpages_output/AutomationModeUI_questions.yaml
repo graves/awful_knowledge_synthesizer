@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `AutomationModeUI`.\n\n\n\nManpage text:\n\nAutomationModeUI(8)\t    System Manager's Manual\t   AutomationModeUI(8)\n\nNAME\n     AutomationModeUI – Agent reflecting UI automation status\n\nDESCRIPTION\n     AutomationModeUI displays a watermark when UI automation has been enabled\n     and provides an affordance for the user to disable automation.\n\nDarwin\t\t\t\t6 January, 2021 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the AutomationModeUI tool?
+  manpageQuestion2: How would you use AutomationModeUI to indicate that UI automation is enabled?
+  manpageQuestion3: Can you describe how AutomationModeUI provides an affordance for users to disable automation?
+

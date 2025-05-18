@@ -1,0 +1,53 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cvgather`.\n\n\n\nManpage text:\n\nCVGATHER(8)\t\t    System Manager's Manual\t\t   CVGATHER(8)\n\nNAME\n       cvgather - Compile debugging information for a Xsan File System\n\n       (The Windows version of cvgather contains different features and\n       options.  See the StorNext Windows \"Gather Debugging Info\n       (cvgather.exe)\" help page for more information.)\n\nSYNOPSIS\n       cvgather -f_VolName [-sukxr] [-o OutputFile] [-n NumberOfCvlogs]\n\t      [-U UserCore] [-K KernelCore] [-p SnfsPath]\n\nDESCRIPTION\n       The cvgather program is used to collect debug information from a\n       volume.\tThis creates a tar file of the system's Xsan File System debug\n       logs, configuration, version information and disk devices.\n\n       The cvgather program will collect client debug information on client\n       machines and server information on server machines, as well as\n       portmapper information from all machines. System log files as well as\n       Xsan log files are included.  At the users option, cvgather also\n       collects core files from user space utilities, such as the fsm, and\n       also from the operating system kernel, when available.\n\nUSAGE\n       When the operator encounters an error using Xsan and wishes to send\n       debugging information to Apple technical support, the cvgather utility\n       may be run.  The following command arguments and options affect the\n       behavior of cvgather."
+  manpageQuestion1: What is the primary purpose of the cvgather command?
+  manpageQuestion2: How can you use cvgather to collect debug information for a Xsan File System volume named 'MyVolume' and save the output to a file called 'debug.tar'?
+  manpageQuestion3: What is the command to collect core files from both user space utilities and the kernel using cvgather for a Xsan volume?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cvgather`.\n\n\n\nManpage text:\n\n-f VolName\n\t      Specify the name of the volume for which debugging information\n\t      should be collected. Some information is universal to all\n\t      installed volumes, while some is unique to each file system.\n\n       -k     Collect the core file from the operating system kernel. This\n\t      option is not supported on Linux. The -k option collects the\n\t      kernel core from the default location for the machine's\n\t      operating system. To collect the kernel core from another\n\t      location use -K.\n\n       -K KernelCore\n\t      Collect the kernel core file from any file. You must specify the\n\t      full filename as well as the path.\n\n       -n NumberOfCvlogs\n\t      Specify the number of cvlog files to include in the tarball. If\n\t      this option is not selected, 4 will be used. This is the default\n\t      number of cvlogs used by the fsm.\n\n       -o OutputFile\n\t      Specify the name of the output file. This name is appended with\n\t      a _timestamp and the suffix '.tgz'. The timestamp is appended to\n\t      the filename to allow for the existence of multiple tar files.\n\t      If this option is not selected, the name of the volume will be\n\t      used as a default."
+  manpageQuestion1: What is the primary purpose of the cvgather tool?
+  manpageQuestion2: How would you use cvgather to collect debugging information for a specific volume named 'MyVolume' and save the output to a file called 'debug_output.tgz'?
+  manpageQuestion3: Can you provide an example of using cvgather to collect a kernel core file from the default location and include 6 cvlog files in the tarball?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cvgather`.\n\n\n\nManpage text:\n\n-p SnfsPath\n\t      Specify the file path to the Xsan install directory.  If this\n\t      option is not selected, the path\n\t      /System/Library/Filesystems/acfs.fs/Contents will be used as a\n\t      default.\n\n       -s     Gather symbol information without core files.\n\n       -u     Collect the core file from user executables, such as the fsm.\n\t      By default, if they exist, cvgather will pick up a file named\n\t      \"core\" and the the most recently modified \"core.*\" file on\n\t      systems that support core file names with extensions.  The -u\n\t      option collects core files from the 'debug' directory in the\n\t      Xsan directory.  To collect user core files from another\n\t      location or core files with with non-standard names use -U.\n\n       -U UserCore\n\t      Collect the user core file from any file. You must specify the\n\t      full filename as well as the path.\n\n       -r     Show numerical addresses instead of trying to determine symbolic\n\t      host\n\n       -x     Exclude files that are collected by pse_snapshot. Note that this\n\t      option is intended to be used by pse_snapshot only and not for\n\t      general use. The behavior of this option may change without\n\t      warning."
+  manpageQuestion1: What is the primary purpose of the cvgather command-line tool?
+  manpageQuestion2: How would you use cvgather to collect user core files from the 'debug' directory in the Xsan installation directory?
+  manpageQuestion3: Can you provide an example of using cvgather to collect a user core file named 'core_backup' located in the '/var/core' directory?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cvgather`.
+
+
+
+    Manpage text:
+
+    When cvgather is run it will create a tar file, that can be simply e-
+           mailed to Apple technical support for evaluation. It is recommended
+           that the tar file be compressed into a standard compression format such
+           as compress, gzip, or bzip2.
+
+    NOTES
+           IMPORTANT: cvgather creates a number of temporary files, thus must have
+           write privileges for the directory in which it is run. These files, as
+           well as the output tar file can be very large, especially when the
+           kernel core file is included, thus adequate disk space must be
+           available.
+
+           Several important log files are only accessible by the root user, thus
+           it is important that cvgather be run with root privileges to gather the
+           entire range of useful information.
+
+    FILES
+           /Library/Preferences/Xsan/*.cfg
+           /Library/Logs/Xsan/debug/cvfsd.out
+           /Library/Logs/Xsan/debug/nssdbg.out
+           /Library/Logs/Xsan/debug/fsmpm.out
+           /Library/Logs/Xsan/data/<volume_name>/log/cvlog*
+  manpageQuestion1: What is the primary purpose of the cvgather command?
+  manpageQuestion2: How should cvgather be used to create a compressed tar file for Apple technical support?
+  manpageQuestion3: What are the necessary conditions for successfully running cvgather?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cvgather`.\n\n\n\nManpage text:\n\nLIMITATIONS\n       Only the Linux platform is supported with cvgather\n\n       The Windows version of cvgather contains different features and\n       options.  See the StorNext Windows \"Gather Debugging Info\n       (cvgather.exe)\" help page for\n\tmore information.\n\nSEE ALSO\n       cvdb(8), cvversions(1), cvfsid(8) cvlabel(8)\n\nXsan File System\t\t December 2021\t\t\t   CVGATHER(8)"
+  manpageQuestion1: What is the primary purpose of the cvgather command?
+  manpageQuestion2: How can cvgather be used on Linux systems, given that it is only supported there?
+  manpageQuestion3: What are the related commands or tools that are typically used with cvgather?
+

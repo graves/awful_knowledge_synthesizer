@@ -1,0 +1,247 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlmod`.\n\n\n\nManpage text:\n\nPERLMOD(1)\t       Perl Programmers Reference Guide \t    PERLMOD(1)"
+  manpageQuestion1: What is the primary purpose of the perlmod command?
+  manpageQuestion2: How would you use perlmod to generate a module documentation for a Perl package named 'MyModule'?
+  manpageQuestion3: Can you provide an example of using perlmod to generate a POD documentation for a Perl script named 'my_script.pl'?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlmod`.\n\n\n\nManpage text:\n\nNAME\n       perlmod - Perl modules (packages and symbol tables)\n\nDESCRIPTION\n   Is this the document you were after?\n       There are other documents which might contain the information that\n       you're looking for:\n\n       This doc\n\t Perl's packages, namespaces, and some info on classes.\n\n       perlnewmod\n\t Tutorial on making a new module.\n\n       perlmodstyle\n\t Best practices for making a new module.\n\n   Packages\n       Unlike Perl 4, in which all the variables were dynamic and shared one\n       global name space, causing maintainability problems, Perl 5 provides\n       two mechanisms for protecting code from having its variables stomped on\n       by other code: lexically scoped variables created with \"my\" or \"state\"\n       and namespaced global variables, which are exposed via the \"vars\"\n       pragma, or the \"our\" keyword. Any global variable is considered to be\n       part of a namespace and can be accessed via a \"fully qualified form\".\n       Conversely, any lexically scoped variable is considered to be part of\n       that lexical-scope, and does not have a \"fully qualified form\"."
+  manpageQuestion1: What is the primary purpose of the perlmod resource?
+  manpageQuestion2: How would you use perlmod to create a new module with best practices according to the documentation?
+  manpageQuestion3: Can you provide an example of using perlmod to define a package with lexically scoped variables and global variables?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlmod`.
+
+
+
+    Manpage text:
+
+    In perl namespaces are called "packages" and the "package" declaration
+           tells the compiler which namespace to prefix to "our" variables and
+           unqualified dynamic names.  This both protects against accidental
+           stomping and provides an interface for deliberately clobbering global
+           dynamic variables declared and used in other scopes or packages, when
+           that is what you want to do.
+
+           The scope of the "package" declaration is from the declaration itself
+           through the end of the enclosing block, "eval", or file, whichever
+           comes first (the same scope as the my(), our(), state(), and local()
+           operators, and also the effect of the experimental "reference
+           aliasing," which may change), or until the next "package" declaration.
+           Unqualified dynamic identifiers will be in this namespace, except for
+           those few identifiers that, if unqualified, default to the main package
+           instead of the current one as described below.  A "package" statement
+           affects only dynamic global symbols, including subroutine names, and
+           variables you've used local() on, but not lexical variables created
+           with my(), our() or state().
+  manpageQuestion1: What is the primary purpose of the 'package' declaration in Perl?
+  manpageQuestion2: How can you use the 'package' declaration to specify a different namespace for dynamic variables in Perl?
+  manpageQuestion3: Can you explain how the 'package' declaration affects the scope of dynamic variables in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlmod`.\n\n\n\nManpage text:\n\nTypically, a \"package\" statement is the first declaration in a file\n       included in a program by one of the \"do\", \"require\", or \"use\"\n       operators.  You can switch into a package in more than one place:\n       \"package\" has no effect beyond specifying which symbol table the\n       compiler will use for dynamic symbols for the rest of that block or\n       until the next \"package\" statement.  You can refer to variables and\n       filehandles in other packages by prefixing the identifier with the\n       package name and a double colon: $Package::Variable.  If the package\n       name is null, the \"main\" package is assumed.  That is, $::sail is\n       equivalent to $main::sail.\n\n       The old package delimiter was a single quote, but double colon is now\n       the preferred delimiter, in part because it's more readable to humans,\n       and in part because it's more readable to emacs macros.\tIt also makes\n       C++ programmers feel like they know what's going on--as opposed to\n       using the single quote as separator, which was there to make Ada\n       programmers feel like they knew what was going on.  Because the old-\n       fashioned syntax is still supported for backwards compatibility, if you\n       try to use a string like \"This is $owner's house\", you'll be accessing\n       $owner::s; that is, the $s variable in package \"owner\", which is\n       probably not what you meant.  Use braces to disambiguate, as in \"This\n       is ${owner}'s house\"."
+  manpageQuestion1: What is the primary purpose of the perlmod resource?
+  manpageQuestion2: How can you refer to a variable from another package in Perl using the package delimiter?
+  manpageQuestion3: What is the correct way to disambiguate a string containing a package name in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlmod`.\n\n\n\nManpage text:\n\nPackages may themselves contain package separators, as in\n       $OUTER::INNER::var.  This implies nothing about the order of name\n       lookups, however.  There are no relative packages: all symbols are\n       either local to the current package, or must be fully qualified from\n       the outer package name down.  For instance, there is nowhere within\n       package \"OUTER\" that $INNER::var refers to $OUTER::INNER::var.  \"INNER\"\n       refers to a totally separate global package. The custom of treating\n       package names as a hierarchy is very strong, but the language in no way\n       enforces it.\n\n       Only identifiers starting with letters (or underscore) are stored in a\n       package's symbol table.\tAll other symbols are kept in package \"main\",\n       including all punctuation variables, like $_.  In addition, when\n       unqualified, the identifiers STDIN, STDOUT, STDERR, ARGV, ARGVOUT, ENV,\n       INC, and SIG are forced to be in package \"main\", even when used for\n       other purposes than their built-in ones.  If you have a package called\n       \"m\", \"s\", or \"y\", then you can't use the qualified form of an\n       identifier because it would be instead interpreted as a pattern match,\n       a substitution, or a transliteration."
+  manpageQuestion1: What is the primary purpose of the perlmod resource?
+  manpageQuestion2: How can you ensure that an identifier like 'STDIN' is treated as a variable in a package other than 'main'?
+  manpageQuestion3: What are the implications of using package names that start with 'm', 's', or 'y' in Perl?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlmod`.
+
+
+
+    Manpage text:
+
+    Variables beginning with underscore used to be forced into package
+           main, but we decided it was more useful for package writers to be able
+           to use leading underscore to indicate private variables and method
+           names.  However, variables and functions named with a single "_", such
+           as $_ and "sub _", are still forced into the package "main".  See also
+           "The Syntax of Variable Names" in perlvar.
+
+           "eval"ed strings are compiled in the package in which the eval() was
+           compiled.  (Assignments to $SIG{}, however, assume the signal handler
+           specified is in the "main" package.  Qualify the signal handler name if
+           you wish to have a signal handler in a package.)  For an example,
+           examine perldb.pl in the Perl library.  It initially switches to the
+           "DB" package so that the debugger doesn't interfere with variables in
+           the program you are trying to debug.  At various points, however, it
+           temporarily switches back to the "main" package to evaluate various
+           expressions in the context of the "main" package (or wherever you came
+           from).  See perldebug.
+  manpageQuestion1: What is the primary purpose of the perlmod resource?
+  manpageQuestion2: How does the perlmod resource handle variables and functions named with a single underscore, such as $_?
+  manpageQuestion3: Can you explain how the perlmod resource manages signal handlers in different packages?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlmod`.\n\n\n\nManpage text:\n\nThe special symbol \"__PACKAGE__\" contains the current package, but\n       cannot (easily) be used to construct variable names. After \"my($foo)\"\n       has hidden package variable $foo, it can still be accessed, without\n       knowing what package you are in, as \"${__PACKAGE__.'::foo'}\".\n\n       See perlsub for other scoping issues related to my() and local(), and\n       perlref regarding closures.\n\n   Symbol Tables\n       The symbol table for a package happens to be stored in the hash of that\n       name with two colons appended.  The main symbol table's name is thus\n       %main::, or %:: for short.  Likewise the symbol table for the nested\n       package mentioned earlier is named %OUTER::INNER::.\n\n       The value in each entry of the hash is what you are referring to when\n       you use the *name typeglob notation.\n\n\t   local *main::foo    = *main::bar;\n\n       You can use this to print out all the variables in a package, for\n       instance.  The standard but antiquated dumpvar.pl library and the CPAN\n       module Devel::Symdump make use of this."
+  manpageQuestion1: What is the primary purpose of the perlmod resource?
+  manpageQuestion2: How can you access a package variable from within a different package using Perl's symbol tables?
+  manpageQuestion3: Can you explain how to print all variables in a specific package using Perl's symbol tables?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlmod`.\n\n\n\nManpage text:\n\nThe results of creating new symbol table entries directly or modifying\n       any entries that are not already typeglobs are undefined and subject to\n       change between releases of perl.\n\n       Assignment to a typeglob performs an aliasing operation, i.e.,\n\n\t   *dick = *richard;\n\n       causes variables, subroutines, formats, and file and directory handles\n       accessible via the identifier \"richard\" also to be accessible via the\n       identifier \"dick\".  If you want to alias only a particular variable or\n       subroutine, assign a reference instead:\n\n\t   *dick = \\$richard;\n\n       Which makes $richard and $dick the same variable, but leaves @richard\n       and @dick as separate arrays.  Tricky, eh?\n\n       There is one subtle difference between the following statements:\n\n\t   *foo = *bar;\n\t   *foo = \\$bar;\n\n       \"*foo = *bar\" makes the typeglobs themselves synonymous while \"*foo =\n       \\$bar\" makes the SCALAR portions of two distinct typeglobs refer to the\n       same scalar value. This means that the following code:"
+  manpageQuestion1: What is the primary purpose of the perlmod resource?
+  manpageQuestion2: How does assigning a typeglob in Perl differ from assigning a reference to a scalar?
+  manpageQuestion3: What is the difference between *foo = *bar and *foo = $bar in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlmod`.\n\n\n\nManpage text:\n\n$bar = 1;\n\t   *foo = \\$bar;       # Make $foo an alias for $bar\n\n\t   {\n\t       local $bar = 2; # Restrict changes to block\n\t       print $foo;     # Prints '1'!\n\t   }\n\n       Would print '1', because $foo holds a reference to the original $bar.\n       The one that was stuffed away by \"local()\" and which will be restored\n       when the block ends. Because variables are accessed through the\n       typeglob, you can use \"*foo = *bar\" to create an alias which can be\n       localized. (But be aware that this means you can't have a separate @foo\n       and @bar, etc.)\n\n       What makes all of this important is that the Exporter module uses glob\n       aliasing as the import/export mechanism. Whether or not you can\n       properly localize a variable that has been exported from a module\n       depends on how it was exported:\n\n\t   @EXPORT = qw($FOO); # Usual form, can't be localized\n\t   @EXPORT = qw(*FOO); # Can be localized\n\n       You can work around the first case by using the fully qualified name\n       ($Package::FOO) where you need a local value, or by overriding it by\n       saying \"*FOO = *Package::FOO\" in your script."
+  manpageQuestion1: What is the primary purpose of the perlmod resource?
+  manpageQuestion2: How can you create an alias for a variable in Perl that allows it to be localized within a block?
+  manpageQuestion3: What is the difference between exporting a variable as $FOO and *FOO in Perl's Exporter module, and how can you work around the limitations of the former?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlmod`.\n\n\n\nManpage text:\n\nThe \"*x = \\$y\" mechanism may be used to pass and return cheap\n       references into or from subroutines if you don't want to copy the whole\n       thing.  It only works when assigning to dynamic variables, not\n       lexicals.\n\n\t   %some_hash = ();\t\t       # can't be my()\n\t   *some_hash = fn( \\%another_hash );\n\t   sub fn {\n\t       local *hashsym = shift;\n\t       # now use %hashsym normally, and you\n\t       # will affect the caller's %another_hash\n\t       my %nhash = (); # do what you want\n\t       return \\%nhash;\n\t   }\n\n       On return, the reference will overwrite the hash slot in the symbol\n       table specified by the *some_hash typeglob.  This is a somewhat tricky\n       way of passing around references cheaply when you don't want to have to\n       remember to dereference variables explicitly.\n\n       Another use of symbol tables is for making \"constant\" scalars.\n\n\t   *PI = \\3.14159265358979;\n\n       Now you cannot alter $PI, which is probably a good thing all in all.\n       This isn't the same as a constant subroutine, which is subject to\n       optimization at compile-time.  A constant subroutine is one prototyped\n       to take no arguments and to return a constant expression.  See perlsub\n       for details on these.  The \"use constant\" pragma is a convenient\n       shorthand for these."
+  manpageQuestion1: What is the primary purpose of the perlmod resource?
+  manpageQuestion2: How can you use the *x = $y mechanism to pass a reference from one subroutine to another without copying the entire data structure?
+  manpageQuestion3: Can you provide an example of using symbol tables in perlmod to create a constant scalar that cannot be modified?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlmod`.\n\n\n\nManpage text:\n\nYou can say *foo{PACKAGE} and *foo{NAME} to find out what name and\n       package the *foo symbol table entry comes from.\tThis may be useful in\n       a subroutine that gets passed typeglobs as arguments:\n\n\t   sub identify_typeglob {\n\t       my $glob = shift;\n\t       print 'You gave me ', *{$glob}{PACKAGE},\n\t\t   '::', *{$glob}{NAME}, \"\\n\";\n\t   }\n\t   identify_typeglob *foo;\n\t   identify_typeglob *bar::baz;\n\n       This prints\n\n\t   You gave me main::foo\n\t   You gave me bar::baz\n\n       The *foo{THING} notation can also be used to obtain references to the\n       individual elements of *foo.  See perlref.\n\n       Subroutine definitions (and declarations, for that matter) need not\n       necessarily be situated in the package whose symbol table they occupy.\n       You can define a subroutine outside its package by explicitly\n       qualifying the name of the subroutine:\n\n\t   package main;\n\t   sub Some_package::foo { ... }   # &foo defined in Some_package\n\n       This is just a shorthand for a typeglob assignment at compile time:"
+  manpageQuestion1: What is the primary purpose of the perlmod resource?
+  manpageQuestion2: How can you use the *foo{PACKAGE} and *foo{NAME} notation to determine the package and name of a symbol table entry in Perl?
+  manpageQuestion3: Can you provide an example of defining a subroutine outside its package using Perl's symbol table notation?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlmod`.\n\n\n\nManpage text:\n\nBEGIN { *Some_package::foo = sub { ... } }\n\n       and is not the same as writing:\n\n\t   {\n\t       package Some_package;\n\t       sub foo { ... }\n\t   }\n\n       In the first two versions, the body of the subroutine is lexically in\n       the main package, not in Some_package. So something like this:\n\n\t   package main;\n\n\t   $Some_package::name = \"fred\";\n\t   $main::name = \"barney\";\n\n\t   sub Some_package::foo {\n\t       print \"in \", __PACKAGE__, \": \\$name is '$name'\\n\";\n\t   }\n\n\t   Some_package::foo();\n\n       prints:\n\n\t   in main: $name is 'barney'\n\n       rather than:\n\n\t   in Some_package: $name is 'fred'\n\n       This also has implications for the use of the SUPER:: qualifier (see\n       perlobj).\n\n   BEGIN, UNITCHECK, CHECK, INIT and END\n       Five specially named code blocks are executed at the beginning and at\n       the end of a running Perl program.  These are the \"BEGIN\", \"UNITCHECK\",\n       \"CHECK\", \"INIT\", and \"END\" blocks.\n\n       These code blocks can be prefixed with \"sub\" to give the appearance of\n       a subroutine (although this is not considered good style).  One should\n       note that these code blocks don't really exist as named subroutines\n       (despite their appearance). The thing that gives this away is the fact\n       that you can have more than one of these code blocks in a program, and\n       they will get all executed at the appropriate moment.  So you can't\n       execute any of these code blocks by name."
+  manpageQuestion1: What is the primary purpose of the perlmod resource?
+  manpageQuestion2: How can you define a subroutine in Perl using the BEGIN block to initialize a package variable?
+  manpageQuestion3: What is the significance of the BEGIN, UNITCHECK, CHECK, INIT, and END blocks in Perl programming?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlmod`.\n\n\n\nManpage text:\n\nA \"BEGIN\" code block is executed as soon as possible, that is, the\n       moment it is completely defined, even before the rest of the containing\n       file (or string) is parsed.  You may have multiple \"BEGIN\" blocks\n       within a file (or eval'ed string); they will execute in order of\n       definition.  Because a \"BEGIN\" code block executes immediately, it can\n       pull in definitions of subroutines and such from other files in time to\n       be visible to the rest of the compile and run time.  Once a \"BEGIN\" has\n       run, it is immediately undefined and any code it used is returned to\n       Perl's memory pool.\n\n       An \"END\" code block is executed as late as possible, that is, after\n       perl has finished running the program and just before the interpreter\n       is being exited, even if it is exiting as a result of a die() function.\n       (But not if it's morphing into another program via \"exec\", or being\n       blown out of the water by a signal--you have to trap that yourself (if\n       you can).)  You may have multiple \"END\" blocks within a file--they will\n       execute in reverse order of definition; that is: last in, first out\n       (LIFO).\t\"END\" blocks are not executed when you run perl with the \"-c\"\n       switch, or if compilation fails."
+  manpageQuestion1: What is the primary purpose of the perlmod resource?
+  manpageQuestion2: How can you use BEGIN blocks in Perl to ensure certain code is executed before the rest of the script runs?
+  manpageQuestion3: What is the behavior of END blocks in Perl and how are they executed relative to other code?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlmod`.\n\n\n\nManpage text:\n\nNote that \"END\" code blocks are not executed at the end of a string\n       \"eval()\": if any \"END\" code blocks are created in a string \"eval()\",\n       they will be executed just as any other \"END\" code block of that\n       package in LIFO order just before the interpreter is being exited.\n\n       Inside an \"END\" code block, $? contains the value that the program is\n       going to pass to \"exit()\".  You can modify $? to change the exit value\n       of the program.\tBeware of changing $? by accident (e.g. by running\n       something via \"system\").\n\n       Inside of a \"END\" block, the value of \"${^GLOBAL_PHASE}\" will be \"END\".\n\n       \"UNITCHECK\", \"CHECK\" and \"INIT\" code blocks are useful to catch the\n       transition between the compilation phase and the execution phase of the\n       main program.\n\n       \"UNITCHECK\" blocks are run just after the unit which defined them has\n       been compiled.  The main program file and each module it loads are\n       compilation units, as are string \"eval\"s, run-time code compiled using\n       the \"(?{ })\" construct in a regex, calls to \"do FILE\", \"require FILE\",\n       and code after the \"-e\" switch on the command line."
+  manpageQuestion1: What is the primary purpose of the perlmod resource?
+  manpageQuestion2: How does the perlmod resource handle 'END' code blocks in a string eval()?
+  manpageQuestion3: What is the significance of the ${^GLOBAL_PHASE} variable inside an 'END' block in perlmod?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlmod`.
+
+
+
+    Manpage text:
+
+    "BEGIN" and "UNITCHECK" blocks are not directly related to the phase of
+           the interpreter.  They can be created and executed during any phase.
+
+           "CHECK" code blocks are run just after the initial Perl compile phase
+           ends and before the run time begins, in LIFO order.  "CHECK" code
+           blocks are used in the Perl compiler suite to save the compiled state
+           of the program.
+
+           Inside of a "CHECK" block, the value of "${^GLOBAL_PHASE}" will be
+           "CHECK".
+
+           "INIT" blocks are run just before the Perl runtime begins execution, in
+           "first in, first out" (FIFO) order.
+
+           Inside of an "INIT" block, the value of "${^GLOBAL_PHASE}" will be
+           "INIT".
+
+           The "CHECK" and "INIT" blocks in code compiled by "require", string
+           "do", or string "eval" will not be executed if they occur after the end
+           of the main compilation phase; that can be a problem in mod_perl and
+           other persistent environments which use those functions to load code at
+           runtime.
+  manpageQuestion1: What is the primary purpose of the 'CHECK' and 'INIT' blocks in Perl?
+  manpageQuestion2: How can you use a 'CHECK' block to save the compiled state of a Perl program before runtime begins?
+  manpageQuestion3: Can you explain how to structure an 'INIT' block to execute before the Perl runtime starts, in FIFO order?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlmod`.\n\n\n\nManpage text:\n\nWhen you use the -n and -p switches to Perl, \"BEGIN\" and \"END\" work\n       just as they do in awk, as a degenerate case.  Both \"BEGIN\" and \"CHECK\"\n       blocks are run when you use the -c switch for a compile-only syntax\n       check, although your main code is not.\n\n       The begincheck program makes it all clear, eventually:\n\n\t #!/usr/bin/perl\n\n\t # begincheck\n\n\t print\t       \"10. Ordinary code runs at runtime.\\n\";\n\n\t END { print   \"16.   So this is the end of the tale.\\n\" }\n\t INIT { print  \" 7. INIT blocks run FIFO just before runtime.\\n\" }\n\t UNITCHECK {\n\t   print       \" 4.   And therefore before any CHECK blocks.\\n\"\n\t }\n\t CHECK { print \" 6.   So this is the sixth line.\\n\" }\n\n\t print\t       \"11.   It runs in order, of course.\\n\";\n\n\t BEGIN { print \" 1. BEGIN blocks run FIFO during compilation.\\n\" }\n\t END { print   \"15.   Read perlmod for the rest of the story.\\n\" }\n\t CHECK { print \" 5. CHECK blocks run LIFO after all compilation.\\n\" }\n\t INIT { print  \" 8.   Run this again, using Perl's -c switch.\\n\" }"
+  manpageQuestion1: What is the primary purpose of the perlmod resource?
+  manpageQuestion2: How would you use the -c switch with perlmod to perform a compile-only syntax check?
+  manpageQuestion3: Can you provide an example of using perlmod to execute a BEGIN block during compilation?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlmod`.\n\n\n\nManpage text:\n\nprint\t       \"12.   This is anti-obfuscated code.\\n\";\n\n\t END { print   \"14. END blocks run LIFO at quitting time.\\n\" }\n\t BEGIN { print \" 2.   So this line comes out second.\\n\" }\n\t UNITCHECK {\n\t  print \" 3. UNITCHECK blocks run LIFO after each file is compiled.\\n\"\n\t }\n\t INIT { print  \" 9.   You'll see the difference right away.\\n\" }\n\n\t print\t       \"13.   It only _looks_ like it should be confusing.\\n\";\n\n\t __END__\n\n   Perl Classes\n       There is no special class syntax in Perl, but a package may act as a\n       class if it provides subroutines to act as methods.  Such a package may\n       also derive some of its methods from another class (package) by listing\n       the other package name(s) in its global @ISA array (which must be a\n       package global, not a lexical).\n\n       For more on this, see perlootut and perlobj.\n\n   Perl Modules\n       A module is just a set of related functions in a library file, i.e., a\n       Perl package with the same name as the file.  It is specifically\n       designed to be reusable by other modules or programs.  It may do this\n       by providing a mechanism for exporting some of its symbols into the\n       symbol table of any package using it, or it may function as a class\n       definition and make its semantics available implicitly through method\n       calls on the class and its objects, without explicitly exporting\n       anything.  Or it can do a little of both."
+  manpageQuestion1: What is the primary purpose of the perlmod resource?
+  manpageQuestion2: How can you use perlmod to create a reusable module for organizing related functions in Perl?
+  manpageQuestion3: Can you provide an example of using perlmod to define a class in Perl where the class derives methods from another package?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlmod`.\n\n\n\nManpage text:\n\nFor example, to start a traditional, non-OO module called Some::Module,\n       create a file called Some/Module.pm and start with this template:\n\n\t   package Some::Module;  # assumes Some/Module.pm\n\n\t   use strict;\n\t   use warnings;\n\n\t   # Get the import method from Exporter to export functions and\n\t   # variables\n\t   use Exporter 5.57 'import';\n\n\t   # set the version for version checking\n\t   our $VERSION     = '1.00';\n\n\t   # Functions and variables which are exported by default\n\t   our @EXPORT\t    = qw(func1 func2);\n\n\t   # Functions and variables which can be optionally exported\n\t   our @EXPORT_OK   = qw($Var1 %Hashit func3);\n\n\t   # exported package globals go here\n\t   our $Var1\t= '';\n\t   our %Hashit\t= ();\n\n\t   # non-exported package globals go here\n\t   # (they are still accessible as $Some::Module::stuff)\n\t   our @more\t= ();\n\t   our $stuff\t= '';\n\n\t   # file-private lexicals go here, before any functions which use them\n\t   my $priv_var    = '';\n\t   my %secret_hash = ();\n\n\t   # here's a file-private function as a closure,\n\t   # callable as $priv_func->();\n\t   my $priv_func = sub {\n\t       ...\n\t   };"
+  manpageQuestion1: What is the primary purpose of the perlmod resource?
+  manpageQuestion2: How would you create a traditional non-OO Perl module named Some::Module using the provided template?
+  manpageQuestion3: Can you explain how to define a file-private lexical variable and a closure function within a Perl module as shown in the example?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlmod`.\n\n\n\nManpage text:\n\n# make all your functions, whether exported or not;\n\t   # remember to put something interesting in the {} stubs\n\t   sub func1\t  { ... }\n\t   sub func2\t  { ... }\n\n\t   # this one isn't always exported, but could be called directly\n\t   # as Some::Module::func3()\n\t   sub func3\t  { ... }\n\n\t   END { ... }\t     # module clean-up code here (global destructor)\n\n\t   1;  # don't forget to return a true value from the file\n\n       Then go on to declare and use your variables in functions without any\n       qualifications.\tSee Exporter and the perlmodlib for details on\n       mechanics and style issues in module creation.\n\n       Perl modules are included into your program by saying\n\n\t   use Module;\n\n       or\n\n\t   use Module LIST;\n\n       This is exactly equivalent to\n\n\t   BEGIN { require 'Module.pm'; 'Module'->import; }\n\n       or\n\n\t   BEGIN { require 'Module.pm'; 'Module'->import( LIST ); }\n\n       As a special case\n\n\t   use Module ();\n\n       is exactly equivalent to\n\n\t   BEGIN { require 'Module.pm'; }"
+  manpageQuestion1: What is the primary purpose of the perlmod resource?
+  manpageQuestion2: How would you use the 'use Module' statement to include a Perl module in your program?
+  manpageQuestion3: Can you provide an example of how to properly structure a Perl module with function definitions and clean-up code?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlmod`.\n\n\n\nManpage text:\n\nAll Perl module files have the extension .pm.  The \"use\" operator\n       assumes this so you don't have to spell out \"Module.pm\" in quotes.\n       This also helps to differentiate new modules from old .pl and .ph\n       files.  Module names are also capitalized unless they're functioning as\n       pragmas; pragmas are in effect compiler directives, and are sometimes\n       called \"pragmatic modules\" (or even \"pragmata\" if you're a classicist).\n\n       The two statements:\n\n\t   require SomeModule;\n\t   require \"SomeModule.pm\";\n\n       differ from each other in two ways.  In the first case, any double\n       colons in the module name, such as \"Some::Module\", are translated into\n       your system's directory separator, usually \"/\".\t The second case does\n       not, and would have to be specified literally.  The other difference is\n       that seeing the first \"require\" clues in the compiler that uses of\n       indirect object notation involving \"SomeModule\", as in \"$ob = purge\n       SomeModule\", are method calls, not function calls.  (Yes, this really\n       can make a difference.)"
+  manpageQuestion1: What is the primary purpose of the perlmod resource?
+  manpageQuestion2: How does the 'require' statement differ when using a module name with and without quotes in Perl?
+  manpageQuestion3: Can you explain the difference between using 'require SomeModule;' and 'require "SomeModule.pm";'
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlmod`.\n\n\n\nManpage text:\n\nBecause the \"use\" statement implies a \"BEGIN\" block, the importing of\n       semantics happens as soon as the \"use\" statement is compiled, before\n       the rest of the file is compiled.  This is how it is able to function\n       as a pragma mechanism, and also how modules are able to declare\n       subroutines that are then visible as list or unary operators for the\n       rest of the current file.  This will not work if you use \"require\"\n       instead of \"use\".  With \"require\" you can get into this problem:\n\n\t   require Cwd; \t       # make Cwd:: accessible\n\t   $here = Cwd::getcwd();\n\n\t   use Cwd;\t\t       # import names from Cwd::\n\t   $here = getcwd();\n\n\t   require Cwd; \t       # make Cwd:: accessible\n\t   $here = getcwd();\t       # oops! no main::getcwd()\n\n       In general, \"use Module ()\" is recommended over \"require Module\",\n       because it determines module availability at compile time, not in the\n       middle of your program's execution.  An exception would be if two\n       modules each tried to \"use\" each other, and each also called a function\n       from that other module.\tIn that case, it's easy to use \"require\"\n       instead."
+  manpageQuestion1: What is the primary purpose of the perlmod resource?
+  manpageQuestion2: How would you use perlmod to ensure that the Cwd module is available at compile time for a script?
+  manpageQuestion3: Can you explain the difference between using 'use' and 'require' in Perl modules, based on the manpage text?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlmod`.
+
+
+
+    Manpage text:
+
+    Perl packages may be nested inside other package names, so we can have
+           package names containing "::".  But if we used that package name
+           directly as a filename it would make for unwieldy or impossible
+           filenames on some systems.  Therefore, if a module's name is, say,
+           "Text::Soundex", then its definition is actually found in the library
+           file Text/Soundex.pm.
+
+           Perl modules always have a .pm file, but there may also be dynamically
+           linked executables (often ending in .so) or autoloaded subroutine
+           definitions (often ending in .al) associated with the module.  If so,
+           these will be entirely transparent to the user of the module.  It is
+           the responsibility of the .pm file to load (or arrange to autoload) any
+           additional functionality.  For example, although the POSIX module
+           happens to do both dynamic loading and autoloading, the user can say
+           just "use POSIX" to get it all.
+
+       Making your module threadsafe
+           Perl supports a type of threads called interpreter threads (ithreads).
+           These threads can be used explicitly and implicitly.
+  manpageQuestion1: What is the primary purpose of the perlmod resource?
+  manpageQuestion2: How would you use perlmod to handle a module named 'Text::Soundex'?
+  manpageQuestion3: Can you provide an example of using perlmod to make a module threadsafe?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlmod`.\n\n\n\nManpage text:\n\nIthreads work by cloning the data tree so that no data is shared\n       between different threads. These threads can be used by using the\n       \"threads\" module or by doing fork() on win32 (fake fork() support).\n       When a thread is cloned all Perl data is cloned, however non-Perl data\n       cannot be cloned automatically.\tPerl after 5.8.0 has support for the\n       \"CLONE\" special subroutine.  In \"CLONE\" you can do whatever you need to\n       do, like for example handle the cloning of non-Perl data, if necessary.\n       \"CLONE\" will be called once as a class method for every package that\n       has it defined (or inherits it).  It will be called in the context of\n       the new thread, so all modifications are made in the new area.\n       Currently CLONE is called with no parameters other than the invocant\n       package name, but code should not assume that this will remain\n       unchanged, as it is likely that in future extra parameters will be\n       passed in to give more information about the state of cloning."
+  manpageQuestion1: What is the primary purpose of the perlmod resource?
+  manpageQuestion2: How can you use the CLONE subroutine in Perl to handle custom data cloning during thread creation?
+  manpageQuestion3: What are the key differences between using threads and fork() in Perl for concurrency?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlmod`.
+
+
+
+    Manpage text:
+
+    If you want to CLONE all objects you will need to keep track of them
+           per package. This is simply done using a hash and
+           Scalar::Util::weaken().
+
+           Perl after 5.8.7 has support for the "CLONE_SKIP" special subroutine.
+           Like "CLONE", "CLONE_SKIP" is called once per package; however, it is
+           called just before cloning starts, and in the context of the parent
+           thread. If it returns a true value, then no objects of that class will
+           be cloned; or rather, they will be copied as unblessed, undef values.
+           For example: if in the parent there are two references to a single
+           blessed hash, then in the child there will be two references to a
+           single undefined scalar value instead.  This provides a simple
+           mechanism for making a module threadsafe; just add "sub CLONE_SKIP { 1
+           }" at the top of the class, and "DESTROY()" will now only be called
+           once per object. Of course, if the child thread needs to make use of
+           the objects, then a more sophisticated approach is needed.
+  manpageQuestion1: What is the primary purpose of the perlmod resource?
+  manpageQuestion2: How can you make a Perl module threadsafe using the CLONE_SKIP mechanism?
+  manpageQuestion3: What is the role of Scalar::Util::weaken() in the context of object cloning in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlmod`.\n\n\n\nManpage text:\n\nLike \"CLONE\", \"CLONE_SKIP\" is currently called with no parameters other\n       than the invocant package name, although that may change. Similarly, to\n       allow for future expansion, the return value should be a single 0 or 1\n       value.\n\nSEE ALSO\n       See perlmodlib for general style issues related to building Perl\n       modules and classes, as well as descriptions of the standard library\n       and CPAN, Exporter for how Perl's standard import/export mechanism\n       works, perlootut and perlobj for in-depth information on creating\n       classes, perlobj for a hard-core reference document on objects, perlsub\n       for an explanation of functions and scoping, and perlxstut and perlguts\n       for more information on writing extension modules.\n\nperl v5.34.1\t\t\t  2022-02-19\t\t\t    PERLMOD(1)"
+  manpageQuestion1: What is the primary purpose of the perlmod resource?
+  manpageQuestion2: How would you use perlmod to import specific functions into a Perl module?
+  manpageQuestion3: Can you explain how to use perlmod to handle object-oriented programming in Perl?
+

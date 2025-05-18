@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perltooc`.\n\n\n\nManpage text:\n\nPERLTOOC(1)\t       Perl Programmers Reference Guide \t   PERLTOOC(1)\n\n\nNAME\n       perltooc - Links to information on object-oriented programming in Perl\n\nDESCRIPTION\n       For information on OO programming with Perl, please see perlootut and\n       perlobj.\n\n       (The above documents supersede the tutorial that was formerly here in\n       perltooc.)\n\nperl v5.34.1\t\t\t  2022-02-19\t\t\t   PERLTOOC(1)"
+  manpageQuestion1: What is the primary purpose of the perltooc command?
+  manpageQuestion2: How would you use the perltooc command to access information on object-oriented programming in Perl?
+  manpageQuestion3: What is the main function of the perltooc resource in the context of Perl programming?
+

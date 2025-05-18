@@ -1,0 +1,43 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `csreq`.\n\n\n\nManpage text:\n\nCSREQ(1)\t\t    General Commands Manual\t\t      CSREQ(1)\n\nNAME\n     csreq – Expert tool for manipulating Code Signing Requirement data\n\nSYNOPSIS\n     csreq [-v] -r requirement-input -t\n     csreq [-v] -r requirement-input -b outputfile\n\nDESCRIPTION\n     The csreq command manipulates Code Signing Requirement data.  It reads\n     one requirement from a file or command arguments, converts it into\n     internal form, checks it, and then optionally outputs it in a different\n     form.\n\n     The options are as follows:\n\n     -b path\n\t     Requests that the requirement read be written in binary form to\n\t     the path given.\n\n     -r requirement-input\n\t     Specifies the input requirement. See \"specifying requirements\"\n\t     below. This is exactly the same format as is accepted by the -r\n\t     and -R options of the codesign(1) command.\n\n     -t      Requests that the requirement read be written as text to standard\n\t     output.\n\n     -v      Increases the verbosity of output. Multiple instances of -v\n\t     produce increasing levels of commentary output."
+  manpageQuestion1: What is the primary purpose of the csreq command?
+  manpageQuestion2: How would you use the csreq command to convert a Code Signing Requirement from text format to binary format and save it to a file?
+  manpageQuestion3: Can you provide an example of using the csreq command to validate a Code Signing Requirement and output the result in text format?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `csreq`.
+
+
+
+    Manpage text:
+
+    In the first synopsis form, csreq reads a Code Requirement and writes it
+         to standard output as canonical source text.  Note that with text input,
+         this actually compiles the requirement into internal form and then
+         converts it back to text, giving you the system's view of the requirement
+         code.
+
+         In the second synopsis form, csreq reads a Code Requirement and writes
+         its binary representation to a file. This is the same form produced by
+         the SecRequirementCopyData API, and is readily acceptable as input to
+         Code Signing verification APIs. It can also be used as input to
+         subsequent invocations of csreq by passing the filename to the -r option.
+
+    SPECIFYING REQUIREMENTS
+         The requirement argument (-r) can be given in various forms. A plain text
+         argument is taken to be a path to a file containing the requirement. This
+         program will accept both binary files containing properly compiled
+         requirements code, and source files that are automatically compiled for
+         use.  An argument of "-" requests that the requirement(s) are read from
+         standard input.  Again, standard input can contain either binary form or
+         text.  Finally, an argument that begins with an equal sign "=" is taken
+         as a literal requirements source text, and is compiled accordingly for
+         use.
+  manpageQuestion1: What is the primary purpose of the csreq tool?
+  manpageQuestion2: How can you use csreq to convert a Code Requirement from text format to its binary representation and save it to a file?
+  manpageQuestion3: Can you provide an example of using csreq to read a Code Requirement from standard input and output its canonical source text?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `csreq`.\n\n\n\nManpage text:\n\nEXAMPLES\n     To compile an explicit requirement program and write its binary form to\n     file \"output\":\n\t   csreq -r=\"identifier com.foo.test\" -b output.csreq\n\n     To display the requirement program embedded at offset 1234 of file \"foo\":\n\t   tail -b 1234 foo | csreq -r- -t\n\nFILES\nDIAGNOSTICS\n     The csreq program exits 0 on success or 1 on failure. Errors in arguments\n     yield exit code 2.\n\nSEE ALSO\n     codesign(1)\n\nHISTORY\n     The csreq command first appeared in Mac OS 10.5.0 .\n\nmacOS 15.3\t\t\t June 1, 2006\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the csreq tool?
+  manpageQuestion2: How can you use csreq to compile a requirement program and save its binary form to a file?
+  manpageQuestion3: Can you provide an example of using csreq to display a requirement program embedded at a specific offset in a file?
+

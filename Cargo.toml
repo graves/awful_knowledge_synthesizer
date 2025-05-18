@@ -11,3 +11,9 @@ awful_aj = { version = "*", git = "https://github.com/graves/awful_aj" }
 tokio = { version = "1.45.0", features = ["full"] }
 serde_json = "1.0.140"
 clap = { version = "4.5.38", features = ["derive"] }
+text-splitter = { version = "0.26.0", features = ["tiktoken-rs", "markdown", "code"] }
+tiktoken-rs = "0.6.0"
+walkdir = "2.5.0"
+tree-sitter-rust = "0.24.0"
+tree-sitter-c = "0.23.4"
+tree-sitter-asm = "0.24.0"

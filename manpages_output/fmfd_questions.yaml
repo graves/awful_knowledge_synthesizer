@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `fmfd`.\n\n\n\nManpage text:\n\nfmfd(8) \t\t    System Manager's Manual\t\t       fmfd(8)\n\nNAME\n     fmfd – Find My Friends daemon\n\nSYNOPSIS\n     fmfd\n\nDESCRIPTION\n     fmfd is the daemon for Find My Friends.\n\n     There are no configuration options to fmfd.  Users should not run it\n     manually.\n\nMac OS X\t\t\t    1/11/14\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the fmfd command?
+  manpageQuestion2: How would you start the Find My Friends daemon using fmfd?
+  manpageQuestion3: What is the recommended practice for managing the fmfd service on a macOS system?
+

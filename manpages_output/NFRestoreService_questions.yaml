@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `NFRestoreService`.\n\n\n\nManpage text:\n\nNFRestoreService(8)\t    System Manager's Manual\t   NFRestoreService(8)\n\nNAME\n     NFRestoreService – NearField restore daemon.\n\nDESCRIPTION\n     NFRestoreService Updates the NFC controller.  NFRestoreService should not\n     be invoked directly.\n\nmacOS 15.3\t\t      November 31st, 2016\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the NFRestoreService tool?
+  manpageQuestion2: How would you use NFRestoreService to update the NFC controller on a macOS system?
+  manpageQuestion3: Can you explain the typical usage scenario for NFRestoreService in a macOS environment?
+

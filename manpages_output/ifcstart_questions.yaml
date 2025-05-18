@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ifcstart`.\n\n\n\nManpage text:\n\nifcstart(8)\t\t    System Manager's Manual\t\t   ifcstart(8)\n\nNAME\n     ifcstart – rebuilds international data caches\n\nSYNOPSIS\n     ifcstart\n\nDESCRIPTION\n     ifcstart is the daemon responsible for rebuilding the file caches used by\n     International components of Mac OS X.\n\n     ifcstart should only be started at boot time via launchd.\n\nFILES\n     /usr/libexec/ifcstart\t\t\t\t     daemon\n     /System/Library/LaunchDaemons/com.apple.IFCStart.plist  launchd plist\n\nDarwin\t\t\t\tApril 30, 2007\t\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the ifcstart command?
+  manpageQuestion2: How would you start the ifcstart daemon at boot time using launchd?
+  manpageQuestion3: Can you explain the role of the ifcstart daemon in managing international data caches on macOS?
+

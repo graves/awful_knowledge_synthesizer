@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sentryd`.\n\n\n\nManpage text:\n\nsentryd(8)\t\t    System Manager's Manual\t\t    sentryd(8)\n\nNAME\n     sentryd – Collect tailspins for slow operations instrumented with\n     os_signpost\n\nSYNOPSIS\n     sentryd should not be invoked directly\n\nDESCRIPTION\n     sentryd is responsible for periodically gathering tailspins for slow\n     operations instrumented with os_signpost.\n\nDarwin\t\t\t       November 30, 2018\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the sentryd tool?
+  manpageQuestion2: How would you configure sentryd to collect tailspins for slow operations instrumented with os_signpost?
+  manpageQuestion3: Can you explain the role of sentryd in the context of macOS system monitoring and performance analysis?
+

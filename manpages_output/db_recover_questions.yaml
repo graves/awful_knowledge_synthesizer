@@ -1,0 +1,48 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `db_recover`.\n\n\n\nManpage text:\n\ndb_recover(1)\t\t    General Commands Manual\t\t db_recover(1)\n\nNAME\n     db_recover\n\nSYNOPSIS\n     db_recover [-ceVv] [-h home] [-P password] [-t [[CC]YY]MMDDhhmm[.SS]]\n\nDESCRIPTION\n     The db_recover utility must be run after an unexpected application,\n     Berkeley DB, or system failure to restore the database to a consistent\n     state. All committed transactions are guaranteed to appear after\n     db_recover has run, and all uncommitted transactions will be completely\n     undone.\n\n     The options are as follows:\n\n     -c\n       Perform catastrophic recovery instead of normal recovery.\n\n     -e\n       Retain the environment after running recovery. This option will rarely\n       be used unless a DB_CONFIG file is present in the home directory. If a\n       DB_CONFIG file is not present, then the regions will be created with\n       default parameter values.\n\n     -h\n       Specify a home directory for the database environment; by default, the\n       current working directory is used.\n\n     -P\n       Specify an environment password. Although Berkeley DB utilities\n       overwrite password strings as soon as possible, be aware there may be a\n       window of vulnerability on systems where unprivileged users can see\n       command-line arguments or where utilities are not able to overwrite the\n       memory containing the command-line arguments."
+  manpageQuestion1: What is the primary purpose of the db_recover command?
+  manpageQuestion2: How would you use db_recover to perform catastrophic recovery on a database environment located in the home directory with a specified password?
+  manpageQuestion3: What command can be used to recover a database environment without changing the home directory and retaining the environment after recovery?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `db_recover`.\n\n\n\nManpage text:\n\n-t\n       Recover to the time specified rather than to the most current possible\n       date. The timestamp argument should be in the form\n       [[CC]YY]MMDDhhmm[.SS] where each pair of letters represents the\n       following:\n\n       CC\n\t The first two digits of the year (the century).\n\n       YY\n\t The second two digits of the year. If \"YY\" is specified, but \"CC\" is\n\t not, a value for \"YY\" between 69 and 99 results in a \"YY\" value of\n\t 19. Otherwise, a \"YY\" value of 20 is used.\n\n       MM\n\t The month of the year, from 1 to 12.\n\n       DD\n\t The day of the month, from 1 to 31.\n\n       hh\n\t The hour of the day, from 0 to 23.\n\n       mm\n\t The minute of the hour, from 0 to 59.\n\n       SS\n\t The second of the minute, from 0 to 61.\n       If the \"CC\" and \"YY\" letter pairs are not specified, the values default\n       to the current year. If the \"SS\" letter pair is not specified, the\n       value defaults to 0.\n\n     -V\n       Write the library version number to the standard output, and exit.\n\n     -v\n       Run in verbose mode."
+  manpageQuestion1: What is the primary purpose of the db_recover tool?
+  manpageQuestion2: How would you use the -t option with db_recover to recover data to a specific timestamp like 202310151230?
+  manpageQuestion3: Can you provide an example of using the -v option with db_recover to run it in verbose mode?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `db_recover`.
+
+
+
+    Manpage text:
+
+    In the case of catastrophic recovery, an archival copy -- or snapshot --
+         of all database files must be restored along with all of the log files
+         written since the database file snapshot was made. (If disk space is a
+         problem, log files may be referenced by symbolic links). For further
+         information on creating a database snapshot, see Archival Procedures. For
+         further information on performing recovery, see Recovery Procedures.
+
+         If the failure was not catastrophic, the files present on the system at
+         the time of failure are sufficient to perform recovery.
+
+         If log files are missing, db_recover will identify the missing log
+         file(s) and fail, in which case the missing log files need to be restored
+         and recovery performed again.
+
+         The db_recover utility uses a Berkeley DB environment (as described for
+         the -h option, the environment variable DB_HOME, or because the utility
+         was run in a directory containing a Berkeley DB environment). In order to
+         avoid environment corruption when using a Berkeley DB environment,
+         db_recover should always be given the chance to detach from the
+         environment and exit gracefully. To cause db_recover to release all
+         environment resources and exit cleanly, send it an interrupt signal
+         (SIGINT).
+  manpageQuestion1: What is the primary purpose of the db_recover utility?
+  manpageQuestion2: How does db_recover handle the situation where log files are missing during recovery?
+  manpageQuestion3: What is the recommended way to ensure db_recover exits gracefully from a Berkeley DB environment?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `db_recover`.\n\n\n\nManpage text:\n\nThe db_recover utility exits 0 on success, and >0 if an error occurs.\n\nENVIRONMENT\n     DB_HOME  If the -h option is not specified and the environment variable\n\t      DB_HOME is set, it is used as the path of the database home, as\n\t      described in DB_ENV->open.\n\nSEE ALSO\n     db_archive(1), db_checkpoint(1), db_deadlock(1), db_dump(1), db_load(1),\n     db_printlog(1), db_stat(1), db_upgrade(1), db_verify(1)\n\nDarwin\t\t\t       December 3, 2003 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the db_recover utility?
+  manpageQuestion2: How would you use db_recover to recover a database after an unexpected shutdown?
+  manpageQuestion3: Can you describe the typical scenario in which db_recover is used with the -h option?
+

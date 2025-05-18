@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `machine`.\n\n\n\nManpage text:\n\nMACHINE(1)\t\t    General Commands Manual\t\t    MACHINE(1)\n\nNAME\n     machine – print machine type\n\nSYNOPSIS\n     machine\n\nDESCRIPTION\n     The machine command displays the machine type.\n\nSEE ALSO\n     arch(1), make(1)\n\nmacOS 15.3\t\t\t July 26, 1991\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the machine command?
+  manpageQuestion2: How would you use the machine command to determine the type of your current macOS system?
+  manpageQuestion3: Can you explain how the machine command differs from the arch command in macOS?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cvfs_config`.\n\n\n\nManpage text:\n\nCVFS_CONFIG(4)\t\t     Device Drivers Manual\t\tCVFS_CONFIG(4)\n\nNAME\n       cvfs_config - Xsan Volume Configuration File\n\nDESCRIPTION\n       This man page is deprecated - see snfs_config(5) for details on the\n       Xsan Volume Configuration File\n\nSEE ALSO\n       snfs_config(5), snfs.cfgx(5), snfs.cfg(5),\n\nXsan File System\t\t   June 2014\t\t\tCVFS_CONFIG(4)"
+  manpageQuestion1: What is the primary purpose of the cvfs_config resource?
+  manpageQuestion2: How would you locate and review the Xsan Volume Configuration File for a specific volume?
+  manpageQuestion3: What is the recommended alternative to using cvfs_config for configuring Xsan volumes?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sysdiagnose_agent`.\n\n\n\nManpage text:\n\nsysdiagnose_agent(8)\t    System Manager's Manual\t  sysdiagnose_agent(8)\n\nNAME\n     sysdiagnose_agent – performs UI related operations for sysdiagnose.\n\nDESCRIPTION\n     sysdiagnose_agent is a LaunchAgent that performs UI related tasks after\n     the completion of sysdiagnose.\n\nOSX\t\t\t       November 10, 2016\t\t\t   OSX"
+  manpageQuestion1: What is the primary purpose of the sysdiagnose_agent tool?
+  manpageQuestion2: How would you configure sysdiagnose_agent to perform UI tasks automatically after sysdiagnose completes?
+  manpageQuestion3: Can you explain how sysdiagnose_agent integrates with the sysdiagnose process in a macOS system?
+

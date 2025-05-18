@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `false`.\n\n\n\nManpage text:\n\nFALSE(1)\t\t    General Commands Manual\t\t      FALSE(1)\n\nNAME\n     false – return false value\n\nSYNOPSIS\n     false\n\nDESCRIPTION\n     The false utility always returns with a non-zero exit code.\n\n     Some shells may provide a builtin false command which is identical to\n     this utility.  Consult the builtin(1) manual page.\n\nSEE ALSO\n     builtin(1), csh(1), sh(1), true(1)\n\nSTANDARDS\n     The false utility is expected to be IEEE Std 1003.2 (“POSIX.2”)\n     compatible.\n\nmacOS 15.3\t\t\t June 6, 1993\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the false command?
+  manpageQuestion2: How can you use the false command in a script to ensure that a certain block of code does not execute?
+  manpageQuestion3: What is the expected exit status of the false command according to POSIX standards?
+

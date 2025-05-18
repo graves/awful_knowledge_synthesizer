@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `contactsdonationagent`.\n\n\n\nManpage text:\n\ncontactsdonationagent(8)    System Manager's Manual   contactsdonationagent(8)\n\nNAME\n     contactsdonationagent – contactsdonationagent daemon\n\nDESCRIPTION\n     contactsdonationagent is used by Maps, Messages, and other apps on the\n     system. It keeps track of recently used email addresses, phone numbers,\n     and locations so you can use them again without adding them to your\n     address book.\n\n     This command is not intended to be invoked directly.\n\nmacOS\t\t\t\tJanuary 1, 2017 \t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the contactsdonationagent daemon?
+  manpageQuestion2: Why would a system administrator not typically invoke the contactsdonationagent command directly?
+  manpageQuestion3: What is the role of contactsdonationagent in relation to other system applications like Maps and Messages?
+

@@ -1,0 +1,566 @@
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.
+
+
+
+    Manpage text:
+
+    PERL5100DELTA(1)       Perl Programmers Reference Guide       PERL5100DELTA(1)
+  manpageQuestion1: What is the primary purpose of the perl5100delta tool?
+  manpageQuestion2: How would you use perl5100delta to apply patches from the Perl 5.10.0 delta to a Perl 5.8.9 installation?
+  manpageQuestion3: Can you provide an example of using perl5100delta to upgrade a Perl 5.8.9 installation to Perl 5.10.0?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.
+
+
+
+    Manpage text:
+
+    NAME
+           perl5100delta - what is new for perl 5.10.0
+
+    DESCRIPTION
+           This document describes the differences between the 5.8.8 release and
+           the 5.10.0 release.
+
+           Many of the bug fixes in 5.10.0 were already seen in the 5.8.X
+           maintenance releases; they are not duplicated here and are documented
+           in the set of man pages named perl58[1-8]?delta.
+
+    Core Enhancements
+       The "feature" pragma
+           The "feature" pragma is used to enable new syntax that would break
+           Perl's backwards-compatibility with older releases of the language.
+           It's a lexical pragma, like "strict" or "warnings".
+
+           Currently the following new features are available: "switch" (adds a
+           switch statement), "say" (adds a "say" built-in function), and "state"
+           (adds a "state" keyword for declaring "static" variables). Those
+           features are described in their own sections of this document.
+
+           The "feature" pragma is also implicitly loaded when you require a
+           minimal perl version (with the "use VERSION" construct) greater than,
+           or equal to, 5.9.5. See feature for details.
+  manpageQuestion1: What is the primary purpose of the perl5100delta tool?
+  manpageQuestion2: How can you enable the 'switch' feature in Perl 5.10.0 using the 'feature' pragma?
+  manpageQuestion3: What is the effect of using the 'use VERSION' construct with a minimal Perl version greater than 5.9.5?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\nNew -E command-line switch\n       -E is equivalent to -e, but it implicitly enables all optional features\n       (like \"use feature \":5.10\"\").\n\n   Defined-or operator\n       A new operator \"//\" (defined-or) has been implemented.  The following\n       expression:\n\n\t   $a // $b\n\n       is merely equivalent to\n\n\t  defined $a ? $a : $b\n\n       and the statement\n\n\t  $c //= $d;\n\n       can now be used instead of\n\n\t  $c = $d unless defined $c;\n\n       The \"//\" operator has the same precedence and associativity as \"||\".\n       Special care has been taken to ensure that this operator Do What You\n       Mean while not breaking old code, but some edge cases involving the\n       empty regular expression may now parse differently.  See perlop for\n       details.\n\n   Switch and Smart Match operator\n       Perl 5 now has a switch statement. It's available when \"use feature\n       'switch'\" is in effect. This feature introduces three new keywords,\n       \"given\", \"when\", and \"default\":\n\n\t   given ($foo) {\n\t       when (/^abc/) { $abc = 1; }\n\t       when (/^def/) { $def = 1; }\n\t       when (/^xyz/) { $xyz = 1; }\n\t       default { $nothing = 1; }\n\t   }"
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How can you use the defined-or operator (//) in Perl 5.10 to provide a default value for a variable if it is undefined?
+  manpageQuestion3: Can you demonstrate how to use the switch statement in Perl 5.10 with the 'given', 'when', and 'default' keywords?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\nA more complete description of how Perl matches the switch variable\n       against the \"when\" conditions is given in \"Switch statements\" in\n       perlsyn.\n\n       This kind of match is called smart match, and it's also possible to use\n       it outside of switch statements, via the new \"~~\" operator. See \"Smart\n       matching in detail\" in perlsyn.\n\n       This feature was contributed by Robin Houston.\n\n   Regular expressions\n       Recursive Patterns\n\t   It is now possible to write recursive patterns without using the\n\t   \"(??{})\" construct. This new way is more efficient, and in many\n\t   cases easier to read.\n\n\t   Each capturing parenthesis can now be treated as an independent\n\t   pattern that can be entered by using the \"(?PARNO)\" syntax (\"PARNO\"\n\t   standing for \"parenthesis number\"). For example, the following\n\t   pattern will match nested balanced angle brackets:\n\n\t       /\n\t\t^\t\t       # start of line\n\t\t(\t\t       # start capture buffer 1\n\t\t   <\t\t       #   match an opening angle bracket\n\t\t   (?:\t\t       #   match one of:\n\t\t       (?>\t       #     don't backtrack over the inside of this group\n\t\t\t   [^<>]+      #       one or more non angle brackets\n\t\t       )\t       #     end non backtracking group\n\t\t   |\t\t       #     ... or ...\n\t\t       (?1)\t       #     recurse to bracket 1 and try it again\n\t\t   )*\t\t       #   0 or more times.\n\t\t   >\t\t       #   match a closing angle bracket\n\t\t)\t\t       # end capture buffer one\n\t\t$\t\t       # end of line\n\t       /x"
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How can you use the new recursive pattern syntax in perl5100delta to match nested balanced angle brackets?
+  manpageQuestion3: What is the significance of the '~~' operator in perl5100delta and how is it used?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\nPCRE users should note that Perl's recursive regex feature allows\n\t   backtracking into a recursed pattern, whereas in PCRE the recursion\n\t   is atomic or \"possessive\" in nature.  As in the example above, you\n\t   can add (?>) to control this selectively.  (Yves Orton)\n\n       Named Capture Buffers\n\t   It is now possible to name capturing parenthesis in a pattern and\n\t   refer to the captured contents by name. The naming syntax is\n\t   \"(?<NAME>....)\".  It's possible to backreference to a named buffer\n\t   with the \"\\k<NAME>\" syntax. In code, the new magical hashes \"%+\"\n\t   and \"%-\" can be used to access the contents of the capture buffers.\n\n\t   Thus, to replace all doubled chars with a single copy, one could\n\t   write\n\n\t       s/(?<letter>.)\\k<letter>/$+{letter}/g\n\n\t   Only buffers with defined contents will be \"visible\" in the \"%+\"\n\t   hash, so it's possible to do something like\n\n\t       foreach my $name (keys %+) {\n\t\t   print \"content of buffer '$name' is $+{$name}\\n\";\n\t       }\n\n\t   The \"%-\" hash is a bit more complete, since it will contain array\n\t   refs holding values from all capture buffers similarly named, if\n\t   there should be many of them."
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How can you use perl5100delta to access the contents of named capture buffers in a regular expression?
+  manpageQuestion3: Can you provide an example of using perl5100delta to backreference to a named capture buffer in a regex replacement?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\n\"%+\" and \"%-\" are implemented as tied hashes through the new module\n\t   \"Tie::Hash::NamedCapture\".\n\n\t   Users exposed to the .NET regex engine will find that the perl\n\t   implementation differs in that the numerical ordering of the\n\t   buffers is sequential, and not \"unnamed first, then named\". Thus in\n\t   the pattern\n\n\t      /(A)(?<B>B)(C)(?<D>D)/\n\n\t   $1 will be 'A', $2 will be 'B', $3 will be 'C' and $4 will be 'D'\n\t   and not $1 is 'A', $2 is 'C' and $3 is 'B' and $4 is 'D' that a\n\t   .NET programmer would expect. This is considered a feature. :-)\n\t   (Yves Orton)\n\n       Possessive Quantifiers\n\t   Perl now supports the \"possessive quantifier\" syntax of the \"atomic\n\t   match\" pattern. Basically a possessive quantifier matches as much\n\t   as it can and never gives any back. Thus it can be used to control\n\t   backtracking. The syntax is similar to non-greedy matching, except\n\t   instead of using a '?' as the modifier the '+' is used. Thus \"?+\",\n\t   \"*+\", \"++\", \"{min,max}+\" are now legal quantifiers. (Yves Orton)"
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How can possessive quantifiers be used in Perl regular expressions, and what is their effect on backtracking?
+  manpageQuestion3: What is the difference between the behavior of named capture groups in Perl 5.10.0 delta compared to .NET's regex engine?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\nBacktracking control verbs\n\t   The regex engine now supports a number of special-purpose backtrack\n\t   control verbs: (*THEN), (*PRUNE), (*MARK), (*SKIP), (*COMMIT),\n\t   (*FAIL) and (*ACCEPT). See perlre for their descriptions. (Yves\n\t   Orton)\n\n       Relative backreferences\n\t   A new syntax \"\\g{N}\" or \"\\gN\" where \"N\" is a decimal integer allows\n\t   a safer form of back-reference notation as well as allowing\n\t   relative backreferences. This should make it easier to generate and\n\t   embed patterns that contain backreferences. See \"Capture buffers\"\n\t   in perlre. (Yves Orton)\n\n       \"\\K\" escape\n\t   The functionality of Jeff Pinyan's module Regexp::Keep has been\n\t   added to the core. In regular expressions you can now use the\n\t   special escape \"\\K\" as a way to do something like floating length\n\t   positive lookbehind. It is also useful in substitutions like:\n\n\t     s/(foo)bar/$1/g\n\n\t   that can now be converted to\n\n\t     s/foo\\Kbar//g\n\n\t   which is much more efficient. (Yves Orton)\n\n       Vertical and horizontal whitespace, and linebreak\n\t   Regular expressions now recognize the \"\\v\" and \"\\h\" escapes that\n\t   match vertical and horizontal whitespace, respectively. \"\\V\" and\n\t   \"\\H\" logically match their complements."
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How can you use the \K escape in a regular expression to achieve efficient substitution?
+  manpageQuestion3: Can you provide an example of using the new relative backreference syntax \g{N} in a regular expression pattern?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\n\"\\R\" matches a generic linebreak, that is, vertical whitespace,\n\t   plus the multi-character sequence \"\\x0D\\x0A\".\n\n       Optional pre-match and post-match captures with the /p flag\n\t   There is a new flag \"/p\" for regular expressions.  Using this makes\n\t   the engine preserve a copy of the part of the matched string before\n\t   the matching substring to the new special variable \"${^PREMATCH}\",\n\t   the part after the matching substring to \"${^POSTMATCH}\", and the\n\t   matched substring itself to \"${^MATCH}\".\n\n\t   Perl is still able to store these substrings to the special\n\t   variables \"$`\", \"$'\", $&, but using these variables anywhere in the\n\t   program adds a penalty to all regular expression matches, whereas\n\t   if you use the \"/p\" flag and the new special variables instead, you\n\t   pay only for the regular expressions where the flag is used.\n\n\t   For more detail on the new variables, see perlvar; for the use of\n\t   the regular expression flag, see perlop and perlre.\n\n   \"say()\"\n       say() is a new built-in, only available when \"use feature 'say'\" is in\n       effect, that is similar to print(), but that implicitly appends a\n       newline to the printed string. See \"say\" in perlfunc. (Robin Houston)"
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How can you use the /p flag in Perl regular expressions to capture pre-match and post-match text?
+  manpageQuestion3: What is the function of the say() built-in function in Perl, and how do you enable it?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\nLexical $_\n       The default variable $_ can now be lexicalized, by declaring it like\n       any other lexical variable, with a simple\n\n\t   my $_;\n\n       The operations that default on $_ will use the lexically-scoped version\n       of $_ when it exists, instead of the global $_.\n\n       In a \"map\" or a \"grep\" block, if $_ was previously my'ed, then the $_\n       inside the block is lexical as well (and scoped to the block).\n\n       In a scope where $_ has been lexicalized, you can still have access to\n       the global version of $_ by using $::_, or, more simply, by overriding\n       the lexical declaration with \"our $_\". (Rafael Garcia-Suarez)\n\n   The \"_\" prototype\n       A new prototype character has been added. \"_\" is equivalent to \"$\" but\n       defaults to $_ if the corresponding argument isn't supplied (both \"$\"\n       and \"_\" denote a scalar). Due to the optional nature of the argument,\n       you can only use it at the end of a prototype, or before a semicolon.\n\n       This has a small incompatible consequence: the prototype() function has\n       been adjusted to return \"_\" for some built-ins in appropriate cases\n       (for example, \"prototype('CORE::rmdir')\"). (Rafael Garcia-Suarez)"
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How can you lexicalize the default variable $_ in Perl 5.10.0 delta?
+  manpageQuestion3: What is the effect of using the '_' prototype in Perl 5.10.0 delta?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.
+
+
+
+    Manpage text:
+
+    UNITCHECK blocks
+           "UNITCHECK", a new special code block has been introduced, in addition
+           to "BEGIN", "CHECK", "INIT" and "END".
+
+           "CHECK" and "INIT" blocks, while useful for some specialized purposes,
+           are always executed at the transition between the compilation and the
+           execution of the main program, and thus are useless whenever code is
+           loaded at runtime. On the other hand, "UNITCHECK" blocks are executed
+           just after the unit which defined them has been compiled. See perlmod
+           for more information. (Alex Gough)
+
+       New Pragma, "mro"
+           A new pragma, "mro" (for Method Resolution Order) has been added. It
+           permits to switch, on a per-class basis, the algorithm that perl uses
+           to find inherited methods in case of a multiple inheritance hierarchy.
+           The default MRO hasn't changed (DFS, for Depth First Search). Another
+           MRO is available: the C3 algorithm. See mro for more information.
+           (Brandon Black)
+
+           Note that, due to changes in the implementation of class hierarchy
+           search, code that used to undef the *ISA glob will most probably break.
+           Anyway, undef'ing *ISA had the side-effect of removing the magic on the
+           @ISA array and should not have been done in the first place. Also, the
+           cache *::ISA::CACHE:: no longer exists; to force reset the @ISA cache,
+           you now need to use the "mro" API, or more simply to assign to @ISA
+           (e.g. with "@ISA = @ISA").
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How can you change the method resolution order (MRO) for a specific Perl class to use the C3 algorithm?
+  manpageQuestion3: What is the effect of using 'UNITCHECK' blocks in Perl, and when are they executed compared to other code blocks?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\nreaddir() may return a \"short filename\" on Windows\n       The readdir() function may return a \"short filename\" when the long\n       filename contains characters outside the ANSI codepage.\tSimilarly\n       Cwd::cwd() may return a short directory name, and glob() may return\n       short names as well.  On the NTFS file system these short names can\n       always be represented in the ANSI codepage.  This will not be true for\n       all other file system drivers; e.g. the FAT filesystem stores short\n       filenames in the OEM codepage, so some files on FAT volumes remain\n       inaccessible through the ANSI APIs.\n\n       Similarly, $^X, @INC, and $ENV{PATH} are preprocessed at startup to\n       make sure all paths are valid in the ANSI codepage (if possible).\n\n       The Win32::GetLongPathName() function now returns the UTF-8 encoded\n       correct long file name instead of using replacement characters to force\n       the name into the ANSI codepage.  The new Win32::GetANSIPathName()\n       function can be used to turn a long pathname into a short one only if\n       the long one cannot be represented in the ANSI codepage."
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How does the perl5100delta resource handle filenames that contain characters outside the ANSI codepage on Windows?
+  manpageQuestion3: Can you explain how the Win32::GetLongPathName() and Win32::GetANSIPathName() functions are used in the context of perl5100delta?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.
+
+
+
+    Manpage text:
+
+    Many other functions in the "Win32" module have been improved to accept
+           UTF-8 encoded arguments.  Please see Win32 for details.
+
+       readpipe() is now overridable
+           The built-in function readpipe() is now overridable. Overriding it
+           permits also to override its operator counterpart, "qx//" (a.k.a.
+           "``").  Moreover, it now defaults to $_ if no argument is provided.
+           (Rafael Garcia-Suarez)
+
+       Default argument for readline()
+           readline() now defaults to *ARGV if no argument is provided. (Rafael
+           Garcia-Suarez)
+
+       state() variables
+           A new class of variables has been introduced. State variables are
+           similar to "my" variables, but are declared with the "state" keyword in
+           place of "my". They're visible only in their lexical scope, but their
+           value is persistent: unlike "my" variables, they're not undefined at
+           scope entry, but retain their previous value. (Rafael Garcia-Suarez,
+           Nicholas Clark)
+
+           To use state variables, one needs to enable them by using
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How can you override the built-in readpipe() function in Perl using perl5100delta?
+  manpageQuestion3: What is the function of state variables in Perl as described in the perl5100delta manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\nuse feature 'state';\n\n       or by using the \"-E\" command-line switch in one-liners.\tSee\n       \"Persistent Private Variables\" in perlsub.\n\n   Stacked filetest operators\n       As a new form of syntactic sugar, it's now possible to stack up\n       filetest operators. You can now write \"-f -w -x $file\" in a row to mean\n       \"-x $file && -w _ && -f _\". See \"-X\" in perlfunc.\n\n   UNIVERSAL::DOES()\n       The \"UNIVERSAL\" class has a new method, \"DOES()\". It has been added to\n       solve semantic problems with the \"isa()\" method. \"isa()\" checks for\n       inheritance, while \"DOES()\" has been designed to be overridden when\n       module authors use other types of relations between classes (in\n       addition to inheritance). (chromatic)\n\n       See \"$obj->DOES( ROLE )\" in UNIVERSAL.\n\n   Formats\n       Formats were improved in several ways. A new field, \"^*\", can be used\n       for variable-width, one-line-at-a-time text. Null characters are now\n       handled correctly in picture lines. Using \"@#\" and \"~~\" together will\n       now produce a compile-time error, as those format fields are\n       incompatible.  perlform has been improved, and miscellaneous bugs\n       fixed."
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How can you use the new stacked filetest operators in Perl to check if a file is executable and writable?
+  manpageQuestion3: What is the function of the UNIVERSAL::DOES() method in Perl, and how is it typically used?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.
+
+
+
+    Manpage text:
+
+    Byte-order modifiers for pack() and unpack()
+           There are two new byte-order modifiers, ">" (big-endian) and "<"
+           (little-endian), that can be appended to most pack() and unpack()
+           template characters and groups to force a certain byte-order for that
+           type or group.  See "pack" in perlfunc and perlpacktut for details.
+
+       "no VERSION"
+           You can now use "no" followed by a version number to specify that you
+           want to use a version of perl older than the specified one.
+
+       "chdir", "chmod" and "chown" on filehandles
+           "chdir", "chmod" and "chown" can now work on filehandles as well as
+           filenames, if the system supports respectively "fchdir", "fchmod" and
+           "fchown", thanks to a patch provided by Gisle Aas.
+
+       OS groups
+           $( and $) now return groups in the order where the OS returns them,
+           thanks to Gisle Aas. This wasn't previously the case.
+
+       Recursive sort subs
+           You can now use recursive subroutines with sort(), thanks to Robin
+           Houston.
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How can you use the 'no' keyword with perl5100delta to specify an older version of Perl?
+  manpageQuestion3: What new feature in perl5100delta allows 'chdir', 'chmod', and 'chown' to work with filehandles?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\nExceptions in constant folding\n       The constant folding routine is now wrapped in an exception handler,\n       and if folding throws an exception (such as attempting to evaluate\n       0/0), perl now retains the current optree, rather than aborting the\n       whole program.  Without this change, programs would not compile if they\n       had expressions that happened to generate exceptions, even though those\n       expressions were in code that could never be reached at runtime.\n       (Nicholas Clark, Dave Mitchell)\n\n   Source filters in @INC\n       It's possible to enhance the mechanism of subroutine hooks in @INC by\n       adding a source filter on top of the filehandle opened and returned by\n       the hook. This feature was planned a long time ago, but wasn't quite\n       working until now. See \"require\" in perlfunc for details. (Nicholas\n       Clark)\n\n   New internal variables\n       \"${^RE_DEBUG_FLAGS}\"\n\t   This variable controls what debug flags are in effect for the\n\t   regular expression engine when running under \"use re \"debug\"\". See\n\t   re for details."
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How does the perl5100delta resource handle exceptions during constant folding?
+  manpageQuestion3: What is the role of the ${^RE_DEBUG_FLAGS} variable in perl5100delta?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\n\"${^CHILD_ERROR_NATIVE}\"\n\t   This variable gives the native status returned by the last pipe\n\t   close, backtick command, successful call to wait() or waitpid(), or\n\t   from the system() operator. See perlvar for details. (Contributed\n\t   by Gisle Aas.)\n\n       \"${^RE_TRIE_MAXBUF}\"\n\t   See \"Trie optimisation of literal string alternations\".\n\n       \"${^WIN32_SLOPPY_STAT}\"\n\t   See \"Sloppy stat on Windows\".\n\n   Miscellaneous\n       \"unpack()\" now defaults to unpacking the $_ variable.\n\n       \"mkdir()\" without arguments now defaults to $_.\n\n       The internal dump output has been improved, so that non-printable\n       characters such as newline and backspace are output in \"\\x\" notation,\n       rather than octal.\n\n       The -C option can no longer be used on the \"#!\" line. It wasn't working\n       there anyway, since the standard streams are already set up at this\n       point in the execution of the perl interpreter. You can use binmode()\n       instead to get the desired behaviour.\n\n   UCD 5.0.0\n       The copy of the Unicode Character Database included in Perl 5 has been\n       updated to version 5.0.0."
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How does the perl5100delta resource handle the default behavior of certain functions like unpack() and mkdir()?
+  manpageQuestion3: What changes were made to the internal dump output in perl5100delta, and how does it affect non-printable characters?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.
+
+
+
+    Manpage text:
+
+    MAD
+           MAD, which stands for Miscellaneous Attribute Decoration, is a still-
+           in-development work leading to a Perl 5 to Perl 6 converter. To enable
+           it, it's necessary to pass the argument "-Dmad" to Configure. The
+           obtained perl isn't binary compatible with a regular perl 5.10, and has
+           space and speed penalties; moreover not all regression tests still pass
+           with it. (Larry Wall, Nicholas Clark)
+
+       kill() on Windows
+           On Windows platforms, "kill(-9, $pid)" now kills a process tree.  (On
+           Unix, this delivers the signal to all processes in the same process
+           group.)
+
+    Incompatible Changes
+       Packing and UTF-8 strings
+           The semantics of pack() and unpack() regarding UTF-8-encoded data has
+           been changed. Processing is now by default character per character
+           instead of byte per byte on the underlying encoding. Notably, code that
+           used things like "pack("a*", $string)" to see through the encoding of
+           string will now simply get back the original $string. Packed strings
+           can also get upgraded during processing when you store upgraded
+           characters. You can get the old behaviour by using "use bytes".
+  manpageQuestion1: What is the primary purpose of the MAD feature in perl5100delta?
+  manpageQuestion2: How does the MAD feature affect the behavior of pack() and unpack() when dealing with UTF-8 strings?
+  manpageQuestion3: What is the significance of passing the '-Dmad' argument to Configure when using perl5100delta?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.
+
+
+
+    Manpage text:
+
+    To be consistent with pack(), the "C0" in unpack() templates indicates
+           that the data is to be processed in character mode, i.e. character by
+           character; on the contrary, "U0" in unpack() indicates UTF-8 mode,
+           where the packed string is processed in its UTF-8-encoded Unicode form
+           on a byte by byte basis. This is reversed with regard to perl 5.8.X,
+           but now consistent between pack() and unpack().
+
+           Moreover, "C0" and "U0" can also be used in pack() templates to specify
+           respectively character and byte modes.
+
+           "C0" and "U0" in the middle of a pack or unpack format now switch to
+           the specified encoding mode, honoring parens grouping. Previously,
+           parens were ignored.
+
+           Also, there is a new pack() character format, "W", which is intended to
+           replace the old "C". "C" is kept for unsigned chars coded as bytes in
+           the strings internal representation. "W" represents unsigned (logical)
+           character values, which can be greater than 255. It is therefore more
+           robust when dealing with potentially UTF-8-encoded data (as "C" will
+           wrap values outside the range 0..255, and not respect the string
+           encoding).
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How would you use the 'W' format in pack() to handle unsigned character values greater than 255?
+  manpageQuestion3: Can you explain how the 'C0' and 'U0' formats in pack() templates affect data processing?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.
+
+
+
+    Manpage text:
+
+    In practice, that means that pack formats are now encoding-neutral,
+           except "C".
+
+           For consistency, "A" in unpack() format now trims all Unicode
+           whitespace from the end of the string. Before perl 5.9.2, it used to
+           strip only the classical ASCII space characters.
+
+       Byte/character count feature in unpack()
+           A new unpack() template character, ".", returns the number of bytes or
+           characters (depending on the selected encoding mode, see above) read so
+           far.
+
+       The $* and $# variables have been removed
+           $*, which was deprecated in favor of the "/s" and "/m" regexp
+           modifiers, has been removed.
+
+           The deprecated $# variable (output format for numbers) has been
+           removed.
+
+           Two new severe warnings, "$#/$* is no longer supported", have been
+           added.
+
+       substr() lvalues are no longer fixed-length
+           The lvalues returned by the three argument form of substr() used to be
+           a "fixed length window" on the original string. In some cases this
+           could cause surprising action at distance or other undefined behaviour.
+           Now the length of the window adjusts itself to the length of the string
+           assigned to it.
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How has the behavior of substr() lvalues changed in perl5100delta?
+  manpageQuestion3: What new feature was introduced in the unpack() function in perl5100delta?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.
+
+
+
+    Manpage text:
+
+    Parsing of "-f _"
+           The identifier "_" is now forced to be a bareword after a filetest
+           operator. This solves a number of misparsing issues when a global "_"
+           subroutine is defined.
+
+       ":unique"
+           The ":unique" attribute has been made a no-op, since its current
+           implementation was fundamentally flawed and not threadsafe.
+
+       Effect of pragmas in eval
+           The compile-time value of the "%^H" hint variable can now propagate
+           into eval("")uated code. This makes it more useful to implement lexical
+           pragmas.
+
+           As a side-effect of this, the overloaded-ness of constants now
+           propagates into eval("").
+
+       chdir FOO
+           A bareword argument to chdir() is now recognized as a file handle.
+           Earlier releases interpreted the bareword as a directory name.  (Gisle
+           Aas)
+
+       Handling of .pmc files
+           An old feature of perl was that before "require" or "use" look for a
+           file with a .pm extension, they will first look for a similar filename
+           with a .pmc extension. If this file is found, it will be loaded in
+           place of any potentially existing file ending in a .pm extension.
+  manpageQuestion1: What is the primary purpose of the perl5100delta tool?
+  manpageQuestion2: How can you ensure that the underscore '_' is treated as a bareword after a filetest operator in Perl?
+  manpageQuestion3: Can you provide an example of using perl5100delta to handle the propagation of the '%^H' hint variable into eval() code?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.
+
+
+
+    Manpage text:
+
+    Previously, .pmc files were loaded only if more recent than the
+           matching .pm file. Starting with 5.9.4, they'll be always loaded if
+           they exist.
+
+       $^V is now a "version" object instead of a v-string
+           $^V can still be used with the %vd format in printf, but any character-
+           level operations will now access the string representation of the
+           "version" object and not the ordinals of a v-string.  Expressions like
+           "substr($^V, 0, 2)" or "split //, $^V" no longer work and must be
+           rewritten.
+
+       @- and @+ in patterns
+           The special arrays "@-" and "@+" are no longer interpolated in regular
+           expressions. (Sadahiro Tomoyuki)
+
+       $AUTOLOAD can now be tainted
+           If you call a subroutine by a tainted name, and if it defers to an
+           AUTOLOAD function, then $AUTOLOAD will be (correctly) tainted.  (Rick
+           Delaney)
+
+       Tainting and printf
+           When perl is run under taint mode, "printf()" and "sprintf()" will now
+           reject any tainted format argument. (Rafael Garcia-Suarez)
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How does the perl5100delta resource change the behavior of $^V when used with format specifiers like %vd in printf?
+  manpageQuestion3: What is the impact of perl5100delta on the behavior of special arrays @- and @+ in regular expressions?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\nundef and signal handlers\n       Undefining or deleting a signal handler via \"undef $SIG{FOO}\" is now\n       equivalent to setting it to 'DEFAULT'. (Rafael Garcia-Suarez)\n\n   strictures and dereferencing in defined()\n       \"use strict 'refs'\" was ignoring taking a hard reference in an argument\n       to defined(), as in :\n\n\t   use strict 'refs';\n\t   my $x = 'foo';\n\t   if (defined $$x) {...}\n\n       This now correctly produces the run-time error \"Can't use string as a\n       SCALAR ref while \"strict refs\" in use\".\n\n       \"defined @$foo\" and \"defined %$bar\" are now also subject to \"strict\n       'refs'\" (that is, $foo and $bar shall be proper references there.)\n       (\"defined(@foo)\" and \"defined(%bar)\" are discouraged constructs\n       anyway.)  (Nicholas Clark)\n\n   \"(?p{})\" has been removed\n       The regular expression construct \"(?p{})\", which was deprecated in perl\n       5.8, has been removed. Use \"(??{})\" instead. (Rafael Garcia-Suarez)\n\n   Pseudo-hashes have been removed\n       Support for pseudo-hashes has been removed from Perl 5.9. (The \"fields\"\n       pragma remains here, but uses an alternate implementation.)"
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How would you modify a signal handler in Perl using the perl5100delta resource?
+  manpageQuestion3: What is the recommended alternative to using pseudo-hashes in Perl 5.10?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.
+
+
+
+    Manpage text:
+
+    Removal of the bytecode compiler and of perlcc
+           "perlcc", the byteloader and the supporting modules (B::C, B::CC,
+           B::Bytecode, etc.) are no longer distributed with the perl sources.
+           Those experimental tools have never worked reliably, and, due to the
+           lack of volunteers to keep them in line with the perl interpreter
+           developments, it was decided to remove them instead of shipping a
+           broken version of those.  The last version of those modules can be
+           found with perl 5.9.4.
+
+           However the B compiler framework stays supported in the perl core, as
+           with the more useful modules it has permitted (among others, B::Deparse
+           and B::Concise).
+
+       Removal of the JPL
+           The JPL (Java-Perl Lingo) has been removed from the perl sources
+           tarball.
+
+       Recursive inheritance detected earlier
+           Perl will now immediately throw an exception if you modify any
+           package's @ISA in such a way that it would cause recursive inheritance.
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How does perl5100delta address the issue of recursive inheritance in Perl?
+  manpageQuestion3: What is the significance of removing the JPL from perl sources according to the manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\nPreviously, the exception would not occur until Perl attempted to make\n       use of the recursive inheritance while resolving a method or doing a\n       \"$foo->isa($bar)\" lookup.\n\n   warnings::enabled and warnings::warnif changed to favor users of modules\n       The behaviour in 5.10.x favors the person using the module; The\n       behaviour in 5.8.x favors the module writer;\n\n       Assume the following code:\n\n\t main calls Foo::Bar::baz()\n\t Foo::Bar inherits from Foo::Base\n\t Foo::Bar::baz() calls Foo::Base::_bazbaz()\n\t Foo::Base::_bazbaz() calls: warnings::warnif('substr', 'some warning\n       message');\n\n       On 5.8.x, the code warns when Foo::Bar contains \"use warnings;\" It does\n       not matter if Foo::Base or main have warnings enabled to disable the\n       warning one has to modify Foo::Bar.\n\n       On 5.10.0 and newer, the code warns when main contains \"use warnings;\"\n       It does not matter if Foo::Base or Foo::Bar have warnings enabled to\n       disable the warning one has to modify main."
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How does the behavior of warnings::warnif change between Perl versions 5.8.x and 5.10.0?
+  manpageQuestion3: In what way does the handling of warnings differ when using Perl 5.10.0 compared to Perl 5.8.x in the given example?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\nModules and Pragmata\n   Upgrading individual core modules\n       Even more core modules are now also available separately through the\n       CPAN.  If you wish to update one of these modules, you don't need to\n       wait for a new perl release.  From within the cpan shell, running the\n       'r' command will report on modules with upgrades available.  See\n       \"perldoc CPAN\" for more information.\n\n   Pragmata Changes\n       \"feature\"\n\t   The new pragma \"feature\" is used to enable new features that might\n\t   break old code. See \"The \"feature\" pragma\" above.\n\n       \"mro\"\n\t   This new pragma enables to change the algorithm used to resolve\n\t   inherited methods. See \"New Pragma, \"mro\"\" above.\n\n       Scoping of the \"sort\" pragma\n\t   The \"sort\" pragma is now lexically scoped. Its effect used to be\n\t   global.\n\n       Scoping of \"bignum\", \"bigint\", \"bigrat\"\n\t   The three numeric pragmas \"bignum\", \"bigint\" and \"bigrat\" are now\n\t   lexically scoped. (Tels)\n\n       \"base\"\n\t   The \"base\" pragma now warns if a class tries to inherit from\n\t   itself.  (Curtis \"Ovid\" Poe)"
+  manpageQuestion1: What is the primary purpose of the perl5100delta tool?
+  manpageQuestion2: How can I use perl5100delta to upgrade an individual core module from CPAN?
+  manpageQuestion3: What are the key changes introduced by the 'feature' and 'mro' pragmas in perl5100delta?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\n\"strict\" and \"warnings\"\n\t   \"strict\" and \"warnings\" will now complain loudly if they are loaded\n\t   via incorrect casing (as in \"use Strict;\"). (Johan Vromans)\n\n       \"version\"\n\t   The \"version\" module provides support for version objects.\n\n       \"warnings\"\n\t   The \"warnings\" pragma doesn't load \"Carp\" anymore. That means that\n\t   code that used \"Carp\" routines without having loaded it at compile\n\t   time might need to be adjusted; typically, the following (faulty)\n\t   code won't work anymore, and will require parentheses to be added\n\t   after the function name:\n\n\t       use warnings;\n\t       require Carp;\n\t       Carp::confess 'argh';\n\n       \"less\"\n\t   \"less\" now does something useful (or at least it tries to). In\n\t   fact, it has been turned into a lexical pragma. So, in your\n\t   modules, you can now test whether your users have requested to use\n\t   less CPU, or less memory, less magic, or maybe even less fat. See\n\t   less for more. (Joshua ben Jore)\n\n   New modules\n       •   \"encoding::warnings\", by Audrey Tang, is a module to emit warnings\n\t   whenever an ASCII character string containing high-bit bytes is\n\t   implicitly converted into UTF-8. It's a lexical pragma since Perl\n\t   5.9.4; on older perls, its effect is global."
+  manpageQuestion1: What is the primary purpose of the perl5100delta module?
+  manpageQuestion2: How can you use the 'warnings' module to ensure that Perl checks for potential syntax errors in your code?
+  manpageQuestion3: What is the function of the 'encoding::warnings' module in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\n•   \"Module::CoreList\", by Richard Clamp, is a small handy module that\n\t   tells you what versions of core modules ship with any versions of\n\t   Perl 5. It comes with a command-line frontend, \"corelist\".\n\n       •   \"Math::BigInt::FastCalc\" is an XS-enabled, and thus faster, version\n\t   of \"Math::BigInt::Calc\".\n\n       •   \"Compress::Zlib\" is an interface to the zlib compression library.\n\t   It comes with a bundled version of zlib, so having a working zlib\n\t   is not a prerequisite to install it. It's used by \"Archive::Tar\"\n\t   (see below).\n\n       •   \"IO::Zlib\" is an \"IO::\"-style interface to \"Compress::Zlib\".\n\n       •   \"Archive::Tar\" is a module to manipulate \"tar\" archives.\n\n       •   \"Digest::SHA\" is a module used to calculate many types of SHA\n\t   digests, has been included for SHA support in the CPAN module.\n\n       •   \"ExtUtils::CBuilder\" and \"ExtUtils::ParseXS\" have been added.\n\n       •   \"Hash::Util::FieldHash\", by Anno Siegel, has been added. This\n\t   module provides support for field hashes: hashes that maintain an\n\t   association of a reference with a value, in a thread-safe garbage-\n\t   collected way.  Such hashes are useful to implement inside-out\n\t   objects."
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How can you use corelist to determine the versions of core modules that are included with a specific Perl 5 version?
+  manpageQuestion3: What is the function of the 'Compress::Zlib' module and how is it used in Perl programming?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\n•   \"Module::Build\", by Ken Williams, has been added. It's an\n\t   alternative to \"ExtUtils::MakeMaker\" to build and install perl\n\t   modules.\n\n       •   \"Module::Load\", by Jos Boumans, has been added. It provides a\n\t   single interface to load Perl modules and .pl files.\n\n       •   \"Module::Loaded\", by Jos Boumans, has been added. It's used to mark\n\t   modules as loaded or unloaded.\n\n       •   \"Package::Constants\", by Jos Boumans, has been added. It's a simple\n\t   helper to list all constants declared in a given package.\n\n       •   \"Win32API::File\", by Tye McQueen, has been added (for Windows\n\t   builds).  This module provides low-level access to Win32 system API\n\t   calls for files/dirs.\n\n       •   \"Locale::Maketext::Simple\", needed by CPANPLUS, is a simple wrapper\n\t   around \"Locale::Maketext::Lexicon\". Note that\n\t   \"Locale::Maketext::Lexicon\" isn't included in the perl core; the\n\t   behaviour of \"Locale::Maketext::Simple\" gracefully degrades when\n\t   the later isn't present.\n\n       •   \"Params::Check\" implements a generic input parsing/checking\n\t   mechanism. It is used by CPANPLUS."
+  manpageQuestion1: What is the primary purpose of the `perl5100delta` resource?
+  manpageQuestion2: How can you use the `perl5100delta` resource to manage Perl modules with a modern build system?
+  manpageQuestion3: What is the role of `Locale::Maketext::Simple` in Perl module development?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\n•   \"Term::UI\" simplifies the task to ask questions at a terminal\n\t   prompt.\n\n       •   \"Object::Accessor\" provides an interface to create per-object\n\t   accessors.\n\n       •   \"Module::Pluggable\" is a simple framework to create modules that\n\t   accept pluggable sub-modules.\n\n       •   \"Module::Load::Conditional\" provides simple ways to query and\n\t   possibly load installed modules.\n\n       •   \"Time::Piece\" provides an object oriented interface to time\n\t   functions, overriding the built-ins localtime() and gmtime().\n\n       •   \"IPC::Cmd\" helps to find and run external commands, possibly\n\t   interactively.\n\n       •   \"File::Fetch\" provide a simple generic file fetching mechanism.\n\n       •   \"Log::Message\" and \"Log::Message::Simple\" are used by the log\n\t   facility of \"CPANPLUS\".\n\n       •   \"Archive::Extract\" is a generic archive extraction mechanism for\n\t   .tar (plain, gzipped or bzipped) or .zip files.\n\n       •   \"CPANPLUS\" provides an API and a command-line tool to access the\n\t   CPAN mirrors."
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How can you use the perl5100delta tool to fetch a file from a URL?
+  manpageQuestion3: What is the function of the Archive::Extract module in the perl5100delta resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\n•   \"Pod::Escapes\" provides utilities that are useful in decoding Pod\n\t   E<...> sequences.\n\n       •   \"Pod::Simple\" is now the backend for several of the Pod-related\n\t   modules included with Perl.\n\n   Selected Changes to Core Modules\n       \"Attribute::Handlers\"\n\t   \"Attribute::Handlers\" can now report the caller's file and line\n\t   number.  (David Feldman)\n\n\t   All interpreted attributes are now passed as array references.\n\t   (Damian Conway)\n\n       \"B::Lint\"\n\t   \"B::Lint\" is now based on \"Module::Pluggable\", and so can be\n\t   extended with plugins. (Joshua ben Jore)\n\n       \"B\" It's now possible to access the lexical pragma hints (\"%^H\") by\n\t   using the method B::COP::hints_hash(). It returns a \"B::RHE\"\n\t   object, which in turn can be used to get a hash reference via the\n\t   method B::RHE::HASH(). (Joshua ben Jore)\n\n       \"Thread\"\n\t   As the old 5005thread threading model has been removed, in favor of\n\t   the ithreads scheme, the \"Thread\" module is now a compatibility\n\t   wrapper, to be used in old code only. It has been removed from the\n\t   default list of dynamic extensions."
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How can you use the perl5100delta tool to decode Pod E<...> sequences?
+  manpageQuestion3: What is the role of the perl5100delta resource in relation to Perl's core modules?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\nUtility Changes\n       perl -d\n\t   The Perl debugger can now save all debugger commands for sourcing\n\t   later; notably, it can now emulate stepping backwards, by\n\t   restarting and rerunning all bar the last command from a saved\n\t   command history.\n\n\t   It can also display the parent inheritance tree of a given class,\n\t   with the \"i\" command.\n\n       ptar\n\t   \"ptar\" is a pure perl implementation of \"tar\" that comes with\n\t   \"Archive::Tar\".\n\n       ptardiff\n\t   \"ptardiff\" is a small utility used to generate a diff between the\n\t   contents of a tar archive and a directory tree. Like \"ptar\", it\n\t   comes with \"Archive::Tar\".\n\n       shasum\n\t   \"shasum\" is a command-line utility, used to print or to check SHA\n\t   digests. It comes with the new \"Digest::SHA\" module.\n\n       corelist\n\t   The \"corelist\" utility is now installed with perl (see \"New\n\t   modules\" above).\n\n       h2ph and h2xs\n\t   \"h2ph\" and \"h2xs\" have been made more robust with regard to\n\t   \"modern\" C code.\n\n\t   \"h2xs\" implements a new option \"--use-xsloader\" to force use of\n\t   \"XSLoader\" even in backwards compatible modules."
+  manpageQuestion1: What is the primary purpose of the perl5100delta utility?
+  manpageQuestion2: How can you use ptar to create a tar archive with Perl?
+  manpageQuestion3: What is the function of the corelist utility in the context of Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\nThe handling of authors' names that had apostrophes has been fixed.\n\n\t   Any enums with negative values are now skipped.\n\n       perlivp\n\t   \"perlivp\" no longer checks for *.ph files by default.  Use the new\n\t   \"-a\" option to run all tests.\n\n       find2perl\n\t   \"find2perl\" now assumes \"-print\" as a default action. Previously,\n\t   it needed to be specified explicitly.\n\n\t   Several bugs have been fixed in \"find2perl\", regarding \"-exec\" and\n\t   \"-eval\". Also the options \"-path\", \"-ipath\" and \"-iname\" have been\n\t   added.\n\n       config_data\n\t   \"config_data\" is a new utility that comes with \"Module::Build\". It\n\t   provides a command-line interface to the configuration of Perl\n\t   modules that use Module::Build's framework of configurability (that\n\t   is, *::ConfigData modules that contain local configuration\n\t   information for their parent modules.)\n\n       cpanp\n\t   \"cpanp\", the CPANPLUS shell, has been added. (\"cpanp-run-perl\", a\n\t   helper for CPANPLUS operation, has been added too, but isn't\n\t   intended for direct use)."
+  manpageQuestion1: What is the primary purpose of the perl5100delta tool?
+  manpageQuestion2: How can you configure Perl modules using the new utility config_data?
+  manpageQuestion3: What is the default behavior of find2perl when converting file paths to Perl code?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\ncpan2dist\n\t   \"cpan2dist\" is a new utility that comes with CPANPLUS. It's a tool\n\t   to create distributions (or packages) from CPAN modules.\n\n       pod2html\n\t   The output of \"pod2html\" has been enhanced to be more customizable\n\t   via CSS. Some formatting problems were also corrected. (Jari Aalto)\n\nNew Documentation\n       The perlpragma manpage documents how to write one's own lexical pragmas\n       in pure Perl (something that is possible starting with 5.9.4).\n\n       The new perlglossary manpage is a glossary of terms used in the Perl\n       documentation, technical and otherwise, kindly provided by O'Reilly\n       Media, Inc.\n\n       The perlreguts manpage, courtesy of Yves Orton, describes internals of\n       the Perl regular expression engine.\n\n       The perlreapi manpage describes the interface to the perl interpreter\n       used to write pluggable regular expression engines (by AEvar Arnfjoer`\n       Bjarmason).\n\n       The perlunitut manpage is a tutorial for programming with Unicode and\n       string encodings in Perl, courtesy of Juerd Waalboer."
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How can you use cpan2dist to create a distribution from a CPAN module?
+  manpageQuestion3: What is the function of the pod2html utility according to the manpages?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.
+
+
+
+    Manpage text:
+
+    A new manual page, perlunifaq (the Perl Unicode FAQ), has been added
+           (Juerd Waalboer).
+
+           The perlcommunity manpage gives a description of the Perl community on
+           the Internet and in real life. (Edgar "Trizor" Bering)
+
+           The CORE manual page documents the "CORE::" namespace. (Tels)
+
+           The long-existing feature of "/(?{...})/" regexps setting $_ and pos()
+           is now documented.
+
+    Performance Enhancements
+       In-place sorting
+           Sorting arrays in place ("@a = sort @a") is now optimized to avoid
+           making a temporary copy of the array.
+
+           Likewise, "reverse sort ..." is now optimized to sort in reverse,
+           avoiding the generation of a temporary intermediate list.
+
+       Lexical array access
+           Access to elements of lexical arrays via a numeric constant between 0
+           and 255 is now faster. (This used to be only the case for global
+           arrays.)
+
+       XS-assisted SWASHGET
+           Some pure-perl code that perl was using to retrieve Unicode properties
+           and transliteration mappings has been reimplemented in XS.
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How does perl5100delta improve performance for array sorting operations?
+  manpageQuestion3: What new feature related to regexps was added in perl5100delta and how does it work?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.
+
+
+
+    Manpage text:
+
+    Constant subroutines
+           The interpreter internals now support a far more memory efficient form
+           of inlineable constants. Storing a reference to a constant value in a
+           symbol table is equivalent to a full typeglob referencing a constant
+           subroutine, but using about 400 bytes less memory. This proxy constant
+           subroutine is automatically upgraded to a real typeglob with subroutine
+           if necessary.  The approach taken is analogous to the existing space
+           optimisation for subroutine stub declarations, which are stored as
+           plain scalars in place of the full typeglob.
+
+           Several of the core modules have been converted to use this feature for
+           their system dependent constants - as a result "use POSIX;" now takes
+           about 200K less memory.
+
+       "PERL_DONT_CREATE_GVSV"
+           The new compilation flag "PERL_DONT_CREATE_GVSV", introduced as an
+           option in perl 5.8.8, is turned on by default in perl 5.9.3. It
+           prevents perl from creating an empty scalar with every new typeglob.
+           See perl589delta for details.
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How does the PERL_DONT_CREATE_GVSV flag optimize memory usage in Perl?
+  manpageQuestion3: What is the effect of using the new memory-efficient constant subroutines in Perl 5.10.0?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\nWeak references are cheaper\n       Weak reference creation is now O(1) rather than O(n), courtesy of\n       Nicholas Clark. Weak reference deletion remains O(n), but if deletion\n       only happens at program exit, it may be skipped completely.\n\n   sort() enhancements\n       Salvador Fandin~o provided improvements to reduce the memory usage of\n       \"sort\" and to speed up some cases.\n\n   Memory optimisations\n       Several internal data structures (typeglobs, GVs, CVs, formats) have\n       been restructured to use less memory. (Nicholas Clark)\n\n   UTF-8 cache optimisation\n       The UTF-8 caching code is now more efficient, and used more often.\n       (Nicholas Clark)\n\n   Sloppy stat on Windows\n       On Windows, perl's stat() function normally opens the file to determine\n       the link count and update attributes that may have been changed through\n       hard links. Setting ${^WIN32_SLOPPY_STAT} to a true value speeds up\n       stat() by not performing this operation. (Jan Dubois)\n\n   Regular expressions optimisations\n       Engine de-recursivised\n\t   The regular expression engine is no longer recursive, meaning that\n\t   patterns that used to overflow the stack will either die with\n\t   useful explanations, or run to completion, which, since they were\n\t   able to blow the stack before, will likely take a very long time to\n\t   happen. If you were experiencing the occasional stack overflow (or\n\t   segfault) and upgrade to discover that now perl apparently hangs\n\t   instead, look for a degenerate regex. (Dave Mitchell)"
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How does the perl5100delta update improve the performance of the sort() function?
+  manpageQuestion3: What is the effect of setting ${^WIN32_SLOPPY_STAT} to a true value in Perl on Windows systems?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\nSingle char char-classes treated as literals\n\t   Classes of a single character are now treated the same as if the\n\t   character had been used as a literal, meaning that code that uses\n\t   char-classes as an escaping mechanism will see a speedup. (Yves\n\t   Orton)\n\n       Trie optimisation of literal string alternations\n\t   Alternations, where possible, are optimised into more efficient\n\t   matching structures. String literal alternations are merged into a\n\t   trie and are matched simultaneously.  This means that instead of\n\t   O(N) time for matching N alternations at a given point, the new\n\t   code performs in O(1) time.\tA new special variable,\n\t   ${^RE_TRIE_MAXBUF}, has been added to fine-tune this optimization.\n\t   (Yves Orton)\n\n\t   Note: Much code exists that works around perl's historic poor\n\t   performance on alternations. Often the tricks used to do so will\n\t   disable the new optimisations. Hopefully the utility modules used\n\t   for this purpose will be educated about these new optimisations."
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How does the perl5100delta resource optimize alternations in regular expressions?
+  manpageQuestion3: What new variable was introduced in perl5100delta to fine-tune the trie optimization for alternations?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\nAho-Corasick start-point optimisation\n\t   When a pattern starts with a trie-able alternation and there aren't\n\t   better optimisations available, the regex engine will use Aho-\n\t   Corasick matching to find the start point. (Yves Orton)\n\nInstallation and Configuration Improvements\n   Configuration improvements\n       \"-Dusesitecustomize\"\n\t   Run-time customization of @INC can be enabled by passing the\n\t   \"-Dusesitecustomize\" flag to Configure. When enabled, this will\n\t   make perl run $sitelibexp/sitecustomize.pl before anything else.\n\t   This script can then be set up to add additional entries to @INC.\n\n       Relocatable installations\n\t   There is now Configure support for creating a relocatable perl\n\t   tree. If you Configure with \"-Duserelocatableinc\", then the paths\n\t   in @INC (and everything else in %Config) can be optionally located\n\t   via the path of the perl executable.\n\n\t   That means that, if the string \".../\" is found at the start of any\n\t   path, it's substituted with the directory of $^X. So, the\n\t   relocation can be configured on a per-directory basis, although the\n\t   default with \"-Duserelocatableinc\" is that everything is relocated.\n\t   The initial install is done to the original configured prefix."
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How can you configure Perl to enable run-time customization of @INC using the Configure script?
+  manpageQuestion3: What is the purpose of the '-Duserelocatableinc' flag when configuring Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\nstrlcat() and strlcpy()\n\t   The configuration process now detects whether strlcat() and\n\t   strlcpy() are available.  When they are not available, perl's own\n\t   version is used (from Russ Allbery's public domain implementation).\n\t   Various places in the perl interpreter now use them. (Steve Peters)\n\n       \"d_pseudofork\" and \"d_printf_format_null\"\n\t   A new configuration variable, available as $Config{d_pseudofork} in\n\t   the Config module, has been added, to distinguish real fork()\n\t   support from fake pseudofork used on Windows platforms.\n\n\t   A new configuration variable, \"d_printf_format_null\", has been\n\t   added, to see if printf-like formats are allowed to be NULL.\n\n       Configure help\n\t   \"Configure -h\" has been extended with the most commonly used\n\t   options.\n\n   Compilation improvements\n       Parallel build\n\t   Parallel makes should work properly now, although there may still\n\t   be problems if \"make test\" is instructed to run in parallel.\n\n       Borland's compilers support\n\t   Building with Borland's compilers on Win32 should work more\n\t   smoothly. In particular Steve Hay has worked to side step many\n\t   warnings emitted by their compilers and at least one C compiler\n\t   internal error."
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How can you configure Perl to use its own versions of strlcat() and strlcpy() when they are not available on the system?
+  manpageQuestion3: What new configuration variables were added in perl5100delta and what do they represent?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\nStatic build on Windows\n\t   Perl extensions on Windows now can be statically built into the\n\t   Perl DLL.\n\n\t   Also, it's now possible to build a \"perl-static.exe\" that doesn't\n\t   depend on the Perl DLL on Win32. See the Win32 makefiles for\n\t   details.  (Vadim Konovalov)\n\n       ppport.h files\n\t   All ppport.h files in the XS modules bundled with perl are now\n\t   autogenerated at build time. (Marcus Holland-Moritz)\n\n       C++ compatibility\n\t   Efforts have been made to make perl and the core XS modules\n\t   compilable with various C++ compilers (although the situation is\n\t   not perfect with some of the compilers on some of the platforms\n\t   tested.)\n\n       Support for Microsoft 64-bit compiler\n\t   Support for building perl with Microsoft's 64-bit compiler has been\n\t   improved. (ActiveState)\n\n       Visual C++\n\t   Perl can now be compiled with Microsoft Visual C++ 2005 (and 2008\n\t   Beta 2).\n\n       Win32 builds\n\t   All win32 builds (MS-Win, WinCE) have been merged and cleaned up.\n\n   Installation improvements\n       Module auxiliary files\n\t   README files and changelogs for CPAN modules bundled with perl are\n\t   no longer installed."
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How can you build a 'perl-static.exe' on Windows using perl5100delta?
+  manpageQuestion3: What changes were made to improve C++ compatibility with perl5100delta?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5100delta`.\n\n\n\nManpage text:\n\nNew Or Improved Platforms\n       Perl has been reported to work on Symbian OS. See perlsymbian for more\n       information.\n\n       Many improvements have been made towards making Perl work correctly on\n       z/OS.\n\n       Perl has been reported to work on DragonFlyBSD and MidnightBSD.\n\n       Perl has also been reported to work on NexentaOS (\n       http://www.gnusolaris.org/ ).\n\n       The VMS port has been improved. See perlvms.\n\n       Support for Cray XT4 Catamount/Qk has been added. See\n       hints/catamount.sh in the source code distribution for more\n       information.\n\n       Vendor patches have been merged for RedHat and Gentoo.\n\n       DynaLoader::dl_unload_file() now works on Windows.\n\nSelected Bug Fixes\n       strictures in regexp-eval blocks\n\t   \"strict\" wasn't in effect in regexp-eval blocks (\"/(?{...})/\").\n\n       Calling CORE::require()\n\t   CORE::require() and CORE::do() were always parsed as require() and\n\t   do() when they were overridden. This is now fixed.\n\n       Subscripts of slices\n\t   You can now use a non-arrowed form for chained subscripts after a\n\t   list slice, like in:"
+  manpageQuestion1: What is the primary purpose of the perl5100delta resource?
+  manpageQuestion2: How would you use perl5100delta to fix a bug related to strictures in regexp-eval blocks?
+  manpageQuestion3: Can you provide an example of using perl5100delta to address the issue with subscripts of slices in regular expressions?
+

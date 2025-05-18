@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `afhash`.\n\n\n\nManpage text:\n\nAFHASH(1)\t\t    General Commands Manual\t\t     AFHASH(1)\n\nNAME\n     afhash – Audio File Hash\n\nSYNOPSIS\n     afhash [-h] audiofile1 audiofile2\n\nDESCRIPTION\n     Audio File Hash writes an SHA-1 hash to an audio file or prints (to\n     stdout) the hash contained in an audio file\n\nOPTIONS\n     -h       print help text\n\n     -w       write hash code to audio file\n\n     -x       print hash code from audio file (if present)\n\n     -c       compare hash codes from two audio files\n\nDarwin\t\t\t       February 13, 2007\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the afhash tool?
+  manpageQuestion2: How would you use afhash to compare the hash codes of two audio files?
+  manpageQuestion3: Can you provide an example of using afhash to write a hash code to an audio file?
+

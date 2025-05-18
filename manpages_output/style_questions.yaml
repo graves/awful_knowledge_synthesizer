@@ -1,0 +1,346 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.\n\n\n\nManpage text:\n\nstyle(3)\t\t   Library Functions Manual\t\t      style(3)\n\nNAME\n     style – C language style guide for Darwin low-level userspace projects\n\nDESCRIPTION\n     This style's primary objective is to be as friendly to the code review\n     process as possible. Therefore, the style aims to ensure that code\n     changes to the project produce diffs that are\n\n\t   •   small\n\t   •   unambiguous\n\t   •   viewable in side-by-side comparison tools\n\n     As a secondary objective, this style also aims to make code as clear as\n     possible for an uninitiated programmer reading it. \"Clever\" syntactic\n     shortcuts are actively discouraged in favor of code that is easy to\n     understand, even if it is less concise. Coincidentally, this practice\n     also tends to lend itself to generating more readable diffs.\n\n     Like any style, consistent adherence across a project is a virtue in and\n     of itself, resulting in less distraction for the reader. However, these\n     guidelines should be taken as exactly that: guidelines. No style can be\n     completely adhered to all the time. When you have convinced yourself that\n     a deviation from the style is called for, just make sure it is for the\n     greater good and maintains the style's aims of minimizing diffs and code\n     complexity."
+  manpageQuestion1: What is the primary purpose of the style tool in the context of Darwin low-level userspace projects?
+  manpageQuestion2: How does adhering to the style guide help in code review processes?
+  manpageQuestion3: What are the key principles of the style guide that ensure code readability and efficient diffs?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.
+
+
+
+    Manpage text:
+
+    GENERAL PRINCIPLES
+       Vertical space is a commodity
+         Scrolling vertically has always been easier than scrolling horizontally.
+         Computer mouse manufacturers went so far as to dedicate hardware to the
+         task of scrolling vertically when they came up with scroll wheels. Even
+         on modern trackpads, while it is possible to scroll horizontally, it is
+         far easier to scroll vertically. You just flick upwards. Do not be afraid
+         to introduce extra lines of code if it will result in clearer, more
+         human-parseable diffs when those lines are changed.
+
+       Horizontal space is precious
+         Scrolling horizontally is typically awkward, imprecise, and does not lend
+         itself well toward reading on computers or even in print. (Academic
+         journals frequently publish with two narrow columns per page to make
+         reading easier, for example.)  Lines should be wrapped consciously; this
+         should not be left to the editor. A soft-wrapping scheme that looks good
+         in your editor may not look good in someone else's editor (or with a
+         different configuration for the same editor).
+  manpageQuestion1: What is the primary purpose of the 'style' resource according to the manpage?
+  manpageQuestion2: How can the principles of vertical space management be applied in code formatting?
+  manpageQuestion3: What is the recommended approach for handling horizontal space in code to ensure readability across different environments?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.
+
+
+
+    Manpage text:
+
+    Just as natural language comments are difficult to read in one, long
+         line, so too are lines of code. Both natural languages and programming
+         languages deserve conscious, deliberate wrapping to improve readability.
+
+         Wrap at a column width narrow enough to accommodate side-by-side patch
+         review. 80 is more likely to accommodate this, but 120 might be fine too.
+         Pick a reasonable column width and stick to it. Think about the lines you
+         are wrapping.  If you have to wrap a line, do so in a way that is clear,
+         and be willing to make changes to accommodate that (e.g. don't be afraid
+         to declare a variable separately if having the declaration and assignment
+         on the same line causes it to wrap in an unclear way).
+
+       Indentation is for scope indication and nothing else
+         Indentation's sole purpose is to indicate scope. You should not use
+         indentation to align characters on two lines of source code (beyond, of
+         course, aligning the first characters of each line if they are both in
+         the same scope).
+  manpageQuestion1: What is the primary purpose of the `style` resource in macOS?
+  manpageQuestion2: How can you ensure that code lines are properly wrapped for readability in a macOS environment?
+  manpageQuestion3: What is the recommended approach for handling indentation in code to maintain clarity and proper scope indication?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.
+
+
+
+    Manpage text:
+
+    Given this aspect of the style, it does not particularly matter whether
+         the author chooses spaces or tabs for indentation, and therefore the
+         style makes no prescription (other than to pick one and stick with it).
+
+         This style also has another implication: tabs and spaces should never
+         appear in sequence. Each line will be a series of tabs followed by the
+         first character of code. Tabs will never appear after the initial
+         indentation of the line.
+
+       Don't require leaving the source to understand it
+         Always think of future maintainers and document your thought process for
+         them.  Remember, a "future maintainer" might be you after you've
+         forgotten why you did something. For non-trivial changes, you should not
+         rely on linking to a ticket-tracking system to provide context and
+         explanation for a piece of code.  You should strive to ensure the reader
+         of your code does not have to context-switch out of reading it in order
+         to understand it.
+  manpageQuestion1: What is the primary purpose of the style guide described in the manpage?
+  manpageQuestion2: How should indentation be handled according to the style guide's rules?
+  manpageQuestion3: What is the recommended approach for documenting code changes according to the style guide?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.
+
+
+
+    Manpage text:
+
+    This is not to say that linking to external resources in code is bad, but
+         if a change's purpose can be reasonably expressed without interrupting
+         how the code reads and flows, just do it. You don't need to publish a
+         whitepaper in comments, but don't just give a link or ticket number with
+         no context.
+
+       Each line of code should minimize entropy
+         It is actually very difficult to construct a hash comparison scheme that
+         humans can use without error consistently, and there have been successful
+         social engineering attacks on getting humans to read two hashes that are
+         "close enough" as identical. This means that humans need a lot of help
+         telling the difference between two lines of text.
+
+         For any expression, divide it up into fundamental atoms (variable
+         declarations, conditionals, etc.) and then assign each of those atoms to
+         its own line of code.  If you do this, when you change a single atom, it
+         is immediately obvious that only that atom changed and nothing else did.
+         The more atoms share lines of code, the more likely it is that changes to
+         them will generate complex diffs that humans will have difficulty
+         understanding.
+  manpageQuestion1: What is the primary purpose of the `style` resource according to the manpage?
+  manpageQuestion2: How can the `style` resource be used to improve code readability and maintainability?
+  manpageQuestion3: What specific coding practice does the `style` resource recommend to minimize entropy in code?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.
+
+
+
+    Manpage text:
+
+    Don't assume a specific editor
+         Assume people will be reading your code in a tool that you do not control
+         and cannot influence. Try viewing your code in such a tool and make sure
+         that it is understandable. If you follow the guidelines of this style,
+         your code may appear different in another viewer (in terms of how many
+         columns are required to display a single line), but its structure will
+         appear identical.
+
+    SPECIFIC GUIDELINES
+       Column Width and Line Wrap
+         80 columns opens the door for a three-way, side-by-side comparison, but
+         it could be impractical for a number of reasons. 120 columns should
+         provide a nice balance, but really all that matters is that you pick a
+         width and stick to it.
+
+         When indenting a continuation line, indent over by two additional tabs.
+         This visually separates the indented line from the next line, which may
+         itself be indented. If there is an operator in the middle of the line,
+         the operator should not be wrapped to the continuation line.
+  manpageQuestion1: What is the primary purpose of the `style` resource in macOS?
+  manpageQuestion2: How should a developer format code to ensure it is readable across different text editors and viewers according to the `style` resource's guidelines?
+  manpageQuestion3: What are the specific guidelines for handling line wrapping and indentation in code according to the `style` resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.\n\n\n\nManpage text:\n\nGood\n\n\t   if (some_condition && some_other_condition &&\n\t\t   yet_another_condition) {\n\t       exit(0);\n\t   }\n\n     Bad\n\n\t   if (some_condition && some_other_condition &&\n\t       yet_another_condition) {\n\t       exit(0);\n\t   }\n\n\t   if (some_condition && some_other_condition\n\t       && yet_another_condition) {\n\t       exit(0);\n\t   }\n\n     Notice on the good example that the exit(0) line is made obviously\n     distinct from the indented conditions above it. It's very clear on quick\n     visual inspection that it's not a part of the conditional checks.\tThe &&\n     is left on the first line because, when reviewing a patch to this area,\n     it will be immediately clear to the reviewer that that line continues to\n     the next one.\n\n   Avoid prettifying alignment\n     Indentation is used only for indicating scope, so no consideration is\n     given to visual alignment of equal signs, colons, etc. across multiple\n     lines.\n\n     Good\n\n\t   typedef enum {\n\t       THING0 = 0,\n\t       THING1 = 1,\n\t       THING_THAT_IS_REALLY_LONG = 2,\n\t   } thing_t;"
+  manpageQuestion1: What is the primary purpose of the style resource in macOS?
+  manpageQuestion2: How would you use the style resource to ensure proper indentation in a C program?
+  manpageQuestion3: Can you provide an example of using the style resource to format a long enum value in C?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.\n\n\n\nManpage text:\n\nBad\n\n\t   enum {\n\t       THING0\t\t\t = 0,\n\t       THING1\t\t\t = 1,\n\t       THING_THAT_IS_REALLY_LONG = 2,\n\t   };\n\n     This creates bloated diffs. If you have to re-align a ton of lines after\n     you've added something longer, you get a bunch of whitespace diffs. So\n     for variable declarations, enumerations, assignments, etc. just keep\n     every line independent.\n\n     There is one exception to this rule, and that is if you choose to define\n     a flagset in terms of its raw hexadecimal values and wish to align them.\n     In this case, it is a significant benefit to have these values aligned,\n     and you may do so with spaces.\n\n     Example\n\n\t   typedef enum {\n\t\t   F_INIT   = 0x00,\n\t\t   F_FOO    = 0x01,\n\t\t   F_BARBAZ = 0x02,\n\t\t   F_CAD    = 0x04,\n\t\t   F_FAD    = 0x08,\n\t\t   F_FUD    = 0x10,\n\t\t   F_FLAME  = 0x20,\n\t\t   F_FOOD   = 0x40,\n\t   } flag_t;\n\n   Only one blank line at a time\n     Use blank lines to separate logical chunks of code. Do not use more than\n     one.\n\n   Initialization\n     C99 has named initializers for structures. Prefer those to initializing\n     members one-by-one later on. Both structures and arrays should be\n     initialized in the same style, with each element of the initializer being\n     on its own line. This is so that when an element is added to or removed\n     from the initialization list, that change gets its own line of diff."
+  manpageQuestion1: What is the primary purpose of the style resource in macOS?
+  manpageQuestion2: How can you align hexadecimal flag values in an enumeration while maintaining readability and avoiding bloated diffs?
+  manpageQuestion3: What is the recommended approach for initializing structures and arrays in C99 according to the style guide?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.\n\n\n\nManpage text:\n\nThe exception to this is the string literal.\n\n     Good\n\n\t   struct my_struct baz = {\n\t       .ms_foo = 1,\n\t       .ms_bar = NULL,\n\t   };\n\n\t   char *strings[] = {\n\t       \"string\",\n\t       \"other string\",\n\t   };\n     Bad\n\n\t   struct my_struct baz = { 1, NULL };\n\n\t   struct my_struct baz = {\n\t       1,\n\t       NULL\n\t   };\n\n\t   struct my_struct baz = { .ms_foo = 1, .ms_bar = NULL, };\n\n     The last element of an initializer list should be followed by a comma.\n     This is so that when you add a new element to that list, it's a one-line\n     diff rather rather than a two-line diff (one line of diff to add the , to\n     the previous-last element, and another line of diff to add the new-last\n     element).\n\n     Good\n\n\t   enum {\n\t       THING0,\n\t       THING1,\n\t   };\n\n\t   struct my_point p = {\n\t       .x = 1,\n\t       .y = 0,\n\t       .z = 1,\n\t   };\n\n     Bad\n\n\t   enum {\n\t       THING0, THING1,\n\t   };\n\n\t   enum {\n\t       THING0,\n\t       THING1\n\t   };\n\n\t   struct my_point p = { .x = 1, .y = 0, .z = 1 };"
+  manpageQuestion1: What is the primary purpose of the `style` resource in this context?
+  manpageQuestion2: How should one properly initialize a struct with multiple members in C according to the style guide?
+  manpageQuestion3: What is the correct way to format an enum declaration in C based on the provided style guide?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.\n\n\n\nManpage text:\n\nNote that, if your project requires ANSI C compliance, you should\n     disregard this guideline, as it will not work under C89.\n\n   Avoid function name overloading\n     The clang(1) compiler supports extensions to the C language which allow\n     for function name overloading. Name overloading generally leads to code\n     which is difficult to read and introspect and should be avoided.\n\n   Prefix `struct` members\n     Any struct which is shared or exported should have a common prefix for\n     each member. This helps avoid collisions with preprocessor macros.\n\n     Good\n\n\t   struct foobar {\n\t\t   int64_t fb_baz;\n\t\t   char *fb_string;\n\t   };\n\n     Bad\n\n\t   struct foobar {\n\t\t   int64_t baz;\n\t\t   char *string;\n\t   };\n\n   Types end with `_t`\n     A type is indicated with _t at the end of the typedef, whether the type\n     refers to a struct, union, enum, etc. All types are indicated this way.\n     Types are in all lower-case letters.\n\n     Good\n\n\t   typedef uint64_t handle_t;\n\t   typedef enum foo foo_t;\n\t   typedef union bar bar_t;"
+  manpageQuestion1: What is the primary purpose of the `style` resource in macOS?
+  manpageQuestion2: How can you ensure that struct members are properly prefixed to avoid naming collisions with preprocessor macros?
+  manpageQuestion3: What is the recommended naming convention for typedef'd types in the `style` resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.\n\n\n\nManpage text:\n\nBad\n\n\t   typedef uint64_t Handle;\n\t   typedef enum foo foo_e;\n\t   typedef union bar bar_u;\n\n   Use explicitly-sized integer types\n     Avoid integer types whose names do not indicate size, such as int or\n     long.  Instead, use the types from stdint.h (e.g.\tint64_t, uint32_t,\n     etc.), which explicitly indicate size. You may use size-ambiguous integer\n     types if an API requires it.\n\n   Use `sizeof()` on variables rather than types where appropriate\n     The sizeof() operator can take both types and variables as arguments.\n     Where possible and relevant, always pass a variable. This ensures that if\n     the variable's type changes, the proper size is used automatically.\n\n     Good\n\n\t   uuid_t ident;\n\t   memcpy(ident, buff, sizeof(ident));\n\n     Bad\n\n\t   uuid_t ident;\n\t   memcpy(ident, buff, sizeof(uuid_t));\n\n     IMPORTANT: When applied to a char *, sizeof() will return the width of a\n     pointer, not the size of the string literal it points to, so take care to\n     only use strlen(3) for such cases."
+  manpageQuestion1: What is the primary purpose of the `style` resource in macOS?
+  manpageQuestion2: How can you use the `style` resource to ensure that integer types in your code are explicitly sized?
+  manpageQuestion3: What is the correct way to use `sizeof()` when working with a char * in C?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.\n\n\n\nManpage text:\n\nRelatedly, when applied to an array variable that is a parameter in a\n     function's parameter list, sizeof() will return the width of a pointer,\n     not the size of the type.\n\n     Good\n\n\t   char *string = \"the quick brown fox\";\n\t   size_t len = strlen(string);\n\n\t   void\n\t   foo(uuid_t u)\n\t   {\n\t\t   uuid_t u2;\n\t\t   memcpy(u2, u, sizeof(uuid_t));\n\t   }\n\n     Bad\n\n\t   char *string = \"the quick brown fox\";\n\t   size_t len = sizeof(string) - 1;\n\n\t   void\n\t   foo(uuid_t u)\n\t   {\n\t\t   uuid_t u2;\n\n\t\t   // sizeof(u) == sizeof(void *) in this context.\n\t\t   memcpy(u2, u, sizeof(u));\n\t   }\n\n   Functions which take no parameters have a parameter list of `void`\n     In C, an empty function parameter list means that any set of parameters\n     is acceptable. In virtually all cases where you do this, you mean to have\n     a parameter list of void.\n\n     Good\n\n\t   void\n\t   foo(void)\n\t   {\n\t       do_a_thing_without_arguments();\n\t   }\n\n     Bad\n\n\t   void\n\t   foo()\n\t   {\n\t       do_a_thing_without_arguments();\n\t   }"
+  manpageQuestion1: What is the primary purpose of the style resource in macOS?
+  manpageQuestion2: How would you use the style resource to ensure that a function's parameter list correctly indicates it takes no arguments?
+  manpageQuestion3: Can you provide an example of using the style resource to correct a common mistake in array size calculations?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.\n\n\n\nManpage text:\n\nPreprocessor macros\n     Preprocessor definitions are written in all-caps. Macros which are\n     function-like may be lower-case provided they do not double-evaluate\n     their arguments.  Function-like macros that do double-evaluate their\n     arguments should be in all-caps.\n\n     Good\n\n\t   #define FOO 1\n\t   #define halt() abort()\n\n\t   // Does not double-evaluate _a and _b such that max(i++, j) is safe.\n\t   #define max(_a, _b) ({ \\\n\t       typeof(_a) a1 = (_a); \\\n\t       typeof(_b) b1 = (_b); \\\n\t       (a1 < b1 ? b1 : a1); \\\n\t   })\n\n\t   // Double-evaluates _a and _b, so MAX(i++, j) is not safe.\n\t   #define MAX(_a, _b) ((_a) < (_b) ? (_b) : (_a))\n\n     Bad\n\n\t   #define kFoo 1\n\n\t   // Double-evaluates _a and _b.\n\t   #define max(_a, _b) ((_a) < (_b) ? (_b) : (_a))\n\n     Where possible, you should prefer inline functions to preprocessor\n     macros, or split a macro into a preprocessor piece and an inline function\n     piece.\n\n     Example\n\n\t   static inline void\n\t   _debug_uint64_impl(const char *name, uint64_t val)\n\t   {\n\t       fprintf(stderr, \"%s = %llu\\n\", name, val);\n\t   }"
+  manpageQuestion1: What is the primary purpose of the `style` resource in macOS?
+  manpageQuestion2: How should function-like macros be named to avoid double-evaluation of their arguments according to the `style` manpage?
+  manpageQuestion3: Can you provide an example of how to correctly define a macro that avoids double-evaluation of its arguments?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.\n\n\n\nManpage text:\n\n#define debug_uint64(_v) do { \\\n\t\t   _debug_uint64_impl(#_v, _v); \\\n\t   } while (0)\n\n     In this example, the preprocessor is used to do something that only the\n     preprocessor can do: stringify the input variable's name. But once that\n     work is done, the actual logging of the value is done by an inline\n     function. This keeps the code much more readable.\n\n   Preprocessor macro parameters should be distinguished\n     Preprocessor macro expansion can run afoul of naming collisions with\n     other variables that are in the same scope as the macro being expanded.\n     To help avoid such collisions, parameters to preprocessor macros should\n     have a prefix, suffix or both. Another good option is to use a _[A-Z]\n     prefix, since it is reserved by the C standard and will not collide with\n     preprocessor evaluation.\n\n     Example\n\n\t   #define foo2(_x_) ((_x_) * 2)\n\t   #define foo4(_x) ((_x) * 4)\n\t   #define foo8(_X) ((_X) * 8)\n\n   Preprocessor macro parameters should always be evaluated\n     When passing a parameter to a preprocessor macro, it should always be\n     referred to within parentheses to force evaluation. The exception is for\n     parameters intended to be string literals."
+  manpageQuestion1: What is the primary purpose of the `style` resource in macOS?
+  manpageQuestion2: How can you use preprocessor macros to avoid naming collisions in C code?
+  manpageQuestion3: What is the recommended practice for passing parameters to preprocessor macros in C?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.\n\n\n\nManpage text:\n\nGood\n\n\t   #define add2(__x) ((__x) + 2)\n\t   #define println(__fmt, ...) printf(__fmt \"\\n\", ## __VA_ARGS__)\n\n     Bad\n\n\t   #define add2(__x) x + 2\n\n   Preprocessor directives always start at column 0\n     Preprocessor directives do not have scope, and therefore they always\n     start at column zero.\n\n     Good\n\n\t   if (do_loop) {\n\t\t   for (i = 0; i < 10; i++) {\n\t   #if CONFIG_FOOBAR\n\t\t\t   foobar(i);\n\t   #else\n\t\t\t   foobaz(i);\n\t   #endif\n\t\t   }\n\t   }\n\n     Bad\n\n\t   if (do_loop) {\n\t\t   for (i = 0; i < 10; i++) {\n\t\t   #if CONFIG_FOOBAR\n\t\t\t   foobar(i);\n\t\t   #else\n\t\t\t   foobaz(i);\n\t\t   #endif\n\t\t   }\n\t   }\n\n   Always reference string length directly\n     Do not hard-code the size of a string. Use either sizeof(str) - 1 or\n     strlen(str).  In the latter case, clang(1) is smart enough to recognize\n     when a constant string is being passed to strlen(3) and replace the\n     function call with the string's actual length.\n\n     Good\n\n\t   char str[] = \"string\";\n\t   frob_string(str, sizeof(str) - 1);\n\t   frob_string(str, strlen(str));"
+  manpageQuestion1: What is the primary purpose of the `style` resource in this context?
+  manpageQuestion2: How should preprocessor directives be formatted to ensure they start at column 0 in C code?
+  manpageQuestion3: What is the recommended way to handle string lengths in C code according to the manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.\n\n\n\nManpage text:\n\nBad\n\n\t   char str[] = \"string\";\n\t   frob_string(str, 6);\n\n   Don't pointlessly validate inputs\n     If you control all call sites for a function, then there is no point to\n     validating the inputs to that function. If none of your call sites pass\n     NULL, to a pointer parameter, for example, then the a NULL input\n     indicates that there is state corruption in your address space. You may\n     think that it's good to catch such corruption, but NULL is just one\n     possible invalid pointer value. What if the invalid input is 0x1?\tWhat\n     if it is 0x2?  Should you also check for those?\n\n     This kind of input checking complicates code. Because it indicates state\n     corruption, the only sensible thing to do in that situation would be to\n     abort.  But the operating system has mechanisms in place to detect the\n     reference of an invalid resource, such as virtual memory and use-after-\n     free detection. There is no point to you duplicating these mechanisms.\n\n     Of course, you should always validate inputs when they come from\n     untrusted external sources (such as a file or IPC message), but if the\n     inputs only ever comes from your program, you should trust them."
+  manpageQuestion1: What is the primary purpose of the 'style' resource in macOS?
+  manpageQuestion2: How can you use the 'style' resource to apply a specific formatting style to a string in C?
+  manpageQuestion3: What are the best practices for handling input validation when using the 'style' resource in a program?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.\n\n\n\nManpage text:\n\nGood\n\n\t   static foo_t *\n\t   get_item(foo_t *arr, size_t idx)\n\t   {\n\t\t   return &arr[idx];\n\t   }\n\n\t   int\n\t   only_call_site(foo_t *f)\n\t   {\n\t\t   foo_t *arr = calloc(10, sizeof(arr[0]));\n\t\t   if (!arr) {\n\t\t\t   return errno;\n\t\t   }\n\n\t\t   *f = get_item(arr, 0);\n\t\t   return 0;\n\t   }\n\n     Bad\n\n\t   static foo_t *\n\t   get_item(foo_t *arr, size_t idx)\n\t   {\n\t\t   if (!arr) {\n\t\t\t   // No point to this check since we'll abort immediately below when we\n\t\t\t   // try to dereference `arr`. The crash report will have more than enough\n\t\t\t   // information to diagnose the NULL pointer dereference if it ever\n\t\t\t   // happens.\n\t\t\t   abort();\n\t\t   }\n\t\t   return &arr[idx];\n\t   }\n\n\t   int\n\t   only_call_site(foo_t *f)\n\t   {\n\t\t   foo_t *arr = calloc(10, sizeof(arr[0]));\n\t\t   if (!arr) {\n\t\t\t   return errno;\n\t\t   }\n\n\t\t   *f = get_item(arr, 0);\n\t\t   return 0;\n\t   }\n\n   Abort on bad API inputs\n     The C language provides precious few compile-time validation mechanisms,\n     and so in many cases it is not possible to fully describe to the compiler\n     the range of expected inputs for an API. So your API should validate\n     input from its caller and abort on invalid input. Returning an error in\n     such a case is pointless, since the caller probably isn't checking the\n     return code anyway. The only sure way to get the programmer's attention\n     is to abort the calling process with a helpful message. The os_crash\n     routine allows you to supply such a message that the crash reporter on\n     Darwin will display in its crash report."
+  manpageQuestion1: What is the primary purpose of the `style` resource in the context of the provided code examples?
+  manpageQuestion2: How can the `style` resource be used to ensure that invalid API inputs are properly handled in C code?
+  manpageQuestion3: Can you provide an example of using the `os_crash` function to generate a helpful crash report when invalid input is detected in a C program?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.\n\n\n\nManpage text:\n\nGood\n\n\t   uint8_t\n\t   foo_a_bar(uint8_t number)\n\t   {\n\t\t   if (number > (UINT8_MAX / 2)) {\n\t\t\t   os_crash(\"number given to foo_a_bar() too large\");\n\t\t   }\n\t\t   return (number * 2);\n\t   }\n\n     Bad\n\n\t   int\n\t   foo_a_bar(uint8_t number, uint8_t *new_number)\n\t   {\n\t\t   if (number > (UINT8_MAX / 2)) {\n\t\t\t   return EINVAL;\n\t\t   }\n\t\t   *new_number = (number * 2);\n\t\t   return 0;\n\t   }\n\n   Don't mingle POSIX return codes and errors\n     Some POSIX routines have return values that indicate whether you should\n     check errno, and others just return the error directly. While POSIX\n     generally documents what does what pretty well, there are lots of SPIs\n     scattered around the system that use both conventions and aren't\n     documented at all, leaving you to spelunk through the implementation to\n     find out what's what.\n\n     To avoid confusion, do not re-use the same variable for the return codes\n     from these functions. If an API returns a code indicating that you should\n     check errno, name it ret or similar. If it returns the error directly,\n     name it error or similar and make it of type errno_t.  This makes it very\n     clear to the person reading the code that you did the work to find out\n     how the API worked. By naming the variable you store the return value in\n     appropriately, a reader of your code (possibly Future You) can\n     immediately know what's going on."
+  manpageQuestion1: What is the primary purpose of the 'style' resource in macOS?
+  manpageQuestion2: How would you correctly handle return values from POSIX routines to avoid mixing return codes and errors?
+  manpageQuestion3: What is the recommended practice for naming variables that store return values from APIs with different error conventions?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.\n\n\n\nManpage text:\n\nIf you are making new API or SPI that returns an error code, make it\n     return errno_t and do not use the global errno for communicating error\n     information.\n\n     Good\n\n\t   #include <sys/types.h>\n\n\t   errno_t error = posix_spawn(NULL, \"ls\", NULL, NULL, argv, envp);\n\t   switch (error) {\n\t   case 0:\n\t       // Handle success.\n\t       break;\n\t   case EACCES:\n\t       // Handle \"permission denied\".\n\t       break;\n\t   }\n\n\t   int ret = reboot(RB_AUTOBOOT);\n\t   if (ret == -1) {\n\t       switch (errno) {\n\t       case EPERM:\n\t\t   // Handle \"permission denied\".\n\t\t   break;\n\t       case EBUSY:\n\t\t   // Handle \"reboot already in progress\".\n\t\t   break;\n\t       }\n\t   }\n\n     Bad\n\n\t   int ret = posix_spawn(NULL, \"ls\", NULL, NULL, argv, envp);\n\t   switch (error) {\n\t   case 0:\n\t       // Handle success.\n\t       break;\n\t   case EACCES:\n\t       // Handle \"permission denied\".\n\t       break;\n\t   }\n\n\t   int error = reboot(RB_AUTOBOOT);\n\t   if (error == -1) {\n\t       switch (errno) {\n\t       case EPERM:\n\t\t   // Handle \"permission denied\".\n\t\t   break;\n\t       case EBUSY:\n\t\t   // Handle \"reboot already in progress\".\n\t\t   break;\n\t       }\n\t   }"
+  manpageQuestion1: What is the primary purpose of the `style` resource in macOS?
+  manpageQuestion2: How should one properly handle error codes returned by API functions in macOS using the `style` resource?
+  manpageQuestion3: What is an example of incorrect usage of the `style` resource and why is it considered bad practice?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.
+
+
+
+    Manpage text:
+
+    Avoid complex `if` statements and return distinct error codes
+         Breaking up a single complex if statement into multiple distinct checks
+         is both more readable and makes it possible to be more granular about
+         handling failure cases. It also leads to smaller diffs if one of those
+         conditions turns out to require special handling.
+
+         Complex if statements are often associated with input validation and just
+         returning an error code (usually EINVAL) if any input is invalid. While
+         deciding which error to return in which case is more of an art than a
+         science, that doesn't mean you should just give up and return a single
+         error every time there isn't an immediately obvious fit to the case
+         you've encountered.
+
+         Ideally, every case where your routine may fail should be represented by
+         a distinct error code, but this is often not practical. Still, you should
+         attempt to distinguish each likely failure case with its own error code.
+         The POSIX error space is fairly rich, and error descriptions are brief
+         enough that they can be liberally interpreted. For example, ESRCH can be
+         used to apply to any situation where a resource could not be located, not
+         just conditions where there is literally "No such process".
+  manpageQuestion1: What is the primary purpose of the 'style' resource according to the manpage?
+  manpageQuestion2: How should a programmer handle complex if statements according to the manpage's advice?
+  manpageQuestion3: What is an example of using distinct error codes as per the manpage's guidance?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.\n\n\n\nManpage text:\n\nThis isn't to say that you should never have compound conditions in an if\n     statement, but the groupings should almost always be small, and the\n     grouped checks should be highly likely to require change as a group when\n     change is needed.\n\n     Good\n\n\t   if (foo->f_int > 10 || foo->f_int < 5)\n\t\t   return ERANGE;\n\t   }\n\n\t   if (!foo->f_uaddr) {\n\t\t   return EFAULT;\n\t   }\n\n\t   if (foo->f_has_idx && foo->f_idx > 100) {\n\t\t   return ERANGE;\n\t   }\n\n\t   if (foo->f_state != FS_INITIALIZED) {\n\t\t   return EBUSY;\n\t   }\n\n     Bad\n\n\t   if (foo->f_int > 10 || foo->f_int < 5 || !foo->f_uaddr || (foo->f_has_idx && foo->f_idx > 100) ||\n\t\t\t   foo->f_state != FS_INITIALIZED) {\n\t\t   return EINVAL;\n\t   }\n\n     See intro(2), <sys/errno.h>, and <os/error.h> for the error codes\n     supported on Darwin.\n\n   Don't NULL-check when calling `free(3)`\n     NULL is valid input to free(3).  It's part of the API contract. Armed\n     with this knowledge, you can do things like avoid conditional memory\n     calls, which are always weird."
+  manpageQuestion1: What is the primary purpose of the `style` resource in macOS?
+  manpageQuestion2: How should compound conditions in an if statement be structured according to the `style` guidelines?
+  manpageQuestion3: What is the recommended approach for handling NULL pointers when calling `free(3)` according to the `style` resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.\n\n\n\nManpage text:\n\nGood\n\n\t   char buff[1024];\n\t   char *ptr = buff;\n\t   char *what2free = NULL;\n\n\t   if (condition) {\n\t       ptr = malloc(8);\n\t       what2free = ptr;\n\t   }\n\n\t   free(what2free);\n\n     Bad\n\n\t   char buff[1024];\n\t   char *ptr = buff;\n\t   bool did_malloc = false;\n\n\t   if (condition) {\n\t       ptr = malloc(8);\n\t       did_malloc = true;\n\t   }\n\n\t   if (did_malloc) {\n\t       free(ptr);\n\t   }\n\n   Distinguish exported and non-exported symbols\n     Any non-exported symbols should be prefixed with a _.  Thus any static\n     functions, project-local interfaces, etc. should have this prefix.\n     Exported symbols (API or SPI) should not have such a prefix.\n\n     Good\n\n\t   static const char *_thing = \"thing\";\n\t   static void _foo(void);\n\n\t   void\n\t   _project_local_interface(void);\n     Bad\n\n\t   static const char *thing = \"thing\";\n\t   static void foo(void);\n\n\t   void\n\t   project_local_interface(void);\n\n     Global variables should have a sensible prefix, preferably related to the\n     project name -- e.g. globals in the libxpc(3) project are prefixed with\n     xpc_."
+  manpageQuestion1: What is the primary purpose of the style guide examples provided in the manpage?
+  manpageQuestion2: How should non-exported symbols be named according to the style guide?
+  manpageQuestion3: What is the recommended naming convention for global variables in the style guide?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.\n\n\n\nManpage text:\n\nYou may also consider declaring a global structure which contains all of\n     your project's shared, unexported global state. This makes it very clear\n     when code is referencing that state. Also, if your project is a library\n     at the libSystem layer, this is required if you are ever to adopt\n     os_alloc_once(3).\n\n     Example\n\n\t   typedef struct _foobar_globals {\n\t\t   uint64_t fg_global_int;\n\t\t   char *fg_global_string;\n\t   } foobar_globals_t;\n\n\t   foobar_globals_t _g;\n\t   foobar_globals_t *g = &_g;\n\n   Distinguish SPIs meant for one caller\n     Sometimes projects must create bespoke SPIs for one particular caller,\n     and these SPIs are not considered suitable for general use. Append a\n     suffix to these SPIs to indicate their bespokeness and the intended\n     caller with _4caller.  For example, if you add an SPI specifically for\n     IOKit, your suffix would likely be _4IOKit.\n\n   Use `#if` instead of `#ifdef` where appropriate\n     #ifdef is to check if a token is defined at all to anything. #if is to\n     check the token's value. The C standard specifies that when a token is\n     undefined, #if will evaluate it as 0.  When checking for features, it's\n     almost always more appropriate to use #if since the lack of a feature\n     could still be communicated by setting the token's value to 0, which\n     would pass the #ifdef check."
+  manpageQuestion1: What is the primary purpose of the 'style' resource in macOS?
+  manpageQuestion2: How can you create a bespoke SPI for a specific caller using the 'style' resource?
+  manpageQuestion3: What is the recommended approach for checking feature availability in C when using the 'style' resource?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.
+
+
+
+    Manpage text:
+
+    Use Function Attributes from `<os/base.h>`
+         If you're on Darwin, libplatform defines a lot of nice macros for
+         compiler attributes. Use them to decorate your functions. This gives the
+         compiler lots more information so it can do fancy optimizations. Things
+         like OS_NONNULL let the compiler know that a parameter should never be
+         NULL.  OS_WARN_RESULT is great for enforcing that a caller always check
+         the return value of a function.
+
+         OS_MALLOC lets the compiler know that the function returns a heap
+         allocation, and OS_OBJECT_RETURNS_RETAINED lets ARC know that the
+         function returns an object with a reference that the caller is
+         responsible for releasing.
+
+         You can avoid having to decorate all your pointer parameters by using
+         OS_ASSUME_NONNULL_BEGIN and OS_ASSUME_NONNULL_END and specifically
+         annotating variables which can be NULL with the _Nullable keyword. Either
+         approach is acceptable.
+
+         Generally, use these attributes on functions which will have callers who
+         cannot view the implementation. Putting many of these attributes on (for
+         example) an inline function is harmless, but the compiler can reason
+         about things like OS_NONNULL and infer it when it can view the
+         implementation at all call sites.
+  manpageQuestion1: What is the primary purpose of the `style` resource in macOS?
+  manpageQuestion2: How can you use the `style` resource to annotate a function that should never return NULL?
+  manpageQuestion3: What is the recommended way to use the `style` resource for handling pointer parameters that may be NULL?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.\n\n\n\nManpage text:\n\nSo as a rule of thumb, if it's in a header, decorate it appropriately.\n     These attributes can also serve as nice implicit documentation around API\n     and SPI. For example, if you have a decoration of OS_NONNULL1, you don't\n     have to spell out in the HeaderDoc that you can't pass NULL for that\n     parameter; it'll be right there in the declaration, and the compiler will\n     catch attempts to do so.\n\n   Distinguish C function definitions from declarations\n     In C, make the definition of a function findable and distinguishable from\n     its declaration (if any) through regular expressions. This way, you can\n     find the implementation of foo by doing a regex search for ^foo, and you\n     won't get the declaration as a result.\n\n     Good\n\n\t   static int foo(int bar);\n\n\t   int\n\t   foo(int bar)\n\t   {\n\t       return bar;\n\t   }\n\n     Bad\n\n\t   static int foo(int bar);\n\n\t   int foo(int bar)\n\t   {\n\t       return bar;\n\t   }\n\n     This has the additional benefit of allowing you to change the\n     name/parameter list of a function independently of the return type. A\n     diff of either will not be confused with the rest of the function\n     signature."
+  manpageQuestion1: What is the primary purpose of the style resource in macOS?
+  manpageQuestion2: How would you use the style resource to ensure that function definitions are distinguishable from their declarations in C code?
+  manpageQuestion3: Can you provide an example of using the style resource to apply a decoration like OS_NONNULL1 to a function parameter in C code?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.\n\n\n\nManpage text:\n\nUse HeaderDoc for API declarations\n     Make them look nice. Include the appropriate decorations (including an\n     explicit export attribute such as OS_EXPORT so it's very, very clear that\n     it's intended to be API), availability attributes, and HeaderDoc. Put\n     this stuff before the function.\n\n     Example\n\n\t   /*!\n\t    * @function foo\n\t    * Returns `bar` and ignores another parameter.\n\t    *\n\t    * @param bar\n\t    * The value to return.\n\t    *\n\t    * @param baz\n\t    * The value to ignore.\n\t    *\n\t    * @result\n\t    * The value of `bar`. This routine cannot fail.\n\t    */\n\t   __API_AVAILABLE(macos(10.14), ios(12.0), tvos(12.0), watchos(5.0))\n\t   OS_EXPORT OS_WARN_RESULT OS_NONNULL2\n\t   int\n\t   foo(int bar, char *baz);\n\n   Comments\n     In general, use C++/C99-style comments. But there may be good reasons to\n     use the classic C-style comments, such as for HeaderDoc, which requires\n     them, e.g.\n\n\t   /*!\n\t    * Documentation\n\t    */\n\n     Long, top-level comments may also use classic C-style comments."
+  manpageQuestion1: What is the primary purpose of the `style` resource in macOS?
+  manpageQuestion2: How would you use the `style` resource to format a function declaration with HeaderDoc and availability attributes?
+  manpageQuestion3: Can you provide an example of using the `style` resource to comment a function in C++/C99 style versus classic C-style?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.\n\n\n\nManpage text:\n\nC++/C99-style comments may directly follow code on the same line only if\n     they are extremely brief. Otherwise, in general, comments and code should\n     not share a line.\n\n     Also, do not get cute with /* */ comments and embed them within code.\n\n     Good\n\n\t   // Comment on what the loop does.\n\t   for (i = 0; i < cnt; i++) {\n\t       // some code...\n\t   }\n\n\t   /*\n\t    * A top-level or very long comment.\n\t    */\n\n\t   int ret = esoteric_spi(); // returns -1 on failure, does not set errno\n\n     Bad\n\n\t   //Comment\n\n\t   int ret = esoteric_spi(); // This SPI returns -1 on failure but does not set\n\t       // errno, so here is a comment explaining that that really should be above\n\t       // the line of code rather than immediately following it.\n\n\t   foo(arg1, /* first argument */, arg2 /* second argument */);\n\n   `case` and `switch` are indented at the same level\n     case and switch belong at the same column indent because indentation\n     indicates scope, and due to case fall-through, all cases are in the same\n     scope -- one lower than the previous. (Unless you scope them explicitly\n     with braces, but you should avoid doing that if at all possible.)"
+  manpageQuestion1: What is the primary purpose of the `style` resource in the context of C++/C99 programming?
+  manpageQuestion2: How should comments be formatted in C++/C99 code according to the `style` resource's guidelines?
+  manpageQuestion3: According to the `style` resource, how should `case` and `switch` statements be indented in code?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.\n\n\n\nManpage text:\n\nGood\n\n\t   switch (thing) {\n\t   case THING1:\n\t       exit(0);\n\t       break;\n\t   case THING2:\n\t       exit(1);\n\t       break;\n\t   default:\n\t       __builtin_unreachable();\n\t   }\n\n     Bad\n\n\t   switch (thing) {\n\t   case THING1: {\n\t       exit(0);\n\t       break;\n\t   }\n\t   case THING2: {\n\t       exit(1);\n\t       break;\n\t   }\n\t   default:\n\t       __builtin_unreachable();\n\t   }\n\n\t   switch (thing) {\n\t       case THING1:\n\t\t   exit(0);\n\t\t   break;\n\t       case THING2:\n\t\t   exit(1);\n\t\t   break;\n\t       default: {\n\t\t   __builtin_unreachable();\n\t       }\n\t   }\n\n   Use typed `enum`s\n     If you're declaring an enum, you should typedef it so the compiler can\n     reason about valid values and know the width of the enum type if\n     possible. The OS_ENUM macro provides the correct behavior for C, C++, and\n     Objective-C.\n\n   Initialize all variables and fail closed\n     If you pre-declare a variable before using it, initialize it to a sane\n     value. If this value is something like the return value of the function,\n     initialize it to a value which indicates failure of the operation. You\n     should always do this even if there are no code paths which fail to\n     initialize the variable later. It's just good practice, and it gives the\n     person reading your code an indication of what ranges of values the\n     variable is expected to hold."
+  manpageQuestion1: What is the primary purpose of the `style` resource in macOS?
+  manpageQuestion2: How should an enum be declared and used according to the `style` resource's recommendations?
+  manpageQuestion3: What is the recommended approach for initializing variables in code according to the `style` resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.\n\n\n\nManpage text:\n\nGood\n\n\t   int result = -1;\n\n\t   if (success) {\n\t       result = 0;\n\t   }\n\n     Bad\n\n\t   int result;\n\n\t   if (success) {\n\t       result = 0;\n\t   }\n\n     Any error variable should always be initialized to a non-success\n     condition. In general, consider success as something that your code must\n     explicitly declare and that the absence of such a declaration indicates\n     failure.\n\n     Good\n\n\t   int error = -1;\n\n\t   if (is_root()) {\n\t       error = 0;\n\t   } else {\n\t       error = EPERM;\n\t   }\n\n     Bad\n\n\t   int error = 0;\n\n\t   if (!is_root()) {\n\t       error = EPERM;\n\t   }\n\n     Note that you may omit an initializer for a complex struct type (such as\n     the stat(2) struct) but then it is incumbent upon you to ensure that that\n     variable is not used uninitialized except to populate it. For many struct\n     types, you can initialize them with {0}.  This will not work for\n     structures with nested structures though. For those you can use bzero(3)\n     or similar.\n\n   Using `goto` is fine\n     goto has gotten a bad rap, but it's probably the best way in C to do lots\n     of sequential error handling. You don't have to use goto if you don't\n     want to, but if you do, just keep a a couple things in mind."
+  manpageQuestion1: What is the primary purpose of the style guide text provided?
+  manpageQuestion2: How should error variables be initialized according to the style guide?
+  manpageQuestion3: What is the recommended approach for initializing complex struct types like stat(2) according to the style guide?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.\n\n\n\nManpage text:\n\n•   Compile with -Wsometimes-uninitialized.\tWith this warning,\n\t       clang(1) will catch cases where a variable may be used\n\t       uninitialized because a goto skipped the initialization.\n\t   •   Never use goto as a looping construct. The C language has a few\n\t       different control statements for looping and iteration. Use one\n\t       of those; it's not the 70's anymore.\n\n     These guidelines make it simple to use goto effectively while avoiding\n     the most common pitfalls.\n\n   Avoid magic Booleans\n     Sometimes you have to pass a parameter to a function to trigger some sort\n     of behavior. Avoid using a magic Boolean for these cases. Instead, use an\n     invariant that describes the behavior you are triggering.\n\n     Good\n\n\t   replace_spaces(string, REPLACE_TABS_TOO);\n\t   replace_spaces(string, REPLACE_ONLY_SPACES);\n\n     Bad\n\n\t   replace_spaces(string, true);\n\t   replace_spaces(string, false);\n\n     If you find yourself creating many such Boolean values for function\n     parameters, you should seriously considering defining a set of flags and\n     passing that as one parameter instead."
+  manpageQuestion1: What is the primary purpose of the 'style' resource in macOS?
+  manpageQuestion2: How can you use the 'style' resource to enforce coding conventions in a project?
+  manpageQuestion3: What are the best practices for using the 'style' resource to avoid common coding pitfalls?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.\n\n\n\nManpage text:\n\nSpaces around binary operators\n     In general, avoid code that looks crunched together, especially around\n     operators. Specifically:\n\t   •   Unary operators should not have spaces around them.\n\t   •   Binary operators should have spaces around them.\n\t   •   The ternary operator should have spacing around it.\n\n     Good\n\n\t   i++;\n\t   j = i + k;\n\t   k += condition ? i : j;\n\n     Bad\n\n\t   i ++;\n\t   j=i+k\n\t   k+=condition?i:j;\n\n   Reserve the ternary operator for trivial cases\n     Don't use the ternary operator to choose between complex or long\n     expressions.  Reserve it for very trivial cases that are highly unlikely\n     to change. In general if you've found yourself putting the expressions in\n     your usage of ternary operator on multiple lines, you should just be\n     using an if statement.\n\n     Good\n\n\t   i += condition ? j : k;\n\n     Bad\n\n\t   i += (i < j && j > k || i == j) ? foo(bar, baz, 0, NULL) : frob(bar, 0, NULL, baz);\n\n   Spaces around parentheses\n\t   •   Put a space between the control statement and the parenthesis\n\t       indicating its condition.\n\t   •   Do not put a space between the end of a function name and the\n\t       parenthesis indicating its argument list.\n\t   •   Do not put spaces between any parenthesis and its following\n\t       content."
+  manpageQuestion1: What is the primary purpose of the 'style' resource in macOS?
+  manpageQuestion2: How should spaces be handled around binary operators according to the 'style' resource's guidelines?
+  manpageQuestion3: According to the 'style' resource, when is it appropriate to use the ternary operator?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.\n\n\n\nManpage text:\n\nGood\n\n\t   if (condition) {\n\t       do_thing();\n\t   }\n\n     Bad\n\n\t   if(condition) {\n\t       do_thing ();\n\t   }\n\n\t   if ( condition ) {\n\t       do_thing ( argument );\n\t   }\n\n     Worse\n\n\t   while( condition) {\n\t       do_thing( );\n\t   }\n\n   Braces and statements\n     Always, always, always use braces for your control statements. Lack of\n     braces can and has led to serious security issues that were missed during\n     code review, and putting the braces there from the start means that\n     adding new statements to that clause does not require you to also add the\n     braces.\n\n     The clause should be indented on the next line with no blank lines in\n     between.\n\n     Good\n\n\t   if (condition) {\n\t       do_thing();\n\t   }\n\n\t   while (condition) {\n\t       do_thing();\n\t   }\n\n     Bad\n\n\t   if (condition) do_thing();\n\n\t   if (condition)\n\t       do_thing();\n\n\t   while (condition) do_thing();\n\n\t   while (condition) {\n\n\t       do_thing();\n\t   }\n\n     Even trivial uses of braceless if statements are problematic. Consider\n     the following:"
+  manpageQuestion1: What is the primary purpose of the 'style' resource in macOS?
+  manpageQuestion2: How can you use the 'style' resource to enforce consistent indentation in a codebase?
+  manpageQuestion3: What is the recommended approach for using the 'style' resource when writing control structures like if statements in C?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.\n\n\n\nManpage text:\n\nBad\n\n\t   if (error) i++,\n\t   i++;\n\n     This is admittedly contrived, but it would be likely to escape code\n     review because it's very easy to miss that the first line ends with a ,\n     rather than a ;.  Braces in if statements are sensitive enough to\n     security that the best policy is to simply always use them, without\n     exception.\n\n     Specific rules for braces:\n\t   •   else goes between two braces on the same line.\n\t   •   The brace which indicates the expression associated with a\n\t       control flow statement goes on the same line as that statement\n\t       or the same line as the last continuation line of the\n\t       statement.\n\t   •   The brace which begins the definition of a struct, union, enum,\n\t       etc. goes on the same line as the declaration.\n\t   •   The brace concluding the expression associated with a control\n\t       flow statement is aligned with the same column as that control\n\t       flow statement.\n\t   •   The opening brace of a function definition goes on its own line\n\t       and is immediately followed by a new line.\n\t   •   Control statements with empty bodies should have empty braces."
+  manpageQuestion1: What is the primary purpose of the style resource in macOS?
+  manpageQuestion2: How can you configure the style resource to enforce specific formatting rules for C code in a project?
+  manpageQuestion3: Can you provide an example of how the style resource enforces brace placement in C code?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `style`.\n\n\n\nManpage text:\n\nGood\n\n\t   if (condition) {\n\t       do_thing();\n\t   } else {\n\t       do_other_thing();\n\t   }\n\n\t   void\n\t   function(void)\n\t   {\n\t       return;\n\t   }\n\n\t   struct my_struct {\n\t       uint32_t thing;\n\t   };\n\n\t   for (cur; cur; cur = cur->next) { }\n\n     Bad\n\n\t   if (condition)\n\t   {\n\t       do_thing();\n\t   }\n\t   else\n\t   {\n\t       do_other_thing();\n\t   }\n\n\t   if (condition)\n\t   {\n\t       do_thing();\n\t   }\n\t   else\n\t       do_other_thing();\n\n\t   void\n\t   function(void) {\n\t       return;\n\t   }\n\n\t   struct my_struct\n\t   {\n\t       uint32_t thing;\n\t   };\n\n\t   for (cur; cur; cur = cur->next)\n\n     Worse\n\n\t   if (condition)\n\t       {\n\t       do_thing();\n\t       }\n\n\t   void\n\t   function(void)\n\t   { return;\n\t   }\n\nSEE ALSO\n     style(9), intro(2), errno(3), types(5)\n\nHISTORY\n     This style was largely derived from the style that evolved through the\n     launchd(8), libdispatch(3), and libxpc(3) projects.\n\nDarwin\t\t\t       12 January, 2018 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the style resource in macOS?
+  manpageQuestion2: How would you use the style resource to enforce consistent indentation in C code?
+  manpageQuestion3: Can you provide an example of using the style resource to format a struct declaration in C?
+

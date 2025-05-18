@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `symptomsd`.\n\n\n\nManpage text:\n\nsymptomsd(8)\t\t    System Manager's Manual\t\t  symptomsd(8)\n\nNAME\n     symptomsd – Symptom framework service daemon\n\nDESCRIPTION\n     symptomsd is a daemon that provides services for the Symptom Framework.\n\n     There are no configuration options to symptomsd.  Users should not run\n     symptomsd manually.\n\nmacOS\t\t\t       February 14, 2017\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the symptomsd service?
+  manpageQuestion2: How would you check if the symptomsd daemon is running on a macOS system?
+  manpageQuestion3: Can you explain why users are advised not to run the symptomsd daemon manually?
+

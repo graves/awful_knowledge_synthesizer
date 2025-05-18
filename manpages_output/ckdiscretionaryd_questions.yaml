@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ckdiscretionaryd`.\n\n\n\nManpage text:\n\nckdiscretionaryd(8)\t    System Manager's Manual\t   ckdiscretionaryd(8)\n\nNAME\n     ckdiscretionaryd – CloudKit Discretionary Daemon\n\nSYNOPSIS\n     ckdiscretionaryd\n\nDESCRIPTION\n     ckdiscretionaryd is the system daemon that tells manages legacy\n     discretionary CKOperation scheduling.\n\n     There are no configuration options to ckdiscretionaryd. Users should not\n     run ckdiscretionaryd manually.\n\nmacOS\t\t\t\t    1/22/19\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the ckdiscretionaryd tool?
+  manpageQuestion2: How would you use ckdiscretionaryd in a system environment?
+  manpageQuestion3: Can you explain the role of ckdiscretionaryd in managing CloudKit operations?
+

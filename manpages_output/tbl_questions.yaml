@@ -1,0 +1,112 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tbl`.\n\n\n\nManpage text:\n\nTBL(7)\t\t       Miscellaneous Information Manual \t\tTBL(7)\n\nNAME\n     tbl – tbl language reference for mandoc\n\nDESCRIPTION\n     The tbl language formats tables.  It is used within mdoc(7) and man(7)\n     pages.  This manual describes the subset of the tbl language accepted by\n     the mandoc(1) utility.\n\n     Each table is started with a roff(7) TS macro, consist of at most one\n     line of Options, one or more Layout lines, one or more Data lines, and\n     ends with a TE macro.  All input must be 7-bit ASCII.\n\n   Options\n     If the first input line of a table ends with a semicolon, it contains\n     case-insensitive options separated by spaces, tabs, or commas.\n     Otherwise, it is interpreted as the first Layout line.\n\n     The following options are available.  Some of them require arguments\n     enclosed in parentheses:\n\n     allbox  Draw a single-line box around each table cell.\n\n     box     Draw a single-line box around the table.  For GNU compatibility,\n\t     this may also be invoked with frame."
+  manpageQuestion1: What is the primary purpose of the tbl tool?
+  manpageQuestion2: How would you use the tbl tool to create a table with a single-line box around each cell and a header row?
+  manpageQuestion3: Can you provide an example of using the tbl tool to format a table with a frame around the entire table and two data rows?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tbl`.\n\n\n\nManpage text:\n\ncenter  Center the table instead of left-adjusting it.  For GNU\n\t     compatibility, this may also be invoked with centre.\n\n     decimalpoint\n\t     Use the single-character argument as the decimal point with the n\n\t     layout key.  This is a GNU extension.\n\n     delim   Use the two characters of the argument as eqn(7) delimiters.\n\t     Currently unsupported.\n\n     doublebox\n\t     Draw a double-line box around the table.  For GNU compatibility,\n\t     this may also be invoked with doubleframe.\n\n     expand  Increase the width of the table to the current line length.\n\t     Currently ignored.\n\n     linesize\n\t     Draw lines with the point size given by the unsigned integer\n\t     argument.\tCurrently ignored.\n\n     nokeep  Allow page breaks within the table.  This is a GNU extension and\n\t     currently ignored.\n\n     nospaces\n\t     Ignore leading and trailing spaces in data cells.\tThis is a GNU\n\t     extension.\n\n     nowarn  Suppress warnings about tables exceeding the current line length.\n\t     This is a GNU extension and currently ignored."
+  manpageQuestion1: What is the primary purpose of the tbl command?
+  manpageQuestion2: How would you use the tbl command to center a table and set the decimal point to a comma?
+  manpageQuestion3: Can you provide an example of using the tbl command to draw a double-line box around a table and ignore leading/trailing spaces in data cells?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tbl`.\n\n\n\nManpage text:\n\ntab     Use the single-character argument as a delimiter between data\n\t     cells.  By default, the horizontal tabulator character is used.\n\n   Layout\n     The table layout follows an Options line or a roff(7) TS or T& macro.\n     Each layout line specifies how one line of Data is formatted.  The last\n     layout line ends with a full stop.  It also applies to all remaining data\n     lines.  Multiple layout lines can be joined by commas on a single\n     physical input line.\n\n     Each layout line consists of one or more layout cell specifications,\n     optionally separated by whitespace.  The following case-insensitive key\n     characters start a new cell specification:\n\n     c\t Center the string in this cell.\n\n     r\t Right-justify the string in this cell.\n\n     l\t Left-justify the string in this cell.\n\n     n\t Justify a number around its last decimal point.  If no decimal point\n\t is found in the number, it is assumed to trail the number.\n\n     s\t Horizontally span columns from the last non-s layout cell.  It is an\n\t error if a column span follows a _ or = cell, or comes first on a\n\t layout line.  The combined cell as a whole consumes only one cell of\n\t the corresponding data line."
+  manpageQuestion1: What is the primary purpose of the `tbl` command?
+  manpageQuestion2: How can you use `tbl` to create a table with three columns, where the first column is left-justified and the second and third are right-justified?
+  manpageQuestion3: What is the function of the `-s` option in `tbl`, and how would you use it to span a cell across multiple columns in a table?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tbl`.\n\n\n\nManpage text:\n\na\t Left-justify a string and pad with one space.\n\n     ^\t Vertically span rows from the last non-^ layout cell.\tIt is an error\n\t to invoke a vertical span on the first layout line.  Unlike a\n\t horizontal span, a vertical span consumes a data cell and discards\n\t the content.\n\n     _\t Draw a single horizontal line in this cell.  This consumes a data\n\t cell and discards the content.  It may also be invoked with -.\n\n     =\t Draw a double horizontal line in this cell.  This consumes a data\n\t cell and discards the content.\n\n     Each cell key may be followed by zero or more of the following case-\n     insensitive modifiers:\n\n     b\t Use a bold font for the contents of this cell.\n\n     d\t Move content down to the last row of this vertical span.  Currently\n\t ignored.\n\n     e\t Make this column wider to match the maximum width of any other column\n\t also having the e modifier.\n\n     f\t The next one or two characters select the font to use for this cell.\n\t One-character font names must be followed by a blank or period.  See\n\t the roff(7) manual for supported font names."
+  manpageQuestion1: What is the primary purpose of the tbl command?
+  manpageQuestion2: How would you use the tbl command to left-justify a string and pad it with spaces?
+  manpageQuestion3: Can you provide an example of using the tbl command to draw a double horizontal line in a cell?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tbl`.\n\n\n\nManpage text:\n\ni\t Use an italic font for the contents of this cell.\n\n     m\t Specify a cell start macro.  This is a GNU extension and currently\n\t unsupported.\n\n     p\t Set the point size to the following unsigned argument, or change it\n\t by the following signed argument.  Currently ignored.\n\n     v\t Set the vertical line spacing to the following unsigned argument, or\n\t change it by the following signed argument.  Currently ignored.\n\n     t\t Do not vertically center content in this vertical span, leave it in\n\t the top row.  Currently ignored.\n\n     u\t Move cell content up by half a table row.  Currently ignored.\n\n     w\t Specify a minimum column width.\n\n     x\t After determining the width of all other columns, distribute the rest\n\t of the line length among all columns having the x modifier.\n\n     z\t Do not use this cell for determining the width of this column.\n\n     |\t Draw a single vertical line to the right of this cell.\n\n     ||  Draw a double vertical line to the right of this cell.\n\n     If a modifier consists of decimal digits, it specifies a minimum spacing\n     in units of n between this column and the next column to the right.  The\n     default is 3.  If there is a vertical line, it is drawn inside the\n     spacing."
+  manpageQuestion1: What is the primary purpose of the tbl command in macOS?
+  manpageQuestion2: How can you use thetbl command to set a minimum column width of 10 characters in a table?
+  manpageQuestion3: What is the effect of using the 'x' modifier with tbl, and how would you apply it to distribute remaining space evenly among columns?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tbl`.
+
+
+
+    Manpage text:
+
+    Data
+         The data section follows the last Layout line.  Each data line consists
+         of one or more data cells, delimited by tab characters.
+
+         If a data cell contains only the two bytes ‘\^’, the cell above spans to
+         this row, as if the layout specification of this cell were ^.
+
+         If a data cell contains only the single character ‘_’ or ‘=’, a single or
+         double horizontal line is drawn across the cell, joining its neighbours.
+         If a data cell contains only the two character sequence ‘\_’ or ‘\=’, a
+         single or double horizontal line is drawn inside the cell, not joining
+         its neighbours.  If a data line contains nothing but the single character
+         ‘_’ or ‘=’, a horizontal line across the whole table is inserted without
+         consuming a layout row.
+
+         In place of any data cell, a text block can be used.  It starts with T{
+         at the end of a physical input line.  Input line breaks inside the text
+         block neither end the text block nor its data cell.  It only ends if T}
+         occurs at the beginning of a physical input line and is followed by an
+         end-of-cell indicator.  If the T} is followed by the end of the physical
+         input line, the text block, the data cell, and the data line ends at this
+         point.  If the T} is followed by the tab character, only the text block
+         and the data cell end, but the data line continues with the data cell
+         following the tab character.  If T} is followed by any other character,
+         it does not end the text block, which instead continues to the following
+         physical input line.
+  manpageQuestion1: What is the primary purpose of the tbl command in macOS?
+  manpageQuestion2: How can you create a text block within a data line using tbl?
+  manpageQuestion3: What is the effect of a data cell containing only the single character '_' in tbl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tbl`.\n\n\n\nManpage text:\n\nEXAMPLES\n     String justification and font selection:\n\n\t   .TS\n\t   rb c  lb\n\t   r  ci l.\n\t   r\t   center  l\n\t   ri\t   ce\t   le\n\t   right   c\t   left\n\t   .TE\n\n\t       r   center   l\n\t      ri     ce     le\n\t   right     c\t    left\n\n     Some ports in OpenBSD 6.1 to show number alignment and line drawing:\n\n\t   .TS\n\t   box tab(:);\n\t   r| l\n\t   r  n.\n\t   software:version\n\t   _\n\t   AFL:2.39b\n\t   Mutt:1.8.0\n\t   Ruby:1.8.7.374\n\t   TeX Live:2015\n\t   .TE\n\n\t   ┌─────────┬───────────┐\n\t   │software │ version\t │\n\t   ├─────────┴───────────┤\n\t   │\t AFL\t   2.39b │\n\t   │\tMutt\t 1.8.0\t │\n\t   │\tRuby   1.8.7.374 │\n\t   │TeX Live\t2015\t │\n\t   └─────────────────────┘\n\n     Spans and skipping width calculations:\n\n\t   .TS\n\t   box tab(:);\n\t   lz  s | rt\n\t   lt| cb| ^\n\t   ^ | rz  s.\n\t   left:r\n\t   l:center:\n\t   :right\n\t   .TE\n\n\t   ┌───────────┬───┐\n\t   │left       │ r │\n\t   │l │ center │   │\n\t   │  │      right │\n\t   └──┴────────────┘\n\n     Text blocks, specifying spacings and specifying and equalizing column\n     widths, putting lines into individual cells, and overriding allbox:"
+  manpageQuestion1: What is the primary purpose of the tbl command in macOS?
+  manpageQuestion2: How can you use tbl to format a table showing software names and their versions with aligned columns?
+  manpageQuestion3: Can you provide an example of using tbl to create a table that displays software names and versions with specific alignment and spacing?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tbl`.\n\n\n\nManpage text:\n\n.TS\n\t   allbox tab(:);\n\t   le le||7 lw10.\n\t   The fourth line:_:line 1\n\t   of this column:=:line 2\n\t   determines:_:line 3\n\t   the column width.:T{\n\t   This text is too wide to fit into a column of width 17.\n\t   T}:line 4\n\t   T{\n\t   No break here.\n\t   T}::line 5\n\t   .TE\n\n\t   ┌────────────────────┬───────────────────────┰──────────────┐\n\t   │The fourth line\t├───────────────────────┨   line 1     │\n\t   ├────────────────────┼───────────────────────╂──────────────┤\n\t   │of this column\t┝━━━━━━━━━━━━━━━━━━━━━━━┫   line 2     │\n\t   ├────────────────────┼───────────────────────╂──────────────┤\n\t   │determines\t\t│ ───────────────────\t┃   line 3     │\n\t   ├────────────────────┼───────────────────────╂──────────────┤\n\t   │the column width.\t│ This text is too\t┃   line 4     │\n\t   │\t\t\t│ wide to fit into a\t┃\t       │\n\t   │\t\t\t│ column of width 17.\t┃\t       │\n\t   ├────────────────────┼───────────────────────╂──────────────┤\n\t   │No break here.\t│\t\t\t┃   line 5     │\n\t   └────────────────────┴───────────────────────┸──────────────┘"
+  manpageQuestion1: What is the primary purpose of the tbl command?
+  manpageQuestion2: How would you use tbl to format a table with specific column widths and content alignment?
+  manpageQuestion3: Can you provide an example of using tbl to create a table with two columns, where the first column has a width of 10 and the second column has a width of 20, and includes specific text rows?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tbl`.
+
+
+
+    Manpage text:
+
+    These examples were constructed to demonstrate many tbl features in a
+         compact way.  In real manual pages, keep tables as simple as possible.
+         They usually look better, are less fragile, and are more portable.
+
+    COMPATIBILITY
+         The mandoc(1) implementation of tbl doesn't support mdoc(7) and man(7)
+         macros and eqn(7) equations inside tables.
+
+    SEE ALSO
+         mandoc(1), man(7), mandoc_char(7), mdoc(7), roff(7)
+
+         M. E. Lesk, Tbl — A Program to Format Tables, June 11, 1976.
+
+    HISTORY
+         The tbl utility, a preprocessor for troff, was originally written by M.
+         E. Lesk at Bell Labs in 1975.  The GNU reimplementation of tbl, part of
+         the groff package, was released in 1990 by James Clark.  A standalone tbl
+         implementation was written by Kristaps Dzonsons in 2010.  This formed the
+         basis of the implementation that first appeared in OpenBSD 4.9 as a part
+         of the mandoc(1) utility.
+
+    AUTHORS
+         This tbl reference was written by Kristaps Dzonsons <kristaps@bsd.lv> and
+         Ingo Schwarze <schwarze@openbsd.org>.
+  manpageQuestion1: What is the primary purpose of the tbl utility?
+  manpageQuestion2: How can you use tbl to format a simple table with headers and data rows in a manual page?
+  manpageQuestion3: What is the compatibility issue with the mandoc implementation of tbl regarding table formatting?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tbl`.\n\n\n\nManpage text:\n\nBUGS\n     In -T utf8 output mode, heavy lines are drawn instead of double lines.\n     This cannot be improved because the Unicode standard only provides an\n     incomplete set of box drawing characters with double lines, whereas it\n     provides a full set of box drawing characters with heavy lines.  It is\n     unlikely this can be improved in the future because the box drawing\n     characters are already marked in Unicode as characters intended only for\n     backward compatibility with legacy systems, and their use is not\n     encouraged.  So it seems unlikely that the missing ones might get added\n     in the future.\n\nmacOS 15.3\t\t      September 18, 2021\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the tbl command in macOS?
+  manpageQuestion2: How would you use the -T option with tbl to generate a table in UTF-8 output mode?
+  manpageQuestion3: What is the known limitation of using the -T utf8 option with tbl, and how does it affect the output?
+

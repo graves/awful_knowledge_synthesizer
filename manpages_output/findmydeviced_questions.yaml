@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `findmydeviced`.\n\n\n\nManpage text:\n\nfindmydeviced(8)\t    System Manager's Manual\t      findmydeviced(8)\n\nNAME\n     findmydeviced – Find My Mac daemon\n\nSYNOPSIS\n     findmydeviced\n\nDESCRIPTION\n     findmydeviced is the daemon for Find My Mac.\n\n     There are no configuration options to findmydeviced.  Users should not\n     run it manually.\n\nMac OS X\t\t\t    1/11/14\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the findmydeviced tool?
+  manpageQuestion2: How would you use findmydeviced to manage the Find My Mac functionality on a macOS system?
+  manpageQuestion3: Can you explain the role of findmydeviced in the context of the Find My Mac feature on macOS?
+

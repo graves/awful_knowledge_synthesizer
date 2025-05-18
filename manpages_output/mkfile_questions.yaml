@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mkfile`.\n\n\n\nManpage text:\n\nMKFILE(8)\t\t    System Manager's Manual\t\t     MKFILE(8)\n\nNAME\n     mkfile – create a file\n\nSYNOPSIS\n     mkfile [-nv] size[b|k|m|g] file ...\n\nDESCRIPTION\n     mkfile creates one or more files that are suitable for use as NFS-mounted\n     swap areas.  The sticky bit is set, and the file is padded with zeroes by\n     default.  Non-root users must set the sticky bit using chmod(1).  The\n     default size unit is bytes, but the following suffixes may be used to\n     multiply by the given factor: b (512), k (1024), m (1048576), and g\n     (1073741824).\n\nOPTIONS\n     -n     Create an empty filename.  The size is noted, but disk blocks\n\t    aren't allocated until data is written to them.\n\n     -v     Verbose.  Report the names and sizes of created files.\n\nWARNING\n     If a client's swap file is removed and recreated, it must be re-exported\n     before the client will be able to access it.  This action may only be\n     done when the client is not running.\n\nSEE ALSO\n     chmod(2), stat(2), sticky(7)"
+  manpageQuestion1: What is the primary purpose of the mkfile command?
+  manpageQuestion2: How can you use mkfile to create a 10-megabyte swap file named 'swapfile' without allocating disk blocks until needed?
+  manpageQuestion3: What command would you use to create a verbose list of two 512-byte files named 'file1' and 'file2' using mkfile?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mkfile`.\n\n\n\nManpage text:\n\nmacOS\t\t\t       September 1, 1997\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the mkfile command?
+  manpageQuestion2: How can you use mkfile to create a file named 'example.txt' with specific permissions?
+  manpageQuestion3: Can you provide an example of using mkfile to create a directory structure with specific permissions?
+

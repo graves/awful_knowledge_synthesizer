@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `hpmdiagnose`.\n\n\n\nManpage text:\n\nhpmdiagnose(1)\t\t    General Commands Manual\t\thpmdiagnose(1)\n\nNAME\n     hpmdiagnose - collects diagnostic information to help troubleshoot USB-C\n     issues.\n\nSYNOPSIS\n     hpmdiagnose\n\nDESCRIPTION\n     Use hpmdiagnose to collect diagnostic information to help with\n     investigation of USB-C issues.\n\nmacOS\t\t\t       December 6, 2016 \t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the hpmdiagnose tool?
+  manpageQuestion2: How would you use hpmdiagnose to collect diagnostic information for USB-C issues?
+  manpageQuestion3: Can you provide an example of using hpmdiagnose to troubleshoot a USB-C connection problem?
+

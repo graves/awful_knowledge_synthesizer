@@ -1,0 +1,53 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ttys`.\n\n\n\nManpage text:\n\nTTYS(5) \t\t      File Formats Manual\t\t       TTYS(5)\n\nNAME\n     ttys – terminal initialization information\n\nDESCRIPTION\n     The file ttys contains information that is used by various routines to\n     initialize and control the use of terminal special files.\tThis\n     information is read with the getttyent(3) library routines.  There is one\n     line in the ttys file per special device file.  Fields are separated by\n     tabs and/or spaces.  Fields comprised of more than one word should be\n     enclosed in double quotes (``\"'').  Blank lines and comments may appear\n     anywhere in the file; comments are delimited by hash marks (``#'') and\n     new lines.  Any unspecified fields will default to null.\n\n     The first field is normally the name of the terminal special file as it\n     is found in /dev.\tHowever, it can be any arbitrary string when the\n     associated command is not related to a tty.\n\n     The second field of the file is the command to execute for the line,\n     usually getty(8), which initializes and opens the line, setting the\n     speed, waiting for a user name and executing the login(1) program.  It\n     can be, however, any desired command, for example the start up for a\n     window system terminal emulator or some other daemon process, and can\n     contain multiple words if quoted."
+  manpageQuestion1: What is the primary purpose of the ttys file and its associated tool?
+  manpageQuestion2: How would you modify the command associated with a specific terminal line in the ttys file?
+  manpageQuestion3: What are the key characteristics of the ttys file format and how are fields structured?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ttys`.
+
+
+
+    Manpage text:
+
+    The third field is the type of terminal usually connected to that tty
+         line, normally the one found in the termcap(5) data base file.  The
+         environment variable TERM is initialized with the value by either
+         getty(8) or login(1).
+
+         The remaining fields set flags in the ty_status entry (see getttyent(3)),
+         specify a window system process that launchd(8) will maintain for the
+         terminal line, optionally determine the type of tty (whether dialin,
+         network or otherwise), or specify a tty group name that allows the login
+         class database (see login.conf(5)) to refer to many ttys as a group, to
+         selectively allow or deny access or enable or disable accounting
+         facilities for ttys as a group.
+
+         As flag values, the strings ``on'' and ``off'' specify that launchd(8)
+         should (should not) execute the command given in the second field.
+         ``onifconsole'' will cause this line to be enabled if and only if it is
+         an active kernel console device (it is equivalent to ``on'' in this
+         case).  The flag ``onifexists'' will cause this line to be enabled if and
+         only if the name exists.  If the name starts with a ``/'', it will be
+         considered an absolute path.  Otherwise, it is considered a path relative
+         to /dev.  The flag ``secure'' (if the console is enabled) allows users
+         with a uid of 0 to login on this line.  The flag ``dialup'' indicates
+         that a tty entry describes a dialin line, and ``network'' is obsolete and
+         does nothing.  Either of these strings may also be specified in the
+         terminal type field.  The string ``window='' may be followed by a quoted
+         command string which launchd(8) will execute before starting the command
+         specified by the second field.
+  manpageQuestion1: What is the primary purpose of the ttys resource?
+  manpageQuestion2: How can you configure a tty entry to enable a terminal line only when it is an active kernel console device?
+  manpageQuestion3: What is the function of the 'secure' flag in a tty entry?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ttys`.\n\n\n\nManpage text:\n\nThe string ``group='' may be followed by a group name comprised of\n     alphanumeric characters that can be used by login.conf(5) to refer to\n     many tty lines as a group to enable or disable access and accounting\n     facilities.  If no group is specified, then the tty becomes a member of\n     the group \"none\".\tFor backwards compatibility, the ``group='' should\n     appear last on the line, immediately before the optional comment.\n\n     Both the second field and any command specified with ``window='' will be\n     split into words and executed using execve(2).  Words are separated by\n     any combinations of tabs and spaces.  Arguments containing whitespace\n     should be enclosed in single quotes (').  Note that no shell-style\n     globbing or other variable substitution occurs.\n\nFILES\n     /etc/ttys\n\nNUMERIC SEQUENCES\n     Numeric sequences of terminals can be represented in a more compact\n     format.  A matching pair of square bracket may enclose two numbers (the\n     start and stop values), separated by a hyphen.  The numbers are assumed\n     to be decimal, unless prefixed with ``0x'', in which case they are\n     interpreted as hexadecimal.  The number of characters (not including any\n     ``0x'') in the starting value gives the minimum width; sequence values\n     are zero padded up to this width.\tThus ``tty[00-07]'' represents the\n     eight terminals ``tty00'' through ``tty07''."
+  manpageQuestion1: What is the primary purpose of the `ttys` resource in macOS?
+  manpageQuestion2: How can you configure a group for tty lines using the `ttys` file?
+  manpageQuestion3: Can you provide an example of using numeric sequences in the `ttys` file to represent multiple terminal devices?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ttys`.\n\n\n\nManpage text:\n\nEXAMPLES\n     # root login on console at 1200 baud\n     console \"/usr/libexec/getty std.1200\"   vt100   on secure\n     # the sequence of eight terminals tty00 through tty07\n     tty[00-07]     \"/usr/libexec/getty std.9600\"  vt100      on\n     # Network pseudo ttys -- don't enable getty\n     ttyp0   none    network\n     ttyp1   none    network off\n     # All sixteen of a pseudo tty sequence\n     ttyq[0x0-0xf]  none\t\t\t   network\n\nSEE ALSO\n     login(1), getttyent(3), ttyslot(3), gettytab(5), termcap(5), getty(8),\n     launchd(8)\n\nHISTORY\n     A ttys file appeared in Version 6 AT&T UNIX.\n\nmacOS 15.3\t\t\t June 1, 2021\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the ttys resource in macOS?
+  manpageQuestion2: How would you configure a terminal device in the ttys file to set up a login session on a serial console with specific settings?
+  manpageQuestion3: Can you provide an example of how to define a network pseudo-tty in the ttys file and what parameters are typically used?
+

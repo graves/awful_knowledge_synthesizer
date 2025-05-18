@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `proactived`.\n\n\n\nManpage text:\n\nPROACTIVED(8)\t\t    System Manager's Manual\t\t PROACTIVED(8)\n\nNAME\n     proactived\n\nSYNOPSIS\n     proactived\n\nDESCRIPTION\n     proactived provides a suggestions service for the Shortcuts App.\n\n     There are no configuration options for this service. Users should not run\n     proactived manually.\n\nMac OS X\t\t      December 11th, 2020\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the proactived tool?
+  manpageQuestion2: How would you use proactived to provide suggestions for the Shortcuts App?
+  manpageQuestion3: Can you explain why users are advised not to run proactived manually?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `linkd`.\n\n\n\nManpage text:\n\nlinkd(1)\t\t    General Commands Manual\t\t      linkd(1)\n\nNAME\n     linkd, AppIntentsDaemon – daemon that handles interaction with\n     applications via their App Intents interfaces.\n\nDESCRIPTION\n     linkd, The linkd daemon powers features centered around allowing Siri and\n     Shortcuts to interact with apps.\n\nmacOS 15.3\t\t\tMarch 28, 2022\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the linkd daemon?
+  manpageQuestion2: How would you verify that the linkd daemon is running on a macOS system?
+  manpageQuestion3: What is the role of linkd in enabling Siri and Shortcuts to interact with applications?
+

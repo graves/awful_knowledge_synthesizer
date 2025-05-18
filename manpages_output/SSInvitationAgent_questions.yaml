@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `SSInvitationAgent`.\n\n\n\nManpage text:\n\nSSInvitationAgent(8)\t    System Manager's Manual\t  SSInvitationAgent(8)\n\nNAME\n     SSInvitationAgent – Screen Sharing Invitation Agent\n\nDESCRIPTION\n     SSInvitationAgent notifies the current user that a request to view the\n     screen has been received.\n\n     The SSInvitationAgent command should not be run directly.\n\nMac OS X\t\t       November 10, 2016\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the SSInvitationAgent tool?
+  manpageQuestion2: How would you use SSInvitationAgent to notify the current user about a screen sharing invitation?
+  manpageQuestion3: Can you provide an example of using SSInvitationAgent in a system administration context?
+

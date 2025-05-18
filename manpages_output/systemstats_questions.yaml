@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `systemstats`.\n\n\n\nManpage text:\n\nsystemstats(8)\t\t    System Manager's Manual\t\tsystemstats(8)\n\nNAME\n     systemstats – summarize system stats\n\nSYNOPSIS\n     systemstats\n\nDESCRIPTION\n     The systemstats command shows a selection of statistics about system\n     power usage.\n\n     Run systemstats ---help to see a summary of command-line options.\n\nSEE ALSO\n     systemstats_boot(8)\n\nmacOS 15.3\t\t       November 5, 2012 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the systemstats command?
+  manpageQuestion2: How can you display help information for the systemstats command?
+  manpageQuestion3: What does the systemstats command primarily report about a system?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perllexwarn`.\n\n\n\nManpage text:\n\nPERLLEXWARN(1)\t       Perl Programmers Reference Guide \tPERLLEXWARN(1)\n\n\nNAME\n       perllexwarn - Perl Lexical Warnings\n\nDESCRIPTION\n       Perl v5.6.0 introduced lexical control over the handling of warnings by\n       category.  The \"warnings\" pragma generally replaces the command line\n       flag -w.  Documentation on the use of lexical warnings, once partly\n       found in this document, is now found in the warnings documentation.\n\nperl v5.34.1\t\t\t  2022-02-19\t\t\tPERLLEXWARN(1)"
+  manpageQuestion1: What is the primary purpose of the perllexwarn tool?
+  manpageQuestion2: How would you use perllexwarn to enable lexical warnings for a specific package in a Perl script?
+  manpageQuestion3: Can you provide an example of using perllexwarn to disable warnings for a particular warning category within a specific scope in Perl?
+

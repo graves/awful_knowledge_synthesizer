@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `kcditto`.\n\n\n\nManpage text:\n\nkcditto(8)\t\t    System Manager's Manual\t\t    kcditto(8)\n\nNAME\n     kcditto – macOS kernel management helper tool\n\nDEPRECATED\n     Please use bless.\n\nDESCRIPTION\n     kcditto is a helper tool for the staging of kext collection files.  It\n     looks for kext collection files on volume where the kcditto binary\n     exists, and copies all the boot kext collections into the preboot volume\n     where efiboot can find them.\n\nFILES\n     /usr/local/sbin/kcidtto\n\nSEE ALSO\n     kmutil(8), kernelmanagerd(8), kextcache(8)\n\nmacOS 15.3\t\t       February 23, 2020\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the kcditto tool?
+  manpageQuestion2: How would you use kcditto to stage kext collection files for a macOS system?
+  manpageQuestion3: Can you explain the role of kcditto in the context of macOS kernel management?
+

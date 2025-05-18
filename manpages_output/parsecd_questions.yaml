@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `parsecd`.\n\n\n\nManpage text:\n\nparsecd(8)\t\t    System Manager's Manual\t\t    parsecd(8)\n\nNAME\n     parsecd – Support daemon for Siri Search\n\nDESCRIPTION\n     parsecd manages access and data for Siri Suggestions, Spotlight\n     Suggestions, Safari Suggestions, Lookup, #images, and Apple News article\n     search.\n\n     There are no configuration options for parsecd. Users should not run\n     parsecd manually.\n\nmacOS 15.3\t\t\t July 12, 2020\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the parsecd tool?
+  manpageQuestion2: How would you check if the parsecd service is running on a macOS system?
+  manpageQuestion3: What are the main functions of the parsecd daemon in macOS?
+

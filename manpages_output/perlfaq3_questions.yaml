@@ -1,0 +1,416 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.\n\n\n\nManpage text:\n\nPERLFAQ3(1)\t       Perl Programmers Reference Guide \t   PERLFAQ3(1)"
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can I use perlfaq3 to find information about common Perl programming issues?
+  manpageQuestion3: Can you provide an example of how to access the perlfaq3 resource to find a solution for a specific Perl problem?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.\n\n\n\nManpage text:\n\nNAME\n       perlfaq3 - Programming Tools\n\nVERSION\n       version 5.20210411\n\nDESCRIPTION\n       This section of the FAQ answers questions related to programmer tools\n       and programming support.\n\n   How do I do (anything)?\n       Have you looked at CPAN (see perlfaq2)? The chances are that someone\n       has already written a module that can solve your problem.  Have you\n       read the appropriate manpages? Here's a brief index:\n\n       Basics\n\t   perldata - Perl data types\n\t   perlvar - Perl pre-defined variables\n\t   perlsyn - Perl syntax\n\t   perlop - Perl operators and precedence\n\t   perlsub - Perl subroutines\n       Execution\n\t   perlrun - how to execute the Perl interpreter\n\t   perldebug - Perl debugging\n       Functions\n\t   perlfunc - Perl builtin functions\n       Objects\n\t   perlref - Perl references and nested data structures\n\t   perlmod - Perl modules (packages and symbol tables)\n\t   perlobj - Perl objects\n\t   perltie - how to hide an object class in a simple variable\n       Data Structures\n\t   perlref - Perl references and nested data structures\n\t   perllol - Manipulating arrays of arrays in Perl\n\t   perldsc - Perl Data Structures Cookbook\n       Modules\n\t   perlmod - Perl modules (packages and symbol tables)\n\t   perlmodlib - constructing new Perl modules and finding existing\n\t   ones\n       Regexes\n\t   perlre - Perl regular expressions\n\t   perlfunc - Perl builtin functions>\n\t   perlop - Perl operators and precedence\n\t   perllocale - Perl locale handling (internationalization and\n\t   localization)\n       Moving to perl5\n\t   perltrap - Perl traps for the unwary\n\t   perl\n       Linking with C\n\t   perlxstut - Tutorial for writing XSUBs\n\t   perlxs - XS language reference manual\n\t   perlcall - Perl calling conventions from C\n\t   perlguts - Introduction to the Perl API\n\t   perlembed - how to embed perl in your C program\n       Various\n\t   <http://www.cpan.org/misc/olddoc/FMTEYEWTK.tgz> (not a man-page but\n\t   still useful, a collection of various essays on Perl techniques)"
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can I use perlfaq3 to find information about Perl operators and precedence?
+  manpageQuestion3: What are some of the key sections covered in perlfaq3 that are relevant to programming with Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.\n\n\n\nManpage text:\n\nA crude table of contents for the Perl manpage set is found in perltoc.\n\n   How can I use Perl interactively?\n       The typical approach uses the Perl debugger, described in the\n       perldebug(1) manpage, on an \"empty\" program, like this:\n\n\t   perl -de 42\n\n       Now just type in any legal Perl code, and it will be immediately\n       evaluated. You can also examine the symbol table, get stack backtraces,\n       check variable values, set breakpoints, and other operations typically\n       found in symbolic debuggers.\n\n       You can also use Devel::REPL which is an interactive shell for Perl,\n       commonly known as a REPL - Read, Evaluate, Print, Loop. It provides\n       various handy features.\n\n   How do I find which modules are installed on my system?\n       From the command line, you can use the \"cpan\" command's \"-l\" switch:\n\n\t   $ cpan -l\n\n       You can also use \"cpan\"'s \"-a\" switch to create an autobundle file that\n       \"CPAN.pm\" understands and can use to re-install every module:"
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can I use Perl interactively to evaluate code and inspect variables?
+  manpageQuestion3: What command can I use to list all installed Perl modules on my system?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.\n\n\n\nManpage text:\n\n$ cpan -a\n\n       Inside a Perl program, you can use the ExtUtils::Installed module to\n       show all installed distributions, although it can take awhile to do its\n       magic. The standard library which comes with Perl just shows up as\n       \"Perl\" (although you can get those with Module::CoreList).\n\n\t   use ExtUtils::Installed;\n\n\t   my $inst    = ExtUtils::Installed->new();\n\t   my @modules = $inst->modules();\n\n       If you want a list of all of the Perl module filenames, you can use\n       File::Find::Rule:\n\n\t   use File::Find::Rule;\n\n\t   my @files = File::Find::Rule->\n\t       extras({follow => 1})->\n\t       file()->\n\t       name( '*.pm' )->\n\t       in( @INC )\n\t       ;\n\n       If you do not have that module, you can do the same thing with\n       File::Find which is part of the standard library:\n\n\t   use File::Find;\n\t   my @files;\n\n\t   find(\n\t       {\n\t       wanted => sub {\n\t\t   push @files, $File::Find::fullname\n\t\t   if -f $File::Find::fullname && /\\.pm$/\n\t       },\n\t       follow => 1,\n\t       follow_skip => 2,\n\t       },\n\t       @INC\n\t   );"
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can you use Perl to list all installed module filenames using the File::Find::Rule module?
+  manpageQuestion3: What is an alternative method to list all Perl module filenames if the File::Find::Rule module is not available?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.\n\n\n\nManpage text:\n\nprint join \"\\n\", @files;\n\n       If you simply need to check quickly to see if a module is available,\n       you can check for its documentation. If you can read the documentation\n       the module is most likely installed.  If you cannot read the\n       documentation, the module might not have any (in rare cases):\n\n\t   $ perldoc Module::Name\n\n       You can also try to include the module in a one-liner to see if perl\n       finds it:\n\n\t   $ perl -MModule::Name -e1\n\n       (If you don't receive a \"Can't locate ... in @INC\" error message, then\n       Perl found the module name you asked for.)\n\n   How do I debug my Perl programs?\n       (contributed by brian d foy)\n\n       Before you do anything else, you can help yourself by ensuring that you\n       let Perl tell you about problem areas in your code. By turning on\n       warnings and strictures, you can head off many problems before they get\n       too big. You can find out more about these in strict and warnings.\n\n\t   #!/usr/bin/perl\n\t   use strict;\n\t   use warnings;"
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can you check if a Perl module is available using the perlfaq3 resource?
+  manpageQuestion3: What is a common practice for debugging Perl programs according to the perlfaq3 resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.\n\n\n\nManpage text:\n\nBeyond that, the simplest debugger is the \"print\" function. Use it to\n       look at values as you run your program:\n\n\t   print STDERR \"The value is [$value]\\n\";\n\n       The Data::Dumper module can pretty-print Perl data structures:\n\n\t   use Data::Dumper qw( Dumper );\n\t   print STDERR \"The hash is \" . Dumper( \\%hash ) . \"\\n\";\n\n       Perl comes with an interactive debugger, which you can start with the\n       \"-d\" switch. It's fully explained in perldebug.\n\n       If you'd like a graphical user interface and you have Tk, you can use\n       \"ptkdb\". It's on CPAN and available for free.\n\n       If you need something much more sophisticated and controllable, Leon\n       Brocard's Devel::ebug (which you can call with the \"-D\" switch as\n       \"-Debug\") gives you the programmatic hooks into everything you need to\n       write your own (without too much pain and suffering).\n\n       You can also use a commercial debugger such as Affrus (Mac OS X),\n       Komodo from Activestate (Windows and Mac OS X), or EPIC (most\n       platforms)."
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can you use the print function in Perl to debug and display the value of a variable?
+  manpageQuestion3: What is an example of using the Data::Dumper module to print a Perl data structure for debugging?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.\n\n\n\nManpage text:\n\nHow do I profile my Perl programs?\n       (contributed by brian d foy, updated Fri Jul 25 12:22:26 PDT 2008)\n\n       The \"Devel\" namespace has several modules which you can use to profile\n       your Perl programs.\n\n       The Devel::NYTProf (New York Times Profiler) does both statement and\n       subroutine profiling. It's available from CPAN and you also invoke it\n       with the \"-d\" switch:\n\n\t   perl -d:NYTProf some_perl.pl\n\n       It creates a database of the profile information that you can turn into\n       reports. The \"nytprofhtml\" command turns the data into an HTML report\n       similar to the Devel::Cover report:\n\n\t   nytprofhtml\n\n       You might also be interested in using the Benchmark to measure and\n       compare code snippets.\n\n       You can read more about profiling in Programming Perl, chapter 20, or\n       Mastering Perl, chapter 5.\n\n       perldebguts documents creating a custom debugger if you need to create\n       a special sort of profiler. brian d foy describes the process in The\n       Perl Journal, \"Creating a Perl Debugger\",\n       <http://www.ddj.com/184404522> , and \"Profiling in Perl\"\n       <http://www.ddj.com/184404580> ."
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can I profile my Perl programs using the Devel::NYTProf module?
+  manpageQuestion3: What command can I use to generate an HTML report from the profiling data created by Devel::NYTProf?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.\n\n\n\nManpage text:\n\nPerl.com has two interesting articles on profiling: \"Profiling Perl\",\n       by Simon Cozens, <https://www.perl.com/pub/2004/06/25/profiling.html/>\n       and \"Debugging and Profiling mod_perl Applications\", by Frank Wiles,\n       <http://www.perl.com/pub/a/2006/02/09/debug_mod_perl.html> .\n\n       Randal L. Schwartz writes about profiling in \"Speeding up Your Perl\n       Programs\" for Unix Review,\n       <http://www.stonehenge.com/merlyn/UnixReview/col49.html> , and\n       \"Profiling in Template Toolkit via Overriding\" for Linux Magazine,\n       <http://www.stonehenge.com/merlyn/LinuxMag/col75.html> .\n\n   How do I cross-reference my Perl programs?\n       The B::Xref module can be used to generate cross-reference reports for\n       Perl programs.\n\n\t   perl -MO=Xref[,OPTIONS] scriptname.plx\n\n   Is there a pretty-printer (formatter) for Perl?\n       Perl::Tidy comes with a perl script perltidy which indents and\n       reformats Perl scripts to make them easier to read by trying to follow\n       the rules of the perlstyle. If you write Perl, or spend much time\n       reading Perl, you will probably find it useful."
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can I generate a cross-reference report for my Perl programs using the B::Xref module?
+  manpageQuestion3: What tool is recommended for formatting and indenting Perl scripts to improve readability?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.\n\n\n\nManpage text:\n\nOf course, if you simply follow the guidelines in perlstyle, you\n       shouldn't need to reformat. The habit of formatting your code as you\n       write it will help prevent bugs. Your editor can and should help you\n       with this. The perl-mode or newer cperl-mode for emacs can provide\n       remarkable amounts of help with most (but not all) code, and even less\n       programmable editors can provide significant assistance. Tom\n       Christiansen and many other VI users swear by the following settings in\n       vi and its clones:\n\n\t   set ai sw=4\n\t   map! ^O {^M}^[O^T\n\n       Put that in your .exrc file (replacing the caret characters with\n       control characters) and away you go. In insert mode, ^T is for\n       indenting, ^D is for undenting, and ^O is for blockdenting--as it were.\n       A more complete example, with comments, can be found at\n       <http://www.cpan.org/authors/id/T/TO/TOMC/scripts/toms.exrc.gz>\n\n   Is there an IDE or Windows Perl Editor?\n       Perl programs are just plain text, so any editor will do."
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can a user configure their vi editor to automatically indent Perl code as they write it?
+  manpageQuestion3: What are some recommended tools or editors for writing Perl code, especially on Windows?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.\n\n\n\nManpage text:\n\nIf you're on Unix, you already have an IDE--Unix itself. The Unix\n       philosophy is the philosophy of several small tools that each do one\n       thing and do it well. It's like a carpenter's toolbox.\n\n       If you want an IDE, check the following (in alphabetical order, not\n       order of preference):\n\n       Eclipse\n\t   <http://e-p-i-c.sf.net/>\n\n\t   The Eclipse Perl Integration Project integrates Perl\n\t   editing/debugging with Eclipse.\n\n       Enginsite\n\t   <http://www.enginsite.com/>\n\n\t   Perl Editor by EngInSite is a complete integrated development\n\t   environment (IDE) for creating, testing, and  debugging  Perl\n\t   scripts; the tool runs on Windows 9x/NT/2000/XP or later.\n\n       IntelliJ IDEA\n\t   <https://plugins.jetbrains.com/plugin/7796>\n\n\t   Camelcade plugin provides Perl5 support in IntelliJ IDEA and other\n\t   JetBrains IDEs.\n\n       Kephra\n\t   <http://kephra.sf.net>\n\n\t   GUI editor written in Perl using wxWidgets and Scintilla with lots\n\t   of smaller features.  Aims for a UI based on Perl principles like\n\t   TIMTOWTDI and \"easy things should be easy, hard things should be\n\t   possible\"."
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can a user find an IDE for Perl development on Windows using the information provided in perlfaq3?
+  manpageQuestion3: What are some of the IDEs mentioned in perlfaq3 that provide Perl5 support?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.\n\n\n\nManpage text:\n\nKomodo\n\t   <http://www.ActiveState.com/Products/Komodo/>\n\n\t   ActiveState's cross-platform (as of October 2004, that's Windows,\n\t   Linux, and Solaris), multi-language IDE has Perl support, including\n\t   a regular expression debugger and remote debugging.\n\n       Notepad++\n\t   <http://notepad-plus.sourceforge.net/>\n\n       Open Perl IDE\n\t   <http://open-perl-ide.sourceforge.net/>\n\n\t   Open Perl IDE is an integrated development environment for writing\n\t   and debugging Perl scripts with ActiveState's ActivePerl\n\t   distribution under Windows 95/98/NT/2000.\n\n       OptiPerl\n\t   <http://www.optiperl.com/>\n\n\t   OptiPerl is a Windows IDE with simulated CGI environment, including\n\t   debugger and syntax-highlighting editor.\n\n       Padre\n\t   <http://padre.perlide.org/>\n\n\t   Padre is cross-platform IDE for Perl written in Perl using\n\t   wxWidgets to provide a native look and feel. It's open source under\n\t   the Artistic License. It is one of the newer Perl IDEs.\n\n       PerlBuilder\n\t   <http://www.solutionsoft.com/perl.htm>"
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can one use perlfaq3 to find information about common Perl debugging techniques?
+  manpageQuestion3: Can you provide an example of how perlfaq3 can assist in troubleshooting a Perl script's regular expression issue?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.\n\n\n\nManpage text:\n\nPerlBuilder is an integrated development environment for Windows\n\t   that supports Perl development.\n\n       visiPerl+\n\t   <http://helpconsulting.net/visiperl/index.html>\n\n\t   From Help Consulting, for Windows.\n\n       Visual Perl\n\t   <http://www.activestate.com/Products/Visual_Perl/>\n\n\t   Visual Perl is a Visual Studio.NET plug-in from ActiveState.\n\n       Zeus\n\t   <http://www.zeusedit.com/lookmain.html>\n\n\t   Zeus for Windows is another Win32 multi-language editor/IDE that\n\t   comes with support for Perl.\n\n       For editors: if you're on Unix you probably have vi or a vi clone\n       already, and possibly an emacs too, so you may not need to download\n       anything. In any emacs the cperl-mode (M-x cperl-mode) gives you\n       perhaps the best available Perl editing mode in any editor.\n\n       If you are using Windows, you can use any editor that lets you work\n       with plain text, such as NotePad or WordPad. Word processors, such as\n       Microsoft Word or WordPerfect, typically do not work since they insert\n       all sorts of behind-the-scenes information, although some allow you to\n       save files as \"Text Only\". You can also download text editors designed\n       specifically for programming, such as Textpad (\n       <http://www.textpad.com/> ) and UltraEdit ( <http://www.ultraedit.com/>\n       ), among others."
+  manpageQuestion1: What is the primary purpose of the PerlBuilder tool?
+  manpageQuestion2: How would you choose an appropriate text editor for Perl development on a Windows system?
+  manpageQuestion3: What are some recommended text editors for Perl development on a Unix system?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.\n\n\n\nManpage text:\n\nIf you are using MacOS, the same concerns apply. MacPerl (for Classic\n       environments) comes with a simple editor. Popular external editors are\n       BBEdit ( <http://www.barebones.com/products/bbedit/> ) or Alpha (\n       <http://www.his.com/~jguyer/Alpha/Alpha8.html> ). MacOS X users can use\n       Unix editors as well.\n\n       GNU Emacs\n\t   <http://www.gnu.org/software/emacs/windows/ntemacs.html>\n\n       MicroEMACS\n\t   <http://www.microemacs.de/>\n\n       XEmacs\n\t   <http://www.xemacs.org/Download/index.html>\n\n       Jed <http://space.mit.edu/~davis/jed/>\n\n       or a vi clone such as\n\n       Vim <http://www.vim.org/>\n\n       Vile\n\t   <http://invisible-island.net/vile/vile.html>\n\n       The following are Win32 multilanguage editor/IDEs that support Perl:\n\n       MultiEdit\n\t   <http://www.MultiEdit.com/>\n\n       SlickEdit\n\t   <http://www.slickedit.com/>\n\n       ConTEXT\n\t   <http://www.contexteditor.org/>\n\n       There is also a toyedit Text widget based editor written in Perl that\n       is distributed with the Tk module on CPAN. The ptkdb (\n       <http://ptkdb.sourceforge.net/> ) is a Perl/Tk-based debugger that acts\n       as a development environment of sorts. Perl Composer (\n       <http://perlcomposer.sourceforge.net/> ) is an IDE for Perl/Tk GUI\n       creation."
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can a macOS X user find and use a suitable text editor for Perl development?
+  manpageQuestion3: What are some alternative Perl IDEs or editors available for Windows users?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.\n\n\n\nManpage text:\n\nIn addition to an editor/IDE you might be interested in a more powerful\n       shell environment for Win32. Your options include\n\n       bash\n\t   from the Cygwin package ( <http://cygwin.com/> )\n\n       zsh <http://www.zsh.org/>\n\n       Cygwin is covered by the GNU General Public License (but that shouldn't\n       matter for Perl use). Cygwin contains (in addition to the shell) a\n       comprehensive set of standard Unix toolkit utilities.\n\n       BBEdit and TextWrangler\n\t   are text editors for OS X that have a Perl sensitivity mode (\n\t   <http://www.barebones.com/> ).\n\n   Where can I get Perl macros for vi?\n       For a complete version of Tom Christiansen's vi configuration file, see\n       <http://www.cpan.org/authors/id/T/TO/TOMC/scripts/toms.exrc.gz> , the\n       standard benchmark file for vi emulators. The file runs best with nvi,\n       the current version of vi out of Berkeley, which incidentally can be\n       built with an embedded Perl interpreter--see\n       <http://www.cpan.org/src/misc/> ."
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can I obtain Perl macros for vi using the information provided in the manpage?
+  manpageQuestion3: What are the recommended shell environments for Win32 systems according to the perlfaq3 manpage?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.
+
+
+
+    Manpage text:
+
+    Where can I get perl-mode or cperl-mode for emacs?
+           Since Emacs version 19 patchlevel 22 or so, there have been both a
+           perl-mode.el and support for the Perl debugger built in. These should
+           come with the standard Emacs 19 distribution.
+
+           Note that the perl-mode of emacs will have fits with "main'foo" (single
+           quote), and mess up the indentation and highlighting. You are probably
+           using "main::foo" in new Perl code anyway, so this shouldn't be an
+           issue.
+
+           For CPerlMode, see <http://www.emacswiki.org/cgi-bin/wiki/CPerlMode>
+
+       How can I use curses with Perl?
+           The Curses module from CPAN provides a dynamically loadable object
+           module interface to a curses library. A small demo can be found at the
+           directory <http://www.cpan.org/authors/id/T/TO/TOMC/scripts/rep.gz> ;
+           this program repeats a command and updates the screen as needed,
+           rendering rep ps axu similar to top.
+
+       How can I write a GUI (X, Tk, Gtk, etc.) in Perl?
+           (contributed by Ben Morrow)
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can I use the Curses module in Perl to create a screen-based application?
+  manpageQuestion3: What are the recommended ways to develop GUI applications in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.\n\n\n\nManpage text:\n\nThere are a number of modules which let you write GUIs in Perl. Most\n       GUI toolkits have a perl interface: an incomplete list follows.\n\n       Tk  This works under Unix and Windows, and the current version doesn't\n\t   look half as bad under Windows as it used to. Some of the gui\n\t   elements still don't 'feel' quite right, though. The interface is\n\t   very natural and 'perlish', making it easy to use in small scripts\n\t   that just need a simple gui. It hasn't been updated in a while.\n\n       Wx  This is a Perl binding for the cross-platform wxWidgets toolkit (\n\t   <http://www.wxwidgets.org> ). It works under Unix, Win32 and Mac OS\n\t   X, using native widgets (Gtk under Unix). The interface follows the\n\t   C++ interface closely, but the documentation is a little sparse for\n\t   someone who doesn't know the library, mostly just referring you to\n\t   the C++ documentation.\n\n       Gtk and Gtk2\n\t   These are Perl bindings for the Gtk toolkit ( <http://www.gtk.org>\n\t   ). The interface changed significantly between versions 1 and 2 so\n\t   they have separate Perl modules. It runs under Unix, Win32 and Mac\n\t   OS X (currently it requires an X server on Mac OS, but a 'native'\n\t   port is underway), and the widgets look the same on every platform:\n\t   i.e., they don't match the native widgets. As with Wx, the Perl\n\t   bindings follow the C API closely, and the documentation requires\n\t   you to read the C documentation to understand it."
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can I use Perl to create a GUI application using the Tk toolkit?
+  manpageQuestion3: What are the key differences between using Gtk and Wx for GUI development in Perl on macOS?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.\n\n\n\nManpage text:\n\nWin32::GUI\n\t   This provides access to most of the Win32 GUI widgets from Perl.\n\t   Obviously, it only runs under Win32, and uses native widgets. The\n\t   Perl interface doesn't really follow the C interface: it's been\n\t   made more Perlish, and the documentation is pretty good. More\n\t   advanced stuff may require familiarity with the C Win32 APIs, or\n\t   reference to MSDN.\n\n       CamelBones\n\t   CamelBones ( <http://camelbones.sourceforge.net> ) is a Perl\n\t   interface to Mac OS X's Cocoa GUI toolkit, and as such can be used\n\t   to produce native GUIs on Mac OS X. It's not on CPAN, as it\n\t   requires frameworks that CPAN.pm doesn't know how to install, but\n\t   installation is via the standard OSX package installer. The Perl\n\t   API is, again, very close to the ObjC API it's wrapping, and the\n\t   documentation just tells you how to translate from one to the\n\t   other.\n\n       Qt  There is a Perl interface to TrollTech's Qt toolkit, but it does\n\t   not appear to be maintained.\n\n       Athena\n\t   Sx is an interface to the Athena widget set which comes with X, but\n\t   again it appears not to be much used nowadays."
+  manpageQuestion1: What is the primary purpose of the Win32::GUI module in Perl?
+  manpageQuestion2: How can you use CamelBones to create a native GUI application for Mac OS X with Perl?
+  manpageQuestion3: What are the limitations of using the Qt Perl interface for GUI development?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.
+
+
+
+    Manpage text:
+
+    How can I make my Perl program run faster?
+           The best way to do this is to come up with a better algorithm. This can
+           often make a dramatic difference. Jon Bentley's book Programming Pearls
+           (that's not a misspelling!)  has some good tips on optimization, too.
+           Advice on benchmarking boils down to: benchmark and profile to make
+           sure you're optimizing the right part, look for better algorithms
+           instead of microtuning your code, and when all else fails consider just
+           buying faster hardware. You will probably want to read the answer to
+           the earlier question "How do I profile my Perl programs?" if you
+           haven't done so already.
+
+           A different approach is to autoload seldom-used Perl code. See the
+           AutoSplit and AutoLoader modules in the standard distribution for that.
+           Or you could locate the bottleneck and think about writing just that
+           part in C, the way we used to take bottlenecks in C code and write them
+           in assembler. Similar to rewriting in C, modules that have critical
+           sections can be written in C (for instance, the PDL module from CPAN).
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: What are some common strategies for optimizing a Perl program according to the perlfaq3 resource?
+  manpageQuestion3: How can one profile a Perl program to identify performance bottlenecks as suggested in the perlfaq3 manpage?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.
+
+
+
+    Manpage text:
+
+    If you're currently linking your perl executable to a shared libc.so,
+           you can often gain a 10-25% performance benefit by rebuilding it to
+           link with a static libc.a instead. This will make a bigger perl
+           executable, but your Perl programs (and programmers) may thank you for
+           it. See the INSTALL file in the source distribution for more
+           information.
+
+           The undump program was an ancient attempt to speed up Perl program by
+           storing the already-compiled form to disk. This is no longer a viable
+           option, as it only worked on a few architectures, and wasn't a good
+           solution anyway.
+
+       How can I make my Perl program take less memory?
+           When it comes to time-space tradeoffs, Perl nearly always prefers to
+           throw memory at a problem. Scalars in Perl use more memory than strings
+           in C, arrays take more than that, and hashes use even more. While
+           there's still a lot to be done, recent releases have been addressing
+           these issues. For example, as of 5.004, duplicate hash keys are shared
+           amongst all hashes using them, so require no reallocation.
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can I optimize my Perl program to reduce memory usage according to the information in perlfaq3?
+  manpageQuestion3: What is mentioned about using a static libc.a library in the perlfaq3 manpage?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.
+
+
+
+    Manpage text:
+
+    In some cases, using substr() or vec() to simulate arrays can be highly
+           beneficial. For example, an array of a thousand booleans will take at
+           least 20,000 bytes of space, but it can be turned into one 125-byte bit
+           vector--a considerable memory savings. The standard Tie::SubstrHash
+           module can also help for certain types of data structure. If you're
+           working with specialist data structures (matrices, for instance)
+           modules that implement these in C may use less memory than equivalent
+           Perl modules.
+
+           Another thing to try is learning whether your Perl was compiled with
+           the system malloc or with Perl's builtin malloc. Whichever one it is,
+           try using the other one and see whether this makes a difference.
+           Information about malloc is in the INSTALL file in the source
+           distribution. You can find out whether you are using perl's malloc by
+           typing "perl -V:usemymalloc".
+
+           Of course, the best way to save memory is to not do anything to waste
+           it in the first place. Good programming practices can go a long way
+           toward this:
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can Perl's memory management be optimized using the system malloc versus Perl's built-in malloc?
+  manpageQuestion3: What are some alternative methods to efficiently manage memory in Perl for data structures like arrays of booleans?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.\n\n\n\nManpage text:\n\nDon't slurp!\n\t   Don't read an entire file into memory if you can process it line by\n\t   line. Or more concretely, use a loop like this:\n\n\t       #\n\t       # Good Idea\n\t       #\n\t       while (my $line = <$file_handle>) {\n\t\t  # ...\n\t       }\n\n\t   instead of this:\n\n\t       #\n\t       # Bad Idea\n\t       #\n\t       my @data = <$file_handle>;\n\t       foreach (@data) {\n\t\t   # ...\n\t       }\n\n\t   When the files you're processing are small, it doesn't much matter\n\t   which way you do it, but it makes a huge difference when they start\n\t   getting larger.\n\n       Use map and grep selectively\n\t   Remember that both map and grep expect a LIST argument, so doing\n\t   this:\n\n\t\t   @wanted = grep {/pattern/} <$file_handle>;\n\n\t   will cause the entire file to be slurped. For large files, it's\n\t   better to loop:\n\n\t\t   while (<$file_handle>) {\n\t\t\t   push(@wanted, $_) if /pattern/;\n\t\t   }\n\n       Avoid unnecessary quotes and stringification\n\t   Don't quote large strings unless absolutely necessary:\n\n\t\t   my $copy = \"$large_string\";"
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can you process a file line by line in Perl to avoid slurping the entire file into memory?
+  manpageQuestion3: What is a common mistake when using Perl's grep function that can lead to inefficient memory usage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.\n\n\n\nManpage text:\n\nmakes 2 copies of $large_string (one for $copy and another for the\n\t   quotes), whereas\n\n\t\t   my $copy = $large_string;\n\n\t   only makes one copy.\n\n\t   Ditto for stringifying large arrays:\n\n\t       {\n\t       local $, = \"\\n\";\n\t       print @big_array;\n\t       }\n\n\t   is much more memory-efficient than either\n\n\t       print join \"\\n\", @big_array;\n\n\t   or\n\n\t       {\n\t       local $\" = \"\\n\";\n\t       print \"@big_array\";\n\t       }\n\n       Pass by reference\n\t   Pass arrays and hashes by reference, not by value. For one thing,\n\t   it's the only way to pass multiple lists or hashes (or both) in a\n\t   single call/return. It also avoids creating a copy of all the\n\t   contents. This requires some judgement, however, because any\n\t   changes will be propagated back to the original data. If you really\n\t   want to mangle (er, modify) a copy, you'll have to sacrifice the\n\t   memory needed to make one.\n\n       Tie large variables to disk\n\t   For \"big\" data stores (i.e. ones that exceed available memory)\n\t   consider using one of the DB modules to store it on disk instead of\n\t   in RAM. This will incur a penalty in access time, but that's\n\t   probably better than causing your hard disk to thrash due to\n\t   massive swapping."
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can you efficiently print a large array in Perl without creating unnecessary copies?
+  manpageQuestion3: What is the recommended approach for handling large data stores in Perl that exceed available memory?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.\n\n\n\nManpage text:\n\nIs it safe to return a reference to local or lexical data?\n       Yes. Perl's garbage collection system takes care of this so everything\n       works out right.\n\n\t   sub makeone {\n\t       my @a = ( 1 .. 10 );\n\t       return \\@a;\n\t   }\n\n\t   for ( 1 .. 10 ) {\n\t       push @many, makeone();\n\t   }\n\n\t   print $many[4][5], \"\\n\";\n\n\t   print \"@many\\n\";\n\n   How can I free an array or hash so my program shrinks?\n       (contributed by Michael Carman)\n\n       You usually can't. Memory allocated to lexicals (i.e. my() variables)\n       cannot be reclaimed or reused even if they go out of scope. It is\n       reserved in case the variables come back into scope. Memory allocated\n       to global variables can be reused (within your program) by using\n       undef() and/or delete().\n\n       On most operating systems, memory allocated to a program can never be\n       returned to the system. That's why long-running programs sometimes re-\n       exec themselves. Some operating systems (notably, systems that use\n       mmap(2) for allocating large chunks of memory) can reclaim memory that\n       is no longer used, but on such systems, perl must be configured and\n       compiled to use the OS's malloc, not perl's."
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can I free memory allocated to a global variable in Perl to help reduce the program's memory footprint?
+  manpageQuestion3: Is it safe to return a reference to a local or lexical array in Perl, and if so, how does Perl handle it?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.
+
+
+
+    Manpage text:
+
+    In general, memory allocation and de-allocation isn't something you can
+           or should be worrying about much in Perl.
+
+           See also "How can I make my Perl program take less memory?"
+
+       How can I make my CGI script more efficient?
+           Beyond the normal measures described to make general Perl programs
+           faster or smaller, a CGI program has additional issues. It may be run
+           several times per second. Given that each time it runs it will need to
+           be re-compiled and will often allocate a megabyte or more of system
+           memory, this can be a killer. Compiling into C isn't going to help you
+           because the process start-up overhead is where the bottleneck is.
+
+           There are three popular ways to avoid this overhead. One solution
+           involves running the Apache HTTP server (available from
+           <http://www.apache.org/> ) with either of the mod_perl or mod_fastcgi
+           plugin modules.
+
+           With mod_perl and the Apache::Registry module (distributed with
+           mod_perl), httpd will run with an embedded Perl interpreter which pre-
+           compiles your script and then executes it within the same address space
+           without forking. The Apache extension also gives Perl access to the
+           internal server API, so modules written in Perl can do just about
+           anything a module written in C can. For more on mod_perl, see
+           <http://perl.apache.org/>
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can I optimize my CGI script in Perl to reduce memory usage and improve performance?
+  manpageQuestion3: What are the recommended methods for enhancing the efficiency of a Perl CGI script according to the perlfaq3 documentation?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.
+
+
+
+    Manpage text:
+
+    With the FCGI module (from CPAN) and the mod_fastcgi module (available
+           from <http://www.fastcgi.com/> ) each of your Perl programs becomes a
+           permanent CGI daemon process.
+
+           Finally, Plack is a Perl module and toolkit that contains PSGI
+           middleware, helpers and adapters to web servers, allowing you to easily
+           deploy scripts which can continue running, and provides flexibility
+           with regards to which web server you use. It can allow existing CGI
+           scripts to enjoy this flexibility and performance with minimal changes,
+           or can be used along with modern Perl web frameworks to make writing
+           and deploying web services with Perl a breeze.
+
+           These solutions can have far-reaching effects on your system and on the
+           way you write your CGI programs, so investigate them with care.
+
+           See also
+           <http://www.cpan.org/modules/by-category/15_World_Wide_Web_HTML_HTTP_CGI/>
+           .
+
+       How can I hide the source for my Perl program?
+           Delete it. :-) Seriously, there are a number of (mostly unsatisfactory)
+           solutions with varying levels of "security".
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can I hide the source code of my Perl program according to the information in perlfaq3?
+  manpageQuestion3: What are some of the modern solutions for deploying Perl CGI scripts that provide flexibility and performance according to the perlfaq3 manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.\n\n\n\nManpage text:\n\nFirst of all, however, you can't take away read permission, because the\n       source code has to be readable in order to be compiled and interpreted.\n       (That doesn't mean that a CGI script's source is readable by people on\n       the web, though--only by people with access to the filesystem.)\tSo you\n       have to leave the permissions at the socially friendly 0755 level.\n\n       Some people regard this as a security problem. If your program does\n       insecure things and relies on people not knowing how to exploit those\n       insecurities, it is not secure. It is often possible for someone to\n       determine the insecure things and exploit them without viewing the\n       source. Security through obscurity, the name for hiding your bugs\n       instead of fixing them, is little security indeed.\n\n       You can try using encryption via source filters (Starting from Perl 5.8\n       the Filter::Simple and Filter::Util::Call modules are included in the\n       standard distribution), but any decent programmer will be able to\n       decrypt it. You can try using the byte code compiler and interpreter\n       described later in perlfaq3, but the curious might still be able to de-\n       compile it. You can try using the native-code compiler described later,\n       but crackers might be able to disassemble it. These pose varying\n       degrees of difficulty to people wanting to get at your code, but none\n       can definitively conceal it (true of every language, not just Perl)."
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can one address security concerns related to source code readability in Perl programs?
+  manpageQuestion3: What are some methods suggested in perlfaq3 for concealing Perl source code from unauthorized access?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.
+
+
+
+    Manpage text:
+
+    It is very easy to recover the source of Perl programs. You simply feed
+           the program to the perl interpreter and use the modules in the B::
+           hierarchy. The B::Deparse module should be able to defeat most attempts
+           to hide source. Again, this is not unique to Perl.
+
+           If you're concerned about people profiting from your code, then the
+           bottom line is that nothing but a restrictive license will give you
+           legal security. License your software and pepper it with threatening
+           statements like "This is unpublished proprietary software of XYZ Corp.
+           Your access to it does not give you permission to use it blah blah
+           blah."  We are not lawyers, of course, so you should see a lawyer if
+           you want to be sure your license's wording will stand up in court.
+
+       How can I compile my Perl program into byte code or C?
+           (contributed by brian d foy)
+
+           In general, you can't do this. There are some things that may work for
+           your situation though. People usually ask this question because they
+           want to distribute their works without giving away the source code, and
+           most solutions trade disk space for convenience.  You probably won't
+           see much of a speed increase either, since most solutions simply bundle
+           a Perl interpreter in the final product (but see "How can I make my
+           Perl program run faster?").
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can I recover the source code of a Perl program using the perlfaq3 resource?
+  manpageQuestion3: What are the legal considerations for protecting Perl code from being used or distributed without permission?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.\n\n\n\nManpage text:\n\nThe Perl Archive Toolkit is Perl's analog to Java's JAR. It's freely\n       available and on CPAN ( <https://metacpan.org/pod/PAR> ).\n\n       There are also some commercial products that may work for you, although\n       you have to buy a license for them.\n\n       The Perl Dev Kit ( <http://www.activestate.com/Products/Perl_Dev_Kit/>\n       ) from ActiveState can \"Turn your Perl programs into ready-to-run\n       executables for HP-UX, Linux, Solaris and Windows.\"\n\n       Perl2Exe ( <http://www.indigostar.com/perl2exe.htm> ) is a command line\n       program for converting perl scripts to executable files. It targets\n       both Windows and Unix platforms.\n\n   How can I get \"#!perl\" to work on [MS-DOS,NT,...]?\n       For OS/2 just use\n\n\t   extproc perl -S -your_switches\n\n       as the first line in \"*.cmd\" file (\"-S\" due to a bug in cmd.exe's\n       \"extproc\" handling). For DOS one should first invent a corresponding\n       batch file and codify it in \"ALTERNATE_SHEBANG\" (see the dosish.h file\n       in the source distribution for more information)."
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can I use Perl2Exe to convert a Perl script into an executable file for Windows?
+  manpageQuestion3: What is the recommended way to make a Perl script executable on OS/2?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.
+
+
+
+    Manpage text:
+
+    The Win95/NT installation, when using the ActiveState port of Perl,
+           will modify the Registry to associate the ".pl" extension with the perl
+           interpreter. If you install another port, perhaps even building your
+           own Win95/NT Perl from the standard sources by using a Windows port of
+           gcc (e.g., with cygwin or mingw32), then you'll have to modify the
+           Registry yourself. In addition to associating ".pl" with the
+           interpreter, NT people can use: "SET PATHEXT=%PATHEXT%;.PL" to let them
+           run the program "install-linux.pl" merely by typing "install-linux".
+
+           Under "Classic" MacOS, a perl program will have the appropriate Creator
+           and Type, so that double-clicking them will invoke the MacPerl
+           application.  Under Mac OS X, clickable apps can be made from any "#!"
+           script using Wil Sanchez' DropScript utility:
+           <http://www.wsanchez.net/software/> .
+
+           IMPORTANT!: Whatever you do, PLEASE don't get frustrated, and just
+           throw the perl interpreter into your cgi-bin directory, in order to get
+           your programs working for a web server. This is an EXTREMELY big
+           security risk. Take the time to figure out how to do it correctly.
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can you configure the Windows NT Registry to associate .pl files with the Perl interpreter when using the ActiveState port?
+  manpageQuestion3: What steps are required to make a Perl script executable on Mac OS X?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.\n\n\n\nManpage text:\n\nCan I write useful Perl programs on the command line?\n       Yes. Read perlrun for more information. Some examples follow.  (These\n       assume standard Unix shell quoting rules.)\n\n\t   # sum first and last fields\n\t   perl -lane 'print $F[0] + $F[-1]' *\n\n\t   # identify text files\n\t   perl -le 'for(@ARGV) {print if -f && -T _}' *\n\n\t   # remove (most) comments from C program\n\t   perl -0777 -pe 's{/\\*.*?\\*/}{}gs' foo.c\n\n\t   # make file a month younger than today, defeating reaper daemons\n\t   perl -e '$X=24*60*60; utime(time(),time() + 30 * $X,@ARGV)' *\n\n\t   # find first unused uid\n\t   perl -le '$i++ while getpwuid($i); print $i'\n\n\t   # display reasonable manpath\n\t   echo $PATH | perl -nl -072 -e '\n\t   s![^/+]*$!man!&&-d&&!$s{$_}++&&push@m,$_;END{print\"@m\"}'\n\n       OK, the last one was actually an Obfuscated Perl Contest entry. :-)\n\n   Why don't Perl one-liners work on my DOS/Mac/VMS system?\n       The problem is usually that the command interpreters on those systems\n       have rather different ideas about quoting than the Unix shells under\n       which the one-liners were created. On some systems, you may have to\n       change single-quotes to double ones, which you must NOT do on Unix or\n       Plan9 systems. You might also have to change a single % to a %%."
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can I use Perl on the command line to sum the first and last fields of multiple text files?
+  manpageQuestion3: Can you provide an example of using Perl to find the first unused user ID on a system?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.\n\n\n\nManpage text:\n\nFor example:\n\n\t   # Unix (including Mac OS X)\n\t   perl -e 'print \"Hello world\\n\"'\n\n\t   # DOS, etc.\n\t   perl -e \"print \\\"Hello world\\n\\\"\"\n\n\t   # Mac Classic\n\t   print \"Hello world\\n\"\n\t    (then Run \"Myscript\" or Shift-Command-R)\n\n\t   # MPW\n\t   perl -e 'print \"Hello world\\n\"'\n\n\t   # VMS\n\t   perl -e \"print \"\"Hello world\\n\"\"\"\n\n       The problem is that none of these examples are reliable: they depend on\n       the command interpreter. Under Unix, the first two often work. Under\n       DOS, it's entirely possible that neither works. If 4DOS was the command\n       shell, you'd probably have better luck like this:\n\n\t perl -e \"print <Ctrl-x>\"Hello world\\n<Ctrl-x>\"\"\n\n       Under the Mac, it depends which environment you are using. The MacPerl\n       shell, or MPW, is much like Unix shells in its support for several\n       quoting variants, except that it makes free use of the Mac's non-ASCII\n       characters as control characters.\n\n       Using qq(), q(), and qx(), instead of \"double quotes\", 'single quotes',\n       and `backticks`, may make one-liners easier to write."
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can I run a one-liner Perl script on a Unix-like system such as macOS?
+  manpageQuestion3: What are some best practices for writing Perl one-liners in different environments like DOS, Mac Classic, and MPW?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.\n\n\n\nManpage text:\n\nThere is no general solution to all of this. It is a mess.\n\n       [Some of this answer was contributed by Kenneth Albanowski.]\n\n   Where can I learn about CGI or Web programming in Perl?\n       For modules, get the CGI or LWP modules from CPAN. For textbooks, see\n       the two especially dedicated to web stuff in the question on books. For\n       problems and questions related to the web, like \"Why do I get 500\n       Errors\" or \"Why doesn't it run from the browser right when it runs fine\n       on the command line\", see the troubleshooting guides and references in\n       perlfaq9 or in the CGI MetaFAQ:\n\n\t   L<http://www.perl.org/CGI_MetaFAQ.html>\n\n       Looking into <https://plackperl.org> and modern Perl web frameworks is\n       highly recommended, though; web programming in Perl has evolved a long\n       way from the old days of simple CGI scripts.\n\n   Where can I learn about object-oriented Perl programming?\n       A good place to start is perlootut, and you can use perlobj for\n       reference."
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: Where can one find information about web programming in Perl according to the perlfaq3 resource?
+  manpageQuestion3: What resources are recommended for learning object-oriented Perl programming in the perlfaq3 manpage?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.
+
+
+
+    Manpage text:
+
+    A good book on OO on Perl is the "Object-Oriented Perl" by Damian
+           Conway from Manning Publications, or "Intermediate Perl" by Randal
+           Schwartz, brian d foy, and Tom Phoenix from O'Reilly Media.
+
+       Where can I learn about linking C with Perl?
+           If you want to call C from Perl, start with perlxstut, moving on to
+           perlxs, xsubpp, and perlguts. If you want to call Perl from C, then
+           read perlembed, perlcall, and perlguts. Don't forget that you can learn
+           a lot from looking at how the authors of existing extension modules
+           wrote their code and solved their problems.
+
+           You might not need all the power of XS. The Inline::C module lets you
+           put C code directly in your Perl source. It handles all the magic to
+           make it work. You still have to learn at least some of the perl API but
+           you won't have to deal with the complexity of the XS support files.
+
+       I've read perlembed, perlguts, etc., but I can't embed perl in my C
+           program; what am I doing wrong?
+           Download the ExtUtils::Embed kit from CPAN and run `make test'. If the
+           tests pass, read the pods again and again and again. If they fail,
+           submit a bug report to <https://github.com/Perl/perl5/issues> with the
+           output of "make test TEST_VERBOSE=1" along with "perl -V".
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can a user integrate C code directly into their Perl programs without using XS?
+  manpageQuestion3: What steps should be taken if a user is unable to embed Perl in their C program despite following the guidance in perlembed and perlguts?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.\n\n\n\nManpage text:\n\nWhen I tried to run my script, I got this message. What does it mean?\n       A complete list of Perl's error messages and warnings with explanatory\n       text can be found in perldiag. You can also use the splain program\n       (distributed with Perl) to explain the error messages:\n\n\t   perl program 2>diag.out\n\t   splain [-v] [-p] diag.out\n\n       or change your program to explain the messages for you:\n\n\t   use diagnostics;\n\n       or\n\n\t   use diagnostics -verbose;\n\n   What's MakeMaker?\n       (contributed by brian d foy)\n\n       The ExtUtils::MakeMaker module, better known simply as \"MakeMaker\",\n       turns a Perl script, typically called \"Makefile.PL\", into a Makefile.\n       The Unix tool \"make\" uses this file to manage dependencies and actions\n       to process and install a Perl distribution.\n\nAUTHOR AND COPYRIGHT\n       Copyright (c) 1997-2010 Tom Christiansen, Nathan Torkington, and other\n       authors as noted. All rights reserved.\n\n       This documentation is free; you can redistribute it and/or modify it\n       under the same terms as Perl itself."
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can I use the splain program to explain a Perl error message from my script?
+  manpageQuestion3: What is the role of the ExtUtils::MakeMaker module in Perl development?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq3`.\n\n\n\nManpage text:\n\nIrrespective of its distribution, all code examples here are in the\n       public domain. You are permitted and encouraged to use this code and\n       any derivatives thereof in your own programs for fun or for profit as\n       you see fit. A simple comment in the code giving credit to the FAQ\n       would be courteous but is not required.\n\nperl v5.34.1\t\t\t  2022-02-19\t\t\t   PERLFAQ3(1)"
+  manpageQuestion1: What is the primary purpose of the perlfaq3 resource?
+  manpageQuestion2: How can one use the code examples provided in perlfaq3 for practical programming tasks?
+  manpageQuestion3: Can you explain how the public domain code in perlfaq3 can be adapted for use in commercial applications?
+

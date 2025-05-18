@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `healthd`.\n\n\n\nManpage text:\n\nHEALTHD(8)\t\t    System Manager's Manual\t\t    HEALTHD(8)\n\nNAME\n     healthd – health daemon\n\nSYNOPSIS\n     takes no arguments, and users should not launch it manually.\n\nDESCRIPTION\n     healthd is a per-user daemon that supports HealthKit functionality\n\nDarwin\t\t\t      September 29, 2021\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the healthd tool?
+  manpageQuestion2: How would you use healthd to manage HealthKit functionality on a macOS system?
+  manpageQuestion3: Can you explain the role of healthd in relation to HealthKit on macOS?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `MIDIServer`.\n\n\n\nManpage text:\n\nMIDIServer(8)\t\t    System Manager's Manual\t\t MIDIServer(8)\n\nNAME\n     MIDIServer – Agent supporting CoreMIDI framework.\n\nDESCRIPTION\n     MIDIServer provides a central implementation of the CoreMIDI framework\n     API's, loading driver plug-ins and facilitating MIDI I/O between client\n     applications and drivers.\n\nmacOS 15.3\t\t\t March 1, 2017\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the MIDIServer tool?
+  manpageQuestion2: How can MIDIServer be used to manage MIDI I/O between client applications and drivers?
+  manpageQuestion3: What role does MIDIServer play in the CoreMIDI framework?
+

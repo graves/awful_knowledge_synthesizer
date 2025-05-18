@@ -1,0 +1,151 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `footprint`.\n\n\n\nManpage text:\n\nFOOTPRINT(1)\t\t    General Commands Manual\t\t  FOOTPRINT(1)\n\nNAME\n     footprint – gathers memory information about one or more processes\n\nSYNOPSIS\n     footprint [-j path] [-f bytes|formatted|pages] [--sort column]\n\t       [-p name|pid] [-x name|pid] [-t] [-s] [-v] [-y] [-w]\n\t       [--swapped] [--wired] [-a] process-name | pid | memgraph [...]\n     footprint --sample interval ...\n     footprint -h, --help\n\nDESCRIPTION\n     The footprint utility gathers and displays memory consumption information\n     for the specified processes or memory graph files.\n\n     footprint will display all addressable memory used by the specified\n     processes, but it emphasizes memory considered 'dirty' by the kernel for\n     purposes of accounting.  If multiple processes are specified, footprint\n     will de-duplicate multiply mapped objects and will display shared objects\n     separately from private ones.\n\n     footprint must be run as root when inspecting processes that are not\n     owned by the current user."
+  manpageQuestion1: What is the primary purpose of the footprint command?
+  manpageQuestion2: How can you use the footprint command to display memory consumption information for a specific process with the 'formatted' byte format?
+  manpageQuestion3: Can you provide an example of using the footprint command to inspect memory usage of a process with the 'swapped' memory option?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `footprint`.\n\n\n\nManpage text:\n\nProcesses are specified using a PID, exact process name, or partial\n     process name. Memory information will be displayed for all processes\n     matching any provided name.\n\nOPTIONS\n     -a, --all\n\t     target all processes (will take much longer)\n\n     -j, --json path\n\t     also save a JSON representation of the data to the specified path\n\n     -f, --format bytes|formatted|pages\n\t     textual output should be formatted in bytes, pages, or human-\n\t     readable formatted (default)\n\n     --sort column\n\t     textual output should be sorted by the given column name, for\n\t     example dirty (default), clean, category, etc.\n\n     -p, --proc name\n\t     target the given process by name (can be used multiple times)\n\n     -p, --pid pid\n\t     target the given process by pid (can be used multiple times)\n\n     -x, --exclude name/pid\n\t     exclude the given process by name or pid (can be used multiple\n\t     times)\n\n\t     often used with --all to exclude some processes from analysis\n\n     -t, --targetChildren\n\t     in addition to the supplied processes, target their children,\n\t     grandchildren, etc."
+  manpageQuestion1: What is the primary purpose of the footprint tool?
+  manpageQuestion2: How would you use footprint to analyze all processes except for those with the name 'System' and save the output as a JSON file?
+  manpageQuestion3: Can you provide an example of using footprint to display memory information for a specific process with the name 'chrome' and format the output in human-readable units?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `footprint`.\n\n\n\nManpage text:\n\n-s, --skip\n\t     skip processes that are dirty tracked and have no outstanding XPC\n\t     transactions (i.e., are \"clean\")\n\n     --minFootprint MiB\n\t     skip processes with footprint less than the provided minimum MiB.\n\n     --forkCorpse\n\t     analyze a forked corpse of the target process rather than the\n\t     original process. Due to system resource limits on corpses this\n\t     argument is not compatible with --all or if attempting to analyze\n\t     more than a couple processes.\n\n     -v      display all regions and vmmap-like output of address space\n\t     layout.\n\t     Without this flag the default output is a summary of the totals\n\t     for each memory category.\n\n     -w, --wide\n\t     show wide output with all columns and full paths (implies\n\t     --swapped --wired)\n\n     --swapped\n\t     show swapped/compressed column\n\n     --wired\n\t     show wired memory column\n\n     --vmObjectDirty\n\t     interpret dirty memory as viewed by VM objects in the kernel,\n\t     rather than the default behavior which interprets dirty memory\n\t     through the pmap. This mode may calculate a total footprint that\n\t     does not match what is shown in other tools such as top(1) or\n\t     Activity Monitor.app. However, it can provide insight into dirty\n\t     memory that is by design not included in the default mode, such\n\t     as dirty file-backed memory or a VM region mapped into a process\n\t     that is normally accounted to only the process that created it.\n\t     The --vmObjectDirty mode was the default in versions prior to\n\t     macOS 10.15."
+  manpageQuestion1: What is the primary purpose of the footprint command-line tool?
+  manpageQuestion2: How can you use the footprint utility to skip processes that are clean and analyze only those with a minimum memory footprint of 512 MiB?
+  manpageQuestion3: What command would you use to display detailed memory region information for a process, including swapped and wired columns?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `footprint`.\n\n\n\nManpage text:\n\n--unmapped\n\t     search all processes for memory owned by the target processes but\n\t     not mapped into their address spaces (see the discussion in\n\t     MEMORY ACCOUNTING for more details)\n\n     --sample interval\n\t     Start footprint in sampling mode, gathering data every interval\n\t     seconds (which can be fractional like 0.5). Text output will be a\n\t     concatenation of usual text output with added timestamps. JSON\n\t     output will contain a \"samples\" array with many of the same\n\t     key/values that would normally be at the top level. All other\n\t     command line options are also supported in sampling mode.\n\n     --sample-duration duration\n\t     Time limit on the number of seconds to sample when combined with\n\t     --sample.\tWhen this flag is omitted or set to 0, sampling\n\t     continues until <ctrl-c>.\n\n     -h, --help\n\t     display help and exit\n\nCOLUMNS\n     Column names between parentheses indicate that they are a subset of one\n     or more non-parenthesized columns.\n\n     Dirty\t  Memory that has been written to by a process, which includes\n\t\t  \"Swapped\", purgeable non-volatile memory, and implicitly\n\t\t  written memory such as zero-filled. A process's footprint is\n\t\t  equal to the total of all dirty memory."
+  manpageQuestion1: What is the primary purpose of the footprint tool?
+  manpageQuestion2: How can you use the --sample interval option with footprint to gather data every 0.5 seconds and include timestamps in the output?
+  manpageQuestion3: What does the --unmapped option do when using the footprint tool?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `footprint`.\n\n\n\nManpage text:\n\n(Swapped)\t  A subset of \"Dirty\" memory that has been compressed or\n\t\t  swapped out by the kernel.\n\n     Clean\t  Resident memory which is neither \"Dirty\" nor \"Reclaimable\".\n\n     Reclaimable  Resident memory that has been explicitly marked as available\n\t\t  for reuse. Memory can be marked reclaimable when it is made\n\t\t  purgeable volatile (including purgeable empty) or by using\n\t\t  madvise(2) with advice such as MADV_FREE. Reclaimable memory\n\t\t  can be taken away from a process at any time in response to\n\t\t  system memory pressure.\n\n     (Wired)\t  Memory that has been wired down (e.g., by calling mlock(2)\n\t\t  ). This memory is usually a subset of \"Dirty\" and cannot be\n\t\t  paged out.\n\n     Regions\t  The count of VM regions contributing to this entry. Each\n\t\t  binary segment contained within the shared cache region is\n\t\t  considered a separate region for display purposes.\n\n     Category\t  A descriptive name for this entry, such as a human-readable\n\t\t  name for a VM_MEMORY_* tag, a path to a mapped file, or a\n\t\t  segment of a loaded binary."
+  manpageQuestion1: What is the primary purpose of the footprint command?
+  manpageQuestion2: How would you use footprint to display memory usage statistics for a specific process?
+  manpageQuestion3: Can you explain how to interpret the 'Regions' and 'Category' fields in a footprint output?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `footprint`.
+
+
+
+    Manpage text:
+
+    INVESTIGATING MEMORY FOOTPRINT
+         footprint provides an efficient calculation of a process's memory
+         footprint and a high-level overview of the various categories of memory
+         contributing to that footprint. The details that it provides can be used
+         as a starting point in an investigation.
+
+         Prioritize reducing "Dirty" memory. Dirty memory cannot be automatically
+         reclaimed by the kernel and is directly used by various parts of the OS
+         as a measure of a process's contribution to system memory pressure.
+         Next, focus on reducing "Reclaimable" memory, especially purgeable
+         volatile memory which will become dirty when marked non-volatile.
+         Although this memory can be cheaply reclaimed by the kernel, purgeable
+         volatile memory is commonly used as a cache of data that may be expensive
+         for a user process to recreate (such as decoded image data).
+         "Clean" memory can also be cheaply taken by the kernel, but unlike
+         "Reclaimable" it can be restored automatically by the kernel without the
+         help of a user process. For example, clean file backed data can be
+         automatically evicted from memory and re-read from disk on-demand. Having
+         too much clean memory can still be a performance problem, since large
+         working sets can cause thrashing when loading and unloading various parts
+         of a process under low memory situations.
+         Lastly, avoid using "Wired" memory as much as possible since it cannot be
+         paged out or reclaimed.
+  manpageQuestion1: What is the primary purpose of the footprint tool?
+  manpageQuestion2: How can the footprint command be used to analyze memory usage of a specific process?
+  manpageQuestion3: What are the key memory categories identified by the footprint tool and their significance in memory management?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `footprint`.\n\n\n\nManpage text:\n\nMalloc memory\n\t     Memory allocated by malloc(3) is one of the most common forms of\n\t     memory, making up what is usually referred to as the 'heap'. This\n\t     memory will have a category prefixed with 'MALLOC_'.  malloc(3)\n\t     allocates VM regions on a process's behalf; the contents of those\n\t     regions will be the individual allocations representing objects\n\t     and data in a process. Refer to the heap(1) tool to further\n\t     categorize the objects contained within a malloc memory region,\n\t     or leaks(1) to detect a subset of heap memory that is no longer\n\t     reachable.\n\n     Binary segments\n\t     Loaded binaries will be visible as an entry with both the segment\n\t     type and the path to the binary, most often __TEXT, __DATA, or\n\t     __LINKEDIT segments. Non-shared cache binaries and pages in the\n\t     __DATA segment (such as those that contain modified global\n\t     variables) can often have dirty memory.\n\n     Mapped files\n\t     File-backed memory allocated using mmap(2) will show up as\n\t     'mapped file' along with the path to the file."
+  manpageQuestion1: What is the primary purpose of the footprint tool?
+  manpageQuestion2: How can you use the footprint tool to analyze memory allocation patterns in a macOS process?
+  manpageQuestion3: Can you provide an example of using the footprint tool to examine the memory regions associated with a specific binary file?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `footprint`.\n\n\n\nManpage text:\n\nVM allocations\n\t     Most other types of memory can be tagged with a name that\n\t     indicates what subsystem allocated the region (see mmap(2) for\n\t     more information). For instance, Foundation.framework may\n\t     allocate memory and tag it with VM_MEMORY_FOUNDATION, which\n\t     appears in footprint's output as 'Foundation'. Processes are able\n\t     to allocate memory with their own tags by using an appropriate\n\t     tag in the range\n\t     VM_MEMORY_APPLICATION_SPECIFIC_1-VM_MEMORY_APPLICATION_SPECIFIC_16.\n\t     Memory which does not fall into one of the previous categories\n\t     and has not been explicitly tagged will be marked 'untagged\n\t     (VM_ALLOCATE)'.\n\n     Kernel memory\n\t     In the special case of analyzing kernel_task, footprint's output\n\t     and categories will mirror much of the data also available via\n\t     zprint(1).  This is memory allocated by the kernel or a kernel\n\t     extension and is generally unavailable to userspace directly.\n\t     Despite the restricted access, userspace programs often influence\n\t     when and how much memory the kernel allocates (e.g., for\n\t     resources allocated on behalf of a user process)."
+  manpageQuestion1: What is the primary purpose of the footprint tool?
+  manpageQuestion2: How can you use the footprint command to analyze memory allocations made by the Foundation.framework?
+  manpageQuestion3: What does the footprint tool reveal about memory allocations made by the kernel_task process?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `footprint`.
+
+
+
+    Manpage text:
+
+    For malloc and VM allocated memory, details about when and where the
+         memory was allocated can often be obtained by enabling MallocStackLogging
+         and using malloc_history(1) to view the backtrace at the time of each
+         allocation. Xcode.app and Instruments.app also provide visual tools for
+         debugging memory, such as the Xcode's Memory Graph Debugger.
+
+         vmmap(1) provides a similar view to footprint, but with an emphasis on
+         displaying the raw metrics returned by the kernel rather than the
+         simplified and more processed view of footprint.  One important
+         difference is that vmmap(1)'s "DIRTY" column does not include the
+         compressed or swapped memory found in the "SWAPPED" column.
+         Additionally, vmmap(1) can only operate on a single process and contains
+         additional information such as a malloc zone summary.
+
+    MEMORY ACCOUNTING
+         Determining what dirty memory should and should not be accounted to a
+         process is a difficult problem. Memory can be shared by many processes,
+         it can sometimes be allocated on your behalf by other processes, and no
+         matter how the accounting is done can often be expensive to accurately
+         calculate.
+  manpageQuestion1: What is the primary purpose of the footprint command?
+  manpageQuestion2: How would you use the footprint command to analyze memory allocation details for a running process?
+  manpageQuestion3: Can you provide an example of using the footprint command in conjunction with other tools for memory debugging?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `footprint`.
+
+
+
+    Manpage text:
+
+    Many operating systems have historically exposed memory metrics such as
+         Virtual Size (VSIZE) and Resident Size (RSIZE/RPRVT/RSS/etc.). Metrics
+         such as these, which are useful in their own respect, are not great
+         indicators of the amount of physical memory required by a process to run
+         (and therefore the memory pressure that a process applies to the system).
+         For instance, Virtual Size includes allocations that may not be backed by
+         physical memory, and Resident Size includes clean and volatile purgeable
+         memory that can be reclaimed by the kernel (as described earlier).
+         On the other hand, analyzing the dirty memory reported by the underlying
+         VM objects mapped into a process (the approach taken by --vmObjectDirty),
+         while more accurate, is expensive and cannot be done in real-time for
+         systems that need to frequently know the memory footprint of a process.
+
+         Apple platforms instead keep track of the 'physical footprint' by using a
+         per-process ledger in the kernel that is kept up-to-date by the pmap and
+         other subsystems. This ledger is cheap to query, suitably accurate, and
+         provides additional features such as tracking peak memory and the ability
+         to charge one process for memory that is no longer mapped into it or that
+         may have been allocated by another process. In cases where footprint is
+         unable to analyze a portion of 'physical footprint' that is not mapped
+         into a process, this memory will be listed as 'Owned physical footprint
+         (unmapped)'. If this memory is mapped into another userspace process then
+         the --unmapped argument can be used to search all processes for a mapping
+         of the same VM object, which if found will provide a better description
+         and what process(s) have mapped the memory. This also happens by default
+         when targeting all processes via --all.  Any memory still listed as
+         "(unmapped)" after using --unmapped is likely not mapped into any
+         userspace process and instead only referenced by the kernel or drivers.
+         The exact definition of this 'physical footprint' ledger is complicated
+         and subject to change, but suffice it to say that the default mode of
+         footprint aims to present an accurate memory breakdown that matches the
+         value reported by the ledger. Most other diagnostic tools, such as the
+         'MEM' column in top(1), the 'Memory' column in Activity Monitor.app, and
+         the Memory Debug Gauge in Xcode.app, query this ledger to populate their
+         metrics.
+  manpageQuestion1: What is the primary purpose of the footprint tool on macOS?
+  manpageQuestion2: How can you use footprint to analyze the physical memory usage of a specific process and identify any unmapped VM objects?
+  manpageQuestion3: What is the effect of using the --unmapped flag with the footprint command?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `footprint`.\n\n\n\nManpage text:\n\nPhysical footprint can be potentially be split into multiple\n     subcategories, such as network related memory, graphics, etc. When a\n     memory allocation (either directly mapped into a process, or owned but\n     unmapped) has such a classification, footprint will append it to the\n     category name such as 'IOKit (graphics)' or 'Owned physical footprint\n     (unmapped) (media)'.\n\nSEE ALSO\n     vmmap(1), heap(1), leaks(1), malloc_history(1), zprint(1)\n\nOS X\t\t\t\tApril 15, 2022\t\t\t\t  OS X"
+  manpageQuestion1: What is the primary purpose of the footprint command?
+  manpageQuestion2: How would you use the footprint command to examine the physical memory usage of a running process?
+  manpageQuestion3: Can you provide an example of using the footprint command to analyze memory allocation categories such as graphics or media?
+

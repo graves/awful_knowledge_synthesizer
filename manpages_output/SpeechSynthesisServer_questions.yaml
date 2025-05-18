@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `SpeechSynthesisServer`.\n\n\n\nManpage text:\n\nSpeechSynthesisServer(8)    System Manager's Manual   SpeechSynthesisServer(8)\n\nNAME\n     SpeechSynthesisServer – Implements speaking hotkey and time announcements\n     text-to-speech features.\n\nDESCRIPTION\n     SpeechSynthesisServer is a user-level daemon that runs only when the user\n     has enabled the speaking hotkey feature (Accessibility preference pane)\n     or time announcements features (Date & Time preference pane). The daemon\n     will continue running while either feature is enabled.\n\nmacOS 15.3\t\t\t July 13, 2017\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the SpeechSynthesisServer tool?
+  manpageQuestion2: How would you configure the SpeechSynthesisServer to enable speaking hotkey functionality?
+  manpageQuestion3: Can you describe how the SpeechSynthesisServer operates in relation to macOS system settings?
+

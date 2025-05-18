@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cloudconfigurationd`.\n\n\n\nManpage text:\n\ncloudconfigurationd(8)\t    System Manager's Manual\tcloudconfigurationd(8)\n\nNAME\n     cloudconfigurationd – Device Enrollment client daemon\n\n\nDESCRIPTION\n     cloudconfigurationd assists in helping install client Device Enrollment\n     profiles.\t This cannot be used directly by the user.\n\nmacOS\t\t\t\t June 23, 2016\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the cloudconfigurationd tool?
+  manpageQuestion2: How would you use cloudconfigurationd to manage Device Enrollment profiles on a macOS system?
+  manpageQuestion3: Can you describe the common usage scenario for cloudconfigurationd in a macOS environment?
+

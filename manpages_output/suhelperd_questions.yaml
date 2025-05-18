@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `suhelperd`.\n\n\n\nManpage text:\n\nsuhelperd(8)\t\t    System Manager's Manual\t\t  suhelperd(8)\n\nNAME\n     suhelperd – Helper daemon for softwareupdate - no user initiated\n     interface\n\nDESCRIPTION\n     suhelperd\n\nmacOS 15.3\t\t       November 10, 2016\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the suhelperd daemon?
+  manpageQuestion2: How does suhelperd function in relation to the softwareupdate command?
+  manpageQuestion3: What is the role of suhelperd in the macOS system?
+

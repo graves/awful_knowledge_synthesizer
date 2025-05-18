@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `hidd`.\n\n\n\nManpage text:\n\nhidd(8) \t\t  BSD System Manager's Manual\t\t       hidd(8)\n\n\nNAME\n       hidd - The HID library userland daemon.\n\nSYNOPSIS\n       NONE (launched by launchd)\n\nDESCRIPTION\n       As the HID libraries expand, hidd is the place where things better done\n       in userland reside.  It is not invoked, nor does it have any options.\n\nCOPYRIGHT\n       Copyright 2008 by Apple Inc.\n\n2.0.0\t\t\t\t  2024-12-05\t\t\t       hidd(8)"
+  manpageQuestion1: What is the primary purpose of the hidd resource?
+  manpageQuestion2: How is the hidd resource typically used in a macOS system environment?
+  manpageQuestion3: What are the key characteristics of the hidd resource that distinguish it from other system daemons?
+

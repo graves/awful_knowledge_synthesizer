@@ -1,0 +1,52 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `backtrace`.\n\n\n\nManpage text:\n\nbacktrace(3)\t\t   Library Functions Manual\t\t  backtrace(3)\n\nNAME\n     backtrace, backtrace_symbols, backtrace_symbols_fd,\n     backtrace_image_offsets, backtrace_from_fp – call stack backtrace and\n     display functions\n\nSYNOPSIS\n     #include <execinfo.h>\n\n     int\n     backtrace(void** array, int size);\n\n     char**\n     backtrace_symbols(void* const* array, int size);\n\n     void\n     backtrace_symbols_fd(void* const* array, int size, int fd);\n\n     void\n     backtrace_image_offsets(void* const* array,\n\t struct image_offset *image_offsets, int size);\n\n     int\n     backtrace_from_fp(void* startfp, void** array, int size);\n\n     size_t\n     backtrace_async(void** array, size_t size, uint32_t* task_id);\n\nDESCRIPTION\n     These routines provide a mechanism to examine the current thread's call\n     stack.\n\n     backtrace() writes the function return addresses of the current call\n     stack to the array of pointers referenced by array.  At most, size\n     pointers are written.  The number of pointers actually written to array\n     is returned."
+  manpageQuestion1: What is the primary purpose of the backtrace functions in the execinfo.h library?
+  manpageQuestion2: How can you use the backtrace() function to capture the current call stack and store it in an array of void pointers?
+  manpageQuestion3: Can you provide an example of using backtrace_symbols() to convert the call stack addresses obtained from backtrace() into human-readable function names?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `backtrace`.
+
+
+
+    Manpage text:
+
+    backtrace_symbols() attempts to transform a call stack obtained by
+         backtrace() into an array of human-readable strings using dladdr().  The
+         array of strings returned has size elements.  It is allocated using
+         malloc() and should be released using free().  There is no need to free
+         the individual strings in the array.
+
+         backtrace_symbols_fd() performs the same operation as
+         backtrace_symbols(), but the resulting strings are immediately written to
+         the file descriptor fd, and are not returned.
+
+         backtrace_image_offsets() attempts to transform a call stack obtained by
+         backtrace() into an array of image offsets, for deferred symbolication.
+         Each entry in the array has an offset relative to the __TEXT section of
+         the image with the given UUID.  The results are written to image_offsets
+         which should be an array of size length.
+
+         backtrace_from_fp() takes a backtrace of frames starting from the given
+         frame pointer.
+
+         backtrace_async() behaves exactly like backtrace() unless it is invoked
+         from a Swift async context.  In that case, instead of writing the return
+         addresses of the OS call stack, the continuation addresses of the async
+         invocations that led to the current state are provided.  If unwinding an
+         async stack rather than an OS stack, the value pointed to by task_id will
+         be set to a non-zero identifier that for the current process uniquely
+         identifies the async task currently running.  Otherwise, 0 is stored.
+  manpageQuestion1: What is the primary purpose of the backtrace-related functions in macOS?
+  manpageQuestion2: How would you use backtrace_symbols() to convert a call stack into human-readable symbol names?
+  manpageQuestion3: Can you explain how to use backtrace_image_offsets() to obtain image offsets for deferred symbolication?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `backtrace`.\n\n\n\nManpage text:\n\nNote that the continuation addresses provided by backtrace_async() have\n     an offset of 1 added to them.  Most symbolication engines will substract\n     1 from the call stack return addresses in order to symbolicate the call\n     site rather than the return location.  With a Swift async continuation,\n     substracting 1 from its address would result in an address in a different\n     function.\tThis offset allows the returned addresses to be handled\n     correctly by most existing symbolication engines.\n\nEXAMPLE\n\t #include <execinfo.h>\n\t #include <stdio.h>\n\t ...\n\t void* callstack[128];\n\t int i, frames = backtrace(callstack, 128);\n\t char** strs = backtrace_symbols(callstack, frames);\n\t for (i = 0; i < frames; ++i) {\n\t     printf(\"%s\\n\", strs[i]);\n\t }\n\t free(strs);\n\t ...\n\nHISTORY\n     backtrace(), backtrace_symbols(), and backtrace_symbols_fd() first\n     appeared in Mac OS X 10.5.  backtrace_image_offsets() and\n     backtrace_from_fp() first appeared macOS 10.14 and iOS 12.\n     backtrace_async() first appeared in macOS 12."
+  manpageQuestion1: What is the primary purpose of the backtrace tool or function?
+  manpageQuestion2: How can you use the backtrace function to obtain and print a stack trace in a C program?
+  manpageQuestion3: What is the significance of the offset added to continuation addresses returned by backtrace_async()?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `backtrace`.\n\n\n\nManpage text:\n\nSEE ALSO\n     dladdr(3), malloc(3)\n\nDarwin\t\t\t\t March 1, 2018\t\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the backtrace tool?
+  manpageQuestion2: How would you use backtrace to print a stack trace in a program?
+  manpageQuestion3: Can you provide an example of using backtrace to debug a segmentation fault in a macOS application?
+

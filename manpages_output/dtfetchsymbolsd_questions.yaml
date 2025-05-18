@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dtfetchsymbolsd`.\n\n\n\nManpage text:\n\ndtfetchsymbolsd(1)\t    General Commands Manual\t    dtfetchsymbolsd(1)\n\nNAME\n     dtfetchsymbolsd – DT Remote service for copying symbol cache files from\n     device to host\n\nSYNOPSIS\n     dtfetchsymbolsd\n\nDESCRIPTION\n     A DT Remote Services daemon responsible for copying symbol cache files\n     from device to host so that the other systems like the debugger can use\n     the files to symbolicate a backtrace. If those files are not present on\n     the host, the debugger would need to read the symbols directly from\n     memory on the device and this will slow down the start of every debug\n     session.\n\n\t\t\t\t   10/14/21"
+  manpageQuestion1: What is the primary purpose of the dtfetchsymbolsd tool?
+  manpageQuestion2: How would you start the dtfetchsymbolsd service to enable symbol cache file transfers from a device to a host?
+  manpageQuestion3: What is the role of dtfetchsymbolsd in the debugging process on macOS devices?
+

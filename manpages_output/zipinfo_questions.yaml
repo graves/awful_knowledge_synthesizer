@@ -1,0 +1,172 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `zipinfo`.\n\n\n\nManpage text:\n\nZIPINFO(1L)\t\t\t\t\t\t\t   ZIPINFO(1L)\n\nNAME\n       zipinfo - list detailed information about a ZIP archive\n\nSYNOPSIS\n       zipinfo [-12smlvhMtTz] file[.zip] [file(s) ...] [-x xfile(s) ...]\n\n       unzip -Z [-12smlvhMtTz] file[.zip] [file(s) ...] [-x xfile(s) ...]\n\nDESCRIPTION\n       zipinfo lists technical information about files in a ZIP archive, most\n       commonly found on MS-DOS systems.  Such information includes file\n       access permissions, encryption status, type of compression, version and\n       operating system or file system of compressing program, and the like.\n       The default behavior (with no options) is to list single-line entries\n       for each file in the archive, with header and trailer lines providing\n       summary information for the entire archive.  The format is a cross\n       between Unix ``ls -l'' and ``unzip -v'' output.\tSee DETAILED\n       DESCRIPTION below.  Note that zipinfo is the same program as unzip\n       (under Unix, a link to it); on some systems, however, zipinfo support\n       may have been omitted when unzip was compiled."
+  manpageQuestion1: What is the primary purpose of the zipinfo command?
+  manpageQuestion2: How can you use zipinfo to display detailed information about all files in a ZIP archive named 'myarchive.zip'?
+  manpageQuestion3: What command would you use to list the contents of a ZIP archive in a format similar to the Unix 'ls -l' command?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `zipinfo`.\n\n\n\nManpage text:\n\nARGUMENTS\n       file[.zip]\n\t      Path of the ZIP archive(s).  If the file specification is a\n\t      wildcard, each matching file is processed in an order determined\n\t      by the operating system (or file system).  Only the filename can\n\t      be a wildcard; the path itself cannot.  Wildcard expressions are\n\t      similar to Unix egrep(1) (regular) expressions and may contain:\n\n\t      *      matches a sequence of 0 or more characters\n\n\t      ?      matches exactly 1 character\n\n\t      [...]  matches any single character found inside the brackets;\n\t\t     ranges are specified by a beginning character, a hyphen,\n\t\t     and an ending character.  If an exclamation point or a\n\t\t     caret (`!' or `^') follows the left bracket, then the\n\t\t     range of characters within the brackets is complemented\n\t\t     (that is, anything except the characters inside the\n\t\t     brackets is considered a match).  To specify a verbatim\n\t\t     left bracket, the three-character sequence ``[[]'' has to\n\t\t     be used."
+  manpageQuestion1: What is the primary purpose of the zipinfo command?
+  manpageQuestion2: How can you use zipinfo to display information about all ZIP files in the current directory that match the pattern 'data*.zip'?
+  manpageQuestion3: Can you provide an example of using zipinfo with a wildcard to list the contents of all ZIP files in a directory named 'archives' that start with 'project' followed by any three characters and end with '.zip'?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `zipinfo`.\n\n\n\nManpage text:\n\n(Be sure to quote any character that might otherwise be\n\t      interpreted or modified by the operating system, particularly\n\t      under Unix and VMS.)  If no matches are found, the specification\n\t      is assumed to be a literal filename; and if that also fails, the\n\t      suffix .zip is appended.\tNote that self-extracting ZIP files\n\t      are supported, as with any other ZIP archive; just specify the\n\t      .exe suffix (if any) explicitly.\n\n       [file(s)]\n\t      An optional list of archive members to be processed, separated\n\t      by spaces.  (VMS versions compiled with VMSCLI defined must\n\t      delimit files with commas instead.)  Regular expressions\n\t      (wildcards) may be used to match multiple members; see above.\n\t      Again, be sure to quote expressions that would otherwise be\n\t      expanded or modified by the operating system.\n\n       [-x xfile(s)]\n\t      An optional list of archive members to be excluded from\n\t      processing.\n\nOPTIONS\n       -1     list filenames only, one per line.  This option excludes all\n\t      others; headers, trailers and zipfile comments are never\n\t      printed.\tIt is intended for use in Unix shell scripts."
+  manpageQuestion1: What is the primary purpose of the zipinfo command?
+  manpageQuestion2: How can you use zipinfo to list only the filenames in a ZIP archive, one per line?
+  manpageQuestion3: What is the function of the -x option in zipinfo, and how would you use it to exclude specific files from being listed?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `zipinfo`.\n\n\n\nManpage text:\n\n-2     list filenames only, one per line, but allow headers (-h),\n\t      trailers (-t) and zipfile comments (-z), as well.  This option\n\t      may be useful in cases where the stored filenames are\n\t      particularly long.\n\n       -s     list zipfile info in short Unix ``ls -l'' format.  This is the\n\t      default behavior; see below.\n\n       -m     list zipfile info in medium Unix ``ls -l'' format.  Identical to\n\t      the -s output, except that the compression factor, expressed as\n\t      a percentage, is also listed.\n\n       -l     list zipfile info in long Unix ``ls -l'' format.\tAs with -m\n\t      except that the compressed size (in bytes) is printed instead of\n\t      the compression ratio.\n\n       -v     list zipfile information in verbose, multi-page format.\n\n       -h     list header line.  The archive name, actual size (in bytes) and\n\t      total number of files is printed.\n\n       -M     pipe all output through an internal pager similar to the Unix\n\t      more(1) command.\tAt the end of a screenful of output, zipinfo\n\t      pauses with a ``--More--'' prompt; the next screenful may be\n\t      viewed by pressing the Enter (Return) key or the space bar.\n\t      zipinfo can be terminated by pressing the ``q'' key and, on some\n\t      systems, the Enter/Return key.  Unlike Unix more(1), there is no\n\t      forward-searching or editing capability.\tAlso, zipinfo doesn't\n\t      notice if long lines wrap at the edge of the screen, effectively\n\t      resulting in the printing of two or more lines and the\n\t      likelihood that some text will scroll off the top of the screen\n\t      before being viewed.  On some systems the number of available\n\t      lines on the screen is not detected, in which case zipinfo\n\t      assumes the height is 24 lines."
+  manpageQuestion1: What is the primary purpose of the zipinfo utility?
+  manpageQuestion2: How can you use zipinfo to list the contents of a ZIP archive in short Unix ls -l format?
+  manpageQuestion3: What command would you use to display the header information of a ZIP archive, including the archive name and total number of files?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `zipinfo`.\n\n\n\nManpage text:\n\n-t     list totals for files listed or for all files.  The number of\n\t      files listed, their uncompressed and compressed total sizes ,\n\t      and their overall compression factor is printed; or, if only the\n\t      totals line is being printed, the values for the entire archive\n\t      are given.  The compressed total size does not include the 12\n\t      additional header bytes of each encrypted entry. Note that the\n\t      total compressed (data) size will never match the actual zipfile\n\t      size, since the latter includes all of the internal zipfile\n\t      headers in addition to the compressed data.\n\n       -T     print the file dates and times in a sortable decimal format\n\t      (yymmdd.hhmmss).\tThe default date format is a more standard,\n\t      human-readable version with abbreviated month names (see\n\t      examples below).\n\n       -U     [UNICODE_SUPPORT only] modify or disable UTF-8 handling.\tWhen\n\t      UNICODE_SUPPORT is available, the option -U forces unzip to\n\t      escape all non-ASCII characters from UTF-8 coded filenames as\n\t      ``#Uxxxx''.  This option is mainly provided for debugging\n\t      purpose when the fairly new UTF-8 support is suspected to mangle\n\t      up extracted filenames."
+  manpageQuestion1: What is the primary purpose of the zipinfo command?
+  manpageQuestion2: How can you use zipinfo to display total file sizes and compression factors for all files in an archive?
+  manpageQuestion3: What is the function of the -T option in zipinfo and how does it differ from the default date format?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `zipinfo`.\n\n\n\nManpage text:\n\nThe option -UU allows to entirely disable the recognition of\n\t      UTF-8 encoded filenames.\tThe handling of filename codings\n\t      within unzip falls back to the behaviour of previous versions.\n\n       -z     include the archive comment (if any) in the listing.\n\nDETAILED DESCRIPTION\n       zipinfo has a number of modes, and its behavior can be rather difficult\n       to fathom if one isn't familiar with Unix ls(1) (or even if one is).\n       The default behavior is to list files in the following format:\n\n  -rw-rws---  1.9 unx\t 2802 t- defX 11-Aug-91 13:48 perms.2660\n\n       The last three fields are the modification date and time of the file,\n       and its name.  The case of the filename is respected; thus files that\n       come from MS-DOS PKZIP are always capitalized.  If the file was zipped\n       with a stored directory name, that is also displayed as part of the\n       filename.\n\n       The second and third fields indicate that the file was zipped under\n       Unix with version 1.9 of zip.  Since it comes from Unix, the file\n       permissions at the beginning of the line are printed in Unix format.\n       The uncompressed file-size (2802 in this example) is the fourth field."
+  manpageQuestion1: What is the primary purpose of the zipinfo command?
+  manpageQuestion2: How can you use the -z option with zipinfo to include the archive comment in the listing?
+  manpageQuestion3: What does the -UU option do in the context of zipinfo?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `zipinfo`.\n\n\n\nManpage text:\n\nThe fifth field consists of two characters, either of which may take on\n       several values.\tThe first character may be either `t' or `b',\n       indicating that zip believes the file to be text or binary,\n       respectively; but if the file is encrypted, zipinfo notes this fact by\n       capitalizing the character (`T' or `B').  The second character may also\n       take on four values, depending on whether there is an extended local\n       header and/or an ``extra field'' associated with the file (fully\n       explained in PKWare's APPNOTE.TXT, but basically analogous to pragmas\n       in ANSI C--i.e., they provide a standard way to include non-standard\n       information in the archive).  If neither exists, the character will be\n       a hyphen (`-'); if there is an extended local header but no extra\n       field, `l'; if the reverse, `x'; and if both exist, `X'.  Thus the file\n       in this example is (probably) a text file, is not encrypted, and has\n       neither an extra field nor an extended local header associated with it.\n       The example below, on the other hand, is an encrypted binary file with\n       an extra field:"
+  manpageQuestion1: What is the primary purpose of the zipinfo command?
+  manpageQuestion2: How can you use zipinfo to determine if a file in a ZIP archive is encrypted?
+  manpageQuestion3: Can you explain how to check if a ZIP archive contains an extended local header for a particular file?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `zipinfo`.\n\n\n\nManpage text:\n\nRWD,R,R     0.9 vms\t  168 Bx shrk  9-Aug-91 19:15 perms.0644\n\n       Extra fields are used for various purposes (see discussion of the -v\n       option below) including the storage of VMS file attributes, which is\n       presumably the case here.  Note that the file attributes are listed in\n       VMS format.  Some other possibilities for the host operating system\n       (which is actually a misnomer--host file system is more correct)\n       include OS/2 or NT with High Performance File System (HPFS), MS-DOS,\n       OS/2 or NT with File Allocation Table (FAT) file system, and Macintosh.\n       These are denoted as follows:\n\n  -rw-a--     1.0 hpf\t 5358 Tl i4:3  4-Dec-91 11:33 longfilename.hpfs\n       -r--ahs\t   1.1 fat    4096 b- i4:2 14-Jul-91 12:58 EA DATA. SF\n\t    --w-------\t1.0 mac   17357 bx i8:2  4-May-92 04:02 unzip.macr\n\n       File attributes in the first two cases are indicated in a Unix-like\n       format, where the seven subfields indicate whether the file:  (1) is a\n       directory, (2) is readable (always true), (3) is writable, (4) is\n       executable (guessed on the basis of the extension--.exe, .com, .bat,\n       .cmd and .btm files are assumed to be so), (5) has its archive bit set,\n       (6) is hidden, and (7) is a system file.  Interpretation of Macintosh\n       file attributes is unreliable because some Macintosh archivers don't\n       store any attributes in the archive."
+  manpageQuestion1: What is the primary purpose of the zipinfo command?
+  manpageQuestion2: How can you use zipinfo to display the extra fields of a ZIP archive that include VMS file attributes?
+  manpageQuestion3: Can you provide an example of using zipinfo to check the file attributes stored in a ZIP archive for a Macintosh file?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `zipinfo`.\n\n\n\nManpage text:\n\nFinally, the sixth field indicates the compression method and possible\n       sub-method used.  There are six methods known at present:  storing (no\n       compression), reducing, shrinking, imploding, tokenizing (never\n       publicly released), and deflating.  In addition, there are four levels\n       of reducing (1 through 4); four types of imploding (4K or 8K sliding\n       dictionary, and 2 or 3 Shannon-Fano trees); and four levels of\n       deflating (superfast, fast, normal, maximum compression).  zipinfo\n       represents these methods and their sub-methods as follows:  stor; re:1,\n       re:2, etc.; shrk; i4:2, i8:3, etc.; tokn; and defS, defF, defN, and\n       defX.\n\n       The medium and long listings are almost identical to the short format\n       except that they add information on the file's compression.  The medium\n       format lists the file's compression factor as a percentage indicating\n       the amount of space that has been ``removed'':\n\n  -rw-rws---  1.5 unx\t 2802 t- 81% defX 11-Aug-91 13:48 perms.2660"
+  manpageQuestion1: What is the primary purpose of the zipinfo command?
+  manpageQuestion2: How can you use zipinfo to display detailed information about the compression method and level of a ZIP archive?
+  manpageQuestion3: What does the 'defX' notation in the zipinfo output represent?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `zipinfo`.\n\n\n\nManpage text:\n\nIn this example, the file has been compressed by more than a factor of\n       five; the compressed data are only 19% of the original size.  The long\n       format gives the compressed file's size in bytes, instead:\n\n  -rw-rws---  1.5 unx\t 2802 t-     538 defX 11-Aug-91 13:48 perms.2660\n\n       In contrast to the unzip listings, the compressed size figures in this\n       listing format denote the complete size of compressed data, including\n       the 12 extra header bytes in case of encrypted entries.\n\n       Adding the -T option changes the file date and time to decimal format:\n\n  -rw-rws---  1.5 unx\t 2802 t-     538 defX 910811.134804 perms.2660\n\n       Note that because of limitations in the MS-DOS format used to store\n       file times, the seconds field is always rounded to the nearest even\n       second.\tFor Unix files this is expected to change in the next major\n       releases of zip(1L) and unzip.\n\n       In addition to individual file information, a default zipfile listing\n       also includes header and trailer lines:"
+  manpageQuestion1: What is the primary purpose of the zipinfo command?
+  manpageQuestion2: How can you display the detailed information about all files in a zip archive using zipinfo?
+  manpageQuestion3: What is the effect of using the -T option with zipinfo when viewing file timestamps?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `zipinfo`.\n\n\n\nManpage text:\n\nArchive:  OS2.zip   5453 bytes   5 files\n       ,,rw,\t   1.0 hpf     730 b- i4:3 26-Jun-92 23:40 Contents\n\t    ,,rw,\t1.0 hpf    3710 b- i4:3 26-Jun-92 23:33 makefile.os2\n\t\t ,,rw,\t     1.0 hpf\t8753 b- i8:3 26-Jun-92 15:29 os2unzip.c\n\t\t      ,,rw,\t  1.0 hpf      98 b- stor 21-Aug-91 15:34 unzip.def\n\t\t\t   ,,rw,       1.0 hpf\t    95 b- stor 21-Aug-91 17:51 zipinfo.def\n\t\t\t\t5 files, 13386 bytes uncompressed, 4951 bytes compressed:  63.0%\n\n       The header line gives the name of the archive, its total size, and the\n       total number of files; the trailer gives the number of files listed,\n       their total uncompressed size, and their total compressed size (not\n       including any of zip's internal overhead).  If, however, one or more\n       file(s) are provided, the header and trailer lines are not listed.\n       This behavior is also similar to that of Unix's ``ls -l''; it may be\n       overridden by specifying the -h and -t options explicitly.  In such a\n       case the listing format must also be specified explicitly, since -h or\n       -t (or both) in the absence of other options implies that ONLY the\n       header or trailer line (or both) is listed.  See the EXAMPLES section\n       below for a semi-intelligible translation of this nonsense."
+  manpageQuestion1: What is the primary purpose of the zipinfo command?
+  manpageQuestion2: How can you use zipinfo to display the contents of a zip archive without showing the header and trailer lines?
+  manpageQuestion3: Can you provide an example of using zipinfo to display the header line of a zip archive?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `zipinfo`.\n\n\n\nManpage text:\n\nThe verbose listing is mostly self-explanatory.\tIt also lists file\n       comments and the zipfile comment, if any, and the type and number of\n       bytes in any stored extra fields.  Currently known types of extra\n       fields include PKWARE's authentication (``AV'') info; OS/2 extended\n       attributes; VMS filesystem info, both PKWARE and Info-ZIP versions;\n       Macintosh resource forks; Acorn/Archimedes SparkFS info; and so on.\n       (Note that in the case of OS/2 extended attributes--perhaps the most\n       common use of zipfile extra fields--the size of the stored EAs as\n       reported by zipinfo may not match the number given by OS/2's dir\n       command: OS/2 always reports the number of bytes required in 16-bit\n       format, whereas zipinfo always reports the 32-bit storage.)\n\n       Again, the compressed size figures of the individual entries include\n       the 12 extra header bytes for encrypted entries.  In contrast, the\n       archive total compressed size and the average compression ratio shown\n       in the summary bottom line are calculated without the extra 12 header\n       bytes of encrypted entries."
+  manpageQuestion1: What is the primary purpose of the zipinfo command?
+  manpageQuestion2: How can you use zipinfo to display detailed information about all files in a ZIP archive, including file comments and extra fields?
+  manpageQuestion3: What does zipinfo report about the size of OS/2 extended attributes in a ZIP archive, and how does it differ from what OS/2's dir command reports?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `zipinfo`.\n\n\n\nManpage text:\n\nENVIRONMENT OPTIONS\n       Modifying zipinfo's default behavior via options placed in an\n       environment variable can be a bit complicated to explain, due to\n       zipinfo's attempts to handle various defaults in an intuitive, yet\n       Unix-like, manner.  (Try not to laugh.)\tNevertheless, there is some\n       underlying logic.  In brief, there are three ``priority levels'' of\n       options:  the default options; environment options, which can override\n       or add to the defaults; and explicit options given by the user, which\n       can override or add to either of the above.\n\n       The default listing format, as noted above, corresponds roughly to the\n       \"zipinfo -hst\" command (except when individual zipfile members are\n       specified).  A user who prefers the long-listing format (-l) can make\n       use of the zipinfo's environment variable to change this default:\n\n       Unix Bourne shell:\n\t      ZIPINFO=-l; export ZIPINFO\n\n       Unix C shell:\n\t      setenv ZIPINFO -l"
+  manpageQuestion1: What is the primary purpose of the zipinfo command?
+  manpageQuestion2: How can you set the default listing format of zipinfo to long-listing using an environment variable in a Unix Bourne shell?
+  manpageQuestion3: What is the hierarchy of option priority in zipinfo, from highest to lowest?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `zipinfo`.\n\n\n\nManpage text:\n\nOS/2 or MS-DOS:\n\t      set ZIPINFO=-l\n\n       VMS (quotes for lowercase):\n\t      define ZIPINFO_OPTS \"-l\"\n\n       If, in addition, the user dislikes the trailer line, zipinfo's concept\n       of ``negative options'' may be used to override the default inclusion\n       of the line.  This is accomplished by preceding the undesired option\n       with one or more minuses:  e.g., ``-l-t'' or ``--tl'', in this example.\n       The first hyphen is the regular switch character, but the one before\n       the `t' is a minus sign.  The dual use of hyphens may seem a little\n       awkward, but it's reasonably intuitive nonetheless:  simply ignore the\n       first hyphen and go from there.\tIt is also consistent with the\n       behavior of the Unix command nice(1).\n\n       As suggested above, the default variable names are ZIPINFO_OPTS for VMS\n       (where the symbol used to install zipinfo as a foreign command would\n       otherwise be confused with the environment variable), and ZIPINFO for\n       all other operating systems.  For compatibility with zip(1L),\n       ZIPINFOOPT is also accepted (don't ask).  If both ZIPINFO and\n       ZIPINFOOPT are defined, however, ZIPINFO takes precedence.  unzip's\n       diagnostic option (-v with no zipfile name) can be used to check the\n       values of all four possible unzip and zipinfo environment variables."
+  manpageQuestion1: What is the primary purpose of the zipinfo command?
+  manpageQuestion2: How would you use the zipinfo command to list all files in a ZIP archive while excluding the trailer line?
+  manpageQuestion3: Can you provide an example of setting environment variables to configure the behavior of zipinfo on VMS?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `zipinfo`.
+
+
+
+    Manpage text:
+
+    EXAMPLES
+           To get a basic, short-format listing of the complete contents of a ZIP
+           archive storage.zip, with both header and totals lines, use only the
+           archive name as an argument to zipinfo:
+
+           zipinfo storage
+
+           To produce a basic, long-format listing (not verbose), including header
+           and totals lines, use -l:
+
+           zipinfo -l storage
+
+           To list the complete contents of the archive without header and totals
+           lines, either negate the -h and -t options or else specify the contents
+           explicitly:
+
+           zipinfo --h-t storage
+           zipinfo storage \*
+
+           (where the backslash is required only if the shell would otherwise
+           expand the `*' wildcard, as in Unix when globbing is turned on--double
+           quotes around the asterisk would have worked as well).  To turn off the
+           totals line by default, use the environment variable (C shell is
+           assumed here):
+
+           setenv ZIPINFO --t
+           zipinfo storage
+
+           To get the full, short-format listing of the first example again, given
+           that the environment variable is set as in the previous example, it is
+           necessary to specify the -s option explicitly, since the -t option by
+           itself implies that ONLY the footer line is to be printed:
+  manpageQuestion1: What is the primary purpose of the zipinfo tool?
+  manpageQuestion2: How can you list the contents of a ZIP archive in long-format without header and totals lines?
+  manpageQuestion3: What command would you use to get a short-format listing of the contents of a ZIP archive while disabling the totals line by default?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `zipinfo`.\n\n\n\nManpage text:\n\nsetenv ZIPINFO --t\n       zipinfo -t storage\t     [only totals line]\n       zipinfo -st storage\t     [full listing]\n\n       The -s option, like -m and -l, includes headers and footers by default,\n       unless otherwise specified.  Since the environment variable specified\n       no footers and that has a higher precedence than the default behavior\n       of -s, an explicit -t option was necessary to produce the full listing.\n       Nothing was indicated about the header, however, so the -s option was\n       sufficient.  Note that both the -h and -t options, when used by\n       themselves or with each other, override any default listing of member\n       files; only the header and/or footer are printed.  This behavior is\n       useful when zipinfo is used with a wildcard zipfile specification; the\n       contents of all zipfiles are then summarized with a single command.\n\n       To list information on a single file within the archive, in medium\n       format, specify the filename explicitly:"
+  manpageQuestion1: What is the primary purpose of the zipinfo command?
+  manpageQuestion2: How can you use zipinfo to display only the totals line of a zip archive's storage information?
+  manpageQuestion3: Can you provide an example of using zipinfo to list the information of a specific file within a zip archive in medium format?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `zipinfo`.\n\n\n\nManpage text:\n\nzipinfo -m storage unshrink.c\n\n       The specification of any member file, as in this example, will override\n       the default header and totals lines; only the single line of\n       information about the requested file will be printed.  This is\n       intuitively what one would expect when requesting information about a\n       single file.  For multiple files, it is often useful to know the total\n       compressed and uncompressed size; in such cases -t may be specified\n       explicitly:\n\n       zipinfo -mt storage \"*.[ch]\" Mak\\*\n\n       To get maximal information about the ZIP archive, use the verbose\n       option.\tIt is usually wise to pipe the output into a filter such as\n       Unix more(1) if the operating system allows it:\n\n       zipinfo -v storage | more\n\n       Finally, to see the most recently modified files in the archive, use\n       the -T option in conjunction with an external sorting utility such as\n       Unix sort(1) (and sed(1) as well, in this example):\n\n       zipinfo -T storage | sort -nr -k 7 | sed 15q"
+  manpageQuestion1: What is the primary purpose of the zipinfo command?
+  manpageQuestion2: How can you use zipinfo to get the total compressed and uncompressed sizes of multiple files in a ZIP archive?
+  manpageQuestion3: Can you provide an example of using zipinfo to display the most recently modified files in a ZIP archive, sorted by modification time?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `zipinfo`.\n\n\n\nManpage text:\n\nThe -nr option to sort(1) tells it to sort numerically in reverse order\n       rather than in textual order, and the -k 7 option tells it to sort on\n       the seventh field.  This assumes the default short-listing format; if\n       -m or -l is used, the proper sort(1) option would be -k 8.  Older\n       versions of sort(1) do not support the -k option, but you can use the\n       traditional + option instead, e.g., +6 instead of -k 7.\tThe sed(1)\n       command filters out all but the first 15 lines of the listing.  Future\n       releases of zipinfo may incorporate date/time and filename sorting as\n       built-in options.\n\nTIPS\n       The author finds it convenient to define an alias ii for zipinfo on\n       systems that allow aliases (or, on other systems, copy/rename the\n       executable, create a link or create a command file with the name ii).\n       The ii usage parallels the common ll alias for long listings in Unix,\n       and the similarity between the outputs of the two commands was\n       intentional."
+  manpageQuestion1: What is the primary purpose of the zipinfo command?
+  manpageQuestion2: How can you use zipinfo to display a list of files in a ZIP archive sorted by the seventh field numerically in reverse order?
+  manpageQuestion3: Can you provide an example of using zipinfo with the -nr option to sort a ZIP archive's contents numerically in reverse order?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `zipinfo`.
+
+
+
+    Manpage text:
+
+    BUGS
+           As with unzip, zipinfo's -M (``more'') option is overly simplistic in
+           its handling of screen output; as noted above, it fails to detect the
+           wrapping of long lines and may thereby cause lines at the top of the
+           screen to be scrolled off before being read.  zipinfo should detect and
+           treat each occurrence of line-wrap as one additional line printed.
+           This requires knowledge of the screen's width as well as its height.
+           In addition, zipinfo should detect the true screen geometry on all
+           systems.
+
+           zipinfo's listing-format behavior is unnecessarily complex and should
+           be simplified.  (This is not to say that it will be.)
+
+    SEE ALSO
+           ls(1), funzip(1L), unzip(1L), unzipsfx(1L), zip(1L), zipcloak(1L),
+           zipnote(1L), zipsplit(1L)
+
+    URL
+           The Info-ZIP home page is currently at
+           http://www.info-zip.org/pub/infozip/
+           or
+           ftp://ftp.info-zip.org/pub/infozip/ .
+
+    AUTHOR
+           Greg ``Cave Newt'' Roelofs.  ZipInfo contains pattern-matching code by
+           Mark Adler and fixes/improvements by many others.  Please refer to the
+           CONTRIBS file in the UnZip source distribution for a more complete
+           list.
+  manpageQuestion1: What is the primary purpose of the zipinfo command?
+  manpageQuestion2: How can you use zipinfo to display the contents of a ZIP archive in a more readable format?
+  manpageQuestion3: What is the function of the -M option in zipinfo, and how might it be used in practice?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `zipinfo`.\n\n\n\nManpage text:\n\nInfo-ZIP\t\t     20 April 2009 (v3.0)\t\t   ZIPINFO(1L)"
+  manpageQuestion1: What is the primary purpose of the zipinfo command?
+  manpageQuestion2: How can you use zipinfo to list the contents of a ZIP archive file named 'example.zip'?
+  manpageQuestion3: Can you provide an example of using zipinfo to display detailed information about all the files in a ZIP archive?
+

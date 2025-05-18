@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `setregion`.\n\n\n\nManpage text:\n\nsetregion(8)\t\t    System Manager's Manual\t\t  setregion(8)\n\nNAME\n     setregion\n\nSYNOPSIS\n     has no command line interface\n\nDESCRIPTION\n     setregion is used by the DVD Player to set the disc region code for a DVD\n     drive.\n\nMac OS X\t\t       December 5, 2006 \t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the setregion tool?
+  manpageQuestion2: How can setregion be used to configure a DVD drive's region code?
+  manpageQuestion3: What is the typical scenario where setregion would be employed by a user?
+

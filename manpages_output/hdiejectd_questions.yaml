@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `hdiejectd`.\n\n\n\nManpage text:\n\nHDIEJECTD(8)\t\t    System Manager's Manual\t\t  HDIEJECTD(8)\n\nNAME\n     hdiejectd – disk image management daemon\n\nSYNOPSIS\n     hdiejectd\n\nDESCRIPTION\n     hdiejectd manages disk images attached to the system, and arbitrates the\n     image attach and eject processes.\thdiejectd will run on demand and\n     automatically exit after a short time when there are no longer any disk\n     images attached to the system.\n\n     There are no configuration options to hdiejectd.  Users should not run\n     hdiejectd manually.\n\nSEE ALSO\n     hdiutil(1), diskutil(8)\n\nmacOS\t\t\t\t  17 Nov 2016\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the hdiejectd tool?
+  manpageQuestion2: How would you use hdiejectd to manage disk images attached to the system?
+  manpageQuestion3: Can you provide an example of using hdiejectd to handle a disk image attachment and ejection process?
+

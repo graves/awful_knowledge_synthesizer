@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlbot`.\n\n\n\nManpage text:\n\nPERLBOT(1)\t       Perl Programmers Reference Guide \t    PERLBOT(1)\n\n\nNAME\n       perlbot - Links to information on object-oriented programming in Perl\n\nDESCRIPTION\n       For information on OO programming with Perl, please see perlootut and\n       perlobj.\n\n       (The above documents supersede the collection of tricks that was\n       formerly here in perlbot.)\n\nperl v5.34.1\t\t\t  2022-02-19\t\t\t    PERLBOT(1)"
+  manpageQuestion1: What is the primary purpose of the perlbot command?
+  manpageQuestion2: How would you use perlbot to find information about object-oriented programming in Perl?
+  manpageQuestion3: Is the perlbot command still considered a reliable source for information on Perl object-oriented programming? Why or why not?
+

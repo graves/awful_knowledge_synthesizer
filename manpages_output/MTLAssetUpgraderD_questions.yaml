@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `MTLAssetUpgraderD`.\n\n\n\nManpage text:\n\nMTLASSETUPGRADERD(8)\t    System Manager's Manual\t  MTLASSETUPGRADERD(8)\n\nNAME\n     MTLAssetUpgraderD – Metal asset upgrader daemon\n\nSYNOPSIS\n     takes no arguments, and users should not launch it manually.\n\nDESCRIPTION\n     MTLAssetUpgraderD performs background compilation of binary archives to\n     target the current GPU architecture/OS.\n\nHISTORY\n     mtlregistrationd first appeared in macOS 13.0 and iOS 16.0\n\nDarwin\t\t\t       February 9, 2022 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the MTLAssetUpgraderD tool?
+  manpageQuestion2: How would you check if the MTLAssetUpgraderD daemon is running on a macOS system?
+  manpageQuestion3: What is the role of MTLAssetUpgraderD in relation to GPU and OS compatibility?
+

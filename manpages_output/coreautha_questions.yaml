@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `coreautha`.\n\n\n\nManpage text:\n\ncoreautha(8)\t\t    System Manager's Manual\t\t  coreautha(8)\n\nNAME\n     coreautha – LocalAuthentication user interface agent\n\nDESCRIPTION\n     coreautha is a system agent that provides LocalAuthentication user\n     interface services.\n\n     The coreautha command should not be run directly.\n\nmacOS 15.3\t\t       February 15, 2017\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the coreautha tool?
+  manpageQuestion2: How would you use coreautha to handle LocalAuthentication requests on a macOS system?
+  manpageQuestion3: Can you explain the role of coreautha in the LocalAuthentication framework on macOS?
+

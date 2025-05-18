@@ -1,0 +1,64 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `backend`.\n\n\n\nManpage text:\n\nbackend(7)\t\t\t  Apple Inc.\t\t\t    backend(7)\n\nNAME\n       backend - cups backend transmission interfaces\n\nSYNOPSIS\n       backend\n       backend job user title num-copies options [ filename ]\n\n       #include <cups/cups.h>\n\n       const char *cupsBackendDeviceURI(char **argv);\n\n       void cupsBackendReport(const char *device_scheme,\n\t\t\t      const char *device_uri,\n\t\t\t      const char *device_make_and_model,\n\t\t\t      const char *device_info,\n\t\t\t      const char *device_id,\n\t\t\t      const char *device_location);\n\n       ssize_t cupsBackChannelWrite(const char *buffer,\n\t\t\t\t    size_t bytes, double timeout);\n\n       int cupsSideChannelRead(cups_sc_command_t *command,\n\t\t\t       cups_sc_status_t *status, char *data,\n\t\t\t       int *datalen, double timeout);\n\n       int cupsSideChannelWrite(cups_sc_command_t command,\n\t\t\t\tcups_sc_status_t status, const char *data,\n\t\t\t\tint datalen, double timeout);\n\nDESCRIPTION\n       Backends are a special type of filter(7) which is used to send print\n       data to and discover different devices on the system."
+  manpageQuestion1: What is the primary purpose of the backend command in the context of CUPS?
+  manpageQuestion2: How would you use the backend command to send a print job to a specific device?
+  manpageQuestion3: Can you explain how the cupsBackendDeviceURI function is used in the backend system?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `backend`.
+
+
+
+    Manpage text:
+
+    Like filters, backends must be capable of reading from a filename on
+           the command-line or from the standard input, copying the standard input
+           to a temporary file as required by the physical interface.
+
+           The command name (argv[0]) is set to the device URI of the destination
+           printer.  Authentication information in argv[0] is removed, so backend
+           developers are urged to use the DEVICE_URI environment variable
+           whenever authentication information is required. The
+           cupsBackendDeviceURI() function may be used to retrieve the correct
+           device URI.
+
+           Back-channel data from the device should be relayed to the job filters
+           using the cupsBackChannelWrite function.
+
+           Backends are responsible for reading side-channel requests using the
+           cupsSideChannelRead() function and responding with the
+           cupsSideChannelWrite() function. The CUPS_SC_FD constant defines the
+           file descriptor that should be monitored for incoming requests.
+  manpageQuestion1: What is the primary purpose of the 'backend' resource in macOS?
+  manpageQuestion2: How would you use the 'backend' resource to process a file and send it to a printer with authentication information removed from the command-line?
+  manpageQuestion3: Can you explain how to relay back-channel data from a device to job filters using the 'backend' resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `backend`.\n\n\n\nManpage text:\n\nDEVICE DISCOVERY\n       When run with no arguments, the backend should list the devices and\n       schemes it supports or is advertising to the standard output.  The\n       output consists of zero or more lines consisting of any of the\n       following forms:\n\n\t   device-class scheme \"Unknown\" \"device-info\"\n\t   device-class device-uri \"device-make-and-model\" \"device-info\"\n\t   device-class device-uri \"device-make-and-model\" \"device-info\" \"device-id\"\n\t   device-class device-uri \"device-make-and-model\" \"device-info\" \"device-id\" \"device-location\"\n\n       The cupsBackendReport() function can be used to generate these lines\n       and handle any necessary escaping of characters in the various strings.\n\n       The device-class field is one of the following values:\n\n       direct\n\t    The device-uri refers to a specific direct-access device with no\n\t    options, such as a parallel, USB, or SCSI device.\n\n       file The device-uri refers to a file on disk.\n\n       network\n\t    The device-uri refers to a networked device and conforms to the\n\t    general form for network URIs."
+  manpageQuestion1: What is the primary purpose of the backend tool?
+  manpageQuestion2: How would you use the backend tool to list all supported devices and schemes?
+  manpageQuestion3: Can you provide an example of using the backend tool to display information about a specific device-class, such as 'direct'?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `backend`.\n\n\n\nManpage text:\n\nserial\n\t    The device-uri refers to a serial device with configurable baud\n\t    rate and other options.  If the device-uri contains a baud value,\n\t    it represents the maximum baud rate supported by the device.\n\n       The scheme field provides the URI scheme that is supported by the\n       backend.  Backends should use this form only when the backend supports\n       any URI using that scheme.  The device-uri field specifies the full URI\n       to use when communicating with the device.\n\n       The device-make-and-model field specifies the make and model of the\n       device, e.g. \"Example Foojet 2000\".  If the make and model is not\n       known, you must report \"Unknown\".\n\n       The device-info field specifies additional information about the\n       device.\tTypically this includes the make and model along with the port\n       number or network address, e.g. \"Example Foojet 2000 USB #1\".\n\n       The optional device-id field specifies the IEEE-1284 device ID string\n       for the device, which is used to select a matching driver."
+  manpageQuestion1: What is the primary purpose of the 'backend' resource?
+  manpageQuestion2: How does the 'device-uri' field in the 'backend' resource specify a serial device's configuration?
+  manpageQuestion3: What information is typically included in the 'device-info' field of the 'backend' resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `backend`.\n\n\n\nManpage text:\n\nThe optional device-location field specifies the physical location of\n       the device, which is often used to pre-populate the printer-location\n       attribute when adding a printer.\n\n   PERMISSIONS\n       Backends without world read and execute permissions are run as the root\n       user.  Otherwise, the backend is run using an unprivileged user\n       account, typically \"lp\".\n\nEXIT STATUS\n       The following exit codes are defined for backends:\n\n       CUPS_BACKEND_OK\n\t    The print file was successfully transmitted to the device or\n\t    remote server.\n\n       CUPS_BACKEND_FAILED\n\t    The print file was not successfully transmitted to the device or\n\t    remote server.  The scheduler will respond to this by canceling\n\t    the job, retrying the job, or stopping the queue depending on the\n\t    state of the printer-error-policy attribute.\n\n       CUPS_BACKEND_AUTH_REQUIRED\n\t    The print file was not successfully transmitted because valid\n\t    authentication information is required.  The scheduler will\n\t    respond to this by holding the job and adding the 'cups-held-for-\n\t    authentication' keyword to the \"job-reasons\" Job Description\n\t    attribute."
+  manpageQuestion1: What is the primary purpose of the 'backend' resource in macOS?
+  manpageQuestion2: How can you configure a backend to specify the physical location of a device when adding a printer?
+  manpageQuestion3: What exit status codes are defined for backends in CUPS, and what do they indicate?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `backend`.\n\n\n\nManpage text:\n\nCUPS_BACKEND_HOLD\n\t    The print file was not successfully transmitted because it cannot\n\t    be printed at this time.  The scheduler will respond to this by\n\t    holding the job.\n\n       CUPS_BACKEND_STOP\n\t    The print file was not successfully transmitted because it cannot\n\t    be printed at this time.  The scheduler will respond to this by\n\t    stopping the queue.\n\n       CUPS_BACKEND_CANCEL\n\t    The print file was not successfully transmitted because one or\n\t    more attributes are not supported or the job was canceled at the\n\t    printer.  The scheduler will respond to this by canceling the job.\n\n       CUPS_BACKEND_RETRY\n\t    The print file was not successfully transmitted because of a\n\t    temporary issue.  The scheduler will retry the job at a future\n\t    time - other jobs may print before this one.\n\n       CUPS_BACKEND_RETRY_CURRENT\n\t    The print file was not successfully transmitted because of a\n\t    temporary issue.  The scheduler will retry the job immediately\n\t    without allowing intervening jobs."
+  manpageQuestion1: What is the primary purpose of the CUPS_BACKEND_ constants?
+  manpageQuestion2: How would you use these constants in a script to indicate that a print job should be held by the scheduler?
+  manpageQuestion3: Can you provide an example of using CUPS_BACKEND_RETRY_CURRENT to instruct the scheduler to retry a print job immediately without waiting for other jobs?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `backend`.\n\n\n\nManpage text:\n\nAll other exit code values are reserved.\n\nENVIRONMENT\n       In addition to the environment variables listed in cups(1) and\n       filter(7), CUPS backends can expect the following environment variable:\n\n       DEVICE_URI\n\t    The device URI associated with the printer.\n\nFILES\n       /etc/cups/cups-files.conf\n\nNOTES\n       CUPS backends are not generally designed to be run directly by the\n       user.  Aside from the device URI issue ( argv[0] and DEVICE_URI\n       environment variable contain the device URI), CUPS backends also expect\n       specific environment variables and file descriptors, and typically run\n       in a user session that (on macOS) has additional restrictions that\n       affect how it runs.  Backends can also be installed with restricted\n       permissions (0500 or 0700) that tell the scheduler to run them as the\n       \"root\" user instead of an unprivileged user (typically \"lp\") on the\n       system.\n\n       Unless you are a developer and know what you are doing, please do not\n       run backends directly.  Instead, use the lp(1) or lpr(1) programs to\n       send print jobs or lpinfo(8) to query for available printers using the\n       backend.  The one exception is the SNMP backend - see cups-snmp(8) for\n       more information."
+  manpageQuestion1: What is the primary purpose of the 'backend' resource in the CUPS system?
+  manpageQuestion2: How can a user correctly interact with a CUPS backend without directly running it as a standalone program?
+  manpageQuestion3: What are the security considerations when dealing with CUPS backends on macOS?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `backend`.\n\n\n\nManpage text:\n\nNOTES\n       CUPS printer drivers and backends are deprecated and will no longer be\n       supported in a future feature release of CUPS.  Printers that do not\n       support IPP can be supported using applications such as\n       ippeveprinter(1).\n\nSEE ALSO\n       cups(1), cups-files.conf(5), cups-snmp(8), cupsd(8), filter(7), lp(1),\n       lpinfo(8), lpr(1),\n       CUPS Online Help (http://localhost:631/help)\n\nCOPYRIGHT\n       Copyright © 2007-2019 by Apple Inc.\n\n26 April 2019\t\t\t     CUPS\t\t\t    backend(7)"
+  manpageQuestion1: What is the primary purpose of the 'backend' resource in CUPS?
+  manpageQuestion2: How would you use the 'backend' resource to manage a printer that does not support IPP?
+  manpageQuestion3: What is the recommended alternative to using 'backend' for printers that do not support IPP?
+

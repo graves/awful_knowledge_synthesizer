@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `PrintUITool`.\n\n\n\nManpage text:\n\nPrintUITool(8)\t\t    System Manager's Manual\t\tPrintUITool(8)\n\nNAME\n     PrintUITool – a tool to perform privileged ui based operations on the\n     printing system\n\nSYNOPSIS\n     NONE (launched by launchd)\n\nDESCRIPTION\n     PrintUITool acts as a privileged gateway between macOS applications, the\n     printing system, software update server and so on.\n\n     This command is not intended to be invoked directly.\n\nFILES\n     /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/PrintUITool\n\nSEE ALSO\n     launchd(8)\n\nHISTORY\n     PrintUITool first appeared in macOS 10.4.\n\nmacOS\t\t\t       December 12, 2016\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the PrintUITool?
+  manpageQuestion2: How would you use PrintUITool to perform a privileged operation on the printing system?
+  manpageQuestion3: Can you explain the role of PrintUITool in the context of macOS's printing system and software updates?
+

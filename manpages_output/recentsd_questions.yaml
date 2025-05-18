@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `recentsd`.\n\n\n\nManpage text:\n\nrecentsd(8)\t\t    System Manager's Manual\t\t   recentsd(8)\n\nNAME\n     recentsd – recentsd daemon\n\nDESCRIPTION\n     recentsd is used by Mail, Messages, and other apps on the system. It\n     keeps track of recently used email addresses, phone numbers, and\n     locations so you can use them again without adding them to your address\n     book.\n\n     This command is not intended to be invoked directly.\n\nmacOS\t\t\t\tJanuary 1, 2017 \t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the recentsd daemon?
+  manpageQuestion2: How does recentsd assist Mail and Messages applications on macOS?
+  manpageQuestion3: Can you explain the role of recentsd in managing recently used contact information?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `MotionTrackingAgent`.\n\n\n\nManpage text:\n\nMotionTrackingAgent(8)\t    System Manager's Manual\tMotionTrackingAgent(8)\n\nNAME\n     MotionTrackingAgent – Motion Tracking Launch Agent\n\nDESCRIPTION\n     Captures user's motion via camera input\n\nmacOS 15.3\t\t       November 13, 2018\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the MotionTrackingAgent tool?
+  manpageQuestion2: How would you configure the MotionTrackingAgent to start automatically at login?
+  manpageQuestion3: Can you explain how to stop the MotionTrackingAgent service if it's running?
+

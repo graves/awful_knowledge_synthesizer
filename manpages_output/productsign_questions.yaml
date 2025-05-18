@@ -1,0 +1,39 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `productsign`.\n\n\n\nManpage text:\n\nproductsign(1)\t\t    General Commands Manual\t\tproductsign(1)\n\nNAME\n     productsign – Sign a macOS Installer product archive\n\nSYNOPSIS\n     productsign [options] --sign identity input-product-path.pkg\n\t\t output-product-path.pkg\n\nDESCRIPTION\n     productsign adds a digital signature to a product archive previously\n     created with productbuild(1).  Although you can add a digital signature\n     at the time you run productbuild(1), you may wish to add a signature\n     later, once the product archive has been tested and is ready to deploy.\n     If you run productsign on a product archive that was previously signed,\n     the existing signature will be replaced.\n\n     To sign a product archive, you will need to have a certificate and\n     corresponding private key -- together called an “identity” -- in one of\n     your accessible keychains. To add a signature, specify the name of the\n     identity using the --sign option. The identity's name is the same as the\n     “Common Name” of the certificate."
+  manpageQuestion1: What is the primary purpose of the productsign tool?
+  manpageQuestion2: 'How would you use productsign to sign a macOS installer package with the identity ''Developer ID Installer: My Company, Inc.''?'
+  manpageQuestion3: Can you provide an example of using productsign to sign a product archive and overwrite any existing signature?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `productsign`.
+
+
+
+    Manpage text:
+
+    If you want to search for the identity in a specific keychain, specify
+         the path to the keychain file using the --keychain option. Otherwise, the
+         default keychain search path is used.
+
+         productsign will embed the signing certificate in the product archive, as
+         well as any intermediate certificates that are found in the keychain. If
+         you need to embed additional certificates to form a chain of trust
+         between the signing certificate and a trusted root certificate on the
+         system, use the --cert option to give the Common Name of the intermediate
+         certificate. Multiple --cert options may be used to embed multiple
+         intermediate certificates.
+
+         The signature can optionally include a trusted timestamp. This is enabled
+         by default when signing with a Developer ID identity, but it can be
+         enabled explicitly using the --timestamp option. A timestamp server must
+         be contacted to embed a trusted timestamp. If you aren't connected to the
+         Internet, you can use --timestamp=none to disable timestamps, even for a
+         Developer ID identity.
+  manpageQuestion1: What is the primary purpose of the productsign tool?
+  manpageQuestion2: How would you use productsign to sign a product with a specific keychain file and an intermediate certificate?
+  manpageQuestion3: Can you provide an example of using productsign to sign a product without including a trusted timestamp?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `productsign`.\n\n\n\nManpage text:\n\nARGUMENTS AND OPTIONS\n     --sign identity-name\n\t     The name of the identity to use for signing the product archive.\n\n     --keychain keychain-path\n\t     Specify a specific keychain to search for the signing identity.\n\n     --cert certificate-name\n\t     Specify an intermediate certificate to be embedded in the product\n\t     archive.\n\n     --timestamp\n\t     Include a trusted timestamp with the signature.\n\n     --timestamp=none\n\t     Disable trusted timestamp, regardless of identity.\n\n     input-product-path\n\t     The product archive to be signed.\n\n     output-product-path\n\t     The path to which the signed product archive will be written.\n\t     Must not be the same as input-product-path. The output path\n\t     should be package. If the package already exists, it will be\n\t     overwritten.\n\nSEE ALSO\n     productbuild(1)\n\nmacOS\t\t\t      September 15, 2010\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the productsign command?
+  manpageQuestion2: 'How would you use productsign to sign a product archive with the identity ''Apple Development: Your Name (XXXXXXXXXXXX)'' and save it to a new location?'
+  manpageQuestion3: Can you provide an example of using productsign to add a timestamp to the signature of a product archive?
+

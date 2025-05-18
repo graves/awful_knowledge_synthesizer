@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `append`.\n\n\n\nManpage text:\n\nappend(n)\t\t     Tcl Built-In Commands\t\t     append(n)\n\n______________________________________________________________________________\n\nNAME\n       append - Append to variable\n\nSYNOPSIS\n       append varName ?value value value ...?\n______________________________________________________________________________\n\n\nDESCRIPTION\n       Append all of the value arguments to the current value of variable\n       varName.  If varName does not exist, it is given a value equal to the\n       concatenation of all the value arguments.  The result of this command\n       is the new value stored in variable varName.  This command provides an\n       efficient way to build up long variables incrementally.\tFor example,\n       “append a $b” is much more efficient than “set a $a$b” if $a is long.\n\nEXAMPLE\n       Building a string of comma-separated numbers piecemeal using a loop.\n\t      set var 0\n\t      for {set i 1} {$i<=10} {incr i} {\n\t\t append var \",\" $i\n\t      }\n\t      puts $var\n\t      # Prints 0,1,2,3,4,5,6,7,8,9,10"
+  manpageQuestion1: What is the primary purpose of the append command in Tcl?
+  manpageQuestion2: How would you use the append command to build a string of comma-separated numbers from 1 to 10?
+  manpageQuestion3: Can you provide an example of using the append command to concatenate multiple values into a single variable?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `append`.\n\n\n\nManpage text:\n\nSEE ALSO\n       concat(n), lappend(n)\n\n\nKEYWORDS\n       append, variable\n\nTcl\t\t\t\t\t\t\t\t     append(n)"
+  manpageQuestion1: What is the primary purpose of the `append` command in Tcl?
+  manpageQuestion2: How would you use the `append` command to concatenate two strings in Tcl?
+  manpageQuestion3: Can you provide an example of using the `append` command to add a list of elements to a variable in Tcl?
+

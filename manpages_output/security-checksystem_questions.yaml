@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `security-checksystem`.\n\n\n\nManpage text:\n\nSECURITY-CHECKSYSTEM(1)     General Commands Manual    SECURITY-CHECKSYSTEM(1)\n\nNAME\n     security-checksystem – validate system keychain\n\nSYNOPSIS\n     security-checksystem\n\nDESCRIPTION\n     security-checksystem Checks to see if the System.keychain is intact and\n     working.  If it isn't, replaces it with a new, empty, working one.\n\nSEE ALSO\n     security(1)\n\nmacOS 15.3\t\t\t  May 5, 2017\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the security-checksystem command?
+  manpageQuestion2: How would you use the security-checksystem command to ensure the System.keychain is intact and functional?
+  manpageQuestion3: Can you explain the typical use case for running the security-checksystem command on a macOS system?
+

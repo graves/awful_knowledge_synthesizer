@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ServicesUIAgent`.\n\n\n\nManpage text:\n\nServicesUIAgent(8)\t    System Manager's Manual\t    ServicesUIAgent(8)\n\nNAME\n     ServicesUIAgent – Agent for displaying AppKit services\n\nSYNOPSIS\n     ServicesUIAgent\n\nDESCRIPTION\n     ServicesUIAgent provides UI for AppKit services.\n\n     There are no configuration options to ServicesUIAgent.  Users should not\n     run ServicesUIAgent manually.\n\nMac OS X\t\t\tMarch 22, 2018\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the ServicesUIAgent tool?
+  manpageQuestion2: How would you use ServicesUIAgent to display AppKit services in a user interface?
+  manpageQuestion3: Can you explain the typical usage scenario for ServicesUIAgent in a macOS environment?
+

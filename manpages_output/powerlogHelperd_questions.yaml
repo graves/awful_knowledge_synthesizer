@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `powerlogHelperd`.\n\n\n\nManpage text:\n\npowerlogHelperd(8)\t    System Manager's Manual\t    powerlogHelperd(8)\n\nNAME\n     powerlogHelperd – supports Battery Usage UI in System Preferences.\n\nDESCRIPTION\n     The powerlogHelperd daemon works only within the context of a launchd job\n     and should not be run from the command line.\n\nmacOS 15.3\t\t       February 7, 2020 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the powerlogHelperd daemon?
+  manpageQuestion2: How would you interact with the powerlogHelperd daemon to monitor battery usage in System Preferences?
+  manpageQuestion3: Is it possible to run the powerlogHelperd daemon directly from the command line, and if not, why?
+

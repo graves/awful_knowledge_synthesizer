@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `seserviced`.\n\n\n\nManpage text:\n\nseserviced(1)\t\t    General Commands Manual\t\t seserviced(1)\n\nNAME\n     seserviced – SE service daemon.\n\nDESCRIPTION\n     seserviced Provides SecureElement services.  seserviced Shall not be\n     invoked directly.\n\nmacOS 15.3\t\t      November 29th, 2022\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the seserviced tool?
+  manpageQuestion2: How would you use seserviced to manage SecureElement services on a macOS system?
+  manpageQuestion3: Can you explain the role of seserviced in the context of macOS's SecureElement framework?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `searchpartyuseragent`.\n\n\n\nManpage text:\n\nsearchpartyuseragent(8)     System Manager's Manual    searchpartyuseragent(8)\n\nNAME\n     searchpartyuseragent – searchparty user agent\n\nSYNOPSIS\n     searchpartyuseragent\n\nDESCRIPTION\n     searchpartyuseragent is a daemon.\n\n     There are no configuration options to searchpartyuseragent.  Users should\n     not run it manually.\n\nMac OS X\t\t\t    1/11/14\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the searchpartyuseragent tool?
+  manpageQuestion2: How would you use searchpartyuseragent to manage user agents on a macOS system?
+  manpageQuestion3: Can you explain the typical usage scenario for the searchpartyuseragent daemon?
+

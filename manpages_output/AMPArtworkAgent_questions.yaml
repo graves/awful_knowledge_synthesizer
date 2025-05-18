@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `AMPArtworkAgent`.\n\n\n\nManpage text:\n\nAMPARTWORKAGENT(8)\t    System Manager's Manual\t    AMPARTWORKAGENT(8)\n\nNAME\n     AMPArtworkAgent – The artwork agent for Music.app, TV.app, and iOS/iPod\n     device syncing\n\nSYNOPSIS\n     AMPArtworkAgent\n\nDESCRIPTION\n     AMPArtworkAgent is a per-user daemon which manages the artwork for a\n     user's media library.\n\n     There are no configuration options to AMPArtworkAgent.  Users should not\n     run AMPArtworkAgent it manually.\n\nMac OS X\t\t       December 6, 2018 \t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the AMPArtworkAgent tool?
+  manpageQuestion2: How would you use AMPArtworkAgent to manage artwork for a user's media library?
+  manpageQuestion3: Can you explain the role of AMPArtworkAgent in the context of iOS and iPod device syncing?
+

@@ -1,0 +1,41 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mnthome`.\n\n\n\nManpage text:\n\nmnthome(1)\t\t    General Commands Manual\t\t    mnthome(1)\n\nNAME\n     mnthome – mount an AFP (AppleShare) home directory with the correct\n     privileges\n\nSYNOPSIS\n     mnthome [-v] [-d] [-m mntpath] [-n] [-b] [-p password] [-i]\n\t     [-x mount point] [-u] [-s]\n\nDESCRIPTION\n     The mnthome command unmounts the AFP (AppleShare) home directory that was\n     automounted as guest, and remounts it with the correct privileges by\n     logging into the AFP server using the current username and password.\n     This command also allows you to have guest access turned off on your AFP\n     server too and still have AFP home directories work with \"su\".\n\n     When you ssh into another computer using an account that has an AFP home\n     directory or you \"su <netuser>\" where <netuser> is an AFP home directory\n     user, then the resulting home directory will not have the correct access\n     privileges.\n\n     This is because automount is assuming NFS behavior which assumes that all\n     computers share the same user/group privileges and mounts volumes using\n     \"no security\" and lets the client enforce privileges based on the current\n     user.\n\n     AFP is different since the privileges are based on the user that logged\n     into the server.  Since automount does not put up an authentication\n     dialog asking for an user name and password, automount mounts the\n     fileserver using guest login.  Thus you end up with getting the world\n     access privileges and the privileges are shown via \"mapping\".  You also\n     would have to allow guest access to the server to that sharepoint.\n\n     Mapping makes all the files/folders appear like they are owned by the\n     current user.  Even those items not really owned by the current user show\n     up as being owned by the current user.  The server provides user access\n     rights (UARights) which is a summary of what the access rights are\n     regardless of the category (owner, group, world) from which they were\n     obtained.\tWhen doing \"mapping\", the AppleShare client will take these\n     UARights and show them as the owner rights.  So, everything looks like it\n     is owned by the current user and the owner rights are set to the\n     UARights.\tThus if you had access to that file/folder before, then you\n     still do.\n\n     The options are:\n\n     -v      Display version number.\n\n     -d      Print debugging information.\n\n     -m      Alternative mount point is specified with the -m option followed\n\t     by a path to an existing directory.  Normally, the volume is\n\t     mounted in /Network/Servers/ or /var/automount/Network/Servers/.\n\n     -n      Do not force the unmount of the previous mount point.\n\n     -b      Exec the user's shell after mount of home.\n\n     -p      A password may be specified with the -p option followed by a\n\t     password.\tIf this option is not used, then the user will be\n\t     prompted to enter in a password.\n\n     -i      Display information about the AFP home mount point.\n\n     -u      Attempt to unmount the current home directory mount.\n\n     -x      This option must be followed by a path to an existing AFP mount\n\t     point.  Display information about the mount point.\n\n     -s      Skip preflight check to see if the currently mounted home\n\t     directory is already correctly mounted for the user.\n\nEXAMPLES\n     The following example illustrates how to mount an AFP home directory:\n\n\t   mnthome\n\n     This example shows how to print the debugging information and provide a\n     password:\n\n\t   mnthome -d -p foobar"
+  manpageQuestion1: What is the primary purpose of the mnthome command?
+  manpageQuestion2: How can you use mnthome to mount an AFP home directory with a specified password and debug output?
+  manpageQuestion3: What command would you use to unmount an AFP home directory and skip the preflight check?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mnthome`.
+
+
+
+    Manpage text:
+
+    SEE ALSO
+         mount(2), unmount(2), mount(8) mount_afp(8)
+
+    BUGS
+         I get the mounting url from the "home_loc" attribute and the mountpath
+         from the "home" attribute (with the path from home_loc subtracted out).
+         If your AFP home directory automounts in a different location, then you
+         need to use the -m option to specify an alternative mount point.
+
+         I cant figure out how to cd out of the current home dir so I can do the
+         unmount and then restore the user back into the new home dir.  If you are
+         in the AFP home directory when you use mnthome, you automatically get put
+         back into that same directory when mnthome leaves.  If mnthome works,
+         then your current directory is a dead directory and you need to "cd ~" to
+         get to your new home directory.
+
+         If the server with the home directory was already mounted by another
+         user, you will not be able to replace it with a mount made by your user
+         id.  The original mount must be first unmounted by the mounting user or
+         root.
+  manpageQuestion1: What is the primary purpose of the mnthome command?
+  manpageQuestion2: How can you use mnthome to mount an AFP home directory from a server, specifying an alternative mount point?
+  manpageQuestion3: What steps are needed to unmount and restore the current directory after using mnthome?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mnthome`.\n\n\n\nManpage text:\n\nHISTORY\n     The mnthome command first appeared Mac OS X version 10.3.\n\nRETURN VALUES\n     0\t\t\tmnthome successfully remounted the AFP home directory.\n\n     [EINVAL]\t\tInvalid arguements were passed in.\n\n     [EPERM]\t\tThe current AFP home directory could not be unmounted\n\t\t\tby mnthome because the current user does not have the\n\t\t\tcorrect access.  The current AFP home directory was\n\t\t\tprobably mounted by another user first.\n\n     [EAUTH]\t\tIncorrect password.\n\nMac OS X\t\t\tAugust 4, 2004\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the mnthome command?
+  manpageQuestion2: How would you use mnthome to remount the AFP home directory if it is currently unmounted?
+  manpageQuestion3: What error codes can be returned by mnthome, and what do they indicate?
+

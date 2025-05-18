@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `coreaudiod`.\n\n\n\nManpage text:\n\ncoreaudiod(1)\t\t    General Commands Manual\t\t coreaudiod(1)\n\nNAME\n     coreaudiod\n\nSYNOPSIS\n     coreaudiod\n\nDESCRIPTION\n     coreaudiod is a daemon used for Core Audio related purposes.  coreaudiod\n     was introduced with OSX version 10.4.\n\nDarwin\t\t\t\tMon Jul 19 2004 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the coreaudiod tool?
+  manpageQuestion2: How would you start the coreaudiod daemon on a macOS system?
+  manpageQuestion3: What is the role of coreaudiod in relation to Core Audio functionality on macOS?
+

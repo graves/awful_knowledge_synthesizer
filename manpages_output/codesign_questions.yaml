@@ -1,0 +1,297 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\nCODESIGN(1)\t\t    General Commands Manual\t\t   CODESIGN(1)\n\nNAME\n     codesign – Create and manipulate code signatures\n\nSYNOPSIS\n     codesign -s identity [-i identifier] [-r requirements] [-fv] path ...\n     codesign -v [-R requirement] [-v] [path|pid ...]\n     codesign -d [-v] [path|pid ...]\n     codesign -h [-v] [pid ...]\n     codesign --validate-constraint path ...\n\nDESCRIPTION\n     The codesign command is used to create, check, and display code\n     signatures, as well as inquire into the dynamic status of signed code in\n     the system.\n\n     codesign requires exactly one operation option to determine what action\n     is to be performed, as well as any number of other options to modify its\n     behavior. It can act on any number of objects per invocation, but\n     performs the same operation on all of them.\n\n     codesign accepts single-character (classic) options, as well as GNU-style\n     long options of the form --name and --name=value. Common options have\n     both forms; less frequent and specialized options have only long form.\n     Note that the form --name value (without equal sign) will not work as\n     expected on options with optional values."
+  manpageQuestion1: What is the primary purpose of the codesign command?
+  manpageQuestion2: How would you use codesign to verify the signature of a macOS application?
+  manpageQuestion3: Can you provide an example of using codesign to remove code signatures from a file?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\nOPTIONS\n     The options are as follows:\n\n     --all-architectures\n\t     When verifying a code signature on code that has a universal\n\t     (\"fat\") Mach-O binary, separately verify each architecture\n\t     contained. This is the default unless overridden with the -a\n\t     (--architecture) option.\n\n     -a, --architecture architecture\n\t     When verifying or displaying signatures, explicitly select the\n\t     Mach-O architecture given. The architecture can be specified\n\t     either by name (e.g. i386) or by number; if by number, a sub-\n\t     architecture may be appended separated by a comma.  This option\n\t     applies only to Mach-O binary code and is ignored for other\n\t     types.  If the path uses the Mach-O format and contains no code\n\t     of the given architecture, the command will fail.\tThe default\n\t     for verification is --all-architectures, to verify all\n\t     architectures present.  The default for display is to report on\n\t     the native architecture of the host system.  When signing,\n\t     codesign will always sign all architectures contained in a\n\t     universal Mach-O file."
+  manpageQuestion1: What is the primary purpose of the codesign command?
+  manpageQuestion2: How would you use codesign to verify a code signature for all architectures in a universal Mach-O binary?
+  manpageQuestion3: Can you provide an example of using codesign to explicitly specify the i386 architecture when verifying a Mach-O binary?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\n--bundle-version version-string\n\t     When handling versioned bundles such as frameworks, explicitly\n\t     specify the version to operate on. This must be one of the names\n\t     in the \"Versions\" directory of the bundle.  If not specified,\n\t     codesign uses the bundle's default version.  Note that most\n\t     frameworks delivered with the system have only one version, and\n\t     thus this option is irrelevant for them.  There is currently no\n\t     facility for operating on all versions of a bundle at once.\n\n     --check-notarization\n\t     When verifying the code at the path(s) given, force an online\n\t     notarization check to see if a notarization ticket is available.\n\n     -d, --display\n\t     Display information about the code at the path(s) given.\n\t     Increasing levels of verbosity produce more output.  The format\n\t     is designed to be moderately easy to parse by simple scripts\n\t     while still making sense to human eyes.  In addition, the -r,\n\t     --file-list, --extract-certificates, and --entitlements options\n\t     can be used to retrieve additional information."
+  manpageQuestion1: What is the primary purpose of the codesign tool?
+  manpageQuestion2: How would you use the --check-notarization option with codesign to verify the notarization status of a file?
+  manpageQuestion3: Can you provide an example of using the --display option with codesign to show detailed information about a macOS application?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\n-D, --detached filename\n\t     When signing, designates that a detached signature should be\n\t     written to the specified file. The code being signed is not\n\t     modified and need not be writable.  When verifying, designates a\n\t     file containing a detached signature to be used for verification.\n\t     Any embedded signature in the code is ignored.\n\n     --deep  (DEPRECATED for signing as of macOS 13.0) When signing a bundle,\n\t     specifies that nested code content such as helpers, frameworks,\n\t     and plug-ins, should be recursively signed in turn.\n\t     Beware:\n\n\t     •\t All signing options will be applied, in turn, to all nested\n\t\t content. This is almost never what you want.\n\n\t     •\t Nested code content is a special term that only applies to\n\t\t macOS style bundles with a Contents folder. Only bare Mach-Os\n\t\t and well structured bundles qualify as nested code content.\n\t\t Non-bundle directories in nested code content locations will\n\t\t cause an error when signing. The codesign tool will only\n\t\t discover nested code content in the following directories:"
+  manpageQuestion1: What is the primary purpose of the codesign command?
+  manpageQuestion2: How would you use the --detached option with codesign to save a detached signature to a file named 'signature.sig'?
+  manpageQuestion3: Can you provide an example of using the --deep option with codesign to recursively sign all nested code content in a bundle?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\n•   Contents\n\n\t\t •   Contents/Frameworks\n\n\t\t •   Contents/SharedFrameworks\n\n\t\t •   Contents/PlugIns\n\n\t\t •   Contents/Plug-ins\n\n\t\t •   Contents/XPCServices\n\n\t\t •   Contents/Helpers\n\n\t\t •   Contents/MacOS\n\n\t\t •   Contents/Library/Automator\n\n\t\t •   Contents/Library/Spotlight\n\n\t\t •   Contents/Library/LoginItems\n\n\t     •\t If any code (Mach-Os, bundles) are located outside the above\n\t\t listed locations they will not be signed by the --deep option\n\n\t     •\t Using the --deep option on an iOS style bundle without a\n\t\t Contents folder will not cause an error but will only sign\n\t\t the main binary of the bundle.\n\t     When verifying a bundle, this option specifies that any nested\n\t     code content will be recursively verified as to its full content.\n\t     By default, verification of nested content is limited to a\n\t     shallow investigation that may not detect changes to the nested\n\t     code.\n\t     When displaying a signature, this option specifies that a list of\n\t     directly nested code should be written to the display output.\n\t     This lists only code directly nested within the subject; anything\n\t     nested indirectly will require recursive application of the\n\t     codesign command."
+  manpageQuestion1: What is the primary purpose of the codesign command?
+  manpageQuestion2: How can you use the --deep option with codesign to ensure that all nested code within a bundle is verified recursively?
+  manpageQuestion3: What happens if you apply the --deep option to an iOS style bundle that lacks a Contents folder?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\n--detached-database\n\t     When signing, specifies that a detached signature should be\n\t     generated as with the --detached option, but that the resulting\n\t     signature should be written into a system database, from where it\n\t     is made automatically available whenever apparently unsigned code\n\t     is validated on the system.\n\t     Writing to this system database requires elevated process\n\t     privileges that are not available to ordinary users.\n\n     -f, --force\n\t     When signing, causes codesign to replace any existing signature\n\t     on the path(s) given. Without this option, existing signatures\n\t     will not be replaced, and the signing operation fails.\n\n     --force-library-entitlements\n\t     When signing, forcefully embed the supplied entitlements in the\n\t     signature of libraries (non-main-executables).  Not embedding\n\t     entitlements in library signatures is default behavior as of\n\t     macOS 15.0 when signing for all platforms.\n\n     --generate-entitlement-der\n\t     When signing, convert the supplied entitlements XML data to DER\n\t     and embed the entitlements as both XML and DER in the signature.\n\t     Embedding DER entitlements is default behavior as of macOS 12.0\n\t     when signing for all platforms. This argument was introduced in\n\t     macOS 10.14 (Mojave)."
+  manpageQuestion1: What is the primary purpose of the codesign tool?
+  manpageQuestion2: How would you use codesign to force-replace an existing signature on a file and generate a detached signature that is written into the system database?
+  manpageQuestion3: Can you provide an example of using codesign to embed both XML and DER formats of entitlements in a library's signature?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\n-h, --hosting\n\t     Constructs and prints the hosting chain of a running program. The\n\t     pid arguments must denote running code (pids etc.) With verbose\n\t     options, this also displays the individual dynamic validity\n\t     status of each element of the hosting chain.\n\n     -i, --identifier identifier\n\t     During signing, explicitly specify the unique identifier string\n\t     that is embedded in code signatures. If this option is omitted,\n\t     the identifier is derived from either the Info.plist (if\n\t     present), or the filename of the executable being signed,\n\t     possibly modified by the --prefix option.\tIt is a very bad idea\n\t     to sign different programs with the same identifier.\n\n     -o, --options flag,...\n\t     During signing, specifies a set of option flags to be embedded in\n\t     the code signature. The value takes the form of a comma-separated\n\t     list of names (with no spaces). Alternatively, a numeric value\n\t     can be used to directly specify the option mask (CodeDirectory\n\t     flag word). See OPTION FLAGS below."
+  manpageQuestion1: What is the primary purpose of the codesign tool?
+  manpageQuestion2: How would you use the codesign command to explicitly set a custom identifier for a macOS application?
+  manpageQuestion3: Can you provide an example of using the codesign tool with the --options flag to set specific signing options?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\n-P, --pagesize pagesize\n\t     Indicates the granularity of code signing. Pagesize must be a\n\t     power of two.  Chunks of pagesize bytes are separately signed and\n\t     can thus be independently verified as needed.  As a special case,\n\t     a pagesize of zero indicates that the entire code should be\n\t     signed and verified as a single, possibly gigantic page. This\n\t     option only applies to the main executable and has no effect on\n\t     the sealing of associated data, including resources.\n\n     --remove-signature\n\t     Removes the current code signature from the path(s) given.\n\n     -r, --requirements requirements\n\t     During signing, indicates that internal requirements should be\n\t     embedded in the code path(s) as specified. See \"specifying\n\t     requirements\" below.  Defaults will be applied to requirement\n\t     types that are not explicitly specified; if you want to defeat\n\t     such a default, specify \"never\" for that type.\n\t     During display, indicates where to write the code's internal\n\t     requirements. Use -r- to write them to standard output."
+  manpageQuestion1: What is the primary purpose of the codesign command?
+  manpageQuestion2: How would you use the --pagesize option with codesign to sign a binary with a pagesize of 4096 bytes?
+  manpageQuestion3: Can you provide an example of using the --remove-signature option to remove a code signature from a file?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\n-R, --test-requirement requirement\n\t     During verification, indicates that the path(s) given should be\n\t     verified against the code requirement specified. If this option\n\t     is omitted, the code is verified only for internal integrity and\n\t     against its own designated requirement.\n\n     -s, --sign identity\n\t     Sign the code at the path(s) given using this identity. See\n\t     SIGNING IDENTITIES below.\n\n     -v, --verbose\n\t     Sets (with a numeric value) or increments the verbosity level of\n\t     output. Without the verbose option, no output is produced upon\n\t     success, in the classic UNIX style.  If no other options request\n\t     a different action, the first -v encountered will be interpreted\n\t     as --verify instead (and does not increase verbosity).\n\n     -v, --verify\n\t     Requests verification of code signatures.\tIf other actions\n\t     (sign, display, etc.) are also requested, -v is interpreted to\n\t     mean --verbose.\n\n     --continue\n\t     Instructs codesign to continue processing path arguments even if\n\t     processing one fails.  If this option is given, exit due to\n\t     operational errors is deferred until all path arguments have been\n\t     considered. The exit code will then indicate the most severe\n\t     failure (or, with equal severity, the first such failure\n\t     encountered)."
+  manpageQuestion1: What is the primary purpose of the codesign tool?
+  manpageQuestion2: How can you use the codesign command to verify a code signature with verbose output?
+  manpageQuestion3: What is the correct way to sign a file using a specific signing identity with codesign?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\n--dryrun\n\t     During signing, performs almost all signing operations, but does\n\t     not actually write the result anywhere. Cryptographic signatures\n\t     are still generated, actually using the given signing identity\n\t     and triggering any access control checks normally, though the\n\t     resulting signature is then discarded.\n\n     --entitlements path\n\t     When signing, take the file at the given path and embed its\n\t     contents in the signature as entitlement data. If the data at\n\t     path does not already begin with a suitable binary (\"blob\")\n\t     header, one is attached automatically.\n\t     When displaying a signature, extract any entitlement data from\n\t     the signature and write it to the path given in an abstract\n\t     representation. If needed --xml or --der may be passed in to\n\t     output the entitlements in a desired format, if you pass in both\n\t     then DER will be printed. Use \"-\" as the path to write to\n\t     standard output.  If the signature has no entitlement data,\n\t     nothing is written (this is not an error)."
+  manpageQuestion1: What is the primary purpose of the codesign command?
+  manpageQuestion2: How can you use the --entitlements option with codesign to embed custom entitlement data into a signed application?
+  manpageQuestion3: What does the --dryrun option do when using the codesign command?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\n--enforce-constraint-validity\n\t     When signing, require that any supplied constraints (e.g.\n\t     --launch-constraint-* or --library-constraint ) are structurally\n\t     valid and contain only keys that are known on this version of\n\t     macOS or properly use the $optional operator. By default,\n\t     constraints are checked and errors are reported but their\n\t     validity is not required. This default behavior allows developers\n\t     to set contraints for newer OS versions on the current OS\n\t     version.\n\n     --extract-certificates prefix\n\t     When displaying a signature, extract the certificates in the\n\t     embedded certificate chain and write them to individual files.\n\t     The prefix argument is appended with numbers 0, 1, ... to form\n\t     the filenames, which can be relative or absolute. Certificate 0\n\t     is the leaf (signing) certificate, and as many files are written\n\t     as there are certificates in the signature. The files are in\n\t     ASN.1 (DER) form.\tIf prefix is omitted, the default prefix is\n\t     \"codesign\" in the current directory."
+  manpageQuestion1: What is the primary purpose of the codesign tool?
+  manpageQuestion2: How can you use the --extract-certificates option with a custom prefix to extract certificates from a signed application?
+  manpageQuestion3: What does the --enforce-constraint-validity flag do when signing an application with codesign?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\n--file-list path\n\t     When signing or displaying a signature, codesign writes to the\n\t     given path a list of files that may have been modified as part of\n\t     the signing process. This is useful for installer or patcher\n\t     programs that need to know what was changed or what files are\n\t     needed to make up the \"signature\" of a program. The file given is\n\t     appended-to, with one line per absolute path written. An argument\n\t     of \"-\" (single dash) denotes standard output.  Note that the list\n\t     may be somewhat pessimistic - all files not listed are guaranteed\n\t     to be unchanged by the signing process, but some of the listed\n\t     files may not actually have changed.  Also note that changes may\n\t     have been made to extended attributes of these files.\n\n     --ignore-resources\n\t     During static validation, do not validate the contents of the\n\t     code's resources.\tIn effect, this will pass validation on code\n\t     whose resources have been corrupted (or inappropriately signed).\n\t     On large programs, it will also substantially speed up static\n\t     validation, since all the resources will not be read into memory.\n\t     Obviously, the outcome of such a validation should be considered\n\t     on its merits."
+  manpageQuestion1: What is the primary purpose of the codesign tool?
+  manpageQuestion2: How can you use the --file-list option with codesign to track modified files during a signing process?
+  manpageQuestion3: What is the effect of using the --ignore-resources flag with codesign during static validation?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\n--keychain filename\n\t     During signing, only search for the signing identity in the\n\t     keychain file specified. This can be used to break any matching\n\t     ties if you have multiple similarly-named identities in several\n\t     keychains on the user's search list.  Note that the standard\n\t     keychain search path is still consulted while constructing the\n\t     certificate chain being embedded in the signature.\n\t     Note that filename will not be searched to resolve the signing\n\t     identity's certificate chain unless it is also on the user's\n\t     keychain search list.\n\n     --prefix string\n\t     If no explicit unique identifier is specified (using the -i\n\t     option), and if the implicitly generated identifier does not\n\t     contain any dot (.) characters, then the given string is prefixed\n\t     to the identifier before use. If the implicit identifier contains\n\t     a dot, it is used as-is. Typically, this is used to deal with\n\t     command tools without Info.plists, whose default identifier is\n\t     simply the command's filename; the conventional prefix used is\n\t     com.domain. (note that the final dot needs to be explicit)."
+  manpageQuestion1: What is the primary purpose of the codesign command?
+  manpageQuestion2: How would you use the --keychain option with codesign to specify a custom keychain file for signing?
+  manpageQuestion3: Can you provide an example of using the --prefix option with codesign to set a custom prefix for an application's identifier?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\n--preserve-metadata=list\n\t     When re-signing code that is already signed, reuse some\n\t     information from the old signature.  If new data is specified\n\t     explicitly, it is preferred.  You still need to specify the -f\n\t     (--force) option to enable overwriting signatures at all.\tIf\n\t     this option is absent, any old signature has no effect on the\n\t     signing process.\n\t     Note: if the linker-signed flag is present on the previous\n\t     binary, then this option is ignored.\n\t     This option takes a comma-separated list of names, which you may\n\t     reasonably abbreviate:\n\n\t     identifier \t  Preserve the signing identifier\n\t\t\t\t  (--identifier) instead of generating a\n\t\t\t\t  default identifier.\n\n\t     entitlements\t  Preserve the entitlement data\n\t\t\t\t  (--entitlements).\n\n\t     requirements\t  Preserve the internal requirements\n\t\t\t\t  (--requirements option), including any\n\t\t\t\t  explicit Designated Requirement. Note that\n\t\t\t\t  all internal requirements are preserved or\n\t\t\t\t  regenerated as a whole; you cannot pick and\n\t\t\t\t  choose individual elements with this option."
+  manpageQuestion1: What is the primary purpose of the codesign command?
+  manpageQuestion2: How can you use the codesign tool to preserve the entitlements and requirements from an existing signature when re-signing a binary?
+  manpageQuestion3: What is the correct way to use codesign to retain the signing identifier while re-signing a file with new signature data?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\nflags\t\t  Preserve the option flags (-o), see the\n\t\t\t\t  OPTION FLAGS section below.\n\n\t     runtime\t\t  Preserve the hardened runtime version (-o\n\t\t\t\t  runtime flag, --runtime-version option)\n\t\t\t\t  instead of overriding or deriving the\n\t\t\t\t  version.\n\n\t     launch-constraints   Preserve any existing launch constraints set\n\t\t\t\t  on the binary rather than removing them.\n\t\t\t\t  This option is ignored if any of the\n\t\t\t\t  --launch-constraint-* options are set.\n\n\t     library-constraints  Preserve any existing library load\n\t\t\t\t  constraints set on the binary rather than\n\t\t\t\t  removing them. This option is ignored if the\n\t\t\t\t  --library-constraint option is set.\n\t     For historical reasons, the --preserve-metadata option can be\n\t     given without a value, which preserves all of these values as\n\t     presently known. This use is deprecated and will eventually be\n\t     removed; always specify an explicit list of preserved items.\n\n     --strict options\n\t     When validating code, apply additional restrictions beyond the\n\t     defaults."
+  manpageQuestion1: What is the primary purpose of the codesign command?
+  manpageQuestion2: How would you use codesign to preserve the hardened runtime version of a macOS application?
+  manpageQuestion3: Can you provide an example of using codesign to preserve both the launch constraints and library load constraints of a binary?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\nsymlinks  Check that symbolic links inside the code bundle point\n\t\t       to sealed files inside its bundle.  This means that\n\t\t       broken symbolic links are rejected, as are links to\n\t\t       places outside the bundle and to places that are not,\n\t\t       for whatever reason, sealed by the signature.\n\n\t     sideband  Check that no resource forks, Finder attributes, or\n\t\t       similar sideband data is present in the signed code.\n\t\t       This is now automatically enforced by signing\n\t\t       operations.\n\t     Options can be specified as a comma-separated list. Use plain\n\t     --strict or --strict=all to be as strict as possible. Note that\n\t     --strict=all may include more checking types over time.\n\t     Not all strictness check make sense in all circumstances, which\n\t     is why these behaviors are not the defualt.\n\n     --timestamp [=URL]\n\t     During signing, requests that a timestamp authority server be\n\t     contacted to authenticate the time of signing. The server\n\t     contacted is given by the URL value.  If this option is given\n\t     without a value, a default server provided by Apple is used.\n\t     Note that this server may not support signatures made with\n\t     identities not furnished by Apple.  If the timestamp authority\n\t     service cannot be contacted over the Internet, or it malfunctions\n\t     or refuses service, the signing operation will fail.\n\t     If this option is not given at all, a system-specific default\n\t     behavior is invoked.  This may result in some but not all code\n\t     signatures being timestamped.\n\t     The special value none explicitly disables the use of timestamp\n\t     services."
+  manpageQuestion1: What is the primary purpose of the codesign command?
+  manpageQuestion2: How can you use the --timestamp option with a custom URL to enable timestamping during code signing?
+  manpageQuestion3: What are the implications of using the --strict option with codesign, and how does it affect the verification process?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\n--runtime-version version\n\t     During signing, when the runtime OPTION FLAG is set, explicitly\n\t     specify the hardened runtime version stored in the code\n\t     signature.  If this option is omitted, but the runtime OPTION\n\t     FLAG is set then the hardened runtime version is omitted for non-\n\t     Mach-O files and derived from the SDK version of Mach-O files.\n\n     --launch-constraint-self path\n\t     When signing, take the file at the given path and embed its\n\t     contents in the signature as a launch constraint on this\n\t     executable. The file at path should contain a plist expressing\n\t     the desired launch constraint conditions. This executable will\n\t     not launch if its launch constraint is not satisfied.\n\n     --launch-constraint-parent path\n\t     When signing, take the file at the given path and embed its\n\t     contents in the signature as a launch constraint on this\n\t     executable's parent. The file at path should contain a plist\n\t     expressing the desired launch constraint conditions. This\n\t     executable will not launch if its parent does not satisfy this\n\t     launch constraint."
+  manpageQuestion1: What is the primary purpose of the codesign command in macOS?
+  manpageQuestion2: How can you use the --runtime-version flag with codesign to specify a hardened runtime version for an application?
+  manpageQuestion3: Can you explain how to use the --launch-constraint-parent flag with codesign to enforce a launch constraint on an executable's parent process?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\n--launch-constraint-responsible path\n\t     When signing, take the file at the given path and embed its\n\t     contents in the signature as a launch constraint on this\n\t     executable's responsible process. The file at path should contain\n\t     a plist expressing the desired launch constraint conditions. This\n\t     executable will not launch if its responsible process does not\n\t     satisfy this launch constraint.\n\n     --library-constraint path\n\t     When signing, take the file at the given path and embed its\n\t     contents in the signature as a constraint on the libraries this\n\t     process can load. Operating system libraries can not be\n\t     restricted via this mechanism. The file at path should contain a\n\t     plist expressing the desired constraint conditions. This\n\t     executable will not load libraries that do not satisfy the\n\t     specified conditions.\n\n     --strip-disallowed-xattrs\n\t     When signing, strip xattrs (such as com.apple.FinderInfo and\n\t     com.apple.ResourceFork) that could interfere with code signing.\n\t     If a disallowed xattr is encountered, codesign will complain\n\t     about the presence of detritus, and the path and xattr of the\n\t     offending file will be logged verbosely."
+  manpageQuestion1: What is the primary purpose of the codesign tool?
+  manpageQuestion2: How can you use codesign to embed a launch constraint from a plist file into an executable's signature?
+  manpageQuestion3: What is the function of the --strip-disallowed-xattrs flag in codesign?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\n--single-threaded-signing\n\t     When signing, use one thread for building the resource seal.\n\n     --validate-constraint\n\t     Validate that the constraint plist(s) indicated by path(s) are\n\t     structurally valid and contain only keys known on this OS version\n\t     or keys that are properly wrapped with the $optional operator.\n\t     An error message is printed if an error occurs.\n\nOPERATION\n     In the first synopsis form, codesign attempts to sign the code objects at\n     the path(s) given, using the identity provided. Internal requirements and\n     entitlements are embedded if requested. Internal requirements not\n     specified may be assigned suitable default values. Defaulting applies\n     separately to each type of internal requirement.  If an identifier is\n     explicitly given, it is sealed into all path(s).  Otherwise, each path\n     derives its identifier independently from its Info.plist or pathname.\n     Code nested within bundle directories must already be signed or the\n     signing operation will fail, unless the --deep option is given, in which\n     case any unsigned nested code will be recursively signed before\n     proceeding, using the same signing options and parameters. If the --force\n     option is given, any existing top-level signature is replaced, subject to\n     any --preserve-metadata options also present. Combining the --force and\n     --deep options results in forcible replacement of all signatures within\n     the target bundle."
+  manpageQuestion1: What is the primary purpose of the codesign tool?
+  manpageQuestion2: How would you use codesign to sign a macOS application with the --single-threaded-signing option?
+  manpageQuestion3: Can you provide an example of using codesign to validate a constraint plist file with the --validate-constraint option?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.
+
+
+
+    Manpage text:
+
+    In the second synopsis form, codesign verifies the code signatures on all
+         the path(s) given. The verification confirms that the code at those
+         path(s) is signed, that the signature is valid, and that all sealed
+         components are unaltered. Valid in this case means that the signature is
+         structurally and cryptographically sound. If a requirement is given, each
+         path is also checked against this requirement (but see DIAGNOSTICS
+         below).  If verbose verification is requested, the program is also
+         checked against its own designated requirement, which should never fail
+         for a properly signed program.
+
+         Note: Verification/validation do not check the signature against OS
+         policy.  A valid/verified signature may still fail to meet Gatekeeper,
+         Entitlements or other contextual policy requirements.
+
+         If a path begins with a decimal digit, it is interpreted as the process
+         id of a running process in the system, and dynamic validation is
+         performed on that process instead.  This checks the code's dynamic status
+         and just enough static data to close the nominal security envelope. Add
+         at least one level of verbosity to also perform a full static check.
+  manpageQuestion1: What is the primary purpose of the codesign tool?
+  manpageQuestion2: How can you use codesign to verify the code signature of a file named 'example.app'?
+  manpageQuestion3: What is the process for dynamically validating a running process with codesign?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.
+
+
+
+    Manpage text:
+
+    In the third synopsis form, codesign displays the contents of the
+         signatures on the path(s) given. More information is displayed as the
+         verbosity level increases.  This form may not completely verify the
+         signatures on the path(s); though it may perform some verification steps
+         in the process of obtaining information about the path(s).  If the -r
+         path option is given, internal requirements will be extracted from the
+         path(s) and written to path; specify a dash "-" to write to standard
+         output. If the code does not contain an explicit designated requirement,
+         the implied one will be retrieved and written out as a source comment.
+         If the --entitlements path option is given, embedded entitlement data
+         will be extracted likewise and written to the file specified.
+
+         In the fourth synopsis form, codesign constructs the hosting path for
+         each pid given and writes it, one host per line, to standard output. The
+         hosting path is the chain of code signing hosts starting with the most
+         specific code known to be running, and ending with the root of trust (the
+         kernel). If the --verbose option is given, the dynamic validity status of
+         each host is also displayed, separated from the path by a tab character.
+         Note that hosting chains can at times be constructed for invalid or even
+         unsigned code, and the output of this form of the codesign command should
+         not be taken as a statement of formal code validity. Only codesign
+         --verify can do that; and in fact, formal verification constructs the
+         hosting chain as part of its operation (but does not display it).
+  manpageQuestion1: What is the primary purpose of the codesign tool?
+  manpageQuestion2: How can you use codesign to extract internal requirements from a specified path and save them to a file?
+  manpageQuestion3: What command would you use with codesign to construct the hosting path for a given process ID (pid) and display the dynamic validity status of each host in the chain?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.
+
+
+
+    Manpage text:
+
+    In the fifth synopsis form, codesign validates the path(s) supplied.
+         Validation means ensuring that keys and operators are properly structured
+         with appropriate types and that all keys and operators are known or
+         nested in the $optional operator.
+
+    SIGNING IDENTITIES
+         To be used for code signing, a digital identity must be stored in a
+         keychain that is on the calling user's keychain search list.  All
+         keychain sources are supported if properly configured. In particular, it
+         is possible to sign code with an identity stored on a supported smart
+         card.  If your signing identity is stored in a different form, you need
+         to make it available in keychain form to sign code with it.
+         If the --keychain argument is used, identity is only looked-for in the
+         specific keychain given. This is meant to help disambiguate references to
+         identities.  Even in that case, the full keychain search list is still
+         consulted for additional certificates needed to complete the signature.
+  manpageQuestion1: What is the primary purpose of the codesign tool?
+  manpageQuestion2: How would you use codesign to validate a macOS application's signature and ensure that all keys and operators are properly structured?
+  manpageQuestion3: Can you explain how to use codesign with a specific keychain to sign code with an identity stored on that keychain?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\nThe identity is first considered as the full name of a keychain identity\n     preference.  If such a preference exists, it directly names the identity\n     used.  Otherwise, the identity is located by searching all keychains for\n     a certificate whose subject common name (only) contains the identity\n     string given. If there are multiple matches, the operation fails and no\n     signing is performed; however, an exact match is preferred over a partial\n     match.  These comparisons are case sensitive.  Multiple instances of the\n     exactly same certificate in multiple keychains are tolerated as harmless.\n\n     If identity consists of exactly forty hexadecimal digits, it is instead\n     interpreted as the SHA-1 hash of the certificate part of the desired\n     identity.\tIn this case, the identity's subject name is not considered.\n\n     Both identity preferences and certificate hashes can be used to identify\n     a particular signing identity regardless of name. Identity preferences\n     are global settings for each user and provide a layer of indirection.\n     Certificate hashes are very explicit and local. These choices, combined\n     with what is placed into Xcode project and target build variables and/or\n     script settings, allows for very flexible designation of signing\n     identities."
+  manpageQuestion1: What is the primary purpose of the codesign command?
+  manpageQuestion2: How can you use codesign to sign an application with a specific identity that is a certificate hash?
+  manpageQuestion3: What is the process for using codesign with an identity preference instead of a certificate hash?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.
+
+
+
+    Manpage text:
+
+    If identity is the single letter "-" (dash), ad-hoc signing is performed.
+         Ad-hoc signing does not use an identity at all, and identifies exactly
+         one instance of code. Significant restrictions apply to the use of ad-hoc
+         signed code; consult documentation before using this.
+
+         codesign will attempt to embed the entire certificate chain documenting
+         the signing identity in the code signature it generates, including any
+         intermediate certificates and the anchor certificate. It looks for those
+         in the keychain search list of the user performing the signing operation.
+         If it cannot generate the entire certificate chain, signing may still
+         succeed, but verification may fail if the verifying code does not have an
+         independent source for the missing certificates (from its keychains).
+
+    SPECIFYING REQUIREMENTS
+         The requirement(s) arguments (-r and -R) can be given in various forms. A
+         plain text argument is taken to be a path to a file containing the
+         requirement(s).  codesign will accept both binary files containing
+         properly compiled requirements code, and source files that are
+         automatically compiled before use.  An argument of "-" requests that the
+         requirement(s) are read from standard input.  Finally, an argument that
+         begins with an equal sign "=" is taken as a literal requirements source
+         text, and is compiled accordingly for use.
+  manpageQuestion1: What is the primary purpose of the codesign command?
+  manpageQuestion2: How can you use codesign to perform ad-hoc signing on a code file?
+  manpageQuestion3: What is the process for specifying requirements when using codesign?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\nOPTION FLAGS\n     When signing, a set of option flags can be specified to change the\n     behavior of the system when using the signed code. The following flags\n     are recognized by codesign; other flags may exist at the API level. Note\n     that you can specify any valid flags by giving a (single) numeric value\n     instead of a list of option names.\n\n     kill     Forces the signed code's kill flag to be set when the code\n\t      begins execution.  Code with the kill flag set will die when it\n\t      becomes dynamically invalid. It is therefore safe to assume that\n\t      code marked this way, once validated, will have continue to have\n\t      a valid identity while alive.\n\n     hard     Forces the signed code's hard flag to be set when the code\n\t      begins execution.  The hard flag is a hint to the system that\n\t      the code prefers to be denied access to resources if gaining\n\t      such access would invalidate its identity.\n\n     host     Marks the code as capable of hosting guest code. You must set\n\t      this option if you want the code to act as a code signing host,\n\t      controlling subsidiary (\"guest\") code. This flag is set\n\t      automatically if you specify an internal guest requirement."
+  manpageQuestion1: What is the primary purpose of the codesign tool?
+  manpageQuestion2: How can you use codesign to mark a binary as capable of hosting guest code?
+  manpageQuestion3: What command would you use to force the hard flag on a code signature?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\nexpires  Forces any validation of the code to consider expiration of the\n\t      certificates involved. Code signatures generated with this flag\n\t      will fail to verify once any of the certificates in the chain\n\t      has expired, regardless of the intentions of the verifier. Note\n\t      that this flag does not affect any other checks that may cause\n\t      signature validation to fail, including checks for certificate\n\t      revocation.\n\n     library  Forces the signed code's library validation flag to be set when\n\t      the code begins execution.  The code will only be able to link\n\t      against system libraries and frameworks, or libraries,\n\t      frameworks, and plug-in bundles with the same team identifier\n\t      embedded in the code directory.  Team identifiers are\n\t      automatically recorded in signatures when signing with suitable\n\t      Apple-issued signing certificates.  Note that the flag is not\n\t      supported for i386 binaries, and only applies to the main\n\t      executable.  The flag has no effect when set on frameworks and\n\t      libraries."
+  manpageQuestion1: What is the primary purpose of the codesign command?
+  manpageQuestion2: How would you use codesign with the 'expires' flag to ensure that signed code verifies only until a specific certificate expiration date?
+  manpageQuestion3: Can you provide an example of using codesign with the 'library' flag to restrict code execution to system libraries only?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\nruntime  On macOS versions >= 10.14.0, opts signed processes into a\n\t      hardened runtime environment which includes runtime code signing\n\t      enforcement, library validation, hard, kill, and debugging\n\t      restrictions.  These restrictions can be selectively relaxed via\n\t      entitlements. Note: macOS versions older than 10.14.0 ignore the\n\t      presence of this flag in the code signature.\n\n     linker-signed\n\t      Identifies a signature as signed by the linker. Linker\n\t      signatures are very similar to adhoc signatures, except:\n\n\t      •   linker signatures can be replaced without using the --force\n\t\t  option.\n\n\t      •   linker signatures are never preserved regardless of the use\n\t\t  of the --preserve-metadata option.\n\n\t      •   linker signatures will usually not contain any embedded code\n\t\t  requirements including a designated requirement.\n\n     Note that code can set the hard and kill flags on itself at any time. The\n     signing options only affect their initial state. Once set by any means,\n     these flags cannot be cleared for the lifetime of the code. Therefore,\n     specifying such flags as signing options guarantees that they will be set\n     whenever the signed code runs."
+  manpageQuestion1: What is the primary purpose of the codesign command in macOS?
+  manpageQuestion2: How can you use the codesign command to sign a process with a linker signature?
+  manpageQuestion3: What is the effect of using the runtime option with codesign on macOS 10.14.0 and later?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\nIf the code being signed has an Info.plist that contains a key named\n     CSFlags, the value of that key is taken as the default value for the\n     options. The value of CSFlags can be a string in the same form as the\n     --options option, or an integer number specifying the absolute numeric\n     value. Note however that while you can abbreviate flag names on the\n     command lines, you must spell them out in the Info.plist.\n\nEXAMPLES\n     To sign application Terminal.app with a signing identity named\n     \"authority\":\n\t   codesign --sign authority Terminal.app\n\n     To sign the command-line tool \"helper\" with the same identity,\n     overwriting any existing signature, using the signing identifier\n     \"com.mycorp.helper\", and embedding a custom designated requirement\n\t   codesign -f --sign authority --prefix=com.mycorp. -r=\"designated =>\n\t   anchor /tmp/foo\" helper\n\n     To enable the hardened runtime on Terminal.app and sign with the signing\n     identity named \"authority\":\n\t   codesign --sign authority --options runtime Terminal.app"
+  manpageQuestion1: What is the primary purpose of the codesign tool?
+  manpageQuestion2: How would you use codesign to sign an application with a specific signing identity and overwrite any existing signature?
+  manpageQuestion3: Can you provide an example of using codesign to enable the hardened runtime and sign a file with a custom requirement?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\nTo verify the signature on Terminal.app and produce some verbose output:\n\t   codesign --verify --verbose Terminal.app\n\n     To verify the dynamic validity of process 666:\n\t   codesign --verify +666\n\n     To display all information about Terminal.app's code signature:\n\t   codesign --display --verbose=4 Terminal.app\n\n     To extract the internal requirements from Terminal.app to standard\n     output:\n\t   codesign --display -r- Terminal.app\n\n     To display the entitlements of a binary or bundle:\n\t   codesign --display --entitlements - /sbin/launchd\n\t   codesign --display --entitlements - --der Terminal.app\n\n     To display the entitlements of process 666:\n\t   codesign --display --entitlements - +666\n\n     To display the XML entitlements of process 1337:\n\t   codesign --display --entitlements - --xml +1337\n\n     To sign Terminal.app with an embedded launch constraint and an embedded\n     library constraint:\n\t   codesign --sign authority --launch-constraint-self\n\t   self-constraint.plist --library-constraint library-constraint.plist\n\t   Terminal.app"
+  manpageQuestion1: What is the primary purpose of the codesign command?
+  manpageQuestion2: How can you verify the signature of a macOS application with detailed output?
+  manpageQuestion3: What command can be used to extract the internal requirements from a macOS application?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\nTo validate a set of constraint files before signing:\n\t   codesign --validate-constraint self-constraint.plist\n\t   library-constraint.plist\n\nTROUBLESHOOTING\n     A common source of confusion when using codesign arises from the ordering\n     of command line options. If codesign is not behaving as expected, consult\n     this manual and check the ordering of your arguments. As a general rule\n     codesign follows a verb noun rule. For example --sign should be placed\n     before --options in the invocation. This is because you are performing a\n     \"sign\" action with a given set of options.\n\n     If these are inverted and --options is provided before --sign in the\n     invocation, the value of --options is ignored silently.\n\nDIAGNOSTICS\n     codesign exits 0 if all operations succeed. This indicates that all codes\n     were signed, or all codes verified properly as requested. If a signing or\n     verification operation fails, the exit code is 1. Exit code 2 indicates\n     invalid arguments or parameters. Exit code 3 indicates that during\n     verification, all path(s) were properly signed but at least one of them\n     failed to satisfy the requirement specified with the -R option."
+  manpageQuestion1: What is the primary purpose of the codesign tool?
+  manpageQuestion2: How would you use codesign to validate a set of constraint files before signing?
+  manpageQuestion3: What is the correct order of command line options when using codesign to ensure that options are applied properly?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.
+
+
+
+    Manpage text:
+
+    For verification, all path arguments are always investigated before the
+         program exits.  For all other operations, the program exits upon the
+         first error encountered, and any further path arguments are ignored,
+         unless the --continue option was specified, in which case codesign will
+         defer the failure exit until after it has attempted to process all path
+         arguments in turn.
+
+    SIGNING ATOMICITY
+         When a signing operation fails for a particular code, the code may
+         already have been modified in certain ways by adding requisite signature
+         data. Such information will not change the operation of the code, and the
+         code will not be considered signed even with these pieces in place. You
+         may repeat the signing operation without difficulty.  Note however that a
+         previous valid signature may have been effectively destroyed if you
+         specified the -f option.
+         If you require atomicity of signing stricter than provided by codesign,
+         you need to make an explicit copy of your code and sign that.
+  manpageQuestion1: What is the primary purpose of the codesign tool?
+  manpageQuestion2: How can you use codesign to sign a file while ensuring that any previous signature is not destroyed?
+  manpageQuestion3: What should you do if a signing operation fails for a particular code and you want to continue processing other files?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\nENVIRONMENT\n     If the CODESIGN_ALLOCATE environment variable is set, it identifies a\n     substitute codesign_allocate tool used to allocate space for code\n     signatures in Mach-O binaries. This is used by Xcode SDK distributions to\n     provide architectural support for non-native platforms such as iPhones.\n     The system will not accept such substitutes unless they are specially\n     signed (by Apple).\n\nFILES\n     /var/db/DetachedSignatures  System-wide database of detached code\n\t\t\t\t signatures for unsigned code.\n\nSEE ALSO\n     csreq(1), xcodebuild(1), codesign_allocate(1)\n\nHISTORY\n     The codesign command first appeared in Mac OS 10.5.0 (Leopard).\n\nBUGS\n     Some options only apply to particular operations, and codesign ignores\n     them (without complaining) if you specify them for an operation for which\n     they have no meaning.\n\n     The --preserve-metadata option used to take no value, and varied across\n     releases in what exactly it preserved. The ensuing confusion is still\n     with you if you need to make backward-compatible scripts."
+  manpageQuestion1: What is the primary purpose of the codesign command?
+  manpageQuestion2: How can you use the codesign command to sign a Mach-O binary with a specified identity?
+  manpageQuestion3: What is the function of the CODESIGN_ALLOCATE environment variable in relation to codesign?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\nThe dual meaning of the -v option, indicating either verbosity or\n     verification, confuses some people. If you find it confusing, use the\n     unambiguous long forms --verbose and --verify instead.\n\n     The --verify option can take either a file or a pid. If your file path\n     starts with a number you should prefix it with \"./\" to force codesign to\n     interpret the argument as a path. For example:\n\t   codesign --verify 666\n     would become:\n\t   codesign --verify ./666\n\nNOTES\n     The Xcode build system invokes codesign automatically if the\n     CODE_SIGN_IDENTITY build variable is set.\tYou can express any\n     combination of codesign options with additional build variables there.\n\n     codesign is fundamentally a shell around the code signing APIs, and\n     performs nothing of the underlying work.  Replacing it with older or\n     newer versions is unlikely to have a useful effect.\n\n     codesign has several operations and options that are purposely left\n     undocumented in this manual page because they are either experimental\n     (and subject to change at any time), or unadvised to the unwary.  The\n     interminably curious are referred to the published source code."
+  manpageQuestion1: What is the primary purpose of the codesign tool?
+  manpageQuestion2: How can you use the --verify option with a file that starts with a number, such as 12345?
+  manpageQuestion3: What is the recommended way to avoid confusion between the -v option's two meanings?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `codesign`.\n\n\n\nManpage text:\n\nmacOS 15.3\t\t\t  May 7, 2011\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the codesign command?
+  manpageQuestion2: How would you use codesign to sign an application package with a specified certificate?
+  manpageQuestion3: Can you provide an example of using codesign to verify the signature of a macOS application?
+

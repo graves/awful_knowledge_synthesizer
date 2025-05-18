@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `purge`.\n\n\n\nManpage text:\n\nPURGE(8)\t\t    System Manager's Manual\t\t      PURGE(8)\n\nNAME\n     purge – force disk cache to be purged (flushed and emptied)\n\nSYNOPSIS\n     purge\n\nDESCRIPTION\n     Purge can be used to approximate initial boot conditions with a cold disk\n     buffer cache for performance analysis.  It does not affect anonymous\n     memory that has been allocated through malloc, vm_allocate, etc.\n\nSEE ALSO\n     malloc(3), sync(8)\n\nmacOS\t\t\t      September 20, 2005\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the purge command?
+  manpageQuestion2: How would you use the purge command to force disk cache to be purged?
+  manpageQuestion3: Can you provide an example of using the purge command in a system administration scenario?
+

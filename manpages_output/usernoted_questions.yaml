@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `usernoted`.\n\n\n\nManpage text:\n\nusernoted(8)\t\t    System Manager's Manual\t\t  usernoted(8)\n\nNAME\n     usernoted – Notification Center daemon\n\nDESCRIPTION\n     usernoted is a daemon that provides notification services on the system\n\n     There are no options for usernoted, and users should not run usernoted\n     manually.\n\nmacOS\t\t\t\t July 4, 2018\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the usernoted tool?
+  manpageQuestion2: How would you check if the usernoted daemon is running on a macOS system?
+  manpageQuestion3: What are the common use cases for the usernoted service in macOS?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `authorizationhost`.\n\n\n\nManpage text:\n\nauthorizationhost(8)\t    System Manager's Manual\t  authorizationhost(8)\n\nNAME\n     authorizationhost – Authorization Services component\n\nDESCRIPTION\n     authorizationhost is a part of the Authorization Services. It is\n     responsible for performing privileged tasks.\n\nmacOS 15.3\t\t       November 2, 2016 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the authorizationhost service?
+  manpageQuestion2: How does authorizationhost facilitate privileged tasks on a macOS system?
+  manpageQuestion3: What role does authorizationhost play in the Authorization Services framework?
+

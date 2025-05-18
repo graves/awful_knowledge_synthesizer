@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ControlStrip`.\n\n\n\nManpage text:\n\nControlStrip(8) \t    System Manager's Manual\t       ControlStrip(8)\n\nNAME\n     ControlStrip – Touch Bar Control Strip\n\nDESCRIPTION\n     ControlStrip provides the default system controls on the Touch Bar.\n\nmacOS\t\t\t\t June 1, 2017\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the ControlStrip utility?
+  manpageQuestion2: How can I configure the Touch Bar using ControlStrip to show custom controls?
+  manpageQuestion3: What are the common system controls provided by ControlStrip on the Touch Bar?
+

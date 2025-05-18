@@ -1,0 +1,54 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `getopt`.\n\n\n\nManpage text:\n\nGETOPT(1)\t\t    General Commands Manual\t\t     GETOPT(1)\n\nNAME\n     getopt – parse command options\n\nSYNOPSIS\n     args=`getopt optstring $*` ; errcode=$?; set -- $args\n\nDESCRIPTION\n     The getopt utility is used to break up options in command lines for easy\n     parsing by shell procedures, and to check for legal options.  Optstring\n     is a string of recognized option letters (see getopt(3)); if a letter is\n     followed by a colon, the option is expected to have an argument which may\n     or may not be separated from it by white space.  The special option ‘--’\n     is used to delimit the end of the options.  The getopt utility will place\n     ‘--’ in the arguments at the end of the options, or recognize it if used\n     explicitly.  The shell arguments ($1 $2 ...) are reset so that each\n     option is preceded by a ‘-’ and in its own shell argument; each option\n     argument is also in its own shell argument.\n\nEXIT STATUS\n     The getopt utility prints an error message on the standard error output\n     and exits with status > 0 when it encounters an option letter not\n     included in optstring."
+  manpageQuestion1: What is the primary purpose of the getopt utility?
+  manpageQuestion2: How can you use getopt to parse command-line options in a shell script?
+  manpageQuestion3: Can you provide an example of using getopt to handle both options with and without arguments in a command line?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `getopt`.\n\n\n\nManpage text:\n\nEXAMPLES\n     The following code fragment shows how one might process the arguments for\n     a command that can take the options -a and -b, and the option -o, which\n     requires an argument.\n\n\t   args=`getopt abo: $*`\n\t   # you should not use `getopt abo: \"$@\"` since that would parse\n\t   # the arguments differently from what the set command below does.\n\t   if [ $? -ne 0 ]; then\n\t\t   echo 'Usage: ...'\n\t\t   exit 2\n\t   fi\n\t   set -- $args\n\t   # You cannot use the set command with a backquoted getopt directly,\n\t   # since the exit code from getopt would be shadowed by those of set,\n\t   # which is zero by definition.\n\t   while :; do\n\t\t   case \"$1\" in\n\t\t   -a|-b)\n\t\t\t   echo \"flag $1 set\"; sflags=\"${1#-}$sflags\"\n\t\t\t   shift\n\t\t\t   ;;\n\t\t   -o)\n\t\t\t   echo \"oarg is '$2'\"; oarg=\"$2\"\n\t\t\t   shift; shift\n\t\t\t   ;;\n\t\t   --)\n\t\t\t   shift; break\n\t\t\t   ;;\n\t\t   esac\n\t   done\n\t   echo \"single-char flags: '$sflags'\"\n\t   echo \"oarg is '$oarg'\"\n\n     This code will accept any of the following as equivalent:\n\n\t   cmd -aoarg file1 file2\n\t   cmd -a -o arg file1 file2\n\t   cmd -oarg -a file1 file2\n\t   cmd -a -oarg -- file1 file2"
+  manpageQuestion1: What is the primary purpose of the getopt command in macOS?
+  manpageQuestion2: How would you use getopt to process command-line options -a, -b, and -o with an argument in a script?
+  manpageQuestion3: Can you provide an example of using getopt to handle both single-character flags and an option requiring a subsequent argument?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `getopt`.
+
+
+
+    Manpage text:
+
+    SEE ALSO
+         getopts(1), sh(1), getopt(3)
+
+    HISTORY
+         Written by Henry Spencer, working from a Bell Labs manual page.  Behavior
+         believed identical to the Bell version.  Example changed in FreeBSD
+         version 3.2 and 4.0.
+
+    BUGS
+         Whatever getopt(3) has.
+
+         Arguments containing white space or embedded shell metacharacters
+         generally will not survive intact; this looks easy to fix but is not.
+         People trying to fix getopt or the example in this manpage should check
+         the history of this file in FreeBSD.
+
+         The error message for an invalid option is identified as coming from
+         getopt rather than from the shell procedure containing the invocation of
+         getopt; this again is hard to fix.
+
+         The precise best way to use the set command to set the arguments without
+         disrupting the value(s) of shell options varies from one shell version to
+         another.
+
+         Each shellscript has to carry complex code to parse arguments halfway
+         correctly (like the example presented here).  A better getopt-like tool
+         would move much of the complexity into the tool and keep the client shell
+         scripts simpler.
+  manpageQuestion1: What is the primary purpose of the getopt utility?
+  manpageQuestion2: How can you use getopt to parse command-line options in a shell script?
+  manpageQuestion3: What are some common issues or limitations when using the getopt utility in shell scripting?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `getopt`.\n\n\n\nManpage text:\n\nmacOS 15.3\t\t\tAugust 1, 2015\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the getopt utility?
+  manpageQuestion2: How would you use getopt to parse command-line options in a macOS application?
+  manpageQuestion3: Can you provide an example of using getopt to handle the -f and -v flags in a macOS program?
+

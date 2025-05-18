@@ -1,0 +1,72 @@
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `msgcat_en`.
+
+
+
+    Manpage text:
+
+    doctools::msgcat::toc::en(n)  Documentation tools doctools::msgcat::toc::en(n)
+
+    ______________________________________________________________________________
+
+    NAME
+           doctools::msgcat::toc::en - Message catalog for the doctoc parser (EN)
+
+    SYNOPSIS
+           package require Tcl  8.4
+
+           package require msgcat
+
+           package require doctools::msgcat::toc::en  ?0.1?
+
+    ______________________________________________________________________________
+
+    DESCRIPTION
+           The package doctools::msgcat::toc::en is a support module providing the
+           EN (english) language message catalog for the doctoc parser in the
+           doctools system version 2. As such it is an internal package a regular
+           user (developer) should not be in direct contact with.
+
+           If you are such please go the documentation of either
+
+           [1]    doctools::doc,
+
+           [2]    doctools::toc, or
+
+           [3]    doctools::idx
+
+           Within the system architecture this package resides under the package
+           doctools::msgcat providing the general message catalog management
+           within the system. Note that there is no explicit dependency between
+           the manager and catalog packages. The catalog is a plugin which is
+           selected and loaded dynamically.
+
+    API
+           This package has no exported API.
+
+    BUGS, IDEAS, FEEDBACK
+           This document, and the package it describes, will undoubtedly contain
+           bugs and other problems.  Please report such in the category doctools
+           of the Tcllib SF Trackers
+           [http://sourceforge.net/tracker/?group_id=12883].  Please also report
+           any ideas for enhancements you may have for either package and/or
+           documentation.
+
+    KEYWORDS
+           EN, catalog package, doctoc, doctools, i18n, internationalization,
+           l10n, localization, message catalog, message package
+
+    CATEGORY
+           Documentation tools
+
+    COPYRIGHT
+           Copyright (c) 2009 Andreas Kupries <andreas_kupries@users.sourceforge.net>
+  manpageQuestion1: What is the primary purpose of the doctools::msgcat::toc::en package?
+  manpageQuestion2: How would you use the doctools::msgcat::toc::en package in a Tcl script?
+  manpageQuestion3: What is the significance of the doctools::msgcat::toc::en package being an internal package?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `msgcat_en`.\n\n\n\nManpage text:\n\ndoctools2toc\t\t\t      0.1\t  doctools::msgcat::toc::en(n)"
+  manpageQuestion1: What is the primary purpose of the msgcat_en tool?
+  manpageQuestion2: How would you use msgcat_en to translate a message from English to another language?
+  manpageQuestion3: Can you provide an example of using msgcat_en to translate a specific message, such as 'Hello, world!' into French?
+

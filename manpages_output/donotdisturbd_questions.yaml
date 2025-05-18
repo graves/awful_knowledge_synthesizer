@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `donotdisturbd`.\n\n\n\nManpage text:\n\ndonotdisturbd(8)\t    System Manager's Manual\t      donotdisturbd(8)\n\nNAME\n     donotdisturbd – do dot disturb daemon\n\nDESCRIPTION\n     donotdisturbd manages the system do not disturb mode and configuration\n\nDarwin\t\t\t       November 12, 2020\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the donotdisturbd daemon?
+  manpageQuestion2: How can you configure the do not disturb mode using donotdisturbd?
+  manpageQuestion3: Can you explain how the donotdisturbd daemon interacts with other system components to manage the do not disturb mode?
+

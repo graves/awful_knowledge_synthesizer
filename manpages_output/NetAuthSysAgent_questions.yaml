@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `NetAuthSysAgent`.\n\n\n\nManpage text:\n\nNetAuthSysAgent(8)\t    System Manager's Manual\t    NetAuthSysAgent(8)\n\nNAME\n     NetAuthSysAgent – Mounts network shares.\n\nDESCRIPTION\n     NetAuthSysAgent mounts network shares. It uses NetAuthAgent to show\n     dialogs when necessary.\n\nmacOS 15.3\t\t\tApril 20, 2017\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the NetAuthSysAgent command?
+  manpageQuestion2: How would you use NetAuthSysAgent to mount a network share with the username 'john_doe' and password 'securepassword123'?
+  manpageQuestion3: Can you explain the role of NetAuthSysAgent in relation to NetAuthAgent?
+

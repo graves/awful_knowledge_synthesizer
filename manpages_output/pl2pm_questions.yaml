@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pl2pm`.\n\n\n\nManpage text:\n\nPL2PM(1)\t       Perl Programmers Reference Guide \t      PL2PM(1)\n\n\nNAME\n       pl2pm - Rough tool to translate Perl4 .pl files to Perl5 .pm modules.\n\nSYNOPSIS\n       pl2pm files\n\nDESCRIPTION\n       pl2pm is a tool to aid in the conversion of Perl4-style .pl library\n       files to Perl5-style library modules.  Usually, your old .pl file will\n       still work fine and you should only use this tool if you plan to update\n       your library to use some of the newer Perl 5 features, such as\n       AutoLoading.\n\nLIMITATIONS\n       It's just a first step, but it's usually a good first step.\n\nAUTHOR\n       Larry Wall <larry@wall.org>\n\nperl v5.34.1\t\t\t  2024-12-14\t\t\t      PL2PM(1)"
+  manpageQuestion1: What is the primary purpose of the pl2pm tool?
+  manpageQuestion2: How would you use pl2pm to convert a Perl4 .pl file into a Perl5 .pm module?
+  manpageQuestion3: Can you explain how pl2pm assists in the transition from Perl4 to Perl5 library files?
+

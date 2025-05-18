@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlrepository`.\n\n\n\nManpage text:\n\nPERLREPOSITORY(1)      Perl Programmers Reference Guide      PERLREPOSITORY(1)\n\n\nNAME\n       perlrepository - Links to current information on the Perl source\n       repository\n\nDESCRIPTION\n       Perl's source code is stored in a Git repository.\n\n       See perlhack for an explanation of Perl development, including the\n       Super Quick Patch Guide for making and submitting a small patch.\n\n       See perlgit for detailed information about Perl's Git repository.\n\n       (The above documents supersede the information that was formerly here\n       in perlrepository.)\n\nperl v5.34.1\t\t\t  2022-02-19\t\t     PERLREPOSITORY(1)"
+  manpageQuestion1: What is the primary purpose of the perlrepository tool?
+  manpageQuestion2: How can one find information about Perl's source code repository using perlrepository?
+  manpageQuestion3: What resources does perlrepository direct users to for detailed information about Perl's Git repository?
+

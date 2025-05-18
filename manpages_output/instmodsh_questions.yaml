@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `instmodsh`.\n\n\n\nManpage text:\n\nINSTMODSH(1)\t       Perl Programmers Reference Guide \t  INSTMODSH(1)\n\n\nNAME\n       instmodsh - A shell to examine installed modules\n\nSYNOPSIS\n\t   instmodsh\n\nDESCRIPTION\n       A little interface to ExtUtils::Installed to examine installed modules,\n       validate your packlists and even create a tarball from an installed\n       module.\n\nSEE ALSO\n       ExtUtils::Installed\n\nperl v5.34.1\t\t\t  2024-12-14\t\t\t  INSTMODSH(1)"
+  manpageQuestion1: What is the primary purpose of the instmodsh tool?
+  manpageQuestion2: How can instmodsh be used to validate a packlist for an installed module?
+  manpageQuestion3: Can you provide an example of using instmodsh to create a tarball from an installed module?
+

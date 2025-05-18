@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sysmond`.\n\n\n\nManpage text:\n\nSYSMOND(8)\t\t    System Manager's Manual\t\t    SYSMOND(8)\n\nNAME\n     sysmond – system monitor daemon\n\nSYNOPSIS\n     sysmond\n\nDESCRIPTION\n     The sysmond command should not be run directly.\n\nSEE ALSO\n     ps(1), top(1)\n\nmacOS 15.3\t\t\t May 11, 2010\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the sysmond tool?
+  manpageQuestion2: How would you check if the sysmond daemon is running on a macOS system?
+  manpageQuestion3: Can you explain the relationship between sysmond and the ps or top commands mentioned in its documentation?
+

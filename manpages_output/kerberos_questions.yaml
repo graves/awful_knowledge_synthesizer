@@ -1,0 +1,45 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `kerberos`.\n\n\n\nManpage text:\n\nKERBEROS(8)\t\t    System Manager's Manual\t\t   KERBEROS(8)\n\nNAME\n     kerberos – introduction to the Kerberos system\n\nDESCRIPTION\n     Kerberos is a network authentication system. Its purpose is to securely\n     authenticate users and services in an insecure network environment.\n\n     This is done with a Kerberos server acting as a trusted third party,\n     keeping a database with secret keys for all users and services\n     (collectively called principals).\n\n     Each principal belongs to exactly one realm, which is the administrative\n     domain in Kerberos. A realm usually corresponds to an organisation, and\n     the realm should normally be derived from that organisation's domain\n     name. A realm is served by one or more Kerberos servers.\n\n     The authentication process involves exchange of ‘tickets’ and\n     ‘authenticators’ which together prove the principal's identity.\n\n     When you login to the Kerberos system, either through the normal system\n     login or with the kinit(1) program, you acquire a ticket granting ticket\n     which allows you to get new tickets for other services, such as telnet or\n     ftp, without giving your password."
+  manpageQuestion1: What is the primary purpose of the Kerberos system?
+  manpageQuestion2: How does the Kerberos system facilitate secure authentication in an insecure network environment?
+  manpageQuestion3: What is the role of a realm in the Kerberos system?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `kerberos`.
+
+
+
+    Manpage text:
+
+    For more information on how Kerberos works, and other general Kerberos
+         questions see the Kerberos FAQ at
+         https://www.cmf.nrl.navy.mil/krb/kerberos-faq.html.
+
+         For setup instructions see the Heimdal Texinfo manual.
+
+    SEE ALSO
+         ftp(1), kdestroy(1), kinit(1), klist(1), kpasswd(1), telnet(1)
+
+    HISTORY
+         The Kerberos authentication system was developed in the late 1980's as
+         part of the Athena Project at the Massachusetts Institute of Technology.
+         Versions one through three never reached outside MIT, but version 4 was
+         (and still is) quite popular, especially in the academic community, but
+         is also used in commercial products like the AFS filesystem.
+
+         The problems with version 4 are that it has many limitations, the code
+         was not too well written (since it had been developed over a long time),
+         and it has a number of known security problems. To resolve many of these
+         issues work on version five started, and resulted in IETF RFC 1510 in
+         1993. IETF RFC 1510 was obsoleted in 2005 with IETF RFC 4120, also known
+         as Kerberos clarifications. With the arrival of IETF RFC 4120, the work
+         on adding extensibility and internationalization have started (Kerberos
+         extensions), and a new RFC will hopefully appear soon.
+  manpageQuestion1: What is the primary purpose of the Kerberos authentication system?
+  manpageQuestion2: How can you use the kerberos command-line tools to authenticate to a Kerberos realm?
+  manpageQuestion3: What is the role of the kerberos command-line tools in managing Kerberos credentials?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `kerberos`.\n\n\n\nManpage text:\n\nThis manual page is part of the Heimdal Kerberos 5 distribution, which\n     has been in development at the Royal Institute of Technology in\n     Stockholm, Sweden, since about 1997.\n\nHEIMDAL \t\t       September 1, 2000\t\t       HEIMDAL"
+  manpageQuestion1: What is the primary purpose of the kerberos tool?
+  manpageQuestion2: How would you use the kerberos command to authenticate a user with a specific keytab file?
+  manpageQuestion3: Can you provide an example of using the kerberos command to obtain a ticket for a particular service?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `helpd`.\n\n\n\nManpage text:\n\nhelpd(8)\t\t    System Manager's Manual\t\t      helpd(8)\n\nNAME\n     helpd – Help Daemon\n\nDESCRIPTION\n     helpd is a macOS agent that manages software documentation.\n\n     There are no configuration options to helpd, and users should not run\n     helpd manually.\n\nSEE ALSO\n     hiutil(1)\n\nmacOS\t\t\t\t   22/02/17\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the helpd tool?
+  manpageQuestion2: How would you use the helpd daemon to manage software documentation on macOS?
+  manpageQuestion3: Can you provide an example of how the helpd daemon is typically interacted with by other system components?
+

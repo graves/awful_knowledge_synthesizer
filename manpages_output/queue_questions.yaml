@@ -1,0 +1,201 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `queue`.\n\n\n\nManpage text:\n\nQUEUE(3)\t\t   Library Functions Manual\t\t      QUEUE(3)\n\nNAME\n     SLIST_EMPTY, SLIST_ENTRY, SLIST_FIRST, SLIST_FOREACH, SLIST_FOREACH_SAFE,\n     SLIST_HEAD, SLIST_HEAD_INITIALIZER, SLIST_INIT, SLIST_INSERT_AFTER,\n     SLIST_INSERT_HEAD, SLIST_NEXT, SLIST_REMOVE_HEAD, SLIST_REMOVE,\n     STAILQ_CONCAT, STAILQ_EMPTY, STAILQ_ENTRY, STAILQ_FIRST, STAILQ_FOREACH,\n     STAILQ_FOREACH_SAFE, STAILQ_HEAD, STAILQ_HEAD_INITIALIZER, STAILQ_INIT,\n     STAILQ_INSERT_AFTER, STAILQ_INSERT_HEAD, STAILQ_INSERT_TAIL, STAILQ_LAST,\n     STAILQ_NEXT, STAILQ_REMOVE_HEAD, STAILQ_REMOVE, LIST_EMPTY, LIST_ENTRY,\n     LIST_FIRST, LIST_FOREACH, LIST_FOREACH_SAFE, LIST_HEAD,\n     LIST_HEAD_INITIALIZER, LIST_INIT, LIST_INSERT_AFTER, LIST_INSERT_BEFORE,\n     LIST_INSERT_HEAD, LIST_NEXT, LIST_REMOVE, TAILQ_CONCAT, TAILQ_EMPTY,\n     TAILQ_ENTRY, TAILQ_FIRST, TAILQ_FOREACH, TAILQ_FOREACH_SAFE,\n     TAILQ_FOREACH_REVERSE, TAILQ_FOREACH_REVERSE_SAFE, TAILQ_HEAD,\n     TAILQ_HEAD_INITIALIZER, TAILQ_INIT, TAILQ_INSERT_AFTER,\n     TAILQ_INSERT_BEFORE, TAILQ_INSERT_HEAD, TAILQ_INSERT_TAIL, TAILQ_LAST,\n     TAILQ_NEXT, TAILQ_PREV, TAILQ_REMOVE – implementations of singly-linked\n     lists, singly-linked tail queues, lists and tail queues"
+  manpageQuestion1: What is the primary purpose of the queue-related functions in the macOS library?
+  manpageQuestion2: How would you use the SLIST_INSERT_HEAD function to add an element to the beginning of a singly linked list?
+  manpageQuestion3: Can you provide an example of using the TAILQ_REMOVE function to remove an element from a tail queue?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `queue`.\n\n\n\nManpage text:\n\nSYNOPSIS\n     #include <sys/queue.h>\n\n     SLIST_EMPTY(SLIST_HEAD *head);\n\n     SLIST_ENTRY(TYPE);\n\n     SLIST_FIRST(SLIST_HEAD *head);\n\n     SLIST_FOREACH(TYPE *var, SLIST_HEAD *head, SLIST_ENTRY NAME);\n\n     SLIST_FOREACH_SAFE(TYPE *var, SLIST_HEAD *head, SLIST_ENTRY NAME,\n\t TYPE *temp_var);\n\n     SLIST_HEAD(HEADNAME, TYPE);\n\n     SLIST_HEAD_INITIALIZER(SLIST_HEAD head);\n\n     SLIST_INIT(SLIST_HEAD *head);\n\n     SLIST_INSERT_AFTER(TYPE *listelm, TYPE *elm, SLIST_ENTRY NAME);\n\n     SLIST_INSERT_HEAD(SLIST_HEAD *head, TYPE *elm, SLIST_ENTRY NAME);\n\n     SLIST_NEXT(TYPE *elm, SLIST_ENTRY NAME);\n\n     SLIST_REMOVE_HEAD(SLIST_HEAD *head, SLIST_ENTRY NAME);\n\n     SLIST_REMOVE(SLIST_HEAD *head, TYPE *elm, TYPE, SLIST_ENTRY NAME);\n\n     STAILQ_CONCAT(STAILQ_HEAD *head1, STAILQ_HEAD *head2);\n\n     STAILQ_EMPTY(STAILQ_HEAD *head);\n\n     STAILQ_ENTRY(TYPE);\n\n     STAILQ_FIRST(STAILQ_HEAD *head);\n\n     STAILQ_FOREACH(TYPE *var, STAILQ_HEAD *head, STAILQ_ENTRY NAME);\n\n     STAILQ_FOREACH_SAFE(TYPE *var, STAILQ_HEAD *head, STAILQ_ENTRY NAME,\n\t TYPE *temp_var);"
+  manpageQuestion1: What is the primary purpose of the queue resource in macOS?
+  manpageQuestion2: How would you use the SLIST_INSERT_HEAD function to add an element to the beginning of a singly linked list?
+  manpageQuestion3: Can you provide an example of using the STAILQ_CONCAT function to concatenate two doubly linked lists?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `queue`.\n\n\n\nManpage text:\n\nSTAILQ_HEAD(HEADNAME, TYPE);\n\n     STAILQ_HEAD_INITIALIZER(STAILQ_HEAD head);\n\n     STAILQ_INIT(STAILQ_HEAD *head);\n\n     STAILQ_INSERT_AFTER(STAILQ_HEAD *head, TYPE *listelm, TYPE *elm,\n\t STAILQ_ENTRY NAME);\n\n     STAILQ_INSERT_HEAD(STAILQ_HEAD *head, TYPE *elm, STAILQ_ENTRY NAME);\n\n     STAILQ_INSERT_TAIL(STAILQ_HEAD *head, TYPE *elm, STAILQ_ENTRY NAME);\n\n     STAILQ_LAST(STAILQ_HEAD *head, TYPE, STAILQ_ENTRY NAME);\n\n     STAILQ_NEXT(TYPE *elm, STAILQ_ENTRY NAME);\n\n     STAILQ_REMOVE_HEAD(STAILQ_HEAD *head, STAILQ_ENTRY NAME);\n\n     STAILQ_REMOVE(STAILQ_HEAD *head, TYPE *elm, TYPE, STAILQ_ENTRY NAME);\n\n     LIST_EMPTY(LIST_HEAD *head);\n\n     LIST_ENTRY(TYPE);\n\n     LIST_FIRST(LIST_HEAD *head);\n\n     LIST_FOREACH(TYPE *var, LIST_HEAD *head, LIST_ENTRY NAME);\n\n     LIST_FOREACH_SAFE(TYPE *var, LIST_HEAD *head, LIST_ENTRY NAME,\n\t TYPE *temp_var);\n\n     LIST_HEAD(HEADNAME, TYPE);\n\n     LIST_HEAD_INITIALIZER(LIST_HEAD head);\n\n     LIST_INIT(LIST_HEAD *head);\n\n     LIST_INSERT_AFTER(TYPE *listelm, TYPE *elm, LIST_ENTRY NAME);"
+  manpageQuestion1: What is the primary purpose of the queue resource in macOS?
+  manpageQuestion2: How would you use the queue resource to insert an element at the head of a list?
+  manpageQuestion3: Can you provide an example of using the queue resource to remove and return the first element from a list?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `queue`.\n\n\n\nManpage text:\n\nLIST_INSERT_BEFORE(TYPE *listelm, TYPE *elm, LIST_ENTRY NAME);\n\n     LIST_INSERT_HEAD(LIST_HEAD *head, TYPE *elm, LIST_ENTRY NAME);\n\n     LIST_NEXT(TYPE *elm, LIST_ENTRY NAME);\n\n     LIST_REMOVE(TYPE *elm, LIST_ENTRY NAME);\n\n     TAILQ_CONCAT(TAILQ_HEAD *head1, TAILQ_HEAD *head2, TAILQ_ENTRY NAME);\n\n     TAILQ_EMPTY(TAILQ_HEAD *head);\n\n     TAILQ_ENTRY(TYPE);\n\n     TAILQ_FIRST(TAILQ_HEAD *head);\n\n     TAILQ_FOREACH(TYPE *var, TAILQ_HEAD *head, TAILQ_ENTRY NAME);\n\n     TAILQ_FOREACH_SAFE(TYPE *var, TAILQ_HEAD *head, TAILQ_ENTRY NAME,\n\t TYPE *temp_var);\n\n     TAILQ_FOREACH_REVERSE(TYPE *var, TAILQ_HEAD *head, HEADNAME,\n\t TAILQ_ENTRY NAME);\n\n     TAILQ_FOREACH_REVERSE_SAFE(TYPE *var, TAILQ_HEAD *head, HEADNAME,\n\t TAILQ_ENTRY NAME, TYPE *temp_var);\n\n     TAILQ_HEAD(HEADNAME, TYPE);\n\n     TAILQ_HEAD_INITIALIZER(TAILQ_HEAD head);\n\n     TAILQ_INIT(TAILQ_HEAD *head);\n\n     TAILQ_INSERT_AFTER(TAILQ_HEAD *head, TYPE *listelm, TYPE *elm,\n\t TAILQ_ENTRY NAME);\n\n     TAILQ_INSERT_BEFORE(TYPE *listelm, TYPE *elm, TAILQ_ENTRY NAME);"
+  manpageQuestion1: What is the primary purpose of the queue resource in macOS?
+  manpageQuestion2: How would you use the TAILQ_INSERT_BEFORE function to insert an element before a specified element in a tail queue?
+  manpageQuestion3: Can you provide an example of using the TAILQ_FOREACH loop to iterate over all elements in a tail queue?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `queue`.\n\n\n\nManpage text:\n\nTAILQ_INSERT_HEAD(TAILQ_HEAD *head, TYPE *elm, TAILQ_ENTRY NAME);\n\n     TAILQ_INSERT_TAIL(TAILQ_HEAD *head, TYPE *elm, TAILQ_ENTRY NAME);\n\n     TAILQ_LAST(TAILQ_HEAD *head, HEADNAME);\n\n     TAILQ_NEXT(TYPE *elm, TAILQ_ENTRY NAME);\n\n     TAILQ_PREV(TYPE *elm, HEADNAME, TAILQ_ENTRY NAME);\n\n     TAILQ_REMOVE(TAILQ_HEAD *head, TYPE *elm, TAILQ_ENTRY NAME);\n\nDESCRIPTION\n     These macros define and operate on four types of data structures: singly-\n     linked lists, singly-linked tail queues, lists, and tail queues.  All\n     four structures support the following functionality:\n\t   1.\tInsertion of a new entry at the head of the list.\n\t   2.\tInsertion of a new entry after any element in the list.\n\t   3.\tO(1) removal of an entry from the head of the list.\n\t   4.\tO(n) removal of any entry in the list.\n\t   5.\tForward traversal through the list.\n\n     Singly-linked lists are the simplest of the five data structures and\n     support only the above functionality.  Singly-linked lists are ideal for\n     applications with large datasets and few or no removals, or for\n     implementing a LIFO queue."
+  manpageQuestion1: What is the primary purpose of the queue resource in macOS?
+  manpageQuestion2: How would you insert a new element at the head of a singly-linked tail queue using the TAILQ_INSERT_HEAD macro?
+  manpageQuestion3: Can you provide an example of removing the last element from a tail queue using the TAILQ_REMOVE macro?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `queue`.\n\n\n\nManpage text:\n\nSingly-linked tail queues add the following functionality:\n\t   1.\tEntries can be added at the end of a list.\n\t   2.\tThey may be concatenated.\n     However:\n\t   1.\tAll list insertions must specify the head of the list.\n\t   2.\tEach head entry requires two pointers rather than one.\n\t   3.\tCode size is about 15% greater and operations run about 20%\n\t\tslower than singly-linked lists.\n\n     Singly-linked tailqs are ideal for applications with large datasets and\n     few or no removals, or for implementing a FIFO queue.\n\n     All doubly linked types of data structures (lists and tail queues)\n     additionally allow:\n\t   1.\tInsertion of a new entry before any element in the list.\n\t   2.\tO(1) removal of any entry in the list.\n     However:\n\t   1.\tEach elements requires two pointers rather than one.\n\t   2.\tCode size and execution time of operations (except for\n\t\tremoval) is about twice that of the singly-linked data-\n\t\tstructures.\n\n     Linked lists are the simplest of the doubly linked data structures and\n     support only the above functionality over singly-linked lists."
+  manpageQuestion1: What is the primary purpose of the `queue` resource in macOS?
+  manpageQuestion2: In what scenarios would a singly-linked tail queue be more appropriate than a doubly linked list?
+  manpageQuestion3: How can you implement a FIFO queue using singly-linked tail queues?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `queue`.\n\n\n\nManpage text:\n\nTail queues add the following functionality:\n\t   1.\tEntries can be added at the end of a list.\n\t   2.\tThey may be traversed backwards, from tail to head.\n\t   3.\tThey may be concatenated.\n     However:\n\t   1.\tAll list insertions and removals must specify the head of the\n\t\tlist.\n\t   2.\tEach head entry requires two pointers rather than one.\n\t   3.\tCode size is about 15% greater and operations run about 20%\n\t\tslower than singly-linked lists.\n\n     In the macro definitions, TYPE is the name of a user defined structure,\n     that must contain a field of type SLIST_ENTRY, STAILQ_ENTRY, LIST_ENTRY,\n     or TAILQ_ENTRY, named NAME.  The argument HEADNAME is the name of a user\n     defined structure that must be declared using the macros SLIST_HEAD,\n     STAILQ_HEAD, LIST_HEAD, or TAILQ_HEAD.  See the examples below for\n     further explanation of how these macros are used.\n\nSINGLY-LINKED LISTS\n     A singly-linked list is headed by a structure defined by the SLIST_HEAD\n     macro.  This structure contains a single pointer to the first element on\n     the list.\tThe elements are singly linked for minimum space and pointer\n     manipulation overhead at the expense of O(n) removal for arbitrary\n     elements.\tNew elements can be added to the list after an existing\n     element or at the head of the list.  An SLIST_HEAD structure is declared\n     as follows:"
+  manpageQuestion1: What is the primary purpose of the queue resource in macOS?
+  manpageQuestion2: How would you use the queue resource to manage a list of tasks where each task is represented by a structure containing a SLIST_ENTRY field?
+  manpageQuestion3: Can you provide an example of how to initialize and manipulate a singly-linked list using the queue resource's macros?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `queue`.\n\n\n\nManpage text:\n\nSLIST_HEAD(HEADNAME, TYPE) head;\n\n     where HEADNAME is the name of the structure to be defined, and TYPE is\n     the type of the elements to be linked into the list.  A pointer to the\n     head of the list can later be declared as:\n\n\t   struct HEADNAME *headp;\n\n     (The names head and headp are user selectable.)\n\n     The macro SLIST_HEAD_INITIALIZER evaluates to an initializer for the list\n     head.\n\n     The macro SLIST_EMPTY evaluates to true if there are no elements in the\n     list.\n\n     The macro SLIST_ENTRY declares a structure that connects the elements in\n     the list.\n\n     The macro SLIST_FIRST returns the first element in the list or NULL if\n     the list is empty.\n\n     The macro SLIST_FOREACH traverses the list referenced by head in the\n     forward direction, assigning each element in turn to var.\n\n     The macro SLIST_FOREACH_SAFE traverses the list referenced by head in the\n     forward direction, assigning each element in turn to var.\tHowever,\n     unlike SLIST_FOREACH() here it is permitted to both remove var as well as\n     free it from within the loop safely without interfering with the\n     traversal."
+  manpageQuestion1: What is the primary purpose of the SLIST_HEAD macro in macOS programming?
+  manpageQuestion2: How would you use the SLIST_FIRST macro to retrieve the first element of a linked list initialized with SLIST_HEAD?
+  manpageQuestion3: Can you demonstrate how to safely traverse a linked list using the SLIST_FOREACH_SAFE macro while removing elements?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `queue`.\n\n\n\nManpage text:\n\nThe macro SLIST_INIT initializes the list referenced by head.\n\n     The macro SLIST_INSERT_HEAD inserts the new element elm at the head of\n     the list.\n\n     The macro SLIST_INSERT_AFTER inserts the new element elm after the\n     element listelm.\n\n     The macro SLIST_NEXT returns the next element in the list.\n\n     The macro SLIST_REMOVE_HEAD removes the element elm from the head of the\n     list.  For optimum efficiency, elements being removed from the head of\n     the list should explicitly use this macro instead of the generic\n     SLIST_REMOVE macro.\n\n     The macro SLIST_REMOVE removes the element elm from the list.\n\nSINGLY-LINKED LIST EXAMPLE\n     SLIST_HEAD(slisthead, entry) head =\n\t SLIST_HEAD_INITIALIZER(head);\n     struct slisthead *headp;\t\t     /* Singly-linked List head. */\n     struct entry {\n\t     ...\n\t     SLIST_ENTRY(entry) entries;     /* Singly-linked List. */\n\t     ...\n     } *n1, *n2, *n3, *np;\n\n     SLIST_INIT(&head); \t\t     /* Initialize the list. */\n\n     n1 = malloc(sizeof(struct entry));      /* Insert at the head. */\n     SLIST_INSERT_HEAD(&head, n1, entries);"
+  manpageQuestion1: What is the primary purpose of the `queue` resource in macOS?
+  manpageQuestion2: How would you use the `SLIST_INSERT_HEAD` macro to add an element to the beginning of a singly-linked list?
+  manpageQuestion3: Can you provide an example of using the `SLIST_REMOVE_HEAD` macro to remove the first element from a singly-linked list?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `queue`.\n\n\n\nManpage text:\n\nn2 = malloc(sizeof(struct entry));      /* Insert after. */\n     SLIST_INSERT_AFTER(n1, n2, entries);\n\n     SLIST_REMOVE(&head, n2, entry, entries);/* Deletion. */\n     free(n2);\n\n     n3 = SLIST_FIRST(&head);\n     SLIST_REMOVE_HEAD(&head, entries);      /* Deletion from the head. */\n     free(n3);\n\t\t\t\t\t     /* Forward traversal. */\n     SLIST_FOREACH(np, &head, entries)\n\t     np-> ...\n\t\t\t\t\t     /* Safe forward traversal. */\n     SLIST_FOREACH_SAFE(np, &head, entries, np_temp) {\n\t     np->do_stuff();\n\t     ...\n\t     SLIST_REMOVE(&head, np, entry, entries);\n\t     free(np);\n     }\n\n     while (!SLIST_EMPTY(&head)) {\t     /* List Deletion. */\n\t     n1 = SLIST_FIRST(&head);\n\t     SLIST_REMOVE_HEAD(&head, entries);\n\t     free(n1);\n     }\n\nSINGLY-LINKED TAIL QUEUES\n     A singly-linked tail queue is headed by a structure defined by the\n     STAILQ_HEAD macro.  This structure contains a pair of pointers, one to\n     the first element in the tail queue and the other to the last element in\n     the tail queue.  The elements are singly linked for minimum space and\n     pointer manipulation overhead at the expense of O(n) removal for\n     arbitrary elements.  New elements can be added to the tail queue after an\n     existing element, at the head of the tail queue, or at the end of the\n     tail queue.  A STAILQ_HEAD structure is declared as follows:"
+  manpageQuestion1: What is the primary purpose of the `queue` resource in macOS?
+  manpageQuestion2: How would you use the `SLIST_INSERT_AFTER` function to add a new element after an existing node in a singly-linked list?
+  manpageQuestion3: Can you provide an example of using the `SLIST_FOREACH_SAFE` loop to safely iterate and remove elements from a singly-linked list?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `queue`.\n\n\n\nManpage text:\n\nSTAILQ_HEAD(HEADNAME, TYPE) head;\n\n     where HEADNAME is the name of the structure to be defined, and TYPE is\n     the type of the elements to be linked into the tail queue.  A pointer to\n     the head of the tail queue can later be declared as:\n\n\t   struct HEADNAME *headp;\n\n     (The names head and headp are user selectable.)\n\n     The macro STAILQ_HEAD_INITIALIZER evaluates to an initializer for the\n     tail queue head.\n\n     The macro STAILQ_CONCAT concatenates the tail queue headed by head2 onto\n     the end of the one headed by head1 removing all entries from the former.\n\n     The macro STAILQ_EMPTY evaluates to true if there are no items on the\n     tail queue.\n\n     The macro STAILQ_ENTRY declares a structure that connects the elements in\n     the tail queue.\n\n     The macro STAILQ_FIRST returns the first item on the tail queue or NULL\n     if the tail queue is empty.\n\n     The macro STAILQ_FOREACH traverses the tail queue referenced by head in\n     the forward direction, assigning each element in turn to var."
+  manpageQuestion1: What is the primary purpose of the queue resource in macOS?
+  manpageQuestion2: How would you concatenate two tail queues using the STAILQ_CONCAT macro?
+  manpageQuestion3: Can you explain how to check if a tail queue is empty using the provided macros?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `queue`.
+
+
+
+    Manpage text:
+
+    The macro STAILQ_FOREACH_SAFE traverses the tail queue referenced by head
+         in the forward direction, assigning each element in turn to var.
+         However, unlike STAILQ_FOREACH() here it is permitted to both remove var
+         as well as free it from within the loop safely without interfering with
+         the traversal.
+
+         The macro STAILQ_INIT initializes the tail queue referenced by head.
+
+         The macro STAILQ_INSERT_HEAD inserts the new element elm at the head of
+         the tail queue.
+
+         The macro STAILQ_INSERT_TAIL inserts the new element elm at the end of
+         the tail queue.
+
+         The macro STAILQ_INSERT_AFTER inserts the new element elm after the
+         element listelm.
+
+         The macro STAILQ_LAST returns the last item on the tail queue.  If the
+         tail queue is empty the return value is NULL.
+
+         The macro STAILQ_NEXT returns the next item on the tail queue, or NULL
+         this item is the last.
+
+         The macro STAILQ_REMOVE_HEAD removes the element at the head of the tail
+         queue.  For optimum efficiency, elements being removed from the head of
+         the tail queue should use this macro explicitly rather than the generic
+         STAILQ_REMOVE macro.
+  manpageQuestion1: What is the primary purpose of the `queue` resource in macOS?
+  manpageQuestion2: How would you use the STAILQ_INSERT_HEAD macro to add an element to the head of a tail queue?
+  manpageQuestion3: Can you provide an example of using the STAILQ_REMOVE_HEAD macro to remove and retrieve the first element from a tail queue?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `queue`.\n\n\n\nManpage text:\n\nThe macro STAILQ_REMOVE removes the element elm from the tail queue.\n\nSINGLY-LINKED TAIL QUEUE EXAMPLE\n     STAILQ_HEAD(stailhead, entry) head =\n\t STAILQ_HEAD_INITIALIZER(head);\n     struct stailhead *headp;\t\t     /* Singly-linked tail queue head. */\n     struct entry {\n\t     ...\n\t     STAILQ_ENTRY(entry) entries;    /* Tail queue. */\n\t     ...\n     } *n1, *n2, *n3, *np;\n\n     STAILQ_INIT(&head);\t\t     /* Initialize the queue. */\n\n     n1 = malloc(sizeof(struct entry));      /* Insert at the head. */\n     STAILQ_INSERT_HEAD(&head, n1, entries);\n\n     n1 = malloc(sizeof(struct entry));      /* Insert at the tail. */\n     STAILQ_INSERT_TAIL(&head, n1, entries);\n\n     n2 = malloc(sizeof(struct entry));      /* Insert after. */\n     STAILQ_INSERT_AFTER(&head, n1, n2, entries);\n\t\t\t\t\t     /* Deletion. */\n     STAILQ_REMOVE(&head, n2, entry, entries);\n     free(n2);\n\t\t\t\t\t     /* Deletion from the head. */\n     n3 = STAILQ_FIRST(&head);\n     STAILQ_REMOVE_HEAD(&head, entries);\n     free(n3);\n\t\t\t\t\t     /* Forward traversal. */\n     STAILQ_FOREACH(np, &head, entries)\n\t     np-> ...\n\t\t\t\t\t     /* Safe forward traversal. */\n     STAILQ_FOREACH_SAFE(np, &head, entries, np_temp) {\n\t     np->do_stuff();\n\t     ...\n\t     STAILQ_REMOVE(&head, np, entry, entries);\n\t     free(np);\n     }\n\t\t\t\t\t     /* TailQ Deletion. */\n     while (!STAILQ_EMPTY(&head)) {\n\t     n1 = STAILQ_FIRST(&head);\n\t     STAILQ_REMOVE_HEAD(&head, entries);\n\t     free(n1);\n     }\n\t\t\t\t\t     /* Faster TailQ Deletion. */\n     n1 = STAILQ_FIRST(&head);\n     while (n1 != NULL) {\n\t     n2 = STAILQ_NEXT(n1, entries);\n\t     free(n1);\n\t     n1 = n2;\n     }\n     STAILQ_INIT(&head);"
+  manpageQuestion1: What is the primary purpose of the queue resource in macOS?
+  manpageQuestion2: How would you use STAILQ_REMOVE to delete an element from a singly-linked tail queue?
+  manpageQuestion3: Can you provide an example of using STAILQ_FOREACH_SAFE for safe traversal and deletion in a tail queue?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `queue`.\n\n\n\nManpage text:\n\nLISTS\n     A list is headed by a structure defined by the LIST_HEAD macro.  This\n     structure contains a single pointer to the first element on the list.\n     The elements are doubly linked so that an arbitrary element can be\n     removed without traversing the list.  New elements can be added to the\n     list after an existing element, before an existing element, or at the\n     head of the list.\tA LIST_HEAD structure is declared as follows:\n\n\t   LIST_HEAD(HEADNAME, TYPE) head;\n\n     where HEADNAME is the name of the structure to be defined, and TYPE is\n     the type of the elements to be linked into the list.  A pointer to the\n     head of the list can later be declared as:\n\n\t   struct HEADNAME *headp;\n\n     (The names head and headp are user selectable.)\n\n     The macro LIST_HEAD_INITIALIZER evaluates to an initializer for the list\n     head.\n\n     The macro LIST_EMPTY evaluates to true if there are no elements in the\n     list.\n\n     The macro LIST_ENTRY declares a structure that connects the elements in\n     the list."
+  manpageQuestion1: What is the primary purpose of the `queue` resource in macOS?
+  manpageQuestion2: How would you initialize a list head structure using the LIST_HEAD macro?
+  manpageQuestion3: Can you explain how to check if a list is empty using the LIST_EMPTY macro?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `queue`.\n\n\n\nManpage text:\n\nThe macro LIST_FIRST returns the first element in the list or NULL if the\n     list is empty.\n\n     The macro LIST_FOREACH traverses the list referenced by head in the\n     forward direction, assigning each element in turn to var.\n\n     The macro LIST_FOREACH_SAFE traverses the list referenced by head in the\n     forward direction, assigning each element in turn to var.\tHowever,\n     unlike LIST_FOREACH() here it is permitted to both remove var as well as\n     free it from within the loop safely without interfering with the\n     traversal.\n\n     The macro LIST_INIT initializes the list referenced by head.\n\n     The macro LIST_INSERT_HEAD inserts the new element elm at the head of the\n     list.\n\n     The macro LIST_INSERT_AFTER inserts the new element elm after the element\n     listelm.\n\n     The macro LIST_INSERT_BEFORE inserts the new element elm before the\n     element listelm.\n\n     The macro LIST_NEXT returns the next element in the list, or NULL if this\n     is the last.\n\n     The macro LIST_REMOVE removes the element elm from the list."
+  manpageQuestion1: What is the primary purpose of the queue resource in macOS?
+  manpageQuestion2: How would you use the LIST_INSERT_HEAD macro to add an element to the beginning of a list?
+  manpageQuestion3: Can you provide an example of using the LIST_REMOVE macro to remove an element from a list?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `queue`.\n\n\n\nManpage text:\n\nLIST EXAMPLE\n     LIST_HEAD(listhead, entry) head =\n\t LIST_HEAD_INITIALIZER(head);\n     struct listhead *headp;\t\t     /* List head. */\n     struct entry {\n\t     ...\n\t     LIST_ENTRY(entry) entries;      /* List. */\n\t     ...\n     } *n1, *n2, *n3, *np, *np_temp;\n\n     LIST_INIT(&head);\t\t\t     /* Initialize the list. */\n\n     n1 = malloc(sizeof(struct entry));      /* Insert at the head. */\n     LIST_INSERT_HEAD(&head, n1, entries);\n\n     n2 = malloc(sizeof(struct entry));      /* Insert after. */\n     LIST_INSERT_AFTER(n1, n2, entries);\n\n     n3 = malloc(sizeof(struct entry));      /* Insert before. */\n     LIST_INSERT_BEFORE(n2, n3, entries);\n\n     LIST_REMOVE(n2, entries);\t\t     /* Deletion. */\n     free(n2);\n\t\t\t\t\t     /* Forward traversal. */\n     LIST_FOREACH(np, &head, entries)\n\t     np-> ...\n\n\t\t\t\t\t     /* Safe forward traversal. */\n     LIST_FOREACH_SAFE(np, &head, entries, np_temp) {\n\t     np->do_stuff();\n\t     ...\n\t     LIST_REMOVE(np, entries);\n\t     free(np);\n     }\n\n     while (!LIST_EMPTY(&head)) {\t     /* List Deletion. */\n\t     n1 = LIST_FIRST(&head);\n\t     LIST_REMOVE(n1, entries);\n\t     free(n1);\n     }"
+  manpageQuestion1: What is the primary purpose of the queue resource in macOS?
+  manpageQuestion2: How would you use the LIST_INSERT_HEAD function to add an element to the beginning of a list?
+  manpageQuestion3: Can you provide an example of using LIST_FOREACH_SAFE to safely traverse and remove elements from a list?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `queue`.\n\n\n\nManpage text:\n\nn1 = LIST_FIRST(&head);\t\t     /* Faster List Deletion. */\n     while (n1 != NULL) {\n\t     n2 = LIST_NEXT(n1, entries);\n\t     free(n1);\n\t     n1 = n2;\n     }\n     LIST_INIT(&head);\n\nTAIL QUEUES\n     A tail queue is headed by a structure defined by the TAILQ_HEAD macro.\n     This structure contains a pair of pointers, one to the first element in\n     the tail queue and the other to the last element in the tail queue.  The\n     elements are doubly linked so that an arbitrary element can be removed\n     without traversing the tail queue.  New elements can be added to the tail\n     queue after an existing element, before an existing element, at the head\n     of the tail queue, or at the end of the tail queue.  A TAILQ_HEAD\n     structure is declared as follows:\n\n\t   TAILQ_HEAD(HEADNAME, TYPE) head;\n\n     where HEADNAME is the name of the structure to be defined, and TYPE is\n     the type of the elements to be linked into the tail queue.  A pointer to\n     the head of the tail queue can later be declared as:"
+  manpageQuestion1: What is the primary purpose of the queue resource in macOS?
+  manpageQuestion2: How would you use the tail queue to remove all elements from a list and free their memory?
+  manpageQuestion3: Can you provide an example of how to initialize a tail queue and add elements to it?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `queue`.
+
+
+
+    Manpage text:
+
+    struct HEADNAME *headp;
+
+         (The names head and headp are user selectable.)
+
+         The macro TAILQ_HEAD_INITIALIZER evaluates to an initializer for the tail
+         queue head.
+
+         The macro TAILQ_CONCAT concatenates the tail queue headed by head2 onto
+         the end of the one headed by head1 removing all entries from the former.
+
+         The macro TAILQ_EMPTY evaluates to true if there are no items on the tail
+         queue.
+
+         The macro TAILQ_ENTRY declares a structure that connects the elements in
+         the tail queue.
+
+         The macro TAILQ_FIRST returns the first item on the tail queue or NULL if
+         the tail queue is empty.
+
+         The macro TAILQ_FOREACH traverses the tail queue referenced by head in
+         the forward direction, assigning each element in turn to var.  var is set
+         to NULL if the loop completes normally, or if there were no elements.
+
+         The macro TAILQ_FOREACH_REVERSE traverses the tail queue referenced by
+         head in the reverse direction, assigning each element in turn to var.
+  manpageQuestion1: What is the primary purpose of the queue-related macros in the provided manpage?
+  manpageQuestion2: How can you concatenate two tail queues using the TAILQ_CONCAT macro?
+  manpageQuestion3: What is the function of the TAILQ_FOREACH macro and how would you use it in a loop?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `queue`.
+
+
+
+    Manpage text:
+
+    The macros TAILQ_FOREACH_SAFE and TAILQ_FOREACH_REVERSE_SAFE traverse the
+         list referenced by head in the forward or reverse direction respectively,
+         assigning each element in turn to var.  However, unlike their unsafe
+         counterparts, TAILQ_FOREACH and TAILQ_FOREACH_REVERSE permit to both
+         remove var as well as free it from within the loop safely without
+         interfering with the traversal.
+
+         The macro TAILQ_INIT initializes the tail queue referenced by head.
+
+         The macro TAILQ_INSERT_HEAD inserts the new element elm at the head of
+         the tail queue.
+
+         The macro TAILQ_INSERT_TAIL inserts the new element elm at the end of the
+         tail queue.
+
+         The macro TAILQ_INSERT_AFTER inserts the new element elm after the
+         element listelm.
+
+         The macro TAILQ_INSERT_BEFORE inserts the new element elm before the
+         element listelm.
+
+         The macro TAILQ_LAST returns the last item on the tail queue.  If the
+         tail queue is empty the return value is NULL.
+
+         The macro TAILQ_NEXT returns the next item on the tail queue, or NULL if
+         this item is the last.
+  manpageQuestion1: What is the primary purpose of the queue-related macros in the macOS system?
+  manpageQuestion2: How can you safely iterate over a tail queue and remove an element during the iteration?
+  manpageQuestion3: What is the correct way to insert a new element at the beginning of a tail queue using the TAILQ_INSERT_HEAD macro?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `queue`.\n\n\n\nManpage text:\n\nThe macro TAILQ_PREV returns the previous item on the tail queue, or NULL\n     if this item is the first.\n\n     The macro TAILQ_REMOVE removes the element elm from the tail queue.\n\nTAIL QUEUE EXAMPLE\n     TAILQ_HEAD(tailhead, entry) head =\n\t TAILQ_HEAD_INITIALIZER(head);\n     struct tailhead *headp;\t\t     /* Tail queue head. */\n     struct entry {\n\t     ...\n\t     TAILQ_ENTRY(entry) entries;     /* Tail queue. */\n\t     ...\n     } *n1, *n2, *n3, *np;\n\n     TAILQ_INIT(&head); \t\t     /* Initialize the queue. */\n\n     n1 = malloc(sizeof(struct entry));      /* Insert at the head. */\n     TAILQ_INSERT_HEAD(&head, n1, entries);\n\n     n1 = malloc(sizeof(struct entry));      /* Insert at the tail. */\n     TAILQ_INSERT_TAIL(&head, n1, entries);\n\n     n2 = malloc(sizeof(struct entry));      /* Insert after. */\n     TAILQ_INSERT_AFTER(&head, n1, n2, entries);\n\n     n3 = malloc(sizeof(struct entry));      /* Insert before. */\n     TAILQ_INSERT_BEFORE(n2, n3, entries);\n\n     TAILQ_REMOVE(&head, n2, entries);\t     /* Deletion. */\n     free(n2);\n\t\t\t\t\t     /* Forward traversal. */\n     TAILQ_FOREACH(np, &head, entries)\n\t     np-> ...\n\t\t\t\t\t     /* Safe forward traversal. */\n     TAILQ_FOREACH_SAFE(np, &head, entries, np_temp) {\n\t     np->do_stuff();\n\t     ...\n\t     TAILQ_REMOVE(&head, np, entries);\n\t     free(np);\n     }\n\t\t\t\t\t     /* Reverse traversal. */\n     TAILQ_FOREACH_REVERSE(np, &head, tailhead, entries)\n\t     np-> ...\n\t\t\t\t\t     /* TailQ Deletion. */\n     while (!TAILQ_EMPTY(&head)) {\n\t     n1 = TAILQ_FIRST(&head);\n\t     TAILQ_REMOVE(&head, n1, entries);\n\t     free(n1);\n     }\n\t\t\t\t\t     /* Faster TailQ Deletion. */\n     n1 = TAILQ_FIRST(&head);\n     while (n1 != NULL) {\n\t     n2 = TAILQ_NEXT(n1, entries);\n\t     free(n1);\n\t     n1 = n2;\n     }\n     TAILQ_INIT(&head);"
+  manpageQuestion1: What is the primary purpose of the queue resource in macOS?
+  manpageQuestion2: How would you use the TAILQ_REMOVE macro to delete an element from a tail queue?
+  manpageQuestion3: Can you provide an example of using the TAILQ_FOREACH_SAFE macro for safe traversal and deletion in a tail queue?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `queue`.\n\n\n\nManpage text:\n\nHISTORY\n     The queue functions first appeared in 4.4BSD.\n\nmacOS 15.3\t\t       January 24, 1994 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the queue resource?
+  manpageQuestion2: How would you use the queue resource to manage a list of tasks in macOS?
+  manpageQuestion3: Can you describe the historical context of the queue resource in macOS?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `htmltree`.\n\n\n\nManpage text:\n\nHTMLTREE(1)\t      User Contributed Perl Documentation\t   HTMLTREE(1)\n\n\nNAME\n       htmltree - Parse the given HTML file(s) and dump the parse tree\n\nSYNOPSIS\n       htmltree -D3 -w file1 file2 file3\n\n\tOptions:\n\t   -D[number]  sets HTML::TreeBuilder::Debug to that figure.\n\t   -w  turns on $tree->warn(1) for the new tree\n\t   -h  Help message\n\nperl v5.34.0\t\t\t  2024-12-14\t\t\t   HTMLTREE(1)"
+  manpageQuestion1: What is the primary purpose of the htmltree command?
+  manpageQuestion2: How can you use the htmltree command to set the debug level to 3 and parse multiple HTML files?
+  manpageQuestion3: What is the function of the -w option in the htmltree command and how would you use it?
+

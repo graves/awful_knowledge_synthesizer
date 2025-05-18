@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ptpcamerad`.\n\n\n\nManpage text:\n\nPTPCAMERAD(8)\t\t    System Manager's Manual\t\t PTPCAMERAD(8)\n\nNAME\n     ptpcamerad – PTPCamera Daemon\n\nSYNOPSIS\n     ptpcamerad\n\nDESCRIPTION\n     ptpcamerad is a system daemon responsible for communicating with PTP\n     cameras.\n\n     There are no configuration options to ptpcamerad, and users should not\n     run ptpcamerad manually.\n\nMac OS X\t\t\t   11/01/21\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the ptpcamerad tool?
+  manpageQuestion2: How would you use ptpcamerad to manage communication with PTP cameras?
+  manpageQuestion3: Can you explain the typical usage scenario for ptpcamerad in a macOS system?
+

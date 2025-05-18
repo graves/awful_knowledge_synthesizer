@@ -1,0 +1,45 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snmpset`.\n\n\n\nManpage text:\n\nSNMPSET(1)\t\t\t   Net-SNMP\t\t\t    SNMPSET(1)\n\nNAME\n       snmpset - communicates with a network entity using SNMP SET requests\n\nSYNOPSIS\n       snmpset [COMMON OPTIONS] AGENT OID TYPE VALUE [OID TYPE VALUE]...\n\nDESCRIPTION\n       snmpset is an SNMP application that uses the SNMP SET request to set\n       information on a network entity.  One or more object identifiers (OIDs)\n       must be given as arguments on the command line.\tA type and a value to\n       be set must accompany each object identifier.  Each variable name is\n       given in the format specified in variables(5).\n\n       The TYPE is a single character, one of:\n\t      i  INTEGER\n\t      u  UNSIGNED\n\t      s  STRING\n\t      x  HEX STRING\n\t      d  DECIMAL STRING\n\t      n  NULLOBJ\n\t      o  OBJID\n\t      t  TIMETICKS\n\t      a  IPADDRESS\n\t      b  BITS\n       Most of these will use the obvious corresponding ASN.1 type.  's', 'x',\n       'd' and 'b' are all different ways of specifying an OCTET STRING value,\n       and the 'u' unsigned type is also used for handling Gauge32 values."
+  manpageQuestion1: What is the primary purpose of the snmpset command?
+  manpageQuestion2: How would you use snmpset to set the system uptime to 3600 seconds on a network device with OID 1.3.6.1.2.1.1.3.0?
+  manpageQuestion3: Can you provide an example of using snmpset to set a string value 'Hello, World!' to the OID 1.3.6.1.2.1.1.1.0?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snmpset`.
+
+
+
+    Manpage text:
+
+    If you have the proper MIB file loaded, you can, in most cases, replace
+           the type with an '=' sign. For an object of type OCTET STRING this will
+           assume a string like the 's' type notation. For other types it will do
+           "The Right Thing".
+
+           For example:
+
+           snmpset -c private -v 1 test-hub system.sysContact.0 s
+           dpz@noc.rutgers.edu ip.ipforwarding.0 = 2
+
+           will set the variables sysContact.0 and ipForwarding.0:
+
+           system.sysContact.0 = STRING: "dpz@noc.rutgers.edu"
+           ip.ipForwarding.0 = INTEGER: not-forwarding(2)
+
+           If the network entity has an error processing the request packet, an
+           error packet will be returned and a message will be shown, helping to
+           pinpoint in what way the request was malformed.
+
+    OPTIONS
+           snmpset takes the common options described in the snmpcmd(1) manual
+           page.  Note that snmpset REQUIRES  an argument specifying the agent to
+           query and at least one set of OID/type/value arguments, as described in
+           there.
+  manpageQuestion1: What is the primary purpose of the snmpset command?
+  manpageQuestion2: How can you use snmpset to set the sysContact.0 variable to a specific email address?
+  manpageQuestion3: Can you provide an example of using snmpset to configure the ipForwarding.0 parameter to disable IP forwarding?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snmpset`.\n\n\n\nManpage text:\n\nSEE ALSO\n       snmpcmd(1), variables(5).\n\nV5.6.2.1\t\t\t  19 Jun 2003\t\t\t    SNMPSET(1)"
+  manpageQuestion1: What is the primary purpose of the snmpset command?
+  manpageQuestion2: How would you use snmpset to set a specific SNMP variable?
+  manpageQuestion3: Can you provide an example of using snmpset to set a network interface's IP address via SNMP?
+

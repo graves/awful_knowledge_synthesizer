@@ -1,0 +1,99 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ipsec`.\n\n\n\nManpage text:\n\nIPSEC(4)\t\t     Device Drivers Manual\t\t      IPSEC(4)\n\nNAME\n     ipsec – IP security protocol\n\nSYNOPSIS\n     #include <sys/types.h>\n     #include <netinet/in.h>\n     #include <netinet6/ipsec.h>\n\nDESCRIPTION\n     ipsec is a security protocol in Internet Protocol layer.  ipsec is\n     defined for both IPv4 and IPv6 (inet(4) and inet6(4)).  ipsec consists of\n     two sub-protocols, namely ESP (encapsulated security payload) and AH\n     (authentication header).  ESP protects IP payload from wire-tapping by\n     encrypting it by secret key cryptography algorithms.  AH guarantees\n     integrity of IP packet and protects it from intermediate alteration or\n     impersonation, by attaching cryptographic checksum computed by one-way\n     hash functions.  ipsec has two operation modes: transport mode and tunnel\n     mode.  Transport mode is for protecting peer-to-peer communication\n     between end nodes.  Tunnel mode includes IP-in-IP encapsulation operation\n     and is designed for security gateways, like VPN configurations."
+  manpageQuestion1: What is the primary purpose of the ipsec protocol?
+  manpageQuestion2: How does the ipsec protocol ensure the integrity of IP packets?
+  manpageQuestion3: What are the two main operation modes of ipsec and how do they differ in their use cases?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ipsec`.
+
+
+
+    Manpage text:
+
+    Kernel interface
+         ipsec is controlled by key management engine and policy engine, in the
+         operating system kernel.
+
+         Key management engine can be accessed from the userland by using PF_KEY
+         sockets.  The PF_KEY socket API is defined in RFC2367.
+
+         Policy engine can be controlled by extended part of PF_KEY API,
+         setsockopt(2) operations, and sysctl(3) interface.  The kernel implements
+         extended version of PF_KEY interface, and allows you to define IPsec
+         policy like per-packet filters.  setsockopt(2) interface is used to
+         define per-socket behavior, and sysctl(3) interface is used to define
+         host-wide default behavior.
+
+         The kernel code does not implement dynamic encryption key exchange
+         protocol like IKE (Internet Key Exchange).  That should be implemented as
+         userland programs (usually as daemons), by using the above described
+         APIs.
+
+       Policy management
+         The kernel implements experimental policy management code.  You can
+         manage the IPsec policy in two ways.  One is to configure per-socket
+         policy using setsockopt(2).  The other is to configure kernel packet
+         filter-based policy using PF_KEY interface, via setkey(8).  In both
+         cases, IPsec policy must be specified with syntax described in
+         ipsec_set_policy(3).
+  manpageQuestion1: What is the primary purpose of the ipsec tool or its associated kernel interfaces?
+  manpageQuestion2: How can you configure per-socket IPsec policy using the kernel interfaces?
+  manpageQuestion3: What is the process for setting up packet filter-based IPsec policy through the PF_KEY interface?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ipsec`.\n\n\n\nManpage text:\n\nWith setsockopt(2), you can define IPsec policy in per-socket basis.  You\n     can enforce particular IPsec policy onto packets that go through\n     particular socket.\n\n     With setkey(8) you can define IPsec policy against packets, using sort of\n     packet filtering rule.  Refer to setkey(8) on how to use it.\n\n     In the latter case, “default” policy is allowed for use with setkey(8).\n     By configuring policy to default, you can refer system-wide sysctl(8)\n     variable for default settings.  The following variables are available.  1\n     means “use”, and 2 means “require” in the syntax.\n\n     Name\t\t\t\t  Type\t\tChangeable\n     net.inet.ipsec.esp_trans_deflev\t  integer\tyes\n     net.inet.ipsec.esp_net_deflev\t  integer\tyes\n     net.inet.ipsec.ah_trans_deflev\t  integer\tyes\n     net.inet.ipsec.ah_net_deflev\t  integer\tyes\n     net.inet6.ipsec6.esp_trans_deflev\t  integer\tyes\n     net.inet6.ipsec6.esp_net_deflev\t  integer\tyes\n     net.inet6.ipsec6.ah_trans_deflev\t  integer\tyes\n     net.inet6.ipsec6.ah_net_deflev\t  integer\tyes"
+  manpageQuestion1: What is the primary purpose of the ipsec resource in macOS?
+  manpageQuestion2: How can you configure IPsec to use the default system-wide settings for ESP encryption?
+  manpageQuestion3: What is the difference between setting net.inet.ipsec.esp_trans_deflev to 1 and 2 in the sysctl hierarchy?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ipsec`.\n\n\n\nManpage text:\n\nIf kernel finds no matching policy system wide default value is applied.\n     System wide default is specified by the following sysctl(8) variables.  0\n     means “discard” which asks the kernel to drop the packet.\t1 means\n     “none”.\n\n     Name\t\t\t    Type\t  Changeable\n     net.inet.ipsec.def_policy\t    integer\t  yes\n     net.inet6.ipsec6.def_policy    integer\t  yes\n\n   Miscellaneous sysctl variables\n     The following variables are accessible via sysctl(8), for tweaking kernel\n     IPsec behavior:\n\n     Name\t\t\t\t  Type\t\tChangeable\n     net.inet.ipsec.ah_cleartos \t  integer\tyes\n     net.inet.ipsec.ah_offsetmask\t  integer\tyes\n     net.inet.ipsec.dfbit\t\t  integer\tyes\n     net.inet.ipsec.ecn \t\t  integer\tyes\n     net.inet.ipsec.debug\t\t  integer\tyes\n     net.inet6.ipsec6.ecn\t\t  integer\tyes\n     net.inet6.ipsec6.debug\t\t  integer\tyes\n\n     The variables are interpreted as follows:\n\n     ipsec.ah_cleartos\n\t     If set to non-zero, the kernel clears type-of-service field in\n\t     the IPv4 header during AH authentication data computation.  The\n\t     variable is for tweaking AH behavior to interoperate with devices\n\t     that implement RFC1826 AH.  It should be set to non-zero (clear\n\t     the type-of-service field) for RFC2402 conformance."
+  manpageQuestion1: What is the primary purpose of the ipsec tool?
+  manpageQuestion2: How would you configure the system-wide default policy for IPsec to discard packets?
+  manpageQuestion3: Can you explain how to adjust the AH behavior in IPsec to clear the type-of-service field in IPv4 headers?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ipsec`.\n\n\n\nManpage text:\n\nipsec.ah_offsetmask\n\t     During AH authentication data computation, the kernel will\n\t     include 16bit fragment offset field (including flag bits) in IPv4\n\t     header, after computing logical AND with the variable.  The\n\t     variable is for tweaking AH behavior to interoperate with devices\n\t     that implement RFC1826 AH.  It should be set to zero (clear the\n\t     fragment offset field during computation) for RFC2402\n\t     conformance.\n\n     ipsec.dfbit\n\t     The variable configures the kernel behavior on IPv4 IPsec tunnel\n\t     encapsulation.  If set to 0, DF bit on the outer IPv4 header will\n\t     be cleared.  1 means that the outer DF bit is set regardless from\n\t     the inner DF bit.\t2 means that the DF bit is copied from the\n\t     inner header to the outer.  The variable is supplied to conform\n\t     to RFC2401 chapter 6.1.\n\n     ipsec.ecn\n\t     If set to non-zero, IPv4 IPsec tunnel encapsulation/decapsulation\n\t     behavior will be friendly to ECN (explicit congestion\n\t     notification), as documented in draft-ietf-ipsec-ecn-02.txt.\n\t     gif(4) talks more about the behavior."
+  manpageQuestion1: What is the primary purpose of the ipsec-related variables mentioned in the manpage?
+  manpageQuestion2: How does the ipsec.dfbit variable affect IPv4 IPsec tunnel encapsulation?
+  manpageQuestion3: What is the function of the ipsec.ecn variable in the context of IPsec tunnel encapsulation?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ipsec`.\n\n\n\nManpage text:\n\nipsec.debug\n\t     If set to non-zero, debug messages will be generated via\n\t     syslog(3).\n\n     Variables under net.inet6.ipsec6 tree has similar meaning as the\n     net.inet.ipsec counterpart.\n\nPROTOCOLS\n     The ipsec protocol works like plug-in to inet(4) and inet6(4) protocols.\n     Therefore, ipsec supports most of the protocols defined upon those IP-\n     layer protocols.  Some of the protocols, like icmp(4) or icmp6(4), may\n     behave differently with ipsec.  This is because ipsec can prevent icmp(4)\n     or icmp6(4) routines from looking into IP payload.\n\nSEE ALSO\n     ioctl(2), socket(2), ipsec_set_policy(3), icmp6(4), intro(4), ip6(4),\n     setkey(8), sysctl(8)\n\nSTANDARDS\n     Daniel L. McDonald, Craig Metz, and Bao G. Phan, PF_KEY Key Management\n     API, Version 2, RFC, 2367.\n\n     D. L. McDonald, A Simple IP Security API Extension to BSD Sockets,\n     internet draft, draft-mcdonald-simple-ipsec-api-03.txt, work in progress\n     material.\n\nHISTORY\n     The implementation described herein appeared in WIDE/KAME IPv6/IPsec\n     stack."
+  manpageQuestion1: What is the primary purpose of the ipsec resource?
+  manpageQuestion2: How can you enable debug messages for ipsec using the sysctl mechanism?
+  manpageQuestion3: What is the relationship between the ipsec protocol and the inet(4) and inet6(4) protocols according to the manpage?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ipsec`.
+
+
+
+    Manpage text:
+
+    BUGS
+         The IPsec support is subject to change as the IPsec protocols develop.
+
+         There is no single standard for policy engine API, so the policy engine
+         API described herein is just for KAME implementation.
+
+         AH and tunnel mode encapsulation may not work as you might expect.  If
+         you configure inbound “require” policy against AH tunnel or any IPsec
+         encapsulating policy with AH (like “esp/tunnel/A-B/use
+         ah/transport/A-B/require”), tunnelled packets will be rejected.  This is
+         because we enforce policy check on inner packet on reception, and AH
+         authenticates encapsulating (outer) packet, not the encapsulated (inner)
+         packet (so for the receiving kernel there's no sign of authenticity).
+         The issue will be solved when we revamp our policy engine to keep all the
+         packet decapsulation history.
+
+         Under certain condition, truncated result may be raised from the kernel
+         against SADB_DUMP and SADB_SPDDUMP operation on PF_KEY socket.  This
+         occurs if there are too many database entries in the kernel and socket
+         buffer for the PF_KEY socket is insufficient.  If you manipulate many
+         IPsec key/policy database entries, increase the size of socket buffer.
+  manpageQuestion1: What is the primary purpose of the ipsec command in macOS?
+  manpageQuestion2: How can you ensure that the PF_KEY socket buffer is large enough to avoid truncated results when using SADB_DUMP or SADB_SPDDUMP?
+  manpageQuestion3: What is a common issue related to AH and tunnel mode encapsulation in IPsec, and how does it affect policy enforcement?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ipsec`.\n\n\n\nManpage text:\n\nmacOS 15.3\t\t       January 29, 1999 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the ipsec command?
+  manpageQuestion2: How would you use the ipsec command to establish an IPsec tunnel with specific settings?
+  manpageQuestion3: Can you provide an example of using the ipsec command to negotiate a secure connection with pre-shared keys?
+

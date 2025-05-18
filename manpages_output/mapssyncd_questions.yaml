@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mapssyncd`.\n\n\n\nManpage text:\n\nmapssyncd(8)\t\t    System Manager's Manual\t\t  mapssyncd(8)\n\nNAME\n     mapssyncd\n\nDESCRIPTION\n     mapssyncd handles Maps.app user data operations and iCloud\n     synchronization.\n\nmacOS 15.3\t\t       Janurary 13, 2023\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the mapssyncd tool?
+  manpageQuestion2: How would you use mapssyncd to manage iCloud synchronization for the Maps.app?
+  manpageQuestion3: Can you explain the role of mapssyncd in handling user data operations for Maps.app?
+

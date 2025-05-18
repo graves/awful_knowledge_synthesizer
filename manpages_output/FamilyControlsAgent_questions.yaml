@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `FamilyControlsAgent`.\n\n\n\nManpage text:\n\nFAMILYCONTROLSAGENT(8)\t    System Manager's Manual\tFAMILYCONTROLSAGENT(8)\n\nNAME\n     FamilyControlsAgent – Family Controls Agent\n\nDESCRIPTION\n     FamilyControlsAgent handles and persists family controls authorization\n     requests for Screen Time API.\n\nmacOS\t\t\t       January 18, 2022 \t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the FamilyControlsAgent tool?
+  manpageQuestion2: How would you use FamilyControlsAgent to manage family controls authorization requests for Screen Time API?
+  manpageQuestion3: Can you provide an example of how FamilyControlsAgent persistently stores family controls authorization data?
+

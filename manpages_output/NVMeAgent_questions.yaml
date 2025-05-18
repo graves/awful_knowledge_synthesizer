@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `NVMeAgent`.\n\n\n\nManpage text:\n\nNVMeAgent(8)\t\t    System Manager's Manual\t\t  NVMeAgent(8)\n\nNAME\n     NVMeAgent – Agent for NVMe devices.\n\nSYNOPSIS\n     NONE (launched by launchd)\n\nDESCRIPTION\n     NVMeAgent allows the system to to present notifications related to NVMe\n     devices.\n\n     This command is not intended to be invoked directly.\n\nFILES\n     /usr/libexec/NVMeAgent\n\nSEE ALSO\n     launchd(8)\n\nHISTORY\n     The NVMeAgent utility first appeared in MacOS 10.13.\n\nMacOS\t\t\t       January 18, 2017 \t\t\t MacOS"
+  manpageQuestion1: What is the primary purpose of the NVMeAgent tool?
+  manpageQuestion2: How would you check if the NVMeAgent is running on a macOS system?
+  manpageQuestion3: What is the typical location of the NVMeAgent executable file on a macOS system?
+

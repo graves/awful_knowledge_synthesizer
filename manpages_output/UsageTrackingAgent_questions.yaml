@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `UsageTrackingAgent`.\n\n\n\nManpage text:\n\nUSAGETRACKINGAGENT(8)\t    System Manager's Manual\t USAGETRACKINGAGENT(8)\n\nNAME\n     UsageTrackingAgent – Usage Tracking Agent\n\nDESCRIPTION\n     UsageTrackingAgent monitors and reports limits set by Screen Time.\n\nmacOS\t\t\t       January 16, 2018 \t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the UsageTrackingAgent tool?
+  manpageQuestion2: How would you use UsageTrackingAgent to monitor the usage limits set by Screen Time?
+  manpageQuestion3: Can you provide an example of using UsageTrackingAgent to report the current usage limits for a specific app?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `UserEventAgent`.\n\n\n\nManpage text:\n\nUSEREVENTAGENT(8)\t    System Manager's Manual\t     USEREVENTAGENT(8)\n\nNAME\n     UserEventAgent – high-level system event handler\n\nSYNOPSIS\n     UserEventAgent\n\nDESCRIPTION\n     The UserEventAgent utility is a daemon that loads system-provided plugins\n     to handle high-level system events which cannot be monitored directly by\n     launchd(8).  The UserEventAgent utility should not be invoked directly.\n\nFILES\n     /System/Library/UserEventPlugins\n\nSEE ALSO\n     launchd(8)\n\nOS X\t\t\t      September 22, 2011\t\t\t  OS X"
+  manpageQuestion1: What is the primary purpose of the UserEventAgent utility?
+  manpageQuestion2: How can UserEventAgent be used to manage system events that launchd cannot monitor directly?
+  manpageQuestion3: What is the role of the UserEventAgent in relation to launchd?
+

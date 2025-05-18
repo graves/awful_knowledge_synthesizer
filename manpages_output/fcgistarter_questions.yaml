@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `fcgistarter`.\n\n\n\nManpage text:\n\nFCGISTARTER(8)\t\t\t  fcgistarter\t\t\tFCGISTARTER(8)\n\n\n\nNAME\n       fcgistarter - Start a FastCGI program\n\n\nSYNOPSIS\n       fcgistarter -c command -p port [ -i interface ] -N num\n\n\n\nSUMMARY\n\n\n\nNOTE\n       Currently only works on Unix systems.\n\n\nOPTIONS\n       -c command\n\t      Absolute path of the FastCGI program\n\n       -p port\n\t      Port which the program will listen on\n\n       -i interface\n\t      Interface which the program will listen on\n\n       -N num Number of instances of the program\n\n\nApache HTTP Server\t\t  2020-02-08\t\t\tFCGISTARTER(8)"
+  manpageQuestion1: What is the primary purpose of the fcgistarter command?
+  manpageQuestion2: How would you use fcgistarter to start a FastCGI program that listens on port 8080 with two instances?
+  manpageQuestion3: Can you provide an example of using fcgistarter to run a FastCGI program located at /var/www/fastcgi-app on interface lo0 with 3 instances?
+

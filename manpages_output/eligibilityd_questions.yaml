@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `eligibilityd`.\n\n\n\nManpage text:\n\nELIGIBILITYD(8) \t    System Manager's Manual\t       ELIGIBILITYD(8)\n\nNAME\n     eligibilityd – eligibilityd - computes feature availability\n\nSYNOPSIS\n     takes no arguments, and users should not launch it manually.\n\nDESCRIPTION\n     eligibilityd is used by the system to compute feature availability. It\n     should not be invoked manually.\n\nHISTORY\n     eligibilityd first appeared in macOS 14.4\n\nDarwin\t\t\t\tAugust 17, 2023 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the eligibilityd tool?
+  manpageQuestion2: How would you check if eligibilityd is running on a macOS system?
+  manpageQuestion3: Can you explain why users are instructed not to launch eligibilityd manually?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ManagedSettingsAgent`.\n\n\n\nManpage text:\n\nMANAGEDSETTINGSAGENT(8)     System Manager's Manual    MANAGEDSETTINGSAGENT(8)\n\nNAME\n     ManagedSettingsAgent – Managed Settings Agent\n\nDESCRIPTION\n     ManagedSettingsAgent persists the effective value of managed settings and\n     notifies interested parties about changes in those settings.\n\nmacOS\t\t\t       October 22, 2020 \t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the ManagedSettingsAgent tool?
+  manpageQuestion2: How would you use ManagedSettingsAgent to monitor changes in managed settings?
+  manpageQuestion3: Can you describe the role of ManagedSettingsAgent in a macOS system?
+

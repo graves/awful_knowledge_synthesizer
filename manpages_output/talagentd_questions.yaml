@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `talagentd`.\n\n\n\nManpage text:\n\nTALAGENT(8)\t\t    System Manager's Manual\t\t   TALAGENT(8)\n\nNAME\n     talagentd – helper agent for application lifecycle features\n\nSYNOPSIS\n     talagentd\n\nDESCRIPTION\n     The talagentd daemon provides services related to the Transparent App\n     Lifecycle feature.\n\n     Users should not run talagentd manually.\n\nmacOS\t\t\t       September 1, 2010\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the talagentd daemon?
+  manpageQuestion2: How would you check if the talagentd daemon is running on a macOS system?
+  manpageQuestion3: What are the common reasons why the talagentd daemon might not be running on a macOS system?
+

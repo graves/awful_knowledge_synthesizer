@@ -1,0 +1,216 @@
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl588delta`.
+
+
+
+    Manpage text:
+
+    PERL588DELTA(1)        Perl Programmers Reference Guide        PERL588DELTA(1)
+  manpageQuestion1: What is the primary purpose of the perl588delta tool?
+  manpageQuestion2: How would you use perl588delta to process a file and apply specific delta updates?
+  manpageQuestion3: Can you provide an example of using perl588delta to modify a script by applying a series of delta patches?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl588delta`.\n\n\n\nManpage text:\n\nNAME\n       perl588delta - what is new for perl v5.8.8\n\nDESCRIPTION\n       This document describes differences between the 5.8.7 release and the\n       5.8.8 release.\n\nIncompatible Changes\n       There are no changes intentionally incompatible with 5.8.7. If any\n       exist, they are bugs and reports are welcome.\n\nCore Enhancements\n       •   \"chdir\", \"chmod\" and \"chown\" can now work on filehandles as well as\n\t   filenames, if the system supports respectively \"fchdir\", \"fchmod\"\n\t   and \"fchown\", thanks to a patch provided by Gisle Aas.\n\nModules and Pragmata\n       •   \"Attribute::Handlers\" upgraded to version 0.78_02\n\n\t   •   Documentation typo fix\n\n       •   \"attrs\" upgraded to version 1.02\n\n\t   •   Internal cleanup only\n\n       •   \"autouse\" upgraded to version 1.05\n\n\t   •   Simplified implementation\n\n       •   \"B\" upgraded to version 1.09_01\n\n\t   •   The inheritance hierarchy of the \"B::\" modules has been\n\t       corrected; \"B::NV\" now inherits from \"B::SV\" (instead of\n\t       \"B::IV\")."
+  manpageQuestion1: What is the primary purpose of the perl588delta tool?
+  manpageQuestion2: What new feature was introduced in Perl 5.8.8 regarding filehandle operations?
+  manpageQuestion3: Which modules were upgraded in Perl 5.8.8 according to the manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl588delta`.\n\n\n\nManpage text:\n\n•   \"blib\" upgraded to version 1.03\n\n\t   •   Documentation typo fix\n\n       •   \"ByteLoader\" upgraded to version 0.06\n\n\t   •   Internal cleanup\n\n       •   \"CGI\" upgraded to version 3.15\n\n\t   •   Extraneous \"?\" from \"self_url()\" removed\n\n\t   •   \"scrolling_list()\" select attribute fixed\n\n\t   •   \"virtual_port\" now works properly with the https protocol\n\n\t   •   \"upload_hook()\" and \"append()\" now works in function-oriented\n\t       mode\n\n\t   •   \"POST_MAX\" doesn't cause the client to hang any more\n\n\t   •   Automatic tab indexes are now disabled and new \"-tabindex\"\n\t       pragma has been added to turn automatic indexes back on\n\n\t   •   \"end_form()\" doesn't emit empty (and non-validating) \"<div>\"\n\n\t   •   \"CGI::Carp\" works better in certain mod_perl configurations\n\n\t   •   Setting $CGI::TMPDIRECTORY is now effective\n\n\t   •   Enhanced documentation\n\n       •   \"charnames\" upgraded to version 1.05\n\n\t   •   \"viacode()\" now accept hex strings and has been optimized.\n\n       •   \"CPAN\" upgraded to version 1.76_02"
+  manpageQuestion1: What is the primary purpose of the perl588delta resource?
+  manpageQuestion2: How would you use the perl588delta resource to upgrade the 'CGI' module to version 3.15?
+  manpageQuestion3: Can you provide an example of using the perl588delta resource to optimize the 'viacode()' function for handling hex strings?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl588delta`.\n\n\n\nManpage text:\n\n•   1 minor bug fix for Win32\n\n       •   \"Cwd\" upgraded to version 3.12\n\n\t   •   \"canonpath()\" on Win32 now collapses foo\\.. sections correctly.\n\n\t   •   Improved behaviour on Symbian OS.\n\n\t   •   Enhanced documentation and typo fixes\n\n\t   •   Internal cleanup\n\n       •   \"Data::Dumper\" upgraded to version 2.121_08\n\n\t   •   A problem where \"Data::Dumper\" would sometimes update the\n\t       iterator state of hashes has been fixed\n\n\t   •   Numeric labels now work\n\n\t   •   Internal cleanup\n\n       •   \"DB\" upgraded to version 1.01\n\n\t   •   A problem where the state of the regexp engine would sometimes\n\t       get clobbered when running under the debugger has been fixed.\n\n       •   \"DB_File\" upgraded to version 1.814\n\n\t   •   Adds support for Berkeley DB 4.4.\n\n       •   \"Devel::DProf\" upgraded to version 20050603.00\n\n\t   •   Internal cleanup\n\n       •   \"Devel::Peek\" upgraded to version 1.03\n\n\t   •   Internal cleanup\n\n       •   \"Devel::PPPort\" upgraded to version 3.06_01\n\n\t   •   \"--compat-version\" argument checking has been improved"
+  manpageQuestion1: What is the primary purpose of the perl588delta resource?
+  manpageQuestion2: How would you apply the perl588delta update to ensure compatibility with newer versions of Data::Dumper?
+  manpageQuestion3: Can you explain how the perl588delta resource addresses issues with the 'DB' module on Windows?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl588delta`.\n\n\n\nManpage text:\n\n•   Files passed on the command line are filtered by default\n\n\t   •   \"--nofilter\" option to override the filtering has been added\n\n\t   •   Enhanced documentation\n\n       •   \"diagnostics\" upgraded to version 1.15\n\n\t   •   Documentation typo fix\n\n       •   \"Digest\" upgraded to version 1.14\n\n\t   •   The constructor now knows which module implements SHA-224\n\n\t   •   Documentation tweaks and typo fixes\n\n       •   \"Digest::MD5\" upgraded to version 2.36\n\n\t   •   \"XSLoader\" is now used for faster loading\n\n\t   •   Enhanced documentation including MD5 weaknesses discovered\n\t       lately\n\n       •   \"Dumpvalue\" upgraded to version 1.12\n\n\t   •   Documentation fix\n\n       •   \"DynaLoader\" upgraded but unfortunately we're not able to increment\n\t   its version number :-(\n\n\t   •   Implements \"dl_unload_file\" on Win32\n\n\t   •   Internal cleanup\n\n\t   •   \"XSLoader\" 0.06 incorporated; small optimisation for calling\n\t       \"bootstrap_inherit()\" and documentation enhancements.\n\n       •   \"Encode\" upgraded to version 2.12"
+  manpageQuestion1: What is the primary purpose of the perl588delta resource?
+  manpageQuestion2: How can you disable the default file filtering behavior when using perl588delta?
+  manpageQuestion3: What are some of the key improvements and upgrades included in the perl588delta resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl588delta`.\n\n\n\nManpage text:\n\n•   A coderef is now acceptable for \"CHECK\"!\n\n\t   •   3 new characters added to the ISO-8859-7 encoding\n\n\t   •   New encoding \"MIME-Header-ISO_2022_JP\" added\n\n\t   •   Problem with partial characters and \"encoding(utf-8-strict)\"\n\t       fixed.\n\n\t   •   Documentation enhancements and typo fixes\n\n       •   \"English\" upgraded to version 1.02\n\n\t   •   the $COMPILING variable has been added\n\n       •   \"ExtUtils::Constant\" upgraded to version 0.17\n\n\t   •   Improved compatibility with older versions of perl\n\n       •   \"ExtUtils::MakeMaker\" upgraded to version 6.30 (was 6.17)\n\n\t   •   Too much to list here;  see\n\t       <http://search.cpan.org/dist/ExtUtils-MakeMaker/Changes>\n\n       •   \"File::Basename\" upgraded to version 2.74, with changes contributed\n\t   by Michael Schwern.\n\n\t   •   Documentation clarified and errors corrected.\n\n\t   •   \"basename\" now strips trailing path separators before\n\t       processing the name.\n\n\t   •   \"basename\" now returns \"/\" for parameter \"/\", to make\n\t       \"basename\" consistent with the shell utility of the same name."
+  manpageQuestion1: What is the primary purpose of the perl588delta resource?
+  manpageQuestion2: How can you update the 'ExtUtils::MakeMaker' module to version 6.30 using perl588delta?
+  manpageQuestion3: What changes were made to the 'basename' function in perl588delta?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl588delta`.\n\n\n\nManpage text:\n\n•   The suffix is no longer stripped if it is identical to the\n\t       remaining characters in the name, again for consistency with\n\t       the shell utility.\n\n\t   •   Some internal code cleanup.\n\n       •   \"File::Copy\" upgraded to version 2.09\n\n\t   •   Copying a file onto itself used to fail.\n\n\t   •   Moving a file between file systems now preserves the access and\n\t       modification time stamps\n\n       •   \"File::Find\" upgraded to version 1.10\n\n\t   •   Win32 portability fixes\n\n\t   •   Enhanced documentation\n\n       •   \"File::Glob\" upgraded to version 1.05\n\n\t   •   Internal cleanup\n\n       •   \"File::Path\" upgraded to version 1.08\n\n\t   •   \"mkpath\" now preserves \"errno\" when \"mkdir\" fails\n\n       •   \"File::Spec\" upgraded to version 3.12\n\n\t   •   \"File::Spec->rootdir()\" now returns \"\\\" on Win32, instead of\n\t       \"/\"\n\n\t   •   $^O could sometimes become tainted. This has been fixed.\n\n\t   •   \"canonpath\" on Win32 now collapses \"foo/..\" (or \"foo\\..\")\n\t       sections correctly, rather than doing the \"misguided\" work it\n\t       was previously doing.  Note that \"canonpath\" on Unix still does\n\t       not collapse these sections, as doing so would be incorrect."
+  manpageQuestion1: What is the primary purpose of the `perl588delta` resource?
+  manpageQuestion2: How has the behavior of copying a file onto itself been modified in `perl588delta`?
+  manpageQuestion3: What changes were made to the `File::Spec->rootdir()` method in `perl588delta`?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl588delta`.\n\n\n\nManpage text:\n\n•   Some documentation improvements\n\n\t   •   Some internal code cleanup\n\n       •   \"FileCache\" upgraded to version 1.06\n\n\t   •   POD formatting errors in the documentation fixed\n\n       •   \"Filter::Simple\" upgraded to version 0.82\n\n       •   \"FindBin\" upgraded to version 1.47\n\n\t   •   Now works better with directories where access rights are more\n\t       restrictive than usual.\n\n       •   \"GDBM_File\" upgraded to version 1.08\n\n\t   •   Internal cleanup\n\n       •   \"Getopt::Long\" upgraded to version 2.35\n\n\t   •   \"prefix_pattern\" has now been complemented by a new\n\t       configuration option \"long_prefix_pattern\" that allows the user\n\t       to specify what prefix patterns should have long option style\n\t       semantics applied.\n\n\t   •   Options can now take multiple values at once (experimental)\n\n\t   •   Various bug fixes\n\n       •   \"if\" upgraded to version 0.05\n\n\t   •   Give more meaningful error messages from \"if\" when invoked with\n\t       a condition in list context.\n\n\t   •   Restore backwards compatibility with earlier versions of perl"
+  manpageQuestion1: What is the primary purpose of the perl588delta resource?
+  manpageQuestion2: How would you use perl588delta to update the 'Getopt::Long' module to version 2.35?
+  manpageQuestion3: Can you provide an example of using perl588delta to configure the 'prefix_pattern' option with a custom prefix pattern?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl588delta`.\n\n\n\nManpage text:\n\n•   \"IO\" upgraded to version 1.22\n\n\t   •   Enhanced documentation\n\n\t   •   Internal cleanup\n\n       •   \"IPC::Open2\" upgraded to version 1.02\n\n\t   •   Enhanced documentation\n\n       •   \"IPC::Open3\" upgraded to version 1.02\n\n\t   •   Enhanced documentation\n\n       •   \"List::Util\" upgraded to version 1.18 (was 1.14)\n\n\t   •   Fix pure-perl version of \"refaddr\" to avoid blessing an un-\n\t       blessed reference\n\n\t   •   Use \"XSLoader\" for faster loading\n\n\t   •   Fixed various memory leaks\n\n\t   •   Internal cleanup and portability fixes\n\n       •   \"Math::Complex\" upgraded to version 1.35\n\n\t   •   \"atan2(0, i)\" now works, as do all the (computable) complex\n\t       argument cases\n\n\t   •   Fixes for certain bugs in \"make\" and \"emake\"\n\n\t   •   Support returning the kth root directly\n\n\t   •   Support \"[2,-3pi/8]\" in \"emake\"\n\n\t   •   Support \"inf\" for \"make\"/\"emake\"\n\n\t   •   Document \"make\"/\"emake\" more visibly\n\n       •   \"Math::Trig\" upgraded to version 1.03\n\n\t   •   Add more great circle routines: \"great_circle_waypoint\" and\n\t       \"great_circle_destination\""
+  manpageQuestion1: What is the primary purpose of the perl588delta resource?
+  manpageQuestion2: How can you use the perl588delta tool to upgrade the 'List::Util' module to version 1.18?
+  manpageQuestion3: Can you provide an example of using perl588delta to fix a memory leak in the 'Math::Complex' module?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl588delta`.\n\n\n\nManpage text:\n\n•   \"MIME::Base64\" upgraded to version 3.07\n\n\t   •   Use \"XSLoader\" for faster loading\n\n\t   •   Enhanced documentation\n\n\t   •   Internal cleanup\n\n       •   \"NDBM_File\" upgraded to version 1.06\n\n\t   •   Enhanced documentation\n\n       •   \"ODBM_File\" upgraded to version 1.06\n\n\t   •   Documentation typo fixed\n\n\t   •   Internal cleanup\n\n       •   \"Opcode\" upgraded to version 1.06\n\n\t   •   Enhanced documentation\n\n\t   •   Internal cleanup\n\n       •   \"open\" upgraded to version 1.05\n\n\t   •   Enhanced documentation\n\n       •   \"overload\" upgraded to version 1.04\n\n\t   •   Enhanced documentation\n\n       •   \"PerlIO\" upgraded to version 1.04\n\n\t   •   \"PerlIO::via\" iterate over layers properly now\n\n\t   •   \"PerlIO::scalar\" understands \"$/ = \"\"\" now\n\n\t   •   \"encoding(utf-8-strict)\" with partial characters now works\n\n\t   •   Enhanced documentation\n\n\t   •   Internal cleanup\n\n       •   \"Pod::Functions\" upgraded to version 1.03\n\n\t   •   Documentation typos fixed\n\n       •   \"Pod::Html\" upgraded to version 1.0504"
+  manpageQuestion1: What is the primary purpose of the perl588delta resource?
+  manpageQuestion2: How can you upgrade the "NDBM_File" module to version 1.06 using perl588delta?
+  manpageQuestion3: What are the key improvements in the "PerlIO::scalar" module as described in the perl588delta manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl588delta`.\n\n\n\nManpage text:\n\n•   HTML output will now correctly link to \"=item\"s on the same\n\t       page, and should be valid XHTML.\n\n\t   •   Variable names are recognized as intended\n\n\t   •   Documentation typos fixed\n\n       •   \"Pod::Parser\" upgraded to version 1.32\n\n\t   •   Allow files that start with \"=head\" on the first line\n\n\t   •   Win32 portability fix\n\n\t   •   Exit status of \"pod2usage\" fixed\n\n\t   •   New \"-noperldoc\" switch for \"pod2usage\"\n\n\t   •   Arbitrary URL schemes now allowed\n\n\t   •   Documentation typos fixed\n\n       •   \"POSIX\" upgraded to version 1.09\n\n\t   •   Documentation typos fixed\n\n\t   •   Internal cleanup\n\n       •   \"re\" upgraded to version 0.05\n\n\t   •   Documentation typo fixed\n\n       •   \"Safe\" upgraded to version 2.12\n\n\t   •   Minor documentation enhancement\n\n       •   \"SDBM_File\" upgraded to version 1.05\n\n\t   •   Documentation typo fixed\n\n\t   •   Internal cleanup\n\n       •   \"Socket\" upgraded to version 1.78\n\n\t   •   Internal cleanup\n\n       •   \"Storable\" upgraded to version 2.15"
+  manpageQuestion1: What is the primary purpose of the perl588delta resource?
+  manpageQuestion2: How can you use perl588delta to enhance the portability of documentation on Windows systems?
+  manpageQuestion3: What is the effect of using the -noperldoc switch with pod2usage in perl588delta?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl588delta`.\n\n\n\nManpage text:\n\n•   This includes the \"STORABLE_attach\" hook functionality added by\n\t       Adam Kennedy, and more frugal memory requirements when storing\n\t       under \"ithreads\", by using the \"ithreads\" cloning tracking\n\t       code.\n\n       •   \"Switch\" upgraded to version 2.10_01\n\n\t   •   Documentation typos fixed\n\n       •   \"Sys::Syslog\" upgraded to version 0.13\n\n\t   •   Now provides numeric macros and meaningful \"Exporter\" tags.\n\n\t   •   No longer uses \"Sys::Hostname\" as it may provide useless values\n\t       in unconfigured network environments, so instead uses\n\t       \"INADDR_LOOPBACK\" directly.\n\n\t   •   \"syslog()\" now uses local timestamp.\n\n\t   •   \"setlogmask()\" now behaves like its C counterpart.\n\n\t   •   \"setlogsock()\" will now \"croak()\" as documented.\n\n\t   •   Improved error and warnings messages.\n\n\t   •   Improved documentation.\n\n       •   \"Term::ANSIColor\" upgraded to version 1.10\n\n\t   •   Fixes a bug in \"colored\" when $EACHLINE is set that caused it\n\t       to not color lines consisting solely of 0 (literal zero)."
+  manpageQuestion1: What is the primary purpose of the perl588delta resource?
+  manpageQuestion2: How can you use perl588delta to upgrade the 'Switch' module to version 2.10_01?
+  manpageQuestion3: What changes were made to the 'Sys::Syslog' module in the perl588delta resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl588delta`.\n\n\n\nManpage text:\n\n•   Improved tests.\n\n       •   \"Term::ReadLine\" upgraded to version 1.02\n\n\t   •   Documentation tweaks\n\n       •   \"Test::Harness\" upgraded to version 2.56 (was 2.48)\n\n\t   •   The \"Test::Harness\" timer is now off by default.\n\n\t   •   Now shows elapsed time in milliseconds.\n\n\t   •   Various bug fixes\n\n       •   \"Test::Simple\" upgraded to version 0.62 (was 0.54)\n\n\t   •   \"is_deeply()\" no longer fails to work for many cases\n\n\t   •   Various minor bug fixes\n\n\t   •   Documentation enhancements\n\n       •   \"Text::Tabs\" upgraded to version 2005.0824\n\n\t   •   Provides a faster implementation of \"expand\"\n\n       •   \"Text::Wrap\" upgraded to version 2005.082401\n\n\t   •   Adds $Text::Wrap::separator2, which allows you to preserve\n\t       existing newlines but add line-breaks with some other string.\n\n       •   \"threads\" upgraded to version 1.07\n\n\t   •   \"threads\" will now honour \"no warnings 'threads'\"\n\n\t   •   A thread's interpreter is now freed after \"$t->join()\" rather\n\t       than after \"undef $t\", which should fix some \"ithreads\" memory\n\t       leaks. (Fixed by Dave Mitchell)"
+  manpageQuestion1: What is the primary purpose of the perl588delta resource?
+  manpageQuestion2: How would you use perl588delta to upgrade the 'Test::Harness' module to version 2.56?
+  manpageQuestion3: Can you provide an example of using perl588delta to update the 'Text::Wrap' module to version 2005.082401?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl588delta`.\n\n\n\nManpage text:\n\n•   Some documentation typo fixes.\n\n       •   \"threads::shared\" upgraded to version 0.94\n\n\t   •   Documentation changes only\n\n\t   •   Note: An improved implementation of \"threads::shared\" is\n\t       available on CPAN - this will be merged into 5.8.9 if it proves\n\t       stable.\n\n       •   \"Tie::Hash\" upgraded to version 1.02\n\n\t   •   Documentation typo fixed\n\n       •   \"Time::HiRes\" upgraded to version 1.86 (was 1.66)\n\n\t   •   \"clock_nanosleep()\" and \"clock()\" functions added\n\n\t   •   Support for the POSIX \"clock_gettime()\" and \"clock_getres()\"\n\t       has been added\n\n\t   •   Return \"undef\" or an empty list if the C \"gettimeofday()\"\n\t       function fails\n\n\t   •   Improved \"nanosleep\" detection\n\n\t   •   Internal cleanup\n\n\t   •   Enhanced documentation\n\n       •   \"Unicode::Collate\" upgraded to version 0.52\n\n\t   •   Now implements UCA Revision 14 (based on Unicode 4.1.0).\n\n\t   •   \"Unicode::Collate->new\" method no longer overwrites user's $_\n\n\t   •   Enhanced documentation\n\n       •   \"Unicode::UCD\" upgraded to version 0.24"
+  manpageQuestion1: What is the primary purpose of the perl588delta resource?
+  manpageQuestion2: How can one update the 'Time::HiRes' module using perl588delta?
+  manpageQuestion3: What new functionality was introduced in the 'Unicode::Collate' module according to the perl588delta release notes?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl588delta`.\n\n\n\nManpage text:\n\n•   Documentation typos fixed\n\n       •   \"User::grent\" upgraded to version 1.01\n\n\t   •   Documentation typo fixed\n\n       •   \"utf8\" upgraded to version 1.06\n\n\t   •   Documentation typos fixed\n\n       •   \"vmsish\" upgraded to version 1.02\n\n\t   •   Documentation typos fixed\n\n       •   \"warnings\" upgraded to version 1.05\n\n\t   •   Gentler messing with \"Carp::\" internals\n\n\t   •   Internal cleanup\n\n\t   •   Documentation update\n\n       •   \"Win32\" upgraded to version 0.2601\n\n\t   •   Provides Windows Vista support to \"Win32::GetOSName\"\n\n\t   •   Documentation enhancements\n\n       •   \"XS::Typemap\" upgraded to version 0.02\n\n\t   •   Internal cleanup\n\nUtility Changes\n   \"h2xs\" enhancements\n       \"h2xs\" implements new option \"--use-xsloader\" to force use of\n       \"XSLoader\" even in backwards compatible modules.\n\n       The handling of authors' names that had apostrophes has been fixed.\n\n       Any enums with negative values are now skipped.\n\n   \"perlivp\" enhancements\n       \"perlivp\" implements new option \"-a\" and will not check for *.ph files\n       by default any more.  Use the \"-a\" option to run all tests."
+  manpageQuestion1: What is the primary purpose of the perl588delta resource?
+  manpageQuestion2: How can you use the 'h2xs' utility with the '--use-xsloader' option to generate XS code for a module?
+  manpageQuestion3: What is the effect of using the '-a' option with 'perlivp' when running tests?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl588delta`.\n\n\n\nManpage text:\n\nNew Documentation\n       The perlglossary manpage is a glossary of terms used in the Perl\n       documentation, technical and otherwise, kindly provided by O'Reilly\n       Media, inc.\n\nPerformance Enhancements\n       •   Weak reference creation is now O(1) rather than O(n), courtesy of\n\t   Nicholas Clark. Weak reference deletion remains O(n), but if\n\t   deletion only happens at program exit, it may be skipped\n\t   completely.\n\n       •   Salvador Fandin~o provided improvements to reduce the memory usage\n\t   of \"sort\" and to speed up some cases.\n\n       •   Jarkko Hietaniemi and Andy Lester worked to mark as much data as\n\t   possible in the C source files as \"static\", to increase the\n\t   proportion of the executable file that the operating system can\n\t   share between process, and thus reduce real memory usage on multi-\n\t   user systems.\n\nInstallation and Configuration Improvements\n       Parallel makes should work properly now, although there may still be\n       problems if \"make test\" is instructed to run in parallel."
+  manpageQuestion1: What is the primary purpose of the `perl588delta` resource?
+  manpageQuestion2: How can you take advantage of the performance enhancements in `perl588delta` for weak references?
+  manpageQuestion3: What configuration improvements does `perl588delta` offer for the installation process?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl588delta`.
+
+
+
+    Manpage text:
+
+    Building with Borland's compilers on Win32 should work more smoothly.
+           In particular Steve Hay has worked to side step many warnings emitted
+           by their compilers and at least one C compiler internal error.
+
+           "Configure" will now detect "clearenv" and "unsetenv", thanks to a
+           patch from Alan Burlison. It will also probe for "futimes" and whether
+           "sprintf" correctly returns the length of the formatted string, which
+           will both be used in perl 5.8.9.
+
+           There are improved hints for next-3.0, vmesa, IX, Darwin, Solaris,
+           Linux, DEC/OSF, HP-UX and MPE/iX
+
+           Perl extensions on Windows now can be statically built into the Perl
+           DLL, thanks to a work by Vadim Konovalov. (This improvement was
+           actually in 5.8.7, but was accidentally omitted from perl587delta).
+
+    Selected Bug Fixes
+       no warnings 'category' works correctly with -w
+           Previously when running with warnings enabled globally via "-w",
+           selective disabling of specific warning categories would actually turn
+           off all warnings.  This is now fixed; now "no warnings 'io';" will only
+           turn off warnings in the "io" class. Previously it would erroneously
+           turn off all warnings.
+  manpageQuestion1: What is the primary purpose of the perl588delta resource?
+  manpageQuestion2: How can you configure Perl 5.8.9 to detect specific environment functions like 'clearenv' and 'unsetenv' on different operating systems?
+  manpageQuestion3: What is the recommended approach for building Perl extensions on Windows as described in the manpage?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl588delta`.
+
+
+
+    Manpage text:
+
+    This bug fix may cause some programs to start correctly issuing
+           warnings.
+
+       Remove over-optimisation
+           Perl 5.8.4 introduced a change so that assignments of "undef" to a
+           scalar, or of an empty list to an array or a hash, were optimised away.
+           As this could cause problems when "goto" jumps were involved, this
+           change has been backed out.
+
+       sprintf() fixes
+           Using the sprintf() function with some formats could lead to a buffer
+           overflow in some specific cases. This has been fixed, along with
+           several other bugs, notably in bounds checking.
+
+           In related fixes, it was possible for badly written code that did not
+           follow the documentation of "Sys::Syslog" to have formatting
+           vulnerabilities.  "Sys::Syslog" has been changed to protect people from
+           poor quality third party code.
+
+       Debugger and Unicode slowdown
+           It had been reported that running under perl's debugger when processing
+           Unicode data could cause unexpectedly large slowdowns. The most likely
+           cause of this was identified and fixed by Nicholas Clark.
+  manpageQuestion1: What is the primary purpose of the perl588delta resource?
+  manpageQuestion2: How does the perl588delta resource address the issue of buffer overflow in sprintf() function?
+  manpageQuestion3: What changes were made to the debugger and Unicode handling in perl588delta to improve performance?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl588delta`.\n\n\n\nManpage text:\n\nSmaller fixes\n       •   \"FindBin\" now works better with directories where access rights are\n\t   more restrictive than usual.\n\n       •   Several memory leaks in ithreads were closed. An improved\n\t   implementation of \"threads::shared\" is available on CPAN - this\n\t   will be merged into 5.8.9 if it proves stable.\n\n       •   Trailing spaces are now trimmed from $! and $^E.\n\n       •   Operations that require perl to read a process's list of groups,\n\t   such as reads of $( and $), now dynamically allocate memory rather\n\t   than using a fixed sized array. The fixed size array could cause C\n\t   stack exhaustion on systems configured to use large numbers of\n\t   groups.\n\n       •   \"PerlIO::scalar\" now works better with non-default $/ settings.\n\n       •   You can now use the \"x\" operator to repeat a \"qw//\" list. This used\n\t   to raise a syntax error.\n\n       •   The debugger now traces correctly execution in eval(\"\")uated code\n\t   that contains #line directives.\n\n       •   The value of the \"open\" pragma is no longer ignored for three-\n\t   argument opens."
+  manpageQuestion1: What is the primary purpose of the perl588delta resource?
+  manpageQuestion2: How does the perl588delta resource improve the functionality of the 'FindBin' module in Perl?
+  manpageQuestion3: What change does perl588delta introduce to the 'open' pragma in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl588delta`.\n\n\n\nManpage text:\n\n•   The optimisation of \"for (reverse @a)\" introduced in perl 5.8.6\n\t   could misbehave when the array had undefined elements and was used\n\t   in LVALUE context. Dave Mitchell provided a fix.\n\n       •   Some case insensitive matches between UTF-8 encoded data and 8 bit\n\t   regexps, and vice versa, could give malformed character warnings.\n\t   These have been fixed by Dave Mitchell and Yves Orton.\n\n       •   \"lcfirst\" and \"ucfirst\" could corrupt the string for certain cases\n\t   where the length UTF-8 encoding of the string in lower case, upper\n\t   case or title case differed. This was fixed by Nicholas Clark.\n\n       •   Perl will now use the C library calls \"unsetenv\" and \"clearenv\" if\n\t   present to delete keys from %ENV and delete %ENV entirely, thanks\n\t   to a patch from Alan Burlison.\n\nNew or Changed Diagnostics\n   Attempt to set length of freed array\n       This is a new warning, produced in situations such as this:\n\n\t   $r = do {my @a; \\$#a};\n\t   $$r = 503;\n\n   Non-string passed as bitmask\n       This is a new warning, produced when number has been passed as an\n       argument to select(), instead of a bitmask."
+  manpageQuestion1: What is the primary purpose of the perl588delta resource?
+  manpageQuestion2: What is an example of a new warning introduced in perl588delta and when would it be triggered?
+  manpageQuestion3: How does perl588delta address the issue of case-insensitive matching between UTF-8 encoded data and 8-bit regexps?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl588delta`.\n\n\n\nManpage text:\n\n# Wrong, will now warn\n\t   $rin = fileno(STDIN);\n\t   ($nfound,$timeleft) = select($rout=$rin, undef, undef, $timeout);\n\n\t   # Should be\n\t   $rin = '';\n\t   vec($rin,fileno(STDIN),1) = 1;\n\t   ($nfound,$timeleft) = select($rout=$rin, undef, undef, $timeout);\n\n   Search pattern not terminated or ternary operator parsed as search pattern\n       This syntax error indicates that the lexer couldn't find the final\n       delimiter of a \"?PATTERN?\" construct. Mentioning the ternary operator\n       in this error message makes it easier to diagnose syntax errors.\n\nChanged Internals\n       There has been a fair amount of refactoring of the \"C\" source code,\n       partly to make it tidier and more maintainable. The resulting object\n       code and the \"perl\" binary may well be smaller than 5.8.7, in\n       particular due to a change contributed by Dave Mitchell which reworked\n       the warnings code to be significantly smaller. Apart from being smaller\n       and possibly faster, there should be no user-detectable changes."
+  manpageQuestion1: What is the primary purpose of the perl588delta resource?
+  manpageQuestion2: How would you use the perl588delta tool to fix a syntax error related to an unterminated search pattern in a regular expression?
+  manpageQuestion3: Can you provide an example of using perl588delta to refactor the internal code structure of Perl for improved maintainability and performance?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl588delta`.
+
+
+
+    Manpage text:
+
+    Andy Lester supplied many improvements to determine which function
+           parameters and local variables could actually be declared "const" to
+           the C compiler. Steve Peters provided new *_set macros and reworked the
+           core to use these rather than assigning to macros in LVALUE context.
+
+           Dave Mitchell improved the lexer debugging output under "-DT"
+
+           Nicholas Clark changed the string buffer allocation so that it is now
+           rounded up to the next multiple of 4 (or 8 on platforms with 64 bit
+           pointers). This should reduce the number of calls to "realloc" without
+           actually using any extra memory.
+
+           The "HV"'s array of "HE*"s is now allocated at the correct (minimal)
+           size, thanks to another change by Nicholas Clark. Compile with
+           "-DPERL_USE_LARGE_HV_ALLOC" to use the old, sloppier, default.
+
+           For XS or embedding debugging purposes, if perl is compiled with
+           "-DDEBUG_LEAKING_SCALARS_FORK_DUMP" in addition to
+           "-DDEBUG_LEAKING_SCALARS" then a child process is "fork"ed just before
+           global destruction, which is used to display the values of any scalars
+           found to have leaked at the end of global destruction. Without this,
+           the scalars have already been freed sufficiently at the point of
+           detection that it is impossible to produce any meaningful dump of their
+           contents.  This feature was implemented by the indefatigable Nicholas
+           Clark, based on an idea by Mike Giroux.
+  manpageQuestion1: What is the primary purpose of the perl588delta resource?
+  manpageQuestion2: How can one utilize perl588delta to enhance the C compiler's ability to declare 'const' for function parameters and local variables?
+  manpageQuestion3: Can you explain how to configure perl588delta for debugging leaking scalars in XS or embedding scenarios?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl588delta`.\n\n\n\nManpage text:\n\nPlatform Specific Problems\n       The optimiser on HP-UX 11.23 (Itanium 2) is currently partly disabled\n       (scaled down to +O1) when using HP C-ANSI-C; the cause of problems at\n       higher optimisation levels is still unclear.\n\n       There are a handful of remaining test failures on VMS, mostly due to\n       test fixes and minor module tweaks with too many dependencies to\n       integrate into this release from the development stream, where they\n       have all been corrected.  The following is a list of expected failures\n       with the patch number of the fix where that is known:\n\n\t   ext/Devel/PPPort/t/ppphtest.t  #26913\n\t   ext/List/Util/t/p_tainted.t\t  #26912\n\t   lib/ExtUtils/t/PL_FILES.t\t  #26813\n\t   lib/ExtUtils/t/basic.t\t  #26813\n\t   t/io/fs.t\n\t   t/op/cmp.t\n\nReporting Bugs\n       If you find what you think is a bug, you might check the articles\n       recently posted to the comp.lang.perl.misc newsgroup and the perl bug\n       database at http://bugs.perl.org.  There may also be information at\n       http://www.perl.org, the Perl Home Page."
+  manpageQuestion1: What is the primary purpose of the perl588delta resource?
+  manpageQuestion2: What are some known issues with the perl588delta resource on HP-UX 11.23 (Itanium 2) when using HP C-ANSI-C?
+  manpageQuestion3: Which test files are expected to fail when using the perl588delta resource on VMS, and what is the associated patch number for each?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl588delta`.\n\n\n\nManpage text:\n\nIf you believe you have an unreported bug, please run the perlbug\n       program included with your release.  Be sure to trim your bug down to a\n       tiny but sufficient test case.  Your bug report, along with the output\n       of \"perl -V\", will be sent off to perlbug@perl.org to be analysed by\n       the Perl porting team.  You can browse and search the Perl 5 bugs at\n       http://bugs.perl.org/\n\nSEE ALSO\n       The Changes file for exhaustive details on what changed.\n\n       The INSTALL file for how to build Perl.\n\n       The README file for general stuff.\n\n       The Artistic and Copying files for copyright information.\n\nperl v5.34.1\t\t\t  2022-02-19\t\t       PERL588DELTA(1)"
+  manpageQuestion1: What is the primary purpose of the perl588delta resource?
+  manpageQuestion2: How can one report a bug in the Perl 5.34.1 version using the perlbug program?
+  manpageQuestion3: What are the key files mentioned in the SEE ALSO section of the perl588delta manpage?
+

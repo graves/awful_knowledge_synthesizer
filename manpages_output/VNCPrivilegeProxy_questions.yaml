@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `VNCPrivilegeProxy`.\n\n\n\nManpage text:\n\nVNCPrivilegeProxy(8)\t    System Manager's Manual\t  VNCPrivilegeProxy(8)\n\nNAME\n     VNCPrivilegeProxy – Screen sharing server helper daemon\n\nDESCRIPTION\n     VNCPrivilegeProxy is used by the screen sharing server.\n\n     The VNCPrivilegeProxy command should not be run directly.\n\nmacOS\t\t\t\t April 8, 2017\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the VNCPrivilegeProxy tool?
+  manpageQuestion2: How is VNCPrivilegeProxy typically used in a macOS system?
+  manpageQuestion3: Can you explain the role of VNCPrivilegeProxy in relation to the screen sharing server?
+

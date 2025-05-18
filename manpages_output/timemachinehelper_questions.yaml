@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `timemachinehelper`.\n\n\n\nManpage text:\n\ntimemachinehelper(8)\t    System Manager's Manual\t  timemachinehelper(8)\n\nNAME\n     timemachinehelper – TimeMachine Diagnostic Extension Helper\n\nDESCRIPTION\n     timemachinehelper is part of the TimeMachine Diagnostic Extension. It\n     does not support standalone use.\n\nMacOS\t\t\t\tAugust 13, 2018 \t\t\t MacOS"
+  manpageQuestion1: What is the primary purpose of the timemachinehelper tool?
+  manpageQuestion2: How would you use the timemachinehelper to diagnose a TimeMachine issue on macOS?
+  manpageQuestion3: Can you explain the typical usage scenario for the timemachinehelper in a macOS environment?
+

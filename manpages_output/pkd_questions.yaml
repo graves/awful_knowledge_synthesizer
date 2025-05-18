@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pkd`.\n\n\n\nManpage text:\n\npkd(8)\t\t\t    System Manager's Manual\t\t\tpkd(8)\n\nNAME\n     pkd – management and supervision daemon for plug-in services\n\nSYNOPSIS\n     pkd\n\nDESCRIPTION\n     pkd manages plug-ins for the PlugInKit subsystem. It is a classic launch\n     agent managed by launchd.\n\nSEE ALSO\n     xpc(3), pluginkit(8)\n\nHISTORY\n     pkd was first introduced in OS X 10.9.\n\n     pkd used to have a -v verbose option to increase logging. This is now\n     accomplished through the logging system by enabling the \"info\" or \"debug\"\n     levels of logging for the \"com.apple.PlugInKit\" subsystem.\n\nBUGS\n     None yet.\n\nDarwin\t\t\t       January 22, 2014 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the pkd command?
+  manpageQuestion2: How can you configure pkd to run as a launch agent?
+  manpageQuestion3: What is the relationship between pkd and the PlugInKit subsystem?
+

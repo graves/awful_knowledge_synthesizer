@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `wps`.\n\n\n\nManpage text:\n\nwps(8)\t\t\t    System Manager's Manual\t\t\twps(8)\n\nNAME\n     wps – Wireless Protected Setup daemon\n\nSYNOPSIS\n     wps\n\nDESCRIPTION\n     wps Assists AirPort in connecting to a secured network using Wireless\n     Protected Setup.\n\nmacOS 15.3\t\t\t  11/30/2006\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the wps command?
+  manpageQuestion2: How would you use the wps command to initiate a Wireless Protected Setup process on a macOS system?
+  manpageQuestion3: Can you explain the typical use case for the wps command in a network configuration scenario?
+

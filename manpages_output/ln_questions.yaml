@@ -1,0 +1,60 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ln`.\n\n\n\nManpage text:\n\nLN(1)\t\t\t    General Commands Manual\t\t\t LN(1)\n\nNAME\n     ln, link – link files\n\nSYNOPSIS\n     ln [-L | -P | -s [-F]] [-f | -iw] [-hnv] source_file [target_file]\n     ln [-L | -P | -s [-F]] [-f | -iw] [-hnv] source_file ... target_dir\n     link source_file target_file\n\nDESCRIPTION\n     The ln utility creates a new directory entry (linked file) for the file\n     name specified by target_file.  The target_file will be created with the\n     same file modes as the source_file.  It is useful for maintaining\n     multiple copies of a file in many places at once without using up storage\n     for the “copies”; instead, a link “points” to the original copy.  There\n     are two types of links; hard links and symbolic links.  How a link\n     “points” to a file is one of the differences between a hard and symbolic\n     link.\n\n     The options are as follows:\n\n     -F    If the target file already exists and is a directory, then remove\n\t   it so that the link may occur.  The -F option should be used with\n\t   either -f or -i options.  If neither -f nor -i is specified, -f is\n\t   implied.  The -F option is a no-op unless -s is specified."
+  manpageQuestion1: What is the primary purpose of the ln command?
+  manpageQuestion2: How would you create a hard link for the file "document.txt" to a new file named "link_document.txt"
+  manpageQuestion3: Can you provide an example of using the ln command with symbolic link options to create a symlink from "source.txt" to "target.txt"?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ln`.\n\n\n\nManpage text:\n\n-L    When creating a hard link to a symbolic link, create a hard link to\n\t   the target of the symbolic link.  This is the default.  This option\n\t   cancels the -P option.\n\n     -P    When creating a hard link to a symbolic link, create a hard link to\n\t   the symbolic link itself.  This option cancels the -L option.\n\n     -f    If the target file already exists, then unlink it so that the link\n\t   may occur.  (The -f option overrides any previous -i and -w\n\t   options.)\n\n     -h    If the target_file or target_dir is a symbolic link, do not follow\n\t   it.\tThis is most useful with the -f option, to replace a symlink\n\t   which may point to a directory.\n\n     -i    Cause ln to write a prompt to standard error if the target file\n\t   exists.  If the response from the standard input begins with the\n\t   character ‘y’ or ‘Y’, then unlink the target file so that the link\n\t   may occur.  Otherwise, do not attempt the link.  (The -i option\n\t   overrides any previous -f options.)\n\n     -n    Same as -h, for compatibility with other ln implementations."
+  manpageQuestion1: What is the primary purpose of the ln command?
+  manpageQuestion2: How would you use the -f option with ln to force a hard link creation even if the target file already exists?
+  manpageQuestion3: Can you provide an example of using the -L option with ln to create a hard link to the target of a symbolic link?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ln`.
+
+
+
+    Manpage text:
+
+    -s    Create a symbolic link.
+
+         -v    Cause ln to be verbose, showing files as they are processed.
+
+         -w    Warn if the source of a symbolic link does not currently exist.
+
+         By default, ln makes hard links.  A hard link to a file is
+         indistinguishable from the original directory entry; any changes to a
+         file are effectively independent of the name used to reference the file.
+         Directories may not be hardlinked, and hard links may not span file
+         systems.
+
+         A symbolic link contains the name of the file to which it is linked.  The
+         referenced file is used when an open(2) operation is performed on the
+         link.  A stat(2) on a symbolic link will return the linked-to file; an
+         lstat(2) must be done to obtain information about the link.  The
+         readlink(2) call may be used to read the contents of a symbolic link.
+         Symbolic links may span file systems and may refer to directories.
+
+         Given one or two arguments, ln creates a link to an existing file
+         source_file.  If target_file is given, the link has that name;
+         target_file may also be a directory in which to place the link; otherwise
+         it is placed in the current directory.  If only the directory is
+         specified, the link will be made to the last component of source_file.
+  manpageQuestion1: What is the primary purpose of the ln command in macOS?
+  manpageQuestion2: How can you use the ln command to create a symbolic link with verbose output?
+  manpageQuestion3: Can you provide an example of using the ln command to create a symbolic link that warns if the source file does not exist?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ln`.\n\n\n\nManpage text:\n\nGiven more than two arguments, ln makes links in target_dir to all the\n     named source files.  The links made will have the same name as the files\n     being linked to.\n\n     When the utility is called as link, exactly two arguments must be\n     supplied, neither of which may specify a directory.  No options may be\n     supplied in this simple mode of operation, which performs a link(2)\n     operation using the two passed arguments.\n\nEXAMPLES\n     Create a symbolic link named /home/src and point it to /usr/src:\n\n\t   # ln -s /usr/src /home/src\n\n     Hard link /usr/local/bin/fooprog to file /usr/local/bin/fooprog-1.0:\n\n\t   # ln /usr/local/bin/fooprog-1.0 /usr/local/bin/fooprog\n\n     As an exercise, try the following commands:\n\n\t   # ls -i /bin/[\n\t   11553 /bin/[\n\t   # ls -i /bin/test\n\t   11553 /bin/test\n\n     Note that both files have the same inode; that is, /bin/[ is essentially\n     an alias for the test(1) command.\tThis hard link exists so test(1) may\n     be invoked from shell scripts, for example, using the if [ ] construct."
+  manpageQuestion1: What is the primary purpose of the ln command in macOS?
+  manpageQuestion2: How can you create a symbolic link from /usr/src to /home/src using the ln command?
+  manpageQuestion3: Can you provide an example of creating a hard link between two files using the ln command?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ln`.\n\n\n\nManpage text:\n\nIn the next example, the second call to ln removes the original foo and\n     creates a replacement pointing to baz:\n\n\t   # mkdir bar baz\n\t   # ln -s bar foo\n\t   # ln -shf baz foo\n\n     Without the -h option, this would instead leave foo pointing to bar and\n     inside foo create a new symlink baz pointing to itself.  This results\n     from directory-walking.\n\n     An easy rule to remember is that the argument order for ln is the same as\n     for cp(1): The first argument needs to exist, the second one is created.\n\nCOMPATIBILITY\n     The -h, -i, -n, -v and -w options are non-standard and their use in\n     scripts is not recommended.  They are provided solely for compatibility\n     with other ln implementations.\n\n     The -F option is a FreeBSD extension and should not be used in portable\n     scripts.\n\nSEE ALSO\n     link(2), lstat(2), readlink(2), stat(2), symlink(2), symlink(7)\n\nSTANDARDS\n     The ln utility conforms to IEEE Std 1003.2-1992 (“POSIX.2”).\n\n     The simplified link command conforms to Version 2 of the Single UNIX\n     Specification (“SUSv2”)."
+  manpageQuestion1: What is the primary purpose of the ln command in macOS?
+  manpageQuestion2: How can you use the ln command to create a symbolic link from an existing file named bar to a new file named foo, and then replace the original foo with a symlink pointing to baz?
+  manpageQuestion3: What is the function of the -h option in the ln command, and how does it affect the behavior when creating links?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ln`.\n\n\n\nManpage text:\n\nHISTORY\n     An ln command appeared in Version 1 AT&T UNIX.\n\nmacOS 15.3\t\t\t May 10, 2021\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the `ln` command?
+  manpageQuestion2: How can you create a symbolic link to a file named `example.txt` in the current directory using the `ln` command?
+  manpageQuestion3: What is the difference between creating a hard link and a symbolic link using the `ln` command?
+

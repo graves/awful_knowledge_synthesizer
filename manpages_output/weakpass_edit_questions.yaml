@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `weakpass_edit`.\n\n\n\nManpage text:\n\nweakpass_edit(8)\t    System Manager's Manual\t      weakpass_edit(8)\n\nNAME\n     weakpass_edit – Mac OS X Server Password Server weak password dictionary\n     insertion tool\n\nSYNOPSIS\n     add [[-p passphrase] | [-f file]]\n     delete [[-p passphrase] | [-f file]]\n\nDESCRIPTION\n     weakpass_edit Adds weak or undesirable passwords to a dictionary of\n     passwords to be rejected by the password server.\n\n     weakpass_edit must be run as root; it will exit otherwise.\n\n     This tool's purpose is to manage the weak password dictionary.\n\nOPTIONS\n     The following options are available:\n\n     -p    add or delete a passphrase, provided as a command-line argument, to\n\t   the weak password database.\n\n     -f    add or delete all passphrases contained in a file.\n\nUSAGE\nFILES & FOLDERS\n     /var/db/authserver - the password server database repository. The weak password files are here.\n     /var/db/authserver/weakpasswords.[n] - an alphabetized list of weak passwords to reject.\n\nSEE ALSO\n     PasswordService(8) mkpassdb(8)"
+  manpageQuestion1: What is the primary purpose of the weakpass_edit tool?
+  manpageQuestion2: How would you use weakpass_edit to add a passphrase to the weak password dictionary?
+  manpageQuestion3: Can you provide an example of using weakpass_edit to remove all passphrases from a file specified as 'weakpass.txt'?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `weakpass_edit`.\n\n\n\nManpage text:\n\nMac OS X Server \t       21 February 2002 \t       Mac OS X Server"
+  manpageQuestion1: What is the primary purpose of the weakpass_edit tool?
+  manpageQuestion2: How would you use weakpass_edit to modify a password in a specific configuration file?
+  manpageQuestion3: Can you provide an example of using weakpass_edit to check the strength of a password?
+

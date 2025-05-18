@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `containermanagerd`.\n\n\n\nManpage text:\n\ncontainermanagerd(8)\t    System Manager's Manual\t  containermanagerd(8)\n\nNAME\n     containermanagerd – Application and plug-in containerization management\n     daemon\n\nSYNOPSIS\n     containermanagerd\n\nDESCRIPTION\n     containermanagerd creates, destroys, and otherwise manages containers for\n     applications and their respective plug-ins and works in concert with\n     sandbox(7) and secinitd(8) to provide application containerization.  It\n     is a classic launch daemon and/or agent managed by launchd(8).\n\n     Users should not run containermanagerd manually and changing arguments is\n     unsupported.\n\nFILES\n     •\t /System/Library/LaunchDaemons/com.apple.containermanagerd.plist\n\n     •\t /System/Library/LaunchAgents/com.apple.containermanagerd.plist\n\n     •\t /usr/libexec/containermanagerd\n\n     •\t ~/Library/ContainerManager\n\n     •\t ~/Library/Caches/com.apple.containermanagerd\n\n     •\t ~/Library/Containers\n\n     •\t ~/Library/Daemon Containers\n\n     •\t ~/Library/GroupContainersAlias\n\n     •\t ~/Library/Group Containers"
+  manpageQuestion1: What is the primary purpose of the containermanagerd tool?
+  manpageQuestion2: How would you configure containermanagerd to manage application containers on a macOS system?
+  manpageQuestion3: Can you explain the role of containermanagerd in relation to sandbox(7) and secinitd(8)?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `containermanagerd`.\n\n\n\nManpage text:\n\nSEE ALSO\n     launchd(8), secinitd(8)\n\nHISTORY\n     containermanagerd was first introduced in macOS 11.\n\nDarwin\t\t\t\tMarch 20, 2023\t\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the containermanagerd tool?
+  manpageQuestion2: How can containermanagerd be used in conjunction with launchd to manage containers?
+  manpageQuestion3: What is the historical context of containermanagerd in macOS?
+

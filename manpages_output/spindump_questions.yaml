@@ -1,0 +1,226 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `spindump`.\n\n\n\nManpage text:\n\nspindump(8)\t\t    System Manager's Manual\t\t   spindump(8)\n\nNAME\n     spindump – Profile entire system during a time interval\n\nSYNOPSIS\n     spindump [pid | partial-name [duration [interval]]] [<options>]\n\nDESCRIPTION\n     spindump is used by various system components to create reports when an\n     unresponsive application is force quit. Reports are stored at:\n\n     /Library/Logs/DiagnosticReports/\n\n     For normal application force quits spindump will display a dialog to\n     offer the choice to view more details and/or send a report to Apple.\n\n     -------------------------------------\n\n     When run manually, spindump samples user and kernel callstacks for every\n     process in the system. Spindump supports two display formats for\n     callstacks, heavy and timeline, and includes a binary representation of\n     its data at the end of reports for re-reporting with different options\n     (see -i ). Spindump can also parse reports in timeline format even\n     without a binary representation to re-report them in heavy format."
+  manpageQuestion1: What is the primary purpose of the spindump tool?
+  manpageQuestion2: How would you use spindump to profile the system for 10 seconds with a 2-second interval?
+  manpageQuestion3: Can you provide an example of using spindump to analyze a specific process with the pid 1234 and display callstacks in heavy format?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `spindump`.
+
+
+
+    Manpage text:
+
+    When displayed in heavy format, callstacks are sorted by count and each
+         unique callstack is displayed once. In this snippet:
+
+         84  __CFRunLoopRun + 1161 (CoreFoundation + 460665) [0x7fff8d662779]
+
+         Address 0x7fff8d662779 was sampled 84 times in total, not necessarily
+         consecutively. The address corresponds __CFRunLoopRun in CoreFoundation.
+
+         When displayed in timeline format, callstacks are sorted so that the leaf
+         frames in the call tree are presented in chronological order. Each frame
+         includes a time range of consecutive callstacks in which the frame was
+         seen, which can be compared with the range of other frames to determine
+         concurrency. If multiple samples of the same callstack were not
+         consecutive, the callstack will be displayed multiple times. In this
+         snippet:
+
+         23  __CFRunLoopRun + 1161 (CoreFoundation + 460665) [0x7fff8d662779]
+         50-72
+
+         Address 0x7fff8d662779 was sampled 23 times consecutively from the 50th
+         to 72nd sample.
+  manpageQuestion1: What is the primary purpose of the spindump tool?
+  manpageQuestion2: How would you use spindump to analyze the callstacks in heavy format and identify which function has been called most frequently?
+  manpageQuestion3: Can you provide an example of using spindump to display callstacks in timeline format and determine the concurrency between different frames?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `spindump`.
+
+
+
+    Manpage text:
+
+    In timeline format, spindump notes state changes for threads, e.g.:
+
+         <darwinbg, timers coalesced>
+
+         which indicates the change in state for the samples that follow. Any
+         state not mentioned is unchanged from previous samples. The state
+         information spindump reports includes thread QoS, darwinbg, importance
+         inheritance boost, suppression for App Nap, latency QoS (timers), I/O
+         throttling tier, and cpu priority.
+
+         Leaf frames will indicate whether the thread was running/runnable or
+         suspended.
+
+         A leading star (*) indicates a kernel frame or library.
+
+    ARGUMENTS
+         pid or partial-name the process to be sorted topmost in the report.
+         "-notarget" may be used to avoid providing a target process when
+         specifying a duration and interval.
+
+         duration the duration of the sampling in seconds. If not specified, the
+         default of 10 seconds is used.  interval the number of miliseconds
+         between samples. If not specified, the default of 10 miliseconds is used.
+  manpageQuestion1: What is the primary purpose of the spindump tool?
+  manpageQuestion2: How would you use spindump to monitor the state changes of a process with PID 1234 for 5 seconds?
+  manpageQuestion3: Can you provide an example of using spindump to analyze the thread states of a process named 'myapp' with a sampling interval of 20 milliseconds?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `spindump`.\n\n\n\nManpage text:\n\n-i path Read in the file located at path rather than sampling the live\n     system. Supported file formats are:\n\n\t * Spindump text files containing a spindump binary format\n\t * Spindump text files without a spindump binaty format written in\n     timeline mode (with limited options, and only callstacks will be updated;\n     summary information will not change)\n\t * Tailspin files\n\t * Concatenated kcdata stackshots\n\t * Concatenated microstackshots\n\n     -o path Specifies where the report should be written. If path is a file,\n     it will be overwritten. If path is a directory, a file will be created\n     inside that directory with the name following the format\n     <appname>_<pid>.spindump.txt. If a file by that name already exists,\n     spindump will add a unique number to the filename. If not specified,\n     spindump will output reports to files inside /tmp.\n\n     -indexRange s-e Only include samples in the given range\n\n     -startIndex s Omit frames before sample number s\n\n     -endIndex e Omit frames after sample number e"
+  manpageQuestion1: What is the primary purpose of the spindump tool?
+  manpageQuestion2: How can you use spindump to analyze a specific range of samples from a file?
+  manpageQuestion3: What is the process for generating output reports when using spindump with a custom output path?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `spindump`.
+
+
+
+    Manpage text:
+
+    -heavy Sort callstacks by count (default)
+
+         -timeline Sort callstacks chronologically
+
+         -wait Wait for the process to exist before sampling. If the process
+         already exists, spindump will begin sampling immediately.
+
+         -onlyRunnable Only display runnable callstacks
+
+         -onlyBlocked Only display non-runnable callstacks
+
+         -onlyTarget Only sample the target process (allows faster sampling rates)
+
+         -proc proc If -onlyTarget is provided, sample proc as well. This option
+         may be specified multiple times
+
+         -sampleWithoutTarget Keep sampling for the entire sampling duration even
+         if the target process exits
+
+         -timelimit t Exit after t seconds even if the report hasn't been saved
+
+         -stdout Print the report to stdout (in addition to writing to a file)
+
+         -noFile Do not output to a file. Implies -stdout and will include the
+         binary format in the stdout output
+
+         -noBinary Do not include the spindump binary format at the bottom of the
+         report (the file will not be able to be re-parsed)
+  manpageQuestion1: What is the primary purpose of the spindump tool?
+  manpageQuestion2: How can you use spindump to sort callstacks by their count and wait for a process to exist before sampling?
+  manpageQuestion3: Can you provide an example of using spindump to sample only the target process and its associated processes without saving the output to a file?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `spindump`.
+
+
+
+    Manpage text:
+
+    -noText Do not include the textual report, only include the binary format
+
+         -open appname Specifies an app in which to open the resulting report
+
+         -reveal Reveal the resulting report in Finder
+
+         -siginfo After sampling, wait for SIGINFO before generating the report
+
+         -delayonsignal d Stop sampling d seconds after receiving a signal to stop
+         sampling instead of stopping immediately
+
+         -threadprioritythreshold t Filter out any threads that have a priority
+         below the given threshold. Pass a negative number to filter out threads
+         that have a priority above the given threshold's absolute value
+
+         -nothrottle Do not throttle sampling rate on excessive memory growth
+
+         -noProcessingWhileSampling Do not parse stackshots until done sampling
+
+         -displayIdleWorkQueueThreads Display idle work queue threads in the
+         textual report (by default they are omitted)
+
+         -aggregateCallTreesByThread Group call trees by thread ID rather than by
+         dispatch queue
+  manpageQuestion1: What is the primary purpose of the spindump tool?
+  manpageQuestion2: How would you use spindump to generate a binary report without including any textual data and open it in the specified application?
+  manpageQuestion3: Can you provide an example of using spindump to filter out threads with a priority below 15 and display idle work queue threads in the textual report?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `spindump`.
+
+
+
+    Manpage text:
+
+    -aggregateCallTreesByProcess Each process gets one call tree for all
+         threads
+
+         -omitFramesBelowSampleCount c Omit frames with count below c
+
+    MICROSTACKSHOTS
+         Microstackshots are gathered by the kernel to provide extremely
+         lightweight sampling of single threads at a time. They can be viewed in
+         spindump via the microstackshot command line options:
+
+         -microstackshots Report on interrupt microstackshots, which provide a
+         sampling of where cpu time is spent. This is the default mode if
+         -microstackshots_io is not provided
+
+         -microstackshots_io Report on I/O microstackshots, which provide a
+         sampling of where file backed memory is dirtied
+
+         -microstackshots_datastore path When reporting microstackshots, read from
+         this location rather than using the live system's microstackshots. When
+         saving with -microstackshots_save, write to this location
+
+         -microstackshots_save Save microstackshot from the live system to the
+         path specified by -microstackshots_datastore instead of generating a
+         textual report
+  manpageQuestion1: What is the primary purpose of the spindump tool?
+  manpageQuestion2: How would you use spindump to report on I/O microstackshots and save them to a specified file path?
+  manpageQuestion3: Can you provide an example of using spindump to omit frames with a sample count below 10 and aggregate call trees by process?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `spindump`.
+
+
+
+    Manpage text:
+
+    -microstackshots_starttime date Only report microstackshots after this
+         time. The date can be a string like "11/14/12 12:00am" or a single number
+         representing a unix timestamp in seconds
+
+         -microstackshots_endtime date Only report microstackshots before this
+         time. The date can be a string like "11/14/12 12:00am" or a single number
+         representing a unix timestamp in seconds
+
+         -microstackshots_pid pid Only report microstackshots for the given
+         process id
+
+         -microstackshots_threadid thread_id Only report microstackshots for the
+         given thread id
+
+         -microstackshots_dsc_path path Path to a directory containing dyld shared
+         cache layout files. If not specified, spindump uses the historical
+         information for the current machine
+
+         -batteryonly Only include microstackshots taken while the machine was
+         running on battery power
+
+         -aconly Only include microstackshots taken while the machine was running
+         on AC power
+
+         -useridleonly Only include microstackshots taken while the user was idle
+  manpageQuestion1: What is the primary purpose of the spindump tool?
+  manpageQuestion2: How can you use spindump to filter and report microstackshots only for processes with a specific PID?
+  manpageQuestion3: Can you provide an example of using spindump to analyze microstackshots taken while the machine was running on battery power?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `spindump`.\n\n\n\nManpage text:\n\n-useractiveonly Only include microstackshots taken while the user was\n     active\n\nSEE ALSO\n     SubmitDiagInfo(8), sample(1)\n\nDarwin\t\t\t\tApril 19, 2016\t\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the spindump command?
+  manpageQuestion2: How can you use spindump to capture microstackshots only when the user is active?
+  manpageQuestion3: What are the other commands or tools related to spindump that are mentioned in its manpage?
+

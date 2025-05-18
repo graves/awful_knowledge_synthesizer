@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `syspolicyd`.\n\n\n\nManpage text:\n\nsyspolicyd(8\t    )\t\t       8\t\t\t syspolicyd(8\n\t\t\t\t\t\t\t\t\t   )\n\nNAME\n     syspolicyd – System Policy daemon\n\nSYNOPSIS\n     syspolicyd [-v]\n\nDESCRIPTION\n     syspolicyd embodies the system policy controlling what may be installed,\n     loaded, executed, or otherwise used on the system. It manages the policy\n     database file, and serves as a general oracle that other system\n     components may use to determine the system policy's verdict on a proposed\n     operation.\n\nFILES\n     /var/db/SystemPolicyConfiguration/SystemPolicy  The master system policy\n\t\t\t\t\t\t     database\n\nSEE ALSO\n     securityd(8),\n\nDarwin\t\t\t\t   10/10/11\t\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the syspolicyd tool?
+  manpageQuestion2: How would you use syspolicyd to check the system policy settings?
+  manpageQuestion3: Can you provide an example of using syspolicyd in a system administration context?
+

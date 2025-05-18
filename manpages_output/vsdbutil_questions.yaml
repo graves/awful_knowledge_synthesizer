@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `vsdbutil`.\n\n\n\nManpage text:\n\nVSDBUTIL(8)\t\t    System Manager's Manual\t\t   VSDBUTIL(8)\n\nNAME\n     vsdbutil – manipulates the volume status DB.\n\nSYNOPSIS\n     vsdbutil [-a path]\n\n     vsdbutil [-c path] [-d path] [-i]\n\n     vsdbutil [-h]\n\nDESCRIPTION\n     vsdbutil manipulates the volume status DB.  The following options are\n     available:\n\n     -a       adopts (activates) on-disk ownership on the specified path\n\n     -c       checks the status of the ownership usage on the specified path\n\n     -d       disowns (deactivates) the on-disk ownership on the specified\n\t      path\n\n     -i       initializes the ownership database to include all mounted HFS+\n\t      and APFS volumes\n\n     -x       clears the entry associated with the specified path from the\n\t      database\n\n     -h       prints out a simple help message\n\n     The vsdbutil command is deprecated; using a volume UUID in fstab(5) is\n     preferred.\n\nFILES\n     /var/db/volinfo.database\t\t\t   Database of volumes managed\n\t\t\t\t\t\t   via vsdbutil.\n\nSEE ALSO\n     diskutil(8), mount(8), fstab(5)"
+  manpageQuestion1: What is the primary purpose of the vsdbutil command?
+  manpageQuestion2: How can you use vsdbutil to check the ownership status of a specific path?
+  manpageQuestion3: What is the command to initialize the ownership database with all mounted HFS+ and APFS volumes?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `vsdbutil`.\n\n\n\nManpage text:\n\nDarwin\t\t\t       December 19, 2001\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the vsdbutil tool?
+  manpageQuestion2: How would you use vsdbutil to verify the integrity of a volume's disk image?
+  manpageQuestion3: Can you provide an example of using vsdbutil to display information about a specific volume?
+

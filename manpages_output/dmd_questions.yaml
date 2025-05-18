@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dmd`.\n\n\n\nManpage text:\n\ndmd(8)\t\t\t    System Manager's Manual\t\t\tdmd(8)\n\nNAME\n     dmd\n\nSYNOPSIS\n     dmd\n\nDESCRIPTION\n     dmd is the system daemon and user agent processes responsible for backing\n     the DeviceManagement system private framework.\n\nmacOS\t\t\t\t   11/14/18\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the dmd command?
+  manpageQuestion2: How would you start or manage the dmd daemon on a macOS system?
+  manpageQuestion3: What role does the dmd process play in the DeviceManagement system framework?
+

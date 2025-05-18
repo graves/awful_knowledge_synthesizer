@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sandboxd`.\n\n\n\nManpage text:\n\nSANDBOXD(8)\t\t    System Manager's Manual\t\t   SANDBOXD(8)\n\nNAME\n     sandboxd – sandbox daemon\n\nSYNOPSIS\n     sandboxd [s]\n     sandboxd\n\nDESCRIPTION\n     sandboxd performs services on behalf of the Sandbox kernel extension.\n\n     The options are as follows:\n\n     -b      Just log basic sandbox violation information without a backtrace.\n\n     -s      Do not symbolicate backtraces.\n\n     This command is not intended to be invoked directly.\n\nSEE ALSO\n     sandbox-exec(1), sandbox_init(3), sandbox(7)\n\nMac OS X\t\t\t July 29, 2008\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the sandboxd tool?
+  manpageQuestion2: How would you use sandboxd to log basic sandbox violation information without symbolication?
+  manpageQuestion3: Can you provide an example of using sandboxd with the -s option to disable symbolication of backtraces?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `systemsoundserverd`.\n\n\n\nManpage text:\n\nsystemsoundserverd(1)\t    General Commands Manual\t systemsoundserverd(1)\n\nNAME\n     systemsoundserverd\n\nSYNOPSIS\n     systemsoundserverd\n\nDESCRIPTION\n     systemsoundserverd is a daemon used for Core Audio related purposes.\n     systemsoundserverd was introduced with OSX version 10.11.\n\nDarwin\t\t\t\tMon June 8 2015 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the systemsoundserverd tool?
+  manpageQuestion2: How would you use systemsoundserverd in a system environment to manage Core Audio operations?
+  manpageQuestion3: Can you explain the role of systemsoundserverd in handling system sound-related tasks on macOS?
+

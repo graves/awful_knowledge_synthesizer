@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `zforce`.\n\n\n\nManpage text:\n\nZFORCE(1)\t\t    General Commands Manual\t\t     ZFORCE(1)\n\nNAME\n     zforce – force gzip files to have a .gz suffix\n\nSYNOPSIS\n     zforce file ...\n\nDESCRIPTION\n     The zforce utility renames gzip(1) files to have a ‘.gz’ suffix, so that\n     gzip(1) will not compress them twice.  This can be useful if file names\n     were truncated during a file transfer.  Files that have an existing\n     ‘.gz’, ‘-gz’, ‘_gz’, ‘.tgz’ or ‘.taz’ suffix, or that have not been\n     compressed by gzip(1), are ignored.\n\nSEE ALSO\n     gzip(1)\n\nCAVEATS\n     zforce overwrites existing files without warning.\n\nmacOS 15.3\t\t       January 26, 2007 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the zforce tool?
+  manpageQuestion2: How would you use zforce to rename all gzip-compressed files in a directory to have a .gz suffix?
+  manpageQuestion3: Can you provide an example of using zforce to rename a file named 'data' that was compressed by gzip into 'data.gz'?
+

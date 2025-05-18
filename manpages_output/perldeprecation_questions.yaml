@@ -1,0 +1,384 @@
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perldeprecation`.
+
+
+
+    Manpage text:
+
+    PERLDEPRECATION(1)     Perl Programmers Reference Guide     PERLDEPRECATION(1)
+  manpageQuestion1: What is the primary purpose of the perldeprecation tool?
+  manpageQuestion2: How would you use perldeprecation to show deprecations in a specific package?
+  manpageQuestion3: Can you provide an example of using perldeprecation to check for deprecated functions in a Perl module?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perldeprecation`.\n\n\n\nManpage text:\n\nNAME\n       perldeprecation - list Perl deprecations\n\nDESCRIPTION\n       The purpose of this document is to document what has been deprecated in\n       Perl, and by which version the deprecated feature will disappear, or,\n       for already removed features, when it was removed.\n\n       This document will try to discuss what alternatives for the deprecated\n       features are available.\n\n       The deprecated features will be grouped by the version of Perl in which\n       they will be removed.\n\n   Perl 5.34\n       There are no deprecations or fatalizations scheduled for Perl 5.34.\n\n   Perl 5.32\n       Constants from lexical variables potentially modified elsewhere\n\n       You wrote something like\n\n\t   my $var;\n\t   $sub = sub () { $var };\n\n       but $var is referenced elsewhere and could be modified after the \"sub\"\n       expression is evaluated.  Either it is explicitly modified elsewhere\n       (\"$var = 3\") or it is passed to a subroutine or to an operator like\n       \"printf\" or \"map\", which may or may not modify the variable."
+  manpageQuestion1: What is the primary purpose of the perldeprecation tool?
+  manpageQuestion2: How can I check for deprecations in Perl 5.32?
+  manpageQuestion3: What is an example of a deprecated feature in Perl 5.32 and how can it be addressed?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perldeprecation`.\n\n\n\nManpage text:\n\nTraditionally, Perl has captured the value of the variable at that\n       point and turned the subroutine into a constant eligible for inlining.\n       In those cases where the variable can be modified elsewhere, this\n       breaks the behavior of closures, in which the subroutine captures the\n       variable itself, rather than its value, so future changes to the\n       variable are reflected in the subroutine's return value.\n\n       If you intended for the subroutine to be eligible for inlining, then\n       make sure the variable is not referenced elsewhere, possibly by copying\n       it:\n\n\t   my $var2 = $var;\n\t   $sub = sub () { $var2 };\n\n       If you do want this subroutine to be a closure that reflects future\n       changes to the variable that it closes over, add an explicit \"return\":\n\n\t   my $var;\n\t   $sub = sub () { return $var };\n\n       This usage was deprecated and as of Perl 5.32 is no longer allowed.\n\n       Use of strings with code points over 0xFF as arguments to \"vec\"\n\n       \"vec\" views its string argument as a sequence of bits.  A string\n       containing a code point over 0xFF is nonsensical.  This usage is\n       deprecated in Perl 5.28, and was removed in Perl 5.32."
+  manpageQuestion1: What is the primary purpose of the perldeprecation resource?
+  manpageQuestion2: How would you use perldeprecation to address a deprecation warning related to closures in Perl 5.32?
+  manpageQuestion3: What is the correct way to handle code points over 0xFF when using the vec function in Perl 5.32?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perldeprecation`.\n\n\n\nManpage text:\n\nUse of code points over 0xFF in string bitwise operators\n\n       The string bitwise operators, \"&\", \"|\", \"^\", and \"~\", treat their\n       operands as strings of bytes. As such, values above 0xFF are\n       nonsensical. Some instances of these have been deprecated since Perl\n       5.24, and were made fatal in 5.28, but it turns out that in cases where\n       the wide characters did not affect the end result, no deprecation\n       notice was raised, and so remain legal.\tNow, all occurrences either\n       are fatal or raise a deprecation warning, so that the remaining legal\n       occurrences became fatal in 5.32.\n\n       An example of this is\n\n\t\"\" & \"\\x{100}\"\n\n       The wide character is not used in the \"&\" operation because the left\n       operand is shorter.  This now throws an exception.\n\n       hostname() doesn't accept any arguments\n\n       The function \"hostname()\" in the Sys::Hostname module has always been\n       documented to be called with no arguments.  Historically it has not\n       enforced this, and has actually accepted and ignored any arguments.  As\n       a result, some users have got the mistaken impression that an argument\n       does something useful.  To avoid these bugs, the function is being made\n       strict.\tPassing arguments was deprecated in Perl 5.28 and became fatal\n       in Perl 5.32."
+  manpageQuestion1: What is the primary purpose of the perldeprecation resource?
+  manpageQuestion2: How can a user identify and address deprecated usage of string bitwise operators in Perl?
+  manpageQuestion3: What is the impact of making the hostname() function strict in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perldeprecation`.\n\n\n\nManpage text:\n\nUnescaped left braces in regular expressions\n\n       The simple rule to remember, if you want to match a literal \"{\"\n       character (U+007B \"LEFT CURLY BRACKET\") in a regular expression\n       pattern, is to escape each literal instance of it in some way.\n       Generally easiest is to precede it with a backslash, like \"\\{\" or\n       enclose it in square brackets (\"[{]\").  If the pattern delimiters are\n       also braces, any matching right brace (\"}\") should also be escaped to\n       avoid confusing the parser, for example,\n\n\tqr{abc\\{def\\}ghi}\n\n       Forcing literal \"{\" characters to be escaped will enable the Perl\n       language to be extended in various ways in future releases.  To avoid\n       needlessly breaking existing code, the restriction is not enforced in\n       contexts where there are unlikely to ever be extensions that could\n       conflict with the use there of \"{\" as a literal.  A non-deprecation\n       warning that the left brace is being taken literally is raised in\n       contexts where there could be confusion about it."
+  manpageQuestion1: What is the primary purpose of the perldeprecation resource?
+  manpageQuestion2: How can you match a literal '{' character in a regular expression pattern using perldeprecation?
+  manpageQuestion3: In what scenarios would the perldeprecation resource raise a non-deprecation warning about a literal '{' character in a regular expression?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perldeprecation`.\n\n\n\nManpage text:\n\nLiteral uses of \"{\" were deprecated in Perl 5.20, and some uses of it\n       started to give deprecation warnings since. These cases were made fatal\n       in Perl 5.26. Due to an oversight, not all cases of a use of a literal\n       \"{\" got a deprecation warning.  Some cases started warning in Perl\n       5.26, and were made fatal in Perl 5.30.\tOther cases started in Perl\n       5.28, and were made fatal in 5.32.\n\n       In XS code, use of various macros dealing with UTF-8.\n\n       The macros below now require an extra parameter than in versions prior\n       to Perl 5.32.  The final parameter in each one is a pointer into the\n       string supplied by the first parameter beyond which the input will not\n       be read.  This prevents potential reading beyond the end of the buffer.\n       \"isALPHANUMERIC_utf8\", \"isASCII_utf8\", \"isBLANK_utf8\", \"isCNTRL_utf8\",\n       \"isDIGIT_utf8\", \"isIDFIRST_utf8\", \"isPSXSPC_utf8\", \"isSPACE_utf8\",\n       \"isVERTWS_utf8\", \"isWORDCHAR_utf8\", \"isXDIGIT_utf8\",\n       \"isALPHANUMERIC_LC_utf8\", \"isALPHA_LC_utf8\", \"isASCII_LC_utf8\",\n       \"isBLANK_LC_utf8\", \"isCNTRL_LC_utf8\", \"isDIGIT_LC_utf8\",\n       \"isGRAPH_LC_utf8\", \"isIDCONT_LC_utf8\", \"isIDFIRST_LC_utf8\",\n       \"isLOWER_LC_utf8\", \"isPRINT_LC_utf8\", \"isPSXSPC_LC_utf8\",\n       \"isPUNCT_LC_utf8\", \"isSPACE_LC_utf8\", \"isUPPER_LC_utf8\",\n       \"isWORDCHAR_LC_utf8\", \"isXDIGIT_LC_utf8\", \"toFOLD_utf8\",\n       \"toLOWER_utf8\", \"toTITLE_utf8\", and \"toUPPER_utf8\"."
+  manpageQuestion1: What is the primary purpose of the perldeprecation resource?
+  manpageQuestion2: How can one identify deprecated usage of literal '{' in Perl code?
+  manpageQuestion3: What changes were introduced in Perl 5.32 regarding UTF-8 macros?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perldeprecation`.
+
+
+
+    Manpage text:
+
+    Since Perl 5.26, this functionality with the extra parameter has been
+           available by using a corresponding macro to each one of these, and
+           whose name is formed by appending "_safe" to the base name.  There is
+           no change to the functionality of those.  For example,
+           "isDIGIT_utf8_safe" corresponds to "isDIGIT_utf8", and both now behave
+           identically.  All are documented in "Character case changing" in
+           perlapi and "Character classification" in perlapi.
+
+           This change was originally scheduled for 5.30, but was delayed until
+           5.32.
+
+           "File::Glob::glob()" was removed
+
+           "File::Glob" has a function called "glob", which just calls "bsd_glob".
+
+           "File::Glob::glob()" was deprecated in Perl 5.8. A deprecation message
+           was issued from Perl 5.26 onwards, and the function has now disappeared
+           in Perl 5.30.
+
+           Code using "File::Glob::glob()" should call "File::Glob::bsd_glob()"
+           instead.
+
+       Perl 5.30
+           $* is no longer supported
+  manpageQuestion1: What is the primary purpose of the perldeprecation resource?
+  manpageQuestion2: How would you handle deprecation warnings for the 'File::Glob::glob()' function in Perl 5.26?
+  manpageQuestion3: What changes were made to the 'File::Glob' module in Perl 5.30?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perldeprecation`.
+
+
+
+    Manpage text:
+
+    Before Perl 5.10, setting $* to a true value globally enabled multi-
+           line matching within a string. This relique from the past lost its
+           special meaning in 5.10. Use of this variable will be a fatal error in
+           Perl 5.30, freeing the variable up for a future special meaning.
+
+           To enable multiline matching one should use the "/m" regexp modifier
+           (possibly in combination with "/s"). This can be set on a per match
+           bases, or can be enabled per lexical scope (including a whole file)
+           with "use re '/m'".
+
+           $# is no longer supported
+
+           This variable used to have a special meaning -- it could be used to
+           control how numbers were formatted when printed. This seldom used
+           functionality was removed in Perl 5.10. In order to free up the
+           variable for a future special meaning, its use will be a fatal error in
+           Perl 5.30.
+
+           To specify how numbers are formatted when printed, one is advised to
+           use "printf" or "sprintf" instead.
+  manpageQuestion1: What is the primary purpose of the perldeprecation resource?
+  manpageQuestion2: How can one enable multiline matching in Perl 5.10 using the recommended approach?
+  manpageQuestion3: What is the recommended alternative to using $# for controlling number formatting in Perl 5.10 and later?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perldeprecation`.
+
+
+
+    Manpage text:
+
+    Assigning non-zero to $[ is fatal
+
+           This variable (and the corresponding "array_base" feature and arybase
+           module) allowed changing the base for array and string indexing
+           operations.
+
+           Setting this to a non-zero value has been deprecated since Perl 5.12
+           and throws a fatal error as of Perl 5.30.
+
+           "File::Glob::glob()" will disappear
+
+           "File::Glob" has a function called "glob", which just calls "bsd_glob".
+           However, its prototype is different from the prototype of "CORE::glob",
+           and hence, "File::Glob::glob" should not be used.
+
+           "File::Glob::glob()" was deprecated in Perl 5.8. A deprecation message
+           was issued from Perl 5.26 onwards, and the function will disappear in
+           Perl 5.30.
+
+           Code using "File::Glob::glob()" should call "File::Glob::bsd_glob()"
+           instead.
+
+           Unescaped left braces in regular expressions (for 5.30)
+
+           See "Unescaped left braces in regular expressions" above.
+
+           Unqualified "dump()"
+  manpageQuestion1: What is the primary purpose of the perldeprecation resource?
+  manpageQuestion2: What is the recommended alternative to using 'File::Glob::glob()' in Perl 5.30?
+  manpageQuestion3: What is the consequence of assigning a non-zero value to $[ in Perl 5.30?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perldeprecation`.\n\n\n\nManpage text:\n\nUse of \"dump()\" instead of \"CORE::dump()\" was deprecated in Perl 5.8,\n       and an unqualified \"dump()\" will no longer be available in Perl 5.30.\n\n       See \"dump\" in perlfunc.\n\n       Using my() in false conditional.\n\n       There has been a long-standing bug in Perl that causes a lexical\n       variable not to be cleared at scope exit when its declaration includes\n       a false conditional.  Some people have exploited this bug to achieve a\n       kind of static variable.  To allow us to fix this bug, people should\n       not be relying on this behavior.\n\n       Instead, it's recommended one uses \"state\" variables to achieve the\n       same effect:\n\n\t   use 5.10.0;\n\t   sub count {state $counter; return ++ $counter}\n\t   say count ();    # Prints 1\n\t   say count ();    # Prints 2\n\n       \"state\" variables were introduced in Perl 5.10.\n\n       Alternatively, you can achieve a similar static effect by declaring the\n       variable in a separate block outside the function, e.g.,\n\n\t   sub f { my $x if 0; return $x++ }"
+  manpageQuestion1: What is the primary purpose of the perldeprecation resource?
+  manpageQuestion2: How can one avoid relying on the bug related to lexical variables in false conditionals in Perl?
+  manpageQuestion3: What is an alternative method to achieve a static variable effect in Perl without relying on the deprecated bug?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perldeprecation`.\n\n\n\nManpage text:\n\nbecomes\n\n\t   { my $x; sub f { return $x++ } }\n\n       The use of \"my()\" in a false conditional has been deprecated in Perl\n       5.10, and became a fatal error in Perl 5.30.\n\n       Reading/writing bytes from/to :utf8 handles.\n\n       The sysread(), recv(), syswrite() and send() operators are deprecated\n       on handles that have the \":utf8\" layer, either explicitly, or\n       implicitly, eg., with the \":encoding(UTF-16LE)\" layer.\n\n       Both sysread() and recv() currently use only the \":utf8\" flag for the\n       stream, ignoring the actual layers.  Since sysread() and recv() do no\n       UTF-8 validation they can end up creating invalidly encoded scalars.\n\n       Similarly, syswrite() and send() use only the \":utf8\" flag, otherwise\n       ignoring any layers.  If the flag is set, both write the value UTF-8\n       encoded, even if the layer is some different encoding, such as the\n       example above.\n\n       Ideally, all of these operators would completely ignore the \":utf8\"\n       state, working only with bytes, but this would result in silently\n       breaking existing code.\tTo avoid this a future version of perl will\n       throw an exception when any of sysread(), recv(), syswrite() or send()\n       are called on handle with the \":utf8\" layer."
+  manpageQuestion1: What is the primary purpose of the perldeprecation resource?
+  manpageQuestion2: How would you use perldeprecation to check for deprecated features in a Perl script?
+  manpageQuestion3: Can you provide an example of how perldeprecation might flag a specific deprecated usage in Perl code?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perldeprecation`.
+
+
+
+    Manpage text:
+
+    In Perl 5.30, it will no longer be possible to use sysread(), recv(),
+           syswrite() or send() to read or send bytes from/to :utf8 handles.
+
+           Use of unassigned code point or non-standalone grapheme for a
+           delimiter.
+
+           A grapheme is what appears to a native-speaker of a language to be a
+           character.  In Unicode (and hence Perl) a grapheme may actually be
+           several adjacent characters that together form a complete grapheme.
+           For example, there can be a base character, like "R" and an accent,
+           like a circumflex "^", that appear to be a single character when
+           displayed, with the circumflex hovering over the "R".
+
+           As of Perl 5.30, use of delimiters which are non-standalone graphemes
+           is fatal, in order to move the language to be able to accept multi-
+           character graphemes as delimiters.
+
+           Also, as of Perl 5.30, delimiters which are unassigned code points but
+           that may someday become assigned are prohibited.  Otherwise, code that
+           works today would fail to compile if the currently unassigned delimiter
+           ends up being something that isn't a stand-alone grapheme.  Because
+           Unicode is never going to assign non-character code points, nor code
+           points that are above the legal Unicode maximum, those can be
+           delimiters.
+  manpageQuestion1: What is the primary purpose of the perldeprecation resource?
+  manpageQuestion2: How does perldeprecation affect the use of certain functions in Perl 5.30 and later versions?
+  manpageQuestion3: What changes in Perl 5.30 regarding grapheme delimiters have implications for code compatibility?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perldeprecation`.\n\n\n\nManpage text:\n\nPerl 5.28\n       Attributes \":locked\" and \":unique\"\n\n       The attributes \":locked\" (on code references) and \":unique\" (on array,\n       hash and scalar references) have had no effect since Perl 5.005 and\n       Perl 5.8.8 respectively. Their use has been deprecated since.\n\n       As of Perl 5.28, these attributes are syntax errors. Since the\n       attributes do not do anything, removing them from your code fixes the\n       syntax error; and removing them will not influence the behaviour of\n       your code.\n\n       Bare here-document terminators\n\n       Perl has allowed you to use a bare here-document terminator to have the\n       here-document end at the first empty line. This practise was deprecated\n       in Perl 5.000; as of Perl 5.28, using a bare here-document terminator\n       throws a fatal error.\n\n       You are encouraged to use the explicitly quoted form if you wish to use\n       an empty line as the terminator of the here-document:\n\n\t print <<\"\";\n\t   Print this line.\n\n\t # Previous blank line ends the here-document."
+  manpageQuestion1: What is the primary purpose of the perldeprecation resource?
+  manpageQuestion2: How would you modify a Perl script to avoid the syntax error caused by using a bare here-document terminator?
+  manpageQuestion3: What is the recommended way to handle here-documents in Perl 5.28 and later versions?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perldeprecation`.\n\n\n\nManpage text:\n\nSetting $/ to a reference to a non-positive integer\n\n       You assigned a reference to a scalar to $/ where the referenced item is\n       not a positive integer.\tIn older perls this appeared to work the same\n       as setting it to \"undef\" but was in fact internally different, less\n       efficient and with very bad luck could have resulted in your file being\n       split by a stringified form of the reference.\n\n       In Perl 5.20.0 this was changed so that it would be exactly the same as\n       setting $/ to undef, with the exception that this warning would be\n       thrown.\n\n       As of Perl 5.28, setting $/ to a reference of a non-positive integer\n       throws a fatal error.\n\n       You are recommended to change your code to set $/ to \"undef\" explicitly\n       if you wish to slurp the file.\n\n       Limit on the value of Unicode code points.\n\n       Unicode only allows code points up to 0x10FFFF, but Perl allows much\n       larger ones. Up till Perl 5.28, it was allowed to use code points\n       exceeding the maximum value of an integer (\"IV_MAX\").  However, that\n       did break the perl interpreter in some constructs, including causing it\n       to hang in a few cases.\tThe known problem areas were in \"tr///\",\n       regular expression pattern matching using quantifiers, as quote\n       delimiters in \"qX...X\" (where X is the \"chr()\" of a large code point),\n       and as the upper limits in loops."
+  manpageQuestion1: What is the primary purpose of the perldeprecation resource?
+  manpageQuestion2: How would you use perldeprecation to warn about deprecated features in your Perl code?
+  manpageQuestion3: Can you provide an example of using perldeprecation to detect and report issues related to Unicode code points exceeding the maximum allowed value?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perldeprecation`.
+
+
+
+    Manpage text:
+
+    The use of out of range code points was deprecated in Perl 5.24; as of
+           Perl 5.28 using a code point exceeding "IV_MAX" throws a fatal error.
+
+           If your code is to run on various platforms, keep in mind that the
+           upper limit depends on the platform. It is much larger on 64-bit word
+           sizes than 32-bit ones. For 32-bit integers, "IV_MAX" equals
+           0x7FFFFFFF, for 64-bit integers, "IV_MAX" equals 0x7FFFFFFFFFFFFFFF.
+
+           Use of comma-less variable list in formats.
+
+           It was allowed to use a list of variables in a format, without
+           separating them with commas. This usage has been deprecated for a long
+           time, and as of Perl 5.28, this throws a fatal error.
+
+           Use of "\N{}"
+
+           Use of "\N{}" with nothing between the braces was deprecated in Perl
+           5.24, and throws a fatal error as of Perl 5.28.
+
+           Since such a construct is equivalent to using an empty string, you are
+           recommended to remove such "\N{}" constructs.
+
+           Using the same symbol to open a filehandle and a dirhandle
+  manpageQuestion1: What is the primary purpose of the perldeprecation resource?
+  manpageQuestion2: How can you check if your Perl code is using deprecated features like comma-less variable lists in formats?
+  manpageQuestion3: What should you do to fix the error caused by using \\$ in Perl code as of Perl 5.28?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perldeprecation`.
+
+
+
+    Manpage text:
+
+    It used to be legal to use "open()" to associate both a filehandle and
+           a dirhandle to the same symbol (glob or scalar).  This idiom is likely
+           to be confusing, and it was deprecated in Perl 5.10.
+
+           Using the same symbol to "open()" a filehandle and a dirhandle throws a
+           fatal error as of Perl 5.28.
+
+           You should be using two different symbols instead.
+
+           ${^ENCODING} is no longer supported.
+
+           The special variable "${^ENCODING}" was used to implement the
+           "encoding" pragma. Setting this variable to anything other than "undef"
+           was deprecated in Perl 5.22. Full deprecation of the variable happened
+           in Perl 5.25.3.
+
+           Setting this variable to anything other than an undefined value throws
+           a fatal error as of Perl 5.28.
+
+           "B::OP::terse"
+
+           This method, which just calls "B::Concise::b_terse", has been
+           deprecated, and disappeared in Perl 5.28. Please use "B::Concise"
+           instead.
+
+           Use of inherited AUTOLOAD for non-method %s::%s() is no longer allowed
+  manpageQuestion1: What is the primary purpose of the perldeprecation resource?
+  manpageQuestion2: How can a Perl script be updated to avoid deprecated usage of the ${^ENCODING} special variable?
+  manpageQuestion3: What is the recommended replacement for the deprecated 'B::OP::terse' method in Perl 5.28?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perldeprecation`.
+
+
+
+    Manpage text:
+
+    As an (ahem) accidental feature, "AUTOLOAD" subroutines were looked up
+           as methods (using the @ISA hierarchy) even when the subroutines to be
+           autoloaded were called as plain functions (e.g. "Foo::bar()"), not as
+           methods (e.g. "Foo->bar()" or "$obj->bar()").
+
+           This bug was deprecated in Perl 5.004, has been rectified in Perl 5.28
+           by using method lookup only for methods' "AUTOLOAD"s.
+
+           The simple rule is:  Inheritance will not work when autoloading non-
+           methods.  The simple fix for old code is:  In any module that used to
+           depend on inheriting "AUTOLOAD" for non-methods from a base class named
+           "BaseClass", execute "*AUTOLOAD = \&BaseClass::AUTOLOAD" during
+           startup.
+
+           In code that currently says "use AutoLoader; @ISA = qw(AutoLoader);"
+           you should remove AutoLoader from @ISA and change "use AutoLoader;" to
+           "use AutoLoader 'AUTOLOAD';".
+
+           Use of code points over 0xFF in string bitwise operators
+
+           The string bitwise operators, "&", "|", "^", and "~", treat their
+           operands as strings of bytes. As such, values above 0xFF are
+           nonsensical. Using such code points with these operators was deprecated
+           in Perl 5.24, and is fatal as of Perl 5.28.
+  manpageQuestion1: What is the primary purpose of the perldeprecation resource?
+  manpageQuestion2: How would you modify an old Perl module to fix the issue with autoloading non-methods in inheritance?
+  manpageQuestion3: What is the correct way to handle code points above 0xFF in string bitwise operations in Perl 5.28 and later?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perldeprecation`.
+
+
+
+    Manpage text:
+
+    In XS code, use of "to_utf8_case()"
+
+           This function has been removed as of Perl 5.28; instead convert to call
+           the appropriate one of: "toFOLD_utf8_safe".  "toLOWER_utf8_safe",
+           "toTITLE_utf8_safe", or "toUPPER_utf8_safe".
+
+       Perl 5.26
+           "--libpods" in "Pod::Html"
+
+           Since Perl 5.18, the option "--libpods" has been deprecated, and using
+           this option did not do anything other than producing a warning.
+
+           The "--libpods" option is no longer recognized as of Perl 5.26.
+
+           The utilities "c2ph" and "pstruct"
+
+           These old, perl3-era utilities have been deprecated in favour of "h2xs"
+           for a long time. As of Perl 5.26, they have been removed.
+
+           Trapping "$SIG {__DIE__}" other than during program exit.
+
+           The $SIG{__DIE__} hook is called even inside an "eval()". It was never
+           intended to happen this way, but an implementation glitch made this
+           possible. This used to be deprecated, as it allowed strange action at a
+           distance like rewriting a pending exception in $@. Plans to rectify
+           this have been scrapped, as users found that rewriting a pending
+           exception is actually a useful feature, and not a bug.
+  manpageQuestion1: What is the primary purpose of the perldeprecation resource?
+  manpageQuestion2: How would you use perldeprecation to identify deprecated functions in Perl 5.26?
+  manpageQuestion3: Can you provide an example of using perldeprecation to check for deprecated utilities like 'c2ph' in Perl 5.26?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perldeprecation`.\n\n\n\nManpage text:\n\nPerl never issued a deprecation warning for this; the deprecation was\n       by documentation policy only. But this deprecation has been lifted as\n       of Perl 5.26.\n\n       Malformed UTF-8 string in \"%s\"\n\n       This message indicates a bug either in the Perl core or in XS code.\n       Such code was trying to find out if a character, allegedly stored\n       internally encoded as UTF-8, was of a given type, such as being\n       punctuation or a digit.\tBut the character was not encoded in legal\n       UTF-8.  The %s is replaced by a string that can be used by\n       knowledgeable people to determine what the type being checked against\n       was.\n\n       Passing malformed strings was deprecated in Perl 5.18, and became fatal\n       in Perl 5.26.\n\n   Perl 5.24\n       Use of *glob{FILEHANDLE}\n\n       The use of *glob{FILEHANDLE} was deprecated in Perl 5.8.  The intention\n       was to use *glob{IO} instead, for which *glob{FILEHANDLE} is an alias.\n\n       However, this feature was undeprecated in Perl 5.24."
+  manpageQuestion1: What is the primary purpose of the perldeprecation resource?
+  manpageQuestion2: How can you check if a Perl script is using deprecated features that were undeprecated in version 5.24?
+  manpageQuestion3: What is the significance of the 'Malformed UTF-8 string in "%s"' warning message in Perl?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perldeprecation`.
+
+
+
+    Manpage text:
+
+    Calling POSIX::%s() is deprecated
+
+           The following functions in the "POSIX" module are no longer available:
+           "isalnum", "isalpha", "iscntrl", "isdigit", "isgraph", "islower",
+           "isprint", "ispunct", "isspace", "isupper", and "isxdigit".  The
+           functions are buggy and don't work on UTF-8 encoded strings.  See their
+           entries in POSIX for more information.
+
+           The functions were deprecated in Perl 5.20, and removed in Perl 5.24.
+
+       Perl 5.16
+           Use of %s on a handle without * is deprecated
+
+           It used to be possible to use "tie", "tied" or "untie" on a scalar
+           while the scalar holds a typeglob. This caused its filehandle to be
+           tied. It left no way to tie the scalar itself when it held a typeglob,
+           and no way to untie a scalar that had had a typeglob assigned to it.
+
+           This was deprecated in Perl 5.14, and the bug was fixed in Perl 5.16.
+
+           So now "tie $scalar" will always tie the scalar, not the handle it
+           holds.  To tie the handle, use "tie *$scalar" (with an explicit
+           asterisk).  The same applies to "tied *$scalar" and "untie *$scalar".
+  manpageQuestion1: What is the primary purpose of the perldeprecation resource?
+  manpageQuestion2: How would you use perldeprecation to address the deprecation of POSIX functions like isalnum?
+  manpageQuestion3: Can you provide an example of using perldeprecation to handle the deprecation of tying a scalar with a typeglob?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perldeprecation`.\n\n\n\nManpage text:\n\nSEE ALSO\n       warnings, diagnostics.\n\nperl v5.34.1\t\t\t  2022-02-19\t\t    PERLDEPRECATION(1)"
+  manpageQuestion1: What is the primary purpose of the perldeprecation tool?
+  manpageQuestion2: How would you use perldeprecation to show deprecations for a specific Perl module?
+  manpageQuestion3: Can you provide an example of using perldeprecation to check for deprecated syntax in a Perl script?
+

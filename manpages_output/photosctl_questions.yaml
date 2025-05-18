@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `photosctl`.\n\n\n\nManpage text:\n\nphotosctl(1)\t\t    General Commands Manual\t\t  photosctl(1)\n\nNAME\n     photosctl – Photo Library diagnostic, configuration and test utility\n\nSYNOPSIS\n     photosctl [-h|--help] [--version] [<command> ...]\n\nDESCRIPTION\n     photosctl supports various diagnostic, configuration, test and other\n     operations on Photo Libraries.\n\n     Use the special list command to list all modern commands.\n\n     Modern photosctl commands can support options: use the help or usage\n     command with a command to see what options are available for that\n     command.\n\n     Most newer commands operate on a Photo Library.  These commands all\n     support the option --library <path>, will try the PHOTOSCTL_LIBRARY\n     environment variable or will operate on the System Photo Library if one\n     is set.\n\n     Legacy commands operate only on the System Photo Library. Show usage for\n     legacy commands with usage legacy command.\n\nOPTIONS\n     -h|--help\n\t   Convenience alias for help,\n\n     --version\n\t   Show the version of photosctl."
+  manpageQuestion1: What is the primary purpose of the photosctl utility?
+  manpageQuestion2: How can I use photosctl to list all modern commands available in the tool?
+  manpageQuestion3: Can you provide an example of using photosctl to perform a diagnostic check on the System Photo Library?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `photosctl`.\n\n\n\nManpage text:\n\nMac OS X\t\t       September 1, 2021\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the photosctl tool?
+  manpageQuestion2: How would you use photosctl to retrieve information about a specific photo?
+  manpageQuestion3: Can you provide an example of using photosctl to modify the metadata of a photo?
+

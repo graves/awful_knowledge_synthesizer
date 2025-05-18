@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ReportSystemMemory`.\n\n\n\nManpage text:\n\nREPORTSYSTEMMEMORY(1)\t    General Commands Manual\t REPORTSYSTEMMEMORY(1)\n\nNAME\n     ReportSystemMemory – Write jetsam event reports\n\nDESCRIPTION\n     ReportSystemMemory writes jetsam event reports, which include diagnostic\n     information about memory usage across the system.\n\nmacOS 15.3\t\t\t\t\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the ReportSystemMemory tool?
+  manpageQuestion2: How would you use ReportSystemMemory to generate a jetsam event report for the current system?
+  manpageQuestion3: Can you provide an example of using ReportSystemMemory to capture memory usage data for a specific process?
+

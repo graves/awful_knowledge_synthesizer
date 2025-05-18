@@ -1,0 +1,46 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `truncate`.\n\n\n\nManpage text:\n\nTRUNCATE(1)\t\t    General Commands Manual\t\t   TRUNCATE(1)\n\nNAME\n     truncate – truncate, extend the length of files, or perform space\n     management in files\n\nSYNOPSIS\n     truncate [-c] -s [+|-|%|/]size[SUFFIX] file ...\n     truncate [-c] -r rfile file ...\n\nDESCRIPTION\n     The truncate utility adjusts the length of each regular file given on the\n     command-line, or performs space management with the given offset and the\n     length over a regular file given on the command-line.\n\n     The following options are available:\n\n     -c      Do not create files if they do not exist.\tThe truncate utility\n\t     does not treat this as an error.  No error messages are displayed\n\t     and the exit value is not affected.\n\n     -r rfile\n\t     Truncate or extend files to the length of the file rfile.\n\n     -s [+|-|%|/]size[SUFFIX]\n\t     If the size argument is preceded by a plus sign (+), files will\n\t     be extended by this number of bytes.  If the size argument is\n\t     preceded by a dash (-), file lengths will be reduced by no more\n\t     than this number of bytes, to a minimum length of zero bytes.  If\n\t     the size argument is preceded by a percent sign (%), files will\n\t     be round up to a multiple of this number of bytes.  If the size\n\t     argument is preceded by a slash sign (/), files will be round\n\t     down to a multiple of this number of bytes, to a minimum length\n\t     of zero bytes.  Otherwise, the size argument specifies an\n\t     absolute length to which all files should be extended or reduced\n\t     as appropriate."
+  manpageQuestion1: What is the primary purpose of the truncate command?
+  manpageQuestion2: How would you use the truncate command to set the size of a file named 'data.txt' to 1024 bytes?
+  manpageQuestion3: Can you provide an example of using the truncate command to make a file the same size as another file, 'template.txt'?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `truncate`.
+
+
+
+    Manpage text:
+
+    The size, offset and length arguments may be suffixed with one of K, M, G
+         or T (either upper or lower case) to indicate a multiple of Kilobytes,
+         Megabytes, Gigabytes or Terabytes respectively.
+
+         Exactly one of the -r or -s options must be specified.
+
+         If a file is made smaller, its extra data is lost.  If a file is made
+         larger, it will be extended as if by writing bytes with the value zero.
+         If the file does not exist, it is created unless the -c option is
+         specified.
+
+         Note that, while truncating a file causes space on disk to be freed,
+         extending a file does not cause space to be allocated.  To extend a file
+         and actually allocate the space, it is necessary to explicitly write data
+         to it, using (for example) the shell's ‘>>’ redirection syntax, or dd(1).
+
+    EXIT STATUS
+         The truncate utility exits 0 on success, and >0 if an error occurs.  If
+         the operation fails for an argument, truncate will issue a diagnostic and
+         continue processing the remaining arguments.
+  manpageQuestion1: What is the primary purpose of the truncate command?
+  manpageQuestion2: How can you use the truncate command to reduce the size of a file named 'data.txt' to 10 megabytes?
+  manpageQuestion3: What is the correct way to use truncate to create a new file named 'output.txt' with a size of 5 gigabytes?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `truncate`.\n\n\n\nManpage text:\n\nEXAMPLES\n     Adjust the size of the file test_file to 10 Megabytes but do not create\n     it if it does not exist:\n\n\t   truncate -c -s +10M test_file\n\n     Same as above but create the file if it does not exist:\n\n\t   truncate -s +10M test_file\n\t   ls -l test_file\n\t   -rw-r--r--  1 root  wheel  10485760 Jul 22 18:48 test_file\n\n     Adjust the size of test_file to the size of the kernel and create another\n     file test_file2 with the same size:\n\n\t   truncate -r /boot/kernel/kernel test_file test_file2\n\t   ls -l /boot/kernel/kernel test_file*\n\t   -r-xr-xr-x  1 root  wheel\t31352552 May 15 14:18 /boot/kernel/kernel*\n\t   -rw-r--r--  1 root  wheel\t31352552 Jul 22 19:15 test_file\n\t   -rw-r--r--  1 root  wheel\t31352552 Jul 22 19:15 test_file2\n\n     Downsize test_file in 5 Megabytes:\n\n\t   # truncate -s -5M test_file\n\t   ls -l test_file*\n\t   -rw-r--r--  1 root  wheel\t26109672 Jul 22 19:17 test_file\n\t   -rw-r--r--  1 root  wheel\t31352552 Jul 22 19:15 test_file2\n\nSEE ALSO\n     dd(1), touch(1), fspacectl(2), truncate(2)"
+  manpageQuestion1: What is the primary purpose of the truncate command?
+  manpageQuestion2: How can you use truncate to adjust the size of a file to 10 Megabytes without creating it if it doesn't exist?
+  manpageQuestion3: Can you provide an example of using truncate to create two files with the same size as the kernel file located at /boot/kernel/kernel?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `truncate`.\n\n\n\nManpage text:\n\nSTANDARDS\n     The truncate utility conforms to no known standards.\n\nHISTORY\n     The truncate utility first appeared in FreeBSD 4.2.\n\nAUTHORS\n     The truncate utility was written by Sheldon Hearn\n     <sheldonh@starjuice.net>.\tHole-punching support of this utility was\n     developed by\n     Ka Ho Ng <khng@FreeBSD.org>.\n\nmacOS 15.3\t\t\tAugust 19, 2021 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the truncate command?
+  manpageQuestion2: How would you use the truncate command to reduce the size of a file named 'example.txt' to exactly 1024 bytes?
+  manpageQuestion3: Can you provide an example of using the truncate command to create a new file named 'output.txt' with a size of 512 bytes?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `nearbyd`.\n\n\n\nManpage text:\n\nnearbyd(8)\t\t    System Manager's Manual\t\t    nearbyd(8)\n\nNAME\n     nearbyd – The proximity daemon\n\nSYNOPSIS\n     nearbyd takes no arguments, and users should not launch it manually.\n\nDESCRIPTION\n     nearbyd powers spatial interaction experiences between devices using\n     ultra wideband and other wireless technologies\n\nFILES\n     /System/Library/LaunchDaemons/com.apple.nearbyd.plist\n\t\t\t\t\t\t\t  The nearbyd\n\t\t\t\t\t\t\t  service's property\n\t\t\t\t\t\t\t  list file for\n\t\t\t\t\t\t\t  launchd(8)\n\nSEE ALSO\n     launchd(8)\n\nHISTORY\n     first appeared in macOS 10.14 and iOS 12.0\n\nDarwin\t\t\t\t    10/4/17\t\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the nearbyd daemon?
+  manpageQuestion2: How can users ensure that the nearbyd service is properly configured and running on their macOS system?
+  manpageQuestion3: What is the role of the /System/Library/LaunchDaemons/com.apple.nearbyd.plist file in relation to the nearbyd daemon?
+

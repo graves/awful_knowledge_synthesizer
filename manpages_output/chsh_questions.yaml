@@ -1,0 +1,51 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `chsh`.\n\n\n\nManpage text:\n\nCHPASS(1)\t\t    General Commands Manual\t\t     CHPASS(1)\n\nNAME\n     chpass, chfn, chsh – add or change user database information\n\nSYNOPSIS\n     chpass [-l location] [-u authname] [-s newshell] [user]\n\nDESCRIPTION\n     The chpass utility allows editing of the user database information\n     associated with user or, by default, the current user.\n\n     The chpass utility cannot change the user's password on Open Directory\n     systems.  Use the passwd(1) utility instead.\n\n     The chfn and chsh utilities behave identically to chpass.\t(There is only\n     one program.)\n\n     The information is formatted and supplied to an editor for changes.\n\n     Only the information that the user is allowed to change is displayed.\n\n     The options are as follows:\n\n     -l location    If not specified, chpass will perform a search for the\n\t\t    user record on all available Open Directory nodes.\tWhen\n\t\t    specified, chpass will edit the user record on the\n\t\t    directory node at the given location.\n\n     -u authname    The user name to use when authenticating to the directory\n\t\t    node containing the user."
+  manpageQuestion1: What is the primary purpose of the chpass, chfn, and chsh utilities?
+  manpageQuestion2: How can you use the chpass utility to edit a user's location information in Open Directory?
+  manpageQuestion3: What is the command to change a user's login shell using chpass?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `chsh`.\n\n\n\nManpage text:\n\n-s newshell    Attempt to change the user's shell to newshell.\n\n     Possible display items are as follows:\n\n\t   Login:\t       user's login name\n\t   Uid: \t       user's login\n\t   Gid: \t       user's login group\n\t   Generated uid:      user's UUID\n\t   Full Name:\t       user's real name\n\t   Office Location:    user's office location\n\t   Office Phone:       user's office phone\n\t   Home Phone:\t       user's home phone\n\t   Home Directory:     user's home directory\n\t   Shell:\t       user's login shell\n\n     The login field is the user name used to access the computer account.\n\n     The uid field is the number associated with the login field.  Both of\n     these fields should be unique across the system (and often across a group\n     of systems) as they control file access.\n\n     While it is possible to have multiple entries with identical login names\n     and/or identical user id's, it is usually a mistake to do so.  Routines\n     that manipulate these files will often return only one of the multiple\n     entries, and that one by random selection."
+  manpageQuestion1: What is the primary purpose of the chsh command?
+  manpageQuestion2: How can you use the -s option with chsh to change a user's shell to a new one?
+  manpageQuestion3: What is the function of the -s option in chsh when modifying user information?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `chsh`.
+
+
+
+    Manpage text:
+
+    The gid field is the group that the user will be placed in at login.
+         Since BSD supports multiple groups (see groups(1)) this field currently
+         has little special meaning.  This field may be filled in with either a
+         number or a group name (see group(5)).
+
+         The generated uid field is the globally unique identifier (UUID) for the
+         user.  The full name field contains the full name of the user.
+
+         The user's home directory is the full UNIX path name where the user will
+         be placed at login.
+
+         The shell field is the command interpreter the user prefers.  If the
+         shell field is empty, the Bourne shell, /bin/sh, is assumed.  When
+         altering a login shell, and not the super-user, the user may not change
+         from a non-standard shell or to a non-standard shell.  Non-standard is
+         defined as a shell not found in /etc/shells.
+
+         The picture field is the path to a picture to be displayed for the user.
+
+    OPEN DIRECTORY
+         User database entries are under the control of DirectoryService(8) and
+         may be physically located in many different places, including the local
+         Directory Service node, and remote LDAP servers.  This version of chpass
+         uses Open Directory to change user database information.  It does not
+         interact with the historic flat file database /etc/master.passwd
+  manpageQuestion1: What is the primary purpose of the chsh command?
+  manpageQuestion2: How can you change a user's preferred shell using chsh to a non-standard shell?
+  manpageQuestion3: What is the default behavior of chsh when the shell field is left empty?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `chsh`.\n\n\n\nManpage text:\n\nENVIRONMENT\n     The vi(1) editor will be used unless the environment variable EDITOR is\n     set to an alternate editor.  When the editor terminates, the information\n     is re-read and used to update the user database itself.  Only the user,\n     or the super-user, may edit the information associated with the user.\n\nFILES\n     /etc/chpass.XXXXXX  temporary file\n     /etc/shells\t the list of approved shells\n\nEXAMPLES\n     Change the shell of the current user to ‘/bin/zsh’:\n\n\t   chsh -s /bin/zsh\n\nSEE ALSO\n     login(1), passwd(1), getusershell(3), DirectoryService(8)\n\n     Robert Morris and Ken Thompson, UNIX Password security.\n\nHISTORY\n     The chpass utility appeared in 4.3BSD-Reno.\n\nmacOS 15.3\t\t\t May 25, 2021\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the chsh command?
+  manpageQuestion2: How would you use chsh to change the default shell for the current user to /bin/zsh?
+  manpageQuestion3: Can you provide an example of using chsh to modify the list of approved shells in the system?
+

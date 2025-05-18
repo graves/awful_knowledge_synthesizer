@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `smb-sync-preferences`.\n\n\n\nManpage text:\n\nSMB-SYNC-PREFERENCES(8)     System Manager's Manual    SMB-SYNC-PREFERENCES(8)\n\nNAME\n     smb-sync-preferences – synchronize SMB server preferences\n\nSYNOPSIS\n     /usr/libexec/smb-sync-preferences\n\nDESCRIPTION\n     Used by launchd only.  Synchronizes preferences when SMB server\n     preferences are modified.\n\nSEE ALSO\n     other(8),\n\nDarwin\t\t\t       February 3, 2011 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the smb-sync-preferences command?
+  manpageQuestion2: How would you use the smb-sync-preferences command to synchronize SMB server preferences after they have been modified?
+  manpageQuestion3: Can you explain the typical scenario in which the smb-sync-preferences command is invoked?
+

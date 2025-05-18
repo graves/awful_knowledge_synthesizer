@@ -1,0 +1,55 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snrest`.\n\n\n\nManpage text:\n\nSNREST(8)\t\t    System Manager's Manual\t\t     SNREST(8)\n\nNAME\n       snrest - Administer Xsan Volume REST API access\n\nSYNOPSIS\n       snrest gateway admin-url url\n\n       snrest gateway import filename\n\n       snrest gateway show\n\n       snrest gateway remove [url]\n\n       snrest gateway register [url]\n\n       snrest gateway unregister [url]\n\n       snrest gateway status [-d]\n\n       snrest gateway ping [url]\n\n       snrest gateway ping [-f filename]\n\n       snrest config set [name=value...]\n\n       snrest config clear [name...]\n\n       snrest config show\n\nDESCRIPTION\n       The snrest program supports control and status display for REST API\n       access to the Xsan Volume.\n\n       The snrest gateway commands support configuration and control of\n       StorNext interactions with a single or multiple Quantum API Gateways.\n\n       Commands with a <url> parameter may specify the url using only the\n       hostname\n\tof the API Gateway.  If the protocol is not specified it defaults to\n       https and if the port is not specified it defaults to 8443.  This\n       allows the caller to only specify the hostname, as in the following\n       example:"
+  manpageQuestion1: What is the primary purpose of the snrest command?
+  manpageQuestion2: How would you use the snrest command to import a configuration file into an Xsan Volume's REST API?
+  manpageQuestion3: Can you provide an example of using the snrest command to check the status of a Quantum API Gateway?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snrest`.\n\n\n\nManpage text:\n\nsnrest gateway admin-url <hostname>\n\n       which is the same as explicitly specifying the following:\n\n\t  snrest gateway admin-url https://<hostname>:8443\n\n       The snrest gateway import command imports configuration information\n       from a Quantum API Gateway.  This command takes a single argument which\n       is a filename containing contact and authentication information and\n       must be obtained from a Quantum API Gateway.\n\n       Alternatively, the snrest gateway admin-url command is a simpler form\n       for configuring access to the API Gateway.  Use this command only if\n       your site has not configured site-specific authentication for gateway\n       registration (in which case you must use snrest gateway import\n       instead).\n\n       With snrest gateway admin-url simply specify the URL of the API Gateway\n       as a command line argument.\n\n       The snrest gateway show command displays the API Gateway configuration.\n\n       The snrest gateway remove [ <url> ] command unregisters with the API\n       Gateway and removes the API Gateway from the configuration. If the url\n       is specified, only the specified API Gateway is unregistered and\n       removed."
+  manpageQuestion1: What is the primary purpose of the snrest command in the context of API Gateway management?
+  manpageQuestion2: How can you use snrest to configure access to a Quantum API Gateway without using the import command?
+  manpageQuestion3: What is the function of the snrest gateway show command?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snrest`.\n\n\n\nManpage text:\n\nThe snrest gateway register [ <url> ] command registers all the\n       configured API Gateways.  API Gateways that are registered will\n       continue to periodically retry until the registration succeeds.\tThis\n       needs to be called if you use snrest gateway import or snrest gateway\n       admin-url commands to add an API Gateway configuration to the\n       configuration.\n\n       An optional URL parameter may be specified to snrest gateway register.\n       The following command:\n\n\t  snrest gateway register <url>\n\n       results in the same actions as if the following commands were issued:\n\n\t  snrest gateway admin-url <url>\n\t  snrest gateway register\n\n       This allows the caller to configure the url and register with the API\n       Gateway in a single command.  If the specified API Gateway has already\n       been configured, the command performs only the registration.\n\n       The snrest gateway unregister command unregisters with the currently\n       registered API Gateways.  If the url is specified, only that API\n       Gateway is unregistered."
+  manpageQuestion1: What is the primary purpose of the snrest gateway register command?
+  manpageQuestion2: How would you use the snrest gateway register command to register an API Gateway with a specific URL?
+  manpageQuestion3: Can you provide an example of using the snrest gateway unregister command to remove a previously registered API Gateway?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snrest`.
+
+
+
+    Manpage text:
+
+    The snrest gateway status command displays the current status of the
+           StorNext registrations with a Quantum API Gateway.  This typically
+           reports that either all or none of the internal endpoints in StorNext
+           are registered with a particular API Gateway..  But there is also the
+           possibility, especially in transitory states or when connectivity to
+           the API Gateway is problematic, that only a subset of the internal
+           endpoints are registered.  If any endpoints are not currently
+           registered the system will continue to try to register those endpoints
+           until successful.
+
+           There is an additional option to get extra detail on the registration
+           status with the -d option.  This provides a detailed display of
+           individual internal endpoints that register with the API Gateway and
+           thus is primarily intended for use by Quantum Support.
+
+           The snrest gateway ping command tests connectivity to the API Gateway.
+           If the API Gateway cannot be contacted an error message is displayed
+           and the command exits with a non-zero exit status.  By default, the
+           following will ping the currently configured API Gateway:
+  manpageQuestion1: What is the primary purpose of the snrest command?
+  manpageQuestion2: How can you use the snrest gateway ping command to test connectivity to the API Gateway?
+  manpageQuestion3: What option can be used with snrest to get detailed registration status information about internal endpoints?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snrest`.\n\n\n\nManpage text:\n\nsnrest gateway ping\n\n       Alternatively, you can ping a specific URL with:\n\n\t  snrest gateway ping <url>\n\n       or use a file with the gateway configuration with the -f option:\n\n\t  snrest gateway ping -f <filename>\n\n       In this latter case the file specified would be of the same form used\n       with snrest gateway import.\n\n       The snrest config commands support setting values in the\n       /Library/Preferences/Xsan/snfs_rest_config.json file.  These values\n       should only be changed in consultation with Apple support.  The names\n       are hierachical value separated by spaces.  For example, to change the\n       ssl_enabled value under the ssl json object to true:\n\n\t  snrest config set ssl.ssl_enabled=true\n\n       To remove the ssl_enabled value:\n\n\t  snrest config clear ssl.ssl_enabled\n\n       Changes to the snrest config values will take effect the next time that\n       StorNext is restarted.\n\n       The snrest config show command displays the current values of the Xsan\n       REST configuration."
+  manpageQuestion1: What is the primary purpose of the snrest tool?
+  manpageQuestion2: How would you use snrest to ping a specific URL, such as https://example.com?
+  manpageQuestion3: Can you provide an example of how to use the snrest config set command to enable SSL in the Xsan REST configuration?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `snrest`.\n\n\n\nManpage text:\n\nEXIT VALUES\n       snrest will return 0 on success and non-zero on failure.\n\nLIMITATIONS\n       Only the Linux platform is supported with snrest commands.\n\nXsan File System\t\t December 2021\t\t\t     SNREST(8)"
+  manpageQuestion1: What is the primary purpose of the snrest tool?
+  manpageQuestion2: How would you use snrest to check the status of a specific Xsan volume?
+  manpageQuestion3: Can you provide an example of using snrest to verify the integrity of an Xsan file system?
+

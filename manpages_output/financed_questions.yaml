@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `financed`.\n\n\n\nManpage text:\n\nfinanced(8)\t\t    System Manager's Manual\t\t   financed(8)\n\nNAME\n     financed – Apple Pay & Wallet daemon\n\nDESCRIPTION\n     financed financed supports passd in managing Apple Pay and Wallet\n     operations. It cannot be used directly by the user.\n\nmacOS 15.3\t\t       October 13, 2020 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the financed tool?
+  manpageQuestion2: How would you use the financed command to manage Apple Pay and Wallet operations?
+  manpageQuestion3: Can you describe the typical usage scenario for the financed daemon in a macOS environment?
+

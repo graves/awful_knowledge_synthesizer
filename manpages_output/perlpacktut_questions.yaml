@@ -1,0 +1,431 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nPERLPACKTUT(1)\t       Perl Programmers Reference Guide \tPERLPACKTUT(1)"
+  manpageQuestion1: What is the primary purpose of the perlpacktut tool?
+  manpageQuestion2: How would you use perlpacktut to demonstrate the packing and unpacking of numeric data in Perl?
+  manpageQuestion3: Can you provide an example of using perlpacktut to pack a string into a binary format and then unpack it back to the original string?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.
+
+
+
+    Manpage text:
+
+    NAME
+           perlpacktut - tutorial on "pack" and "unpack"
+
+    DESCRIPTION
+           "pack" and "unpack" are two functions for transforming data according
+           to a user-defined template, between the guarded way Perl stores values
+           and some well-defined representation as might be required in the
+           environment of a Perl program. Unfortunately, they're also two of the
+           most misunderstood and most often overlooked functions that Perl
+           provides. This tutorial will demystify them for you.
+
+    The Basic Principle
+           Most programming languages don't shelter the memory where variables are
+           stored. In C, for instance, you can take the address of some variable,
+           and the "sizeof" operator tells you how many bytes are allocated to the
+           variable. Using the address and the size, you may access the storage to
+           your heart's content.
+
+           In Perl, you just can't access memory at random, but the structural and
+           representational conversion provided by "pack" and "unpack" is an
+           excellent alternative. The "pack" function converts values to a byte
+           sequence containing representations according to a given specification,
+           the so-called "template" argument. "unpack" is the reverse process,
+           deriving some values from the contents of a string of bytes. (Be
+           cautioned, however, that not all that has been packed together can be
+           neatly unpacked - a very common experience as seasoned travellers are
+           likely to confirm.)
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use Perl's pack and unpack functions to convert a string into a binary format and then back to a string?
+  manpageQuestion3: Can you provide an example of using pack and unpack to convert a Perl scalar value into a binary representation according to a specific template?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.
+
+
+
+    Manpage text:
+
+    Why, you may ask, would you need a chunk of memory containing some
+           values in binary representation? One good reason is input and output
+           accessing some file, a device, or a network connection, whereby this
+           binary representation is either forced on you or will give you some
+           benefit in processing. Another cause is passing data to some system
+           call that is not available as a Perl function: "syscall" requires you
+           to provide parameters stored in the way it happens in a C program. Even
+           text processing (as shown in the next section) may be simplified with
+           judicious usage of these two functions.
+
+           To see how (un)packing works, we'll start with a simple template code
+           where the conversion is in low gear: between the contents of a byte
+           sequence and a string of hexadecimal digits. Let's use "unpack", since
+           this is likely to remind you of a dump program, or some desperate last
+           message unfortunate programs are wont to throw at you before they
+           expire into the wild blue yonder. Assuming that the variable $mem holds
+           a sequence of bytes that we'd like to inspect without assuming anything
+           about its meaning, we can write
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use perlpacktut to convert a hexadecimal string like '48656C6C6F' into its corresponding ASCII string?
+  manpageQuestion3: Can you provide an example of using perlpacktut to convert the integer 123456 into a byte sequence in big-endian format?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nmy( $hex ) = unpack( 'H*', $mem );\n\t  print \"$hex\\n\";\n\n       whereupon we might see something like this, with each pair of hex\n       digits corresponding to a byte:\n\n\t  41204d414e204120504c414e20412043414e414c2050414e414d41\n\n       What was in this chunk of memory? Numbers, characters, or a mixture of\n       both? Assuming that we're on a computer where ASCII (or some similar)\n       encoding is used: hexadecimal values in the range 0x40 - 0x5A indicate\n       an uppercase letter, and 0x20 encodes a space. So we might assume it is\n       a piece of text, which some are able to read like a tabloid; but others\n       will have to get hold of an ASCII table and relive that firstgrader\n       feeling. Not caring too much about which way to read this, we note that\n       \"unpack\" with the template code \"H\" converts the contents of a sequence\n       of bytes into the customary hexadecimal notation. Since \"a sequence of\"\n       is a pretty vague indication of quantity, \"H\" has been defined to\n       convert just a single hexadecimal digit unless it is followed by a\n       repeat count. An asterisk for the repeat count means to use whatever\n       remains."
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How would you use perlpacktut to convert a hexadecimal string like '41204d414e...' into its corresponding ASCII text representation?
+  manpageQuestion3: Can you provide an example of using perlpacktut to convert a sequence of bytes into hexadecimal notation for analysis?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nThe inverse operation - packing byte contents from a string of\n       hexadecimal digits - is just as easily written. For instance:\n\n\t  my $s = pack( 'H2' x 10, 30..39 );\n\t  print \"$s\\n\";\n\n       Since we feed a list of ten 2-digit hexadecimal strings to \"pack\", the\n       pack template should contain ten pack codes. If this is run on a\n       computer with ASCII character coding, it will print 0123456789.\n\nPacking Text\n       Let's suppose you've got to read in a data file like this:\n\n\t   Date      |Description\t\t | Income|Expenditure\n\t   01/24/2001 Zed's Camel Emporium\t\t      1147.99\n\t   01/28/2001 Flea spray\t\t\t\t24.99\n\t   01/29/2001 Camel rides to tourists\t   235.00\n\n       How do we do it? You might think first to use \"split\"; however, since\n       \"split\" collapses blank fields, you'll never know whether a record was\n       income or expenditure. Oops. Well, you could always use \"substr\":\n\n\t   while (<>) {\n\t       my $date   = substr($_,\t0, 11);\n\t       my $desc   = substr($_, 12, 27);\n\t       my $income = substr($_, 40,  7);\n\t       my $expend = substr($_, 52,  7);\n\t       ...\n\t   }"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use perlpacktut to pack a string of hexadecimal values into binary data?
+  manpageQuestion3: Can you provide an example of using substr in perlpacktut to extract specific fields from a CSV-like data file?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nIt's not really a barrel of laughs, is it? In fact, it's worse than it\n       may seem; the eagle-eyed may notice that the first field should only be\n       10 characters wide, and the error has propagated right through the\n       other numbers - which we've had to count by hand. So it's error-prone\n       as well as horribly unfriendly.\n\n       Or maybe we could use regular expressions:\n\n\t   while (<>) {\n\t       my($date, $desc, $income, $expend) =\n\t\t   m|(\\d\\d/\\d\\d/\\d{4}) (.{27}) (.{7})(.*)|;\n\t       ...\n\t   }\n\n       Urgh. Well, it's a bit better, but - well, would you want to maintain\n       that?\n\n       Hey, isn't Perl supposed to make this sort of thing easy? Well, it\n       does, if you use the right tools. \"pack\" and \"unpack\" are designed to\n       help you out when dealing with fixed-width data like the above. Let's\n       have a look at a solution with \"unpack\":\n\n\t   while (<>) {\n\t       my($date, $desc, $income, $expend) = unpack(\"A10xA27xA7A*\", $_);\n\t       ...\n\t   }\n\n       That looks a bit nicer; but we've got to take apart that weird\n       template.  Where did I pull that out of?"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use the pack and unpack functions in Perl to parse a fixed-width data string into individual fields?
+  manpageQuestion3: Can you provide an example of using unpack to extract specific data fields from a string with the template 'A10xA27xA7A*'?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nOK, let's have a look at some of our data again; in fact, we'll include\n       the headers, and a handy ruler so we can keep track of where we are.\n\n\t\t    1\t      2 \t3\t  4\t    5\n\t   1234567890123456789012345678901234567890123456789012345678\n\t   Date      |Description\t\t | Income|Expenditure\n\t   01/28/2001 Flea spray\t\t\t\t24.99\n\t   01/29/2001 Camel rides to tourists\t   235.00\n\n       From this, we can see that the date column stretches from column 1 to\n       column 10 - ten characters wide. The \"pack\"-ese for \"character\" is \"A\",\n       and ten of them are \"A10\". So if we just wanted to extract the dates,\n       we could say this:\n\n\t   my($date) = unpack(\"A10\", $_);\n\n       OK, what's next? Between the date and the description is a blank\n       column; we want to skip over that. The \"x\" template means \"skip\n       forward\", so we want one of those. Next, we have another batch of\n       characters, from 12 to 38. That's 27 more characters, hence \"A27\".\n       (Don't make the fencepost error - there are 27 characters between 12\n       and 38, not 26. Count 'em!)"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use perlpacktut to extract the 'Date' column from a formatted string like '01/28/2001 Flea spray 24.99'?
+  manpageQuestion3: What is the correct way to skip a blank column and extract a 27-character string from a formatted data line using perlpacktut?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nNow we skip another character and pick up the next 7 characters:\n\n\t   my($date,$description,$income) = unpack(\"A10xA27xA7\", $_);\n\n       Now comes the clever bit. Lines in our ledger which are just income and\n       not expenditure might end at column 46. Hence, we don't want to tell\n       our \"unpack\" pattern that we need to find another 12 characters; we'll\n       just say \"if there's anything left, take it\". As you might guess from\n       regular expressions, that's what the \"*\" means: \"use everything\n       remaining\".\n\n       •  Be warned, though, that unlike regular expressions, if the \"unpack\"\n\t  template doesn't match the incoming data, Perl will scream and die.\n\n       Hence, putting it all together:\n\n\t   my ($date, $description, $income, $expend) =\n\t       unpack(\"A10xA27xA7xA*\", $_);\n\n       Now, that's our data parsed. I suppose what we might want to do now is\n       total up our income and expenditure, and add another line to the end of\n       our ledger - in the same format - saying how much we've brought in and\n       how much we've spent:"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use the unpack function to parse a string into variables with varying lengths, such as in a ledger entry?
+  manpageQuestion3: What is the role of the '*' character in the unpack template when processing data in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nwhile (<>) {\n\t       my ($date, $desc, $income, $expend) =\n\t\t   unpack(\"A10xA27xA7xA*\", $_);\n\t       $tot_income += $income;\n\t       $tot_expend += $expend;\n\t   }\n\n\t   $tot_income = sprintf(\"%.2f\", $tot_income); # Get them into\n\t   $tot_expend = sprintf(\"%.2f\", $tot_expend); # \"financial\" format\n\n\t   $date = POSIX::strftime(\"%m/%d/%Y\", localtime);\n\n\t   # OK, let's go:\n\n\t   print pack(\"A10xA27xA7xA*\", $date, \"Totals\",\n\t       $tot_income, $tot_expend);\n\n       Oh, hmm. That didn't quite work. Let's see what happened:\n\n\t   01/24/2001 Zed's Camel Emporium\t\t       1147.99\n\t   01/28/2001 Flea spray\t\t\t\t 24.99\n\t   01/29/2001 Camel rides to tourists\t  1235.00\n\t   03/23/2001Totals\t\t\t1235.001172.98\n\n       OK, it's a start, but what happened to the spaces? We put \"x\", didn't\n       we? Shouldn't it skip forward? Let's look at what \"pack\" in perlfunc\n       says:\n\n\t   x   A null byte.\n\n       Urgh. No wonder. There's a big difference between \"a null byte\",\n       character zero, and \"a space\", character 32. Perl's put something\n       between the date and the description - but unfortunately, we can't see\n       it!"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you correctly use the perlpacktut script to format a transaction log with date, description, income, and expenditure data?
+  manpageQuestion3: What is the issue with using the 'x' operator in the pack function within the perlpacktut example, and how can it be resolved?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nWhat we actually need to do is expand the width of the fields. The \"A\"\n       format pads any non-existent characters with spaces, so we can use the\n       additional spaces to line up our fields, like this:\n\n\t   print pack(\"A11 A28 A8 A*\", $date, \"Totals\",\n\t       $tot_income, $tot_expend);\n\n       (Note that you can put spaces in the template to make it more readable,\n       but they don't translate to spaces in the output.) Here's what we got\n       this time:\n\n\t   01/24/2001 Zed's Camel Emporium\t\t       1147.99\n\t   01/28/2001 Flea spray\t\t\t\t 24.99\n\t   01/29/2001 Camel rides to tourists\t  1235.00\n\t   03/23/2001 Totals\t\t\t  1235.00 1172.98\n\n       That's a bit better, but we still have that last column which needs to\n       be moved further over. There's an easy way to fix this up:\n       unfortunately, we can't get \"pack\" to right-justify our fields, but we\n       can get \"sprintf\" to do it:\n\n\t   $tot_income = sprintf(\"%.2f\", $tot_income);\n\t   $tot_expend = sprintf(\"%12.2f\", $tot_expend);\n\t   $date = POSIX::strftime(\"%m/%d/%Y\", localtime);\n\t   print pack(\"A11 A28 A8 A*\", $date, \"Totals\",\n\t       $tot_income, $tot_expend);"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use the pack function in Perl to format and print a string with specific field widths and alignment?
+  manpageQuestion3: Can you provide an example of using the sprintf function in Perl to right-justify a numeric value within a formatted string?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nThis time we get the right answer:\n\n\t   01/28/2001 Flea spray\t\t\t\t 24.99\n\t   01/29/2001 Camel rides to tourists\t  1235.00\n\t   03/23/2001 Totals\t\t\t  1235.00      1172.98\n\n       So that's how we consume and produce fixed-width data. Let's recap what\n       we've seen of \"pack\" and \"unpack\" so far:\n\n       •  Use \"pack\" to go from several pieces of data to one fixed-width\n\t  version; use \"unpack\" to turn a fixed-width-format string into\n\t  several pieces of data.\n\n       •  The pack format \"A\" means \"any character\"; if you're \"pack\"ing and\n\t  you've run out of things to pack, \"pack\" will fill the rest up with\n\t  spaces.\n\n       •  \"x\" means \"skip a byte\" when \"unpack\"ing; when \"pack\"ing, it means\n\t  \"introduce a null byte\" - that's probably not what you mean if\n\t  you're dealing with plain text.\n\n       •  You can follow the formats with numbers to say how many characters\n\t  should be affected by that format: \"A12\" means \"take 12 characters\";\n\t  \"x6\" means \"skip 6 bytes\" or \"character 0, 6 times\"."
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How would you use pack and unpack to convert a string into a fixed-width format and then back to individual data elements?
+  manpageQuestion3: Can you provide an example of using pack and unpack with the 'A' format specifier to handle variable-length text data?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\n•  Instead of a number, you can use \"*\" to mean \"consume everything\n\t  else left\".\n\n\t  Warning: when packing multiple pieces of data, \"*\" only means\n\t  \"consume all of the current piece of data\". That's to say\n\n\t      pack(\"A*A*\", $one, $two)\n\n\t  packs all of $one into the first \"A*\" and then all of $two into the\n\t  second. This is a general principle: each format character\n\t  corresponds to one piece of data to be \"pack\"ed.\n\nPacking Numbers\n       So much for textual data. Let's get onto the meaty stuff that \"pack\"\n       and \"unpack\" are best at: handling binary formats for numbers. There\n       is, of course, not just one binary format  - life would be too simple -\n       but Perl will do all the finicky labor for you.\n\n   Integers\n       Packing and unpacking numbers implies conversion to and from some\n       specific binary representation. Leaving floating point numbers aside\n       for the moment, the salient properties of any such representation are:\n\n       •   the number of bytes used for storing the integer,"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use the '*' operator in Perl's pack function to consume all remaining data in a string?
+  manpageQuestion3: Can you explain how Perl handles the conversion of integers to binary formats when using the pack function?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\n•   whether the contents are interpreted as a signed or unsigned\n\t   number,\n\n       •   the byte ordering: whether the first byte is the least or most\n\t   significant byte (or: little-endian or big-endian, respectively).\n\n       So, for instance, to pack 20302 to a signed 16 bit integer in your\n       computer's representation you write\n\n\t  my $ps = pack( 's', 20302 );\n\n       Again, the result is a string, now containing 2 bytes. If you print\n       this string (which is, generally, not recommended) you might see \"ON\"\n       or \"NO\" (depending on your system's byte ordering) - or something\n       entirely different if your computer doesn't use ASCII character\n       encoding.  Unpacking $ps with the same template returns the original\n       integer value:\n\n\t  my( $s ) = unpack( 's', $ps );\n\n       This is true for all numeric template codes. But don't expect miracles:\n       if the packed value exceeds the allotted byte capacity, high order bits\n       are silently discarded, and unpack certainly won't be able to pull them\n       back out of some magic hat. And, when you pack using a signed template\n       code such as \"s\", an excess value may result in the sign bit getting\n       set, and unpacking this will smartly return a negative value."
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How would you use perlpacktut to pack the integer 20302 into a signed 16-bit integer using the system's native byte ordering?
+  manpageQuestion3: Can you provide an example of using perlpacktut to unpack a packed string into its original integer value?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.
+
+
+
+    Manpage text:
+
+    16 bits won't get you too far with integers, but there is "l" and "L"
+           for signed and unsigned 32-bit integers. And if this is not enough and
+           your system supports 64 bit integers you can push the limits much
+           closer to infinity with pack codes "q" and "Q". A notable exception is
+           provided by pack codes "i" and "I" for signed and unsigned integers of
+           the "local custom" variety: Such an integer will take up as many bytes
+           as a local C compiler returns for "sizeof(int)", but it'll use at least
+           32 bits.
+
+           Each of the integer pack codes "sSlLqQ" results in a fixed number of
+           bytes, no matter where you execute your program. This may be useful for
+           some applications, but it does not provide for a portable way to pass
+           data structures between Perl and C programs (bound to happen when you
+           call XS extensions or the Perl function "syscall"), or when you read or
+           write binary files. What you'll need in this case are template codes
+           that depend on what your local C compiler compiles when you code
+           "short" or "unsigned long", for instance. These codes and their
+           corresponding byte lengths are shown in the table below.  Since the C
+           standard leaves much leeway with respect to the relative sizes of these
+           data types, actual values may vary, and that's why the values are given
+           as expressions in C and Perl. (If you'd like to use values from %Config
+           in your program you have to import it with "use Config".)
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use perlpacktut to pack a signed 32-bit integer into a binary string?
+  manpageQuestion3: Can you provide an example of using perlpacktut to unpack a 64-bit unsigned integer from a binary string?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nsigned unsigned  byte length in C   byte length in Perl\n\t    s!\t   S!\t   sizeof(short)      $Config{shortsize}\n\t    i!\t   I!\t   sizeof(int)\t      $Config{intsize}\n\t    l!\t   L!\t   sizeof(long)       $Config{longsize}\n\t    q!\t   Q!\t   sizeof(long long)  $Config{longlongsize}\n\n       The \"i!\" and \"I!\" codes aren't different from \"i\" and \"I\"; they are\n       tolerated for completeness' sake.\n\n   Unpacking a Stack Frame\n       Requesting a particular byte ordering may be necessary when you work\n       with binary data coming from some specific architecture whereas your\n       program could run on a totally different system. As an example, assume\n       you have 24 bytes containing a stack frame as it happens on an Intel\n       8086:\n\n\t     +---------+\t+----+----+\t\t  +---------+\n\tTOS: |\t IP    |  TOS+4:| FL | FH | FLAGS  TOS+14:|   SI    |\n\t     +---------+\t+----+----+\t\t  +---------+\n\t     |\t CS    |\t| AL | AH | AX\t\t  |   DI    |\n\t     +---------+\t+----+----+\t\t  +---------+\n\t\t\t\t| BL | BH | BX\t\t  |   BP    |\n\t\t\t\t+----+----+\t\t  +---------+\n\t\t\t\t| CL | CH | CX\t\t  |   DS    |\n\t\t\t\t+----+----+\t\t  +---------+\n\t\t\t\t| DL | DH | DX\t\t  |   ES    |\n\t\t\t\t+----+----+\t\t  +---------+"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How would you use perlpacktut to unpack a stack frame from an Intel 8086 system into Perl variables?
+  manpageQuestion3: Can you provide an example of using perlpacktut to convert a 32-bit signed integer into its byte representation in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nFirst, we note that this time-honored 16-bit CPU uses little-endian\n       order, and that's why the low order byte is stored at the lower\n       address. To unpack such a (unsigned) short we'll have to use code \"v\".\n       A repeat count unpacks all 12 shorts:\n\n\t  my( $ip, $cs, $flags, $ax, $bx, $cx, $dx, $si, $di, $bp, $ds, $es ) =\n\t    unpack( 'v12', $frame );\n\n       Alternatively, we could have used \"C\" to unpack the individually\n       accessible byte registers FL, FH, AL, AH, etc.:\n\n\t  my( $fl, $fh, $al, $ah, $bl, $bh, $cl, $ch, $dl, $dh ) =\n\t    unpack( 'C10', substr( $frame, 4, 10 ) );\n\n       It would be nice if we could do this in one fell swoop: unpack a short,\n       back up a little, and then unpack 2 bytes. Since Perl is nice, it\n       proffers the template code \"X\" to back up one byte. Putting this all\n       together, we may now write:\n\n\t  my( $ip, $cs,\n\t      $flags,$fl,$fh,\n\t      $ax,$al,$ah, $bx,$bl,$bh, $cx,$cl,$ch, $dx,$dl,$dh,\n\t      $si, $di, $bp, $ds, $es ) =\n\t  unpack( 'v2' . ('vXXCC' x 5) . 'v5', $frame );"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you unpack a 16-bit unsigned short and then back up one byte to unpack additional data using Perl's unpack function?
+  manpageQuestion3: Can you provide an example of using the 'C' and 'X' template characters in Perl's unpack function to extract byte registers from a memory buffer?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.
+
+
+
+    Manpage text:
+
+    (The clumsy construction of the template can be avoided - just read
+           on!)
+
+           We've taken some pains to construct the template so that it matches the
+           contents of our frame buffer. Otherwise we'd either get undefined
+           values, or "unpack" could not unpack all. If "pack" runs out of items,
+           it will supply null strings (which are coerced into zeroes whenever the
+           pack code says so).
+
+       How to Eat an Egg on a Net
+           The pack code for big-endian (high order byte at the lowest address) is
+           "n" for 16 bit and "N" for 32 bit integers. You use these codes if you
+           know that your data comes from a compliant architecture, but,
+           surprisingly enough, you should also use these pack codes if you
+           exchange binary data, across the network, with some system that you
+           know next to nothing about. The simple reason is that this order has
+           been chosen as the network order, and all standard-fearing programs
+           ought to follow this convention. (This is, of course, a stern backing
+           for one of the Lilliputian parties and may well influence the political
+           development there.) So, if the protocol expects you to send a message
+           by sending the length first, followed by just so many bytes, you could
+           write:
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use perlpacktut to pack a 32-bit big-endian integer into a binary string?
+  manpageQuestion3: Can you provide an example of using perlpacktut to unpack a binary string containing a 16-bit big-endian integer?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nmy $buf = pack( 'N', length( $msg ) ) . $msg;\n\n       or even:\n\n\t  my $buf = pack( 'NA*', length( $msg ), $msg );\n\n       and pass $buf to your send routine. Some protocols demand that the\n       count should include the length of the count itself: then just add 4 to\n       the data length. (But make sure to read \"Lengths and Widths\" before you\n       really code this!)\n\n   Byte-order modifiers\n       In the previous sections we've learned how to use \"n\", \"N\", \"v\" and \"V\"\n       to pack and unpack integers with big- or little-endian byte-order.\n       While this is nice, it's still rather limited because it leaves out all\n       kinds of signed integers as well as 64-bit integers. For example, if\n       you wanted to unpack a sequence of signed big-endian 16-bit integers in\n       a platform-independent way, you would have to write:\n\n\t  my @data = unpack 's*', pack 'S*', unpack 'n*', $buf;\n\n       This is ugly. As of Perl 5.9.2, there's a much nicer way to express\n       your desire for a certain byte-order: the \">\" and \"<\" modifiers.  \">\"\n       is the big-endian modifier, while \"<\" is the little-endian modifier.\n       Using them, we could rewrite the above code as:"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use Perl's pack and unpack functions to handle signed integers with different byte orders in a platform-independent manner?
+  manpageQuestion3: What is the recommended way to handle byte-order when packing and unpacking integers in Perl 5.9.2 and later?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.
+
+
+
+    Manpage text:
+
+    my @data = unpack 's>*', $buf;
+
+           As you can see, the "big end" of the arrow touches the "s", which is a
+           nice way to remember that ">" is the big-endian modifier. The same
+           obviously works for "<", where the "little end" touches the code.
+
+           You will probably find these modifiers even more useful if you have to
+           deal with big- or little-endian C structures. Be sure to read "Packing
+           and Unpacking C Structures" for more on that.
+
+       Floating point Numbers
+           For packing floating point numbers you have the choice between the pack
+           codes "f", "d", "F" and "D". "f" and "d" pack into (or unpack from)
+           single-precision or double-precision representation as it is provided
+           by your system. If your systems supports it, "D" can be used to pack
+           and unpack ("long double") values, which can offer even more resolution
+           than "f" or "d".  Note that there are different long double formats.
+
+           "F" packs an "NV", which is the floating point type used by Perl
+           internally.
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use Perl's pack/unpack functions to convert a buffer into a big-endian short integer?
+  manpageQuestion3: What is the difference between using 'f' and 'F' when packing floating-point numbers in Perl?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.
+
+
+
+    Manpage text:
+
+    There is no such thing as a network representation for reals, so if you
+           want to send your real numbers across computer boundaries, you'd better
+           stick to text representation, possibly using the hexadecimal float
+           format (avoiding the decimal conversion loss), unless you're absolutely
+           sure what's on the other end of the line. For the even more
+           adventuresome, you can use the byte-order modifiers from the previous
+           section also on floating point codes.
+
+    Exotic Templates
+       Bit Strings
+           Bits are the atoms in the memory world. Access to individual bits may
+           have to be used either as a last resort or because it is the most
+           convenient way to handle your data. Bit string (un)packing converts
+           between strings containing a series of 0 and 1 characters and a
+           sequence of bytes each containing a group of 8 bits. This is almost as
+           simple as it sounds, except that there are two ways the contents of a
+           byte may be written as a bit string. Let's have a look at an annotated
+           byte:
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How would you use perlpacktut to convert a hexadecimal float value to a binary bit string?
+  manpageQuestion3: Can you provide an example of using perlpacktut to manipulate individual bits in a byte?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\n7 6 5 4 3 2 1 0\n\t  +-----------------+\n\t  | 1 0 0 0 1 1 0 0 |\n\t  +-----------------+\n\t   MSB\t\t LSB\n\n       It's egg-eating all over again: Some think that as a bit string this\n       should be written \"10001100\" i.e. beginning with the most significant\n       bit, others insist on \"00110001\". Well, Perl isn't biased, so that's\n       why we have two bit string codes:\n\n\t  $byte = pack( 'B8', '10001100' ); # start with MSB\n\t  $byte = pack( 'b8', '00110001' ); # start with LSB\n\n       It is not possible to pack or unpack bit fields - just integral bytes.\n       \"pack\" always starts at the next byte boundary and \"rounds up\" to the\n       next multiple of 8 by adding zero bits as required. (If you do want bit\n       fields, there is \"vec\" in perlfunc. Or you could implement bit field\n       handling at the character string level, using split, substr, and\n       concatenation on unpacked bit strings.)\n\n       To illustrate unpacking for bit strings, we'll decompose a simple\n       status register (a \"-\" stands for a \"reserved\" bit):"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you pack a bit string into a byte using Perl's pack function with the 'B8' format?
+  manpageQuestion3: Can you explain how to unpack a bit string from a byte using Perl's unpack function with the 'b8' format?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\n+-----------------+-----------------+\n\t  | S Z - A - P - C | - - - - O D I T |\n\t  +-----------------+-----------------+\n\t   MSB\t\t LSB MSB\t   LSB\n\n       Converting these two bytes to a string can be done with the unpack\n       template 'b16'. To obtain the individual bit values from the bit string\n       we use \"split\" with the \"empty\" separator pattern which dissects into\n       individual characters. Bit values from the \"reserved\" positions are\n       simply assigned to \"undef\", a convenient notation for \"I don't care\n       where this goes\".\n\n\t  ($carry, undef, $parity, undef, $auxcarry, undef, $zero, $sign,\n\t   $trace, $interrupt, $direction, $overflow) =\n\t     split( //, unpack( 'b16', $status ) );\n\n       We could have used an unpack template 'b12' just as well, since the\n       last 4 bits can be ignored anyway.\n\n   Uuencoding\n       Another odd-man-out in the template alphabet is \"u\", which packs a\n       \"uuencoded string\". (\"uu\" is short for Unix-to-Unix.) Chances are that\n       you won't ever need this encoding technique which was invented to\n       overcome the shortcomings of old-fashioned transmission mediums that do\n       not support other than simple ASCII data. The essential recipe is\n       simple: Take three bytes, or 24 bits. Split them into 4 six-packs,\n       adding a space (0x20) to each. Repeat until all of the data is blended.\n       Fold groups of 4 bytes into lines no longer than 60 and garnish them in\n       front with the original byte count (incremented by 0x20) and a \"\\n\" at\n       the end. - The \"pack\" chef will prepare this for you, a la minute, when\n       you select pack code \"u\" on the menu:"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use perlpacktut to unpack a 16-bit value into individual bit fields and assign them to variables?
+  manpageQuestion3: What is the process for using the 'u' format in perlpacktut to encode data into a uuencoded string?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nmy $uubuf = pack( 'u', $bindat );\n\n       A repeat count after \"u\" sets the number of bytes to put into an\n       uuencoded line, which is the maximum of 45 by default, but could be set\n       to some (smaller) integer multiple of three. \"unpack\" simply ignores\n       the repeat count.\n\n   Doing Sums\n       An even stranger template code is \"%\"<number>. First, because it's used\n       as a prefix to some other template code. Second, because it cannot be\n       used in \"pack\" at all, and third, in \"unpack\", doesn't return the data\n       as defined by the template code it precedes. Instead it'll give you an\n       integer of number bits that is computed from the data value by doing\n       sums. For numeric unpack codes, no big feat is achieved:\n\n\t   my $buf = pack( 'iii', 100, 20, 3 );\n\t   print unpack( '%32i3', $buf ), \"\\n\";  # prints 123\n\n       For string values, \"%\" returns the sum of the byte values saving you\n       the trouble of a sum loop with \"substr\" and \"ord\":\n\n\t   print unpack( '%32A*', \"\\x01\\x10\" ), \"\\n\";  # prints 17"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How would you use the '%32i3' template code in unpack to compute the sum of bits from a packed integer value?
+  manpageQuestion3: Can you provide an example of using the '%' operator with a string value to calculate the sum of byte values?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nAlthough the \"%\" code is documented as returning a \"checksum\": don't\n       put your trust in such values! Even when applied to a small number of\n       bytes, they won't guarantee a noticeable Hamming distance.\n\n       In connection with \"b\" or \"B\", \"%\" simply adds bits, and this can be\n       put to good use to count set bits efficiently:\n\n\t   my $bitcount = unpack( '%32b*', $mask );\n\n       And an even parity bit can be determined like this:\n\n\t   my $evenparity = unpack( '%1b*', $mask );\n\n   Unicode\n       Unicode is a character set that can represent most characters in most\n       of the world's languages, providing room for over one million different\n       characters. Unicode 3.1 specifies 94,140 characters: The Basic Latin\n       characters are assigned to the numbers 0 - 127. The Latin-1 Supplement\n       with characters that are used in several European languages is in the\n       next range, up to 255. After some more Latin extensions we find the\n       character sets from languages using non-Roman alphabets, interspersed\n       with a variety of symbol sets such as currency symbols, Zapf Dingbats\n       or Braille.  (You might want to visit <https://www.unicode.org/> for a\n       look at some of them - my personal favourites are Telugu and Kannada.)"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use the '%' operator in Perl to count the number of set bits in a binary mask?
+  manpageQuestion3: What is the role of Unicode in the context of Perl's packing and unpacking operations?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nThe Unicode character sets associates characters with integers.\n       Encoding these numbers in an equal number of bytes would more than\n       double the requirements for storing texts written in Latin alphabets.\n       The UTF-8 encoding avoids this by storing the most common (from a\n       western point of view) characters in a single byte while encoding the\n       rarer ones in three or more bytes.\n\n       Perl uses UTF-8, internally, for most Unicode strings.\n\n       So what has this got to do with \"pack\"? Well, if you want to compose a\n       Unicode string (that is internally encoded as UTF-8), you can do so by\n       using template code \"U\". As an example, let's produce the Euro currency\n       symbol (code number 0x20AC):\n\n\t  $UTF8{Euro} = pack( 'U', 0x20AC );\n\t  # Equivalent to: $UTF8{Euro} = \"\\x{20ac}\";\n\n       Inspecting $UTF8{Euro} shows that it contains 3 bytes: \"\\xe2\\x82\\xac\".\n       However, it contains only 1 character, number 0x20AC.  The round trip\n       can be completed with \"unpack\":"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use Perl's pack function with the 'U' template to create a Unicode string representing the Euro currency symbol?
+  manpageQuestion3: Can you demonstrate how to unpack a UTF-8 encoded string back into its original Unicode character using Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\n$Unicode{Euro} = unpack( 'U', $UTF8{Euro} );\n\n       Unpacking using the \"U\" template code also works on UTF-8 encoded byte\n       strings.\n\n       Usually you'll want to pack or unpack UTF-8 strings:\n\n\t  # pack and unpack the Hebrew alphabet\n\t  my $alefbet = pack( 'U*', 0x05d0..0x05ea );\n\t  my @hebrew = unpack( 'U*', $utf );\n\n       Please note: in the general case, you're better off using\n       \"Encode::decode('UTF-8', $utf)\" to decode a UTF-8 encoded byte string\n       to a Perl Unicode string, and \"Encode::encode('UTF-8', $str)\" to encode\n       a Perl Unicode string to UTF-8 bytes. These functions provide means of\n       handling invalid byte sequences and generally have a friendlier\n       interface.\n\n   Another Portable Binary Encoding\n       The pack code \"w\" has been added to support a portable binary data\n       encoding scheme that goes way beyond simple integers. (Details can be\n       found at\n       <https://github.com/mworks-project/mw_scarab/blob/master/Scarab-0.1.00d19/doc/binary-serialization.txt>,\n       the Scarab project.)  A BER (Binary Encoded Representation) compressed\n       unsigned integer stores base 128 digits, most significant digit first,\n       with as few digits as possible.\tBit eight (the high bit) is set on\n       each byte except the last. There is no size limit to BER encoding, but\n       Perl won't go to extremes."
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use pack and unpack to convert a range of Unicode code points into a UTF-8 encoded byte string?
+  manpageQuestion3: Can you provide an example of using the 'w' pack code to encode a Perl Unicode string into a portable binary format?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nmy $berbuf = pack( 'w*', 1, 128, 128+1, 128*128+127 );\n\n       A hex dump of $berbuf, with spaces inserted at the right places, shows\n       01 8100 8101 81807F. Since the last byte is always less than 128,\n       \"unpack\" knows where to stop.\n\nTemplate Grouping\n       Prior to Perl 5.8, repetitions of templates had to be made by\n       \"x\"-multiplication of template strings. Now there is a better way as we\n       may use the pack codes \"(\" and \")\" combined with a repeat count.  The\n       \"unpack\" template from the Stack Frame example can simply be written\n       like this:\n\n\t  unpack( 'v2 (vXXCC)5 v5', $frame )\n\n       Let's explore this feature a little more. We'll begin with the\n       equivalent of\n\n\t  join( '', map( substr( $_, 0, 1 ), @str ) )\n\n       which returns a string consisting of the first character from each\n       string.\tUsing pack, we can write\n\n\t  pack( '(A)'.@str, @str )\n\n       or, because a repeat count \"*\" means \"repeat as often as required\",\n       simply\n\n\t  pack( '(A)*', @str )"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use the perlpacktut tool to pack a list of strings into a single string with each string's first character concatenated together?
+  manpageQuestion3: Can you provide an example of using the perlpacktut resource to unpack a binary buffer into specific data types, such as two 16-bit unsigned integers followed by five 32-bit unsigned integers?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\n(Note that the template \"A*\" would only have packed $str[0] in full\n       length.)\n\n       To pack dates stored as triplets ( day, month, year ) in an array\n       @dates into a sequence of byte, byte, short integer we can write\n\n\t  $pd = pack( '(CCS)*', map( @$_, @dates ) );\n\n       To swap pairs of characters in a string (with even length) one could\n       use several techniques. First, let's use \"x\" and \"X\" to skip forward\n       and back:\n\n\t  $s = pack( '(A)*', unpack( '(xAXXAx)*', $s ) );\n\n       We can also use \"@\" to jump to an offset, with 0 being the position\n       where we were when the last \"(\" was encountered:\n\n\t  $s = pack( '(A)*', unpack( '(@1A @0A @2)*', $s ) );\n\n       Finally, there is also an entirely different approach by unpacking big\n       endian shorts and packing them in the reverse byte order:\n\n\t  $s = pack( '(v)*', unpack( '(n)*', $s );\n\nLengths and Widths\n   String Lengths\n       In the previous section we've seen a network message that was\n       constructed by prefixing the binary message length to the actual\n       message. You'll find that packing a length followed by so many bytes of\n       data is a frequently used recipe since appending a null byte won't work\n       if a null byte may be part of the data. Here is an example where both\n       techniques are used: after two null terminated strings with source and\n       destination address, a Short Message (to a mobile phone) is sent after\n       a length byte:"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use perlpacktut to swap pairs of characters in a string with even length?
+  manpageQuestion3: Can you provide an example of using perlpacktut to pack a binary message with a length prefix followed by the actual data?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nmy $msg = pack( 'Z*Z*CA*', $src, $dst, length( $sm ), $sm );\n\n       Unpacking this message can be done with the same template:\n\n\t  ( $src, $dst, $len, $sm ) = unpack( 'Z*Z*CA*', $msg );\n\n       There's a subtle trap lurking in the offing: Adding another field after\n       the Short Message (in variable $sm) is all right when packing, but this\n       cannot be unpacked naively:\n\n\t  # pack a message\n\t  my $msg = pack( 'Z*Z*CA*C', $src, $dst, length( $sm ), $sm, $prio );\n\n\t  # unpack fails - $prio remains undefined!\n\t  ( $src, $dst, $len, $sm, $prio ) = unpack( 'Z*Z*CA*C', $msg );\n\n       The pack code \"A*\" gobbles up all remaining bytes, and $prio remains\n       undefined! Before we let disappointment dampen the morale: Perl's got\n       the trump card to make this trick too, just a little further up the\n       sleeve.\tWatch this:\n\n\t  # pack a message: ASCIIZ, ASCIIZ, length/string, byte\n\t  my $msg = pack( 'Z* Z* C/A* C', $src, $dst, $sm, $prio );\n\n\t  # unpack\n\t  ( $src, $dst, $sm, $prio ) = unpack( 'Z* Z* C/A* C', $msg );"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use perlpacktut to pack and unpack a message with specific fields?
+  manpageQuestion3: What is the correct way to pack and unpack a message that includes a variable-length string field?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nCombining two pack codes with a slash (\"/\") associates them with a\n       single value from the argument list. In \"pack\", the length of the\n       argument is taken and packed according to the first code while the\n       argument itself is added after being converted with the template code\n       after the slash.  This saves us the trouble of inserting the \"length\"\n       call, but it is in \"unpack\" where we really score: The value of the\n       length byte marks the end of the string to be taken from the buffer.\n       Since this combination doesn't make sense except when the second pack\n       code isn't \"a*\", \"A*\" or \"Z*\", Perl won't let you.\n\n       The pack code preceding \"/\" may be anything that's fit to represent a\n       number: All the numeric binary pack codes, and even text codes such as\n       \"A4\" or \"Z*\":\n\n\t  # pack/unpack a string preceded by its length in ASCII\n\t  my $buf = pack( 'A4/A*', \"Humpty-Dumpty\" );\n\t  # unpack $buf: '13  Humpty-Dumpty'\n\t  my $txt = unpack( 'A4/A*', $buf );"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use perlpacktut to pack a string along with its ASCII-length prefix?
+  manpageQuestion3: Can you provide an example of using perlpacktut to unpack a buffer that contains a string preceded by its length in ASCII format?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\n\"/\" is not implemented in Perls before 5.6, so if your code is required\n       to work on ancient Perls you'll need to \"unpack( 'Z* Z* C')\" to get the\n       length, then use it to make a new unpack string. For example\n\n\t  # pack a message: ASCIIZ, ASCIIZ, length, string, byte\n\t  # (5.005 compatible)\n\t  my $msg = pack( 'Z* Z* C A* C', $src, $dst, length $sm, $sm, $prio );\n\n\t  # unpack\n\t  ( undef, undef, $len) = unpack( 'Z* Z* C', $msg );\n\t  ($src, $dst, $sm, $prio) = unpack ( \"Z* Z* x A$len C\", $msg );\n\n       But that second \"unpack\" is rushing ahead. It isn't using a simple\n       literal string for the template. So maybe we should introduce...\n\n   Dynamic Templates\n       So far, we've seen literals used as templates. If the list of pack\n       items doesn't have fixed length, an expression constructing the\n       template is required (whenever, for some reason, \"()*\" cannot be used).\n       Here's an example: To store named string values in a way that can be\n       conveniently parsed by a C program, we create a sequence of names and\n       null terminated ASCII strings, with \"=\" between the name and the value,\n       followed by an additional delimiting null byte. Here's how:"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use perlpacktut to dynamically generate a pack template for a sequence of named string values with delimiters?
+  manpageQuestion3: What is an example of using perlpacktut to pack a message with ASCII strings and a byte, compatible with older Perl versions?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nmy $env = pack( '(A*A*Z*)' . keys( %Env ) . 'C',\n\t\t\t  map( { ( $_, '=', $Env{$_} ) } keys( %Env ) ), 0 );\n\n       Let's examine the cogs of this byte mill, one by one. There's the \"map\"\n       call, creating the items we intend to stuff into the $env buffer: to\n       each key (in $_) it adds the \"=\" separator and the hash entry value.\n       Each triplet is packed with the template code sequence \"A*A*Z*\" that is\n       repeated according to the number of keys. (Yes, that's what the \"keys\"\n       function returns in scalar context.) To get the very last null byte, we\n       add a 0 at the end of the \"pack\" list, to be packed with \"C\".\n       (Attentive readers may have noticed that we could have omitted the 0.)\n\n       For the reverse operation, we'll have to determine the number of items\n       in the buffer before we can let \"unpack\" rip it apart:\n\n\t  my $n = $env =~ tr/\\0// - 1;\n\t  my %env = map( split( /=/, $_ ), unpack( \"(Z*)$n\", $env ) );\n\n       The \"tr\" counts the null bytes. The \"unpack\" call returns a list of\n       name-value pairs each of which is taken apart in the \"map\" block."
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How would you use perlpacktut to pack a list of strings and integers into a binary buffer?
+  manpageQuestion3: Can you provide an example of using perlpacktut to unpack a binary buffer containing name-value pairs?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nCounting Repetitions\n       Rather than storing a sentinel at the end of a data item (or a list of\n       items), we could precede the data with a count. Again, we pack keys and\n       values of a hash, preceding each with an unsigned short length count,\n       and up front we store the number of pairs:\n\n\t  my $env = pack( 'S(S/A* S/A*)*', scalar keys( %Env ), %Env );\n\n       This simplifies the reverse operation as the number of repetitions can\n       be unpacked with the \"/\" code:\n\n\t  my %env = unpack( 'S/(S/A* S/A*)', $env );\n\n       Note that this is one of the rare cases where you cannot use the same\n       template for \"pack\" and \"unpack\" because \"pack\" can't determine a\n       repeat count for a \"()\"-group.\n\n   Intel HEX\n       Intel HEX is a file format for representing binary data, mostly for\n       programming various chips, as a text file. (See\n       <https://en.wikipedia.org/wiki/.hex> for a detailed description, and\n       <https://en.wikipedia.org/wiki/SREC_(file_format)> for the Motorola\n       S-record format, which can be unravelled using the same technique.)\n       Each line begins with a colon (':') and is followed by a sequence of\n       hexadecimal characters, specifying a byte count n (8 bit), an address\n       (16 bit, big endian), a record type (8 bit), n data bytes and a\n       checksum (8 bit) computed as the least significant byte of the two's\n       complement sum of the preceding bytes. Example: \":0300300002337A1E\"."
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use perlpacktut to pack a hash into a binary format with count prefixes for each key-value pair?
+  manpageQuestion3: Can you provide an example of how to unpack an Intel HEX file using perlpacktut?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nThe first step of processing such a line is the conversion, to binary,\n       of the hexadecimal data, to obtain the four fields, while checking the\n       checksum. No surprise here: we'll start with a simple \"pack\" call to\n       convert everything to binary:\n\n\t  my $binrec = pack( 'H*', substr( $hexrec, 1 ) );\n\n       The resulting byte sequence is most convenient for checking the\n       checksum.  Don't slow your program down with a for loop adding the\n       \"ord\" values of this string's bytes - the \"unpack\" code \"%\" is the\n       thing to use for computing the 8-bit sum of all bytes, which must be\n       equal to zero:\n\n\t  die unless unpack( \"%8C*\", $binrec ) == 0;\n\n       Finally, let's get those four fields. By now, you shouldn't have any\n       problems with the first three fields - but how can we use the byte\n       count of the data in the first field as a length for the data field?\n       Here the codes \"x\" and \"X\" come to the rescue, as they permit jumping\n       back and forth in the string to unpack."
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How would you use perlpacktut to convert a hexadecimal string into a binary representation and check its checksum?
+  manpageQuestion3: Can you provide an example of using perlpacktut to unpack data fields where the length is specified dynamically in the first field?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.
+
+
+
+    Manpage text:
+
+    my( $addr, $type, $data ) = unpack( "x n C X4 C x3 /a", $bin );
+
+           Code "x" skips a byte, since we don't need the count yet. Code "n"
+           takes care of the 16-bit big-endian integer address, and "C" unpacks
+           the record type. Being at offset 4, where the data begins, we need the
+           count.  "X4" brings us back to square one, which is the byte at offset
+           0.  Now we pick up the count, and zoom forth to offset 4, where we are
+           now fully furnished to extract the exact number of data bytes, leaving
+           the trailing checksum byte alone.
+
+    Packing and Unpacking C Structures
+           In previous sections we have seen how to pack numbers and character
+           strings. If it were not for a couple of snags we could conclude this
+           section right away with the terse remark that C structures don't
+           contain anything else, and therefore you already know all there is to
+           it.  Sorry, no: read on, please.
+
+           If you have to deal with a lot of C structures, and don't want to hack
+           all your template strings manually, you'll probably want to have a look
+           at the CPAN module "Convert::Binary::C". Not only can it parse your C
+           source directly, but it also has built-in support for all the odds and
+           ends described further on in this section.
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use perlpacktut to unpack a binary string that contains a 16-bit big-endian integer address, a byte for the record type, and then four data bytes followed by three padding bytes?
+  manpageQuestion3: What is the role of the 'X4' operator in the perlpacktut example provided?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nThe Alignment Pit\n       In the consideration of speed against memory requirements the balance\n       has been tilted in favor of faster execution. This has influenced the\n       way C compilers allocate memory for structures: On architectures where\n       a 16-bit or 32-bit operand can be moved faster between places in\n       memory, or to or from a CPU register, if it is aligned at an even or\n       multiple-of-four or even at a multiple-of eight address, a C compiler\n       will give you this speed benefit by stuffing extra bytes into\n       structures.  If you don't cross the C shoreline this is not likely to\n       cause you any grief (although you should care when you design large\n       data structures, or you want your code to be portable between\n       architectures (you do want that, don't you?)).\n\n       To see how this affects \"pack\" and \"unpack\", we'll compare these two C\n       structures:\n\n\t  typedef struct {\n\t    char     c1;\n\t    short    s;\n\t    char     c2;\n\t    long     l;\n\t  } gappy_t;"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How does the alignment of data structures affect the packing and unpacking process in perlpacktut?
+  manpageQuestion3: Can you explain how the 'pack' function in perlpacktut handles alignment considerations when packing data into a structure?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\ntypedef struct {\n\t    long     l;\n\t    short    s;\n\t    char     c1;\n\t    char     c2;\n\t  } dense_t;\n\n       Typically, a C compiler allocates 12 bytes to a \"gappy_t\" variable, but\n       requires only 8 bytes for a \"dense_t\". After investigating this\n       further, we can draw memory maps, showing where the extra 4 bytes are\n       hidden:\n\n\t  0\t      +4\t  +8\t      +12\n\t  +--+--+--+--+--+--+--+--+--+--+--+--+\n\t  |c1|xx|  s  |c2|xx|xx|xx|\tl     |    xx = fill byte\n\t  +--+--+--+--+--+--+--+--+--+--+--+--+\n\t  gappy_t\n\n\t  0\t      +4\t  +8\n\t  +--+--+--+--+--+--+--+--+\n\t  |\tl     |  h  |c1|c2|\n\t  +--+--+--+--+--+--+--+--+\n\t  dense_t\n\n       And that's where the first quirk strikes: \"pack\" and \"unpack\" templates\n       have to be stuffed with \"x\" codes to get those extra fill bytes.\n\n       The natural question: \"Why can't Perl compensate for the gaps?\"\n       warrants an answer. One good reason is that C compilers might provide\n       (non-ANSI) extensions permitting all sorts of fancy control over the\n       way structures are aligned, even at the level of an individual\n       structure field. And, if this were not enough, there is an insidious\n       thing called \"union\" where the amount of fill bytes cannot be derived\n       from the alignment of the next item alone."
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use Perl's pack and unpack functions to handle memory alignment differences between data types?
+  manpageQuestion3: Can you explain how the 'x' code in Perl's pack templates is used to account for fill bytes in memory structures?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nOK, so let's bite the bullet. Here's one way to get the alignment right\n       by inserting template codes \"x\", which don't take a corresponding item\n       from the list:\n\n\t my $gappy = pack( 'cxs cxxx l!', $c1, $s, $c2, $l );\n\n       Note the \"!\" after \"l\": We want to make sure that we pack a long\n       integer as it is compiled by our C compiler. And even now, it will only\n       work for the platforms where the compiler aligns things as above.  And\n       somebody somewhere has a platform where it doesn't.  [Probably a Cray,\n       where \"short\"s, \"int\"s and \"long\"s are all 8 bytes. :-)]\n\n       Counting bytes and watching alignments in lengthy structures is bound\n       to be a drag. Isn't there a way we can create the template with a\n       simple program? Here's a C program that does the trick:\n\n\t  #include <stdio.h>\n\t  #include <stddef.h>\n\n\t  typedef struct {\n\t    char     fc1;\n\t    short    fs;\n\t    char     fc2;\n\t    long     fl;\n\t  } gappy_t;\n\n\t  #define Pt(struct,field,tchar) \\\n\t    printf( \"@%d%s \", offsetof(struct,field), # tchar );"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use perlpacktut to generate a packing template for a C struct with specific field alignments?
+  manpageQuestion3: Can you provide an example of using perlpacktut to create a packing template for a struct containing a char, a short, a char, and a long in the specified order?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nint main() {\n\t    Pt( gappy_t, fc1, c  );\n\t    Pt( gappy_t, fs,  s! );\n\t    Pt( gappy_t, fc2, c  );\n\t    Pt( gappy_t, fl,  l! );\n\t    printf( \"\\n\" );\n\t  }\n\n       The output line can be used as a template in a \"pack\" or \"unpack\" call:\n\n\t my $gappy = pack( '@0c @2s! @4c @8l!', $c1, $s, $c2, $l );\n\n       Gee, yet another template code - as if we hadn't plenty. But \"@\" saves\n       our day by enabling us to specify the offset from the beginning of the\n       pack buffer to the next item: This is just the value the \"offsetof\"\n       macro (defined in \"<stddef.h>\") returns when given a \"struct\" type and\n       one of its field names (\"member-designator\" in C standardese).\n\n       Neither using offsets nor adding \"x\"'s to bridge the gaps is\n       satisfactory.  (Just imagine what happens if the structure changes.)\n       What we really need is a way of saying \"skip as many bytes as required\n       to the next multiple of N\".  In fluent templates, you say this with\n       \"x!N\" where N is replaced by the appropriate value. Here's the next\n       version of our struct packaging:"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use perlpacktut to pack a structured data type with specific field offsets?
+  manpageQuestion3: What is the function of the "x!N" notation in perlpacktut and how is it used in practice?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nmy $gappy = pack( 'c x!2 s c x!4 l!', $c1, $s, $c2, $l );\n\n       That's certainly better, but we still have to know how long all the\n       integers are, and portability is far away. Rather than 2, for instance,\n       we want to say \"however long a short is\". But this can be done by\n       enclosing the appropriate pack code in brackets: \"[s]\". So, here's the\n       very best we can do:\n\n\t my $gappy = pack( 'c x![s] s c x![l!] l!', $c1, $s, $c2, $l );\n\n   Dealing with Endian-ness\n       Now, imagine that we want to pack the data for a machine with a\n       different byte-order. First, we'll have to figure out how big the data\n       types on the target machine really are. Let's assume that the longs are\n       32 bits wide and the shorts are 16 bits wide. You can then rewrite the\n       template as:\n\n\t my $gappy = pack( 'c x![s] s c x![l] l', $c1, $s, $c2, $l );\n\n       If the target machine is little-endian, we could write:\n\n\t my $gappy = pack( 'c x![s] s< c x![l] l<', $c1, $s, $c2, $l );"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How would you use perlpacktut to pack a structure with variable-length fields and handle different byte orders on target systems?
+  manpageQuestion3: Can you provide an example of using perlpacktut to pack a structure with specific data types and byte order for a 32-bit system?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nThis forces the short and the long members to be little-endian, and is\n       just fine if you don't have too many struct members. But we could also\n       use the byte-order modifier on a group and write the following:\n\n\t my $gappy = pack( '( c x![s] s c x![l] l )<', $c1, $s, $c2, $l );\n\n       This is not as short as before, but it makes it more obvious that we\n       intend to have little-endian byte-order for a whole group, not only for\n       individual template codes. It can also be more readable and easier to\n       maintain.\n\n   Alignment, Take 2\n       I'm afraid that we're not quite through with the alignment catch yet.\n       The hydra raises another ugly head when you pack arrays of structures:\n\n\t  typedef struct {\n\t    short    count;\n\t    char     glyph;\n\t  } cell_t;\n\n\t  typedef cell_t buffer_t[BUFLEN];\n\n       Where's the catch? Padding is neither required before the first field\n       \"count\", nor between this and the next field \"glyph\", so why can't we\n       simply pack like this:"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use perlpacktut to pack a group of data with a specific byte order?
+  manpageQuestion3: What is the issue with packing arrays of structures in perlpacktut and how can it be addressed?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\n# something goes wrong here:\n\t  pack( 's!a' x @buffer,\n\t\tmap{ ( $_->{count}, $_->{glyph} ) } @buffer );\n\n       This packs \"3*@buffer\" bytes, but it turns out that the size of\n       \"buffer_t\" is four times \"BUFLEN\"! The moral of the story is that the\n       required alignment of a structure or array is propagated to the next\n       higher level where we have to consider padding at the end of each\n       component as well. Thus the correct template is:\n\n\t  pack( 's!ax' x @buffer,\n\t\tmap{ ( $_->{count}, $_->{glyph} ) } @buffer );\n\n   Alignment, Take 3\n       And even if you take all the above into account, ANSI still lets this:\n\n\t  typedef struct {\n\t    char     foo[2];\n\t  } foo_t;\n\n       vary in size. The alignment constraint of the structure can be greater\n       than any of its elements. [And if you think that this doesn't affect\n       anything common, dismember the next cellphone that you see. Many have\n       ARM cores, and the ARM structure rules make \"sizeof (foo_t)\" == 4]\n\n   Pointers for How to Use Them\n       The title of this section indicates the second problem you may run into\n       sooner or later when you pack C structures. If the function you intend\n       to call expects a, say, \"void *\" value, you cannot simply take a\n       reference to a Perl variable. (Although that value certainly is a\n       memory address, it's not the address where the variable's contents are\n       stored.)"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you correctly pack a C structure in Perl using the pack function, considering alignment and padding requirements?
+  manpageQuestion3: What is an example of a common issue when using Perl's pack function with pointers to C structures?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nTemplate code \"P\" promises to pack a \"pointer to a fixed length\n       string\".  Isn't this what we want? Let's try:\n\n\t   # allocate some storage and pack a pointer to it\n\t   my $memory = \"\\x00\" x $size;\n\t   my $memptr = pack( 'P', $memory );\n\n       But wait: doesn't \"pack\" just return a sequence of bytes? How can we\n       pass this string of bytes to some C code expecting a pointer which is,\n       after all, nothing but a number? The answer is simple: We have to\n       obtain the numeric address from the bytes returned by \"pack\".\n\n\t   my $ptr = unpack( 'L!', $memptr );\n\n       Obviously this assumes that it is possible to typecast a pointer to an\n       unsigned long and vice versa, which frequently works but should not be\n       taken as a universal law. - Now that we have this pointer the next\n       question is: How can we put it to good use? We need a call to some C\n       function where a pointer is expected. The read(2) system call comes to\n       mind:\n\n\t   ssize_t read(int fd, void *buf, size_t count);"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use perlpacktut to convert a string into a pointer and then obtain its numeric representation for passing to C code?
+  manpageQuestion3: Can you provide an example of using perlpacktut to prepare a buffer for use with the read(2) system call in C?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nAfter reading perlfunc explaining how to use \"syscall\" we can write\n       this Perl function copying a file to standard output:\n\n\t   require 'syscall.ph'; # run h2ph to generate this file\n\t   sub cat($){\n\t       my $path = shift();\n\t       my $size = -s $path;\n\t       my $memory = \"\\x00\" x $size;  # allocate some memory\n\t       my $ptr = unpack( 'L', pack( 'P', $memory ) );\n\t       open( F, $path ) || die( \"$path: cannot open ($!)\\n\" );\n\t       my $fd = fileno(F);\n\t       my $res = syscall( &SYS_read, fileno(F), $ptr, $size );\n\t       print $memory;\n\t       close( F );\n\t   }\n\n       This is neither a specimen of simplicity nor a paragon of portability\n       but it illustrates the point: We are able to sneak behind the scenes\n       and access Perl's otherwise well-guarded memory! (Important note:\n       Perl's \"syscall\" does not require you to construct pointers in this\n       roundabout way. You simply pass a string variable, and Perl forwards\n       the address.)\n\n       How does \"unpack\" with \"P\" work? Imagine some pointer in the buffer\n       about to be unpacked: If it isn't the null pointer (which will smartly\n       produce the \"undef\" value) we have a start address - but then what?\n       Perl has no way of knowing how long this \"fixed length string\" is, so\n       it's up to you to specify the actual size as an explicit length after\n       \"P\"."
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you use Perl's syscall function to read the contents of a file into memory and print it to standard output?
+  manpageQuestion3: Can you explain how the 'P' format specifier works in the unpack function within the perlpacktut example?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nmy $mem = \"abcdefghijklmn\";\n\t  print unpack( 'P5', pack( 'P', $mem ) ); # prints \"abcde\"\n\n       As a consequence, \"pack\" ignores any number or \"*\" after \"P\".\n\n       Now that we have seen \"P\" at work, we might as well give \"p\" a whirl.\n       Why do we need a second template code for packing pointers at all? The\n       answer lies behind the simple fact that an \"unpack\" with \"p\" promises a\n       null-terminated string starting at the address taken from the buffer,\n       and that implies a length for the data item to be returned:\n\n\t  my $buf = pack( 'p', \"abc\\x00efhijklmn\" );\n\t  print unpack( 'p', $buf );\t# prints \"abc\"\n\n       Albeit this is apt to be confusing: As a consequence of the length\n       being implied by the string's length, a number after pack code \"p\" is a\n       repeat count, not a length as after \"P\".\n\n       Using \"pack(..., $x)\" with \"P\" or \"p\" to get the address where $x is\n       actually stored must be used with circumspection. Perl's internal\n       machinery considers the relation between a variable and that address as\n       its very own private matter and doesn't really care that we have\n       obtained a copy. Therefore:"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How would you use the 'p' template code in pack to extract a null-terminated string from a buffer?
+  manpageQuestion3: Can you provide an example of using the 'P' template code in pack to obtain the address of a string variable?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\n•   Do not use \"pack\" with \"p\" or \"P\" to obtain the address of variable\n\t   that's bound to go out of scope (and thereby freeing its memory)\n\t   before you are done with using the memory at that address.\n\n       •   Be very careful with Perl operations that change the value of the\n\t   variable. Appending something to the variable, for instance, might\n\t   require reallocation of its storage, leaving you with a pointer\n\t   into no-man's land.\n\n       •   Don't think that you can get the address of a Perl variable when it\n\t   is stored as an integer or double number! \"pack('P', $x)\" will\n\t   force the variable's internal representation to string, just as if\n\t   you had written something like \"$x .= ''\".\n\n       It's safe, however, to P- or p-pack a string literal, because Perl\n       simply allocates an anonymous variable.\n\nPack Recipes\n       Here are a collection of (possibly) useful canned recipes for \"pack\"\n       and \"unpack\":\n\n\t   # Convert IP address for socket functions\n\t   pack( \"C4\", split /\\./, \"123.4.5.6\" );"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How can you convert an IP address like '123.4.5.6' into a packed binary format suitable for socket functions using perlpacktut?
+  manpageQuestion3: What caution should be taken when using the 'p' or 'P' format specifiers in Perl's pack function according to perlpacktut?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\n# Count the bits in a chunk of memory (e.g. a select vector)\n\t   unpack( '%32b*', $mask );\n\n\t   # Determine the endianness of your system\n\t   $is_little_endian = unpack( 'c', pack( 's', 1 ) );\n\t   $is_big_endian = unpack( 'xc', pack( 's', 1 ) );\n\n\t   # Determine the number of bits in a native integer\n\t   $bits = unpack( '%32I!', ~0 );\n\n\t   # Prepare argument for the nanosleep system call\n\t   my $timespec = pack( 'L!L!', $secs, $nanosecs );\n\n       For a simple memory dump we unpack some bytes into just as many pairs\n       of hex digits, and use \"map\" to handle the traditional spacing - 16\n       bytes to a line:\n\n\t   my $i;\n\t   print map( ++$i % 16 ? \"$_ \" : \"$_\\n\",\n\t\t      unpack( 'H2' x length( $mem ), $mem ) ),\n\t\t length( $mem ) % 16 ? \"\\n\" : '';\n\nFunnies Section\n\t   # Pulling digits out of nowhere...\n\t   print unpack( 'C', pack( 'x' ) ),\n\t\t unpack( '%B*', pack( 'A' ) ),\n\t\t unpack( 'H', pack( 'A' ) ),\n\t\t unpack( 'A', unpack( 'C', pack( 'A' ) ) ), \"\\n\";\n\n\t   # One for the road ;-)\n\t   my $advice = pack( 'all u can in a van' );"
+  manpageQuestion1: What is the primary purpose of the `perlpacktut` resource?
+  manpageQuestion2: How can you determine the endianness of a system using `perlpacktut`?
+  manpageQuestion3: Can you provide an example of using `perlpacktut` to perform a memory dump and format the output with 16 bytes per line?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpacktut`.\n\n\n\nManpage text:\n\nAuthors\n       Simon Cozens and Wolfgang Laun.\n\nperl v5.34.1\t\t\t  2022-02-19\t\t\tPERLPACKTUT(1)"
+  manpageQuestion1: What is the primary purpose of the perlpacktut resource?
+  manpageQuestion2: How would you use perlpacktut to demonstrate the packing and unpacking of data in Perl?
+  manpageQuestion3: Can you provide an example of using perlpacktut to show how to pack a string into a binary format and then unpack it back?
+

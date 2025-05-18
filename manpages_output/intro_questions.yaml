@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `intro`.\n\n\n\nManpage text:\n\nINTRO(1)\t\t    General Commands Manual\t\t      INTRO(1)\n\nNAME\n     intro – introduction to general commands (tools and utilities)\n\nDESCRIPTION\n     Section one of the manual contains most of the commands which comprise\n     the BSD user environment.\tSome of the commands included in section one\n     are text editors, command shell interpreters, searching and sorting\n     tools, file manipulation commands system status commands, remote file\n     copy commands, mail commands, compilers and compiler tools, formatted\n     output tools, and line printer commands.\n\n     All commands set a status value upon exit which may be tested to see if\n     the command completed normally.  The exit values and their meanings are\n     explained in the individual manuals.  Traditionally, the value 0\n     signifies successful completion of the command.\n\nSEE ALSO\n     man(1), intro(2), intro(4), intro(8),\n\n     Tutorials in the UNIX User's Manual Supplementary Documents.\n\nHISTORY\n     A intro manual appeared in Version 6 AT&T UNIX."
+  manpageQuestion1: What is the primary purpose of the intro command?
+  manpageQuestion2: How can I use the intro command to learn more about commands in the BSD user environment?
+  manpageQuestion3: What is the significance of the exit status value 0 when using the intro command?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `intro`.\n\n\n\nManpage text:\n\nmacOS 15.3\t\t       December 30, 1993\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the 'intro' resource?
+  manpageQuestion2: How would you use the 'intro' resource to display introductory information about macOS?
+  manpageQuestion3: Can you provide an example of using the 'intro' resource to show a specific section of macOS documentation?
+

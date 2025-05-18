@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `bundle-open`.\n\n\n\nManpage text:\n\nBUNDLE-OPEN(1)\t\t\t\t\t\t\tBUNDLE-OPEN(1)\n\nNAME\n       bundle-open - Opens the source directory for a gem in your bundle\n\nSYNOPSIS\n       bundle open [GEM]\n\nDESCRIPTION\n       Opens the source directory of the provided GEM in your editor.\n\n       For this to work the EDITOR or BUNDLER_EDITOR environment variable has\n       to be set.\n\n       Example:\n\n\n\n\t   bundle open ´rack´\n\n\n\n\n       Will open the source directory for the ´rack´ gem in your bundle.\n\n\t\t\t\t November 2018\t\t\tBUNDLE-OPEN(1)"
+  manpageQuestion1: What is the primary purpose of the bundle-open command?
+  manpageQuestion2: How would you use the bundle-open command to open the source directory of the 'rack' gem?
+  manpageQuestion3: What is required for the bundle-open command to function properly?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `corebrightnessdiag`.\n\n\n\nManpage text:\n\ncorebrightnessdiag(1)\t    General Commands Manual\t corebrightnessdiag(1)\n\nNAME\n     corebrightnessdiag – corebrightnessdiag\n\nSYNOPSIS\n     corebrightnessdiag\n\nDESCRIPTION\n     corebrightnessdiag Collects Night Shift Information for sysdiagnose\n     corebrightnessdiag\n\nmacOS 15.3\t\t\t   1/23/2017\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the corebrightnessdiag tool?
+  manpageQuestion2: How can you use corebrightnessdiag to collect Night Shift information for sysdiagnose?
+  manpageQuestion3: What is the functionality of the corebrightnessdiag command in the context of macOS system diagnostics?
+

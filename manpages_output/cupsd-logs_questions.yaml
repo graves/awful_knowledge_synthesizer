@@ -1,0 +1,95 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cupsd-logs`.\n\n\n\nManpage text:\n\ncupsd-logs(5)\t\t\t  Apple Inc.\t\t\t cupsd-logs(5)\n\nNAME\n       cupsd-logs - cupsd log files (access_log, error_log, and page_log)\n\nDESCRIPTION\n       cupsd(8) normally maintains three log files: access_log to track\n       requests that are submitted to the scheduler, error_log to track\n       progress and errors, and page_log to track pages that are printed.\n       Configuration directives in cupsd.conf(5) and cups-files.conf(5)\n       control what information is logged and where it is stored.\n\n   ACCESS LOG FILE FORMAT\n       The access_log file lists each HTTP resource that is accessed by a web\n       browser or client.  Each line is in an extended version of the so-\n       called \"Common Log Format\" used by many web servers and web reporting\n       tools:\n\n\t   host group user date-time \"method resource version\" status bytes\n\t     ipp-operation ipp-status\n\n       For example:\n\n\t   10.0.1.2 - - [01/Dec/2005:21:50:28 +0000] \"POST / HTTP/1.1\" 200 317\n\t     CUPS-Get-Printers successful-ok-ignored-or-substituted-attributes\n\t   localhost - - [01/Dec/2005:21:50:32 +0000] \"GET /admin HTTP/1.1\"\n\t     200 0 - -\n\t   localhost - - [01/Dec/2005:21:50:32 +0000] \"POST / HTTP/1.1\"\n\t     200 157 CUPS-Get-Printers\n\t     successful-ok-ignored-or-substituted-attributes\n\t   localhost - - [01/Dec/2005:21:50:32 +0000] \"POST / HTTP/1.1\"\n\t     200 1411 CUPS-Get-Devices -\n\t   localhost - - [01/Dec/2005:21:50:32 +0000] \"GET /admin HTTP/1.1\"\n\t     200 6667 - -"
+  manpageQuestion1: What is the primary purpose of the cupsd-logs resource?
+  manpageQuestion2: How would you interpret a line from the access_log file to understand the details of a web request made to CUPS?
+  manpageQuestion3: Can you explain the structure of the error_log file and provide an example line that illustrates its format?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cupsd-logs`.
+
+
+
+    Manpage text:
+
+    The host field will normally only be an IP address unless you have
+           enabled the HostNameLookups directive in the cupsd.conf file or if the
+           IP address corresponds to your local machine.
+
+           The group field always contains "-".
+
+           The user field is the authenticated username of the requesting user.
+           If no username and password is supplied for the request then this field
+           contains "-".
+
+           The date-time field is the date and time of the request in local time
+           and is in the format "[DD/MON/YYYY:HH:MM:SS +ZZZZ]".
+
+           The method field is the HTTP method used: "GET", "HEAD", "OPTIONS",
+           "POST", or "PUT".  "GET" requests are used to get files from the
+           server, both for the web interface and to get configuration and log
+           files.  "HEAD" requests are used to get information about a resource
+           prior to a "GET".  "OPTIONS" requests are used to upgrade connections
+           to TLS encryption.  "POST" requests are used for web interface forms
+           and IPP requests.  "PUT" requests are used to upload configuration
+           files.
+  manpageQuestion1: What is the primary purpose of the cupsd-logs resource?
+  manpageQuestion2: How can you determine the HTTP method used in a request logged by cupsd-logs?
+  manpageQuestion3: What information does the 'user' field in cupsd-logs typically contain?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cupsd-logs`.\n\n\n\nManpage text:\n\nThe resource field is the filename of the requested resource.\n\n       The version field is the HTTP specification version used by the client.\n       For CUPS clients this will always be \"HTTP/1.1\".\n\n       The status field contains the HTTP result status of the request, as\n       follows:\n\n\t    200  Successful operation.\n\n\t    201  File created/modified successfully.\n\n\t    304  The requested file has not changed.\n\n\t    400  Bad HTTP request; typically this means that you have a\n\t\t malicious program trying to access your server.\n\n\t    401  Unauthorized, authentication (username + password) is\n\t\t required.\n\n\t    403  Access is forbidden; typically this means that a client tried\n\t\t to access a file or resource they do not have permission to\n\t\t access.\n\n\t    404  The file or resource does not exist.\n\n\t    405  URL access method is not allowed; typically this means you\n\t\t have a web browser using your server as a proxy.\n\n\t    413  Request too large; typically this means that a client tried\n\t\t to print a file larger than the MaxRequestSize allows."
+  manpageQuestion1: What is the primary purpose of the cupsd-logs resource?
+  manpageQuestion2: How would you interpret the status field value '403' in cupsd-logs?
+  manpageQuestion3: Can you explain the significance of the 'version' field in cupsd-logs entries?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cupsd-logs`.\n\n\n\nManpage text:\n\n426  Upgrading to TLS-encrypted connection.\n\n\t    500  Server error; typically this happens when the server is\n\t\t unable to open/create a file - consult the error_log file for\n\t\t details.\n\n\t    501  The client requested encryption but encryption support is not\n\t\t enabled/compiled in.\n\n\t    505  HTTP version number not supported; typically this means that\n\t\t you have a malicious program trying to access your server.\n\n       The bytes field contains the number of bytes in the request.  For POST\n       requests the bytes field contains the number of bytes of non-IPP data\n       that is received from the client.\n\n       The ipp-operation field contains either \"-\" for non-IPP requests or the\n       IPP operation name for POST requests containing an IPP request.\n\n       The ipp-status field contains either \"-\" for non-IPP requests or the\n       IPP status code name for POST requests containing an IPP response.\n\n   ERROR LOG FILE FORMAT\n       The error_log file lists messages from the scheduler - errors,\n       warnings, etc. The LogLevel directive in the cupsd.conf(5) file\n       controls which messages are logged:"
+  manpageQuestion1: What is the primary purpose of the cupsd-logs resource?
+  manpageQuestion2: How can you determine if a client is attempting to use an unsupported HTTP version with cupsd-logs?
+  manpageQuestion3: What information does the error_log file in cupsd-logs provide and how is it controlled?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cupsd-logs`.\n\n\n\nManpage text:\n\nlevel date-time message\n\n       For example:\n\n\t   I [20/May/1999:19:18:28 +0000] [Job 1] Queued on 'DeskJet' by 'mike'.\n\t   D [20/May/1999:19:18:28 +0000] [Job 1] argv[0]=\"DeskJet\"\n\t   D [20/May/1999:19:18:28 +0000] [Job 1] argv[1]=\"1\"\n\t   D [20/May/1999:19:18:28 +0000] [Job 1] argv[2]=\"mike\"\n\t   D [20/May/1999:19:18:28 +0000] [Job 1] argv[3]=\"myjob\"\n\t   D [20/May/1999:19:18:28 +0000] [Job 1] argv[4]=\"1\"\n\t   D [20/May/1999:19:18:28 +0000] [Job 1] argv[5]=\"media=\n\t     na_letter_8.5x11in sides=one-sided\"\n\t   D [20/May/1999:19:18:28 +0000] [Job 1] argv[6]=\"/var/spool/cups/\n\t     d000001-001\"\n\t   I [20/May/1999:19:21:02 +0000] [Job 2] Queued on 'DeskJet' by 'mike'.\n\t   I [20/May/1999:19:22:24 +0000] [Job 2] Canceled by 'mike'.\n\n       The level field contains the type of message:\n\n       A    Alert message (LogLevel alert)\n\n       C    Critical error message (LogLevel crit)\n\n       D    Debugging message (LogLevel debug)\n\n       d    Detailed debugging message (LogLevel debug2)\n\n       E    Normal error message (LogLevel error)"
+  manpageQuestion1: What is the primary purpose of the cupsd-logs resource?
+  manpageQuestion2: How can you interpret the log entry 'I [20/May/1999:19:18:28 +0000] [Job 1] Queued on 'DeskJet' by 'mike' to understand the event it describes?
+  manpageQuestion3: What does the 'level' field in a cupsd-logs entry indicate, and how is it used to categorize log messages?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cupsd-logs`.\n\n\n\nManpage text:\n\nI    Informational message (LogLevel info)\n\n       N    Notice message (LogLevel notice)\n\n       W    Warning message (LogLevel warn)\n\n       X    Emergency error message (LogLevel emerg)\n\n       The date-time field contains the date and time of when the page started\n       printing. The format of this field is identical to the data-time field\n       in the access_log file.\n\n       The message field contains a free-form textual message.\tMessages from\n       job filters are prefixed with \"[Job NNN]\" where \"NNN\" is the job ID.\n\n   PAGE LOG FILE FORMAT\n       The page_log file lists the total number of pages (sheets) that are\n       printed.  By default, each line contains the following information:\n\n\t   printer user job-id date-time total num-sheets job-billing\n\t     job-originating-host-name job-name media sides\n\n       For example the entry for a two page job called \"myjob\" might look\n       like:\n\n\t   DeskJet root 1 [20/May/1999:19:21:06 +0000] total 2 acme-123\n\t     localhost myjob na_letter_8.5x11in one-sided"
+  manpageQuestion1: What is the primary purpose of the cupsd-logs tool?
+  manpageQuestion2: How would you interpret a line in the page_log file that contains the entry 'DeskJet root 1 [20/May/1999:19:21:06 +0000] total 2 acme-123 localhost myjob na_letter_8.5x11in one-sided /nothink'?
+  manpageQuestion3: What does the 'date-time' field in the page_log file represent and how is it formatted?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cupsd-logs`.
+
+
+
+    Manpage text:
+
+    The PageLogFormat directive in the cupsd.conf(5) file can be used to
+           change this information.
+
+           The printer field contains the name of the printer that printed the
+           page.  If you send a job to a printer class, this field will contain
+           the name of the printer that was assigned the job.
+
+           The user field contains the name of the user (the IPP requesting-user-
+           name attribute) that submitted this file for printing.
+
+           The job-id field contains the job number of the page being printed.
+
+           The date-time field contains the date and time of when the page started
+           printing.  The format of this field is identical to the data-time field
+           in the access_log file.
+
+           The num-sheets field provides the total number of pages (sheets) that
+           have been printed on for the job.
+
+           The job-billing field contains a copy of the job-billing or job-
+           account-id attributes provided with the IPP Create-Job or Print-Job
+           requests or "-" if neither was provided.
+  manpageQuestion1: What is the primary purpose of the cupsd-logs resource?
+  manpageQuestion2: How can you modify the format of logs generated by cupsd-logs to include additional information about the printer and user?
+  manpageQuestion3: What does the job-billing field in cupsd-logs indicate about a printed job?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cupsd-logs`.\n\n\n\nManpage text:\n\nThe job-originating-host-name field contains the hostname or IP address\n       of the client that printed the job.\n\n       The job-name field contains a copy of the job-name attribute provided\n       with the IPP Create-Job or Print-Job requests or \"-\" if none was\n       provided.\n\n       The media field contains a copy of the media or media-col/media-size\n       attribute provided with the IPP Create-Job or Print-Job requests or \"-\"\n       if none was provided.\n\n       The sides field contains a copy of the sides attribute provided with\n       the IPP Create-Job or Print-Job requests or \"-\" if none was provided.\n\nSEE ALSO\n       cupsd(8), cupsd.conf(5), cups-files.conf(5), CUPS Online Help\n       (http://localhost:631/help)\n\nCOPYRIGHT\n       Copyright © 2007-2019 by Apple Inc.\n\n26 April 2019\t\t\t     CUPS\t\t\t cupsd-logs(5)"
+  manpageQuestion1: What is the primary purpose of the cupsd-logs resource?
+  manpageQuestion2: How can you determine the hostname of the client that submitted a print job from the cupsd-logs resource?
+  manpageQuestion3: What information does the 'media' field in the cupsd-logs resource contain?
+

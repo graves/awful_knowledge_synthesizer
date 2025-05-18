@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `corekdld`.\n\n\n\nManpage text:\n\ncorekdld(8)\t\t    System Manager's Manual\t\t   corekdld(8)\n\nNAME\n     corekdld – CoreKDL daemon\n\nDESCRIPTION\n     corekdld provides support for ApplePay and FairPlay operations. It is not\n     meant to be invoked directly.\n\nDarwin\t\t\t\t   02/12/19\t\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the corekdld daemon?
+  manpageQuestion2: How would you typically interact with the corekdld daemon in a system environment?
+  manpageQuestion3: Can you explain the role of corekdld in relation to ApplePay and FairPlay operations on macOS?
+

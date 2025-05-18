@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `modelmanagerd`.\n\n\n\nManpage text:\n\nmodelmanagerd(8)\t    System Manager's Manual\t      modelmanagerd(8)\n\nNAME\n     modelmanagerd – Model Management Daemon\n\nDESCRIPTION\n     modelmanagerd is a daemon that manages ML models and requests for\n     execution of those models.\n\n     There are no options for modelmanagerd, and users should not run\n     modelmanagerd manually.\n\nmacOS\t\t\t\tOctober 8, 2023 \t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the modelmanagerd daemon?
+  manpageQuestion2: How would you check if the modelmanagerd daemon is running on a macOS system?
+  manpageQuestion3: What is the recommended approach for managing ML models using the modelmanagerd daemon?
+

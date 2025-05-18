@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `fddist`.\n\n\n\nManpage text:\n\nfddist(1m)\t\t\t USER COMMANDS\t\t\t    fddist(1m)\n\nNAME\n       fddist - file descriptor usage distributions. Uses DTrace.\n\nSYNOPSIS\n       fddist [-r|-w]\n\nDESCRIPTION\n       This prints distributions for read and write events by file descriptor,\n       by process. This can be used to determine which file descriptor a\n       process is doing the most I/O with.\n\n       Since this uses DTrace, only users with root privileges can run this\n       command.\n\nOPTIONS\n       -r     reads only\n\n       -w     writes only\n\nEXAMPLES\n       Sample both read and write activity,\n\t      # fddist\n\n       Sample reads only,\n\t      # fddist -r\n\nFIELDS\n       EXEC   process name\n\n       PID    process ID\n\n       value  file descriptor\n\n       count  number of events\n\nBASED ON\n       /usr/demo/dtrace/lquantize.d\n\nDOCUMENTATION\n       DTrace Guide \"Aggregations\" chapter (docs.sun.com)\n\n       See the DTraceToolkit for further documentation under the Docs\n       directory. The DTraceToolkit docs may include full worked examples with\n       verbose descriptions explaining the output.\n\nEXIT\n       fddist will sample until Ctrl-C is hit.\n\nSEE ALSO\n       dtrace(1M)"
+  manpageQuestion1: What is the primary purpose of the fddist tool?
+  manpageQuestion2: How would you use fddist to analyze read activity for a specific process?
+  manpageQuestion3: Can you provide an example of using fddist to monitor write operations on all processes?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `fddist`.\n\n\n\nManpage text:\n\nversion 0.70\t\t\t June 8, 2005\t\t\t    fddist(1m)"
+  manpageQuestion1: What is the primary purpose of the fddist tool?
+  manpageQuestion2: How would you use fddist to calculate the distance between two points in a 2D plane?
+  manpageQuestion3: Can you provide an example of using fddist to determine the distance between the points (3, 4) and (0, 0)?
+

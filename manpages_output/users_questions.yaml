@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `users`.\n\n\n\nManpage text:\n\nUSERS(1)\t\t    General Commands Manual\t\t      USERS(1)\n\nNAME\n     users – list current users\n\nSYNOPSIS\n     users\n\nDESCRIPTION\n     The users utility lists the login names of the users currently on the\n     system, in sorted order, space separated, on a single line.\n\nFILES\n     /var/run/utmpx\n\nSEE ALSO\n     finger(1), last(1), who(1), getutxent(3), utmpx(5)\n\nHISTORY\n     The users command appeared in 3.0BSD.\n\nmacOS 15.3\t\t       January 21, 2010 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the users command?
+  manpageQuestion2: How would you use the users command to list currently logged-in users on a macOS system?
+  manpageQuestion3: Can you provide an example of using the users command to display the login names of all currently active users?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `knowledgeconstructiond`.\n\n\n\nManpage text:\n\nknowledgeconstructiond(8)   System Manager's Manual  knowledgeconstructiond(8)\n\nNAME\n     knowledgeconstructiond – A daemon that analyzes content on the device to\n     build a general purpose knowledge graph.\n\nSYNOPSIS\n     knowledgeconstructiond\n\nDESCRIPTION\n     knowledgeconstructiond analyzes the content on this device to help build\n     a knowledge graph representing the device and the user. It works together\n     with intelligenceplatformd, performing some of the heavy processing\n     tasks, to generate the knowledge graph.\n\nSEE ALSO\n     intelligenceplatformd(8)\n\nmacOS\t\t\t\t June 6, 2022\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the knowledgeconstructiond daemon?
+  manpageQuestion2: How would you start the knowledgeconstructiond daemon to analyze device content and build a knowledge graph?
+  manpageQuestion3: What is the relationship between knowledgeconstructiond and intelligenceplatformd in the context of building a knowledge graph?
+

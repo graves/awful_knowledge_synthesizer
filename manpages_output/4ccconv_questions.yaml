@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `4ccconv`.\n\n\n\nManpage text:\n\n4ccconv(1)\t\t    General Commands Manual\t\t    4ccconv(1)\n\nNAME\n     4ccconv – 4 Character Code Conversion Tool\n\nSYNOPSIS\n     4ccconv [-xu4] number\n\nDESCRIPTION\n     4ccconv automatically converts a 4 character code to its hexadecimal or\n     unsigned int representation, and vice versa.\n\n     Optional Arguments:\n\n     -x       print hexadecimal representation of ‘number’ as a 4cc\n\n     -u       print unsigned integer representation of ‘number’ as a 4cc\n\n     -4       print 4 code char representation of ‘number’ (0x prefix will be\n\t      interpreted as hexadecimal)\n\nDarwin\t\t\t\t    10/2/20\t\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the 4ccconv tool?
+  manpageQuestion2: How would you use 4ccconv to convert the hexadecimal value 0x1A2B3C4D to its unsigned integer representation?
+  manpageQuestion3: Can you provide an example of using 4ccconv to convert the unsigned integer 2153678901 to its corresponding four-character code format?
+

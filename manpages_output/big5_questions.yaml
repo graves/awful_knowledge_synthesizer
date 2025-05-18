@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `big5`.\n\n\n\nManpage text:\n\nBIG5(5) \t\t      File Formats Manual\t\t       BIG5(5)\n\nNAME\n     big5 – “Big Five” encoding for Traditional Chinese text\n\nSYNOPSIS\n     ENCODING \"BIG5\"\n\nDESCRIPTION\n     “Big Five” is the de facto standard for encoding Traditional Chinese\n     text.  Each character is represented by either one or two bytes.\n     Characters from the ASCII character set are represented as single bytes\n     in the range 0x00 - 0x7F.\tTraditional Chinese characters are represented\n     by two bytes: the first in the range 0xA1 - 0xFE, the second in the range\n     0x40 - 0xFE.\n\nSEE ALSO\n     euc(5), gb18030(5), utf8(5)\n\nmacOS 15.3\t\t\tAugust 7, 2003\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the big5 encoding?
+  manpageQuestion2: How would you specify the Big Five encoding when working with a file in macOS?
+  manpageQuestion3: Can you provide an example of how Big Five encoding represents a Traditional Chinese character?
+

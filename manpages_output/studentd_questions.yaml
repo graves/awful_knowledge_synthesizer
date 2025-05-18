@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `studentd`.\n\n\n\nManpage text:\n\nstudentd(8)\t\t    System Manager's Manual\t\t   studentd(8)\n\nNAME\n     studentd – Classroom's student control agent.\n\nDESCRIPTION\n     studentd manages the Classroom experience for students.  studentd should\n     not be invoked directly.  studentd might be running without classes\n     configured.\n\nmacOS 15.3\t\t\tOctober 9, 2018 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the studentd service on macOS?
+  manpageQuestion2: How does studentd interact with the Classroom experience for students?
+  manpageQuestion3: Under what circumstances would studentd be running on a macOS system?
+

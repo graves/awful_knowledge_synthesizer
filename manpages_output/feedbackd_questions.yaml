@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `feedbackd`.\n\n\n\nManpage text:\n\nfeedbackd(8)\t\t    System Manager's Manual\t\t  feedbackd(8)\n\nNAME\n     feedbackd – A background daemon for feedback gathering.\n\nDESCRIPTION\n     feedbackd launches feedback gathering tools such as Feedback Assistant.\n\n     There are no configuration options to feedbackd. Users should not run\n     feedbackd manually.\n\nmacOS\t\t\t\tJanuary 9, 2023 \t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the feedbackd tool?
+  manpageQuestion2: How would you check if the feedbackd daemon is running on a macOS system?
+  manpageQuestion3: What should users avoid when dealing with the feedbackd service?
+

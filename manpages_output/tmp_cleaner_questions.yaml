@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tmp_cleaner`.\n\n\n\nManpage text:\n\nTMP_CLEANER(8)\t\t    System Manager's Manual\t\tTMP_CLEANER(8)\n\nNAME\n     tmp_cleaner – Remove old content from /tmp\n\nSYNOPSIS\n     Takes no arguments, and users should not launch it manually.\n\nDESCRIPTION\n     Check for old content in the /tmp directory every day. If there is\n     content there that hasn't been modified recently, remove it.\n\nHISTORY\n     tmp_cleaner first appeared in macOS 14.0\n\nDarwin\t\t\t       February 23, 2023\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the tmp_cleaner tool?
+  manpageQuestion2: How would you use tmp_cleaner to automatically clean up the /tmp directory?
+  manpageQuestion3: Can you provide an example of how tmp_cleaner manages the /tmp directory over time?
+

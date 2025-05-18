@@ -1,0 +1,44 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `db_deadlock`.\n\n\n\nManpage text:\n\ndb_deadlock(1)\t\t    General Commands Manual\t\tdb_deadlock(1)\n\nNAME\n     db_deadlock\n\nSYNOPSIS\n     db_deadlock [-Vv] [-a e | m | n | o | w | y] [-h home] [-L file]\n\t\t [-t sec.usec]\n\nDESCRIPTION\n     The db_deadlock utility traverses the database environment lock region,\n     and aborts a lock request each time it detects a deadlock or a lock\n     request that has timed out. By default, in the case of a deadlock, a\n     random lock request is chosen to be aborted.\n\n     This utility should be run as a background daemon, or the underlying\n     Berkeley DB deadlock detection interfaces should be called in some other\n     way, whenever there are multiple threads or processes accessing a\n     database and at least one of them is modifying it.\n\n     The options are as follows:\n\n     -a\n       When a deadlock is detected, abort the locker:\n\n       m\n\t with the greatest number of locks\n\n       n\n\t with the fewest number of locks\n\n       o\n\t with the oldest locker ID\n\n       w\n\t with the fewest number of write locks"
+  manpageQuestion1: What is the primary purpose of the db_deadlock utility?
+  manpageQuestion2: How can you configure db_deadlock to abort the locker with the fewest number of locks when a deadlock is detected?
+  manpageQuestion3: What command would you use to run db_deadlock in the background with a specified home directory and timeout of 5 seconds?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `db_deadlock`.\n\n\n\nManpage text:\n\ny\n\t with the youngest locker ID\n\n       When lock or transaction timeouts have been specified:\n\n       e\n\t abort any lock request that has timed out\n\n     -h\n       Specify a home directory for the database environment; by default, the\n       current working directory is used.\n\n     -L\n       Log the execution of the db_deadlock utility to the specified file in\n       the following format, where ### is the process ID, and the date is the\n       time the utility was started.\n\n\t     db_deadlock: ### Wed Jun 15 01:23:45 EDT 1995\n\n       This file will be removed if the db_deadlock utility exits gracefully.\n\n     -t\n       Check the database environment every sec seconds plus usec microseconds\n       to see if a process has been forced to wait for a lock; if one has,\n       review the database environment lock structures.\n\n     -V\n       Write the library version number to the standard output, and exit.\n\n     -v\n       Run in verbose mode, generating messages each time the detector runs.\n\n     If the -t option is not specified, db_deadlock will run once and exit."
+  manpageQuestion1: What is the primary purpose of the db_deadlock utility?
+  manpageQuestion2: How can you specify a custom home directory for the database environment when using db_deadlock?
+  manpageQuestion3: What command would you use to check the database environment every 5 seconds for lock waits and log the activity to a file?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `db_deadlock`.
+
+
+
+    Manpage text:
+
+    The db_deadlock utility uses a Berkeley DB environment (as described for
+         the -h option, the environment variable DB_HOME, or because the utility
+         was run in a directory containing a Berkeley DB environment). In order to
+         avoid environment corruption when using a Berkeley DB environment,
+         db_deadlock should always be given the chance to detach from the
+         environment and exit gracefully. To cause db_deadlock to release all
+         environment resources and exit cleanly, send it an interrupt signal
+         (SIGINT).
+
+         The db_deadlock utility does not attempt to create the Berkeley DB shared
+         memory regions if they do not already exist. The application which
+         creates the region should be started first, and then, once the region is
+         created, the db_deadlock utility should be started.
+
+         The DB_ENV->lock_detect method is the underlying method used by the
+         db_deadlock utility. See the db_deadlock utility source code for an
+         example of using DB_ENV->lock_detect in a IEEE/ANSI Std 1003.1 (POSIX)
+         environment.
+  manpageQuestion1: What is the primary purpose of the db_deadlock utility?
+  manpageQuestion2: How can you ensure that the db_deadlock utility exits cleanly after detecting a deadlock?
+  manpageQuestion3: What is the correct sequence of operations for using db_deadlock with a Berkeley DB environment?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `db_deadlock`.\n\n\n\nManpage text:\n\nThe db_deadlock utility exits 0 on success, and >0 if an error occurs.\n\nENVIRONMENT\n     DB_HOME  If the -h option is not specified and the environment variable\n\t      DB_HOME is set, it is used as the path of the database home, as\n\t      described in DB_ENV->open.\n\nSEE ALSO\n     db_archive(1), db_checkpoint(1), db_dump(1), db_load(1), db_printlog(1),\n     db_recover(1), db_stat(1), db_upgrade(1), db_verify(1)\n\nDarwin\t\t\t       December 3, 2003 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the db_deadlock utility?
+  manpageQuestion2: How would you use the db_deadlock command to check for deadlocks in a Berkeley DB environment?
+  manpageQuestion3: Can you provide an example of using the db_deadlock utility to diagnose and resolve a deadlock issue in a database system?
+

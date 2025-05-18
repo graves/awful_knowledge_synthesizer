@@ -1,0 +1,88 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `inet`.\n\n\n\nManpage text:\n\nINET(3) \t\t   Library Functions Manual\t\t       INET(3)\n\nNAME\n     inet_addr, inet_aton, inet_lnaof, inet_makeaddr, inet_netof,\n     inet_network, inet_ntoa, inet_ntop, inet_pton – Internet address\n     manipulation routines\n\nLIBRARY\n     Standard C Library (libc, -lc)\n\nSYNOPSIS\n     #include <arpa/inet.h>\n\n     in_addr_t\n     inet_addr(const char *cp);\n\n     int\n     inet_aton(const char *cp, struct in_addr *pin);\n\n     in_addr_t\n     inet_lnaof(struct in_addr in);\n\n     struct in_addr\n     inet_makeaddr(in_addr_t net, in_addr_t lna);\n\n     in_addr_t\n     inet_netof(struct in_addr in);\n\n     in_addr_t\n     inet_network(const char *cp);\n\n     char *\n     inet_ntoa(struct in_addr in);\n\n     const char *\n     inet_ntop(int af, const void * restrict src, char * restrict dst,\n\t socklen_t size);\n\n     int\n     inet_pton(int af, const char * restrict src, void * restrict dst);\n\nDESCRIPTION\n     The routines inet_aton(), inet_addr() and inet_network() interpret\n     character strings representing numbers expressed in the Internet standard\n     ‘.’ notation."
+  manpageQuestion1: What is the primary purpose of the inet tools?
+  manpageQuestion2: How would you use inet_aton to convert the IP address '192.168.1.1' into a 32-bit integer representation?
+  manpageQuestion3: Can you provide an example of using inet_pton to convert the IPv4 address '10.0.0.1' into a binary format?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `inet`.
+
+
+
+    Manpage text:
+
+    The inet_pton() function converts a presentation format address (that is,
+         printable form as held in a character string) to network format (usually
+         a struct in_addr or some other internal binary representation, in network
+         byte order).  It returns 1 if the address was valid for the specified
+         address family, or 0 if the address was not parseable in the specified
+         address family, or -1 if some system error occurred (in which case errno
+         will have been set).  This function is presently valid for AF_INET and
+         AF_INET6.
+
+         The inet_aton() routine interprets the specified character string as an
+         Internet address, placing the address into the structure provided.  It
+         returns 1 if the string was successfully interpreted, or 0 if the string
+         is invalid.  The inet_addr() and inet_network() functions return numbers
+         suitable for use as Internet addresses and Internet network numbers,
+         respectively.
+
+         The function inet_ntop() converts an address *src from network format
+         (usually a struct in_addr or some other binary form, in network byte
+         order) to presentation format (suitable for external display purposes).
+         The size argument specifies the size, in bytes, of the buffer *dst.
+         INET_ADDRSTRLEN and INET6_ADDRSTRLEN define the maximum size required to
+         convert an address of the respective type.  It returns NULL if a system
+         error occurs (in which case, errno will have been set), or it returns a
+         pointer to the destination string.  This function is presently valid for
+         AF_INET and AF_INET6.
+  manpageQuestion1: What is the primary purpose of the inet functions in the context of network programming?
+  manpageQuestion2: How would you use the inet_aton() function to convert a dotted decimal IP address like '192.168.1.1' into a network byte order binary representation?
+  manpageQuestion3: Can you provide an example of using the inet_ntop() function to convert a binary IPv4 address (in network byte order) back into its human-readable string format?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `inet`.\n\n\n\nManpage text:\n\nThe routine inet_ntoa() takes an Internet address and returns an ASCII\n     string representing the address in ‘.’ notation.  The routine\n     inet_makeaddr() takes an Internet network number and a local network\n     address and constructs an Internet address from it.  The routines\n     inet_netof() and inet_lnaof() break apart Internet host addresses,\n     returning the network number and local network address part,\n     respectively.\n\n     All Internet addresses are returned in network order (bytes ordered from\n     left to right).  All network numbers and local address parts are returned\n     as machine byte order integer values.\n\nINTERNET ADDRESSES\n     Values specified using the ‘.’ notation take one of the following forms:\n\n\t   a.b.c.d\n\t   a.b.c\n\t   a.b\n\t   a\n\n     When four parts are specified, each is interpreted as a byte of data and\n     assigned, from left to right, to the four bytes of an Internet address.\n     Note that when an Internet address is viewed as a 32-bit integer quantity\n     on the VAX the bytes referred to above appear as “d.c.b.a”.  That is, VAX\n     bytes are ordered from right to left."
+  manpageQuestion1: What is the primary purpose of the inet tools in the context of network programming on macOS?
+  manpageQuestion2: How would you use inet_makeaddr() to construct an Internet address from a network number and a local network address?
+  manpageQuestion3: Can you explain how the inet_ntoa() function converts an Internet address to its dotted decimal notation representation?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `inet`.
+
+
+
+    Manpage text:
+
+    When a three part address is specified, the last part is interpreted as a
+         16-bit quantity and placed in the right-most two bytes of the network
+         address.  This makes the three part address format convenient for
+         specifying Class B network addresses as “128.net.host”.
+
+         When a two part address is supplied, the last part is interpreted as a
+         24-bit quantity and placed in the right most three bytes of the network
+         address.  This makes the two part address format convenient for
+         specifying Class A network addresses as “net.host”.
+
+         When only one part is given, the value is stored directly in the network
+         address without any byte rearrangement.
+
+         All numbers supplied as “parts” in a ‘.’ notation may be decimal, octal,
+         or hexadecimal, as specified in the C language (i.e., a leading 0x or 0X
+         implies hexadecimal; otherwise, a leading 0 implies octal; otherwise, the
+         number is interpreted as decimal).
+
+    DIAGNOSTICS
+         The constant INADDR_NONE is returned by inet_addr() and inet_network()
+         for malformed requests.
+  manpageQuestion1: What is the primary purpose of the inet command in macOS?
+  manpageQuestion2: How would you use the inet command to convert a three-part address like ‘128.192.168.1’ into a network address?
+  manpageQuestion3: Can you provide an example of using the inet command to convert a two-part address like ‘192.168.1’ into a network address?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `inet`.\n\n\n\nManpage text:\n\nERRORS\n     The inet_ntop() call fails if:\n\n     [EAFNOSUPPORT]\t*src was not an AF_INET or AF_INET6 family address.\n\n     [ENOSPC]\t\tsize was not large enough to store the presentation\n\t\t\tform of the address.\n\nLEGACY SYNOPSIS\n     #include <sys/types.h>\n     #include <sys/socket.h>\n     #include <netinet/in.h>\n     #include <arpa/inet.h>\n\n     These include files are necessary for all functions.\n\nSEE ALSO\n     byteorder(3), getaddrinfo(3), gethostbyname(3), getnameinfo(3),\n     getnetent(3), inet_net(3), hosts(5), networks(5)\n\n     IP Version 6 Addressing Architecture, RFC, 2373, July 1998.\n\nSTANDARDS\n     The inet_ntop() and inet_pton() functions conform to X/Open Networking\n     Services Issue 5.2 (“XNS5.2”).  Note that inet_pton() does not accept 1-,\n     2-, or 3-part dotted addresses; all four parts must be specified and are\n     interpreted only as decimal values.  Any leading 0s will be stripped.\n     This is a narrower input set than that accepted by inet_aton().\n\nHISTORY\n     These functions appeared in 4.2BSD."
+  manpageQuestion1: What is the primary purpose of the inet tool or its related functions?
+  manpageQuestion2: How would you use inet_ntop() to convert an IPv4 address in network byte order to its human-readable string representation?
+  manpageQuestion3: Can you explain how the inet_pton() function handles addresses with leading zeros in their components?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `inet`.\n\n\n\nManpage text:\n\nBUGS\n     The value INADDR_NONE (0xffffffff) is a valid broadcast address, but\n     inet_addr() cannot return that value without indicating failure.  The\n     newer inet_aton() function does not share this problem.  The problem of\n     host byte ordering versus network byte ordering is confusing.  The string\n     returned by inet_ntoa() resides in a static memory area.\n\n     The inet_addr() function should return a struct in_addr.\n\nmacOS 15.3\t\t\t June 14, 2007\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the inet resource?
+  manpageQuestion2: How would you use inet to convert an IPv4 address from its dotted decimal notation to a 32-bit unsigned integer?
+  manpageQuestion3: Can you explain how the inet resource handles byte ordering differences between host and network systems?
+

@@ -1,0 +1,58 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tk_getSaveFile`.\n\n\n\nManpage text:\n\ntk_getOpenFile(n)\t     Tk Built-In Commands\t     tk_getOpenFile(n)\n\n______________________________________________________________________________\n\nNAME\n       tk_getOpenFile, tk_getSaveFile - pop up a dialog box for the user to\n       select a file to open or save.\n\nSYNOPSIS\n       tk_getOpenFile ?option value ...?\n       tk_getSaveFile ?option value ...?\n______________________________________________________________________________\n\nDESCRIPTION\n       The procedures tk_getOpenFile and tk_getSaveFile pop up a dialog box\n       for the user to select a file to open or save. The tk_getOpenFile\n       command is usually associated with the Open command in the File menu.\n       Its purpose is for the user to select an existing file only. If the\n       user enters a non-existent file, the dialog box gives the user an error\n       prompt and requires the user to give an alternative selection. If an\n       application allows the user to create new files, it should do so by\n       providing a separate New menu command."
+  manpageQuestion1: What is the primary purpose of the tk_getOpenFile and tk_getSaveFile commands?
+  manpageQuestion2: How would you use the tk_getOpenFile command to allow a user to select an existing file for opening?
+  manpageQuestion3: Can you provide an example of using the tk_getSaveFile command to let a user save a file with a default filename?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tk_getSaveFile`.\n\n\n\nManpage text:\n\nThe tk_getSaveFile command is usually associated with the Save as\n       command in the File menu. If the user enters a file that already\n       exists, the dialog box prompts the user for confirmation whether the\n       existing file should be overwritten or not.\n\n       The following option-value pairs are possible as command line arguments\n       to these two commands:\n\n       -defaultextension extension\n\t      Specifies a string that will be appended to the filename if the\n\t      user enters a filename without an extension. The default value\n\t      is the empty string, which means no extension will be appended\n\t      to the filename in any case. This option is ignored on Mac OS X,\n\t      which does not require extensions to filenames, and the UNIX\n\t      implementation guesses reasonable values for this from the\n\t      -filetypes option when this is not supplied.\n\n       -filetypes filePatternList\n\t      If a File types listbox exists in the file dialog on the\n\t      particular platform, this option gives the filetypes in this\n\t      listbox. When the user choose a filetype in the listbox, only\n\t      the files of that type are listed. If this option is\n\t      unspecified, or if it is set to the empty list, or if the File\n\t      types listbox is not supported by the particular platform then\n\t      all files are listed regardless of their types. See the section\n\t      SPECIFYING FILE PATTERNS below for a discussion on the contents\n\t      of filePatternList."
+  manpageQuestion1: What is the primary purpose of the tk_getSaveFile command?
+  manpageQuestion2: How can you configure the tk_getSaveFile command to ensure that files are saved with a default extension of '.txt'?
+  manpageQuestion3: What is the correct way to specify file types when using tk_getSaveFile on a platform that supports the File types listbox?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tk_getSaveFile`.\n\n\n\nManpage text:\n\n-initialdir directory\n\t      Specifies that the files in directory should be displayed when\n\t      the dialog pops up. If this parameter is not specified, then the\n\t      files in the current working directory are displayed. If the\n\t      parameter specifies a relative path, the return value will\n\t      convert the relative path to an absolute path.\n\n       -initialfile filename\n\t      Specifies a filename to be displayed in the dialog when it pops\n\t      up.\n\n       -message string\n\t      Specifies a message to include in the client area of the dialog.\n\t      This is only available on Mac OS X.\n\n       -multiple boolean\n\t      Allows the user to choose multiple files from the Open dialog.\n\n       -parent window\n\t      Makes window the logical parent of the file dialog. The file\n\t      dialog is displayed on top of its parent window. On Mac OS X,\n\t      this turns the file dialog into a sheet attached to the parent\n\t      window.\n\n       -title titleString\n\t      Specifies a string to display as the title of the dialog box. If\n\t      this option is not specified, then a default title is displayed."
+  manpageQuestion1: What is the primary purpose of the tk_getSaveFile command in macOS?
+  manpageQuestion2: How can you use the -initialdir option to set a specific directory as the starting point for the file dialog?
+  manpageQuestion3: What is the function of the -title option when using tk_getSaveFile?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tk_getSaveFile`.\n\n\n\nManpage text:\n\n-typevariable variableName\n\t      The global variable variableName is used to preselect which\n\t      filter is used from filterList when the dialog box is opened and\n\t      is updated when the dialog box is closed, to the last selected\n\t      filter. The variable is read once at the beginning to select the\n\t      appropriate filter. If the variable does not exist, or its value\n\t      does not match any filter typename, or is empty ({}), the dialog\n\t      box will revert to the default behavior of selecting the first\n\t      filter in the list. If the dialog is canceled, the variable is\n\t      not modified.\n\n       If the user selects a file, both tk_getOpenFile and tk_getSaveFile\n       return the full pathname of this file. If the user cancels the\n       operation, both commands return the empty string.\n\nSPECIFYING FILE PATTERNS\n       The filePatternList value given by the -filetypes option is a list of\n       file patterns. Each file pattern is a list of the form\n\t      typeName {extension ?extension ...?} ?{macType ?macType ...?}?\n       typeName is the name of the file type described by this file pattern\n       and is the text string that appears in the File types listbox.\n       extension is a file extension for this file pattern.  macType is a\n       four-character Macintosh file type. The list of macTypes is optional\n       and may be omitted for applications that do not need to execute on the\n       Macintosh platform."
+  manpageQuestion1: What is the primary purpose of the tk_getSaveFile command?
+  manpageQuestion2: How would you use tk_getSaveFile to specify a file type filter for saving files?
+  manpageQuestion3: Can you provide an example of using tk_getSaveFile to save a file with a specific extension and macType?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tk_getSaveFile`.
+
+
+
+    Manpage text:
+
+    Several file patterns may have the same typeName, in which case they
+           refer to the same file type and share the same entry in the listbox.
+           When the user selects an entry in the listbox, all the files that match
+           at least one of the file patterns corresponding to that entry are
+           listed. Usually, each file pattern corresponds to a distinct type of
+           file. The use of more than one file pattern for one type of file is
+           only necessary on the Macintosh platform.
+
+           On the Macintosh platform, a file matches a file pattern if its name
+           matches at least one of the extension(s) AND it belongs to at least one
+           of the macType(s) of the file pattern. For example, the C Source Files
+           file pattern in the sample code matches with files that have a .c
+           extension AND belong to the macType TEXT. To use the OR rule instead,
+           you can use two file patterns, one with the extensions only and the
+           other with the macType only. The GIF Files file type in the sample code
+           matches files that either have a .gif extension OR belong to the
+           macType GIFF.
+  manpageQuestion1: What is the primary purpose of the tk_getSaveFile resource?
+  manpageQuestion2: How would you configure tk_getSaveFile to allow users to save files with .gif extensions or files of the macType GIFF?
+  manpageQuestion3: Can you explain how the tk_getSaveFile resource handles file patterns that have the same typeName?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tk_getSaveFile`.\n\n\n\nManpage text:\n\nOn the Unix and Windows platforms, a file matches a file pattern if its\n       name matches at least one of the extension(s) of the file pattern. The\n       macTypes are ignored.\n\nSPECIFYING EXTENSIONS\n       On the Unix and Macintosh platforms, extensions are matched using glob-\n       style pattern matching. On the Windows platform, extensions are matched\n       by the underlying operating system. The types of possible extensions\n       are:\n\n       (1)    the special extension “*” matches any file;\n\n       (2)    the special extension matches any files that do not have an\n\t      extension (i.e., the filename contains no full stop character);\n\n       (3)    any character string that does not contain any wild card\n\t      characters (* and ?).\n\n       Due to the different pattern matching rules on the various platforms,\n       to ensure portability, wild card characters are not allowed in the\n       extensions, except as in the special extension “*”.  Extensions without\n       a full stop character (e.g.  “~”) are allowed but may not work on all\n       platforms.  <>"
+  manpageQuestion1: What is the primary purpose of the tk_getSaveFile resource?
+  manpageQuestion2: How would you use tk_getSaveFile to allow users to save a file with a specific extension, such as .txt?
+  manpageQuestion3: Can you explain how to use tk_getSaveFile to create a file dialog that accepts both files with and without extensions?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `tk_getSaveFile`.\n\n\n\nManpage text:\n\nEXAMPLE\n\t      set types {\n\t\t  {{Text Files}       {.txt}\t    }\n\t\t  {{TCL Scripts}      {.tcl}\t    }\n\t\t  {{C Source Files}   {.c}\tTEXT}\n\t\t  {{GIF Files}\t      {.gif}\t    }\n\t\t  {{GIF Files}\t      {}\tGIFF}\n\t\t  {{All Files}\t      * \t    }\n\t      }\n\t      set filename [tk_getOpenFile -filetypes $types]\n\n\t      if {$filename != \"\"} {\n\t\t  # Open the file ...\n\t      }\n\nSEE ALSO\n       tk_chooseDirectory\n\nKEYWORDS\n       file selection dialog\n\nTk\t\t\t\t      4.2\t\t     tk_getOpenFile(n)"
+  manpageQuestion1: What is the primary purpose of the tk_getSaveFile command in Tcl/Tk?
+  manpageQuestion2: How would you use tk_getSaveFile to allow a user to select a file for saving with a specific file type filter?
+  manpageQuestion3: Can you provide an example of using tk_getSaveFile to prompt the user for a file path and handle the selected file?
+

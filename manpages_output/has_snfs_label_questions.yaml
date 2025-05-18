@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `has_snfs_label`.\n\n\n\nManpage text:\n\nHAS_SNFS_LABEL(8)\t    System Manager's Manual\t     HAS_SNFS_LABEL(8)\n\nNAME\n       has_snfs_label - Check for Xsan Disk Label\n\nSYNOPSIS\n       has_snfs_label device_path\n\nDESCRIPTION\n       The Xsan File System has_snfs_label utility used to test a device for a\n       SNFS formatted label.\n\nEXIT VALUE\n\t      0 - Device does not have a SNFS label\n\t      1 - Device has a SNFS label\n\nSEE ALSO\n       cvlabel(8)\n\nXsan File System\t\t   June 2014\t\t     HAS_SNFS_LABEL(8)"
+  manpageQuestion1: What is the primary purpose of the has_snfs_label utility?
+  manpageQuestion2: How would you use has_snfs_label to check if a device at /Volumes/MyVolume is SNFS formatted?
+  manpageQuestion3: What does the has_snfs_label command return if a device is found to have a SNFS label?
+

@@ -1,0 +1,569 @@
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.
+
+
+
+    Manpage text:
+
+    PERL5280DELTA(1)       Perl Programmers Reference Guide       PERL5280DELTA(1)
+  manpageQuestion1: What is the primary purpose of the perl5280delta tool?
+  manpageQuestion2: How would you use perl5280delta to process a Perl script and apply specific delta updates?
+  manpageQuestion3: Can you provide an example of using perl5280delta to update a Perl script with the latest version of the Perl 5.28.0 delta?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\nNAME\n       perl5280delta - what is new for perl v5.28.0\n\nDESCRIPTION\n       This document describes differences between the 5.26.0 release and the\n       5.28.0 release.\n\n       If you are upgrading from an earlier release such as 5.24.0, first read\n       perl5260delta, which describes differences between 5.24.0 and 5.26.0.\n\nCore Enhancements\n   Unicode 10.0 is supported\n       A list of changes is at\n       <http://www.unicode.org/versions/Unicode10.0.0>.\n\n   \"delete\" on key/value hash slices\n       \"delete\" can now be used on key/value hash slices, returning the keys\n       along with the deleted values.  [GH #15982]\n       <https://github.com/Perl/perl5/issues/15982>\n\n   Experimentally, there are now alphabetic synonyms for some regular\n       expression assertions\n       If you find it difficult to remember how to write certain of the\n       pattern assertions, there are now alphabetic synonyms.\n\n\tCURRENT \t       NEW SYNONYMS\n\t------\t\t       ------------\n\t(?=...)        (*pla:...) or (*positive_lookahead:...)\n\t(?!...)        (*nla:...) or (*negative_lookahead:...)\n\t(?<=...)       (*plb:...) or (*positive_lookbehind:...)\n\t(?<!...)       (*nlb:...) or (*negative_lookbehind:...)\n\t(?>...)        (*atomic:...)"
+  manpageQuestion1: What is the primary purpose of the perl5280delta tool?
+  manpageQuestion2: How would you use perl5280delta to understand changes between Perl 5.26.0 and 5.28.0?
+  manpageQuestion3: Can you explain the new feature of alphabetic synonyms for regular expression assertions in Perl 5.28.0 and provide an example of their usage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\nThese are considered experimental, so using any of these will raise\n       (unless turned off) a warning in the \"experimental::alpha_assertions\"\n       category.\n\n   Mixed Unicode scripts are now detectable\n       A mixture of scripts, such as Cyrillic and Latin, in a string is often\n       the sign of a spoofing attack.  A new regular expression construct now\n       allows for easy detection of these.  For example, you can say\n\n\tqr/(*script_run: \\d+ \\b )/x\n\n       And the digits matched will all be from the same set of 10.  You won't\n       get a look-alike digit from a different script that has a different\n       value than what it appears to be.\n\n       Or:\n\n\tqr/(*sr: \\b \\w+ \\b )/x\n\n       makes sure that all the characters come from the same script.\n\n       You can also combine script runs with \"(?>...)\" (or \"*atomic:...)\").\n\n       Instead of writing:\n\n\t   (*sr:(?<...))\n\n       you can now run:\n\n\t   (*asr:...)\n\t   # or\n\t   (*atomic_script_run:...)\n\n       This is considered experimental, so using it will raise (unless turned\n       off) a warning in the \"experimental::script_run\" category."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How can you use perl5280delta to detect a string containing mixed Unicode scripts like Cyrillic and Latin?
+  manpageQuestion3: Can you provide an example of using perl5280delta to ensure that all characters in a string come from the same script?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\nSee \"Script Runs\" in perlre.\n\n   In-place editing with \"perl -i\" is now safer\n       Previously in-place editing (\"perl -i\") would delete or rename the\n       input file as soon as you started working on a new file.\n\n       Without backups this would result in loss of data if there was an\n       error, such as a full disk, when writing to the output file.\n\n       This has changed so that the input file isn't replaced until the output\n       file has been completely written and successfully closed.\n\n       This works by creating a work file in the same directory, which is\n       renamed over the input file once the output file is complete.\n\n       Incompatibilities:\n\n       •   Since this renaming needs to only happen once, if you create a\n\t   thread or child process, that renaming will only happen in the\n\t   original thread or process.\n\n       •   If you change directories while processing a file, and your\n\t   operating system doesn't provide the \"unlinkat()\", \"renameat()\" and\n\t   \"fchmodat()\" functions, the final rename step may fail."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How can you use perl5280delta to perform in-place editing of a file with a backup mechanism?
+  manpageQuestion3: What are the potential issues that may arise when using perl5280delta with certain operating systems or threading models?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n[GH #15216] <https://github.com/Perl/perl5/issues/15216>\n\n   Initialisation of aggregate state variables\n       A persistent lexical array or hash variable can now be initialized, by\n       an expression such as \"state @a = qw(x y z)\".  Initialization of a list\n       of persistent lexical variables is still not possible.\n\n   Full-size inode numbers\n       On platforms where inode numbers are of a type larger than perl's\n       native integer numerical types, stat will preserve the full content of\n       large inode numbers by returning them in the form of strings of decimal\n       digits.\tExact comparison of inode numbers can thus be achieved by\n       comparing with \"eq\" rather than \"==\".  Comparison with \"==\", and other\n       numerical operations (which are usually meaningless on inode numbers),\n       work as well as they did before, which is to say they fall back to\n       floating point, and ultimately operate on a fairly useless rounded\n       inode number if the real inode number is too big for the floating point\n       format."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How would you initialize a persistent lexical array in Perl using the features described in the manpage?
+  manpageQuestion3: What is the recommended way to compare inode numbers when they are too large for standard integer types in Perl?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.
+
+
+
+    Manpage text:
+
+    The "sprintf" %j format size modifier is now available with pre-C99
+           compilers
+           The actual size used depends on the platform, so remains unportable.
+
+       Close-on-exec flag set atomically
+           When opening a file descriptor, perl now generally opens it with its
+           close-on-exec flag already set, on platforms that support doing so.
+           This improves thread safety, because it means that an "exec" initiated
+           by one thread can no longer cause a file descriptor in the process of
+           being opened by another thread to be accidentally passed to the
+           executed program.
+
+           Additionally, perl now sets the close-on-exec flag more reliably,
+           whether it does so atomically or not.  Most file descriptors were
+           getting the flag set, but some were being missed.
+
+       String- and number-specific bitwise ops are no longer experimental
+           The new string-specific ("&. |. ^. ~.") and number-specific ("& | ^ ~")
+           bitwise operators introduced in Perl 5.22 that are available within the
+           scope of "use feature 'bitwise'" are no longer experimental.  Because
+           the number-specific ops are spelled the same way as the existing
+           operators that choose their behaviour based on their operands, these
+           operators must still be enabled via the "bitwise" feature, in either of
+           these two ways:
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How can you enable string-specific bitwise operators in Perl 5.22?
+  manpageQuestion3: What is the effect of setting the close-on-exec flag in Perl when opening a file descriptor?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\nuse feature \"bitwise\";\n\n\t   use v5.28; # \"bitwise\" now included\n\n       They are also now enabled by the -E command-line switch.\n\n       The \"bitwise\" feature no longer emits a warning.  Existing code that\n       disables the \"experimental::bitwise\" warning category that the feature\n       previously used will continue to work.\n\n       One caveat that module authors ought to be aware of is that the numeric\n       operators now pass a fifth TRUE argument to overload methods.  Any\n       methods that check the number of operands may croak if they do not\n       expect so many.\tXS authors in particular should be aware that this:\n\n\t   SV *\n\t   bitop_handler (lobj, robj, swap)\n\n       may need to be changed to this:\n\n\t   SV *\n\t   bitop_handler (lobj, robj, swap, ...)\n\n   Locales are now thread-safe on systems that support them\n       These systems include Windows starting with Visual Studio 2005, and in\n       POSIX 2008 systems.\n\n       The implication is that you are now free to use locales and change them\n       in a threaded environment.  Your changes affect only your thread.  See\n       \"Multi-threaded operation\" in perllocale"
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How can you enable the 'bitwise' feature in Perl 5.28 using command-line options?
+  manpageQuestion3: What changes are required in XS authors when using the 'bitwise' feature in Perl 5.28?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\nNew read-only predefined variable \"${^SAFE_LOCALES}\"\n       This variable is 1 if the Perl interpreter is operating in an\n       environment where it is safe to use and change locales (see\n       perllocale.)  This variable is true when the perl is unthreaded, or\n       compiled in a platform that supports thread-safe locale operation (see\n       previous item).\n\nSecurity\n   [CVE-2017-12837] Heap buffer overflow in regular expression compiler\n       Compiling certain regular expression patterns with the case-insensitive\n       modifier could cause a heap buffer overflow and crash perl.  This has\n       now been fixed.\t[GH #16021]\n       <https://github.com/Perl/perl5/issues/16021>\n\n   [CVE-2017-12883] Buffer over-read in regular expression parser\n       For certain types of syntax error in a regular expression pattern, the\n       error message could either contain the contents of a random, possibly\n       large, chunk of memory, or could crash perl.  This has now been fixed.\n       [GH #16025] <https://github.com/Perl/perl5/issues/16025>"
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How can you check if the Perl interpreter is operating in a safe locale environment?
+  manpageQuestion3: What security issues were addressed in the perl5280delta resource and how were they fixed?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n[CVE-2017-12814] $ENV{$key} stack buffer overflow on Windows\n       A possible stack buffer overflow in the %ENV code on Windows has been\n       fixed by removing the buffer completely since it was superfluous\n       anyway.\t[GH #16051] <https://github.com/Perl/perl5/issues/16051>\n\n   Default Hash Function Change\n       Perl 5.28.0 retires various older hash functions which are not viewed\n       as sufficiently secure for use in Perl. We now support four general\n       purpose hash functions, Siphash (2-4 and 1-3 variants), and  Zaphod32,\n       and StadtX hash. In addition we support SBOX32 (a form of tabular\n       hashing) for hashing short strings, in conjunction with any of the\n       other hash functions provided.\n\n       By default Perl is configured to support SBOX hashing of strings up to\n       24 characters, in conjunction with StadtX hashing on 64 bit builds, and\n       Zaphod32 hashing for 32 bit builds.\n\n       You may control these settings with the following options to Configure:"
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How can you configure Perl 5.28.0 to use SBOX hashing for strings up to 24 characters and StadtX hashing on 64-bit builds?
+  manpageQuestion3: What security issue was addressed in the perl5280delta update for Windows?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n-DPERL_HASH_FUNC_SIPHASH\n\t   -DPERL_HASH_FUNC_SIPHASH13\n\t   -DPERL_HASH_FUNC_STADTX\n\t   -DPERL_HASH_FUNC_ZAPHOD32\n\n       To disable SBOX hashing you can use\n\n\t   -DPERL_HASH_USE_SBOX32_ALSO=0\n\n       And to set the maximum length to use SBOX32 hashing on with:\n\n\t   -DSBOX32_MAX_LEN=16\n\n       The maximum length allowed is 256. There probably isn't much point in\n       setting it higher than the default.\n\nIncompatible Changes\n   Subroutine attribute and signature order\n       The experimental subroutine signatures feature has been changed so that\n       subroutine attributes must now come before the signature rather than\n       after. This is because attributes like \":lvalue\" can affect the\n       compilation of code within the signature, for example:\n\n\t   sub f :lvalue ($a = do { $x = \"abc\"; return substr($x,0,1)}) { ...}\n\n       Note that this the second time they have been flipped:\n\n\t   sub f :lvalue ($a, $b) { ... }; # 5.20; 5.28 onwards\n\t   sub f ($a, $b) :lvalue { ... }; # 5.22 - 5.26"
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How can you disable SBOX hashing in Perl using the perl5280delta resource?
+  manpageQuestion3: What is the maximum length allowed for SBOX32 hashing when using the perl5280delta resource?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.
+
+
+
+    Manpage text:
+
+    Comma-less variable lists in formats are no longer allowed
+           Omitting the commas between variables passed to formats is no longer
+           allowed.  This has been deprecated since Perl 5.000.
+
+       The ":locked" and ":unique" attributes have been removed
+           These have been no-ops and deprecated since Perl 5.12 and 5.10,
+           respectively.
+
+       "\N{}" with nothing between the braces is now illegal
+           This has been deprecated since Perl 5.24.
+
+       Opening the same symbol as both a file and directory handle is no longer
+           allowed
+           Using "open()" and "opendir()" to associate both a filehandle and a
+           dirhandle to the same symbol (glob or scalar) has been deprecated since
+           Perl 5.10.
+
+       Use of bare "<<" to mean "<<""" is no longer allowed
+           Use of a bare terminator has been deprecated since Perl 5.000.
+
+       Setting $/ to a reference to a non-positive integer no longer allowed
+           This used to work like setting it to "undef", but has been deprecated
+           since Perl 5.20.
+  manpageQuestion1: What is the primary purpose of the perl5280delta tool?
+  manpageQuestion2: How would you use perl5280delta to convert the hexadecimal value 0x1A2B3C4D to its unsigned integer representation?
+  manpageQuestion3: Can you provide an example of using perl5280delta to convert the unsigned integer 2153678901 to its corresponding four-character code format?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.
+
+
+
+    Manpage text:
+
+    Unicode code points with values exceeding "IV_MAX" are now fatal
+           This was deprecated since Perl 5.24.
+
+       The "B::OP::terse" method has been removed
+           Use "B::Concise::b_terse" instead.
+
+       Use of inherited AUTOLOAD for non-methods is no longer allowed
+           This was deprecated in Perl 5.004.
+
+       Use of strings with code points over 0xFF is not allowed for bitwise string
+           operators
+           Code points over 0xFF do not make sense for bitwise operators and such
+           an operation will now croak, except for a few remaining cases. See
+           perldeprecation.
+
+           This was deprecated in Perl 5.24.
+
+       Setting "${^ENCODING}" to a defined value is now illegal
+           This has been deprecated since Perl 5.22 and a no-op since Perl 5.26.
+
+       Backslash no longer escapes colon in PATH for the "-S" switch
+           Previously the "-S" switch incorrectly treated backslash ("\") as an
+           escape for colon when traversing the "PATH" environment variable.  [GH
+           #15584] <https://github.com/Perl/perl5/issues/15584>
+  manpageQuestion1: What is the primary purpose of the perl5280delta tool?
+  manpageQuestion2: How would you use perl5280delta to check for deprecated features in a Perl script?
+  manpageQuestion3: Can you provide an example of using perl5280delta to identify a deprecated warning related to code points exceeding 0xFF in a Perl script?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\nthe -DH (DEBUG_H) misfeature has been removed\n       On a perl built with debugging support, the \"H\" flag to the \"-D\"\n       debugging option has been removed. This was supposed to dump hash\n       values, but has been broken for many years.\n\n   Yada-yada is now strictly a statement\n       By the time of its initial stable release in Perl 5.12, the \"...\"\n       (yada-yada) operator was explicitly intended to serve as a statement,\n       not an expression.  However, the original implementation was confused\n       on this point, leading to inconsistent parsing.\tThe operator was\n       accidentally accepted in a few situations where it did not serve as a\n       complete statement, such as\n\n\t   ... . \"foo\";\n\t   ... if $a < $b;\n\n       The parsing has now been made consistent, permitting yada-yada only as\n       a statement.  Affected code can use \"do{...}\" to put a yada-yada into\n       an arbitrary expression context.\n\n   Sort algorithm can no longer be specified\n       Since Perl 5.8, the sort pragma has had subpragmata \"_mergesort\",\n       \"_quicksort\", and \"_qsort\" that can be used to specify which algorithm\n       perl should use to implement the sort builtin.  This was always\n       considered a dubious feature that might not last, hence the underscore\n       spellings, and they were documented as not being portable beyond Perl\n       5.8.  These subpragmata have now been deleted, and any attempt to use\n       them is an error.  The sort pragma otherwise remains, and the\n       algorithm-neutral \"stable\" subpragma can be used to control sorting\n       behaviour.  [GH #13234] <https://github.com/Perl/perl5/issues/13234>"
+  manpageQuestion1: What is the primary purpose of the `perl5280delta` resource?
+  manpageQuestion2: How would you handle a situation where code uses the deprecated 'H' flag in Perl debugging options?
+  manpageQuestion3: What is the impact of the removal of the sort subpragmata like '_mergesort' in Perl 5.28?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.
+
+
+
+    Manpage text:
+
+    Over-radix digits in floating point literals
+           Octal and binary floating point literals used to permit any hexadecimal
+           digit to appear after the radix point.  The digits are now restricted
+           to those appropriate for the radix, as digits before the radix point
+           always were.
+
+       Return type of "unpackstring()"
+           The return types of the C API functions "unpackstring()" and
+           "unpack_str()" have changed from "I32" to "SSize_t", in order to
+           accommodate datasets of more than two billion items.
+
+    Deprecations
+       Use of "vec" on strings with code points above 0xFF is deprecated
+           Such strings are represented internally in UTF-8, and "vec" is a bit-
+           oriented operation that will likely give unexpected results on those
+           strings.
+
+       Some uses of unescaped "{" in regexes are no longer fatal
+           Perl 5.26.0 fatalized some uses of an unescaped left brace, but an
+           exception was made at the last minute, specifically crafted to be a
+           minimal change to allow GNU Autoconf to work.  That tool is heavily
+           depended upon, and continues to use the deprecated usage.  Its use of
+           an unescaped left brace is one where we have no intention of
+           repurposing "{" to be something other than itself.
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How does the perl5280delta resource handle over-radix digits in floating point literals?
+  manpageQuestion3: What is the impact of using the 'vec' function on strings with code points above 0xFF in perl5280delta?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.
+
+
+
+    Manpage text:
+
+    That exception is now generalized to include various other such cases
+           where the "{" will not be repurposed.
+
+           Note that these uses continue to raise a deprecation message.
+
+       Use of unescaped "{" immediately after a "(" in regular expression patterns
+           is deprecated
+           Using unescaped left braces is officially deprecated everywhere, but it
+           is not enforced in contexts where their use does not interfere with
+           expected extensions to the language.  A deprecation is added in this
+           release when the brace appears immediately after an opening
+           parenthesis.  Before this, even if the brace was part of a legal
+           quantifier, it was not interpreted as such, but as the literal
+           characters, unlike other quantifiers that follow a "(" which are
+           considered errors.  Now, their use will raise a deprecation message,
+           unless turned off.
+
+       Assignment to $[ will be fatal in Perl 5.30
+           Assigning a non-zero value to $[ has been deprecated since Perl 5.12,
+           but was never given a deadline for removal.  This has now been
+           scheduled for Perl 5.30.
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How can you suppress the deprecation warning for using unescaped '{' immediately after '(', in Perl 5.28.0?
+  manpageQuestion3: What is the deadline for removing the ability to assign a non-zero value to $[ in Perl?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.
+
+
+
+    Manpage text:
+
+    hostname() won't accept arguments in Perl 5.32
+           Passing arguments to "Sys::Hostname::hostname()" was already
+           deprecated, but didn't have a removal date.  This has now been
+           scheduled for Perl 5.32.  [GH #14662]
+           <https://github.com/Perl/perl5/issues/14662>
+
+       Module removals
+           The following modules will be removed from the core distribution in a
+           future release, and will at that time need to be installed from CPAN.
+           Distributions on CPAN which require these modules will need to list
+           them as prerequisites.
+
+           The core versions of these modules will now issue "deprecated"-category
+           warnings to alert you to this fact.  To silence these deprecation
+           warnings, install the modules in question from CPAN.
+
+           Note that these are (with rare exceptions) fine modules that you are
+           encouraged to continue to use.  Their disinclusion from core primarily
+           hinges on their necessity to bootstrapping a fully functional, CPAN-
+           capable Perl installation, not usually on concerns over their design.
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How can you ensure that the Sys::Hostname::hostname() function is not deprecated in Perl 5.32?
+  manpageQuestion3: What steps should be taken to handle the removal of modules from the core Perl distribution in future versions?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\nB::Debug\n       Locale::Codes and its associated Country, Currency and Language modules\n\nPerformance Enhancements\n       •   The start up overhead for creating regular expression patterns with\n\t   Unicode properties (\"\\p{...}\") has been greatly reduced in most\n\t   cases.\n\n       •   Many string concatenation expressions are now considerably faster,\n\t   due to the introduction internally of a \"multiconcat\" opcode which\n\t   combines multiple concatenations, and optionally a \"=\" or \".=\",\n\t   into a single action. For example, apart from retrieving $s, $a and\n\t   $b, this whole expression is now handled as a single op:\n\n\t       $s .= \"a=$a b=$b\\n\"\n\n\t   As a special case, if the LHS of an assignment is a lexical\n\t   variable or \"my $s\", the op itself handles retrieving the lexical\n\t   variable, which is faster.\n\n\t   In general, the more the expression includes a mix of constant\n\t   strings and variable expressions, the longer the expression, and\n\t   the more it mixes together non-utf8 and utf8 strings, the more\n\t   marked the performance improvement. For example on a \"x86_64\"\n\t   system, this code has been benchmarked running four times faster:"
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How would you use perl5280delta to enhance the performance of regular expressions with Unicode properties?
+  manpageQuestion3: Can you provide an example of how perl5280delta improves the performance of string concatenation operations?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\nmy $s;\n\t       my $a = \"ab\\x{100}cde\";\n\t       my $b = \"fghij\";\n\t       my $c = \"\\x{101}klmn\";\n\n\t       for my $i (1..10_000_000) {\n\t\t   $s = \"\\x{100}wxyz\";\n\t\t   $s .= \"foo=$a bar=$b baz=$c\";\n\t       }\n\n\t   In addition, \"sprintf\" expressions which have a constant format\n\t   containing only %s and \"%%\" format elements, and which have a fixed\n\t   number of arguments, are now also optimised into a \"multiconcat\"\n\t   op.\n\n       •   The \"ref()\" builtin is now much faster in boolean context, since it\n\t   no longer bothers to construct a temporary string like\n\t   \"Foo=ARRAY(0x134af48)\".\n\n       •   \"keys()\" in void and scalar contexts is now more efficient.\n\n       •   The common idiom of comparing the result of index() with -1 is now\n\t   specifically optimised,  e.g.\n\n\t       if (index(...) != -1) { ... }\n\n       •   \"for()\" loops and similar constructs are now more efficient in most\n\t   cases.\n\n       •   File::Glob has been modified to remove unnecessary backtracking and\n\t   recursion, thanks to Russ Cox. See\n\t   <https://research.swtch.com/glob> for more details."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How can you optimize a loop in Perl using the improvements provided by perl5280delta?
+  manpageQuestion3: What optimization does perl5280delta apply to the comparison of index() with -1?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   The XS-level \"SvTRUE()\" API function is now more efficient.\n\n       •   Various integer-returning ops are now more efficient in\n\t   scalar/boolean context.\n\n       •   Slightly improved performance when parsing stash names.  [GH\n\t   #15689] <https://github.com/Perl/perl5/issues/15689>\n\n       •   Calls to \"require\" for an already loaded module are now slightly\n\t   faster.  [GH #16175] <https://github.com/Perl/perl5/issues/16175>\n\n       •   The performance of pattern matching \"[[:ascii:]]\" and\n\t   \"[[:^ascii:]]\" has been improved significantly except on EBCDIC\n\t   platforms.\n\n       •   Various optimizations have been applied to matching regular\n\t   expression patterns, so under the right circumstances, significant\n\t   performance gains may be noticed.  But in an application with many\n\t   varied patterns, little overall improvement likely will be seen.\n\n       •   Other optimizations have been applied to UTF-8 handling, but these\n\t   are not typically a major factor in most applications."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How has the performance of pattern matching been improved in perl5280delta?
+  manpageQuestion3: What changes have been made to the 'require' function in perl5280delta?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\nModules and Pragmata\n       Key highlights in this release across several modules:\n\n   Removal of use vars\n       The usage of \"use vars\" has been discouraged since the introduction of\n       \"our\" in Perl 5.6.0. Where possible the usage of this pragma has now\n       been removed from the Perl source code.\n\n       This had a slight effect (for the better) on the output of WARNING_BITS\n       in B::Deparse.\n\n   Use of DynaLoader changed to XSLoader in many modules\n       XSLoader is more modern, and most modules already require perl 5.6 or\n       greater, so no functionality is lost by switching. In some cases, we\n       have also made changes to the local implementation that may not be\n       reflected in the version on CPAN due to a desire to maintain more\n       backwards compatibility.\n\n   Updated Modules and Pragmata\n       •   Archive::Tar has been upgraded from version 2.24 to 2.30.\n\n\t   This update also handled CVE-2018-12015: directory traversal\n\t   vulnerability.  [cpan #125523]\n\t   <https://rt.cpan.org/Ticket/Display.html?id=125523>"
+  manpageQuestion1: What is the primary purpose of the `perl5280delta` resource?
+  manpageQuestion2: How does the `perl5280delta` resource address the removal of 'use vars' in Perl 5.6.0?
+  manpageQuestion3: What changes were made to the `Archive::Tar` module in the `perl5280delta` resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   arybase has been upgraded from version 0.12 to 0.15.\n\n       •   Attribute::Handlers has been upgraded from version 0.99 to 1.01.\n\n       •   attributes has been upgraded from version 0.29 to 0.33.\n\n       •   B has been upgraded from version 1.68 to 1.74.\n\n       •   B::Concise has been upgraded from version 0.999 to 1.003.\n\n       •   B::Debug has been upgraded from version 1.24 to 1.26.\n\n\t   NOTE: B::Debug is deprecated and may be removed from a future\n\t   version of Perl.\n\n       •   B::Deparse has been upgraded from version 1.40 to 1.48.\n\n\t   It includes many bug fixes, and in particular, it now deparses\n\t   variable attributes correctly:\n\n\t       my $x :foo;  # used to deparse as\n\t\t\t    # 'attributes'->import('main', \\$x, 'foo'), my $x;\n\n       •   base has been upgraded from version 2.25 to 2.27.\n\n       •   bignum has been upgraded from version 0.47 to 0.49.\n\n       •   blib has been upgraded from version 1.06 to 1.07.\n\n       •   bytes has been upgraded from version 1.05 to 1.06."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How would you update the attributes module to its latest version using perl5280delta?
+  manpageQuestion3: Can you explain how the B::Deparse module has been improved in this version of perl5280delta?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   Carp has been upgraded from version 1.42 to 1.50.\n\n\t   If a package on the call stack contains a constant named \"ISA\",\n\t   Carp no longer throws a \"Not a GLOB reference\" error.\n\n\t   Carp, when generating stack traces, now attempts to work around\n\t   longstanding bugs resulting from Perl's non-reference-counted\n\t   stack.  [GH #9282] <https://github.com/Perl/perl5/issues/9282>\n\n\t   Carp has been modified to avoid assuming that objects cannot be\n\t   overloaded without the overload module loaded (this can happen with\n\t   objects created by XS modules).  Previously, infinite recursion\n\t   would result if an XS-defined overload method itself called Carp.\n\t   [GH #16407] <https://github.com/Perl/perl5/issues/16407>\n\n\t   Carp now avoids using \"overload::StrVal\", partly because older\n\t   versions of overload (included with perl 5.14 and earlier) load\n\t   Scalar::Util at run time, which will fail if Carp has been invoked\n\t   after a syntax error.\n\n       •   charnames has been upgraded from version 1.44 to 1.45."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How does the perl5280delta resource address the issue of infinite recursion when using Carp with XS modules?
+  manpageQuestion3: What changes were made to the charnames module in the perl5280delta resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   Compress::Raw::Zlib has been upgraded from version 2.074 to 2.076.\n\n\t   This addresses a security vulnerability in older versions of the\n\t   'zlib' library (which is bundled with Compress-Raw-Zlib).\n\n       •   Config::Extensions has been upgraded from version 0.01 to 0.02.\n\n       •   Config::Perl::V has been upgraded from version 0.28 to 0.29.\n\n       •   CPAN has been upgraded from version 2.18 to 2.20.\n\n       •   Data::Dumper has been upgraded from version 2.167 to 2.170.\n\n\t   Quoting of glob names now obeys the Useqq option [GH #13274]\n\t   <https://github.com/Perl/perl5/issues/13274>.\n\n\t   Attempts to set an option to \"undef\" through a combined\n\t   getter/setter method are no longer mistaken for getter calls [GH\n\t   #12135] <https://github.com/Perl/perl5/issues/12135>.\n\n       •   Devel::Peek has been upgraded from version 1.26 to 1.27.\n\n       •   Devel::PPPort has been upgraded from version 3.35 to 3.40.\n\n\t   Devel::PPPort has moved from cpan-first to perl-first maintenance"
+  manpageQuestion1: What is the primary purpose of the `perl5280delta` resource?
+  manpageQuestion2: How does the `perl5280delta` resource handle upgrades in Perl modules?
+  manpageQuestion3: Can you explain the impact of the `perl5280delta` resource on Perl module maintenance?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\nPrimary responsibility for the code in Devel::PPPort has moved into\n\t   core perl.  In a practical sense there should be no change except\n\t   that hopefully it will stay more up to date with changes made to\n\t   symbols in perl, rather than needing to be updated after the fact.\n\n       •   Digest::SHA has been upgraded from version 5.96 to 6.01.\n\n       •   DirHandle has been upgraded from version 1.04 to 1.05.\n\n       •   DynaLoader has been upgraded from version 1.42 to 1.45.\n\n\t   Its documentation now shows the use of \"__PACKAGE__\" and direct\n\t   object syntax [GH #16190]\n\t   <https://github.com/Perl/perl5/issues/16190>.\n\n       •   Encode has been upgraded from version 2.88 to 2.97.\n\n       •   encoding has been upgraded from version 2.19 to 2.22.\n\n       •   Errno has been upgraded from version 1.28 to 1.29.\n\n       •   experimental has been upgraded from version 0.016 to 0.019.\n\n       •   Exporter has been upgraded from version 5.72 to 5.73.\n\n       •   ExtUtils::CBuilder has been upgraded from version 0.280225 to\n\t   0.280230."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How can you check for updates in the perl5280delta resource?
+  manpageQuestion3: What is the significance of the upgrade in the experimental module within perl5280delta?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   ExtUtils::Constant has been upgraded from version 0.23 to 0.25.\n\n       •   ExtUtils::Embed has been upgraded from version 1.34 to 1.35.\n\n       •   ExtUtils::Install has been upgraded from version 2.04 to 2.14.\n\n       •   ExtUtils::MakeMaker has been upgraded from version 7.24 to 7.34.\n\n       •   ExtUtils::Miniperl has been upgraded from version 1.06 to 1.08.\n\n       •   ExtUtils::ParseXS has been upgraded from version 3.34 to 3.39.\n\n       •   ExtUtils::Typemaps has been upgraded from version 3.34 to 3.38.\n\n       •   ExtUtils::XSSymSet has been upgraded from version 1.3 to 1.4.\n\n       •   feature has been upgraded from version 1.47 to 1.52.\n\n       •   fields has been upgraded from version 2.23 to 2.24.\n\n       •   File::Copy has been upgraded from version 2.32 to 2.33.\n\n\t   It will now use the sub-second precision variant of utime()\n\t   supplied by Time::HiRes where available.  [GH #16225]\n\t   <https://github.com/Perl/perl5/issues/16225>.\n\n       •   File::Fetch has been upgraded from version 0.52 to 0.56."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How would you use the perl5280delta tool to update a specific module's version?
+  manpageQuestion3: Can you provide an example of using perl5280delta to upgrade the ExtUtils::MakeMaker module?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   File::Glob has been upgraded from version 1.28 to 1.31.\n\n       •   File::Path has been upgraded from version 2.12_01 to 2.15.\n\n       •   File::Spec and Cwd have been upgraded from version 3.67 to 3.74.\n\n       •   File::stat has been upgraded from version 1.07 to 1.08.\n\n       •   FileCache has been upgraded from version 1.09 to 1.10.\n\n       •   Filter::Simple has been upgraded from version 0.93 to 0.95.\n\n       •   Filter::Util::Call has been upgraded from version 1.55 to 1.58.\n\n       •   GDBM_File has been upgraded from version 1.15 to 1.17.\n\n\t   Its documentation now explains that \"each\" and \"delete\" don't mix\n\t   in hashes tied to this module [GH #12894]\n\t   <https://github.com/Perl/perl5/issues/12894>.\n\n\t   It will now retry opening with an acceptable block size if asking\n\t   gdbm to default the block size failed [GH #13232]\n\t   <https://github.com/Perl/perl5/issues/13232>.\n\n       •   Getopt::Long has been upgraded from version 2.49 to 2.5.\n\n       •   Hash::Util::FieldHash has been upgraded from version 1.19 to 1.20."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How does the perl5280delta tool handle upgrades for modules like File::Glob and Getopt::Long?
+  manpageQuestion3: What new features or improvements were introduced in the File::Glob module according to the perl5280delta documentation?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   I18N::Langinfo has been upgraded from version 0.13 to 0.17.\n\n\t   This module is now available on all platforms, emulating the system\n\t   nl_langinfo(3) on systems that lack it.  Some caveats apply, as\n\t   detailed in its documentation, the most severe being that, except\n\t   for MS Windows, the \"CODESET\" item is not implemented on those\n\t   systems, always returning \"\".\n\n\t   It now sets the UTF-8 flag in its returned scalar if the string\n\t   contains legal non-ASCII UTF-8, and the locale is UTF-8 [GH #15131]\n\t   <https://github.com/Perl/perl5/issues/15131>.\n\n\t   This update also fixes a bug in which the underlying locale was\n\t   ignored for the \"RADIXCHAR\" (always was returned as a dot) and the\n\t   \"THOUSEP\" (always empty).  Now the locale-appropriate values are\n\t   returned.\n\n       •   I18N::LangTags has been upgraded from version 0.42 to 0.43.\n\n       •   if has been upgraded from version 0.0606 to 0.0608.\n\n       •   IO has been upgraded from version 1.38 to 1.39.\n\n       •   IO::Socket::IP has been upgraded from version 0.38 to 0.39."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How does the perl5280delta resource handle locale-related settings for different platforms?
+  manpageQuestion3: What changes were made to the I18N::Langinfo module in the perl5280delta resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   IPC::Cmd has been upgraded from version 0.96 to 1.00.\n\n       •   JSON::PP has been upgraded from version 2.27400_02 to 2.97001.\n\n       •   The \"libnet\" distribution has been upgraded from version 3.10 to\n\t   3.11.\n\n       •   List::Util has been upgraded from version 1.46_02 to 1.49.\n\n       •   Locale::Codes has been upgraded from version 3.42 to 3.56.\n\n\t   NOTE: Locale::Codes scheduled to be removed from core in Perl 5.30.\n\n       •   Locale::Maketext has been upgraded from version 1.28 to 1.29.\n\n       •   Math::BigInt has been upgraded from version 1.999806 to 1.999811.\n\n       •   Math::BigInt::FastCalc has been upgraded from version 0.5005 to\n\t   0.5006.\n\n       •   Math::BigRat has been upgraded from version 0.2611 to 0.2613.\n\n       •   Module::CoreList has been upgraded from version 5.20170530 to\n\t   5.20180622.\n\n       •   mro has been upgraded from version 1.20 to 1.22.\n\n       •   Net::Ping has been upgraded from version 2.55 to 2.62.\n\n       •   NEXT has been upgraded from version 0.67 to 0.67_01."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How can you check for updates to Perl core modules like JSON::PP or Math::BigInt using perl5280delta?
+  manpageQuestion3: What is the significance of the note about Locale::Codes being scheduled for removal in Perl 5.30?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   ODBM_File has been upgraded from version 1.14 to 1.15.\n\n       •   Opcode has been upgraded from version 1.39 to 1.43.\n\n       •   overload has been upgraded from version 1.28 to 1.30.\n\n       •   PerlIO::encoding has been upgraded from version 0.25 to 0.26.\n\n       •   PerlIO::scalar has been upgraded from version 0.26 to 0.29.\n\n       •   PerlIO::via has been upgraded from version 0.16 to 0.17.\n\n       •   Pod::Functions has been upgraded from version 1.11 to 1.13.\n\n       •   Pod::Html has been upgraded from version 1.2202 to 1.24.\n\n\t   A title for the HTML document will now be automatically generated\n\t   by default from a \"NAME\" section in the POD document, as it used to\n\t   be before the module was rewritten to use Pod::Simple::XHTML to do\n\t   the core of its job [GH #11954]\n\t   <https://github.com/Perl/perl5/issues/11954>.\n\n       •   Pod::Perldoc has been upgraded from version 3.28 to 3.2801.\n\n       •   The \"podlators\" distribution has been upgraded from version 4.09 to\n\t   4.10."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How would you use the perl5280delta resource to upgrade the Pod::Html module?
+  manpageQuestion3: Can you provide an example of using the perl5280delta resource to update the PerlIO::encoding module?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\nMan page references and function names now follow the Linux man\n\t   page formatting standards, instead of the Solaris standard.\n\n       •   POSIX has been upgraded from version 1.76 to 1.84.\n\n\t   Some more cautions were added about using locale-specific functions\n\t   in threaded applications.\n\n       •   re has been upgraded from version 0.34 to 0.36.\n\n       •   Scalar::Util has been upgraded from version 1.46_02 to 1.50.\n\n       •   SelfLoader has been upgraded from version 1.23 to 1.25.\n\n       •   Socket has been upgraded from version 2.020_03 to 2.027.\n\n       •   sort has been upgraded from version 2.02 to 2.04.\n\n       •   Storable has been upgraded from version 2.62 to 3.08.\n\n       •   Sub::Util has been upgraded from version 1.48 to 1.49.\n\n       •   subs has been upgraded from version 1.02 to 1.03.\n\n       •   Sys::Hostname has been upgraded from version 1.20 to 1.22.\n\n       •   Term::ReadLine has been upgraded from version 1.16 to 1.17.\n\n       •   Test has been upgraded from version 1.30 to 1.31."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How would you use the perl5280delta resource to upgrade a module such as 're' from version 0.34 to 0.36?
+  manpageQuestion3: Can you provide an example of using the perl5280delta resource to upgrade the 'Storable' module from version 2.62 to 3.08?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   Test::Harness has been upgraded from version 3.38 to 3.42.\n\n       •   Test::Simple has been upgraded from version 1.302073 to 1.302133.\n\n       •   threads has been upgraded from version 2.15 to 2.22.\n\n\t   The documentation now better describes the problems that arise when\n\t   returning values from threads, and no longer warns about creating\n\t   threads in \"BEGIN\" blocks.  [GH #11563]\n\t   <https://github.com/Perl/perl5/issues/11563>\n\n       •   threads::shared has been upgraded from version 1.56 to 1.58.\n\n       •   Tie::Array has been upgraded from version 1.06 to 1.07.\n\n       •   Tie::StdHandle has been upgraded from version 4.4 to 4.5.\n\n       •   Time::gmtime has been upgraded from version 1.03 to 1.04.\n\n       •   Time::HiRes has been upgraded from version 1.9741 to 1.9759.\n\n       •   Time::localtime has been upgraded from version 1.02 to 1.03.\n\n       •   Time::Piece has been upgraded from version 1.31 to 1.3204.\n\n       •   Unicode::Collate has been upgraded from version 1.19 to 1.25."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How can you use perl5280delta to check for updates in a specific module?
+  manpageQuestion3: Can you provide an example of using perl5280delta to update the Time::HiRes module?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   Unicode::Normalize has been upgraded from version 1.25 to 1.26.\n\n       •   Unicode::UCD has been upgraded from version 0.68 to 0.70.\n\n\t   The function \"num\" now accepts an optional parameter to help in\n\t   diagnosing error returns.\n\n       •   User::grent has been upgraded from version 1.01 to 1.02.\n\n       •   User::pwent has been upgraded from version 1.00 to 1.01.\n\n       •   utf8 has been upgraded from version 1.19 to 1.21.\n\n       •   vars has been upgraded from version 1.03 to 1.04.\n\n       •   version has been upgraded from version 0.9917 to 0.9923.\n\n       •   VMS::DCLsym has been upgraded from version 1.08 to 1.09.\n\n       •   VMS::Stdio has been upgraded from version 2.41 to 2.44.\n\n       •   warnings has been upgraded from version 1.37 to 1.42.\n\n\t   It now includes new functions with names ending in \"_at_level\",\n\t   allowing callers to specify the exact call frame.  [GH #16257]\n\t   <https://github.com/Perl/perl5/issues/16257>\n\n       •   XS::Typemap has been upgraded from version 0.15 to 0.16."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How can one use the perl5280delta resource to upgrade the 'version' module to the latest version?
+  manpageQuestion3: What new functionality was introduced in perl5280delta related to the 'warnings' module?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   XSLoader has been upgraded from version 0.27 to 0.30.\n\n\t   Its documentation now shows the use of \"__PACKAGE__\", and direct\n\t   object syntax for example \"DynaLoader\" usage [GH #16190]\n\t   <https://github.com/Perl/perl5/issues/16190>.\n\n\t   Platforms that use \"mod2fname\" to edit the names of loadable\n\t   libraries now look for bootstrap (.bs) files under the correct,\n\t   non-edited name.\n\n   Removed Modules and Pragmata\n       •   The \"VMS::stdio\" compatibility shim has been removed.\n\nDocumentation\n   Changes to Existing Documentation\n       We have attempted to update the documentation to reflect the changes\n       listed in this document.  If you find any we have missed, send email to\n       perlbug@perl.org <mailto:perlbug@perl.org>.\n\n       Additionally, the following selected changes have been made:\n\n       perlapi\n\n       •   The API functions \"perl_parse()\", \"perl_run()\", and\n\t   \"perl_destruct()\" are now documented comprehensively, where\n\t   previously the only documentation was a reference to the perlembed\n\t   tutorial."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How can one update their documentation to reflect changes in the perl5280delta resource?
+  manpageQuestion3: What is the significance of the XSLoader upgrade in the context of the perl5280delta resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   The documentation of \"newGIVENOP()\" has been belatedly updated to\n\t   account for the removal of lexical $_.\n\n       •   The API functions \"newCONSTSUB()\" and \"newCONSTSUB_flags()\" are\n\t   documented much more comprehensively than before.\n\n       perldata\n\n       •   The section \"Truth and Falsehood\" in perlsyn has been moved into\n\t   perldata.\n\n       perldebguts\n\n       •   The description of the conditions under which \"DB::sub()\" will be\n\t   called has been clarified.  [GH #16055]\n\t   <https://github.com/Perl/perl5/issues/16055>\n\n       perldiag\n\n       •   \"Variable length lookbehind not implemented in regex m/%s/\" in\n\t   perldiag\n\n\t   This now gives more ideas as to workarounds to the issue that was\n\t   introduced in Perl 5.18 (but not documented explicitly in its\n\t   perldelta) for the fact that some Unicode \"/i\" rules cause a few\n\t   sequences such as\n\n\t    (?<!st)\n\n\t   to be considered variable length, and hence disallowed.\n\n       •   \"Use of state $_ is experimental\" in perldiag"
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How can a user check for changes related to the 'newCONSTSUB()' function in Perl 5.28.0 delta updates?
+  manpageQuestion3: What is the significance of the 'Variable length lookbehind not implemented in regex m/%s/' diagnostic message in Perl 5.28.0?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\nThis entry has been removed, as the experimental support of this\n\t   construct was removed in perl 5.24.0.\n\n       •   The diagnostic \"Initialization of state variables in list context\n\t   currently forbidden\" has changed to \"Initialization of state\n\t   variables in list currently forbidden\", because list-context\n\t   initialization of single aggregate state variables is now\n\t   permitted.\n\n       perlembed\n\n       •   The examples in perlembed have been made more portable in the way\n\t   they exit, and the example that gets an exit code from the embedded\n\t   Perl interpreter now gets it from the right place.  The examples\n\t   that pass a constructed argv to Perl now show the mandatory null\n\t   \"argv[argc]\".\n\n       •   An example in perlembed used the string value of \"ERRSV\" as a\n\t   format string when calling croak().\tIf that string contains format\n\t   codes such as %s this could crash the program.\n\n\t   This has been changed to a call to croak_sv().\n\n\t   An alternative could have been to supply a trivial format string:"
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How would you use the perl5280delta tool to address the issue of initializing state variables in list context?
+  manpageQuestion3: Can you provide an example of using perl5280delta to fix the potential crash caused by using the string value of 'ERRSV' in a format string?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\ncroak(\"%s\", SvPV_nolen(ERRSV));\n\n\t   or as a special case for \"ERRSV\" simply:\n\n\t     croak(NULL);\n\n       perlfunc\n\n       •   There is now a note that warnings generated by built-in functions\n\t   are documented in perldiag and warnings.  [GH #12642]\n\t   <https://github.com/Perl/perl5/issues/12642>\n\n       •   The documentation for the \"exists\" operator no longer says that\n\t   autovivification behaviour \"may be fixed in a future release\".\n\t   We've determined that we're not going to change the default\n\t   behaviour.  [GH #15231]\n\t   <https://github.com/Perl/perl5/issues/15231>\n\n       •   A couple of small details in the documentation for the \"bless\"\n\t   operator have been clarified.  [GH #14684]\n\t   <https://github.com/Perl/perl5/issues/14684>\n\n       •   The description of @INC hooks in the documentation for \"require\"\n\t   has been corrected to say that filter subroutines receive a useless\n\t   first argument.  [GH #12569]\n\t   <https://github.com/Perl/perl5/issues/12569>\n\n       •   The documentation of \"ref\" has been rewritten for clarity."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How would you use perl5280delta to apply a specific patch or update to Perl 5.28.0?
+  manpageQuestion3: Can you provide an example of using perl5280delta to update the documentation for the 'bless' operator in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   The documentation of \"use\" now explains what syntactically\n\t   qualifies as a version number for its module version checking\n\t   feature.\n\n       •   The documentation of \"warn\" has been updated to reflect that since\n\t   Perl 5.14 it has treated complex exception objects in a manner\n\t   equivalent to \"die\".  [GH #13641]\n\t   <https://github.com/Perl/perl5/issues/13641>\n\n       •   The documentation of \"die\" and \"warn\" has been revised for clarity.\n\n       •   The documentation of \"each\" has been improved, with a slightly more\n\t   explicit description of the sharing of iterator state, and with\n\t   caveats regarding the fragility of while-each loops.  [GH #16334]\n\t   <https://github.com/Perl/perl5/issues/16334>\n\n       •   Clarification to \"require\" was added to explain the differences\n\t   between\n\n\t       require Foo::Bar;\n\t       require \"Foo/Bar.pm\";\n\n       perlgit\n\n       •   The precise rules for identifying \"smoke-me\" branches are now\n\t   stated.\n\n       perlguts\n\n       •   The section on reference counting in perlguts has been heavily\n\t   revised, to describe references in the way a programmer needs to\n\t   think about them rather than in terms of the physical data\n\t   structures."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How can you update the documentation for the 'warn' function in Perl using perl5280delta?
+  manpageQuestion3: What changes were made to the 'require' documentation in perl5280delta?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   Improve documentation related to UTF-8 multibytes.\n\n       perlintern\n\n       •   The internal functions \"newXS_len_flags()\" and \"newATTRSUB_x()\" are\n\t   now documented.\n\n       perlobj\n\n       •   The documentation about \"DESTROY\" methods has been corrected,\n\t   updated, and revised, especially in regard to how they interact\n\t   with exceptions.  [GH #14083]\n\t   <https://github.com/Perl/perl5/issues/14083>\n\n       perlop\n\n       •   The description of the \"x\" operator in perlop has been clarified.\n\t   [GH #16253] <https://github.com/Perl/perl5/issues/16253>\n\n       •   perlop has been updated to note that \"qw\"'s whitespace rules differ\n\t   from that of \"split\"'s in that only ASCII whitespace is used.\n\n       •   The general explanation of operator precedence and associativity\n\t   has been corrected and clarified.  [GH #15153]\n\t   <https://github.com/Perl/perl5/issues/15153>\n\n       •   The documentation for the \"\\\" referencing operator now explains the\n\t   unusual context that it supplies to its operand.  [GH #15932]\n\t   <https://github.com/Perl/perl5/issues/15932>"
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How does the perlobj module's documentation about DESTROY methods have been updated in this resource?
+  manpageQuestion3: What changes were made to the 'x' operator's documentation in perlop according to the manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\nperlrequick\n\n       •   Clarifications on metacharacters and character classes\n\n       perlretut\n\n       •   Clarify metacharacters.\n\n       perlrun\n\n       •   Clarify the differences between -M and -m.  [GH #15998]\n\t   <https://github.com/Perl/perl5/issues/15998>\n\n       perlsec\n\n       •   The documentation about set-id scripts has been updated and\n\t   revised.  [GH #10289] <https://github.com/Perl/perl5/issues/10289>\n\n       •   A section about using \"sudo\" to run Perl scripts has been added.\n\n       perlsyn\n\n       •   The section \"Truth and Falsehood\" in perlsyn has been removed from\n\t   that document, where it didn't belong, and merged into the existing\n\t   paragraph on the same topic in perldata.\n\n       •   The means to disambiguate between code blocks and hash\n\t   constructors, already documented in perlref, are now documented in\n\t   perlsyn too.  [GH #15918]\n\t   <https://github.com/Perl/perl5/issues/15918>\n\n       perluniprops\n\n       •   perluniprops has been updated to note that \"\\p{Word}\" now includes\n\t   code points matching the \"\\p{Join_Control}\" property.  The change\n\t   to the property was made in Perl 5.18, but not documented until\n\t   now.  There are currently only two code points that match this\n\t   property U+200C (ZERO WIDTH NON-JOINER) and U+200D (ZERO WIDTH\n\t   JOINER)."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How can you clarify metacharacters in Perl using the perlrequick resource?
+  manpageQuestion3: What changes were made to the perluniprops documentation regarding Unicode properties in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   For each binary table or property, the documentation now includes\n\t   which characters in the range \"\\x00-\\xFF\" it matches, as well as a\n\t   list of the first few ranges of code points matched above that.\n\n       perlvar\n\n       •   The entry for $+ in perlvar has been expanded upon to describe\n\t   handling of multiply-named capturing groups.\n\n       perlfunc, perlop, perlsyn\n\n       •   In various places, improve the documentation of the special cases\n\t   in the condition expression of a while loop, such as implicit\n\t   \"defined\" and assignment to $_.  [GH #16334]\n\t   <https://github.com/Perl/perl5/issues/16334>\n\nDiagnostics\n       The following additions or changes have been made to diagnostic output,\n       including warnings and fatal error messages.  For the complete list of\n       diagnostic messages, see perldiag.\n\n   New Diagnostics\n       New Errors\n\n       •   Can't \"goto\" into a \"given\" block\n\n\t   (F) A \"goto\" statement was executed to jump into the middle of a\n\t   \"given\" block.  You can't get there from here.  See \"goto\" in\n\t   perlfunc."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How would you use perl5280delta to handle a situation where a 'goto' statement is attempting to jump into a 'given' block?
+  manpageQuestion3: Can you provide an example of using perl5280delta to improve the documentation of special cases in a while loop's condition expression?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   Can't \"goto\" into a binary or list expression\n\n\t   Use of \"goto\" to jump into the parameter of a binary or list\n\t   operator has been prohibited, to prevent crashes and stack\n\t   corruption.\t[GH #15914]\n\t   <https://github.com/Perl/perl5/issues/15914>\n\n\t   You may only enter the first argument of an operator that takes a\n\t   fixed number of arguments, since this is a case that will not cause\n\t   stack corruption.  [GH #16415]\n\t   <https://github.com/Perl/perl5/issues/16415>\n\n       New Warnings\n\n       •   Old package separator used in string\n\n\t   (W syntax) You used the old package separator, \"'\", in a variable\n\t   named inside a double-quoted string; e.g., \"In $name's house\".\n\t   This is equivalent to \"In $name::s house\".  If you meant the\n\t   former, put a backslash before the apostrophe (\"In $name\\'s\n\t   house\").\n\n       •   \"Locale '%s' contains (at least) the following characters which\n\t   have unexpected meanings: %s  The Perl program will use the\n\t   expected meanings\" in perldiag"
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How can a programmer avoid the 'Old package separator used in string' warning when using apostrophes in double-quoted strings?
+  manpageQuestion3: What is the significance of the 'goto' restriction in perl5280delta and how should it be handled?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\nChanges to Existing Diagnostics\n       •   A false-positive warning that was issued when using a numerically-\n\t   quantified sub-pattern in a recursive regex has been silenced. [GH\n\t   #16106] <https://github.com/Perl/perl5/issues/16106>\n\n       •   The warning about useless use of a concatenation operator in void\n\t   context is now generated for expressions with multiple\n\t   concatenations, such as \"$a.$b.$c\", which used to mistakenly not\n\t   warn.  [GH #3990] <https://github.com/Perl/perl5/issues/3990>\n\n       •   Warnings that a variable or subroutine \"masks earlier declaration\n\t   in same ...\", or that an \"our\" variable has been redeclared, have\n\t   been moved to a new warnings category \"shadow\".  Previously they\n\t   were in category \"misc\".\n\n       •   The deprecation warning from \"Sys::Hostname::hostname()\" saying\n\t   that it doesn't accept arguments now states the Perl version in\n\t   which the warning will be upgraded to an error.  [GH #14662]\n\t   <https://github.com/Perl/perl5/issues/14662>"
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How would you use perl5280delta to address a false-positive warning related to numerically-quantified sub-patterns in recursive regex?
+  manpageQuestion3: Can you provide an example of using perl5280delta to handle the deprecation warning for Sys::Hostname::hostname()?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   The perldiag entry for the error regarding a set-id script has been\n\t   expanded to make clear that the error is reporting a specific\n\t   security vulnerability, and to advise how to fix it.\n\n       •   The \"Unable to flush stdout\" error message was missing a trailing\n\t   newline. [debian #875361]\n\nUtility Changes\n   perlbug\n       •   \"--help\" and \"--version\" options have been added.\n\nConfiguration and Compilation\n       •   C89 requirement\n\n\t   Perl has been documented as requiring a C89 compiler to build since\n\t   October 1998.  A variety of simplifications have now been made to\n\t   Perl's internals to rely on the features specified by the C89\n\t   standard. We believe that this internal change hasn't altered the\n\t   set of platforms that Perl builds on, but please report a bug if\n\t   Perl now has new problems building on your platform.\n\n       •   On GCC, \"-Werror=pointer-arith\" is now enabled by default,\n\t   disallowing arithmetic on void and function pointers.\n\n       •   Where an HTML version of the documentation is installed, the HTML\n\t   documents now use relative links to refer to each other.  Links\n\t   from the index page of perlipc to the individual section documents\n\t   are now correct.  [GH #11941]\n\t   <https://github.com/Perl/perl5/issues/11941>"
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How can you use the perlbug utility with the --help option to view its available options?
+  manpageQuestion3: What changes were made to Perl's documentation and configuration requirements in the perl5280delta update?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   lib/unicore/mktables now correctly canonicalizes the names of the\n\t   dependencies stored in the files it generates.\n\n\t   regen/mk_invlists.pl, unlike the other regen/*.pl scripts, used $0\n\t   to name itself in the dependencies stored in the files it\n\t   generates.  It now uses a literal so that the path stored in the\n\t   generated files doesn't depend on how regen/mk_invlists.pl is\n\t   invoked.\n\n\t   This lack of canonical names could cause test failures in\n\t   t/porting/regen.t.  [GH #16446]\n\t   <https://github.com/Perl/perl5/issues/16446>\n\n       •   New probes\n\n\t   HAS_BUILTIN_ADD_OVERFLOW\n\t   HAS_BUILTIN_MUL_OVERFLOW\n\t   HAS_BUILTIN_SUB_OVERFLOW\n\t   HAS_THREAD_SAFE_NL_LANGINFO_L\n\t   HAS_LOCALECONV_L\n\t   HAS_MBRLEN\n\t   HAS_MBRTOWC\n\t   HAS_MEMRCHR\n\t   HAS_NANOSLEEP\n\t   HAS_STRNLEN\n\t   HAS_STRTOLD_L\n\t   I_WCHAR\n\nTesting\n       •   Testing of the XS-APItest directory is now done in parallel, where\n\t   applicable.\n\n       •   Perl now includes a default .travis.yml file for Travis CI testing\n\t   on github mirrors.  [GH #14558]\n\t   <https://github.com/Perl/perl5/issues/14558>"
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How does the perl5280delta resource address issues related to dependency canonicalization in generated files?
+  manpageQuestion3: What new testing features or improvements are included in the perl5280delta resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   The watchdog timer count in re/pat_psycho.t can now be overridden.\n\n\t   This test can take a long time to run, so there is a timer to keep\n\t   this in check (currently, 5 minutes). This commit adds checking the\n\t   environment variable \"PERL_TEST_TIME_OUT_FACTOR\"; if set, the time\n\t   out setting is multiplied by its value.\n\n       •   harness no longer waits for 30 seconds when running t/io/openpid.t.\n\t   [GH #13535] <https://github.com/Perl/perl5/issues/13535> [GH\n\t   #16420] <https://github.com/Perl/perl5/issues/16420>\n\nPackaging\n       For the past few years we have released perl using three different\n       archive formats: bzip (\".bz2\"), LZMA2 (\".xz\") and gzip (\".gz\"). Since\n       xz compresses better and decompresses faster, and gzip is more\n       compatible and uses less memory, we have dropped the \".bz2\" archive\n       format with this release.  (If this poses a problem, do let us know;\n       see \"Reporting Bugs\", below.)\n\nPlatform Support\n   Discontinued Platforms\n       PowerUX / Power MAX OS\n\t   Compiler hints and other support for these apparently long-defunct\n\t   platforms has been removed."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How can you override the watchdog timer count in the re/pat_psycho.t test?
+  manpageQuestion3: What changes were made to the packaging format for Perl in this release?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\nPlatform-Specific Notes\n       CentOS\n\t   Compilation on CentOS 5 is now fixed.\n\n       Cygwin\n\t   A build with the quadmath library can now be done on Cygwin.\n\n       Darwin\n\t   Perl now correctly uses reentrant functions, like \"asctime_r\", on\n\t   versions of Darwin that have support for them.\n\n       FreeBSD\n\t   FreeBSD's /usr/share/mk/sys.mk specifies \"-O2\" for architectures\n\t   other than ARM and MIPS. By default, perl is now compiled with the\n\t   same optimization levels.\n\n       VMS Several fix-ups for configure.com, marking function VMS has (or\n\t   doesn't have).\n\n\t   CRTL features can now be set by embedders before invoking Perl by\n\t   using the \"decc$feature_set\" and \"decc$feature_set_value\"\n\t   functions.  Previously any attempt to set features after image\n\t   initialization were ignored.\n\n       Windows\n\t   •   Support for compiling perl on Windows using Microsoft Visual\n\t       Studio 2017 (containing Visual C++ 14.1) has been added.\n\n\t   •   Visual C++ compiler version detection has been improved to work\n\t       on non-English language systems."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How can you compile Perl on CentOS 5 with the fixes mentioned in the manpage?
+  manpageQuestion3: What steps are needed to set CRT features for VMS when using perl5280delta?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   We now set $Config{libpth} correctly for 64-bit builds using\n\t       Visual C++ versions earlier than 14.1.\n\nInternal Changes\n       •   A new optimisation phase has been added to the compiler,\n\t   \"optimize_optree()\", which does a top-down scan of a complete\n\t   optree just before the peephole optimiser is run. This phase is not\n\t   currently hookable.\n\n       •   An \"OP_MULTICONCAT\" op has been added. At \"optimize_optree()\" time,\n\t   a chain of \"OP_CONCAT\" and \"OP_CONST\" ops, together optionally with\n\t   an \"OP_STRINGIFY\" and/or \"OP_SASSIGN\", are combined into a single\n\t   \"OP_MULTICONCAT\" op. The op is of type \"UNOP_AUX\", and the aux\n\t   array contains the argument count, plus a pointer to a constant\n\t   string and a set of segment lengths. For example with\n\n\t       my $x = \"foo=$foo, bar=$bar\\n\";\n\n\t   the constant string would be \"foo=, bar=\\n\" and the segment lengths\n\t   would be (4,6,1). If the string contains characters such as \"\\x80\",\n\t   whose representation changes under utf8, two sets of strings plus\n\t   lengths are precomputed and stored."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How would you use perl5280delta to optimize an optree in a Perl script?
+  manpageQuestion3: Can you provide an example of how perl5280delta handles the optimization of a string concatenation operation in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   Direct access to \"PL_keyword_plugin\" is not safe in the presence of\n\t   multithreading. A new \"wrap_keyword_plugin\" function has been added\n\t   to allow XS modules to safely define custom keywords even when\n\t   loaded from a thread, analogous to \"PL_check\" / \"wrap_op_checker\".\n\n       •   The \"PL_statbuf\" interpreter variable has been removed.\n\n       •   The deprecated function \"to_utf8_case()\", accessible from XS code,\n\t   has been removed.\n\n       •   A new function \"is_utf8_invariant_string_loc()\" has been added that\n\t   is like \"is_utf8_invariant_string()\" but takes an extra pointer\n\t   parameter into which is stored the location of the first variant\n\t   character, if any are found.\n\n       •   A new function, \"Perl_langinfo()\" has been added.  It is an\n\t   (almost) drop-in replacement for the system nl_langinfo(3), but\n\t   works on platforms that lack that; as well as being more thread-\n\t   safe, and hiding some gotchas with locale handling from the caller.\n\t   Code that uses this, needn't use localeconv(3) (and be affected by\n\t   the gotchas) to find the decimal point, thousands separator, or\n\t   currency symbol.  See \"Perl_langinfo\" in perlapi."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How can a Perl XS module safely define custom keywords when loaded from a thread?
+  manpageQuestion3: What is the purpose of the new Perl_langinfo() function introduced in perl5280delta?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   A new API function \"sv_rvunweaken()\" has been added to complement\n\t   \"sv_rvweaken()\".  The implementation was taken from \"unweaken\" in\n\t   Scalar::Util.\n\n       •   A new flag, \"SORTf_UNSTABLE\", has been added. This will allow a\n\t   future commit to make mergesort unstable when the user specifies\n\t   Xno sort stableX, since it has been decided that mergesort should\n\t   remain stable by default.\n\n       •   XS modules can now automatically get reentrant versions of system\n\t   functions on threaded perls.\n\n\t   By adding\n\n\t       #define PERL_REENTRANT\n\n\t   near the beginning of an \"XS\" file, it will be compiled so that\n\t   whatever reentrant functions perl knows about on that system will\n\t   automatically and invisibly be used instead of the plain, non-\n\t   reentrant versions.\tFor example, if you write \"getpwnam()\" in your\n\t   code, on a system that has \"getpwnam_r()\" all calls to the former\n\t   will be translated invisibly into the latter.  This does not happen\n\t   except on threaded perls, as they aren't needed otherwise.  Be\n\t   aware that which functions have reentrant versions varies from\n\t   system to system."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How can XS modules in Perl be made reentrant on threaded Perls?
+  manpageQuestion3: What is the function of the 'SORTf_UNSTABLE' flag in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   The \"PERL_NO_OP_PARENT\" build define is no longer supported, which\n\t   means that perl is now always built with \"PERL_OP_PARENT\" enabled.\n\n       •   The format and content of the non-utf8 transliteration table\n\t   attached to the \"op_pv\" field of \"OP_TRANS\"/\"OP_TRANSR\" ops has\n\t   changed. It's now a \"struct OPtrans_map\".\n\n       •   A new compiler \"#define\", \"dTHX_DEBUGGING\". has been added.\tThis\n\t   is useful for XS or C code that only need the thread context\n\t   because their debugging statements that get compiled only under\n\t   \"-DDEBUGGING\" need one.\n\n       •   A new API function \"Perl_setlocale\" in perlapi has been added.\n\n       •   \"sync_locale\" in perlapi has been revised to return a boolean as to\n\t   whether the system was using the global locale or not.\n\n       •   A new kind of magic scalar, called a \"nonelem\" scalar, has been\n\t   introduced.\tIt is stored in an array to denote a non-existent\n\t   element, whenever such an element is accessed in a potential lvalue\n\t   context.  It replaces the existing \"defelem\" (deferred element)\n\t   magic wherever this is possible, being significantly more\n\t   efficient.  This means that \"some_sub($sparse_array[$nonelem])\" no\n\t   longer has to create a new magic defelem scalar each time, as long\n\t   as the element is within the array."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How has the handling of non-utf8 transliteration tables been modified in perl5280delta?
+  manpageQuestion3: What new API function was added to perlapi in perl5280delta and what does it do?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\nIt partially fixes the rare bug of deferred elements getting out of\n\t   synch with their arrays when the array is shifted or unshifted.\n\t   [GH #16364] <https://github.com/Perl/perl5/issues/16364>\n\nSelected Bug Fixes\n       •   List assignment (\"aassign\") could in some rare cases allocate an\n\t   entry on the mortals stack and leave the entry uninitialized,\n\t   leading to possible crashes.  [GH #16017]\n\t   <https://github.com/Perl/perl5/issues/16017>\n\n       •   Attempting to apply an attribute to an \"our\" variable where a\n\t   function of that name already exists could result in a NULL pointer\n\t   being supplied where an SV was expected, crashing perl.  [perl\n\t   #131597] <https://rt.perl.org/Ticket/Display.html?id=131597>\n\n       •   \"split ' '\" now correctly handles the argument being split when in\n\t   the scope of the \"unicode_strings\" feature. Previously, when a\n\t   string using the single-byte internal representation contained\n\t   characters that are whitespace by Unicode rules but not by ASCII\n\t   rules, it treated those characters as part of fields rather than as\n\t   field separators.  [GH #15904]\n\t   <https://github.com/Perl/perl5/issues/15904>"
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How does the perl5280delta resource address the issue of deferred elements getting out of sync with their arrays when performing shift or unshift operations?
+  manpageQuestion3: Can you explain how the perl5280delta resource fixes the problem where applying an attribute to an 'our' variable could lead to a NULL pointer crash in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   Several built-in functions previously had bugs that could cause\n\t   them to write to the internal stack without allocating room for the\n\t   item being written. In rare situations, this could have led to a\n\t   crash. These bugs have now been fixed, and if any similar bugs are\n\t   introduced in future, they will be detected automatically in\n\t   debugging builds.\n\n\t   These internal stack usage checks introduced are also done by the\n\t   \"entersub\" operator when calling XSUBs.  This means we can report\n\t   which XSUB failed to allocate enough stack space.  [GH #16126]\n\t   <https://github.com/Perl/perl5/issues/16126>\n\n       •   Using a symbolic ref with postderef syntax as the key in a hash\n\t   lookup was yielding an assertion failure on debugging builds.  [GH\n\t   #16029] <https://github.com/Perl/perl5/issues/16029>\n\n       •   Array and hash variables whose names begin with a caret now admit\n\t   indexing inside their curlies when interpolated into strings, as in\n\t   \"${^CAPTURE[0]}\" to index \"@{^CAPTURE}\".  [GH #16050]\n\t   <https://github.com/Perl/perl5/issues/16050>"
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How does the perl5280delta resource address potential crashes caused by stack overflow in Perl functions?
+  manpageQuestion3: What new feature was introduced in perl5280delta that allows indexing into array and hash variables named with a caret when interpolated into strings?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   Fetching the name of a glob that was previously UTF-8 but wasn't\n\t   any longer would return that name flagged as UTF-8. [GH #15971]\n\t   <https://github.com/Perl/perl5/issues/15971>\n\n       •   The perl \"sprintf()\" function (via the underlying C function\n\t   \"Perl_sv_vcatpvfn_flags()\") has been heavily reworked to fix many\n\t   minor bugs, including the integer wrapping of large width and\n\t   precision specifiers and potential buffer overruns. It has also\n\t   been made faster in many cases.\n\n       •   Exiting from an \"eval\", whether normally or via an exception, now\n\t   always frees temporary values (possibly calling destructors) before\n\t   setting $@. For example:\n\n\t       sub DESTROY { eval { die \"died in DESTROY\"; } }\n\t       eval { bless []; };\n\t       # $@ used to be equal to \"died in DESTROY\" here; it's now \"\".\n\n       •   Fixed a duplicate symbol failure with \"-flto -mieee-fp\" builds.\n\t   pp.c defined \"_LIB_VERSION\" which \"-lieee\" already defines.\t[GH\n\t   #16086] <https://github.com/Perl/perl5/issues/16086>"
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How would you use the perl5280delta tool to fix a duplicate symbol failure during a build with specific compiler flags?
+  manpageQuestion3: Can you provide an example of how to use the perl5280delta resource to address issues with the sprintf() function in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   The tokenizer no longer consumes the exponent part of a floating\n\t   point number if it's incomplete.  [GH #16073]\n\t   <https://github.com/Perl/perl5/issues/16073>\n\n       •   On non-threaded builds, for \"m/$null/\" where $null is an empty\n\t   string is no longer treated as if the \"/o\" flag was present when\n\t   the previous matching match operator included the \"/o\" flag.  The\n\t   rewriting used to implement this behavior could confuse the\n\t   interpreter.  This matches the behaviour of threaded builds.  [GH\n\t   #14668] <https://github.com/Perl/perl5/issues/14668>\n\n       •   Parsing a \"sub\" definition could cause a use after free if the\n\t   \"sub\" keyword was followed by whitespace including newlines (and\n\t   comments.)  [GH #16097]\n\t   <https://github.com/Perl/perl5/issues/16097>\n\n       •   The tokenizer now correctly adjusts a parse pointer when skipping\n\t   whitespace in a \"${identifier}\" construct.  [perl #131949]\n\t   <https://rt.perl.org/Public/Bug/Display.html?id=131949>\n\n       •   Accesses to \"${^LAST_FH}\" no longer assert after using any of a\n\t   variety of I/O operations on a non-glob.  [GH #15372]\n\t   <https://github.com/Perl/perl5/issues/15372>"
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How does the perl5280delta resource address issues related to floating-point number parsing in Perl?
+  manpageQuestion3: What changes did the perl5280delta resource introduce to handle potential use-after-free errors in sub definitions?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   The XS-level \"Copy()\", \"Move()\", \"Zero()\" macros and their variants\n\t   now assert if the pointers supplied are \"NULL\".  ISO C considers\n\t   supplying NULL pointers to the functions these macros are built\n\t   upon as undefined behaviour even when their count parameters are\n\t   zero.  Based on these assertions and the original bug report three\n\t   macro calls were made conditional.  [GH #16079]\n\t   <https://github.com/Perl/perl5/issues/16079> [GH #16112]\n\t   <https://github.com/Perl/perl5/issues/16112>\n\n       •   Only the \"=\" operator is permitted for defining defaults for\n\t   parameters in subroutine signatures.  Previously other assignment\n\t   operators, e.g. \"+=\", were also accidentally permitted.  [GH\n\t   #16084] <https://github.com/Perl/perl5/issues/16084>\n\n       •   Package names are now always included in \":prototype\" warnings\n\t   [perl #131833]\n\t   <https://rt.perl.org/Public/Bug/Display.html?id=131833>\n\n       •   The \"je_old_stack_hwm\" field, previously only found in the \"jmpenv\"\n\t   structure on debugging builds, has been added to non-debug builds\n\t   as well. This fixes an issue with some CPAN modules caused by the\n\t   size of this structure varying between debugging and non-debugging\n\t   builds.  [GH #16122] <https://github.com/Perl/perl5/issues/16122>"
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How does the perl5280delta resource address the issue of NULL pointer assertions in XS macros?
+  manpageQuestion3: What change does the perl5280delta resource implement regarding subroutine parameter defaults in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   The arguments to the \"ninstr()\" macro are now correctly\n\t   parenthesized.\n\n       •   A NULL pointer dereference in the \"S_regmatch()\" function has been\n\t   fixed.  [perl #132017]\n\t   <https://rt.perl.org/Public/Bug/Display.html?id=132017>\n\n       •   Calling exec PROGRAM LIST with an empty \"LIST\" has been fixed.\n\t   This should call \"execvp()\" with an empty \"argv\" array (containing\n\t   only the terminating \"NULL\" pointer), but was instead just\n\t   returning false (and not setting $!).  [GH #16075]\n\t   <https://github.com/Perl/perl5/issues/16075>\n\n       •   The \"gv_fetchmeth_sv\" C function stopped working properly in Perl\n\t   5.22 when fetching a constant with a UTF-8 name if that constant\n\t   subroutine was stored in the stash as a simple scalar reference,\n\t   rather than a full typeglob.  This has been corrected.\n\n       •   Single-letter debugger commands followed by an argument which\n\t   starts with punctuation  (e.g. \"p$^V\" and \"x@ARGV\") now work again.\n\t   They had been wrongly requiring a space between the command and the\n\t   argument.  [GH #13342] <https://github.com/Perl/perl5/issues/13342>"
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How would you use perl5280delta to fix a NULL pointer dereference in the 'S_regmatch()' function?
+  manpageQuestion3: Can you provide an example of using perl5280delta to address the issue where single-letter debugger commands with arguments starting with punctuation are not working properly?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   splice now throws an exception (\"Modification of a read-only value\n\t   attempted\") when modifying a read-only array.  Until now it had\n\t   been silently modifying the array.  The new behaviour is consistent\n\t   with the behaviour of push and unshift.  [GH #15923]\n\t   <https://github.com/Perl/perl5/issues/15923>\n\n       •   \"stat()\", \"lstat()\", and file test operators now fail if given a\n\t   filename containing a nul character, in the same way that \"open()\"\n\t   already fails.\n\n       •   \"stat()\", \"lstat()\", and file test operators now reliably set $!\n\t   when failing due to being applied to a closed or otherwise invalid\n\t   file handle.\n\n       •   File test operators for Unix permission bits that don't exist on a\n\t   particular platform, such as \"-k\" (sticky bit) on Windows, now\n\t   check that the file being tested exists before returning the\n\t   blanket false result, and yield the appropriate errors if the\n\t   argument doesn't refer to a file.\n\n       •   Fixed a 'read before buffer' overrun when parsing a range starting\n\t   with \"\\N{}\" at the beginning of the character set for the\n\t   transliteration operator.  [GH #16189]\n\t   <https://github.com/Perl/perl5/issues/16189>"
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How does the perl5280delta resource handle filenames with nul characters when using file test operators?
+  manpageQuestion3: What change was made to the splice function in perl5280delta and how does it affect array modifications?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   Fixed a leaked scalar when parsing an empty \"\\N{}\" at compile-time.\n\t   [GH #16189] <https://github.com/Perl/perl5/issues/16189>\n\n       •   Calling \"do $path\" on a directory or block device now yields a\n\t   meaningful error code in $!.  [GH #14841]\n\t   <https://github.com/Perl/perl5/issues/14841>\n\n       •   Regexp substitution using an overloaded replacement value that\n\t   provides a tainted stringification now correctly taints the\n\t   resulting string.  [GH #12495]\n\t   <https://github.com/Perl/perl5/issues/12495>\n\n       •   Lexical sub declarations in \"do\" blocks such as \"do { my sub lex;\n\t   123 }\" could corrupt the stack, erasing items already on the stack\n\t   in the enclosing statement.\tThis has been fixed.  [GH #16243]\n\t   <https://github.com/Perl/perl5/issues/16243>\n\n       •   \"pack\" and \"unpack\" can now handle repeat counts and lengths that\n\t   exceed two billion.\t[GH #13179]\n\t   <https://github.com/Perl/perl5/issues/13179>\n\n       •   Digits past the radix point in octal and binary floating point\n\t   literals now have the correct weight on platforms where a floating\n\t   point significand doesn't fit into an integer type."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How does the perl5280delta resource address issues with handling large repeat counts in pack and unpack operations?
+  manpageQuestion3: What change was made to the behavior of 'do $path' when dealing with directories or block devices in perl5280delta?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   The canonical truth value no longer has a spurious special meaning\n\t   as a callable subroutine.  It used to be a magic placeholder for a\n\t   missing \"import\" or \"unimport\" method, but is now treated like any\n\t   other string 1.  [GH #14902]\n\t   <https://github.com/Perl/perl5/issues/14902>\n\n       •   \"system\" now reduces its arguments to strings in the parent\n\t   process, so any effects of stringifying them (such as overload\n\t   methods being called or warnings being emitted) are visible in the\n\t   way the program expects.  [GH #13561]\n\t   <https://github.com/Perl/perl5/issues/13561>\n\n       •   The \"readpipe()\" built-in function now checks at compile time that\n\t   it has only one parameter expression, and puts it in scalar\n\t   context, thus ensuring that it doesn't corrupt the stack at\n\t   runtime.  [GH #2793] <https://github.com/Perl/perl5/issues/2793>\n\n       •   \"sort\" now performs correct reference counting when aliasing $a and\n\t   $b, thus avoiding premature destruction and leakage of scalars if\n\t   they are re-aliased during execution of the sort comparator.  [GH\n\t   #11422] <https://github.com/Perl/perl5/issues/11422>"
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How does the 'system' function in perl5280delta handle its arguments differently from previous versions?
+  manpageQuestion3: What change was made to the 'readpipe()' function in perl5280delta and what is its purpose?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   \"reverse\" with no operand, reversing $_ by default, is no longer in\n\t   danger of corrupting the stack.  [GH #16291]\n\t   <https://github.com/Perl/perl5/issues/16291>\n\n       •   \"exec\", \"system\", et al are no longer liable to have their argument\n\t   lists corrupted by reentrant calls and by magic such as tied\n\t   scalars.  [GH #15660] <https://github.com/Perl/perl5/issues/15660>\n\n       •   Perl's own \"malloc\" no longer gets confused by attempts to allocate\n\t   more than a gigabyte on a 64-bit platform.  [GH #13273]\n\t   <https://github.com/Perl/perl5/issues/13273>\n\n       •   Stacked file test operators in a sort comparator expression no\n\t   longer cause a crash.  [GH #15626]\n\t   <https://github.com/Perl/perl5/issues/15626>\n\n       •   An identity \"tr///\" transformation on a reference is no longer\n\t   mistaken for that reference for the purposes of deciding whether it\n\t   can be assigned to.\t[GH #15812]\n\t   <https://github.com/Perl/perl5/issues/15812>\n\n       •   Lengthy hexadecimal, octal, or binary floating point literals no\n\t   longer cause undefined behaviour when parsing digits that are of\n\t   such low significance that they can't affect the floating point\n\t   value.  [GH #16114] <https://github.com/Perl/perl5/issues/16114>"
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How does the perl5280delta tool address issues with reentrant calls and magic such as tied scalars in Perl?
+  manpageQuestion3: What improvements does perl5280delta provide regarding the handling of lengthy hexadecimal, octal, or binary floating point literals in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   \"open $$scalarref...\" and similar invocations no longer leak the\n\t   file handle.  [GH #12593]\n\t   <https://github.com/Perl/perl5/issues/12593>\n\n       •   Some convoluted kinds of regexp no longer cause an arithmetic\n\t   overflow when compiled.  [GH #16113]\n\t   <https://github.com/Perl/perl5/issues/16113>\n\n       •   The default typemap, by avoiding \"newGVgen\", now no longer leaks\n\t   when XSUBs return file handles (\"PerlIO *\" or \"FILE *\").  [GH\n\t   #12593] <https://github.com/Perl/perl5/issues/12593>\n\n       •   Creating a \"BEGIN\" block as an XS subroutine with a prototype no\n\t   longer crashes because of the early freeing of the subroutine.\n\n       •   The \"printf\" format specifier \"%.0f\" no longer rounds incorrectly\n\t   [GH #9125] <https://github.com/Perl/perl5/issues/9125>, and now\n\t   shows the correct sign for a negative zero.\n\n       •   Fixed an issue where the error \"Scalar value @arrayname[0] better\n\t   written as $arrayname\" would give an error \"Cannot printf Inf with\n\t   'c'\" when arrayname starts with \"Inf\".  [GH #16335]\n\t   <https://github.com/Perl/perl5/issues/16335>"
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How does perl5280delta address the issue of file handle leakage in Perl?
+  manpageQuestion3: What changes were made to the 'printf' format specifier in perl5280delta?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\n•   The Perl implementation of \"getcwd()\" in \"Cwd\" in the PathTools\n\t   distribution now behaves the same as XS implementation on errors:\n\t   it returns an error, and sets $!.  [GH #16338]\n\t   <https://github.com/Perl/perl5/issues/16338>\n\n       •   Vivify array elements when putting them on the stack.  Fixes [GH\n\t   #5310] <https://github.com/Perl/perl5/issues/5310> (reported in\n\t   April 2002).\n\n       •   Fixed parsing of braced subscript after parens. Fixes [GH #4688]\n\t   <https://github.com/Perl/perl5/issues/4688> (reported in December\n\t   2001).\n\n       •   \"tr/non_utf8/long_non_utf8/c\" could give the wrong results when the\n\t   length of the replacement character list was greater than 0x7fff.\n\n       •   \"tr/non_utf8/non_utf8/cd\" failed to add the implied\n\t   \"\\x{100}-\\x{7fffffff}\" to the search character list.\n\n       •   Compilation failures within \"perl-within-perl\" constructs, such as\n\t   with string interpolation and the right part of \"s///e\", now cause\n\t   compilation to abort earlier."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How would you use the perl5280delta resource to fix a bug related to tr/non_utf8/long_non_utf8/c?
+  manpageQuestion3: Can you provide an example of using the perl5280delta resource to address a compilation failure within a 'perl-within-perl' construct?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\nPreviously compilation could continue in order to report other\n\t   errors, but the failed sub-parse could leave partly parsed\n\t   constructs on the parser shift-reduce stack, confusing the parser,\n\t   leading to perl crashes.  [GH #14739]\n\t   <https://github.com/Perl/perl5/issues/14739>\n\n       •   On threaded perls where the decimal point (radix) character is not\n\t   a dot, it has been possible for a race to occur between threads\n\t   when one needs to use the real radix character (such as with\n\t   \"sprintf\").\tThis has now been fixed by use of a mutex on systems\n\t   without thread-safe locales, and the problem just doesn't come up\n\t   on those with thread-safe locales.\n\n       •   Errors while compiling a regex character class could sometime\n\t   trigger an assertion failure.  [GH #16172]\n\t   <https://github.com/Perl/perl5/issues/16172>\n\nAcknowledgements\n       Perl 5.28.0 represents approximately 13 months of development since\n       Perl 5.26.0 and contains approximately 730,000 lines of changes across\n       2,200 files from 77 authors."
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How does the perl5280delta resource address the issue of race conditions in threaded Perl environments?
+  manpageQuestion3: What is the significance of the perl5280delta resource in terms of regex compilation errors?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.
+
+
+
+    Manpage text:
+
+    Excluding auto-generated files, documentation and release tools, there
+           were approximately 580,000 lines of changes to 1,300 .pm, .t, .c and .h
+           files.
+
+           Perl continues to flourish into its fourth decade thanks to a vibrant
+           community of users and developers. The following people are known to
+           have contributed the improvements that became Perl 5.28.0:
+
+           Aaron Crane, Abigail, AEvar Arnfjoer` Bjarmason, Alberto Simo~es,
+           Alexandr Savca, Andrew Fresh, Andy Dougherty, Andy Lester, Aristotle
+           Pagaltzis, Ask Bjorn Hansen, Chris 'BinGOs' Williams, Craig A. Berry,
+           Dagfinn Ilmari Mannsaaker, Dan Collins, Daniel Dragan, David Cantrell,
+           David Mitchell, Dmitry Ulanov, Dominic Hargreaves, E. Choroba, Eric
+           Herman, Eugen Konkov, Father Chrysostomos, Gene Sullivan, George
+           Hartzell, Graham Knop, Harald Joerg, H.Merijn Brand, Hugo van der
+           Sanden, Jacques Germishuys, James E Keenan, Jarkko Hietaniemi, Jerry D.
+           Hedden, J. Nick Koston, John Lightsey, John Peacock, John P. Linderman,
+           John SJ Anderson, Karen Etheridge, Karl Williamson, Ken Brown, Ken
+           Cotterill, Leon Timmermans, Lukas Mai, Marco Fontani, Marc-Philip
+           Werner, Matthew Horsfall, Neil Bowers, Nicholas Clark, Nicolas R., Niko
+           Tyni, Pali, Paul Marquess, Peter John Acklam, Reini Urban, Renee
+           Baecker, Ricardo Signes, Robin Barker, Sawyer X, Scott Lanning, Sergey
+           Aleynikov, Shirakata Kentaro, Shoichi Kaji, Slaven Rezic, Smylers,
+           Steffen Mueller, Steve Hay, Sullivan Beck, Thomas Sibley, Todd Rinaldo,
+           Tomasz Konojacki, Tom Hukins, Tom Wyant, Tony Cook, Vitali Peil, Yves
+           Orton, Zefram.
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How can one determine the number of lines of code changed in the perl5280delta resource?
+  manpageQuestion3: Who are the notable contributors to the Perl 5.28.0 release according to the manpage?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.
+
+
+
+    Manpage text:
+
+    The list above is almost certainly incomplete as it is automatically
+           generated from version control history. In particular, it does not
+           include the names of the (very much appreciated) contributors who
+           reported issues to the Perl bug tracker.
+
+           Many of the changes included in this version originated in the CPAN
+           modules included in Perl's core. We're grateful to the entire CPAN
+           community for helping Perl to flourish.
+
+           For a more complete list of all of Perl's historical contributors,
+           please see the AUTHORS file in the Perl source distribution.
+
+    Reporting Bugs
+           If you find what you think is a bug, you might check the perl bug
+           database at <https://rt.perl.org/> .  There may also be information at
+           <http://www.perl.org/> , the Perl Home Page.
+
+           If you believe you have an unreported bug, please run the perlbug
+           program included with your release.  Be sure to trim your bug down to a
+           tiny but sufficient test case.  Your bug report, along with the output
+           of "perl -V", will be sent off to perlbug@perl.org to be analysed by
+           the Perl porting team.
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How can one report a bug to the Perl community using the perl5280delta resource?
+  manpageQuestion3: What is the significance of the AUTHORS file mentioned in the perl5280delta manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perl5280delta`.\n\n\n\nManpage text:\n\nIf the bug you are reporting has security implications which make it\n       inappropriate to send to a publicly archived mailing list, then see\n       \"SECURITY VULNERABILITY CONTACT INFORMATION\" in perlsec for details of\n       how to report the issue.\n\nGive Thanks\n       If you wish to thank the Perl 5 Porters for the work we had done in\n       Perl 5, you can do so by running the \"perlthanks\" program:\n\n\t   perlthanks\n\n       This will send an email to the Perl 5 Porters list with your show of\n       thanks.\n\nSEE ALSO\n       The Changes file for an explanation of how to view exhaustive details\n       on what changed.\n\n       The INSTALL file for how to build Perl.\n\n       The README file for general stuff.\n\n       The Artistic and Copying files for copyright information.\n\nperl v5.34.1\t\t\t  2022-02-19\t\t      PERL5280DELTA(1)"
+  manpageQuestion1: What is the primary purpose of the perl5280delta resource?
+  manpageQuestion2: How can you express gratitude to the Perl 5 Porters using the perl5280delta resource?
+  manpageQuestion3: What documentation resources are commonly referenced when working with perl5280delta?
+

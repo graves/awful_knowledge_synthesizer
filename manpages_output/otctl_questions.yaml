@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `otctl`.\n\n\n\nManpage text:\n\notctl(1)\t\t    General Commands Manual\t\t      otctl(1)\n\nNAME\n     otctl – Command line interface do provide diagnostic information for\n     iCloud Keychain syncing\n\nSYNOPSIS\n     otctl\n\nDESCRIPTION\n     Command line interface do provide trust and sycning related information\n     in sysdiagnose.\n\nSEE ALSO\n     sysdiagnose(1),\n\nHISTORY\n     otctl was first introduced in Mac OS X version 10.15\n\nDarwin\t\t\t\tThu Feb 14 2019 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the otctl tool?
+  manpageQuestion2: How would you use otctl to retrieve trust and syncing information related to iCloud Keychain?
+  manpageQuestion3: Can you provide an example of using otctl in conjunction with sysdiagnose to gather diagnostic information?
+

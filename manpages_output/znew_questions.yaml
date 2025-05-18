@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `znew`.\n\n\n\nManpage text:\n\nZNEW(1) \t\t    General Commands Manual\t\t       ZNEW(1)\n\nNAME\n     znew – convert compressed files to gzipped files\n\nSYNOPSIS\n     znew [-ftv9K] file ...\n\nDESCRIPTION\n     The znew utility uncompresses files compressed by compress(1) and\n     recompresses them with gzip(1).\n\n     The options are as follows:\n\n     -f      Overwrite existing ‘.gz’ files.  Unless this option is specified,\n\t     znew refuses to overwrite existing files.\n\n     -t      Test integrity of the gzipped file before deleting the original\n\t     file.  If the integrity check fails, the original ‘.Z’ file is\n\t     not removed.\n\n     -v      Print a report specifying the achieved compression ratios.\n\n     -9      Use the -9 mode of gzip(1), achieving better compression at the\n\t     cost of slower execution.\n\n     -K      Keep the original ‘.Z’ file if it uses less disk blocks than the\n\t     gzipped one.  A disk block is 1024 bytes.\n\nSEE ALSO\n     gzip(1)\n\nCAVEATS\n     The znew utility tries to maintain the file mode of the original file.\n     If the original file is not writable, it is not able to do that and znew\n     will print a warning."
+  manpageQuestion1: What is the primary purpose of the znew command?
+  manpageQuestion2: How can you use znew to convert a compressed file from .Z format to .gz format without overwriting existing .gz files?
+  manpageQuestion3: What command would you use to test the integrity of a gzipped file before deleting the original .Z file when using znew?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `znew`.\n\n\n\nManpage text:\n\nmacOS 15.3\t\t       January 26, 2007 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the znew tool?
+  manpageQuestion2: How would you use znew to create a new zone with specific parameters?
+  manpageQuestion3: Can you provide an example of using znew to configure a zone with specific options?
+

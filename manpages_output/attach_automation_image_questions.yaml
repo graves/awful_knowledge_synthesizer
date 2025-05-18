@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `attach_automation_image`.\n\n\n\nManpage text:\n\nATTACH_AUTOMATION_IMAGE(8)  System Manager's Manual ATTACH_AUTOMATION_IMAGE(8)\n\nNAME\n     attach_automation_image – attach and initialize disk images for\n     automation_trampoline(8)\n\nSYNOPSIS\n     attach_automation_image automation_image_url\n\nDESCRIPTION\n     attach_automation_image attaches and initializes the disk image at\n     automation_image_url on behalf of automation_trampoline(8).  It is not\n     intended for general use, and its behavior is not documented. Use\n     hdiutil(1) instead.\n\nSEE ALSO\n     hdiutil(1)\n\nmacOS\t\t\t\t June 22, 2018\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the attach_automation_image command?
+  manpageQuestion2: How would you use attach_automation_image to prepare a disk image for automation_trampoline?
+  manpageQuestion3: What is the recommended alternative to attach_automation_image for general use?
+

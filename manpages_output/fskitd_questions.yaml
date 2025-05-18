@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `fskitd`.\n\n\n\nManpage text:\n\nFSKITD(8)\t\t    System Manager's Manual\t\t     FSKITD(8)\n\nNAME\n     fskitd – FSKit mount manager and mount support\n\nDESCRIPTION\n     fskitd is the FSKit mount management and mount support daemon. It manages\n     the FSKit mount life cycle and coordinating with other daemons. It also\n     translates requests from the kernel LIFS file system to the user space\n     file system servers backing volumes.\n\n     fskitd is invoked invoked by launchd(8) when volume creation is requested\n     or when previously-created volumes are detected.\n\nFILES\n     /System/Library/LaunchAgents/com.apple.fskitd.plist\n\nOS X\t\t\t       December 1, 2021 \t\t\t  OS X"
+  manpageQuestion1: What is the primary purpose of the fskitd daemon?
+  manpageQuestion2: How does fskitd interact with other system components to manage FSKit mounts?
+  manpageQuestion3: What is the role of fskitd in translating requests from the kernel LIFS file system to user space file systems?
+

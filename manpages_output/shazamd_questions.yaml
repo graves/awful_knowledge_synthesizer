@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `shazamd`.\n\n\n\nManpage text:\n\nshazamd(8)\t\t    System Manager's Manual\t\t    shazamd(8)\n\nNAME\n     shazamd – Shazam daemon\n\nDESCRIPTION\n     shazamd manages Shazam services. It cannot be used directly by the user.\n\nmacOS 15.3\t\t       November 9, 2020 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the shazamd tool?
+  manpageQuestion2: How would you check the status of the Shazam service managed by shazamd?
+  manpageQuestion3: Can you explain how shazamd is typically used in a macOS environment?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sysdiagnose_helper`.\n\n\n\nManpage text:\n\nsysdiagnose_helper(8)\t    System Manager's Manual\t sysdiagnose_helper(8)\n\nNAME\n     sysdiagnose_helper – performs critical operations for sysdiagnose.\n\nDESCRIPTION\n     sysdiagnose_helper is a helper daemon that performs critical sub-tasks in\n     separate processes to improve sysdiagnose's stability and reliability.\n\nOSX\t\t\t       November 10, 2016\t\t\t   OSX"
+  manpageQuestion1: What is the primary purpose of the sysdiagnose_helper tool?
+  manpageQuestion2: How would you use sysdiagnose_helper to assist in the diagnostics process of a macOS system?
+  manpageQuestion3: Can you explain how sysdiagnose_helper contributes to the stability and reliability of the sysdiagnose tool?
+

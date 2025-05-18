@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cryptexctl-version`.\n\n\n\nManpage text:\n\nCRYPTEXCTL-VERSION(1)\t    General Commands Manual\t CRYPTEXCTL-VERSION(1)\n\nNAME\n     cryptexctl version – print the version of a cryptex subsystem component\n\nSYNOPSIS\n     cryptexctl version version [COMPONENT]\n\nDESCRIPTION\n     Print the version of a cryptex subsystem component.\n\n     If no COMPONENT is specified, print information about the \"cli\" component\n     (cryptexctl(1) itself).\n\nOPTIONS\n     List of components and their descriptions:\n\n     cli      The cryptexctl(1) tool.\n\n     library  The libcryptex(3) library against which cryptexctl(1) is linked.\n\n     daemon   The cryptexd(8) daemon cryptexctl(1) is currently communicating\n\t      with.\n\n     mobile-device-framework\n\t      The MobileDevice framework against which cryptexctl(1) is\n\t      linked.\n\nEXAMPLES\n     Display version information about cryptexctl(1):\n\t   % cryptexctl version\n\n     Display version information about the libcryptex(3) library:\n\t   % cryptexctl version library\n\nSEE ALSO\n     cryptexctl(1), libcryptex(3), cryptexd(8)"
+  manpageQuestion1: What is the primary purpose of the cryptexctl version command?
+  manpageQuestion2: How can you use cryptexctl version to check the version of the libcryptex library?
+  manpageQuestion3: What command would you use to view the version information of the cryptexd daemon?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cryptexctl-version`.\n\n\n\nManpage text:\n\nHISTORY\n     Introduced in macOS 11.0\n\nDarwin\t\t\t\t June 8, 2020\t\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the cryptexctl-version tool?
+  manpageQuestion2: How would you use cryptexctl-version to check the version of the cryptexctl utility?
+  manpageQuestion3: Can you provide an example of using cryptexctl-version to determine the version of the cryptexctl tool installed on a macOS system?
+

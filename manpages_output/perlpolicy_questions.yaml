@@ -1,0 +1,336 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpolicy`.\n\n\n\nManpage text:\n\nPERLPOLICY(1)\t       Perl Programmers Reference Guide \t PERLPOLICY(1)"
+  manpageQuestion1: What is the primary purpose of the perlpolicy tool?
+  manpageQuestion2: How would you use perlpolicy to enforce a specific policy on Perl code?
+  manpageQuestion3: Can you provide an example of using perlpolicy to check if a Perl script adheres to a particular coding standard?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpolicy`.
+
+
+
+    Manpage text:
+
+    NAME
+           perlpolicy - Various and sundry policies and commitments related to the
+           Perl core
+
+    DESCRIPTION
+           This document is the master document which records all written policies
+           about how the Perl 5 Porters collectively develop and maintain the Perl
+           core.
+
+    GOVERNANCE
+       Perl 5 Porters
+           Subscribers to perl5-porters (the porters themselves) come in several
+           flavours.  Some are quiet curious lurkers, who rarely pitch in and
+           instead watch the ongoing development to ensure they're forewarned of
+           new changes or features in Perl.  Some are representatives of vendors,
+           who are there to make sure that Perl continues to compile and work on
+           their platforms.  Some patch any reported bug that they know how to
+           fix, some are actively patching their pet area (threads, Win32, the
+           regexp -engine), while others seem to do nothing but complain.  In
+           other words, it's your usual mix of technical people.
+
+           Among these people are the core Perl team.  These are trusted
+           volunteers involved in the ongoing development of the Perl language and
+           interpreter.  They are not required to be language developers or
+           committers.
+  manpageQuestion1: What is the primary purpose of the perlpolicy resource?
+  manpageQuestion2: How does the perlpolicy document contribute to the governance of the Perl 5 Porters?
+  manpageQuestion3: What role do core Perl team members play in the development and maintenance of the Perl core according to perlpolicy?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpolicy`.\n\n\n\nManpage text:\n\nOver this group of porters presides Larry Wall.\tHe has the final word\n       in what does and does not change in any of the Perl programming\n       languages.  These days, Larry spends most of his time on Raku, while\n       Perl 5 is shepherded by a steering council of porters responsible for\n       deciding what goes into each release and ensuring that releases happen\n       on a regular basis.\n\n       Larry sees Perl development along the lines of the US government:\n       there's the Legislature (the porters, represented by the core team),\n       the Executive branch (the steering council), and the Supreme Court\n       (Larry).  The legislature can discuss and submit patches to the\n       executive branch all they like, but the executive branch is free to\n       veto them.  Rarely, the Supreme Court will side with the executive\n       branch over the legislature, or the legislature over the executive\n       branch.\tMostly, however, the legislature and the executive branch are\n       supposed to get along and work out their differences without\n       impeachment or court cases."
+  manpageQuestion1: What is the primary purpose of the perlpolicy resource?
+  manpageQuestion2: How does the perlpolicy resource determine what changes are made to Perl 5?
+  manpageQuestion3: What is the role of Larry Wall in the Perl development process according to the perlpolicy manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpolicy`.\n\n\n\nManpage text:\n\nYou might sometimes see reference to Rule 1 and Rule 2.\tLarry's power\n       as Supreme Court is expressed in The Rules:\n\n       1.  Larry is always by definition right about how Perl should behave.\n\t   This means he has final veto power on the core functionality.\n\n       2.  Larry is allowed to change his mind about any matter at a later\n\t   date, regardless of whether he previously invoked Rule 1.\n\n       Got that?  Larry is always right, even when he was wrong.  It's rare to\n       see either Rule exercised, but they are often alluded to.\n\n       For the specifics on how the members of the core team and steering\n       council are elected or rotated, consult perlgov, which spells it all\n       out in detail.\n\nMAINTENANCE AND SUPPORT\n       Perl 5 is developed by a community, not a corporate entity. Every\n       change contributed to the Perl core is the result of a donation.\n       Typically, these donations are contributions of code or time by\n       individual members of our community. On occasion, these donations come\n       in the form of corporate or organizational sponsorship of a particular\n       individual or project."
+  manpageQuestion1: What is the primary purpose of the perlpolicy resource?
+  manpageQuestion2: How does the perlpolicy document describe Larry Wall's role in shaping Perl's core functionality?
+  manpageQuestion3: What is the main source of support for the Perl 5 development community?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpolicy`.\n\n\n\nManpage text:\n\nAs a volunteer organization, the commitments we make are heavily\n       dependent on the goodwill and hard work of individuals who have no\n       obligation to contribute to Perl.\n\n       That being said, we value Perl's stability and security and have long\n       had an unwritten covenant with the broader Perl community to support\n       and maintain releases of Perl.\n\n       This document codifies the support and maintenance commitments that the\n       Perl community should expect from Perl's developers:\n\n       •   We \"officially\" support the two most recent stable release series.\n\t   5.26.x and earlier are now out of support.  As of the release of\n\t   5.32.0, we will \"officially\" end support for Perl 5.28.x, other\n\t   than providing security updates as described below.\n\n       •   To the best of our ability, we will attempt to fix critical issues\n\t   in the two most recent stable 5.x release series.  Fixes for the\n\t   current release series take precedence over fixes for the previous\n\t   release series."
+  manpageQuestion1: What is the primary purpose of the perlpolicy document?
+  manpageQuestion2: How does the perlpolicy document define the support and maintenance commitments for Perl releases?
+  manpageQuestion3: What is the timeline for officially ending support for Perl 5.28.x according to the perlpolicy?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpolicy`.\n\n\n\nManpage text:\n\n•   To the best of our ability, we will provide \"critical\" security\n\t   patches / releases for any major version of Perl whose 5.x.0\n\t   release was within the past three years.  We can only commit to\n\t   providing these for the most recent .y release in any 5.x.y series.\n\n       •   We will not provide security updates or bug fixes for development\n\t   releases of Perl.\n\n       •   We encourage vendors to ship the most recent supported release of\n\t   Perl at the time of their code freeze.\n\n       •   As a vendor, you may have a requirement to backport security fixes\n\t   beyond our 3 year support commitment.  We can provide limited\n\t   support and advice to you as you do so and, where possible will try\n\t   to apply those patches to the relevant -maint branches in git,\n\t   though we may or may not choose to make numbered releases or\n\t   \"official\" patches available. See \"SECURITY VULNERABILITY CONTACT\n\t   INFORMATION\" in perlsec for details on how to begin that process.\n\nBACKWARD COMPATIBILITY AND DEPRECATION\n       Our community has a long-held belief that backward-compatibility is a\n       virtue, even when the functionality in question is a design flaw."
+  manpageQuestion1: What is the primary purpose of the perlpolicy tool?
+  manpageQuestion2: How does the perlpolicy address backward compatibility in Perl releases?
+  manpageQuestion3: What are the guidelines for obtaining security patches for Perl versions beyond the three-year support period?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpolicy`.
+
+
+
+    Manpage text:
+
+    We would all love to unmake some mistakes we've made over the past
+           decades.  Living with every design error we've ever made can lead to
+           painful stagnation.  Unwinding our mistakes is very, very difficult.
+           Doing so without actively harming our users is nearly impossible.
+
+           Lately, ignoring or actively opposing compatibility with earlier
+           versions of Perl has come into vogue.  Sometimes, a change is proposed
+           which wants to usurp syntax which previously had another meaning.
+           Sometimes, a change wants to improve previously-crazy semantics.
+
+           Down this road lies madness.
+
+           Requiring end-user programmers to change just a few language
+           constructs, even language constructs which no well-educated developer
+           would ever intentionally use is tantamount to saying "you should not
+           upgrade to a new release of Perl unless you have 100% test coverage and
+           can do a full manual audit of your codebase."  If we were to have tools
+           capable of reliably upgrading Perl source code from one version of Perl
+           to another, this concern could be significantly mitigated.
+  manpageQuestion1: What is the primary purpose of the perlpolicy tool?
+  manpageQuestion2: How would you use perlpolicy to ensure that your Perl code remains compatible with older versions of Perl?
+  manpageQuestion3: Can you provide an example of using perlpolicy to prevent a syntax change from breaking existing Perl code?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpolicy`.
+
+
+
+    Manpage text:
+
+    We want to ensure that Perl continues to grow and flourish in the
+           coming years and decades, but not at the expense of our user community.
+
+           Existing syntax and semantics should only be marked for destruction in
+           very limited circumstances.  If they are believed to be very rarely
+           used, stand in the way of actual improvement to the Perl language or
+           perl interpreter, and if affected code can be easily updated to
+           continue working, they may be considered for removal.  When in doubt,
+           caution dictates that we will favor backward compatibility.  When a
+           feature is deprecated, a statement of reasoning describing the decision
+           process will be posted, and a link to it will be provided in the
+           relevant perldelta documents.
+
+           Using a lexical pragma to enable or disable legacy behavior should be
+           considered when appropriate, and in the absence of any pragma legacy
+           behavior should be enabled.  Which backward-incompatible changes are
+           controlled implicitly by a 'use v5.x.y' is a decision which should be
+           made by the steering council in consultation with the community.
+  manpageQuestion1: What is the main purpose of the perlpolicy document?
+  manpageQuestion2: How can a developer use lexical pragrams to control legacy behavior in Perl?
+  manpageQuestion3: What is the decision-making process for deprecating features in Perl according to perlpolicy?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpolicy`.
+
+
+
+    Manpage text:
+
+    Historically, we've held ourselves to a far higher standard than
+           backward-compatibility -- bugward-compatibility.  Any accident of
+           implementation or unintentional side-effect of running some bit of code
+           has been considered to be a feature of the language to be defended with
+           the same zeal as any other feature or functionality.  No matter how
+           frustrating these unintentional features may be to us as we continue to
+           improve Perl, these unintentional features often deserve our
+           protection.  It is very important that existing software written in
+           Perl continue to work correctly.  If end-user developers have adopted a
+           bug as a feature, we need to treat it as such.
+
+           New syntax and semantics which don't break existing language constructs
+           and syntax have a much lower bar.  They merely need to prove themselves
+           to be useful, elegant, well designed, and well tested.  In most cases,
+           these additions will be marked as experimental for some time.  See
+           below for more on that.
+  manpageQuestion1: What is the primary purpose of the perlpolicy tool?
+  manpageQuestion2: How would you use perlpolicy to enforce the bugward-compatibility principle in Perl code?
+  manpageQuestion3: Can you provide an example of using perlpolicy to evaluate the impact of a new Perl syntax addition on existing code?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpolicy`.\n\n\n\nManpage text:\n\nTerminology\n       To make sure we're talking about the same thing when we discuss the\n       removal of features or functionality from the Perl core, we have\n       specific definitions for a few words and phrases.\n\n       experimental\n\t   If something in the Perl core is marked as experimental, we may\n\t   change its behaviour, deprecate or remove it without notice. While\n\t   we'll always do our best to smooth the transition path for users of\n\t   experimental features, you should contact the perl5-porters\n\t   mailinglist if you find an experimental feature useful and want to\n\t   help shape its future.\n\n\t   Experimental features must be experimental in two stable releases\n\t   before being marked non-experimental.  Experimental features will\n\t   only have their experimental status revoked when they no longer\n\t   have any design-changing bugs open against them and when they have\n\t   remained unchanged in behavior for the entire length of a\n\t   development cycle.  In other words, a feature present in v5.20.0\n\t   may be marked no longer experimental in v5.22.0 if and only if its\n\t   behavior is unchanged throughout all of v5.21."
+  manpageQuestion1: What is the primary purpose of the perlpolicy resource?
+  manpageQuestion2: How does the perlpolicy resource define the status of experimental features in Perl core?
+  manpageQuestion3: What are the conditions under which an experimental feature in Perl is removed from the experimental status?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpolicy`.\n\n\n\nManpage text:\n\ndeprecated\n\t   If something in the Perl core is marked as deprecated, we may\n\t   remove it from the core in the future, though we might not.\n\t   Generally, backward incompatible changes will have deprecation\n\t   warnings for two release cycles before being removed, but may be\n\t   removed after just one cycle if the risk seems quite low or the\n\t   benefits quite high.\n\n\t   As of Perl 5.12, deprecated features and modules warn the user as\n\t   they're used.  When a module is deprecated, it will also be made\n\t   available on CPAN. Installing it from CPAN will silence deprecation\n\t   warnings for that module.\n\n\t   If you use a deprecated feature or module and believe that its\n\t   removal from the Perl core would be a mistake, please contact the\n\t   perl5-porters mailinglist and plead your case.  We don't deprecate\n\t   things without a good reason, but sometimes there's a\n\t   counterargument we haven't considered.  Historically, we did not\n\t   distinguish between \"deprecated\" and \"discouraged\" features."
+  manpageQuestion1: What is the primary purpose of the perlpolicy resource?
+  manpageQuestion2: How can a user suppress deprecation warnings for a deprecated Perl module?
+  manpageQuestion3: What steps should a user take if they believe a deprecated Perl feature or module should not be removed from the core?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpolicy`.\n\n\n\nManpage text:\n\ndiscouraged\n\t   From time to time, we may mark language constructs and features\n\t   which we consider to have been mistakes as discouraged.\n\t   Discouraged features aren't currently candidates for removal, but\n\t   we may later deprecate them if they're found to stand in the way of\n\t   a significant improvement to the Perl core.\n\n       removed\n\t   Once a feature, construct or module has been marked as deprecated,\n\t   we may remove it from the Perl core.  Unsurprisingly, we say we've\n\t   removed these things.  When a module is removed, it will no longer\n\t   ship with Perl, but will continue to be available on CPAN.\n\nMAINTENANCE BRANCHES\n       New releases of maintenance branches should only contain changes that\n       fall into one of the \"acceptable\" categories set out below, but must\n       not contain any changes that fall into one of the \"unacceptable\"\n       categories.  (For example, a fix for a crashing bug must not be\n       included if it breaks binary compatibility.)\n\n       It is not necessary to include every change meeting these criteria, and\n       in general the focus should be on addressing security issues, crashing\n       bugs, regressions and serious installation issues.  The temptation to\n       include a plethora of minor changes that don't affect the installation\n       or execution of perl (e.g. spelling corrections in documentation)\n       should be resisted in order to reduce the overall risk of overlooking\n       something.  The intention is to create maintenance releases which are\n       both worthwhile and which users can have full confidence in the\n       stability of.  (A secondary concern is to avoid burning out the maint-\n       release manager or overwhelming other committers voting on changes to\n       be included (see \"Getting changes into a maint branch\" below).)"
+  manpageQuestion1: What is the primary purpose of the perlpolicy tool?
+  manpageQuestion2: How would you use perlpolicy to check if a particular feature in Perl is marked as discouraged?
+  manpageQuestion3: Can you provide an example of using perlpolicy to determine the status of a Perl module, such as whether it has been removed from the core?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpolicy`.\n\n\n\nManpage text:\n\nThe following types of change may be considered acceptable, as long as\n       they do not also fall into any of the \"unacceptable\" categories set out\n       below:\n\n       •   Patches that fix CVEs or security issues.  These changes should be\n\t   passed using the security reporting mechanism rather than applied\n\t   directly; see \"SECURITY VULNERABILITY CONTACT INFORMATION\" in\n\t   perlsec.\n\n       •   Patches that fix crashing bugs, assertion failures and memory\n\t   corruption but which do not otherwise change perl's functionality\n\t   or negatively impact performance.\n\n       •   Patches that fix regressions in perl's behavior relative to\n\t   previous releases, no matter how old the regression, since some\n\t   people may upgrade from very old versions of perl to the latest\n\t   version.\n\n       •   Patches that fix bugs in features that were new in the\n\t   corresponding 5.x.0 stable release.\n\n       •   Patches that fix anything which prevents or seriously impacts the\n\t   build or installation of perl."
+  manpageQuestion1: What is the primary purpose of the perlpolicy tool?
+  manpageQuestion2: How would you use perlpolicy to apply a patch that fixes a security vulnerability in Perl?
+  manpageQuestion3: Can you provide an example of using perlpolicy to address a regression in Perl's behavior?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpolicy`.\n\n\n\nManpage text:\n\n•   Portability fixes, such as changes to Configure and the files in\n\t   the hints/ folder.\n\n       •   Minimal patches that fix platform-specific test failures.\n\n       •   Documentation updates that correct factual errors, explain\n\t   significant bugs or deficiencies in the current implementation, or\n\t   fix broken markup.\n\n       •   Updates to dual-life modules should consist of minimal patches to\n\t   fix crashing bugs or security issues (as above).  Any changes made\n\t   to dual-life modules for which CPAN is canonical should be\n\t   coordinated with the upstream author.\n\n       The following types of change are NOT acceptable:\n\n       •   Patches that break binary compatibility.  (Please talk to the\n\t   steering council.)\n\n       •   Patches that add or remove features.\n\n       •   Patches that add new warnings or errors or deprecate features.\n\n       •   Ports of Perl to a new platform, architecture or OS release that\n\t   involve changes to the implementation.\n\n       •   New versions of dual-life modules should NOT be imported into\n\t   maint.  Those belong in the next stable series."
+  manpageQuestion1: What is the primary purpose of the perlpolicy tool?
+  manpageQuestion2: How would you use perlpolicy to ensure that a patch does not break binary compatibility with existing Perl implementations?
+  manpageQuestion3: Can you provide an example of a change that would be considered unacceptable under the perlpolicy guidelines?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpolicy`.
+
+
+
+    Manpage text:
+
+    If there is any question about whether a given patch might merit
+           inclusion in a maint release, then it almost certainly should not be
+           included.
+
+       Getting changes into a maint branch
+           Historically, only the single-person project manager cherry-picked
+           changes from bleadperl into maintperl.  This has scaling problems.  At
+           the same time, maintenance branches of stable versions of Perl need to
+           be treated with great care.  To that end, as of Perl 5.12, we have a
+           new process for maint branches.
+
+           Any committer may cherry-pick any commit from blead to a maint branch
+           by first adding an entry to the relevant voting file in the maint-votes
+           branch announcing the commit as a candidate for back-porting, and then
+           waiting for at least two other committers to add their votes in support
+           of this (i.e. a total of at least three votes is required before a
+           commit may be back-ported).
+
+           Most of the work involved in both rounding up a suitable set of
+           candidate commits and cherry-picking those for which three votes have
+           been cast will be done by the maint branch release manager, but anyone
+           else is free to add other proposals if they're keen to ensure certain
+           fixes don't get overlooked or fear they already have been.
+  manpageQuestion1: What is the primary purpose of the perlpolicy tool?
+  manpageQuestion2: How does the perlpolicy process ensure that changes are carefully considered before being included in a maint branch?
+  manpageQuestion3: What is the role of the maint branch release manager in the perlpolicy process?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpolicy`.
+
+
+
+    Manpage text:
+
+    Other voting mechanisms may also be used instead (e.g. sending mail to
+           perl5-porters and at least two other committers responding to the list
+           giving their assent), as long as the same number of votes is gathered
+           in a transparent manner.  Specifically, proposals of which changes to
+           cherry-pick must be visible to everyone on perl5-porters so that the
+           views of everyone interested may be heard.
+
+           It is not necessary for voting to be held on cherry-picking perldelta
+           entries associated with changes that have already been cherry-picked,
+           nor for the maint-release manager to obtain votes on changes required
+           by the Porting/release_managers_guide.pod where such changes can be
+           applied by the means of cherry-picking from blead.
+
+    CONTRIBUTED MODULES
+       A Social Contract about Artistic Control
+           What follows is a statement about artistic control, defined as the
+           ability of authors of packages to guide the future of their code and
+           maintain control over their work.  It is a recognition that authors
+           should have control over their work, and that it is a responsibility of
+           the rest of the Perl community to ensure that they retain this control.
+           It is an attempt to document the standards to which we, as Perl
+           developers, intend to hold ourselves.  It is an attempt to write down
+           rough guidelines about the respect we owe each other as Perl
+           developers.
+  manpageQuestion1: What is the primary purpose of the perlpolicy resource?
+  manpageQuestion2: How does the perlpolicy handle voting for cherry-picking changes in Perl development?
+  manpageQuestion3: What is the significance of the 'Social Contract about Artistic Control' in the perlpolicy documentation?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpolicy`.\n\n\n\nManpage text:\n\nThis statement is not a legal contract.\tThis statement is not a legal\n       document in any way, shape, or form.  Perl is distributed under the GNU\n       Public License and under the Artistic License; those are the precise\n       legal terms.  This statement isn't about the law or licenses.  It's\n       about community, mutual respect, trust, and good-faith cooperation.\n\n       We recognize that the Perl core, defined as the software distributed\n       with the heart of Perl itself, is a joint project on the part of all of\n       us.  From time to time, a script, module, or set of modules (hereafter\n       referred to simply as a \"module\") will prove so widely useful and/or so\n       integral to the correct functioning of Perl itself that it should be\n       distributed with the Perl core.\tThis should never be done without the\n       author's explicit consent, and a clear recognition on all parts that\n       this means the module is being distributed under the same terms as Perl\n       itself.\tA module author should realize that inclusion of a module into\n       the Perl core will necessarily mean some loss of control over it, since\n       changes may occasionally have to be made on short notice or for\n       consistency with the rest of Perl."
+  manpageQuestion1: What is the primary purpose of the perlpolicy resource?
+  manpageQuestion2: How does the perlpolicy address the issue of module inclusion in the Perl core?
+  manpageQuestion3: What are the key principles outlined in the perlpolicy regarding the distribution of Perl modules?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpolicy`.\n\n\n\nManpage text:\n\nOnce a module has been included in the Perl core, however, everyone\n       involved in maintaining Perl should be aware that the module is still\n       the property of the original author unless the original author\n       explicitly gives up their ownership of it.  In particular:\n\n       •   The version of the module in the Perl core should still be\n\t   considered the work of the original author.\tAll patches, bug\n\t   reports, and so forth should be fed back to them.  Their\n\t   development directions should be respected whenever possible.\n\n       •   Patches may be applied by the steering council without the explicit\n\t   cooperation of the module author if and only if they are very\n\t   minor, time-critical in some fashion (such as urgent security\n\t   fixes), or if the module author cannot be reached.  Those patches\n\t   must still be given back to the author when possible, and if the\n\t   author decides on an alternate fix in their version, that fix\n\t   should be strongly preferred unless there is a serious problem with\n\t   it.\tAny changes not endorsed by the author should be marked as\n\t   such, and the contributor of the change acknowledged."
+  manpageQuestion1: What is the primary purpose of the perlpolicy tool?
+  manpageQuestion2: How would you use perlpolicy to ensure that patches to a Perl core module are handled according to the original author's guidelines?
+  manpageQuestion3: Can you explain how the perlpolicy applies to the maintenance of a Perl core module and what steps should be taken when applying patches?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpolicy`.\n\n\n\nManpage text:\n\n•   The version of the module distributed with Perl should, whenever\n\t   possible, be the latest version of the module as distributed by the\n\t   author (the latest non-beta version in the case of public Perl\n\t   releases), although the steering council may hold off on upgrading\n\t   the version of the module distributed with Perl to the latest\n\t   version until the latest version has had sufficient testing.\n\n       In other words, the author of a module should be considered to have\n       final say on modifications to their module whenever possible (bearing\n       in mind that it's expected that everyone involved will work together\n       and arrive at reasonable compromises when there are disagreements).\n\n       As a last resort, however:\n\n       If the author's vision of the future of their module is sufficiently\n       different from the vision of the steering council and perl5-porters as\n       a whole so as to cause serious problems for Perl, the steering council\n       may choose to formally fork the version of the module in the Perl core\n       from the one maintained by the author.  This should not be done lightly\n       and should always if at all possible be done only after direct input\n       from Larry.  If this is done, it must then be made explicit in the\n       module as distributed with the Perl core that it is a forked version\n       and that while it is based on the original author's work, it is no\n       longer maintained by them.  This must be noted in both the\n       documentation and in the comments in the source of the module."
+  manpageQuestion1: What is the primary purpose of the perlpolicy tool?
+  manpageQuestion2: How would you use perlpolicy to ensure that the module version distributed with Perl is kept up-to-date with the latest non-beta version from the author?
+  manpageQuestion3: Can you provide an example of using perlpolicy to handle a situation where the module author's vision conflicts with the Perl steering council's decisions?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpolicy`.\n\n\n\nManpage text:\n\nAgain, this should be a last resort only.  Ideally, this should never\n       happen, and every possible effort at cooperation and compromise should\n       be made before doing this.  If it does prove necessary to fork a module\n       for the overall health of Perl, proper credit must be given to the\n       original author in perpetuity and the decision should be constantly re-\n       evaluated to see if a remerging of the two branches is possible down\n       the road.\n\n       In all dealings with contributed modules, everyone maintaining Perl\n       should keep in mind that the code belongs to the original author, that\n       they may not be on perl5-porters at any given time, and that a patch is\n       not official unless it has been integrated into the author's copy of\n       the module.  To aid with this, and with points #1, #2, and #3 above,\n       contact information for the authors of all contributed modules should\n       be kept with the Perl distribution.\n\n       Finally, the Perl community as a whole recognizes that respect for\n       ownership of code, respect for artistic control, proper credit, and\n       active effort to prevent unintentional code skew or communication gaps\n       is vital to the health of the community and Perl itself.  Members of a\n       community should not normally have to resort to rules and laws to deal\n       with each other, and this document, although it contains rules so as to\n       be clear, is about an attitude and general approach.  The first step in\n       any dispute should be open communication, respect for opposing views,\n       and an attempt at a compromise.\tIn nearly every circumstance nothing\n       more will be necessary, and certainly no more drastic measure should be\n       used until every avenue of communication and discussion has failed."
+  manpageQuestion1: What is the primary purpose of the perlpolicy resource?
+  manpageQuestion2: How should one handle a situation where a module author is uncooperative during the development of a Perl module?
+  manpageQuestion3: What are the key principles outlined in the perlpolicy document regarding code ownership and community collaboration?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpolicy`.
+
+
+
+    Manpage text:
+
+    DOCUMENTATION
+           Perl's documentation is an important resource for our users. It's
+           incredibly important for Perl's documentation to be reasonably coherent
+           and to accurately reflect the current implementation.
+
+           Just as P5P collectively maintains the codebase, we collectively
+           maintain the documentation.  Writing a particular bit of documentation
+           doesn't give an author control of the future of that documentation.  At
+           the same time, just as source code changes should match the style of
+           their surrounding blocks, so should documentation changes.
+
+           Examples in documentation should be illustrative of the concept they're
+           explaining.  Sometimes, the best way to show how a language feature
+           works is with a small program the reader can run without modification.
+           More often, examples will consist of a snippet of code containing only
+           the "important" bits.  The definition of "important" varies from
+           snippet to snippet.  Sometimes it's important to declare "use strict"
+           and "use warnings", initialize all variables and fully catch every
+           error condition.  More often than not, though, those things obscure the
+           lesson the example was intended to teach.
+  manpageQuestion1: What is the primary purpose of the perlpolicy documentation guidelines?
+  manpageQuestion2: How should examples in Perl documentation be structured to effectively illustrate language features?
+  manpageQuestion3: What is the main principle regarding the style of documentation changes in Perl's documentation maintenance?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpolicy`.
+
+
+
+    Manpage text:
+
+    As Perl is developed by a global team of volunteers, our documentation
+           often contains spellings which look funny to somebody.  Choice of
+           American/British/Other spellings is left as an exercise for the author
+           of each bit of documentation.  When patching documentation, try to
+           emulate the documentation around you, rather than changing the existing
+           prose.
+
+           In general, documentation should describe what Perl does "now" rather
+           than what it used to do.  It's perfectly reasonable to include notes in
+           documentation about how behaviour has changed from previous releases,
+           but, with very few exceptions, documentation isn't "dual-life" -- it
+           doesn't need to fully describe how all old versions used to work.
+
+    STANDARDS OF CONDUCT
+           The official forum for the development of perl is the perl5-porters
+           mailing list, mentioned above, and its bugtracker at GitHub.  Posting
+           to the list and the bugtracker is not a right: all participants in
+           discussion are expected to adhere to a standard of conduct.
+  manpageQuestion1: What is the primary purpose of the perlpolicy resource?
+  manpageQuestion2: How should documentation for Perl be written according to the perlpolicy guidelines?
+  manpageQuestion3: What is the recommended approach for handling documentation changes when contributing to Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpolicy`.\n\n\n\nManpage text:\n\n•   Always be civil.\n\n       •   Heed the moderators.\n\n       Civility is simple: stick to the facts while avoiding demeaning\n       remarks, belittling other individuals, sarcasm, or a presumption of bad\n       faith. It is not enough to be factual.  You must also be civil.\n       Responding in kind to incivility is not acceptable.  If you relay\n       otherwise-unposted comments to the list from a third party, you take\n       responsibility for the content of those comments, and you must\n       therefore ensure that they are civil.\n\n       While civility is required, kindness is encouraged; if you have any\n       doubt about whether you are being civil, simply ask yourself, \"Am I\n       being kind?\" and aspire to that.\n\n       If the list moderators tell you that you are not being civil, carefully\n       consider how your words have appeared before responding in any way.\n       Were they kind?\tYou may protest, but repeated protest in the face of a\n       repeatedly reaffirmed decision is not acceptable.  Repeatedly\n       protesting about the moderators' decisions regarding a third party is\n       also unacceptable, as is continuing to initiate off-list contact with\n       the moderators about their decisions."
+  manpageQuestion1: What is the primary purpose of the perlpolicy resource?
+  manpageQuestion2: How should a user ensure they are following the civility guidelines set by perlpolicy?
+  manpageQuestion3: What steps should a user take if they receive feedback that their posts are not considered civil according to perlpolicy?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpolicy`.\n\n\n\nManpage text:\n\nUnacceptable behavior will result in a public and clearly identified\n       warning.  A second instance of unacceptable behavior from the same\n       individual will result in removal from the mailing list and GitHub\n       issue tracker, for a period of one calendar month.  The rationale for\n       this is to provide an opportunity for the person to change the way they\n       act.\n\n       After the time-limited ban has been lifted, a third instance of\n       unacceptable behavior will result in a further public warning.  A\n       fourth or subsequent instance will result in an indefinite ban.\tThe\n       rationale is that, in the face of an apparent refusal to change\n       behavior, we must protect other community members from future\n       unacceptable actions.  The moderators may choose to lift an indefinite\n       ban if the person in question affirms they will not transgress again.\n\n       Removals, like warnings, are public.\n\n       The list of moderators will be public knowledge.  At present, it is:\n       Karen Etheridge, Neil Bowers, Nicholas Clark, Ricardo Signes, Todd\n       Rinaldo."
+  manpageQuestion1: What is the primary purpose of the perlpolicy resource?
+  manpageQuestion2: How does the perlpolicy handle repeated instances of unacceptable behavior by individuals?
+  manpageQuestion3: Who are the current moderators listed in the perlpolicy documentation?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlpolicy`.\n\n\n\nManpage text:\n\nCREDITS\n       \"Social Contract about Contributed Modules\" originally by Russ Allbery\n       <rra@stanford.edu> and the perl5-porters.\n\nperl v5.34.1\t\t\t  2022-02-19\t\t\t PERLPOLICY(1)"
+  manpageQuestion1: What is the primary purpose of the perlpolicy resource?
+  manpageQuestion2: How would you use perlpolicy to enforce a specific policy on Perl module contributions?
+  manpageQuestion3: Can you provide an example of using perlpolicy to check if a Perl module adheres to the Social Contract guidelines?
+

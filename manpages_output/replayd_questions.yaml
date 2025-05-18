@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `replayd`.\n\n\n\nManpage text:\n\nREPLAYD(8)\t\t    System Manager's Manual\t\t    REPLAYD(8)\n\nNAME\n     replayd – MacOS daemon to support ReplayKit on macOS\n\nSYNOPSIS\n     takes no arguments, and users should not launch it manually.\n\nDESCRIPTION\n     replayd implements in-app capture, recording, and broadcast features of\n     ReplayKit\n\nHISTORY\n     replayd first appeared in macOS 10.15\n\nDarwin\t\t\t       January 24, 2019 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the replayd daemon?
+  manpageQuestion2: How is the replayd daemon typically used in a macOS system?
+  manpageQuestion3: What is the significance of replayd's absence of command-line arguments in its usage?
+

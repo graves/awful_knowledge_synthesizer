@@ -1,0 +1,114 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ping6`.\n\n\n\nManpage text:\n\nPING6(8)\t\t    System Manager's Manual\t\t      PING6(8)\n\nNAME\n     ping6 – send ICMPv6 ECHO_REQUEST packets to network hosts\n\nSYNOPSIS\n     ping6 [-CDdfHmnNoqtvwW] [-a addrtype] [-b bufsiz] [-B boundif] [-c count]\n\t   [-G sweepmaxsize[,sweepminsize[,sweepincrsize]]] [-g gateway]\n\t   [-G sweep] [-h hoplimit] [-I interface] [-i wait] [-k trafficclass]\n\t   [-K netservicetype] [-l preload] [-P policy] [-p pattern]\n\t   [-S sourceaddr] [-s packetsize] [-z tclass] [--apple-connect]\n\t   [--apple-time] [hops ...] host\n\nDESCRIPTION\n     The ping6 utility uses the ICMPv6 protocol's mandatory ICMP6_ECHO_REQUEST\n     datagram to elicit an ICMP6_ECHO_REPLY from a host or gateway.\n     ICMP6_ECHO_REQUEST datagrams (``pings'') have an IPv6 header, and ICMPv6\n     header formatted as documented in RFC2463.  The options are as follows:\n\n     -a addrtype\n\t     Generate ICMPv6 Node Information Node Addresses query, rather\n\t     than echo-request.  addrtype must be a string constructed of the\n\t     following characters.\n\t     a\t     requests unicast addresses from all of the responder's\n\t\t     interfaces.  If the character is omitted, only those\n\t\t     addresses which belong to the interface which has the\n\t\t     responder's address are requests.\n\t     c\t     requests responder's IPv4-compatible and IPv4-mapped\n\t\t     addresses.\n\t     g\t     requests responder's global-scope addresses.\n\t     s\t     requests responder's site-local addresses.\n\t     l\t     requests responder's link-local addresses.\n\t     A\t     requests responder's anycast addresses.  Without this\n\t\t     character, the responder will return unicast addresses\n\t\t     only.  With this character, the responder will return\n\t\t     anycast addresses only.  Note that the specification does\n\t\t     not specify how to get responder's anycast addresses.\n\t\t     This is an experimental option."
+  manpageQuestion1: What is the primary purpose of the ping6 command?
+  manpageQuestion2: How can I use ping6 to send an ICMPv6 ECHO_REQUEST packet with a custom hop limit of 5?
+  manpageQuestion3: What is the correct syntax to use ping6 for generating a Node Information query with IPv4-compatible addresses?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ping6`.\n\n\n\nManpage text:\n\n-b bufsiz\n\t     Set socket buffer size.\n\n     -B boundif\n\t     Bind the socket to interface This option is an Apple addition.\n\t     boundif for sending.\n\n     -C      Prohibit the socket from using the cellular network interface.\n\n     -c count\n\t     Stop after sending (and receiving) count ECHO_RESPONSE packets.\n\t     If this option is specified in conjunction with ping sweeps, each\n\t     sweep will consist of count packets.\n\n     -D      Disable IPv6 fragmentation.\n\n     -d      Set the SO_DEBUG option on the socket being used.\n\n     -f      Flood ping.  Outputs packets as fast as they come back or one\n\t     hundred times per second, whichever is more.  For every\n\t     ECHO_REQUEST sent a period “.” is printed, while for every\n\t     ECHO_REPLY received a backspace is printed.  This provides a\n\t     rapid display of how many packets are being dropped.  Only the\n\t     super-user may use this option.  This can be very hard on a\n\t     network and should be used with caution.\n\n     -G sweepmaxsize[,sweepminsize[,sweepincrsize]]\n\t     sweepmaxsize specifies the maximum size of the payload when\n\t     sending sweeping pings and is required for sweeps.  sweepminsize\n\t     specifies the size of the payload to start with when sending\n\t     sweeping pings -- the default value is 0.\tsweepincrsize\n\t     specifies the number of bytes to increment the size of the\n\t     payload after each sweep when sending sweeping pings -- the\n\t     default value is 1.  This option is an Apple addition."
+  manpageQuestion1: What is the primary purpose of the ping6 command?
+  manpageQuestion2: How can you use ping6 to send a specific number of ECHO_RESPONSE packets?
+  manpageQuestion3: What is the function of the -G option in ping6 and how would you use it for a ping sweep?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ping6`.\n\n\n\nManpage text:\n\n-g gateway\n\t     Specifies to use gateway as the next hop to the destination.  The\n\t     gateway must be a neighbor of the sending node.\n\n     -H      Specifies to try reverse-lookup of IPv6 addresses.  The ping6\n\t     utility does not try reverse-lookup unless the option is\n\t     specified.\n\n     -h hoplimit\n\t     Set the IPv6 hoplimit.\n\n     -I interface\n\t     Source packets with the given interface address.  This flag\n\t     applies if the ping destination is a multicast address, or link-\n\t     local/site-local unicast address.\n\n     -i wait\n\t     Wait wait seconds between sending each packet.  The default is to\n\t     wait for one second between each packet.  The wait time may be\n\t     fractional, but only the super-user may specify values less than\n\t     0.002 second.  This option is incompatible with the -f option.\n\n     -k trafficclass\n\t     Specifies the traffic class to use for sending ICMPv6 packets.\n\t     The supported traffic classes are BK_SYS, BK, BE, RD, OAM, AV,\n\t     RV, VI, VO and CTL.  By default ping6 uses the control traffic\n\t     class (CTL).  This option is an Apple addition."
+  manpageQuestion1: What is the primary purpose of the ping6 command?
+  manpageQuestion2: How can you use ping6 to test connectivity to an IPv6 address while also performing a reverse lookup of the destination's hostname?
+  manpageQuestion3: What command would you use to set the hop limit for IPv6 packets sent by ping6?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ping6`.\n\n\n\nManpage text:\n\n-K netservicetype\n\t     Specifies the network service type to use for sending ICMPv6\n\t     packets.  The supported network service type are BK_SYS, BK, BE,\n\t     RV, AV, RD, OAM, VI, SIG and VO.  Note this overrides the default\n\t     traffic class (-k can still be specified after -K to use both).\n\t     This option is an Apple addition.\n\n     -l preload\n\t     If preload is specified, ping6 sends that many packets as fast as\n\t     possible before falling into its normal mode of behavior.\tOnly\n\t     the super-user may use this option.\n\n     -m      By default, ping6 asks the kernel to fragment packets to fit into\n\t     the minimum IPv6 MTU.  The -m option will suppress the behavior\n\t     in the following two levels: when the option is specified once,\n\t     the behavior will be disabled for unicast packets.  When the\n\t     option is more than once, it will be disabled for both unicast\n\t     and multicast packets.\n\n     -n      Numeric output only.  No attempt will be made to lookup symbolic\n\t     names from addresses in the reply."
+  manpageQuestion1: What is the primary purpose of the ping6 command?
+  manpageQuestion2: How can you use the -K option with ping6 to specify a network service type for sending ICMPv6 packets?
+  manpageQuestion3: What is the function of the -m option in ping6 and how does it affect packet fragmentation behavior?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ping6`.\n\n\n\nManpage text:\n\n-N      Probe node information multicast group (ff02::2:xxxx:xxxx).  host\n\t     must be string hostname of the target (must not be a numeric IPv6\n\t     address).\tNode information multicast group will be computed\n\t     based on given host, and will be used as the final destination.\n\t     Since node information multicast group is a link-local multicast\n\t     group, outgoing interface needs to be specified by -I option.\n\n     -o      Exit successfully after receiving one reply packet.\n\n     -p pattern\n\t     You may specify up to 16 “pad” bytes to fill out the packet you\n\t     send.  This is useful for diagnosing data-dependent problems in a\n\t     network.  For example, “-p ff” will cause the sent packet to be\n\t     filled with all ones.\n\n     -P policy\n\t     policy specifies IPsec policy to be used for the probe.\n\n     -q      Quiet output.  Nothing is displayed except the summary lines at\n\t     startup time and when finished.\n\n     -r      Audible.  Include a bell (ASCII 0x07) character in the output\n\t     when any packet is received."
+  manpageQuestion1: What is the primary purpose of the ping6 command?
+  manpageQuestion2: How can you use ping6 to send a probe packet with 16 pad bytes set to all ones?
+  manpageQuestion3: What command would you use with ping6 to exit successfully after receiving one reply packet?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ping6`.\n\n\n\nManpage text:\n\n-R      Audible.  Output a bell (ASCII 0x07) character when no packet is\n\t     received before the next packet is transmitted.  To cater for\n\t     round-trip times that are longer than the interval between\n\t     transmissions, further missing packets cause a bell only if the\n\t     maximum number of unreceived packets has increased.\n\n     -S sourceaddr\n\t     Specifies the source address of request packets.  The source\n\t     address must be one of the unicast addresses of the sending node,\n\t     and must be numeric.\n\n     -s packetsize\n\t     Specifies the number of data bytes to be sent.  The default is\n\t     56, which translates into 64 ICMP data bytes when combined with\n\t     the 8 bytes of ICMP header data.  You may need to specify -b as\n\t     well to extend socket buffer size.\n\n     -t      Generate ICMPv6 Node Information supported query types query,\n\t     rather than echo-request.\t-s has no effect if -t is specified.\n\n     -v      Verbose output.  ICMP packets other than ECHO_RESPONSE that are\n\t     received are listed."
+  manpageQuestion1: What is the primary purpose of the ping6 command?
+  manpageQuestion2: How can you configure ping6 to send packets with a specific data size of 100 bytes?
+  manpageQuestion3: What is the function of the -t flag in ping6 and how does it affect the type of query sent?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ping6`.\n\n\n\nManpage text:\n\n-w      Generate ICMPv6 Node Information DNS Name query, rather than\n\t     echo-request.  -s has no effect if -w is specified.\n\n     -W      Same as -w, but with old packet format based on 03 draft.\tThis\n\t     option is present for backward compatibility.  -s has no effect\n\t     if -w is specified.\n\n     -z tclass\n\t     Use the specified traffic class.\n\n     --apple-connect\n\t     Connects the socket to the destination address.  This option is\n\t     an Apple addition.\n\n     --apple-time\n\t     Prints the time a packet was received.  This option is an Apple\n\t     addition.\n\n     hops    IPv6 addresses for intermediate nodes, which will be put into\n\t     type 0 routing header.\n\n     host    IPv6 address of the final destination node.\n\n     When using ping6 for fault isolation, it should first be run on the local\n     host, to verify that the local network interface is up and running.\n     Then, hosts and gateways further and further away should be “pinged”.\n     Round-trip times and packet loss statistics are computed.\tIf duplicate\n     packets are received, they are not included in the packet loss\n     calculation, although the round trip time of these packets is used in\n     calculating the round-trip time statistics.  When the specified number of\n     packets have been sent (and received) or if the program is terminated\n     with a SIGINT, a brief summary is displayed, showing the number of\n     packets sent and received, and the minimum, mean, maximum, and standard\n     deviation of the round-trip times."
+  manpageQuestion1: What is the primary purpose of the ping6 command in macOS?
+  manpageQuestion2: How can you use ping6 to send an ICMPv6 Node Information DNS Name query instead of an echo request?
+  manpageQuestion3: Can you provide an example of using ping6 to calculate round-trip time statistics for a specific IPv6 address?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ping6`.
+
+
+
+    Manpage text:
+
+    If ping6 receives a SIGINFO (see the status argument for stty(1)) signal,
+         the current number of packets sent and received, and the minimum, mean,
+         maximum, and standard deviation of the round-trip times will be written
+         to the standard output in the same format as the standard completion
+         message.
+
+         This program is intended for use in network testing, measurement and
+         management.  Because of the load it can impose on the network, it is
+         unwise to use ping6 during normal operations or from automated scripts.
+
+    DUPLICATE AND DAMAGED PACKETS
+         The ping6 utility will report duplicate and damaged packets.  Duplicate
+         packets should never occur when pinging a unicast address, and seem to be
+         caused by inappropriate link-level retransmissions.  Duplicates may occur
+         in many situations and are rarely (if ever) a good sign, although the
+         presence of low levels of duplicates may not always be cause for alarm.
+         Duplicates are expected when pinging a broadcast or multicast address,
+         since they are not really duplicates but replies from different hosts to
+         the same request.
+  manpageQuestion1: What is the primary purpose of the ping6 command?
+  manpageQuestion2: How can you use ping6 to test network connectivity to a specific IPv6 address?
+  manpageQuestion3: What should you do if ping6 reports duplicate packets when pinging a multicast address?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ping6`.\n\n\n\nManpage text:\n\nDamaged packets are obviously serious cause for alarm and often indicate\n     broken hardware somewhere in the ping6 packet's path (in the network or\n     in the hosts).\n\nTRYING DIFFERENT DATA PATTERNS\n     The (inter)network layer should never treat packets differently depending\n     on the data contained in the data portion.  Unfortunately, data-dependent\n     problems have been known to sneak into networks and remain undetected for\n     long periods of time.  In many cases the particular pattern that will\n     have problems is something that does not have sufficient “transitions”,\n     such as all ones or all zeros, or a pattern right at the edge, such as\n     almost all zeros.\tIt is not necessarily enough to specify a data pattern\n     of all zeros (for example) on the command line because the pattern that\n     is of interest is at the data link level, and the relationship between\n     what you type and what the controllers transmit can be complicated.\n\n     This means that if you have a data-dependent problem you will probably\n     have to do a lot of testing to find it.  If you are lucky, you may manage\n     to find a file that either cannot be sent across your network or that\n     takes much longer to transfer than other similar length files.  You can\n     then examine this file for repeated patterns that you can test using the\n     -p option of ping6."
+  manpageQuestion1: What is the primary purpose of the ping6 command?
+  manpageQuestion2: How can you use ping6 to test for data-dependent network issues by sending a custom pattern of data?
+  manpageQuestion3: What is the function of the -p option in ping6 when testing network data patterns?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ping6`.\n\n\n\nManpage text:\n\nEXIT STATUS\n     The ping6 utility returns 0 on success (the host is alive), 2 if the\n     transmission was successful but no responses were received, any other\n     non-zero value if the arguments are incorrect or another error has\n     occurred.\n\nEXAMPLES\n     Normally, ping6 works just like ping(8) would work; the following will\n     send ICMPv6 echo request to dst.foo.com.\n\n\t   ping6 -n dst.foo.com\n\n     The following will probe hostnames for all nodes on the network link\n     attached to wi0 interface.  The address ff02::1 is named the link-local\n     all-node multicast address, and the packet would reach every node on the\n     network link.\n\n\t   ping6 -w ff02::1%wi0\n\n     The following will probe addresses assigned to the destination node,\n     dst.foo.com.\n\n\t   ping6 -a agl dst.foo.com\n\nSEE ALSO\n     netstat(1), icmp6(4), inet6(4), ip6(4), ifconfig(8), ping(8),\n     traceroute(8), traceroute6(8)\n\n     A. Conta and S. Deering, Internet Control Message Protocol (ICMPv6) for\n     the Internet Protocol Version 6 (IPv6) Specification, RFC2463, December\n     1998."
+  manpageQuestion1: What is the primary purpose of the ping6 utility?
+  manpageQuestion2: How can you use ping6 to send ICMPv6 echo requests to a specific hostname?
+  manpageQuestion3: Can you provide an example of using ping6 to probe addresses assigned to a destination node?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ping6`.
+
+
+
+    Manpage text:
+
+    Matt Crawford, IPv6 Node Information Queries, draft-ietf-ipngwg-icmp-
+         name-lookups-09.txt, May 2002, work in progress material.
+
+    HISTORY
+         The ping(8) utility appeared in 4.3BSD.  The ping6 utility with IPv6
+         support first appeared in the WIDE Hydrangea IPv6 protocol stack kit.
+
+         IPv6 and IPsec support based on the KAME Project (http://www.kame.net/)
+         stack was initially integrated into FreeBSD 4.0.
+
+    BUGS
+         The ping6 utility is intentionally separate from ping(8).
+
+         There have been many discussions on why we separate ping6 and ping(8).
+         Some people argued that it would be more convenient to uniform the ping
+         command for both IPv4 and IPv6.
+
+         The following are an answer to the request:
+
+         From a developer's point of view: since the underling raw sockets API is
+         totally different between IPv4 and IPv6, we would end up having two types
+         of code base.  There would actually be less benefit to uniform the two
+         commands into a single command from the developer's standpoint.
+  manpageQuestion1: What is the primary purpose of the ping6 utility?
+  manpageQuestion2: How can you use ping6 to check the connectivity and latency of an IPv6 address?
+  manpageQuestion3: Why is ping6 separated from the regular ping command in macOS?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ping6`.\n\n\n\nManpage text:\n\nFrom an operator's point of view: unlike ordinary network applications\n     like remote login tools, we are usually aware of address family when\n     using network management tools.  We do not just want to know the\n     reachability to the host, but want to know the reachability to the host\n     via a particular network protocol such as IPv6.  Thus, even if we had a\n     unified ping(8) command for both IPv4 and IPv6, we would usually type a\n     -6 or -4 option (or something like those) to specify the particular\n     address family.  This essentially means that we have two different\n     commands.\n\nmacOS 15.3\t\t\tMarch 29, 2013\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the ping6 command?
+  manpageQuestion2: How would you use ping6 to test connectivity to an IPv6 address?
+  manpageQuestion3: Can you provide an example of using ping6 to check the reachability of an IPv6 host?
+

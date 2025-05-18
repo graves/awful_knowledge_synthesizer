@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `apfsd`.\n\n\n\nManpage text:\n\nAPFSD(8)\t\t    System Manager's Manual\t\t      APFSD(8)\n\nNAME\n     apfsd – APFS volume manager\n\nDESCRIPTION\n     apfsd is the APFS volume management daemon, it controls volume encryption\n     and decryption, automatic file defragmentation and performs other\n     housekeeping duties as necessary.\n\n     apfsd is invoked invoked by launchd(8) when presence of APFS volume is\n     detected.\n\nFILES\n     /System/Library/LaunchDaemons/com.apple.apfsd.plist\n\nSEE ALSO\n     diskutil(8)\n\nOS X\t\t\t\tAugust 8, 2017\t\t\t\t  OS X"
+  manpageQuestion1: What is the primary purpose of the apfsd tool?
+  manpageQuestion2: How would you verify that the apfsd daemon is running on a macOS system?
+  manpageQuestion3: What are the common tasks that apfsd is responsible for managing on an APFS volume?
+

@@ -1,0 +1,87 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `units`.\n\n\n\nManpage text:\n\nUNITS(1)\t\t    General Commands Manual\t\t      UNITS(1)\n\nNAME\n     units – conversion calculator\n\nSYNOPSIS\n     units [-ehqtUVv] [-f unitsfile] [-o format] [from to]\n\nDESCRIPTION\n     The units program converts quantities expressed in various scales to\n     their equivalents in other scales.  It can only handle multiplicative or\n     affine scale changes.\n\n     units can work interactively by prompting the user for input (see\n     EXAMPLES) or non-interactively, providing a conversion for given\n     arguments from and to.\n\n     The following options are available:\n\n     -e, --exponential\n\t      Same as -o %6e (see the description of the -o flag).\n\n     -f unitsfile, --file unitsfile\n\t      Specify the name of the units data file to load.\tThis option\n\t      may be specified multiple times.\n\n     -H historyfile, --history historyfile\n\t      Ignored, for compatibility with GNU units.\n\n     -h, --help\n\t      Show an overview of options.\n\n     -o format, --output-format format\n\t      Select the output format string by which numbers are printed.\n\t      Defaults to “%.8g”."
+  manpageQuestion1: What is the primary purpose of the units tool?
+  manpageQuestion2: How would you use the units program to convert 100 meters to feet?
+  manpageQuestion3: Can you provide an example of using the units program with the -e option to display exponential output for a conversion?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `units`.\n\n\n\nManpage text:\n\n-q, --quiet\n\t      Suppress prompting of the user for units and the display of\n\t      statistics about the number of units loaded.\n\n     -t, --terse\n\t      Only print the result.  This is used when calling units from\n\t      other programs for easy to parse results.\n\n     -U, --unitsfile\n\t      Print the location of the default unit file if it exists.\n\t      Otherwise, print an error message.\n\n     -v, --version\n\t      Print the version number (which is fixed at “FreeBSD units”),\n\t      the path to the units data file and exit.\n\n     -V, --verbose\n\t      Print the units in the conversion output.  Be more verbose in\n\t      general.\n\n     from to  Allow a single unit conversion to be done directly from the\n\t      command line.  The program will not print prompts.  It will\n\t      print out the result of the single specified conversion.\tBoth\n\t      arguments, i.e., from and to, can be just a unit (e.g., “cm”), a\n\t      quantity (e.g., “42”), or a quantity with a unit (e.g., “42 cm”)\n\n   Mathematical operators\n     -\t Powers of units can be specified using the “^” character as shown in\n\t the example, or by simple concatenation: “cm3” is equivalent to\n\t “cm^3”.  See the BUGS section for details on the limitations of\n\t exponent values.\n     -\t Multiplication of units can be specified by using spaces (“ ”), a\n\t dash (“-”) or an asterisk (“*”).\n     -\t Division of units is indicated by the slash (“/”).\n     -\t Division of numbers must be indicated using the vertical bar (“|”)."
+  manpageQuestion1: What is the primary purpose of the units tool?
+  manpageQuestion2: How can you use the units command to convert 100 inches to meters without any user interaction or verbose output?
+  manpageQuestion3: Can you provide an example of using the units command to convert 50 kilograms to pounds, including the use of a mathematical operator in the conversion?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `units`.\n\n\n\nManpage text:\n\nNote that multiplication has a higher precedence than division, so\n     “m/s/s” is the same as “m/s^2” or “m/s s”.\n\n   Units\n     The conversion information is read from a units data file.  The default\n     file includes definitions for most familiar units, abbreviations and\n     metric prefixes.  Some constants of nature included are:\n\n\t   pi\t      ratio of circumference to diameter\n\t   c\t      speed of light\n\t   e\t      charge on an electron\n\t   g\t      acceleration of gravity\n\t   force      same as g\n\t   mole       Avogadro's number\n\t   water      pressure per unit height of water\n\t   mercury    pressure per unit height of mercury\n\t   au\t      astronomical unit\n\n     The unit “pound” is a unit of mass.  Compound names are run together so\n     “pound force” is a unit of force.\tThe unit “ounce” is also a unit of\n     mass.  The fluid ounce is “floz”.\tBritish units that differ from their\n     US counterparts are prefixed with “br”, and currency is prefixed with its\n     country name: “belgiumfranc”, “britainpound”.  When searching for a unit,\n     if the specified string does not appear exactly as a unit name, then\n     units will try to remove a trailing “s” or a trailing “es” and check\n     again for a match."
+  manpageQuestion1: What is the primary purpose of the units command-line tool?
+  manpageQuestion2: How would you use the units tool to convert 100 meters per second squared to feet per second squared?
+  manpageQuestion3: Can you provide an example of using the units tool to convert 1000 liters to gallons, considering that the default units data file includes metric prefixes and conversions?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `units`.\n\n\n\nManpage text:\n\nUnits file format\n     To find out what units are available read the standard units file.  If\n     you want to add your own units you can supply your own file.  A unit is\n     specified on a single line by giving its name and an equivalence.\tBe\n     careful to define new units in terms of old ones so that a reduction\n     leads to the primitive units which are marked with “!” characters.  The\n     units program will not detect infinite loops that could be caused by\n     careless unit definitions.  Comments in the unit definition file begin\n     with a “#” or “/” character at the beginning of a line.\n\n     Prefixes are defined in the same way as standard units, but with a\n     trailing dash (“-”) at the end of the prefix name.  If a unit is not\n     found even after removing trailing “s” or “es”, then it will be checked\n     against the list of prefixes.  Prefixes will be removed until a legal\n     base unit is identified.\n\nENVIRONMENT\n     PATH  The colon-separated list of root directories at which units tries\n\t   to find /usr/share/misc/definitions.units."
+  manpageQuestion1: What is the primary purpose of the units resource?
+  manpageQuestion2: How can you define a custom unit in the units file format?
+  manpageQuestion3: What is the process for handling prefixes in the units file format?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `units`.\n\n\n\nManpage text:\n\nFor example if PATH is set to “/tmp:/:/usr/local”, no -f flags are\n\t   provided, and /usr/share/misc/definitions.units is missing then\n\t   units tries to open the following files as the default units file:\n\t   /tmp/usr/share/misc/definitions.units,\n\t   /usr/share/misc/definitions.units, and\n\t   /usr/local/usr/share/misc/definitions.units.\n\nFILES\n     /usr/share/misc/definitions.units\tThe standard units file.\n\nEXIT STATUS\n     The units utility exits 0 on success, and >0 if an error occurs.\n\nEXAMPLES\n     Example 1: Simple conversion of units\n\n       This example shows how to do simple conversions, for example from\n       gigabytes to bytes:\n\n\t $ units -o %0.f -t '4 gigabytes' bytes\n\t 4294967296\n\n       The -o %0.f part of the command is required to print the result in a\n       non-scientific notation (e.g, 4294967296 instead of 4.29497e+09).\n\n     Example 2: Interactive usage\n\n       Here is an example of an interactive session where the user is prompted\n       for units:\n\n\t You have: meters\n\t You want: feet\n\t\t * 3.2808399\n\t\t / 0.3048"
+  manpageQuestion1: What is the primary purpose of the units command-line tool?
+  manpageQuestion2: How would you use the units command to convert 4 gigabytes to bytes with non-scientific notation?
+  manpageQuestion3: Can you provide an example of using the units command in interactive mode to convert meters to feet?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `units`.\n\n\n\nManpage text:\n\nYou have: cm^3\n\t You want: gallons\n\t\t * 0.00026417205\n\t\t / 3785.4118\n\n\t You have: meters/s\n\t You want: furlongs/fortnight\n\t\t * 6012.8848\n\t\t / 0.00016630952\n\n\t You have: 1|2 inch\n\t You want: cm\n\t\t * 1.27\n\t\t / 0.78740157\n\n\t You have: 85 degF\n\t You want: degC\n\t\t 29.444444\n\n     Example 3: Difference between “|” and “/” division\n\n       The following command shows how to convert half a meter to centimeters.\n\n\t $ units '1|2 meter' cm\n\t\t * 50\n\t\t / 0.02\n\n       units prints the expected result because the division operator for\n       numbers (“|”) was used.\n\n       Using the division operator for units (“/”) would result in an error:\n\n\t $ units '1/2 meter' cm\n\t conformability error\n\t\t 0.5 / m\n\t\t 0.01 m\n\n       It is because units interprets “1/2 meter” as “0.5/meter”, which is not\n       conformable to “cm”.\n\n     Example 4: Simple units file\n       Here is an example of a short units file that defines some basic units:\n\n\t m\t   !a!\n\t sec\t   !b!\n\t micro-    1e-6\n\t minute    60 sec\n\t hour\t   60 min\n\t inch\t   0.0254 m\n\t ft\t   12 inches\n\t mile\t   5280 ft"
+  manpageQuestion1: What is the primary purpose of the units command-line tool?
+  manpageQuestion2: How can you convert 1 meter to centimeters using the units tool, and what is the correct syntax to avoid a division error?
+  manpageQuestion3: Can you provide an example of how to define custom units in a units file and use them for conversions?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `units`.\n\n\n\nManpage text:\n\nExample 5: Viewing units and conversions of the default units file\n       The following shell one-liner allows the user to view the contents of\n       the default units file:\n\n\t $ less \"$(units -U)\"\n\nDIAGNOSTICS\n     can't find units file '%s'  The default units file is not in its default\n     location (see FILES) and it is not present in any file tree starting with\n     their roots at directories from PATH (see ENVIRONMENT).\n\n     cap_rights_limit() failed\tSee capsicum(4).\n\n     conformability error  It is not possible to reduce the given units to one\n     common unit: they are not conformable.  Instead of a conversion, units\n     will display the reduced form for each provided unit:\n\n       You have: ergs/hour\n       You want: fathoms kg^2 / day\n       conformability error\n\t       2.7777778e-11 kg m^2 / sec^3\n\t       2.1166667e-05 kg^2 m / sec\n\n     Could not initialize history  See editline(3).\n\n     dupstr  strdup(3) failed.\n\n     memory for prefixes exceeded in line %d  Over 100 prefixes were defined."
+  manpageQuestion1: What is the primary purpose of the units tool?
+  manpageQuestion2: How can you view the contents of the default units file using the units command?
+  manpageQuestion3: What error message is displayed when units cannot find the default units file in its expected location?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `units`.\n\n\n\nManpage text:\n\nmemory for units exceeded in line %d  Over 1000 prefixes were defined.\n\n     memory overflow in unit reduction\tThe requested conversion involves too\n     many units (see BUGS).\n\n     redefinition of prefix '%s' on line %d ignored\n\n     redefinition of unit '%s' on line %d ignored\n\n     unexpected end of prefix on line %d\n\n     unexpected end of unit on line %d\n\n     Units data file not found\tThe default units file is missing.\n\n     unable to enter capability mode  See capsicum(4).\n\n     unable to open units file '%s'  One of the user-specified units files\n     cannot be opened.\n\n     unit reduces to zero\n\n     unknown unit '%s'\tThe provided unit cannot be found in the units file.\n\n     WARNING: conversion of non-proportional quantities.  units may fail to\n     convert from to to because the units are not proportional.  The warning\n     is printed when a quantity is a part of the to argument.  It can be\n     illustrated on an example of conversion from Fahrenheit to Celsius:\n\n       $ units \"degF\" \"degC\"\n\t\t(-> x*0.55555556g -17.777778g)\n\t\t(<- y*1.8g 32g)\n       $ units \"degF\" \"1 degC\"\n       WARNING: conversion of non-proportional quantities.\n\t\t(-> x*0.55555556g -17.777778g)\n\t\t(<- y*1.8g 32g)\n       $ units \"1 degF\" \"1 degC\"\n       WARNING: conversion of non-proportional quantities.\n\t       -17.222222"
+  manpageQuestion1: What is the primary purpose of the units command-line tool?
+  manpageQuestion2: How can you use the units tool to convert 100 degrees Fahrenheit to Celsius?
+  manpageQuestion3: What is the correct way to use the units tool to convert 1000 meters to kilometers?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `units`.
+
+
+
+    Manpage text:
+
+    SEE ALSO
+         bc(1)
+
+    HISTORY
+         The units first appeared in NetBSD and was ported to FreeBSD 2.2.0.
+
+         The manual page was significantly rewritten in FreeBSD 13.0 by Mateusz
+         Piotrowski <0mp@FreeBSD.org>.
+
+    AUTHORS
+         Adrian Mariano <adrian@cam.cornell.edu>
+
+    BUGS
+         The effect of including a “/” in a prefix is surprising.
+
+         Exponents entered by the user can be only one digit.  You can work around
+         this by multiplying several terms.
+
+         The user must use “|” to indicate division of numbers and “/” to indicate
+         division of symbols.  This distinction should not be necessary.
+
+         The program contains various arbitrary limits on the length of the units
+         converted and on the length of the data file.
+
+         The program should use a hash table to store units so that it does not
+         take so long to load the units list and check for duplication.
+
+         It is not possible to convert a negative value.
+
+         The units program does not handle reductions of long lists of units very
+         well:
+  manpageQuestion1: What is the primary purpose of the units tool?
+  manpageQuestion2: How can you use the units program to convert 1000 meters to feet?
+  manpageQuestion3: Can you provide an example of using the units program to convert 500000 watts to kilowatts?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `units`.\n\n\n\nManpage text:\n\n$ units \"$(yes m | head -n 154)\" \"$(yes cm | head -n 154)\"\n\t       * 1e+308\n\t       / 1e-308\n       $ units \"$(yes m | head -n 333)\" \"$(yes cm | head -n 333)\"\n\t       * inf\n\t       / 0\n       $ units \"$(yes m | head -n 500)\" \"$(yes cm | head -n 500)\"\n       units: memory overflow in unit reduction\n       conformability error\n\t       1 m^500\n\t       1 centi cm^499\n       $ units \"$(yes m | head -n 501)\" \"$(yes cm | head -n 501)\"\n       units: memory overflow in unit reduction\n       units: memory overflow in unit reduction\n       units: memory overflow in unit reduction\n       conformability error\n\t       1 m^500\n\t       1 centi cm^499\n\nmacOS 15.3\t\t\tMarch 17, 2020\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the units command?
+  manpageQuestion2: How can you use the units command to convert a large number of meters to centimeters, and what issues might arise with very large inputs?
+  manpageQuestion3: What happens when you attempt to convert a very large number of meters to centimeters using the units command, and how does the tool handle such cases?
+

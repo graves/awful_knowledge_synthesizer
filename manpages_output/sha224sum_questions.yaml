@@ -1,0 +1,103 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sha224sum`.\n\n\n\nManpage text:\n\nMD5(1)\t\t\t    General Commands Manual\t\t\tMD5(1)\n\nNAME\n     md5, sha1, sha224, sha256, sha384, sha512, md5sum, sha1sum, sha224sum,\n     sha256sum, sha384sum, sha512sum – calculate a message-digest fingerprint\n     (checksum) for a file\n\nSYNOPSIS\n     md5 [-pqrtx] [-c string] [-s string] [file ...]\n\n     md5sum [-bctwz] [--binary] [--check] [--help] [--ignore-missing]\n\t    [--quiet] [--status] [--strict] [--tag] [--text] [--version]\n\t    [--warn] [--zero] [file ...]\n\n\t    (All other hashes have the same options and usage.)\n\n     shasum [-0bchqstUvw] [--01] [-a | --algorithm alg] [--binary] [--check]\n\t    [--help] [--ignore-missing] [--quiet] [--status] [--strict]\n\t    [--tag] [--text] [--UNIVERSAL] [--version] [--warn] [file ...]\n\nDESCRIPTION\n     The md5, sha1, sha224, sha256, sha384, and sha512 utilities take as input\n     a message of arbitrary length and produce as output a “fingerprint” or\n     “message digest” of the input.\n\n     The md5sum, sha1sum, sha224sum, sha256sum, sha384sum, and sha512sum\n     utilities do the same, but with command-line options and an output format\n     that match those of their similary named GNU utilities."
+  manpageQuestion1: What is the primary purpose of the sha224sum tool?
+  manpageQuestion2: How can you use sha224sum to generate a checksum for a file named 'example.txt'?
+  manpageQuestion3: What command would you use to verify the integrity of a file using sha224sum?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sha224sum`.
+
+
+
+    Manpage text:
+
+    In all cases, each file listed on the command line is processed
+         separately.  If no files are listed on the command line, or a file name
+         is given as -, input is taken from stdin instead.
+
+         It is conjectured that it is computationally infeasible to produce two
+         messages having the same message digest, or to produce any message having
+         a given prespecified target message digest.  The SHA-224, SHA-256,
+         SHA-384, and SHA-512 algorithms are intended for digital signature
+         applications, where a large file must be “compressed” in a secure manner
+         before being encrypted with a private (secret) key under a public-key
+         cryptosystem such as RSA.
+
+         The MD5 and SHA-1 algorithms have been proven to be vulnerable to
+         practical collision attacks and should not be relied upon to produce
+         unique outputs, nor should they be used as part of a cryptographic
+         signature scheme. As of 2017-03-02, there is no publicly known method to
+         reverse either algorithm, i.e., to find an input that produces a specific
+         output.
+  manpageQuestion1: What is the primary purpose of the sha224sum command?
+  manpageQuestion2: How can you compute the SHA-224 hash of a file named 'data.txt' and output it to standard output?
+  manpageQuestion3: What is the function of the '-' argument when using sha224sum with file names?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sha224sum`.\n\n\n\nManpage text:\n\nIt is recommended that all new applications use SHA-512 instead of one of\n     the other hash functions.\n\n   BSD OPTIONS\n     The following options are available in BSD mode, i.e. when the program is\n     invoked with a name that does not end in “sum”:\n\n     -c string, --check=string\n\t     Compare the digest of the file against this string.  If combined\n\t     with the -q or --quiet option, the calculated digest is printed\n\t     in addition to the exit status being set.\t(Note that this option\n\t     is not yet useful if multiple files are specified.)\n\n     -p, --passthrough\n\t     Echo stdin to stdout and append the checksum to stdout.  In this\n\t     mode, any files specified on the command line are silently\n\t     ignored.\n\n     -q, --quiet\n\t     Quiet mode — only the checksum is printed out.  Overrides the -r\n\t     or --reverse option.\n\n     -r, --reverse\n\t     Reverses the format of the output.  This helps with visual diffs.\n\t     Does nothing when combined with the -ptx options.\n\n     -s string, --string=string\n\t     Print a checksum of the given string.  In this mode, any files\n\t     specified on the command line are silently ignored."
+  manpageQuestion1: What is the primary purpose of the sha224sum tool?
+  manpageQuestion2: How would you use sha224sum to check the integrity of a file named 'data.txt' by comparing its checksum with a predefined string?
+  manpageQuestion3: Can you provide an example of using sha224sum to compute the checksum of a string like 'Hello, world!' and output only the checksum without any additional information?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sha224sum`.\n\n\n\nManpage text:\n\n-t, --time-trial\n\t     Run a built-in time trial.  For the -sum versions, this is a nop\n\t     for compatibility with coreutils.\n\n     -x, --self-test\n\t     Run a built-in test script.\n\n   GNU OPTIONS\n     The following options are available in GNU mode, i.e. when the program is\n     invoked with a name that ends in “sum”:\n\n     -b, --binary\n\t     Read files in binary mode.\n\n     -c, --check\n\t     The file passed as arguments must contain digest lines generated\n\t     by the same digest algorithm in either classical BSD format or in\n\t     GNU coreutils format.  A line with the file name followed by a\n\t     colon “:” and either OK or FAILED is written for each well-formed\n\t     line in the digest file.  If applicable, the number of failed\n\t     comparisons and the number of lines that were skipped since they\n\t     were not well-formed are printed at the end.  The --quiet option\n\t     can be used to quiesce the output unless there are mismatched\n\t     entries in the digest.\n\n     --help  Print a usage message and exit."
+  manpageQuestion1: What is the primary purpose of the sha224sum tool?
+  manpageQuestion2: How would you use sha224sum to verify the integrity of a file using GNU mode options?
+  manpageQuestion3: Can you provide an example of running a self-test on the sha224sum tool using its built-in test script?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sha224sum`.\n\n\n\nManpage text:\n\n--ignore-missing\n\t     When verifying checksums, ignore files for which checksums are\n\t     given but which aren't found on disk.\n\n     --quiet\n\t     When verifying checksums, do not print anything unless the\n\t     verification fails.\n\n     --status\n\t     When verifying checksums, do not print anything at all.  The exit\n\t     code will reflect whether verification succeeded.\n\n     --strict\n\t     When verifying checksums, fail if the input is malformed.\n\n     --tag   Produce BSD-style output.\n\n     -t, --text\n\t     Read files in text mode.  This is the default.  Note that this\n\t     implementation does not differentiate between binary and text\n\t     mode.\n\n     --version\n\t     Print version information and exit.\n\n     -w, --warn\n\t     When verifying checksums, warn about malformed input.\n\n     -z, --zero\n\t     Terminate output lines with NUL rather than with newline.\n\nEXIT STATUS\n     The md5, sha1, sha224, sha256, sha384, and sha512 utilities exit 0 on\n     success, 1 if at least one of the input files could not be read, and 2 if\n     at least one file does not have the same hash as the -c option."
+  manpageQuestion1: What is the primary purpose of the sha224sum tool?
+  manpageQuestion2: How would you use sha224sum to verify the integrity of a file while ignoring missing files during verification?
+  manpageQuestion3: Can you provide an example of using sha224sum to generate a checksum for a file and output the result in text mode without trailing newlines?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sha224sum`.\n\n\n\nManpage text:\n\nThe md5sum, sha1sum, sha224sum, sha256sum, sha384sum, and sha512sum\n     utilities exit 0 on success and 1 if at least one of the input files\n     could not be read or, when verifying checksums, does not have the\n     expected checksum.\n\nEXAMPLES\n     Calculate the MD5 checksum of the string “Hello”.\n\n\t   $ md5 -s Hello\n\t   MD5 (\"Hello\") = 8b1a9953c4611296a827abf8c47804d7\n\n     Same as above, but note the absence of the newline character in the input\n     string:\n\n\t   $ echo -n Hello | md5\n\t   8b1a9953c4611296a827abf8c47804d7\n\n     Calculate the checksum of multiple files reversing the output:\n\n\t   $ md5 -r /boot/loader.conf /etc/rc.conf\n\t   ada5f60f23af88ff95b8091d6d67bef6 /boot/loader.conf\n\t   d80bf36c332dc0fdc479366ec3fa44cd /etc/rc.conf\n\n     This is almost but not quite identical to the output from GNU mode:\n\n\t   $ md5sum /boot/loader.conf /etc/rc.conf\n\t   ada5f60f23af88ff95b8091d6d67bef6  /boot/loader.conf\n\t   d80bf36c332dc0fdc479366ec3fa44cd  /etc/rc.conf\n\n     Note the two spaces between hash and file name.  If binary mode is\n     requested, they are instead separated by a space and an asterisk:"
+  manpageQuestion1: What is the primary purpose of the sha224sum command?
+  manpageQuestion2: How would you use sha224sum to calculate the checksum of a file named 'data.txt'?
+  manpageQuestion3: Can you provide an example of using sha224sum to verify the integrity of multiple files?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sha224sum`.\n\n\n\nManpage text:\n\n$ md5sum -b /boot/loader.conf /etc/rc.conf\n\t   ada5f60f23af88ff95b8091d6d67bef6 */boot/loader.conf\n\t   d80bf36c332dc0fdc479366ec3fa44cd */etc/rc.conf\n\n     Write the digest for /boot/loader.conf in a file named digest.  Then\n     calculate the checksum again and validate it against the checksum string\n     extracted from the digest file:\n\n\t   $ md5 /boot/loader.conf > digest && md5 -c $(cut -f2 -d= digest) /boot/loader.conf\n\t   MD5 (/boot/loader.conf) = ada5f60f23af88ff95b8091d6d67bef6\n\n     Same as above but comparing the digest against an invalid string\n     (“randomstring”), which results in a failure.\n\n\t   $ md5 -c randomstring /boot/loader.conf\n\t   MD5 (/boot/loader.conf) = ada5f60f23af88ff95b8091d6d67bef6 [ Failed ]\n\n     In GNU mode, the -c option does not compare against a hash string passed\n     as parameter.  Instead, it expects a digest file, as created under the\n     name digest for /boot/loader.conf in the example above.\n\n\t   $ md5 -c digest /boot/loader.conf\n\t   /boot/loader.conf: OK"
+  manpageQuestion1: What is the primary purpose of the sha224sum command?
+  manpageQuestion2: How can you verify the integrity of a file using sha224sum by comparing its hash against a previously generated digest file?
+  manpageQuestion3: Can you explain how to use sha224sum to check if a file matches a specific hash string?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sha224sum`.
+
+
+
+    Manpage text:
+
+    The digest file may contain any number of lines in the format generated
+         in either BSD or GNU mode.  If a hash value does not match the file,
+         “FAILED” is printed instead of “OK”.
+
+    SEE ALSO
+         cksum(1), md5(3), sha(3), sha256(3), sha384(3), sha512(3)
+
+         R. Rivest, The MD5 Message-Digest Algorithm, RFC1321.
+
+         J. Burrows, The Secure Hash Standard, FIPS PUB 180-2.
+
+         D. Eastlake and P. Jones, US Secure Hash Algorithm 1, RFC 3174.
+
+         Secure Hash Standard (SHS):
+         https://www.nist.gov/publications/secure-hash-standard-shs
+
+    ACKNOWLEDGMENTS
+         This utility was originally derived from a program which was placed in
+         the public domain for free general use by RSA Data Security.
+
+         Support for SHA-1 was added by Oliver Eikemeier <eik@FreeBSD.org>.
+
+         Support for SHA-2 was added by Colin Percival <cperciva@FreeBSD.org> and
+         Allan Jude <allanjude@FreeBSD.org>.
+
+         Compatibility with GNU coreutils was added by Warner Losh
+         <imp@FreeBSD.org> and much expanded by Dag-Erling Smørgrav
+         <des@FreeBSD.org>.
+  manpageQuestion1: What is the primary purpose of the sha224sum command?
+  manpageQuestion2: How can you verify the integrity of a file using sha224sum?
+  manpageQuestion3: What is the difference between BSD and GNU modes in the context of sha224sum?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sha224sum`.\n\n\n\nManpage text:\n\nmacOS 15.3\t\t       February 13, 2024\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the sha224sum command?
+  manpageQuestion2: How would you use sha224sum to compute the SHA-224 hash of a file named "example.txt"?
+  manpageQuestion3: Can you provide an example of using sha224sum to verify the integrity of a downloaded file?
+

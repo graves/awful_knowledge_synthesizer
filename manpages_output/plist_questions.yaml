@@ -1,0 +1,51 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `plist`.\n\n\n\nManpage text:\n\nPLIST(5)\t\t      File Formats Manual\t\t      PLIST(5)\n\nNAME\n     plist – property list format\n\nSYNOPSIS\n     plist\n\nDESCRIPTION\n     Property lists organize data into named values and lists of values using\n     several Core Foundation types: CFString, CFNumber, CFBoolean, CFDate,\n     CFData, CFArray, and CFDictionary. These types give you the means to\n     produce data that is meaningfully structured, transportable, storable,\n     and accessible, but still as efficient as possible. The property list\n     programming interface allows you to convert hierarchically structured\n     combinations of these basic types to and from two formats: standard XML\n     and an optimized, opaque binary format. This document describes the\n     standard XML format. The data can be saved to disk and later used to\n     reconstruct the original Core Foundation objects. Note that property\n     lists should be used for data that consists primarily of strings and\n     numbers because they are very inefficient when used with large blocks of\n     binary data."
+  manpageQuestion1: What is the primary purpose of the plist format?
+  manpageQuestion2: How can you use the plist format to store a list of names and their corresponding ages in XML format?
+  manpageQuestion3: Can you provide an example of converting a Core Foundation object into the optimized binary format using the plist tool?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `plist`.
+
+
+
+    Manpage text:
+
+    PROPERTY LIST STRUCTURE AND CONTENTS
+
+         Property lists are constructed from the basic Core Foundation types
+         CFString, CFNumber, CFBoolean, CFDate, and CFData. To build a complex
+         data structure out of these basic types, you put them inside a
+         CFDictionary or CFArray. To simplify programming with property lists, any
+         of the property list types can also be referred to using a reference of
+         type CFPropertyListRef.
+
+         In a CFDictionary, data is structured as key-value pairs, where each key
+         is a string and the key's value can be a CFString, a CFNumber, a
+         CFBoolean, a CFDate, a CFData, a CFArray, or another CFDictionary. When
+         using CFDictionary as a property list, all keys must be strings.
+
+         In a CFArray, data is structured as an ordered collection of objects that
+         can be accessed by index. In a property list, a CFArray can contain any
+         of the basic property list types, as well as CFDictionary and other
+         CFArray objects.
+
+         PROPERTY LIST XML TAGS
+  manpageQuestion1: What is the primary purpose of the `plist` resource in macOS?
+  manpageQuestion2: How can you create a property list using `plist` to store a dictionary with string and number values?
+  manpageQuestion3: What is the process for converting a custom data structure into a property list format using `plist`?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `plist`.\n\n\n\nManpage text:\n\nWhen property lists convert a collection of Core Foundation objects into\n     an XML property list, it wraps the property list using the document type\n     tag <plist>. The other tags used for the Core Foundation data types are\n     listed in the table below:\n\n     Core Foundation Types with XML Equivalents\n\t CF type\t XML tag\n\t CFString\t <string>\n\t CFNumber\t <real> or <integer>\n\t CFDate \t <date>\n\t CFBoolean\t <true/> or <false/>\n\t CFData \t <data>\n\t CFArray\t <array>\n\t CFDictionary\t <dict>\n\n     When encoding the contents of a CFDictionary, each member is encoded by\n     placing the dictionary key in a <key> tag and immediately following it\n     with the corresponding value in the appropriate tag from the table above.\n     See EXAMPLES below for an example XML data generated from a property\n     list.\n\n     The XML data format is documented here strictly for help in understanding\n     property lists and as a debugging aid. These tags may change in future\n     releases so you shouldn't rely on them directly. You should not edit the\n     XML data by hand unless you are very familiar with XML syntax and the\n     format of property lists. If you want to modify the contents of a\n     property list saved on disk as XML data, use the Property List Editor\n     application."
+  manpageQuestion1: What is the primary purpose of the plist resource?
+  manpageQuestion2: How would you encode a CFDictionary with string and integer values using the plist tool?
+  manpageQuestion3: Can you provide an example of converting a CFArray containing mixed data types into an XML property list format?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `plist`.\n\n\n\nManpage text:\n\nMore complete documentation can be found on disk at\n\n     /Developer/Documentation/CoreFoundation/ProgrammingTopics/CFPropertyLists/CFPropertyLists.html\n\n     or online at\n\n     https://developer.apple.com/documentation/corefoundation/cfpropertylist\n\n     BINARY FORMAT PROPERTY LISTS\n\n     The binary property list format is opaque and does not use XML. However,\n     binary property lists and XML property lists are generally\n     interchangeable. The plutil(1) utility may be used to convert property\n     lists between different formats. For example, to view a binary property\n     list in XML format on stdout:\n\n\t   plutil -convert xml1 -o - <file name>\n\nEXAMPLES\n\t   <?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\t   <!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\"\n\t\t   \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n\t   <plist version=\"1.0\">\n\t   <dict>\n\t       <key>Year Of Birth</key>\n\t       <integer>1965</integer>\n\t       <key>Pets Names</key>\n\t       <array/>\n\t       <key>Picture</key>\n\t       <data>\n\t\t   PEKBpYGlmYFCPA==\n\t       </data>\n\t       <key>City of Birth</key>\n\t       <string>Springfield</string>\n\t       <key>Name</key>\n\t       <string>John Doe</string>\n\t       <key>Kids Names</key>\n\t       <array>\n\t\t   <string>John</string>\n\t\t   <string>Kyra</string>\n\t       </array>\n\t   </dict>\n\t   </plist>"
+  manpageQuestion1: What is the primary purpose of the plist utility?
+  manpageQuestion2: How would you convert a binary property list file named 'data.plist' to XML format using the plutil command?
+  manpageQuestion3: Can you provide an example of viewing a binary property list in XML format using the plutil command?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `plist`.\n\n\n\nManpage text:\n\nSEE ALSO\n     plutil(1)\n\nMac OS X\t\t\t July 9, 2003\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the plist command?
+  manpageQuestion2: How can you use the plist command to convert a property list file from binary format to text format?
+  manpageQuestion3: Can you provide an example of using the plist command to display the contents of a property list file in human-readable format?
+

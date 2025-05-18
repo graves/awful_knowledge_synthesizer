@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `WirelessRadioManagerd`.\n\n\n\nManpage text:\n\nWirelessRadioManagerd(8)    System Manager's Manual   WirelessRadioManagerd(8)\n\nNAME\n     WirelessRadioManagerd – Wireless Radio Manager daemon\n\nSYNOPSIS\n     WirelessRadioManagerd\n\nDESCRIPTION\n     WirelessRadioManagerd manages multiple radio coexistence policy.\n     WirelessRadioManagerd should not be invoked directly.\n\nmacOS 15.3\t\t\t   7/31/2019\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the WirelessRadioManagerd daemon?
+  manpageQuestion2: How would you check the status of the WirelessRadioManagerd service?
+  manpageQuestion3: What is the recommended way to manage the WirelessRadioManagerd daemon on a macOS system?
+

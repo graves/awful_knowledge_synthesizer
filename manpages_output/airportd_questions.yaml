@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `airportd`.\n\n\n\nManpage text:\n\nairportd(8)\t\t    System Manager's Manual\t\t   airportd(8)\n\nNAME\n     airportd – airport daemon\n\nSYNOPSIS\n     airportd\n\nDESCRIPTION\n     airportd manages wireless interfaces.  airportd should not be invoked\n     directly.\n\nmacOS 15.3\t\t\t   7/5/2006\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the airportd tool?
+  manpageQuestion2: How would you typically use the airportd daemon in a system management context?
+  manpageQuestion3: Can you explain the role of airportd in managing wireless interfaces on a macOS system?
+

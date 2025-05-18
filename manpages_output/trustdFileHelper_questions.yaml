@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `trustdFileHelper`.\n\n\n\nManpage text:\n\ntrustdFileHelper(8)\t    System Manager's Manual\t   trustdFileHelper(8)\n\nNAME\n     trustdFileHelper – Daemon that helps trustd with files\n\nSYNOPSIS\n     trustdFileHelper\n\nDESCRIPTION\n     trustdFileHelper provides services to trustd for modifying files.\n\n     This command is not intended to be invoked directly.\n\nmacOS 15.3\t\t\tThu Dec 17 2020 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the trustdFileHelper tool?
+  manpageQuestion2: How would you use trustdFileHelper to assist trustd in modifying files?
+  manpageQuestion3: Can you describe the typical use case for trustdFileHelper in a system environment?
+

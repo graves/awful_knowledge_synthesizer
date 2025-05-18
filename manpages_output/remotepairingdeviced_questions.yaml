@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `remotepairingdeviced`.\n\n\n\nManpage text:\n\nremotepairingdeviced(1)     General Commands Manual    remotepairingdeviced(1)\n\nNAME\n     remotepairingdeviced – Manages remote pairing.\n\nSYNOPSIS\n     remotepairingdeviced\n\nDESCRIPTION\n     A service that manages remote pairing.\n\n\t\t\t\t    1/11/21"
+  manpageQuestion1: What is the primary purpose of the remotepairingdeviced tool?
+  manpageQuestion2: How can you use the remotepairingdeviced command to manage remote pairing devices?
+  manpageQuestion3: What is the function of the remotepairingdeviced service in a macOS system?
+

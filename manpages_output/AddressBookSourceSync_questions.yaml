@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `AddressBookSourceSync`.\n\n\n\nManpage text:\n\nAddressBookSourceSync(8)    System Manager's Manual   AddressBookSourceSync(8)\n\nNAME\n     AddressBookSourceSync – Syncs Contacts data with servers.\n\nDESCRIPTION\n     AddressBookSourceSync syncs Contacts data with iCloud, CardDAV, and\n     Exchange servers.\n\n     This command is not intended to be invoked directly.\n\nmacOS 15.3\t\t\tJanuary 1, 2017 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the AddressBookSourceSync tool?
+  manpageQuestion2: How would you use AddressBookSourceSync to synchronize Contacts data with iCloud?
+  manpageQuestion3: Can you describe the typical use case for AddressBookSourceSync in a macOS environment?
+

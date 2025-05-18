@@ -1,0 +1,61 @@
+system_prompt: You are Qwen, created by Alibaba Cloud.
+messages:
+  - role: user
+    content: |-
+      You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `4ccconv`.
+
+      Please synthesize 3 questions that exercise the resource where the answer contains correct usage of the most common parameters and flags if the resource is a command, or a description of the resource's most common purpose if the resource is not a command. The first question should ask a general question about what purposes the resource serves. The next two questions should be realistic, specific questions about how the resource is used and should be answered by a code example or a command example.
+
+      Manpage text:
+
+      4ccconv(1)                  General Commands Manual                 4ccconv(1)
+
+      NAME
+          4ccconv – 4 Character Code Conversion Tool
+
+      SYNOPSIS
+          4ccconv [-xu4] number
+
+      DESCRIPTION
+          4ccconv automatically converts a 4 character code to its hexadecimal or
+          unsigned int representation, and vice versa.
+
+          Optional Arguments:
+
+          -x       print hexadecimal representation of ‘number’ as a 4cc
+
+          -u       print unsigned integer representation of ‘number’ as a 4cc
+
+          -4       print 4 code char representation of ‘number’ (0x prefix will be
+                    interpreted as hexadecimal)
+
+      Darwin                              10/2/20                             Darwin
+
+
+  - role: assistant
+    content: |-
+      {"manpageQuestion1": "What is the primary purpose of the 4ccconv tool?", "manpageQuestion2": "How would you use 4ccconv to convert the hexadecimal value 0x1A2B3C4D to its unsigned integer representation?", "manpageQuestion3": "Can you provide an example of using 4ccconv to convert the unsigned integer 2153678901 to its corresponding four-character code format?"}
+      
+response_format:
+  name: manpage_question_generator
+  strict: true
+  description: Represents 3 questions about a macOS command that can be answered by reading its manpage.
+  schema:
+    type: object
+    properties:
+      manpageQuestion1:
+        type: string
+      manpageQuestion2:
+        type: string
+      manpageQuestion3:
+        type: string
+    required:
+      - manpageQuestion1
+      - manpageQuestion2
+      - manpageQuestion3
+pre_user_message_content: |-
+  Please synthesize 3 questions that exercise the resource where the answer contains correct usage of the most common parameters and flags if the resource is a command, or a description of the resource's most common purpose if the resource is not a command. The first question should ask a general question about what purposes the resource serves. The next two questions should be realistic, specific questions about how the resource is used and should be answered by a code example or a command example.
+  
+post_user_message_content:
+
+  /nothink

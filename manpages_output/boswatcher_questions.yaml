@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `boswatcher`.\n\n\n\nManpage text:\n\nBOSWATCHER(8)\t\t    System Manager's Manual\t\t BOSWATCHER(8)\n\n\n\nNAME\n     boswatcher – bridgeOS software update\n\nDESCRIPTION\n     boswatcher is a system daemon that reports diagnostic information about\n     bridgeOS update failures.\n\n     There are no configuration options to boswatcher, and users should not\n     run boswatcher manually.\n\nMac OS X\t\t\t    9/11/17\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the boswatcher tool?
+  manpageQuestion2: How would you check the status of the boswatcher service on a macOS system?
+  manpageQuestion3: What is the recommended approach for managing bridgeOS updates using boswatcher?
+

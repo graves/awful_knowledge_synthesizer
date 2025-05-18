@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `NotificationCenter`.\n\n\n\nManpage text:\n\nNotificationCenter(8)\t    System Manager's Manual\t NotificationCenter(8)\n\nNAME\n     NotificationCenter – Notification Center service for display\n     notifications\n\nDESCRIPTION\n     NotificationCenter is a system application for display notifications on\n     the system\n\n     There are no options for NotificationCenter, and users should not run\n     NotificationCenter manually.\n\nmacOS\t\t\t\t July 4, 2018\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the NotificationCenter service?
+  manpageQuestion2: How would you useNotificationCenter to manage system notifications?
+  manpageQuestion3: Can you explain the role of NotificationCenter in macOS system operations?
+

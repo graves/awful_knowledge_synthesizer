@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `AppleVNCServer`.\n\n\n\nManpage text:\n\nAppleVNCServer(8)\t    System Manager's Manual\t     AppleVNCServer(8)\n\nNAME\n     AppleVNCServer – listens for VNC connections from clients.\n\nDESCRIPTION\n     The AppleVNCServer command should not be run directly. Sign in to iCloud.\n     Other users can request permission to share your screen by entering your\n     Apple Account in the Screen Sharing app.\n\nmacOS 15.3\t\t       November 2, 2016 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the AppleVNCServer tool?
+  manpageQuestion2: How would you configure AppleVNCServer to allow remote screen sharing?
+  manpageQuestion3: Can you explain the process of setting up a VNC connection using AppleVNCServer?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `retimerd`.\n\n\n\nManpage text:\n\nRETIMERD(8)\t\t    System Manager's Manual\t\t   RETIMERD(8)\n\nNAME\n     retimerd – Apple Type-C Retimer daemon\n\nSYNOPSIS\n     takes no arguments, and users should not launch it manually.\n\nDESCRIPTION\n     Manages background activities for Apple Type-C Retimer\n\nHISTORY\n     First appeared in macOS 12.3 and iOS 15.4.\n\nDarwin\t\t\t       October 19, 2021 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the retimerd tool?
+  manpageQuestion2: How would you check if the retimerd service is running on a macOS system?
+  manpageQuestion3: What is the role of retimerd in the context of Apple Type-C devices?
+

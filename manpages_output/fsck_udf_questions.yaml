@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `fsck_udf`.\n\n\n\nManpage text:\n\nFSCK_UDF(8)\t\t    System Manager's Manual\t\t   FSCK_UDF(8)\n\nNAME\n     fsck_udf – check a UDF filesystem\n\nSYNOPSIS\n     fsck_udf [-b blocksize] [-L] [-p] [-D] devicePath\n\nDESCRIPTION\n     The fsck_udf command examines a UDF filesystem residing on devicePath for\n     correctness.\n\nSEE ALSO\n     mount_udf(8)\n\nBUGS\n     Currently does not perform any repairs.\n\nHISTORY\n     The fsck_udf utility first appeared in Mac OS X.\n\nmacOS 15.3\t\t\tMarch 10, 2008\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the fsck_udf command?
+  manpageQuestion2: How can you use fsck_udf to check a UDF filesystem on a specific device path?
+  manpageQuestion3: What flags can be used with fsck_udf to customize its behavior during a filesystem check?
+

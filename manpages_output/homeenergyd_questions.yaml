@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `homeenergyd`.\n\n\n\nManpage text:\n\nHOMEENERGYD(8)\t\t    System Manager's Manual\t\tHOMEENERGYD(8)\n\nNAME\n     homeenergyd – Home Energy Daemon\n\nSYNOPSIS\n     takes no arguments, and users should not launch it manually.\n\nDESCRIPTION\n     homeenergyd is a daemon that manages home energy and its interaction with\n     Home\n\nHISTORY\n     homeenergyd first appeared in macOS 14.0\n\nDarwin\t\t\t       January 11, 2023 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the homeenergyd daemon?
+  manpageQuestion2: How is the homeenergyd daemon typically used in a macOS system?
+  manpageQuestion3: What is the historical context of the homeenergyd daemon's introduction?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `installd`.\n\n\n\nManpage text:\n\ninstalld(8)\t\t    System Manager's Manual\t\t   installd(8)\n\nNAME\n     installd – macOS software installation daemon\n\nDESCRIPTION\n     installd is used by the system during package installation. It should not\n     be invoked manually.\n\nSEE ALSO\n     installer(8), pkgutil(1), system_installd(8),\n\nmacOS 15.3\t\t       January 31, 2017 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the installd tool?
+  manpageQuestion2: How can installd be used in the context of macOS software installation?
+  manpageQuestion3: What are the common system tools that work in conjunction with installd?
+

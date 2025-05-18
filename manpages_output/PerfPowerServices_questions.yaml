@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `PerfPowerServices`.\n\n\n\nManpage text:\n\nPerfPowerServices(8)\t    System Manager's Manual\t  PerfPowerServices(8)\n\nNAME\n     PerfPowerServices – manages structured log archives that enable retrieval\n     of system power and performance data.\n\nDESCRIPTION\n     The PerfPowerServices daemon works only within the context of a launchd\n     job and should not be run from the command line.\n\nmacOS 15.3\t\t\tMarch 26, 2018\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the PerfPowerServices tool?
+  manpageQuestion2: How would you configure PerfPowerServices to collect power and performance data for a specific application?
+  manpageQuestion3: Can you explain how system power and performance data is retrieved using PerfPowerServices?
+

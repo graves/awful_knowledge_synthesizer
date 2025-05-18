@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pboard`.\n\n\n\nManpage text:\n\nPBOARD(8)\t\t    System Manager's Manual\t\t     PBOARD(8)\n\nNAME\n     pboard – pasteboard server\n\nSYNOPSIS\n     pboard\n\nDESCRIPTION\n     pboard provides pasteboard services.\n\n     There are no configuration options to pboard.  Users should not run\n     pboard manually.\n\nMac OS X\t\t\t July 1, 2005\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the pboard tool?
+  manpageQuestion2: How would you use pboard to manage pasteboard services on a macOS system?
+  manpageQuestion3: Can you explain the typical usage scenario for the pboard command?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `UASysAgent`.\n\n\n\nManpage text:\n\nUASysAgent(8)\t\t    System Manager's Manual\t\t UASysAgent(8)\n\nNAME\n     UASysAgent – A tool used by UnmountAssistant.\n\nDESCRIPTION\n     UASysAgent – UASysAgent does work on behalf of UnmountAssistant.\n\nmacOS 15.3\t\t\tApril 20, 2017\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the UASysAgent tool?
+  manpageQuestion2: How would you use UASysAgent to assist UnmountAssistant in its operations?
+  manpageQuestion3: Can you describe the general function of UASysAgent in the context of macOS system management?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `nfcd`.\n\n\n\nManpage text:\n\nnfcd(8) \t\t    System Manager's Manual\t\t       nfcd(8)\n\nNAME\n     nfcd – NearField daemon.\n\nDESCRIPTION\n     nfcd Controls the NFC controller.\tnfcd should not be invoked directly.\n\nmacOS 15.3\t\t      November 31st, 2016\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the nfcd tool?
+  manpageQuestion2: How would you use nfcd to manage NFC operations on a macOS system?
+  manpageQuestion3: Can you explain the typical usage scenario for the nfcd daemon in a macOS environment?
+

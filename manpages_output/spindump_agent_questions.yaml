@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `spindump_agent`.\n\n\n\nManpage text:\n\nspindump_agent(8)\t    System Manager's Manual\t     spindump_agent(8)\n\nNAME\n     spindump_agent – helper agent for spindump(8)\n\nSYNOPSIS\n     spindump_agent\n\nDESCRIPTION\n     spindump_agent should only be used by spindump(8) and should not be\n     invoked manually\n\nSEE ALSO\n     spindump(8)\n\nDarwin\t\t\t       February 23, 2011\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the spindump_agent tool?
+  manpageQuestion2: How would you use spindump_agent in conjunction with spindump(8)?
+  manpageQuestion3: Can you explain why spindump_agent should not be invoked manually?
+

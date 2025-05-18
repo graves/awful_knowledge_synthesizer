@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `DictationIM`.\n\n\n\nManpage text:\n\nDictationIM(8)\t\t    System Manager's Manual\t\tDictationIM(8)\n\nNAME\n     DictationIM – Implements system-wide Dictation and command & control.\n\nDESCRIPTION\n     DictationIM is an Input Method-based process that implements the UI\n     portion of the system-wide Dictation feature in macOS. This process\n     registers the appropriate set of spoken commands with the embedded speech\n     recognition engine for the current state of the UI then responds to any\n     recognized commands by performing the expected action. Control over when\n     this process is launched is primarily governed by the Input Method\n     system.\n\nmacOS 15.3\t\t       November 29, 2016\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the DictationIM process?
+  manpageQuestion2: How does the DictationIM process interact with the speech recognition engine in macOS?
+  manpageQuestion3: What role does the Input Method system play in managing the DictationIM process?
+

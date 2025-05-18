@@ -1,0 +1,62 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `csv`.\n\n\n\nManpage text:\n\ncsv(n)\t\t\t\tCSV processing\t\t\t\tcsv(n)\n\n______________________________________________________________________________\n\nNAME\n       csv - Procedures to handle CSV data.\n\nSYNOPSIS\n       package require Tcl  8.3\n\n       package require csv  ?0.7.2?\n\n       ::csv::iscomplete data\n\n       ::csv::join values {sepChar ,} {delChar \"}\n\n       ::csv::joinlist values {sepChar ,} {delChar \"}\n\n       ::csv::joinmatrix matrix {sepChar ,} {delChar \"}\n\n       ::csv::read2matrix ?-alternate? chan m {sepChar ,} {expand none}\n\n       ::csv::read2queue ?-alternate? chan q {sepChar ,}\n\n       ::csv::report cmd matrix ?chan?\n\n       ::csv::split ?-alternate? line {sepChar ,} {delChar \"}\n\n       ::csv::split2matrix ?-alternate? m line {sepChar ,} {expand none}\n\n       ::csv::split2queue ?-alternate? q line {sepChar ,}\n\n       ::csv::writematrix m chan {sepChar ,} {delChar \"}\n\n       ::csv::writequeue q chan {sepChar ,} {delChar \"}\n\n______________________________________________________________________________\n\nDESCRIPTION\n       The csv package provides commands to manipulate information in CSV\n       FORMAT (CSV = Comma Separated Values).\n\nCOMMANDS\n       The following commands are available:\n\n       ::csv::iscomplete data\n\t      A predicate checking if the argument data is a complete csv\n\t      record. The result is a boolean flag indicating the completeness\n\t      of the data. The result is true if the data is complete.\n\n       ::csv::join values {sepChar ,} {delChar \"}\n\t      Takes a list of values and returns a string in CSV format\n\t      containing these values. The separator character can be defined\n\t      by the caller, but this is optional. The default is \",\". The\n\t      quoting character can be defined by the caller, but this is\n\t      optional. The default is '\"'.\n\n       ::csv::joinlist values {sepChar ,} {delChar \"}\n\t      Takes a list of lists of values and returns a string in CSV\n\t      format containing these values. The separator character can be\n\t      defined by the caller, but this is optional. The default is \",\".\n\t      The quoting character can be defined by the caller, but this is\n\t      optional. The default is '\"'.  Each element of the outer list is\n\t      considered a record, these are separated by newlines in the\n\t      result. The elements of each record are formatted as usual (via\n\t      ::csv::join).\n\n       ::csv::joinmatrix matrix {sepChar ,} {delChar \"}\n\t      Takes a matrix object following the API specified for the\n\t      struct::matrix package and returns a string in CSV format\n\t      containing these values. The separator character can be defined\n\t      by the caller, but this is optional. The default is \",\". The\n\t      quoting character can be defined by the caller, but this is\n\t      optional. The default is ´\"'. Each row of the matrix is\n\t      considered a record, these are separated by newlines in the\n\t      result. The elements of each record are formatted as usual (via\n\t      ::csv::join).\n\n       ::csv::read2matrix ?-alternate? chan m {sepChar ,} {expand none}\n\t      A wrapper around ::csv::split2matrix (see below) reading CSV-\n\t      formatted lines from the specified channel (until EOF) and\n\t      adding them to the given matrix. For an explanation of the\n\t      expand argument see ::csv::split2matrix.\n\n       ::csv::read2queue ?-alternate? chan q {sepChar ,}\n\t      A wrapper around ::csv::split2queue (see below) reading CSV-\n\t      formatted lines from the specified channel (until EOF) and\n\t      adding them to the given queue.\n\n       ::csv::report cmd matrix ?chan?\n\t      A report command which can be used by the matrix methods format\n\t      2string and format 2chan. For the latter this command delegates\n\t      the work to ::csv::writematrix. cmd is expected to be either\n\t      printmatrix or printmatrix2channel. The channel argument, chan,\n\t      has to be present for the latter and must not be present for the\n\t      first.\n\n       ::csv::split ?-alternate? line {sepChar ,} {delChar \"}\n\t      converts a line in CSV format into a list of the values\n\t      contained in the line. The character used to separate the values\n\t      from each other can be defined by the caller, via sepChar, but\n\t      this is optional. The default is \",\". The quoting character can\n\t      be defined by the caller, but this is optional. The default is\n\t      '\"'.\n\n\t      If the option -alternate is specified a slightly different\n\t      syntax is used to parse the input. This syntax is explained\n\t      below, in the section FORMAT.\n\n       ::csv::split2matrix ?-alternate? m line {sepChar ,} {expand none}\n\t      The same as ::csv::split, but appends the resulting list as a\n\t      new row to the matrix m, using the method add row. The expansion\n\t      mode specified via expand determines how the command handles a\n\t      matrix with less columns than contained in line. The allowed\n\t      modes are:\n\n\t      none   This is the default mode. In this mode it is the\n\t\t     responsibility of the caller to ensure that the matrix\n\t\t     has enough columns to contain the full line. If there are\n\t\t     not enough columns the list of values is silently\n\t\t     truncated at the end to fit.\n\n\t      empty  In this mode the command expands an empty matrix to hold\n\t\t     all columns of the specified line, but goes no further.\n\t\t     The overall effect is that the first of a series of lines\n\t\t     determines the number of columns in the matrix and all\n\t\t     following lines are truncated to that size, as if mode\n\t\t     none was set.\n\n\t      auto   In this mode the command expands the matrix as needed to\n\t\t     hold all columns contained in line. The overall effect is\n\t\t     that after adding a series of lines the matrix will have\n\t\t     enough columns to hold all columns of the longest line\n\t\t     encountered so far.\n\n       ::csv::split2queue ?-alternate? q line {sepChar ,}\n\t      The same as ::csv::split, but appending the resulting list as a\n\t      single item to the queue q, using the method put.\n\n       ::csv::writematrix m chan {sepChar ,} {delChar \"}\n\t      A wrapper around ::csv::join taking all rows in the matrix m and\n\t      writing them CSV formatted into the channel chan.\n\n       ::csv::writequeue q chan {sepChar ,} {delChar \"}\n\t      A wrapper around ::csv::join taking all items in the queue q\n\t      (assumes that they are lists) and writing them CSV formatted\n\t      into the channel chan.\n\nFORMAT\n       The format of regular CSV files is specified as\n\n       [1]    Each record of a csv file (comma-separated values, as exported\n\t      e.g. by Excel) is a set of ASCII values separated by \",\". For\n\t      other languages it may be \";\" however, although this is not\n\t      important for this case as the functions provided here allow any\n\t      separator character.\n\n       [2]    If and only if a value contains itself the separator \",\", then\n\t      it (the value) has to be put between \"\". If the value does not\n\t      contain the separator character then quoting is optional.\n\n       [3]    If a value contains the character \", that character is\n\t      represented by \"\".\n\n       [4]    The output string \"\" represents the value \". In other words, it\n\t      is assumed that it was created through rule 3, and only this\n\t      rule, i.e. that the value was not quoted.\n\n       An alternate format definition mainly used by MS products specifies\n       that the output string \"\" is a representation of the empty string. In\n       other words, it is assumed that the output was generated out of the\n       empty string by quoting it (i.e. rule 2), and not through rule 3. This\n       is the only difference between the regular and the alternate format.\n\n       The alternate format is activated through specification of the option\n       -alternate to the various split commands.\n\nEXAMPLE\n       Using the regular format the record"
+  manpageQuestion1: What is the primary purpose of the `csv` resource in macOS?
+  manpageQuestion2: How would you use the `csv::split` command to parse a CSV line like "value1, value2, value3" into a list of values?
+  manpageQuestion3: Can you demonstrate how to use the `csv::read2matrix` command to read CSV data from a file and store it in a matrix?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `csv`.
+
+
+
+    Manpage text:
+
+    123,"123,521.2","Mary says ""Hello, I am Mary""",""
+
+
+           is parsed into the items
+
+
+           a) 123
+           b) 123,521.2
+           c) Mary says "Hello, I am Mary"
+           d) (the empty string)
+
+
+           Using the alternate format the result is
+
+
+           a) 123
+           b) 123,521.2
+           c) Mary says "Hello, I am Mary"
+           d) "
+
+           instead. As can be seen only item (d) is different, now a " instead of
+           the empty string.
+
+    BUGS, IDEAS, FEEDBACK
+           This document, and the package it describes, will undoubtedly contain
+           bugs and other problems.  Please report such in the category csv of the
+           Tcllib SF Trackers [http://sourceforge.net/tracker/?group_id=12883].
+           Please also report any ideas for enhancements you may have for either
+           package and/or documentation.
+
+    SEE ALSO
+           matrix, queue
+
+    KEYWORDS
+           csv, matrix, package, queue, tcllib
+
+    CATEGORY
+           Text processing
+
+    COPYRIGHT
+           Copyright (c) 2002-2009 Andreas Kupries <andreas_kupries@users.sourceforge.net>
+  manpageQuestion1: What is the primary purpose of the csv command?
+  manpageQuestion2: How would you use the csv command to parse a CSV line that contains commas within quotes, such as "Mary says "Hello, I am Mary"
+  manpageQuestion3: Can you provide an example of using the csv command to handle a CSV line where the last field is an empty string?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `csv`.\n\n\n\nManpage text:\n\ncsv\t\t\t\t     0.7.2\t\t\t\tcsv(n)"
+  manpageQuestion1: What is the primary purpose of the csv command?
+  manpageQuestion2: How would you use the csv command to convert a comma-separated values file into a tab-separated values file?
+  manpageQuestion3: Can you provide an example of using the csv command to extract specific fields from a CSV file?
+

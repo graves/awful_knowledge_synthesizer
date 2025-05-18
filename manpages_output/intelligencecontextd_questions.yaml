@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `intelligencecontextd`.\n\n\n\nManpage text:\n\nintelligencecontextd(8)     System Manager's Manual    intelligencecontextd(8)\n\nNAME\n     intelligencecontextd – This is a daemon that retrieves contextual\n     information from various sources.\n\nSYNOPSIS\n     intelligencecontextd\n\nDESCRIPTION\n     intelligencecontextd retrieves contexual information from various sources\n     to provide useful information about the user and their device state.\n\nSEE ALSO\n     intelligenceflowd(8)\n\nDarwin\t\t\t\t June 10, 2024\t\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the intelligencecontextd daemon?
+  manpageQuestion2: How does the intelligencecontextd daemon function in a system environment?
+  manpageQuestion3: What is the relationship between intelligencecontextd and intelligenceflowd?
+

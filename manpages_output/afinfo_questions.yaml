@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `afinfo`.\n\n\n\nManpage text:\n\nAFINFO(1)\t\t    General Commands Manual\t\t     AFINFO(1)\n\nNAME\n     afinfo – Audio File Info\n\nSYNOPSIS\n     afinfo audiofile\n\nDESCRIPTION\n     Audio File Info prints out information about an audio file to stdout\n\nDarwin\t\t\t       February 13, 2007\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the afinfo command?
+  manpageQuestion2: How would you use afinfo to display information about an audio file named 'sample.mp3'?
+  manpageQuestion3: Can you provide an example of using afinfo to check the format and sample rate of an audio file?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `securityd_system`.\n\n\n\nManpage text:\n\nsecurityd_system(8)\t    System Manager's Manual\t   securityd_system(8)\n\nNAME\n     securityd_system – system keychain agent\n\nDESCRIPTION\n     securityd_system controls access to and modification of system keychain\n     items.  Anyone who needs to use the system keychain will be talking to\n     this LaunchAgent.\n\nmacOS 15.3\t\t       October 20, 2022 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the securityd_system tool?
+  manpageQuestion2: How would you use securityd_system to manage access to system keychain items?
+  manpageQuestion3: Can you explain the role of securityd_system in the macOS system?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cvfsd`.\n\n\n\nManpage text:\n\nCVFSD(8)\t\t    System Manager's Manual\t\t      CVFSD(8)\n\nNAME\n       cvfsd - Xsan File System Daemon\n\nSYNOPSIS\n       Internal Kernel Thread\n\nDESCRIPTION\n       Cvfsd is a server daemon that is launched by the Xsan File System\n       mount_acfs(8) command. It is an internal kernel thread and is used for\n       network communication to the File System Manager. Multiple cvfsd\n       threads are launched for each Xsan volume. The number of cvfsd threads\n       can be modified. See mount_acfs(8) for details.\n\nLIMITATIONS\n       Only the Linux and Unix platforms are supported with the cvfsd daemon\n\nSEE ALSO\n       cvfs(8), mount_acfs(8)\n\nXsan File System\t\t December 2021\t\t\t      CVFSD(8)"
+  manpageQuestion1: What is the primary purpose of the cvfsd daemon?
+  manpageQuestion2: How does the cvfsd daemon relate to the Xsan File System?
+  manpageQuestion3: On which platforms is the cvfsd daemon supported?
+

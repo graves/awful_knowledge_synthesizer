@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `colorsyncd`.\n\n\n\nManpage text:\n\nCOLORSYNCD(8)\t\t    System Manager's Manual\t\t COLORSYNCD(8)\n\nNAME\n     colorsyncd – ColorSync Daemon\n\nSYNOPSIS\n     colorsyncd\n\nDESCRIPTION\n     colorsyncd provides services for the ColorSync framework.\n\n     There are no configuration options for the colorsyncd daemon.  One should\n     not run colorsyncd manually.\n\nMac OS X\t\t       November 17, 2014\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the colorsyncd tool?
+  manpageQuestion2: How would you use colorsyncd to manage color calibration settings on a macOS system?
+  manpageQuestion3: Can you explain how colorsyncd is typically utilized in the context of macOS color management?
+

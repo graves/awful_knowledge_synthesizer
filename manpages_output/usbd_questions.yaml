@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `usbd`.\n\n\n\nManpage text:\n\nusbd(8) \t\t    System Manager's Manual\t\t       usbd(8)\n\nNAME\n     usbd – daemon for USB devices.\n\nSYNOPSIS\n     NONE (launched by launchd)\n\nDESCRIPTION\n     usbd allows the system to configure USB iOS devices to charge and to\n     present notifications related to USB devices.\n\n     This command is not intended to be invoked directly.\n\nFILES\n     /usr/libexec/usbd\n\nSEE ALSO\n     launchd(8) USBAgent(8)\n\nHISTORY\n     The usbd daemon first appeared in OS X 10.9.\n\nOS X\t\t\t       November 16, 2012\t\t\t  OS X"
+  manpageQuestion1: What is the primary purpose of the usbd daemon?
+  manpageQuestion2: How can a system administrator check if the usbd daemon is running on a macOS system?
+  manpageQuestion3: What is the typical role of usbd in managing USB devices on macOS?
+

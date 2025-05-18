@@ -1,0 +1,97 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mtree`.\n\n\n\nManpage text:\n\nMTREE(8)\t\t    System Manager's Manual\t\t      MTREE(8)\n\nNAME\n     mtree – map a directory hierarchy\n\nSYNOPSIS\n     mtree [-LPUcdeinqruxwD] [-f spec] [-f spec] [-K keywords] [-k keywords]\n\t   [-p path] [-s seed] [-X exclude-list]\n\nDESCRIPTION\n     The mtree utility compares the file hierarchy rooted in the current\n     directory against a specification read from the standard input.  Messages\n     are written to the standard output for any files whose characteristics do\n     not match the specifications, or which are missing from either the file\n     hierarchy or the specification.\n\n     The options are as follows:\n\n     -c    Print a specification for the file hierarchy to the standard\n\t   output.\n\n     -d    Ignore everything except directory type files.\n\n     -e    Do not complain about files that are in the file hierarchy, but not\n\t   in the specification.\n\n     -f file\n\t   Read the specification from file, instead of from the standard\n\t   input.\n\n\t   If this option is specified twice, the two specifications are\n\t   compared with each other, rather than to the file hierarchy.  The\n\t   specifications be sorted like output generated using -c.  The\n\t   output format in this case is somewhat remniscent of comm(1),\n\t   having \"in first spec only\", \"in second spec only\", and \"different\"\n\t   columns, prefixed by zero, one and two TAB characters respectively.\n\t   Each entry in the \"different\" column occupies two lines, one from\n\t   each specification."
+  manpageQuestion1: What is the primary purpose of the mtree command?
+  manpageQuestion2: How can you use mtree to generate a specification file for the current directory hierarchy?
+  manpageQuestion3: Can you provide an example of using mtree to compare two specification files and identify differences between them?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mtree`.\n\n\n\nManpage text:\n\n-D    Do not set the XATTR_SHOWCOMPRESSION flag while processing extended\n\t   attributes.\n\n     -i    Indent the output 4 spaces each time a directory level is descended\n\t   when create a specification with the -c option.  This does not\n\t   affect either the /set statements or the comment before each\n\t   directory.  It does however affect the comment before the close of\n\t   each directory.\n\n     -K keywords\n\t   Add the specified (whitespace or comma separated) keywords to the\n\t   current set of keywords.\n\n     -k keywords\n\t   Use the ``type'' keyword plus the specified (whitespace or comma\n\t   separated) keywords instead of the current set of keywords.\n\n     -L    Follow all symbolic links in the file hierarchy.\n\n     -n    Do not emit pathname comments when creating a specification.\n\t   Normally a comment is emitted before each directory and before the\n\t   close of that directory when using the -c option.\n\n     -P    Do not follow symbolic links in the file hierarchy, instead\n\t   consider the symbolic link itself in any comparisons.  This is the\n\t   default."
+  manpageQuestion1: What is the primary purpose of the mtree command?
+  manpageQuestion2: How can you use the -L option with mtree to ensure that symbolic links are followed during file hierarchy processing?
+  manpageQuestion3: Can you provide an example of using the -K and -k options together to modify keyword settings in mtree?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mtree`.\n\n\n\nManpage text:\n\n-p path\n\t   Use the file hierarchy rooted in path, instead of the current\n\t   directory.\n\n     -q    Quiet mode.\tDo not complain when a “missing” directory cannot be\n\t   created because it already exists.  This occurs when the directory\n\t   is a symbolic link.\n\n     -r    Remove any files in the file hierarchy that are not described in\n\t   the specification.\n\n     -S    Skip calculating the digest of the extended attributes of the file.\n\n     -s seed\n\t   Display a single checksum to the standard error output that\n\t   represents all of the files for which the keyword cksum was\n\t   specified.  The checksum is seeded with the specified value.\n\n     -U    Modify the owner, group, permissions, and modification time of\n\t   existing files to match the specification and create any missing\n\t   directories or symbolic links.  User, group and permissions must\n\t   all be specified for missing directories to be created.  Corrected\n\t   mismatches are not considered errors.\n\n     -u    Same as -U except a status of 2 is returned if the file hierarchy\n\t   did not match the specification."
+  manpageQuestion1: What is the primary purpose of the mtree command?
+  manpageQuestion2: How would you use mtree with the -U flag to ensure that existing files match a specified specification, including creating missing directories if necessary?
+  manpageQuestion3: Can you provide an example of using mtree with the -s flag to generate a checksum for a file hierarchy, seeded with a specific value?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mtree`.\n\n\n\nManpage text:\n\n-w    Make some error conditions non-fatal warnings.\n\n     -X exclude-list\n\t   The specified file contains fnmatch(3) patterns matching files to\n\t   be excluded from the specification, one to a line.  If the pattern\n\t   contains a ‘/’ character, it will be matched against entire\n\t   pathnames (relative to the starting directory); otherwise, it will\n\t   be matched against basenames only.  No comments are allowed in the\n\t   exclude-list file.\n\n     -x    Do not descend below mount points in the file hierarchy.\n\n     Specifications are mostly composed of ``keywords'', i.e., strings that\n     specify values relating to files.\tNo keywords have default values, and\n     if a keyword has no value set, no checks based on it are performed.\n\n     Currently supported keywords are as follows:\n\n     cksum\t The checksum of the file using the default algorithm\n\t\t specified by the cksum(1) utility.\n\n     flags\t The file flags as a symbolic name.  See chflags(1) for\n\t\t information on these names.  If no flags are to be set the\n\t\t string “none” may be used to override the current default."
+  manpageQuestion1: What is the primary purpose of the mtree command?
+  manpageQuestion2: How can you use the -X option with mtree to exclude specific files from being checked?
+  manpageQuestion3: What is the function of the -w flag in the mtree command?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mtree`.\n\n\n\nManpage text:\n\nignore\t Ignore any file hierarchy below this file.\n\n     gid\t The file group as a numeric value.\n\n     gname\t The file group as a symbolic name.\n\n     md5digest\t The MD5 message digest of the file.\n\n     sha1digest  The FIPS 160-1 (“SHA-1”) message digest of the file.\n\n     ripemd160digest\n\t\t The RIPEMD160 message digest of the file.\n\n     mode\t The current file's permissions as a numeric (octal) or\n\t\t symbolic value.\n\n     nlink\t The number of hard links the file is expected to have.\n\n     nochange\t Make sure this file or directory exists but otherwise ignore\n\t\t all attributes.\n\n     uid\t The file owner as a numeric value.\n\n     uname\t The file owner as a symbolic name.\n\n     size\t The size, in bytes, of the file.\n\n     link\t The file the symbolic link is expected to reference.\n\n     time\t The last modification time of the file.\n\n     btime\t The creation (birth) time of the file.\n\n     atime\t The last access time of the file.\n\n     ctime\t The last metadata modification time of the file."
+  manpageQuestion1: What is the primary purpose of the mtree command?
+  manpageQuestion2: How can you use mtree to check the MD5 digest of a file?
+  manpageQuestion3: Can you provide an example of using mtree to verify the ownership (UID and GID) of a file?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mtree`.\n\n\n\nManpage text:\n\nptime\t The time the file was added to its parent folder.\n\n     inode\t The inode number of the file.\n\n     xattrsdigest\n\t\t Digest of the extended attributes of the file.\n\n     acldigest\t Digest of the access control list of the file.\n\n     nxattr\t The number of extended attributes the file is expected to\n\t\t have.\n\n     dataless\t Whether the file is dataless or not. Folders will not be\n\t\t materialized automatically if this option is provided.\n\n     protectionclass\n\t\t The Data Protection class of the item. For more information,\n\t\t see https://support.apple.com/guide/security/data-protection-\n\t\t classes-secb010e978a/web\n\n     type\t The type of the file; may be set to any one of the following:\n\n\t\t block\t     block special device\n\t\t char\t     character special device\n\t\t dir\t     directory\n\t\t fifo\t     fifo\n\t\t file\t     regular file\n\t\t link\t     symbolic link\n\t\t socket      socket\n\n     The default set of keywords are flags, gid, mode, nlink, size, link,\n     time, and uid.\n\n     There are four types of lines in a specification."
+  manpageQuestion1: What is the primary purpose of the mtree command?
+  manpageQuestion2: How would you use mtree to display the type of a file and its protection class?
+  manpageQuestion3: Can you provide an example of using mtree to generate a list of file attributes including the inode number, size, and protection class?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mtree`.
+
+
+
+    Manpage text:
+
+    The first type of line sets a global value for a keyword, and consists of
+         the string ``/set'' followed by whitespace, followed by sets of
+         keyword/value pairs, separated by whitespace.  Keyword/value pairs
+         consist of a keyword, followed by an equals sign (``=''), followed by a
+         value, without whitespace characters.  Once a keyword has been set, its
+         value remains unchanged until either reset or unset.
+
+         The second type of line unsets keywords and consists of the string
+         ``/unset'', followed by whitespace, followed by one or more keywords,
+         separated by whitespace.
+
+         The third type of line is a file specification and consists of a file
+         name, followed by whitespace, followed by zero or more whitespace
+         separated keyword/value pairs.  The file name may be preceded by
+         whitespace characters.  The file name may contain any of the standard
+         file name matching characters (``['', ``]'', ``?'' or ``*''), in which
+         case files in the hierarchy will be associated with the first pattern
+         that they match.
+  manpageQuestion1: What is the primary purpose of the mtree command?
+  manpageQuestion2: How would you use mtree to unset a keyword called 'mode'?
+  manpageQuestion3: Can you provide an example of using mtree to specify a file pattern and associate it with keyword/value pairs?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mtree`.
+
+
+
+    Manpage text:
+
+    Each of the keyword/value pairs consist of a keyword, followed by an
+         equals sign (``=''), followed by the keyword's value, without whitespace
+         characters.  These values override, without changing, the global value of
+         the corresponding keyword.
+
+         All paths are relative.  Specifying a directory will cause subsequent
+         files to be searched for in that directory hierarchy.  Which brings us to
+         the last type of line in a specification: a line containing only the
+         string “..” causes the current directory path to ascend one level.
+
+         Empty lines and lines whose first non-whitespace character is a hash mark
+         (``#'') are ignored.
+
+         The mtree utility exits with a status of 0 on success, 1 if any error
+         occurred, and 2 if the file hierarchy did not match the specification.  A
+         status of 2 is converted to a status of 0 if the -U option is used.
+
+    FILES
+         /etc/mtree  system specification directory
+
+    EXIT STATUS
+         The mtree utility exits 0 on success, and >0 if an error occurs.
+  manpageQuestion1: What is the primary purpose of the mtree command?
+  manpageQuestion2: How can you use mtree to verify that a directory structure matches a specified configuration file?
+  manpageQuestion3: What is the effect of using the -U option with mtree?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mtree`.\n\n\n\nManpage text:\n\nEXAMPLES\n     The -d and -u options can be used in combination to create directory\n     hierarchies for distributions and other such things; the files in\n     /etc/mtree were used to create almost all directories in this FreeBSD\n     distribution.\n\nSEE ALSO\n     chflags(1), chgrp(1), chmod(1), cksum(1), md5(1), stat(2), fts(3),\n     md5(3), chown(8)\n\nHISTORY\n     The mtree utility appeared in 4.3BSD-Reno.  The MD5 digest capability was\n     added in FreeBSD 2.1, in response to the widespread use of programs which\n     can spoof cksum(1).  The SHA-1 and RIPEMD160 digests were added in\n     FreeBSD 4.0, as new attacks have demonstrated weaknesses in MD5.  Support\n     for file flags was added in FreeBSD 4.0, and mostly comes from NetBSD.\n\nmacOS 15.3\t\t\tMarch 29, 2005\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the mtree command?
+  manpageQuestion2: How can you use mtree to create a directory hierarchy based on the /etc/mtree file?
+  manpageQuestion3: What are some common options used with mtree to generate directory structures for distributions?
+

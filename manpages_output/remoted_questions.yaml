@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `remoted`.\n\n\n\nManpage text:\n\nremoted(8)\t\t    System Manager's Manual\t\t    remoted(8)\n\nNAME\n     remoted – Remote Service Discovery daemon\n\nDESCRIPTION\n     remoted is a daemon that discovers remote devices and services.\n\n     There are no configuration options to remoted.  Users should not run\n     remoted manually.\n\nDarwin\t\t\t\tAugust 26, 2019 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the remoted service?
+  manpageQuestion2: How does the remoted daemon function in a macOS system?
+  manpageQuestion3: What are the key considerations when interacting with the remoted daemon?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `DataDetectorsSourceAccess`.\n\n\n\nManpage text:\n\nDDSOURCEACCESS(8)\t    System Manager's Manual\t     DDSOURCEACCESS(8)\n\nNAME\n     DataDetectorsSourceAccess – DataDetectors sources utility\n\nSYNOPSIS\n     DataDetectorsSourceAccess\n\nDESCRIPTION\n     The DataDetectorsSourceAccess command manages and controls access to the\n     content of dynamic sources for the DataDetectors clients.\n\n     This tool should not be run directly.\n\nEXIT STATUS\n     DataDetectorsSourceAccess will exit on SIGTERM with status 0, or >0 if an\n     error occurred.\n\nmacOS\t\t\t\t 16 June 2016\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the DataDetectorsSourceAccess command?
+  manpageQuestion2: How can you use DataDetectorsSourceAccess to manage access to dynamic sources for DataDetectors clients?
+  manpageQuestion3: What is the exit status of the DataDetectorsSourceAccess command and under what conditions does it return a non-zero value?
+

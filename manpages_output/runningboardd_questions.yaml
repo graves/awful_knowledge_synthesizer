@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `runningboardd`.\n\n\n\nManpage text:\n\nrunningboardd(8)\t    System Manager's Manual\t      runningboardd(8)\n\nNAME\n     runningboardd – assertion services daemon\n\nDESCRIPTION\n     runningboardd is a daemon that manages process assertions to ensure those\n     processes are kept in the appropriate state while assertions are in\n     effect.\n\n     There are no options for runningboardd, and users should not run\n     runningboardd manually.\n\nmacOS\t\t\t       January 16, 2019 \t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the runningboardd daemon?
+  manpageQuestion2: How can users interact with the runningboardd daemon to manage process assertions?
+  manpageQuestion3: What are the key responsibilities of the runningboardd daemon in managing process assertions?
+

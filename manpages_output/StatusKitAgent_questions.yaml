@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `StatusKitAgent`.\n\n\n\nManpage text:\n\nSTATUSKITAGENT(8)\t    System Manager's Manual\t     STATUSKITAGENT(8)\n\nNAME\n     StatusKitAgent – Agent backing StatusKit framework.\n\nSYNOPSIS\n     takes no arguments, and users should not launch it manually.\n\nDESCRIPTION\n     Handles distributing and receiving status updates for StatusKit\n\nHISTORY\n     First appeared in macOS 12\n\nDarwin\t\t\t       February 17, 2021\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the StatusKitAgent tool?
+  manpageQuestion2: How would you use StatusKitAgent to manage status updates in a macOS system?
+  manpageQuestion3: Can you explain the role of StatusKitAgent in the context of the StatusKit framework?
+

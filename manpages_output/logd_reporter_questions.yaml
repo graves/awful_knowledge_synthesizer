@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `logd_reporter`.\n\n\n\nManpage text:\n\nlogd_reporter(8)\t    System Manager's Manual\t      logd_reporter(8)\n\nNAME\n     logd_reporter – unified logging system reporter daemon\n\nDESCRIPTION\n     logd_reporter is a daemon that periodically observes the behavior of\n     logd(8).  It should not be directly invoked; it is only intended for\n     system use.\n\nSEE ALSO\n     logd(8)\n\nDarwin\t\t\t       December 19, 2022\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the logd_reporter tool?
+  manpageQuestion2: How would you configure or interact with the logd_reporter daemon to monitor logging system behavior?
+  manpageQuestion3: Can you describe the typical use case for the logd_reporter process in a macOS system environment?
+

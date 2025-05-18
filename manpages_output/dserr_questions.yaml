@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dserr`.\n\n\n\nManpage text:\n\ndserr(8)\t\t    System Manager's Manual\t\t      dserr(8)\n\n\n\nNAME\n     dserr – prints a description for an error code.\n\nSYNOPSIS\n     dserr errcode\n\n\n\nDESCRIPTION\n     dserr prints a description for an error code.\n\nMac OS X Server \t\t 13 April 2005\t\t       Mac OS X Server"
+  manpageQuestion1: What is the primary purpose of the dserr command?
+  manpageQuestion2: How would you use the dserr command to find the description of error code 123?
+  manpageQuestion3: Can you provide an example of using the dserr command to look up and display the description for a specific error code?
+

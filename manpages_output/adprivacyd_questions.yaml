@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `adprivacyd`.\n\n\n\nManpage text:\n\nadprivacyd(8)\t\t    System Manager's Manual\t\t adprivacyd(8)\n\nNAME\n     adprivacyd – advertising privacy services daemon\n\nDESCRIPTION\n     adprivacyd is a daemon that manages user privacy in advertising and\n     allows opting out of targeted advertisements.\n\n     There are no options for adprivacyd, and users should not run adprivacyd\n     manually.\n\nmacOS\t\t\t\t July 2, 2018\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the adprivacyd service?
+  manpageQuestion2: How is adprivacyd typically managed on a macOS system?
+  manpageQuestion3: What should users avoid doing with respect to adprivacyd?
+

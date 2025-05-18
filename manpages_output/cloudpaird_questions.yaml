@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cloudpaird`.\n\n\n\nManpage text:\n\ncloudpaird(1)\t\t    General Commands Manual\t\t cloudpaird(1)\n\nNAME\n     cloudpaird – cloudpaird daemon\n\nSYNOPSIS\n     cloudpaird\n\nDESCRIPTION\n     cloudpaird is a daemon.\n\n     There are no configuration options to cloudpaird.\tUsers should not run\n     it manually.\n\nMac OS X\t\t\t    1/11/14\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the cloudpaird daemon?
+  manpageQuestion2: How would you start the cloudpaird service on a macOS system?
+  manpageQuestion3: What is the recommended way to manage the cloudpaird daemon on a macOS system?
+

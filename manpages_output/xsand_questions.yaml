@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `xsand`.\n\n\n\nManpage text:\n\nXSAND(8)\t\t    System Manager's Manual\t\t      XSAND(8)\n\nNAME\n     xsand – Xsan file system management daemon\n\nSYNOPSYS\n     xsand\n\nDESCRIPTION\n     xsand provides services for the Xsan file system.\n\n     There are no configuration options for the xsand daemon.  One should not\n     run xsand manually.\n\nSEE ALSO\n     xsanctl(8)\n\nXsan\t\t\t       January 19, 2017 \t\t\t  Xsan"
+  manpageQuestion1: What is the primary purpose of the xsand tool?
+  manpageQuestion2: How would you use xsand to manage an Xsan file system?
+  manpageQuestion3: Can you explain the typical usage scenario for the xsand daemon in a macOS environment?
+

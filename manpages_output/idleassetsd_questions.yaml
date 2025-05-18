@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `idleassetsd`.\n\n\n\nManpage text:\n\nidleassetsd(8)\t\t    System Manager's Manual\t\tidleassetsd(8)\n\nNAME\n     idleassetsd – helper for the TVIdleServices framework.\n\nSYNOPSIS\n     idleassetsd\n\nDESCRIPTION\n     idleassetsd is used by the TVIdleServices framework for asset downloading\n     and privileged operations. It is used by various clients in macOS. It is\n     not meant to be invoked directly.\n\nmacOS\t\t\t\t June 22, 2023\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the idleassetsd tool?
+  manpageQuestion2: How would you use idleassetsd in a system management context?
+  manpageQuestion3: Can you explain the role of idleassetsd in relation to the TVIdleServices framework?
+

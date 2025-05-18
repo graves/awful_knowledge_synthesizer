@@ -1,0 +1,202 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq`.\n\n\n\nManpage text:\n\nPERLFAQ(1)\t       Perl Programmers Reference Guide \t    PERLFAQ(1)"
+  manpageQuestion1: What is the primary purpose of the perlfaq resource?
+  manpageQuestion2: How can I use the perlfaq resource to find information about common Perl programming issues?
+  manpageQuestion3: Can you provide an example of how to access specific information in the perlfaq resource using its search functionality?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq`.\n\n\n\nManpage text:\n\nNAME\n       perlfaq - Frequently asked questions about Perl\n\nVERSION\n       version 5.20210411\n\nDESCRIPTION\n       The perlfaq comprises several documents that answer the most commonly\n       asked questions about Perl and Perl programming. It's divided by topic\n       into nine major sections outlined in this document.\n\n   Where to find the perlfaq\n       The perlfaq is an evolving document.  Read the latest version at\n       <https://perldoc.perl.org/perlfaq>.  It is also included in the\n       standard Perl distribution.\n\n   How to use the perlfaq\n       The \"perldoc\" command line tool is part of the standard Perl\n       distribution. To read the perlfaq:\n\n\t   $ perldoc perlfaq\n\n       To search the perlfaq question headings:\n\n\t   $ perldoc -q open\n\n   How to contribute to the perlfaq\n       Review <https://github.com/perl-doc-cats/perlfaq/wiki>.\tIf you don't\n       find your suggestion create an issue or pull request against\n       <https://github.com/perl-doc-cats/perlfaq>.\n\n       Once approved, changes will be distributed with the next Perl release\n       and subsequently appear at <https://perldoc.perl.org/perlfaq>."
+  manpageQuestion1: What is the primary purpose of the perlfaq resource?
+  manpageQuestion2: How can you access the latest version of the perlfaq using the command line?
+  manpageQuestion3: What is the process for contributing to the perlfaq documentation?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq`.\n\n\n\nManpage text:\n\nWhat if my question isn't answered in the FAQ?\n       Try the resources in perlfaq2.\n\nTABLE OF CONTENTS\n       perlfaq1 - General Questions About Perl\n       perlfaq2 - Obtaining and Learning about Perl\n       perlfaq3 - Programming Tools\n       perlfaq4 - Data Manipulation\n       perlfaq5 - Files and Formats\n       perlfaq6 - Regular Expressions\n       perlfaq7 - General Perl Language Issues\n       perlfaq8 - System Interaction\n       perlfaq9 - Web, Email and Networking\n\nTHE QUESTIONS\n   perlfaq1: General Questions About Perl\n       This section of the FAQ answers very general, high-level questions\n       about Perl.\n\n       •   What is Perl?\n\n       •   Who supports Perl? Who develops it? Why is it free?\n\n       •   Which version of Perl should I use?\n\n       •   What are Perl 4, Perl 5, or Raku (Perl 6)?\n\n       •   What is Raku (Perl 6)?\n\n       •   How stable is Perl?\n\n       •   How often are new versions of Perl released?\n\n       •   Is Perl difficult to learn?\n\n       •   How does Perl compare with other languages like Java, Python, REXX,\n\t   Scheme, or Tcl?"
+  manpageQuestion1: What is the primary purpose of the perlfaq resource?
+  manpageQuestion2: How can I find information about obtaining and learning Perl using the perlfaq resource?
+  manpageQuestion3: What sections of the perlfaq provide answers to general questions about Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq`.\n\n\n\nManpage text:\n\n•   Can I do [task] in Perl?\n\n       •   When shouldn't I program in Perl?\n\n       •   What's the difference between \"perl\" and \"Perl\"?\n\n       •   What is a JAPH?\n\n       •   How can I convince others to use Perl?\n\n   perlfaq2: Obtaining and Learning about Perl\n       This section of the FAQ answers questions about where to find source\n       and documentation for Perl, support, and related matters.\n\n       •   What machines support Perl? Where do I get it?\n\n       •   How can I get a binary version of Perl?\n\n       •   I don't have a C compiler. How can I build my own Perl interpreter?\n\n       •   I copied the Perl binary from one machine to another, but scripts\n\t   don't work.\n\n       •   I grabbed the sources and tried to compile but gdbm/dynamic\n\t   loading/malloc/linking/... failed. How do I make it work?\n\n       •   What modules and extensions are available for Perl? What is CPAN?\n\n       •   Where can I get information on Perl?\n\n       •   What is perl.com? Perl Mongers? pm.org? perl.org? cpan.org?"
+  manpageQuestion1: What is the primary purpose of the perlfaq resource?
+  manpageQuestion2: How can I obtain a binary version of Perl for my system?
+  manpageQuestion3: What should I do if I encounter linking issues while compiling Perl from source?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq`.
+
+
+
+    Manpage text:
+
+    •   Where can I post questions?
+
+           •   Perl Books
+
+           •   Which magazines have Perl content?
+
+           •   Which Perl blogs should I read?
+
+           •   What mailing lists are there for Perl?
+
+           •   Where can I buy a commercial version of Perl?
+
+           •   Where do I send bug reports?
+
+       perlfaq3: Programming Tools
+           This section of the FAQ answers questions related to programmer tools
+           and programming support.
+
+           •   How do I do (anything)?
+
+           •   How can I use Perl interactively?
+
+           •   How do I find which modules are installed on my system?
+
+           •   How do I debug my Perl programs?
+
+           •   How do I profile my Perl programs?
+
+           •   How do I cross-reference my Perl programs?
+
+           •   Is there a pretty-printer (formatter) for Perl?
+
+           •   Is there an IDE or Windows Perl Editor?
+
+           •   Where can I get Perl macros for vi?
+
+           •   Where can I get perl-mode or cperl-mode for emacs?
+
+           •   How can I use curses with Perl?
+  manpageQuestion1: What is the primary purpose of the perlfaq resource?
+  manpageQuestion2: How can I use Perl interactively according to the perlfaq?
+  manpageQuestion3: Where can I find information about debugging Perl programs in the perlfaq?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq`.\n\n\n\nManpage text:\n\n•   How can I write a GUI (X, Tk, Gtk, etc.) in Perl?\n\n       •   How can I make my Perl program run faster?\n\n       •   How can I make my Perl program take less memory?\n\n       •   Is it safe to return a reference to local or lexical data?\n\n       •   How can I free an array or hash so my program shrinks?\n\n       •   How can I make my CGI script more efficient?\n\n       •   How can I hide the source for my Perl program?\n\n       •   How can I compile my Perl program into byte code or C?\n\n       •   How can I get \"#!perl\" to work on [MS-DOS,NT,...]?\n\n       •   Can I write useful Perl programs on the command line?\n\n       •   Why don't Perl one-liners work on my DOS/Mac/VMS system?\n\n       •   Where can I learn about CGI or Web programming in Perl?\n\n       •   Where can I learn about object-oriented Perl programming?\n\n       •   Where can I learn about linking C with Perl?\n\n       •   I've read perlembed, perlguts, etc., but I can't embed perl in my C\n\t   program; what am I doing wrong?\n\n       •   When I tried to run my script, I got this message. What does it\n\t   mean?"
+  manpageQuestion1: What is the primary purpose of the perlfaq resource?
+  manpageQuestion2: How can I compile my Perl program into byte code or C using the perlfaq resource?
+  manpageQuestion3: What are some common issues encountered when trying to run Perl scripts on DOS, NT, or other operating systems?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq`.\n\n\n\nManpage text:\n\n•   What's MakeMaker?\n\n   perlfaq4: Data Manipulation\n       This section of the FAQ answers questions related to manipulating\n       numbers, dates, strings, arrays, hashes, and miscellaneous data issues.\n\n       •   Why am I getting long decimals (eg, 19.9499999999999) instead of\n\t   the numbers I should be getting (eg, 19.95)?\n\n       •   Why is int() broken?\n\n       •   Why isn't my octal data interpreted correctly?\n\n       •   Does Perl have a round() function? What about ceil() and floor()?\n\t   Trig functions?\n\n       •   How do I convert between numeric representations/bases/radixes?\n\n       •   Why doesn't & work the way I want it to?\n\n       •   How do I multiply matrices?\n\n       •   How do I perform an operation on a series of integers?\n\n       •   How can I output Roman numerals?\n\n       •   Why aren't my random numbers random?\n\n       •   How do I get a random number between X and Y?\n\n       •   How do I find the day or week of the year?\n\n       •   How do I find the current century or millennium?"
+  manpageQuestion1: What is the primary purpose of the perlfaq resource?
+  manpageQuestion2: How can I convert a decimal number to its hexadecimal representation using Perl?
+  manpageQuestion3: What is the best way to generate a random number between 1 and 100 in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq`.\n\n\n\nManpage text:\n\n•   How can I compare two dates and find the difference?\n\n       •   How can I take a string and turn it into epoch seconds?\n\n       •   How can I find the Julian Day?\n\n       •   How do I find yesterday's date?\n\n       •   Does Perl have a Year 2000 or 2038 problem? Is Perl Y2K compliant?\n\n       •   How do I validate input?\n\n       •   How do I unescape a string?\n\n       •   How do I remove consecutive pairs of characters?\n\n       •   How do I expand function calls in a string?\n\n       •   How do I find matching/nesting anything?\n\n       •   How do I reverse a string?\n\n       •   How do I expand tabs in a string?\n\n       •   How do I reformat a paragraph?\n\n       •   How can I access or change N characters of a string?\n\n       •   How do I change the Nth occurrence of something?\n\n       •   How can I count the number of occurrences of a substring within a\n\t   string?\n\n       •   How do I capitalize all the words on one line?\n\n       •   How can I split a [character]-delimited string except when inside\n\t   [character]?"
+  manpageQuestion1: What is the primary purpose of the perlfaq resource?
+  manpageQuestion2: How can I use Perl to convert a string into epoch seconds?
+  manpageQuestion3: What is the method to reverse a string in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq`.\n\n\n\nManpage text:\n\n•   How do I strip blank space from the beginning/end of a string?\n\n       •   How do I pad a string with blanks or pad a number with zeroes?\n\n       •   How do I extract selected columns from a string?\n\n       •   How do I find the soundex value of a string?\n\n       •   How can I expand variables in text strings?\n\n       •   Does Perl have anything like Ruby's #{} or Python's f string?\n\n       •   What's wrong with always quoting \"$vars\"?\n\n       •   Why don't my <<HERE documents work?\n\n       •   What is the difference between a list and an array?\n\n       •   What is the difference between $array[1] and @array[1]?\n\n       •   How can I remove duplicate elements from a list or array?\n\n       •   How can I tell whether a certain element is contained in a list or\n\t   array?\n\n       •   How do I compute the difference of two arrays? How do I compute the\n\t   intersection of two arrays?\n\n       •   How do I test whether two arrays or hashes are equal?\n\n       •   How do I find the first array element for which a condition is\n\t   true?"
+  manpageQuestion1: What is the primary purpose of the perlfaq resource?
+  manpageQuestion2: How can I use Perl to expand variables in a text string using the perlfaq resource?
+  manpageQuestion3: How can I determine if a specific element is present in an array using the perlfaq resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq`.\n\n\n\nManpage text:\n\n•   How do I handle linked lists?\n\n       •   How do I handle circular lists?\n\n       •   How do I shuffle an array randomly?\n\n       •   How do I process/modify each element of an array?\n\n       •   How do I select a random element from an array?\n\n       •   How do I permute N elements of a list?\n\n       •   How do I sort an array by (anything)?\n\n       •   How do I manipulate arrays of bits?\n\n       •   Why does defined() return true on empty arrays and hashes?\n\n       •   How do I process an entire hash?\n\n       •   How do I merge two hashes?\n\n       •   What happens if I add or remove keys from a hash while iterating\n\t   over it?\n\n       •   How do I look up a hash element by value?\n\n       •   How can I know how many entries are in a hash?\n\n       •   How do I sort a hash (optionally by value instead of key)?\n\n       •   How can I always keep my hash sorted?\n\n       •   What's the difference between \"delete\" and \"undef\" with hashes?\n\n       •   Why don't my tied hashes make the defined/exists distinction?"
+  manpageQuestion1: What is the primary purpose of the perlfaq resource?
+  manpageQuestion2: How can I sort a hash by its values in descending order using Perl?
+  manpageQuestion3: What is the difference between using 'delete' and 'undef' when working with hashes in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq`.\n\n\n\nManpage text:\n\n•   How do I reset an each() operation part-way through?\n\n       •   How can I get the unique keys from two hashes?\n\n       •   How can I store a multidimensional array in a DBM file?\n\n       •   How can I make my hash remember the order I put elements into it?\n\n       •   Why does passing a subroutine an undefined element in a hash create\n\t   it?\n\n       •   How can I make the Perl equivalent of a C structure/C++ class/hash\n\t   or array of hashes or arrays?\n\n       •   How can I use a reference as a hash key?\n\n       •   How can I check if a key exists in a multilevel hash?\n\n       •   How can I prevent addition of unwanted keys into a hash?\n\n       •   How do I handle binary data correctly?\n\n       •   How do I determine whether a scalar is a\n\t   number/whole/integer/float?\n\n       •   How do I keep persistent data across program calls?\n\n       •   How do I print out or copy a recursive data structure?\n\n       •   How do I define methods for every class/object?\n\n       •   How do I verify a credit card checksum?"
+  manpageQuestion1: What is the primary purpose of the perlfaq resource?
+  manpageQuestion2: How can I check if a key exists in a multilevel hash using Perl?
+  manpageQuestion3: How do I determine whether a scalar is a number, whole integer, or float in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq`.\n\n\n\nManpage text:\n\n•   How do I pack arrays of doubles or floats for XS code?\n\n   perlfaq5: Files and Formats\n       This section deals with I/O and the \"f\" issues: filehandles, flushing,\n       formats, and footers.\n\n       •   How do I flush/unbuffer an output filehandle? Why must I do this?\n\n       •   How do I change, delete, or insert a line in a file, or append to\n\t   the beginning of a file?\n\n       •   How do I count the number of lines in a file?\n\n       •   How do I delete the last N lines from a file?\n\n       •   How can I use Perl's \"-i\" option from within a program?\n\n       •   How can I copy a file?\n\n       •   How do I make a temporary file name?\n\n       •   How can I manipulate fixed-record-length files?\n\n       •   How can I make a filehandle local to a subroutine? How do I pass\n\t   filehandles between subroutines? How do I make an array of\n\t   filehandles?\n\n       •   How can I use a filehandle indirectly?\n\n       •   How can I open a filehandle to a string?\n\n       •   How can I set up a footer format to be used with write()?"
+  manpageQuestion1: What is the primary purpose of the perlfaq resource?
+  manpageQuestion2: How can I open a filehandle to a string in Perl?
+  manpageQuestion3: What is the method for making a filehandle local to a subroutine in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq`.\n\n\n\nManpage text:\n\n•   How can I write() into a string?\n\n       •   How can I output my numbers with commas added?\n\n       •   How can I translate tildes (~) in a filename?\n\n       •   How come when I open a file read-write it wipes it out?\n\n       •   Why do I sometimes get an \"Argument list too long\" when I use <*>?\n\n       •   How can I open a file named with a leading \">\" or trailing blanks?\n\n       •   How can I reliably rename a file?\n\n       •   How can I lock a file?\n\n       •   Why can't I just open(FH, \">file.lock\")?\n\n       •   I still don't get locking. I just want to increment the number in\n\t   the file. How can I do this?\n\n       •   All I want to do is append a small amount of text to the end of a\n\t   file. Do I still have to use locking?\n\n       •   How do I randomly update a binary file?\n\n       •   How do I get a file's timestamp in perl?\n\n       •   How do I set a file's timestamp in perl?\n\n       •   How do I print to more than one file at once?\n\n       •   How can I read in an entire file all at once?"
+  manpageQuestion1: What is the primary purpose of the perlfaq resource?
+  manpageQuestion2: How can I open a file named with a leading '>' or trailing blanks in Perl?
+  manpageQuestion3: How can I reliably rename a file using Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq`.\n\n\n\nManpage text:\n\n•   How can I read in a file by paragraphs?\n\n       •   How can I read a single character from a file? From the keyboard?\n\n       •   How can I tell whether there's a character waiting on a filehandle?\n\n       •   How do I do a \"tail -f\" in perl?\n\n       •   How do I dup() a filehandle in Perl?\n\n       •   How do I close a file descriptor by number?\n\n       •   Why can't I use \"C:\\temp\\foo\" in DOS paths? Why doesn't\n\t   `C:\\temp\\foo.exe` work?\n\n       •   Why doesn't glob(\"*.*\") get all the files?\n\n       •   Why does Perl let me delete read-only files? Why does \"-i\" clobber\n\t   protected files? Isn't this a bug in Perl?\n\n       •   How do I select a random line from a file?\n\n       •   Why do I get weird spaces when I print an array of lines?\n\n       •   How do I traverse a directory tree?\n\n       •   How do I delete a directory tree?\n\n       •   How do I copy an entire directory?\n\n   perlfaq6: Regular Expressions\n       This section is surprisingly small because the rest of the FAQ is\n       littered with answers involving regular expressions. For example,\n       decoding a URL and checking whether something is a number can be\n       handled with regular expressions, but those answers are found elsewhere\n       in this document (in perlfaq9 : \"How do I decode or create those\n       %-encodings on the web\" and perlfaq4 : \"How do I determine whether a\n       scalar is a number/whole/integer/float\", to be precise)."
+  manpageQuestion1: What is the primary purpose of the perlfaq resource?
+  manpageQuestion2: How can I use perlfaq to find information about handling regular expressions in Perl?
+  manpageQuestion3: What is the main function of the perlfaq resource according to the manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq`.\n\n\n\nManpage text:\n\n•   How can I hope to use regular expressions without creating\n\t   illegible and unmaintainable code?\n\n       •   I'm having trouble matching over more than one line. What's wrong?\n\n       •   How can I pull out lines between two patterns that are themselves\n\t   on different lines?\n\n       •   How do I match XML, HTML, or other nasty, ugly things with a regex?\n\n       •   I put a regular expression into $/ but it didn't work. What's\n\t   wrong?\n\n       •   How do I substitute case-insensitively on the LHS while preserving\n\t   case on the RHS?\n\n       •   How can I make \"\\w\" match national character sets?\n\n       •   How can I match a locale-smart version of \"/[a-zA-Z]/\" ?\n\n       •   How can I quote a variable to use in a regex?\n\n       •   What is \"/o\" really for?\n\n       •   How do I use a regular expression to strip C-style comments from a\n\t   file?\n\n       •   Can I use Perl regular expressions to match balanced text?\n\n       •   What does it mean that regexes are greedy? How can I get around it?"
+  manpageQuestion1: What is the primary purpose of the perlfaq resource?
+  manpageQuestion2: How can I use Perl regular expressions to strip C-style comments from a file?
+  manpageQuestion3: What is the significance of the '/o' flag in Perl regular expressions and how is it used?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq`.\n\n\n\nManpage text:\n\n•   How do I process each word on each line?\n\n       •   How can I print out a word-frequency or line-frequency summary?\n\n       •   How can I do approximate matching?\n\n       •   How do I efficiently match many regular expressions at once?\n\n       •   Why don't word-boundary searches with \"\\b\" work for me?\n\n       •   Why does using $&, $`, or $' slow my program down?\n\n       •   What good is \"\\G\" in a regular expression?\n\n       •   Are Perl regexes DFAs or NFAs? Are they POSIX compliant?\n\n       •   What's wrong with using grep in a void context?\n\n       •   How can I match strings with multibyte characters?\n\n       •   How do I match a regular expression that's in a variable?\n\n   perlfaq7: General Perl Language Issues\n       This section deals with general Perl language issues that don't clearly\n       fit into any of the other sections.\n\n       •   Can I get a BNF/yacc/RE for the Perl language?\n\n       •   What are all these $@%&* punctuation signs, and how do I know when\n\t   to use them?"
+  manpageQuestion1: What is the primary purpose of the perlfaq resource?
+  manpageQuestion2: How can I use Perl to process each word on each line of a file and count the frequency of each word?
+  manpageQuestion3: What is the significance of using $&, $`, and $' in Perl regular expressions, and why might they be discouraged in performance-critical applications?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq`.\n\n\n\nManpage text:\n\n•   Do I always/never have to quote my strings or use semicolons and\n\t   commas?\n\n       •   How do I skip some return values?\n\n       •   How do I temporarily block warnings?\n\n       •   What's an extension?\n\n       •   Why do Perl operators have different precedence than C operators?\n\n       •   How do I declare/create a structure?\n\n       •   How do I create a module?\n\n       •   How do I adopt or take over a module already on CPAN?\n\n       •   How do I create a class?\n\n       •   How can I tell if a variable is tainted?\n\n       •   What's a closure?\n\n       •   What is variable suicide and how can I prevent it?\n\n       •   How can I pass/return a {Function, FileHandle, Array, Hash, Method,\n\t   Regex}?\n\n       •   How do I create a static variable?\n\n       •   What's the difference between dynamic and lexical (static) scoping?\n\t   Between local() and my()?\n\n       •   How can I access a dynamic variable while a similarly named lexical\n\t   is in scope?\n\n       •   What's the difference between deep and shallow binding?"
+  manpageQuestion1: What is the primary purpose of the perlfaq resource?
+  manpageQuestion2: How can I temporarily block warnings in Perl using the perlfaq guide?
+  manpageQuestion3: What is the difference between dynamic and lexical (static) scoping in Perl according to the perlfaq?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq`.\n\n\n\nManpage text:\n\n•   Why doesn't \"my($foo) = <$fh>;\" work right?\n\n       •   How do I redefine a builtin function, operator, or method?\n\n       •   What's the difference between calling a function as &foo and foo()?\n\n       •   How do I create a switch or case statement?\n\n       •   How can I catch accesses to undefined variables, functions, or\n\t   methods?\n\n       •   Why can't a method included in this same file be found?\n\n       •   How can I find out my current or calling package?\n\n       •   How can I comment out a large block of Perl code?\n\n       •   How do I clear a package?\n\n       •   How can I use a variable as a variable name?\n\n       •   What does \"bad interpreter\" mean?\n\n       •   Do I need to recompile XS modules when there is a change in the C\n\t   library?\n\n   perlfaq8: System Interaction\n       This section of the Perl FAQ covers questions involving operating\n       system interaction. Topics include interprocess communication (IPC),\n       control over the user-interface (keyboard, screen and pointing\n       devices), and most anything else not related to data manipulation."
+  manpageQuestion1: What is the primary purpose of the perlfaq resource?
+  manpageQuestion2: How can I use Perl to comment out a large block of code?
+  manpageQuestion3: What is the difference between calling a function as &foo and foo() in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq`.\n\n\n\nManpage text:\n\n•   How do I find out which operating system I'm running under?\n\n       •   How come exec() doesn't return?\n\n       •   How do I do fancy stuff with the keyboard/screen/mouse?\n\n       •   How do I print something out in color?\n\n       •   How do I read just one key without waiting for a return key?\n\n       •   How do I check whether input is ready on the keyboard?\n\n       •   How do I clear the screen?\n\n       •   How do I get the screen size?\n\n       •   How do I ask the user for a password?\n\n       •   How do I read and write the serial port?\n\n       •   How do I decode encrypted password files?\n\n       •   How do I start a process in the background?\n\n       •   How do I trap control characters/signals?\n\n       •   How do I modify the shadow password file on a Unix system?\n\n       •   How do I set the time and date?\n\n       •   How can I sleep() or alarm() for under a second?\n\n       •   How can I measure time under a second?\n\n       •   How can I do an atexit() or setjmp()/longjmp()? (Exception\n\t   handling)"
+  manpageQuestion1: What is the primary purpose of the perlfaq resource?
+  manpageQuestion2: How can I check whether input is ready on the keyboard using perlfaq?
+  manpageQuestion3: How do I clear the screen using perlfaq?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq`.\n\n\n\nManpage text:\n\n•   Why doesn't my sockets program work under System V (Solaris)? What\n\t   does the error message \"Protocol not supported\" mean?\n\n       •   How can I call my system's unique C functions from Perl?\n\n       •   Where do I get the include files to do ioctl() or syscall()?\n\n       •   Why do setuid perl scripts complain about kernel problems?\n\n       •   How can I open a pipe both to and from a command?\n\n       •   Why can't I get the output of a command with system()?\n\n       •   How can I capture STDERR from an external command?\n\n       •   Why doesn't open() return an error when a pipe open fails?\n\n       •   What's wrong with using backticks in a void context?\n\n       •   How can I call backticks without shell processing?\n\n       •   Why can't my script read from STDIN after I gave it EOF (^D on\n\t   Unix, ^Z on MS-DOS)?\n\n       •   How can I convert my shell script to perl?\n\n       •   Can I use perl to run a telnet or ftp session?\n\n       •   How can I write expect in Perl?\n\n       •   Is there a way to hide perl's command line from programs such as\n\t   \"ps\"?"
+  manpageQuestion1: What is the primary purpose of the perlfaq resource?
+  manpageQuestion2: How can I capture STDERR from an external command in Perl?
+  manpageQuestion3: How can I call my system's unique C functions from Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq`.\n\n\n\nManpage text:\n\n•   I {changed directory, modified my environment} in a perl script.\n\t   How come the change disappeared when I exited the script? How do I\n\t   get my changes to be visible?\n\n       •   How do I close a process's filehandle without waiting for it to\n\t   complete?\n\n       •   How do I fork a daemon process?\n\n       •   How do I find out if I'm running interactively or not?\n\n       •   How do I timeout a slow event?\n\n       •   How do I set CPU limits?\n\n       •   How do I avoid zombies on a Unix system?\n\n       •   How do I use an SQL database?\n\n       •   How do I make a system() exit on control-C?\n\n       •   How do I open a file without blocking?\n\n       •   How do I tell the difference between errors from the shell and\n\t   perl?\n\n       •   How do I install a module from CPAN?\n\n       •   What's the difference between require and use?\n\n       •   How do I keep my own module/library directory?\n\n       •   How do I add the directory my program lives in to the\n\t   module/library search path?"
+  manpageQuestion1: What is the primary purpose of the perlfaq resource?
+  manpageQuestion2: How can I modify the current directory and environment variables within a Perl script so that the changes persist after the script exits?
+  manpageQuestion3: How do I ensure that a Perl script does not block when opening a file, and how can I distinguish between errors caused by the shell and those caused by Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq`.\n\n\n\nManpage text:\n\n•   How do I add a directory to my include path (@INC) at runtime?\n\n       •   Where are modules installed?\n\n       •   What is socket.ph and where do I get it?\n\n   perlfaq9: Web, Email and Networking\n       This section deals with questions related to running web sites, sending\n       and receiving email as well as general networking.\n\n       •   Should I use a web framework?\n\n       •   Which web framework should I use?\n\n       •   What is Plack and PSGI?\n\n       •   How do I remove HTML from a string?\n\n       •   How do I extract URLs?\n\n       •   How do I fetch an HTML file?\n\n       •   How do I automate an HTML form submission?\n\n       •   How do I decode or create those %-encodings on the web?\n\n       •   How do I redirect to another page?\n\n       •   How do I put a password on my web pages?\n\n       •   How do I make sure users can't enter values into a form that causes\n\t   my CGI script to do bad things?\n\n       •   How do I parse a mail header?\n\n       •   How do I check a valid mail address?"
+  manpageQuestion1: What is the primary purpose of the perlfaq resource?
+  manpageQuestion2: How can I add a directory to my include path (@INC) at runtime using Perl?
+  manpageQuestion3: What is Plack and PSGI, and how are they related to web development in Perl?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq`.
+
+
+
+    Manpage text:
+
+    •   How do I decode a MIME/BASE64 string?
+
+           •   How do I find the user's mail address?
+
+           •   How do I send email?
+
+           •   How do I use MIME to make an attachment to a mail message?
+
+           •   How do I read email?
+
+           •   How do I find out my hostname, domainname, or IP address?
+
+           •   How do I fetch/put an (S)FTP file?
+
+           •   How can I do RPC in Perl?
+
+    CREDITS
+           Tom Christiansen wrote the original perlfaq then expanded it with the
+           help of Nat Torkington. brian d foy substantially edited and expanded
+           the perlfaq. perlfaq-workers and others have also supplied feedback,
+           patches and corrections over the years.
+
+    AUTHOR AND COPYRIGHT
+           Tom Christiansen wrote the original version of this document.  brian d
+           foy "<bdfoy@cpan.org>" wrote this version. See the individual perlfaq
+           documents for additional copyright information.
+
+           This document is available under the same terms as Perl itself. Code
+           examples in all the perlfaq documents are in the public domain. Use
+           them as you see fit (and at your own risk with no warranty from
+           anyone).
+  manpageQuestion1: What is the primary purpose of the perlfaq resource?
+  manpageQuestion2: How can I use the perlfaq to find information on sending email in Perl?
+  manpageQuestion3: What is the main function of the perlfaq resource according to its documentation?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq`.\n\n\n\nManpage text:\n\nperl v5.34.1\t\t\t  2022-02-19\t\t\t    PERLFAQ(1)"
+  manpageQuestion1: What is the primary purpose of the perlfaq resource?
+  manpageQuestion2: How can I use the perlfaq resource to find information about common Perl programming issues?
+  manpageQuestion3: Can you provide an example of how to access specific information in the perlfaq resource using its search functionality?
+

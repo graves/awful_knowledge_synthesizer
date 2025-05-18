@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `diskimagesiod`.\n\n\n\nManpage text:\n\ndiskimagesiod(8)\t    System Manager's Manual\t      diskimagesiod(8)\n\nNAME\n     diskimagesiod – Handles I/O for disk images\n\nDESCRIPTION\n     diskimagesiod manages attached disk images, and is part of DiskImages2\n     framework\n\n     There are no options for diskimagesiod, and users should not run\n     diskimagesiod manually.\n\nmacOS\t\t\t\tOctober 8, 2019 \t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the diskimagesiod tool?
+  manpageQuestion2: How would you use diskimagesiod to manage attached disk images?
+  manpageQuestion3: Can you explain the role of diskimagesiod within the DiskImages2 framework?
+

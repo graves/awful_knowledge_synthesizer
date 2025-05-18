@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ControlCenter`.\n\n\n\nManpage text:\n\nControlStrip(8) \t    System Manager's Manual\t       ControlStrip(8)\n\nNAME\n     ControlCenter – macOS Control Center\n\nDESCRIPTION\n     ControlCenter provides system controls in the menu bar.\n\nmacOS\t\t\t\t March 2, 2020\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the ControlCenter tool?
+  manpageQuestion2: How can you use ControlCenter to access system settings in the menu bar?
+  manpageQuestion3: Can you explain how ControlCenter integrates with macOS's system management and user interface?
+

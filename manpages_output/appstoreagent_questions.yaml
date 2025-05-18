@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `appstoreagent`.\n\n\n\nManpage text:\n\nAPPSTOREAGENT(8)\t    System Manager's Manual\t      APPSTOREAGENT(8)\n\nNAME\n     appstoreagent\n\nSYNOPSIS\n     appstoreagent – App Store support agent\n\nDESCRIPTION\n     appstoreagent provides support for App Store.\n\nmacOS\t\t\t\t  2018-03-01\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the appstoreagent tool?
+  manpageQuestion2: How would you use appstoreagent to manage App Store support tasks?
+  manpageQuestion3: Can you provide an example of using appstoreagent in a system administration context?
+

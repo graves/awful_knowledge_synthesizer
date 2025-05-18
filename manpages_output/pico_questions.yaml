@@ -1,0 +1,108 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pico`.\n\n\n\nManpage text:\n\npico(1) \t\t    General Commands Manual\t\t       pico(1)\n\nName\n       pico - simple text editor in the style of the Alpine Composer\n\nSyntax\n       pico [ options ] [ file ]\n\nDescription\n       Pico is a simple, display-oriented text editor based on the Alpine\n       message system composer.  As with Alpine, commands are displayed at the\n       bottom of the screen, and context-sensitive help is provided.  As\n       characters are typed they are immediately inserted into the text.\n\n       Editing commands are entered using control-key combinations.  As a\n       work-around for communications programs that swallow certain control\n       characters, you can emulate a control key by pressing ESCAPE twice,\n       followed by the desired control character, e.g. \"ESC ESC c\" would be\n       equivalent to entering a ctrl-c.  The editor has five basic features:\n       paragraph justification, searching, block cut/paste, a spelling\n       checker, and a file browser.\n\n       Paragraph justification (or filling) takes place in the paragraph that\n       contains the cursor, or, if the cursor is between lines, in the\n       paragraph immediately below.  Paragraphs are delimited by blank lines,\n       or by lines beginning with a space or tab.  Unjustification can be done\n       immediately after justification using the control-U key combination."
+  manpageQuestion1: What is the primary purpose of the pico text editor?
+  manpageQuestion2: How would you use pico to edit a file named 'example.txt' with the option to enable the spelling checker?
+  manpageQuestion3: Can you provide an example of using pico to perform paragraph justification on a text file?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pico`.
+
+
+
+    Manpage text:
+
+    String searches are not sensitive to case.  A search begins at the
+           current cursor position and wraps around the end of the text.  The most
+           recent search string is offered as the default in subsequent searches.
+
+           Blocks of text can be moved, copied or deleted with creative use of the
+           command for mark (ctrl-^), delete (ctrl-k) and undelete (ctrl-u).  The
+           delete command will remove text between the "mark" and the current
+           cursor position, and place it in the "cut" buffer.  The undelete
+           command effects a "paste" at the current cursor position.
+
+           The spell checker examines all words in the text.  It then offers, in
+           turn, each misspelled word for correction while highlighting it in the
+           text.  Spell checking can be cancelled at any time.  Alternatively,
+           pico will substitute for the default spell checking routine a routine
+           defined by the SPELL environment variable.  The replacement routine
+           should read standard input and write standard output.
+  manpageQuestion1: What is the primary purpose of the pico text editor?
+  manpageQuestion2: How can you use pico to search for a specific string in the document while ignoring case?
+  manpageQuestion3: What is the process for cutting and pasting text within pico?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pico`.\n\n\n\nManpage text:\n\nThe file browser is offered as an option in the \"Read File\" and \"Write\n       Out\" command prompts.  It is intended to help in searching for specific\n       files and navigating directory hierarchies.  Filenames with sizes and\n       names of directories in the current working directory are presented for\n       selection.  The current working directory is displayed on the top line\n       of the display while the list of available commands takes up the bottom\n       two.  Several basic file manipulation functions are supported:  file\n       renaming, copying, and deletion.\n\n       More specific help is available in pico's online help.\n\nOptions\n       +n     Causes pico to be started with the cursor located n lines into\n\t      the file. (Note: no space between \"+\" sign and number)\n\n       -a     Display all files including those beginning with a period (.).\n\n       -b     Enable word wrap.\n\n       -d     Rebind the \"delete\" key so the character the cursor is on is\n\t      rubbed out rather than the character to its left."
+  manpageQuestion1: What is the primary purpose of the pico command in macOS?
+  manpageQuestion2: How can you start pico with the cursor positioned at the 10th line of a file?
+  manpageQuestion3: What option should be used with pico to display all files, including those that start with a dot (.)?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pico`.\n\n\n\nManpage text:\n\n-e     Enable file name completion.\n\n       -f     Use function keys for commands.  This option supported only in\n\t      conjunction with UW Enhanced NCSA telnet.\n\n       -h     List valid command line options.\n\n       -j     Enable \"Goto\" command in the file browser.  This enables the\n\t      command to permit explicitly telling pilot which directory to\n\t      visit.\n\n       -g     Enable \"Show Cursor\" mode in file browser.  Cause cursor to be\n\t      positioned before the current selection rather than placed at\n\t      the lower left of the display.\n\n       -k     Causes \"Cut Text\" command to remove characters from the cursor\n\t      position to the end of the line rather than remove the entire\n\t      line.\n\n       -m     Enable mouse functionality.  This only works when pico is run\n\t      from within an X Window System \"xterm\" window.\n\n       -nn    The -nn option enables new mail notification.  The n argument is\n\t      optional, and specifies how often, in seconds, your mailbox is\n\t      checked for new mail.  For example, -n60 causes pico to check\n\t      for new mail once every minute.  The default interval is 180\n\t      seconds, while the minimum allowed is 30. (Note: no space\n\t      between \"n\" and the number)"
+  manpageQuestion1: What is the primary purpose of the pico text editor?
+  manpageQuestion2: How can you enable file name completion in pico when starting the editor?
+  manpageQuestion3: What is the command to check for new mail in pico, and what is the default interval?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pico`.\n\n\n\nManpage text:\n\n-o dir Sets operating directory.  Only files within this directory are\n\t      accessible.  Likewise, the file browser is limited to the\n\t      specified directory subtree.\n\n       -rn    Sets column used to limit the \"Justify\" command's right margin\n\n       -s speller\n\t      Specify an alternate program spell to use when spell checking.\n\n       -t     Enable \"tool\" mode.  Intended for when pico is used as the\n\t      editor within other tools (e.g., Elm, Pnews).  Pico will not\n\t      prompt for save on exit, and will not rename the buffer during\n\t      the \"Write Out\" command.\n\n       -v     View the file only, disallowing any editing.\n\n       -version\n\t      Print Pico version and exit.\n\n       -w     Disable word wrap (thus allow editing of long lines).\n\n       -x     Disable keymenu at the bottom of the screen.\n\n       -z     Enable ^Z suspension of pico.\n\n       -p     Preserve the \"start\" and \"stop\" characters, typically Ctrl-Q and\n\t      Ctrl-S, which are sometimes used in communications paths to\n\t      control data flow between devices that operate at different\n\t      speeds."
+  manpageQuestion1: What is the primary purpose of the pico command?
+  manpageQuestion2: How can you use pico in 'tool mode' to avoid being prompted for save on exit?
+  manpageQuestion3: What command option would you use to disable word wrap in pico?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pico`.\n\n\n\nManpage text:\n\n-Q quotestr\n\t      Set the quote string.  Especially useful when composing email,\n\t      setting this allows the quote string to be checked for when\n\t      Justifying paragraphs.  A common quote string is \"> \".\n\n       -W word_separators\n\t      If characters listed here appear in the middle of a word\n\t      surrounded by alphanumeric characters that word is split into\n\t      two words. This is used by the Forward and Backward word\n\t      commands and by the spell checker.\n\n       -q     Termcap or terminfo definition for input escape sequences are\n\t      used in preference to sequences defined by default.  This option\n\t      is only available if pico was compiled with the TERMCAP_WINS\n\t      define turned on.\n\n       -setlocale_ctype\n\t      Do setlocale(LC_CTYPE) if available. Default is to not do this\n\t      setlocale.\n\n       -no_setlocale_collate\n\t      Do not do setlocale(LC_COLLATE). Default is to do this\n\t      setlocale.\n\n       Lastly, when a running pico is disconnected (i.e., receives a SIGHUP),\n       pico will save the current work if needed before exiting.  Work is\n       saved under the current filename with \".save\" appended.\tIf the current\n       work is unnamed, it is saved under the filename \"pico.save\"."
+  manpageQuestion1: What is the primary purpose of the pico text editor?
+  manpageQuestion2: How can you configure pico to use a custom quote string for formatting emails?
+  manpageQuestion3: What is the effect of using the -no_setlocale_collate option in pico?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pico`.
+
+
+
+    Manpage text:
+
+    Color Support
+           If your terminal supports colors, Pico can be configured to color text.
+           Users can configure the color of the text, the text in the key menu,
+           the titlebar, messages and prompt in the status line. As an added
+           feature Pico can also be used to configure the color of up to three
+           different levels of quoted text, and the signature of an email message.
+           This is useful when Pico is used as a tool (with the -t command line
+           switch.)
+
+           Pico can tell you the number of colors that your terminal supports,
+           when started with the switch -color_codes. In addition Pico will print
+           a table showing the numerical code of every color supported in that
+           terminal. In order to configure colors, one must use these numerical
+           codes. For example, 0 is for black, so in order to configure a black
+           color, one must use its code, the number 0.
+
+           In order to activate colors, one must use the option -ncolors with a
+           numerical value indicating the number of colors that your terminal
+           supports, for example, -ncolors 256 indicates that the user wishes to
+           use a table of 256 colors.
+  manpageQuestion1: What is the primary purpose of the pico text editor?
+  manpageQuestion2: How can you configure Pico to use color support for a terminal that supports 256 colors?
+  manpageQuestion3: Can you provide an example of how to set the color of the key menu in Pico using numerical codes?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pico`.\n\n\n\nManpage text:\n\nAll options that control color, are four letter options. Their last two\n       letters are either \"fc\" or \"bc\", indicating foreground color and\n       bacground color, respectively. The first two letters indicate the type\n       of text that is being configured, for example \"nt\" stands for normal\n       text, so that -ntfc represents the color of the normal text, while\n       -ntbc represents the color of the background of normal text. Here is a\n       complete list of the color options supported by Pico.\n\n       -color_code\n\t      displays the number of colors supported by the terminal, and a\n\t      table showing the association of colors and numerical codes\n\n       -ncolors number\n\t      activates color support in Pico, and tells Pico how many colors\n\t      to use.  Depending on your terminal number could be 8, 16, or\n\t      256.\n\n       -ntfc num\n\t      specifies the number num of the color to be used to color normal\n\t      text.\n\n       -ntbc num\n\t      specifies the number num of the color of the background for\n\t      normal text."
+  manpageQuestion1: What is the primary purpose of the pico text editor?
+  manpageQuestion2: How can you configure Pico to use a specific color for normal text?
+  manpageQuestion3: What command can be used to display the number of colors supported by the terminal in Pico?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pico`.\n\n\n\nManpage text:\n\n-rtfc num\n\t      specifies the number num of the color of reverse text. Default:\n\t      same as background color of normal text (if specified.)\n\n       -rtbc num\n\t      specifies the number num of the color of the background of\n\t      reverse text. Default: same as color of normal text (if\n\t      specified.)\n\n       -tbfc num\n\t      specifies the number num of then color of text of the title bar.\n\t      Default: same as foreground color of reverse text.\n\n       -tbbc num\n\t      specifies the number num of the color in the background of the\n\t      title bar.\n\n       -klfc num\n\t      specifies the number num of the color of the text of the key\n\t      label.\n\n       -klbc num\n\t      specifies the number num of the color in the background of the\n\t      key label.\n\n       -knfc num\n\t      specifies the number num of the color of the text of the key\n\t      name.\n\n       -knbc num\n\t      specifies the number num of the color of the background of the\n\t      key name.\n\n       -stfc num\n\t      specifies the number num of the color of the text of the status\n\t      line."
+  manpageQuestion1: What is the primary purpose of the pico text editor?
+  manpageQuestion2: How can you set the reverse text color to a specific number using pico?
+  manpageQuestion3: What command would you use in pico to change the background color of the title bar?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pico`.\n\n\n\nManpage text:\n\n-stbc num\n\t      specifies the number num of the color of the background of the\n\t      status line.\n\n       -prfc num\n\t      specifies the number num of the color of the text of a prompt.\n\n       -prbc num\n\t      specifies the number num of the color of the background of a\n\t      prompt.\n\n       -q1fc num\n\t      specifies the number num of the color of the text of level one\n\t      of quoted text.\n\n       -q1bc num\n\t      specifies the number num of the color of the background of level\n\t      one of quoted text. If the option -q1bc is used, the default\n\t      value of this option is the background color or normal text.\n\n       -q2fc num\n\t      specifies the number num of the color of text of level two of\n\t      quoted text.\n\n       -q2bc num\n\t      specifies the number num of the color of the background of level\n\t      two of quoted text. If the option -q1bc is used, the default\n\t      value of this option is the background color or normal text.\n\n       -q3fc num\n\t      specifies the number num of the color of text of level three of\n\t      quoted text."
+  manpageQuestion1: What is the primary purpose of the `pico` text editor?
+  manpageQuestion2: How can you set the background color of the status line to a specific number in pico?
+  manpageQuestion3: What is the command to change the text color of level two quoted text in pico to a specified number?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pico`.\n\n\n\nManpage text:\n\n-sbfc num\n\t      specifies the number num of the color of text of signature block\n\t      text.\n\n       -sbbc num\n\t      specifies the number num of the color of the background of\n\t      signature block text.\n\nBugs\n       The manner in which lines longer than the display width are dealt is\n       not immediately obvious.  Lines that continue beyond the edge of the\n       display are indicated by a '$' character at the end of the line.  Long\n       lines are scrolled horizontally as the cursor moves through them.\n\nFiles\n       pico.save\tUnnamed interrupted work saved here.\n       *.save\t\tInterrupted work on a named file is saved here.\n\nAuthors\n       Michael Seibel <mikes@cac.washington.edu>\n       Laurence Lundblade <lgl@cac.washington.edu>\n       Pico was originally derived from MicroEmacs 3.6, by Dave G. Conroy.\n       Copyright 1989-2008 by the University of Washington.\n\nSee Also\n       alpine(1)\n       Source distribution (part of the Alpine Message System):\n\n       $Date: 2009-02-02 13:54:23 -0600 (Mon, 02 Feb 2009) $"
+  manpageQuestion1: What is the primary purpose of the pico command?
+  manpageQuestion2: How can you set the background color of the signature block text in pico to a specific number?
+  manpageQuestion3: What is the function of the -sbfc and -sbbc flags in pico?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pico`.\n\n\n\nManpage text:\n\nVersion 5.09\t\t\t       pico(1)"
+  manpageQuestion1: What is the primary purpose of the pico text editor?
+  manpageQuestion2: How would you use pico to edit a file named 'example.txt'?
+  manpageQuestion3: Can you provide an example of using pico to save a modified file and exit the editor?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `callservicesd`.\n\n\n\nManpage text:\n\ncallservicesd(8)\t    System Manager's Manual\t      callservicesd(8)\n\nNAME\n     callservicesd – call server\n\nDESCRIPTION\n     callservicesd is the system daemon responsible for maintaining call\n     state.\n\n     There are no configuration options for callservicesd, and users should\n     not run callservicesd manually.\n\nmacOS\t\t\t       November 14, 2016\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the callservicesd daemon?
+  manpageQuestion2: How would you check if the callservicesd daemon is running on a macOS system?
+  manpageQuestion3: What are the common reasons why users should not attempt to run callservicesd manually?
+

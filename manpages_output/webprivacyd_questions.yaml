@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `webprivacyd`.\n\n\n\nManpage text:\n\nwebprivacyd(8)\t\t    System Manager's Manual\t\twebprivacyd(8)\n\nNAME\n     webprivacyd – WebPrivacy Daemon\n\nDESCRIPTION\n     webprivacyd is the system launch agent that periodically updates list\n     data for web tracking protections in the background.\n\n     There are no configuration options to webprivacyd, and users should not\n     run webprivacyd manually.\n\nMac OS X\t\t\t  14/11/2022\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the webprivacyd tool?
+  manpageQuestion2: How would you check the status of the webprivacyd daemon?
+  manpageQuestion3: What should users avoid when dealing with webprivacyd?
+

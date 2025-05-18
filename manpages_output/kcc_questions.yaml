@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `kcc`.\n\n\n\nManpage text:\n\nKCC(1)\t\t\t    General Commands Manual\t\t\tKCC(1)\n\nNAME\n     kcc – Kerberos credential cache tools\n\nSYNOPSIS\n     kcc [--version] [--help] [command [arguments ...]]\n\nDESCRIPTION\n     kcc\n\n     Options supported:\n\n     --version\n\t     version information\n\n     --help  help\n\nSEE ALSO\n     kdestroy(1), kinit(1)\n\nHEIMDAL \t\t      September 30, 2011\t\t       HEIMDAL"
+  manpageQuestion1: What is the primary purpose of the kcc tool?
+  manpageQuestion2: How would you use kcc to display version information about the tool?
+  manpageQuestion3: Can you provide an example of using kcc to list available commands or options?
+

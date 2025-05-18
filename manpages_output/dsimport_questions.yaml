@@ -1,0 +1,123 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dsimport`.\n\n\n\nManpage text:\n\ndsimport(1)\t\t    General Commands Manual\t\t   dsimport(1)\n\nNAME\n     dsimport\n\nSYNOPSIS\n     dsimport filepath nodepath O|M|A|I|N [options]\n     dsimport --version\n     dsimport --help\n\nDESCRIPTION\n     dsimport is a tool for importing records into an Open Directory source.\n\nUSAGE\n     filepath\tis the path of the file to be imported.\n\n     nodepath\tis the path of the Open Directory node where the records\n\t\tshould be imported.\n\n     A flag that specifies how to handle conflicting records:\n\n\t\tO\t overwrite of any existing records that have the same\n\t\t\t record name, UID or GID. All previous attribute\n\t\t\t values are deleted.\n\n\t\tM\t merge import data with existing records or create the\n\t\t\t record if it does not exist.\n\n\t\tI\t ignore the record if there is a conflicting name, UID\n\t\t\t or GID.\n\n\t\tA\t append the data to existing records, but do not\n\t\t\t create a record if it does not exist.\n\n\t\tN\t no duplicate checking should be done.\tNote this\n\t\t\t could cause failures and/or a slower import process.\n\n     A list of options and their descriptions:"
+  manpageQuestion1: What is the primary purpose of the dsimport tool?
+  manpageQuestion2: How would you use dsimport to import a file into an Open Directory node while overwriting any existing records with the same name, UID, or GID?
+  manpageQuestion3: Can you provide an example of using dsimport to import a file into an Open Directory node and append the data to existing records without creating new ones?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dsimport`.
+
+
+
+    Manpage text:
+
+    --crypt
+           is used to signify that all user passwords are crypt-based. Entries in
+           the import file can also be prefixed with {CRYPT} on a per record basis
+           if not all users are crypt-based.  By default all passwords are assumed
+           to be provided as listed in the import file.
+
+         --force attribute value
+           forces a specific value for the named attribute for all records during
+           the import. The new value will overwrite any value specified in the
+           import file. This option may be specified multiple times for forcing
+           more than one attribute.
+
+         --groupid value
+           is the GID used for any records that do not specify a primary GID.
+
+         --grouppreset value
+           designate a preset record to be applied to imported group records.
+
+         --loglevel value
+           changes the amount of logging detail output to the log file.
+
+         --outputfile value
+           Outputs a plist to the specified file with a list of changed users or
+           groups and rejected records due to name conflicts.  Also includes a
+           list of deleted records (overwrite mode), and lists of records that
+           failed and succeeded during import.  The format of this file is likely
+           to change in a future release of Mac OS X.
+  manpageQuestion1: What is the primary purpose of the dsimport command?
+  manpageQuestion2: How can you ensure that all user passwords in an import file are crypt-based when using dsimport?
+  manpageQuestion3: What is the effect of using the --force attribute value option with dsimport?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dsimport`.
+
+
+
+    Manpage text:
+
+    --password value
+           is the admin's password for import operations. Used to authenticate to
+           the directory node during import. A secure prompt will be used for
+           interactive input if not supplied via parameter.  Using the prompt
+           method is the most secure method of providing password to dsimport.
+
+         --recordformat string
+           passes in the delimiters and attributes and record type to specify the
+           order and names of attributes in the file to be imported. An example
+           record format string:
+
+           0x0A 0x5C 0x3A 0x2C dsRecTypeStandard:Users 7
+           dsAttrTypeStandard:RecordName dsAttrTypeStandard:Password
+           dsAttrTypeStandard:UniqueID dsAttrTypeStandard:PrimaryGroupID
+           dsAttrTypeStandard:RealName dsAttrTypeStandard:NFSHomeDirectory
+           dsAttrTypeStandard:UserShell
+
+           A special value of IGNORE can be used for values that should be ignored
+           in the import file on a record-by-record basis.
+
+         --recordtype type
+           Override the record type defined in the import file. For example, to
+           import ComputerGroups as ComputerLists, use:
+  manpageQuestion1: What is the primary purpose of the dsimport tool?
+  manpageQuestion2: How would you use dsimport to import a file with a custom record format that includes specific attributes and delimiters?
+  manpageQuestion3: Can you provide an example of using dsimport to override the record type in an import file and specify a different record type for importing?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dsimport`.
+
+
+
+    Manpage text:
+
+    --recordtype dsRecTypeStandard:ComputerLists
+
+           The opposite works for importing ComputerLists as ComputerGroups, and
+           so on.
+
+         --remotehost hostname | ipaddress
+           connects to a remote host at the network address specified.  Commonly
+           used to import to a remote Mac OS X Server.
+
+         --remoteusername value
+           specifies user name to use for the remote connection.
+
+         --remotepassword value
+           specifies password to use for the remote connection. A secure prompt
+           will be used to ask for the password if --remoteusername is specified
+           and --remotepassword is not.  Using the prompt method is the most
+           secure method of providing password to dsimport.
+
+         --startid value
+           indicates the ID number to start with when the import tool generates
+           user or group IDs for any import file that lacks an ID as part of the
+           import data.
+
+         --template StandardUser | StandardGroup
+           is used for delimited import of files that lack field descriptions.
+  manpageQuestion1: What is the primary purpose of the dsimport command-line tool?
+  manpageQuestion2: How can you use dsimport to import user data to a remote Mac OS X Server?
+  manpageQuestion3: What is the function of the --startid parameter in dsimport and how would you use it?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dsimport`.\n\n\n\nManpage text:\n\nStandardUser contains the following fields in the order:\n\t     1.   RecordName\n\t     2.   Password\n\t     3.   UniqueID\n\t     4.   PrimaryGroupID\n\t     5.   DistinguishedName\n\t     6.   NFSHomeDirectory\n\t     7.   UserShell\n\n       StandardGroup contains the following fields in the order:\n\t     1.   RecordName\n\t     2.   Password\n\t     3.   PrimaryGroupID\n\t     4.   GroupMembership\n\n     --username value\n       is the admin username to use when importing records. If this is not\n       specified the current user is the default name.\tAlso, if used in\n       conjunction with --remotehost then this admin user will be used for the\n       Open Directory node whereas the username provided in --remoteusername\n       will be used for the remote connection.\tIf this option is left off but\n       --remoteusername is provided, then the remote username will be used for\n       both the connection and for importing records.\n\n     --userpreset value\n       designate a preset record to be applied to imported user records."
+  manpageQuestion1: What is the primary purpose of the dsimport command?
+  manpageQuestion2: How would you use dsimport to import user records from a remote directory service with a specified admin username?
+  manpageQuestion3: Can you provide an example of using dsimport to apply a specific user preset when importing records?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `dsimport`.\n\n\n\nManpage text:\n\nEXAMPLES\n     To import a standard dsexport file into the Local database:\n\n\t   dsimport myimportFile /Local/Default I --username administrator\n\t   --password adminpassword\n\nFILES\n     /usr/bin/dsimport\n     ~/Library/Logs/ImportExport\n\nSEE ALSO\n     DirectoryService(8) dsexport(1)\n\nDarwin\t\t\t       Fri June 24 2008 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the dsimport command?
+  manpageQuestion2: How would you use dsimport to import a dsexport file into the Local database with specific username and password?
+  manpageQuestion3: What are the typical files associated with dsimport and where are they located?
+

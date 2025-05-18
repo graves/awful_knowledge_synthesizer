@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `backupd`.\n\n\n\nManpage text:\n\nBACKUPD(8)\t\t    System Manager's Manual\t\t    BACKUPD(8)\n\nNAME\n     backupd – Time Machine backup daemon\n\nDESCRIPTION\n     backupd is the Time Machine backup daemon. It is responsible for creating\n     Time Machine backups and managing its backup history.\n\n     There are no configurations to backupd, aside from exclusions, and users\n     should not run backupd manually.\n\nSEE ALSO\n     backupd-helper(8), tmutil(8)\n\nmacOS\t\t\t       November 10, 2016\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the backupd tool?
+  manpageQuestion2: How would you check the status of the Time Machine backup service using backupd?
+  manpageQuestion3: Can you explain how to configure exclusion settings for Time Machine backups using backupd?
+

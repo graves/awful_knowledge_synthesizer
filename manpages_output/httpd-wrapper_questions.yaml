@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `httpd-wrapper`.\n\n\n\nManpage text:\n\nhttpd-wrapper(8)\t    System Manager's Manual\t      httpd-wrapper(8)\n\nNAME\n     httpd-wrapper – Wrapper script for httpd web server\n\nDESCRIPTION\n     This tool extracts environment variable definitions from a specific plist\n     file and then execs the httpd executable, thereby allowing variables to\n     be used in Apache's paramaterized config files. It also gathers minimal\n     metrics on the usage of Apache.\n\nFILES\n     /etc/apache2/env.plist\n\t     The file where environment variables are defined\n\n     /var/log/apache2/httpd-wrapper.log\n\t     The file where errors are logged\n\nSEE ALSO\n     httpd(8)\n\nmacOS\t\t\t\tSept. 20, 2016\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the httpd-wrapper tool?
+  manpageQuestion2: How would you configure httpd-wrapper to use the environment variables defined in /etc/apache2/env.plist?
+  manpageQuestion3: What is the function of the httpd-wrapper log file located at /var/log/apache2/httpd-wrapper.log?
+

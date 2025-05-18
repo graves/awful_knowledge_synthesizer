@@ -1,0 +1,101 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `inet6`.\n\n\n\nManpage text:\n\nINET6(4)\t\t     Device Drivers Manual\t\t      INET6(4)\n\nNAME\n     inet6 – Internet protocol version 6 family\n\nSYNOPSIS\n     #include <sys/types.h>\n     #include <netinet/in.h>\n\nDESCRIPTION\n     The inet6 family is an updated version of inet(4) family.\tWhile inet(4)\n     implements Internet Protocol version 4, inet6 implements Internet\n     Protocol version 6.\n\n     inet6 is a collection of protocols layered atop the Internet Protocol\n     version 6 (IPv6) transport layer, and utilizing the IPv6 address format.\n     The inet6 family provides protocol support for the SOCK_STREAM,\n     SOCK_DGRAM, and SOCK_RAW socket types; the SOCK_RAW interface provides\n     access to the IPv6 protocol.\n\nADDRESSING\n     IPv6 addresses are 16 byte quantities, stored in network standard\n     byteorder.  The include file ⟨netinet/in.h⟩ defines this address as a\n     discriminated union.\n\n     Sockets bound to the inet6 family utilize the following addressing\n     structure:\n\n\t   struct sockaddr_in6 {\n\t\t   u_int8_t\t   sin6_len;\n\t\t   u_int8_t\t   sin6_family;\n\t\t   u_int16_t\t   sin6_port;\n\t\t   u_int32_t\t   sin6_flowinfo;\n\t\t   struct in6_addr sin6_addr;\n\t\t   u_int32_t\t   sin6_scope_id;\n\t   };"
+  manpageQuestion1: What is the primary purpose of the inet6 family in macOS?
+  manpageQuestion2: How do you create a socket for IPv6 communication using the inet6 family?
+  manpageQuestion3: What is the structure used to represent IPv6 addresses in the inet6 family?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `inet6`.
+
+
+
+    Manpage text:
+
+    Sockets may be created with the local address “::” (which is equal to
+         IPv6 address 0:0:0:0:0:0:0:0) to affect “wildcard” matching on incoming
+         messages.
+
+         The IPv6 specification defines scoped addresses, like link-local or site-
+         local addresses.  A scoped address is ambiguous to the kernel, if it is
+         specified without a scope identifier.  To manipulate scoped addresses
+         properly from the userland, programs must use the advanced API defined in
+         RFC2292.  A compact description of the advanced API is available in
+         ip6(4).  If a scoped address is specified without an explicit scope, the
+         kernel may raise an error.  Note that scoped addresses are not for daily
+         use at this moment, both from a specification and an implementation point
+         of view.
+
+         The KAME implementation supports an extended numeric IPv6 address
+         notation for link-local addresses, like “fe80::1%de0” to specify “fe80::1
+         on de0 interface”.  This notation is supported by getaddrinfo(3) and
+         getnameinfo(3).  Some of normal userland programs, such as telnet(1) or
+         ftp(1), are able to use this notation.  With special programs like
+         ping6(8), you can specify the outgoing interface by an extra command line
+         option to disambiguate scoped addresses.
+  manpageQuestion1: What is the primary purpose of the inet6 resource?
+  manpageQuestion2: How can you specify a link-local IPv6 address on a specific network interface using inet6?
+  manpageQuestion3: What is the recommended way to handle scoped IPv6 addresses in userland programs?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `inet6`.\n\n\n\nManpage text:\n\nScoped addresses are handled specially in the kernel.  In kernel\n     structures like routing tables or interface structures, a scoped address\n     will have its interface index embedded into the address.  Therefore, the\n     address in some kernel structures is not the same as that on the wire.\n     The embedded index will become visible through a PF_ROUTE socket, kernel\n     memory accesses via kvm(3) and on some other occasions.  HOWEVER, users\n     should never use the embedded form.  For details please consult\n     IMPLEMENTATION supplied with KAME kit.\n\nPROTOCOLS\n     The inet6 family is comprised of the IPv6 network protocol, Internet\n     Control Message Protocol version 6 (ICMPv6), Transmission Control\n     Protocol (TCP), and User Datagram Protocol (UDP).\tTCP is used to support\n     the SOCK_STREAM abstraction while UDP is used to support the SOCK_DGRAM\n     abstraction.  Note that TCP and UDP are common to inet(4) and inet6.  A\n     raw interface to IPv6 is available by creating an Internet socket of type\n     SOCK_RAW.\tThe ICMPv6 message protocol is accessible from a raw socket."
+  manpageQuestion1: What is the primary purpose of the inet6 resource?
+  manpageQuestion2: How can users interact with the IPv6 protocols using the inet6 resource?
+  manpageQuestion3: What are the common protocol abstractions supported by the inet6 family?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `inet6`.\n\n\n\nManpage text:\n\nMIB Variables\n     A number of variables are implemented in the net.inet6 branch of the\n     sysctl(3) MIB.  In addition to the variables supported by the transport\n     protocols (for which the respective manual pages may be consulted), the\n     following general variables are defined:\n\n     IPV6CTL_FORWARDING      (ip6.forwarding) Boolean: enable/disable\n\t\t\t     forwarding of IPv6 packets.  Also, identify if\n\t\t\t     the node is acting as a router.  Defaults to off.\n\n     IPV6CTL_SENDREDIRECTS   (ip6.redirect) Boolean: enable/disable sending of\n\t\t\t     ICMPv6 redirects in response to unforwardable\n\t\t\t     IPv6 packets.  This option is ignored unless the\n\t\t\t     node is routing IPv6 packets, and should normally\n\t\t\t     be enabled on all systems.  Defaults to on.\n\n     IPV6CTL_DEFHLIM\t     (ip6.hlim) Integer: default hop limit value to\n\t\t\t     use for outgoing IPv6 packets.  This value\n\t\t\t     applies to all the transport protocols on top of\n\t\t\t     IPv6.  There are APIs to override the value."
+  manpageQuestion1: What is the primary purpose of the inet6 resource?
+  manpageQuestion2: How can you check the current state of IPv6 forwarding on a macOS system using inet6?
+  manpageQuestion3: What command would you use to set the default hop limit for IPv6 packets on a macOS system via inet6?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `inet6`.\n\n\n\nManpage text:\n\nIPV6CTL_MAXFRAGPACKETS  (ip6.maxfragpackets) Integer: default maximum\n\t\t\t     number of fragmented packets the node will\n\t\t\t     accept.  0 means that the node will not accept\n\t\t\t     any fragmented packets.  -1 means that the node\n\t\t\t     will accept as many fragmented packets as it\n\t\t\t     receives.\tThe flag is provided basically for\n\t\t\t     avoiding possible DoS attacks.\n\n     IPV6CTL_ACCEPT_RTADV    (ip6.accept_rtadv) Boolean: enable/disable\n\t\t\t     receiving of ICMPv6 router advertisement packets,\n\t\t\t     and autoconfiguration of address prefixes and\n\t\t\t     default routers.  The node must be a host (not a\n\t\t\t     router) for the option to be meaningful.\n\t\t\t     Defaults to off.\n\n     IPV6CTL_LOG_INTERVAL    (ip6.log_interval) Integer: default interval\n\t\t\t     between IPv6 packet forwarding engine log output\n\t\t\t     (in seconds).\n\n     IPV6CTL_HDRNESTLIMIT    (ip6.hdrnestlimit) Integer: default number of the\n\t\t\t     maximum IPv6 extension headers permitted on\n\t\t\t     incoming IPv6 packets.  If set to 0, the node\n\t\t\t     will accept as many extension headers as\n\t\t\t     possible."
+  manpageQuestion1: What is the primary purpose of the IPv6-related control options in the manpage?
+  manpageQuestion2: How can you configure the system to accept all fragmented IPv6 packets without any restrictions?
+  manpageQuestion3: What is the default behavior of the IPv6 node regarding receiving router advertisement packets for automatic address configuration?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `inet6`.\n\n\n\nManpage text:\n\nIPV6CTL_DAD_COUNT\t     (ip6.dad_count) Integer: default number of IPv6\n\t\t\t     DAD (duplicated address detection) probe packets.\n\t\t\t     The packets will be generated when IPv6 interface\n\t\t\t     addresses are configured.\n\n     IPV6CTL_AUTO_FLOWLABEL  (ip6.auto_flowlabel) Boolean: enable/disable\n\t\t\t     automatic filling of IPv6 flowlabel field, for\n\t\t\t     outstanding connected transport protocol packets.\n\t\t\t     The field might be used by intermediate routers\n\t\t\t     to identify packet flows.\tDefaults to on.\n\n     IPV6CTL_DEFMCASTHLIM    (ip6.defmcasthlim) Integer: default hop limit\n\t\t\t     value for an IPv6 multicast packet sourced by the\n\t\t\t     node.  This value applies to all the transport\n\t\t\t     protocols on top of IPv6.\tThere are APIs to\n\t\t\t     override the value as documented in ip6(4).\n\n     IPV6CTL_GIF_HLIM\t     (ip6.gifhlim) Integer: default maximum hop limit\n\t\t\t     value for an IPv6 packet generated by gif(4)\n\t\t\t     tunnel interface.\n\n     IPV6CTL_KAME_VERSION    (ip6.kame_version) String: identifies the version\n\t\t\t     of KAME IPv6 stack implemented in the kernel."
+  manpageQuestion1: What is the primary purpose of the inet6 resource?
+  manpageQuestion2: How can you configure the number of IPv6 DAD probe packets using inet6?
+  manpageQuestion3: What is the function of the IPV6CTL_AUTO_FLOWLABEL setting in inet6?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `inet6`.\n\n\n\nManpage text:\n\nIPV6CTL_USE_DEPRECATED  (ip6.use_deprecated) Boolean: enable/disable use\n\t\t\t     of deprecated address, specified in RFC2462\n\t\t\t     5.5.4.  Defaults to on.\n\n     IPV6CTL_RR_PRUNE\t     (ip6.rr_prune) Integer: default interval between\n\t\t\t     IPv6 router renumbering prefix babysitting, in\n\t\t\t     seconds.\n\n     IPV6CTL_MAPPED_ADDR     (ip6.mapped_addr) Boolean: enable/disable use of\n\t\t\t     IPv4 mapped address on AF_INET6 sockets.\n\t\t\t     Defaults to on.\n\n     IPV6CTL_RTEXPIRE\t     (ip6.rtexpire) Integer: lifetime in seconds of\n\t\t\t     protocol-cloned IP routes after the last\n\t\t\t     reference drops (default one hour).\n\n     IPV6CTL_RTMINEXPIRE     (ip6.rtminexpire) Integer: minimum value of\n\t\t\t     ip.rtexpire (default ten seconds).\n\n     IPV6CTL_RTMAXCACHE      (ip6.rtmaxcache) Integer: trigger level of\n\t\t\t     cached, unreferenced, protocol-cloned routes\n\t\t\t     which initiates dynamic adaptation (default 128).\n\n   Interaction between IPv4/v6 sockets\n     The behavior of AF_INET6 TCP/UDP socket is documented in RFC2553.\n     Basically, it says this:\n     •\t A specific bind on an AF_INET6 socket (bind(2) with an address\n\t specified) should accept IPv6 traffic to that address only.\n     •\t If you perform a wildcard bind on an AF_INET6 socket (bind(2) to IPv6\n\t address ::), and there is no wildcard bind AF_INET socket on that\n\t TCP/UDP port, IPv6 traffic as well as IPv4 traffic should be routed\n\t to that AF_INET6 socket.  IPv4 traffic should be seen as if it came\n\t from an IPv6 address like ::ffff:10.1.1.1.  This is called an IPv4\n\t mapped address.\n     •\t If there are both a wildcard bind AF_INET socket and a wildcard bind\n\t AF_INET6 socket on one TCP/UDP port, they should behave separately.\n\t IPv4 traffic should be routed to the AF_INET socket and IPv6 should\n\t be routed to the AF_INET6 socket."
+  manpageQuestion1: What is the primary purpose of the inet6 resource?
+  manpageQuestion2: How can you configure IPv4 mapped addresses on AF_INET6 sockets using inet6?
+  manpageQuestion3: What is the default setting for IPv6 router renumbering prefix babysitting interval, and how can it be modified?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `inet6`.
+
+
+
+    Manpage text:
+
+    However, RFC2553 does not define the ordering constraint between calls to
+         bind(2), nor how IPv4 TCP/UDP port numbers and IPv6 TCP/UDP port numbers
+         relate to each other (should they be integrated or separated).
+         Implemented behavior is very different from kernel to kernel.  Therefore,
+         it is unwise to rely too much upon the behavior of AF_INET6 wildcard bind
+         sockets.  It is recommended to listen to two sockets, one for AF_INET and
+         another for AF_INET6, when you would like to accept both IPv4 and IPv6
+         traffic.
+
+         It should also be noted that malicious parties can take advantage of the
+         complexity presented above, and are able to bypass access control, if the
+         target node routes IPv4 traffic to AF_INET6 socket.  Users are advised to
+         take care handling connections from IPv4 mapped address to AF_INET6
+         sockets.
+
+    SEE ALSO
+         ioctl(2), socket(2), sysctl(3), icmp6(4), intro(4), ip6(4), tcp(4),
+         udp(4)
+
+    STANDARDS
+         Tatsuya Jinmei and Atsushi Onoe, An Extension of Format for IPv6 Scoped
+         Addresses, internet draft, draft-ietf-ipngwg-scopedaddr-format-02.txt,
+         June 2000, work in progress material.
+  manpageQuestion1: What is the primary purpose of the inet6 resource?
+  manpageQuestion2: How would you handle IPv4 and IPv6 traffic using the inet6 resource?
+  manpageQuestion3: What are the security considerations when using the inet6 resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `inet6`.\n\n\n\nManpage text:\n\nHISTORY\n     The inet6 protocol interfaces are defined in RFC2553 and RFC2292.\tThe\n     implementation described herein appeared in the WIDE/KAME project.\n\nBUGS\n     The IPv6 support is subject to change as the Internet protocols develop.\n     Users should not depend on details of the current implementation, but\n     rather the services exported.\n\n     Users are suggested to implement “version independent” code as much as\n     possible, as you will need to support both inet(4) and inet6.\n\nmacOS 15.3\t\t       January 29, 1999 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the inet6 resource in macOS?
+  manpageQuestion2: How can users ensure their code is compatible with both IPv4 and IPv6 on macOS?
+  manpageQuestion3: What should users be aware of when relying on IPv6 support in macOS?
+

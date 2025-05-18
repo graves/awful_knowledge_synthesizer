@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `cfprefsd`.\n\n\n\nManpage text:\n\nCFPREFSD(8)\t\t    System Manager's Manual\t\t   CFPREFSD(8)\n\nNAME\n     cfprefsd – defaults server\n\nSYNOPSIS\n     cfprefsd\n\nDESCRIPTION\n     cfprefsd provides preferences services for the CFPreferences and\n     NSUserDefaults APIs.\n\n     There are no configuration options to cfprefsd.  Users should not run\n     cfprefsd manually.\n\nMac OS X\t\t      October 25th, 2011\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the cfprefsd utility?
+  manpageQuestion2: How would you check if the cfprefsd service is running on a macOS system?
+  manpageQuestion3: What is the recommended approach for managing preferences in macOS using the cfprefsd service?
+

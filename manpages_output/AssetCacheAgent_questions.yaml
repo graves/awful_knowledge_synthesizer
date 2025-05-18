@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `AssetCacheAgent`.\n\n\n\nManpage text:\n\nAssetCacheAgent(8)\t    System Manager's Manual\t    AssetCacheAgent(8)\n\nNAME\n     AssetCacheAgent – Caching service agent\n\nSYNOPSIS\n     AssetCacheAgent\n\nDESCRIPTION\n     AssetCacheAgent displays notifications from the macOS caching service.\n\n     There are no configuration options to AssetCacheAgent.  Users should not\n     run AssetCacheAgent manually.\n\nDIAGNOSTICS\n     AssetCacheAgent logs to the os_log(3) subsystem com.apple.AssetCache\n     category Agent.\n\nSEE ALSO\n     log(1), AssetCache(8)\n\nmacOS\t\t\t\t    3/30/17\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the AssetCacheAgent tool?
+  manpageQuestion2: How would you use AssetCacheAgent to monitor caching service notifications?
+  manpageQuestion3: Can you explain the typical usage scenario for AssetCacheAgent in a macOS environment?
+

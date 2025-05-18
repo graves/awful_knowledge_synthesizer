@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `generativeexperiencesd`.\n\n\n\nManpage text:\n\ngenerativeexperiencesd(8)   System Manager's Manual  generativeexperiencesd(8)\n\nNAME\n     generativeexperiencesd – A daemon that powers generative experience.\n\nSYNOPSIS\n     generativeexperiencesd\n\nDESCRIPTION\n     generativeexperiencesd powers generative experience such as summarization\n     and text composition on this device.\n\nmacOS\t\t\t\t June 6, 2022\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the generativeexperiencesd daemon?
+  manpageQuestion2: How would you start the generativeexperiencesd service on a macOS system?
+  manpageQuestion3: What is the role of generativeexperiencesd in enabling generative experiences on macOS?
+

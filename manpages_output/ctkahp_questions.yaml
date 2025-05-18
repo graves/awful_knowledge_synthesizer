@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ctkahp`.\n\n\n\nManpage text:\n\nctkahp(8)\t\t    System Manager's Manual\t\t     ctkahp(8)\n\nNAME\n     ctkahp – SmartCard Agent\n\nDESCRIPTION\n     ctkahp is a part of the CryptoTokenKit. It is responsible for performing\n     smartcard related user-mode tasks.\n\nmacOS 15.3\t\t       November 2, 2016 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the ctkahp tool?
+  manpageQuestion2: How would you use ctkahp to manage smartcard-related tasks in a user-mode environment?
+  manpageQuestion3: Can you describe the role of ctkahp within the CryptoTokenKit framework?
+

@@ -1,0 +1,82 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `crypt`.\n\n\n\nManpage text:\n\nCRYPT(3)\t\t   Library Functions Manual\t\t      CRYPT(3)\n\nNAME\n     crypt, encrypt, setkey – DES encryption\n\nSYNOPSIS\n     #include <unistd.h>\n\n     char *\n     crypt(const char *key, const char *salt);\n\n     void\n     encrypt(char *block, int edflag);\n\n     #include <stdlib.h>\n\n     void\n     setkey(const char *key);\n\nDESCRIPTION\n     The crypt() function performs password encryption, based on the NBS Data\n     Encryption Standard (DES).  Additional code has been added to deter key\n     search attempts.  The first argument to crypt() is a null-terminated\n     string, typically a user's typed password.  The second is in one of two\n     forms: if it begins with an underscore (``_''), an extended format is\n     used in interpreting both the key and the salt value, as outlined below.\n\n   Extended crypt:\n     The key is divided into groups of 8 characters (the last group is null-\n     padded) and the low-order 7 bits of each each character (56 bits per\n     group) are used to form the DES key as follows: the first group of 56\n     bits becomes the initial DES key.\tFor each additional group, the XOR of\n     the encryption of the current DES key with itself and the group bits\n     becomes the next DES key."
+  manpageQuestion1: What is the primary purpose of the crypt command or function?
+  manpageQuestion2: How would you use the crypt function to encrypt a password with a specific salt value?
+  manpageQuestion3: Can you explain how the extended format of the crypt function works, particularly in how it processes multiple groups of 8 characters for key generation?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `crypt`.
+
+
+
+    Manpage text:
+
+    The salt is a 9-character array consisting of an underscore, followed by
+         4 bytes of iteration count and 4 bytes of salt.  These are encoded as
+         printable characters, 6 bits per character, least significant character
+         first.  The values 0 to 63 are encoded as ``./0-9A-Za-z''.  This allows
+         24 bits for both count and salt.
+
+       Traditional crypt:
+         The first 8 bytes of the key are null-padded, and the low-order 7 bits of
+         each character is used to form the 56-bit DES key.
+
+         The salt is a 2-character array of the ASCII-encoded salt.  Thus, only 12
+         bits of salt are used.  count is set to 25.
+
+       Algorithm:
+         The salt introduces disorder in the DES algorithm in one of 16777216 or
+         4096 possible ways (ie. with 24 or 12 bits: if bit i of the salt is set,
+         then bits i and i+24 are swapped in the DES E-box output).
+
+         The DES key is used to encrypt a 64-bit constant, using count iterations
+         of DES.  The value returned is a null-terminated string, 20 or 13 bytes
+         (plus null) in length, consisting of the salt, followed by the encoded
+         64-bit encryption.
+  manpageQuestion1: What is the primary purpose of the crypt command in macOS?
+  manpageQuestion2: How would you use crypt to generate a password hash with a custom salt and iteration count?
+  manpageQuestion3: Can you explain how the crypt command handles the conversion of the salt and iteration count into printable characters?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `crypt`.\n\n\n\nManpage text:\n\nThe functions, encrypt() and setkey() provide access to the DES algorithm\n     itself.  setkey() is passed a 64-byte array of binary values (numeric 0\n     or 1).  A 56-bit key is extracted from this array by dividing the array\n     into groups of 8 and ignoring the last bit in each group.\tThat bit is\n     reserved for a byte parity check by DES, but is ignored by these\n     functions.\n\n     The block argument to encrypt() is also a 64-byte array of binary values.\n     If the value of edflag is 0, block is encrypted; otherwise, it is\n     decrypted.  The result is returned in the original array block, after\n     using the key specified by setkey() to process it.\n\n     The function crypt() returns a pointer to the encrypted value on success,\n     and NULL on failure.\n\n     The crypt() and setkey() functions all manipulate the same key space.\n\nSEE ALSO\n     login(1), passwd(1), getpass(3), compat(5), passwd(5)\n\nLEGACY SYNOPSIS\n     #include <unistd.h>\n\n     int\n     encrypt(char *block, int edflag);"
+  manpageQuestion1: What is the primary purpose of the crypt functions in macOS?
+  manpageQuestion2: How would you use the setkey() function to initialize a 56-bit key from a 64-byte binary array?
+  manpageQuestion3: Can you provide an example of using the crypt() function to encrypt a block of data with a previously set key?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `crypt`.
+
+
+
+    Manpage text:
+
+    The function encrypt() returns 0 on success and 1 on failure.
+
+         void
+         setkey(const char *key);
+
+         The include file <unistd.h> is necessary and sufficient for the setkey()
+         function.
+
+    BUGS
+         The crypt() function returns a pointer to static data, and subsequent
+         calls to crypt() will modify the same object.
+
+    HISTORY
+         A rotor-based crypt() function appeared in Version 6 AT&T UNIX.  The
+         current style crypt() first appeared in Version 7 AT&T UNIX.
+
+         This library (FreeSec 1.0) was developed outside the United States of
+         America as an unencumbered replacement for the U.S.-only libcrypt
+         encryption library.  Programs linked against the crypt() interface may be
+         exported from the U.S.A. only if they use crypt() solely for
+         authentication purposes and avoid use of the other programmer interfaces
+         listed above. Special care has been taken in the library so that programs
+         which only use the crypt() interface do not pull in the other components.
+  manpageQuestion1: What is the primary purpose of the crypt() function in this context?
+  manpageQuestion2: How can you set a key for the crypt() function according to the manpage?
+  manpageQuestion3: What is a potential issue with using the crypt() function as described in the manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `crypt`.\n\n\n\nManpage text:\n\nAUTHOR\n     David Burren <davidb@werj.com.au>\n\nFreeSec 1.0\t\t\t March 9, 1994\t\t\t   FreeSec 1.0"
+  manpageQuestion1: What is the primary purpose of the crypt utility?
+  manpageQuestion2: How would you use the crypt command to encrypt a password with a specified salt?
+  manpageQuestion3: Can you provide an example of using the crypt command to generate a password hash with a default salt value?
+

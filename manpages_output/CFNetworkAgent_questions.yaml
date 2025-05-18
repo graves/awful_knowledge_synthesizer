@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `CFNetworkAgent`.\n\n\n\nManpage text:\n\nCFNetworkAgent(8)\t    System Manager's Manual\t     CFNetworkAgent(8)\n\nNAME\n     CFNetworkAgent – The network compatibility daemon.\n\nDESCRIPTION\n     CFNetworkAgent probes networks for compatibility with system networking\n     mechanisms.\n\n     There are no configuration options to CFNetworkAgent. Users should not\n     run CFNetworkAgent manually.\n\nmacOS 15.3\t\t       October 25, 2016 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the CFNetworkAgent tool?
+  manpageQuestion2: How would you use CFNetworkAgent to check network compatibility with system networking mechanisms?
+  manpageQuestion3: Can you provide an example of using CFNetworkAgent to monitor network compatibility on a macOS system?
+

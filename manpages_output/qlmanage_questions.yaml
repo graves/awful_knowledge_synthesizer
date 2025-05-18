@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `qlmanage`.\n\n\n\nManpage text:\n\nqlmanage(1)\t\t    General Commands Manual\t\t   qlmanage(1)\n\nNAME\n     qlmanage – Quick Look Server debug and management tool\n\nSYNOPSIS\n     qlmanage -r\n\n     qlmanage -m [name ...]\n\n     qlmanage -t [-x] [-i] [-s size] [-f factor]\n\t      [-c contentTypeUTI [-g generator]] [file ...]\n\n     qlmanage -p [-x] [-c contentTypeUTI [-g generator]] [file ...]\n\n     qlmanage -h\n\nDESCRIPTION\n     qlmanage allows you to test your Quick Look generators and manage Quick\n     Look Server.\n\n     The following usages are available:\n\n     1.       qlmanage -r resets Quick Look Server and all Quick Look client's\n\t      generator cache.\n\n     2.       qlmanage -m gets all sort of information on Quick Look server\n\t      including the list of detected generators.\n\n     3.       qlmanage -t displays the Quick Look generated thumbnails (if\n\t      available) for the specified files.\n\n     4.       qlmanage -p displays the Quick Look generated previews for the\n\t      specified files.\n\n     5.       qlmanage -h displays extensive help."
+  manpageQuestion1: What is the primary purpose of the qlmanage tool?
+  manpageQuestion2: How would you use qlmanage to reset the Quick Look Server and clear all generator caches?
+  manpageQuestion3: Can you provide an example of using qlmanage to display the Quick Look previews for a list of files?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `qlmanage`.\n\n\n\nManpage text:\n\nMac OS X\t\t\tMarch 29, 2007\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the qlmanage command?
+  manpageQuestion2: How would you use qlmanage to generate a PDF of a document with the filename 'report.pdf'?
+  manpageQuestion3: Can you provide an example of using qlmanage to cancel a previously scheduled print job?
+

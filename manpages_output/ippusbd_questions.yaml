@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ippusbd`.\n\n\n\nManpage text:\n\nippusbd(8)\t\t    System Manager's Manual\t\t    ippusbd(8)\n\nNAME\n     ippusbd – ipp to usb bridging daemon.\n\nSYNOPSIS\n     NONE (launched by launchd)\n\nDESCRIPTION\n     ippusbd bridges connections from a TCP/IP socket to a USB printer.\n\n     This command is not intended to be invoked directly.\n\nFILES\n     /usr/sbin/ippusbd\n\nSEE ALSO\n     launchd(8)\n\nHISTORY\n     The ippusbd daemon first appeared in Mac OS 10.8.\n\nMac OS X\t\t       January 27, 2012 \t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the ippusbd resource?
+  manpageQuestion2: How would you configure the ippusbd daemon to bridge TCP/IP connections to a USB printer?
+  manpageQuestion3: Can you explain the typical use case for the ippusbd daemon in a macOS environment?
+

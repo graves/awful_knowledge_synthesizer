@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `duetexpertd`.\n\n\n\nManpage text:\n\nDUETEXPERTD(8)\t\t    System Manager's Manual\t\tDUETEXPERTD(8)\n\nNAME\n     duetexpertd\n\nSYNOPSIS\n     duetexpertd\n\nDESCRIPTION\n     duetexpertd powers personalized system experiences.\n\n     There are no configuration options for this service. Users should not run\n     duetexpertd manually.\n\nMac OS X\t\t     September 20th, 2023\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the duetexpertd service?
+  manpageQuestion2: How would you check if the duetexpertd service is running on a macOS system?
+  manpageQuestion3: Can you explain why users are advised not to run duetexpertd manually?
+

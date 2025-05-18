@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mdworker`.\n\n\n\nManpage text:\n\nmdworker(8)\t\t    System Manager's Manual\t\t   mdworker(8)\n\nNAME\n     mdworker – metadata server worker\n\nSYNOPSIS\n     mdworker\n\nDESCRIPTION\n     mdworker is the metadata server worker process.  It is used by mds to\n     scan and index files as a volume is mounted or a file changes.\n\n     There are no configurations to mdworker, and users should not run\n     manually.\n\nSEE ALSO\n     mdfind(1), mdls(1), mdutil(1)\n\nMac OS X\t\t       January 19, 2006 \t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the mdworker process?
+  manpageQuestion2: How can users interact with mdworker to manage metadata indexing on a macOS system?
+  manpageQuestion3: What are the typical scenarios where mdworker is automatically invoked by the system?
+

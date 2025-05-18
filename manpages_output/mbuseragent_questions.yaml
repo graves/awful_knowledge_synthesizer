@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mbuseragent`.\n\n\n\nManpage text:\n\nmbuseragent(8)\t\t    System Manager's Manual\t\tmbuseragent(8)\n\nNAME\n     mbuseragent – helper for the Setup Assistant application.\n\nDESCRIPTION\n     mbuseragent is used by the Setup Assistant application and runs as the\n     target user in order to configure that user. It is not meant to be\n     invoked directly.\n\nmacOS\t\t\t       November 2, 2016 \t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the mbuseragent command?
+  manpageQuestion2: How would you use mbuseragent to configure a new user account during the macOS Setup Assistant process?
+  manpageQuestion3: Can you explain the typical use case for mbuseragent in a macOS system?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `installer-core`.\n\n\n\nManpage text:\n\ninstaller-core(8)\t    System Manager's Manual\t     installer-core(8)\n\nNAME\n     installer-core – helper for installer tool\n\nSYNOPSIS\n     installer-core\n\nDESCRIPTION\n     installer-core is used by installer(8).  It is not meant to be invoked\n     directly.\n\nSEE ALSO\n     installer(8)\n\nMac OS X\t\t      September 20, 2010\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the installer-core tool?
+  manpageQuestion2: How would you use installer-core in a real-world scenario?
+  manpageQuestion3: Can you explain the relationship between installer-core and the installer tool?
+

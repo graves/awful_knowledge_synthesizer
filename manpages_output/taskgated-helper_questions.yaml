@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `taskgated-helper`.\n\n\n\nManpage text:\n\ntaskgated-helper(8)\t    System Manager's Manual\t   taskgated-helper(8)\n\nNAME\n     taskgated-helper – taskgated helper process\n\nSYNOPSIS\n     taskgated-helper\n\nDESCRIPTION\n     The taskgated-helper utility is used by taskgated for various functions.\n\nNOTE\n     The taskgated-helper utility should not be invoked directly.  It is\n     intended only for use by taskgated.\n\nSEE ALSO\n     profiles(1), taskgated(8)\n\nmacOS 15.3\t\t\t  May 4, 2011\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the taskgated-helper utility?
+  manpageQuestion2: How would you use taskgated-helper in a system administration context?
+  manpageQuestion3: Can you explain the role of taskgated-helper in relation to the taskgated service?
+

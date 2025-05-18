@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `create_automation_image_overlay`.\n\n\n\nManpage text:\n\nCREATE_AUTOMATION_IMAGE_OVERLAY(8)\t\t       System Manager's Manual\n\nNAME\n     create_automation_image_overlay – overlay automation image content onto\n     another directory\n\nSYNOPSIS\n     create_automation_image_overlay overlay_content target_dir [rules ...]\n\nDESCRIPTION\n     create_automation_image_overlay causes the given overlay_content to be\n     appear on top of target_dir using union mounts.  It is not intended for\n     general use, and its behavior is not documented.\n\nmacOS\t\t\t\t June 22, 2018\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the create_automation_image_overlay command?
+  manpageQuestion2: How would you use create_automation_image_overlay to overlay an automation image onto a target directory?
+  manpageQuestion3: What are the most common parameters used with create_automation_image_overlay and what do they represent?
+

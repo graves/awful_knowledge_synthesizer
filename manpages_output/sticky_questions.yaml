@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sticky`.\n\n\n\nManpage text:\n\nSTICKY(7)\t       Miscellaneous Information Manual \t     STICKY(7)\n\nNAME\n     sticky – sticky text and append-only directories\n\nDESCRIPTION\n     A special file mode, called the sticky bit (mode S_ISVTX), is used to\n     indicate special treatment for directories.  It is ignored for regular\n     files.  See chmod(2) or the file <sys/stat.h> for an explanation of file\n     modes.\n\nSTICKY DIRECTORIES\n     A directory whose `sticky bit' is set becomes an append-only directory,\n     or, more accurately, a directory in which the deletion of files is\n     restricted.  A file in a sticky directory may only be removed or renamed\n     by a user if the user has write permission for the directory and the user\n     is the owner of the file, the owner of the directory, or the super-user.\n     This feature is usefully applied to directories such as /tmp which must\n     be publicly writable but should deny users the license to arbitrarily\n     delete or rename each others' files.\n\n     Any user may create a sticky directory.  See chmod(1) for details about\n     modifying file modes."
+  manpageQuestion1: What is the primary purpose of the sticky bit in file system permissions?
+  manpageQuestion2: How can a user set the sticky bit on a directory to make it append-only?
+  manpageQuestion3: What are the restrictions placed on users when a directory has the sticky bit set?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `sticky`.\n\n\n\nManpage text:\n\nHISTORY\n     A sticky command appeared in Version 7 AT&T UNIX/32V.\n\nBUGS\n     Neither open(2) nor mkdir(2) will create a file with the sticky bit set.\n\nmacOS 15.3\t\t\t June 5, 1993\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the sticky command?
+  manpageQuestion2: How can you set the sticky bit on a directory using the sticky command?
+  manpageQuestion3: What is the effect of setting the sticky bit on a directory?
+

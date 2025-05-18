@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pcap-config`.\n\n\n\nManpage text:\n\nPCAP-CONFIG(1)\t\t    General Commands Manual\t\tPCAP-CONFIG(1)\n\nNAME\n       pcap-config - write libpcap compiler and linker flags to standard\n       output\n\nSYNOPSIS\n       pcap-config [ --static ] [ --cflags | --libs | --additional-libs ]\n\nDESCRIPTION\n       When run with the --cflags option, pcap-config writes to the standard\n       output the -I compiler flags required to include libpcap's header\n       files.  When run with the --libs option, pcap-config writes to the\n       standard output the -L and -l linker flags required to link with\n       libpcap, including -l flags for libraries required by libpcap.  When\n       run with the --additional-libs option, pcap-config writes to the\n       standard output the -L and -l flags for libraries required by libpcap,\n       but not the -lpcap flag to link with libpcap itself.\n\n       By default, it writes flags appropriate for compiling with a\n       dynamically-linked version of libpcap; the --static flag causes it to\n       write flags appropriate for compiling with a statically-linked version\n       of libpcap."
+  manpageQuestion1: What is the primary purpose of the pcap-config tool?
+  manpageQuestion2: How can I use pcap-config to obtain the compiler flags needed to include libpcap's header files?
+  manpageQuestion3: What command would I use to get the linker flags required to link with libpcap, excluding the -lpcap flag?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pcap-config`.\n\n\n\nManpage text:\n\nSEE ALSO\n       pcap(3PCAP)\n\n\t\t\t       15 February 2015 \t\tPCAP-CONFIG(1)"
+  manpageQuestion1: What is the primary purpose of the pcap-config tool?
+  manpageQuestion2: How would you use pcap-config to display the version of PCAP library installed on your system?
+  manpageQuestion3: Can you provide an example of using pcap-config to determine the include directory for PCAP development?
+

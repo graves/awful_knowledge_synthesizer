@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mkbom`.\n\n\n\nManpage text:\n\nMKBOM(8)\t\t    System Manager's Manual\t\t      MKBOM(8)\n\nNAME\n     mkbom – create a bill-of-materials file\n\nSYNOPSIS\n     mkbom [-s] directory bom\n     mkbom [-s] -i filelist bom\n     mkbom -h | --help\n\nDESCRIPTION\n     The mkbom command creates a bill-of-materials (bom(5)).  You must specify\n     either a source as a directory, or a text file containing a file listing\n     as outputted by lsbom(8).\tmkbom will generate bill-of-materials\n     information based on that information.  Any existing bomfile will be\n     overwritten by the new bomfile.\n\n     Options:\n\n     -h \t\t   print full usage\n\n     -s \t\t   create a simplified bom containing only file paths\n\n     -i filelist\t   use the information in filelist, one entry per\n\t\t\t   line, to construct the bom file. The format of the\n\t\t\t   file should match lsbom(8) output with no\n\t\t\t   formatting options (the default). If -s is given to\n\t\t\t   mkbom, the input filelist should contain only\n\t\t\t   pathnames, as with lsbom -s.\n\nSEE ALSO\n     bom(5), ditto(8), mkbom(8)"
+  manpageQuestion1: What is the primary purpose of the mkbom command?
+  manpageQuestion2: How can you use mkbom to create a simplified bill-of-materials file from a directory?
+  manpageQuestion3: Can you provide an example of using mkbom with a file list to generate a bill-of-materials file?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mkbom`.\n\n\n\nManpage text:\n\nHISTORY\n     The mkbom command appeared in NeXTSTEP as a tool to create bom files used\n     during installation.\n\nMac OS X\t\t      September 26, 2006\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the mkbom command?
+  manpageQuestion2: How would you use mkbom to create a BOM file for a specific directory?
+  manpageQuestion3: Can you explain the historical context of the mkbom command in the macOS ecosystem?
+

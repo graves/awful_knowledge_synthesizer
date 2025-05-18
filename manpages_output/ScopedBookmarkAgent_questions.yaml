@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ScopedBookmarkAgent`.\n\n\n\nManpage text:\n\nScopedBookmarkAgent(8)\t    System Manager's Manual\tScopedBookmarkAgent(8)\n\nNAME\n     ScopedBookmarkAgent\n\nDESCRIPTION\n     ScopedBookmarkAgent provides agent services for creating and resolving\n     security scoped bookmarks. It is not meant to be invoked directly.\n\n\t\t\t       November 2, 2016"
+  manpageQuestion1: What is the primary purpose of the ScopedBookmarkAgent?
+  manpageQuestion2: How would you use ScopedBookmarkAgent to create a security scoped bookmark?
+  manpageQuestion3: Can you explain the typical use case for ScopedBookmarkAgent in a macOS environment?
+

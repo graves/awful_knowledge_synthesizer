@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `trustd`.\n\n\n\nManpage text:\n\ntrustd(8)\t\t    System Manager's Manual\t\t     trustd(8)\n\nNAME\n     trustd – Daemon and LaunchAgent that performs trust evaluations\n\nSYNOPSIS\n     trustd\n\nDESCRIPTION\n     trustd provides services for evaluating trust in certificates for all\n     processes on the system.\n\n     This command is not intended to be invoked directly.\n\nmacOS 15.3\t\t\tSat Jan 14 2017 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the trustd tool?
+  manpageQuestion2: How would you configure trustd to evaluate trust in certificates for system processes?
+  manpageQuestion3: Can you explain the role of trustd in the macOS system's certificate evaluation process?
+

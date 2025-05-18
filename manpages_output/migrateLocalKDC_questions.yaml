@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `migrateLocalKDC`.\n\n\n\nManpage text:\n\nmigrate(1)\t\t    General Commands Manual\t\t    migrate(1)\n\nNAME\n     migrateLocalKDC – migrates a LocalKDC\n\nSYNOPSIS\n     migrateLocalKDC\n\nDESCRIPTION\n     migrateLocalKDC migrates a localKDC database from an old installation\n\nFILES\n     migrateLocalKDC /var/db/krb5kdc/kdc.conf\n\nSEE ALSO\n     configureLocalKDC(1),\n\nHISTORY\n     migrateLocalKDC first appeared in version 10.6 of Mac OS X.\n\nDarwin\t\t\t\tJanuary 8, 2009 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the migrateLocalKDC tool?
+  manpageQuestion2: How would you use migrateLocalKDC to migrate a LocalKDC database from an old installation?
+  manpageQuestion3: Can you provide an example of using migrateLocalKDC to update the LocalKDC configuration on a macOS system?
+

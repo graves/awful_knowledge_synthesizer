@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `CloudKeychainProxy`.\n\n\n\nManpage text:\n\nCloudKeychainProxy(8)\t    System Manager's Manual\t CloudKeychainProxy(8)\n\nNAME\n     CloudKeychainProxy – part of iCloud keychain syncing\n\nDESCRIPTION\n     CloudKeychainProxy part of iCloud keychain syncing.\n\nmacOS 15.3\t\t       November 2, 2016 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the CloudKeychainProxy tool?
+  manpageQuestion2: How would you use CloudKeychainProxy to enable iCloud keychain syncing on a macOS system?
+  manpageQuestion3: Can you explain the role of CloudKeychainProxy in the context of iCloud keychain synchronization?
+
