@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `system_installd`.\n\n\n\nManpage text:\n\nsystem_installd(8)\t    System Manager's Manual\t    system_installd(8)\n\nNAME\n     system_installd – macOS software installation daemon\n\nDESCRIPTION\n     system_installd is used by the system during package installation. It\n     should not be invoked manually.\n\nSEE ALSO\n     installer(8), pkgutil(1), installd(8),\n\nmacOS 15.3\t\t       January 31, 2017 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the system_installd tool?
+  manpageQuestion2: How would you use system_installd in the context of macOS package installation?
+  manpageQuestion3: Can you explain the relationship between system_installd and other related tools like installer(8) or pkgutil(1)?
+

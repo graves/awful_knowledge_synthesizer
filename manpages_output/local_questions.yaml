@@ -1,0 +1,262 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `local`.\n\n\n\nManpage text:\n\nLOCAL(8)\t\t    System Manager's Manual\t\t      LOCAL(8)"
+  manpageQuestion1: What is the primary purpose of the LOCAL command?
+  manpageQuestion2: How would you use the LOCAL command to configure a local network interface?
+  manpageQuestion3: Can you provide an example of using the LOCAL command to set up a static IP address on a network interface?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `local`.\n\n\n\nManpage text:\n\nNAME\n       local - Postfix local mail delivery\n\nSYNOPSIS\n       local [generic Postfix daemon options]\n\nDESCRIPTION\n       The local(8) daemon processes delivery requests from the Postfix queue\n       manager to deliver mail to local recipients.  Each delivery request\n       specifies a queue file, a sender address, a domain or host to deliver\n       to, and one or more recipients.\tThis program expects to be run from\n       the master(8) process manager.\n\n       The local(8) daemon updates queue files and marks recipients as\n       finished, or it informs the queue manager that delivery should be tried\n       again at a later time. Delivery status reports are sent to the\n       bounce(8), defer(8) or trace(8) daemon as appropriate.\n\nCASE FOLDING\n       All delivery decisions are made using the bare recipient name (i.e. the\n       address localpart), folded to lower case.  See also under ADDRESS\n       EXTENSION below for a few exceptions.\n\nSYSTEM-WIDE AND USER-LEVEL ALIASING\n       The system administrator can set up one or more system-wide\n       sendmail-style alias databases.\tUsers can have sendmail-style\n       ~/.forward files.  Mail for name is delivered to the alias name, to\n       destinations in ~name/.forward, to the mailbox owned by the user name,\n       or it is sent back as undeliverable."
+  manpageQuestion1: What is the primary purpose of the local command in Postfix?
+  manpageQuestion2: How can the local command be used to deliver mail to a local user's mailbox?
+  manpageQuestion3: What is the role of alias databases in the local command's functionality?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `local`.\n\n\n\nManpage text:\n\nThe system administrator can specify a comma/space separated list of\n       ~/.forward like files through the forward_path configuration parameter.\n       Upon delivery, the local delivery agent tries each pathname in the list\n       until a file is found.\n\n       Delivery via ~/.forward files is done with the privileges of the\n       recipient.  Thus, ~/.forward like files must be readable by the\n       recipient, and their parent directory needs to have \"execute\"\n       permission for the recipient.\n\n       The forward_path parameter is subject to interpolation of $user\n       (recipient username), $home (recipient home directory), $shell\n       (recipient shell), $recipient (complete recipient address), $extension\n       (recipient address extension), $domain (recipient domain), $local\n       (entire recipient address localpart) and $recipient_delimiter. The\n       forms ${name?value} and ${name:value} expand conditionally to value\n       when $name is (is not) defined.\tCharacters that may have special\n       meaning to the shell or file system are replaced by underscores.  The\n       list of acceptable characters is specified with the\n       forward_expansion_filter configuration parameter."
+  manpageQuestion1: What is the primary purpose of the local command in macOS?
+  manpageQuestion2: How can the system administrator configure multiple forwarding files for local delivery using the forward_path parameter?
+  manpageQuestion3: What are the necessary permissions required for ~/.forward-like files to be accessible by the recipient?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `local`.
+
+
+
+    Manpage text:
+
+    An alias or ~/.forward file may list any combination of external
+           commands, destination file names, :include: directives, or mail
+           addresses.  See aliases(5) for a precise description. Each line in a
+           user's .forward file has the same syntax as the right-hand part of an
+           alias.
+
+           When an address is found in its own alias expansion, delivery is made
+           to the user instead. When a user is listed in the user's own ~/.forward
+           file, delivery is made to the user's mailbox instead.  An empty
+           ~/.forward file means do not forward mail.
+
+           In order to prevent the mail system from using up unreasonable amounts
+           of memory, input records read from :include: or from ~/.forward files
+           are broken up into chunks of length line_length_limit.
+
+           While expanding aliases, ~/.forward files, and so on, the program
+           attempts to avoid duplicate deliveries. The duplicate_filter_limit
+           configuration parameter limits the number of remembered recipients.
+  manpageQuestion1: What is the primary purpose of the `local` command in macOS?
+  manpageQuestion2: How does the `local` command handle duplicate mail deliveries when processing alias files?
+  manpageQuestion3: What is the effect of an empty ~/.forward file on mail forwarding in macOS?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `local`.
+
+
+
+    Manpage text:
+
+    MAIL FORWARDING
+           For the sake of reliability, forwarded mail is re-submitted as a new
+           message, so that each recipient has a separate on-file delivery status
+           record.
+
+           In order to stop mail forwarding loops early, the software adds an
+           optional Delivered-To: header with the final envelope recipient
+           address. If mail arrives for a recipient that is already listed in a
+           Delivered-To: header, the message is bounced.
+
+    MAILBOX DELIVERY
+           The default per-user mailbox is a file in the UNIX mail spool directory
+           (/var/mail/user or /var/spool/mail/user); the location can be specified
+           with the mail_spool_directory configuration parameter. Specify a name
+           ending in / for qmail-compatible maildir delivery.
+
+           Alternatively, the per-user mailbox can be a file in the user's home
+           directory with a name specified via the home_mailbox configuration
+           parameter. Specify a relative path name. Specify a name ending in / for
+           qmail-compatible maildir delivery.
+  manpageQuestion1: What is the primary purpose of the `local` resource in macOS?
+  manpageQuestion2: How can you configure the `local` resource to use a custom mailbox location in the user's home directory?
+  manpageQuestion3: 'What is the effect of adding a Delivered-To: header when using the `local` resource for mail forwarding?'
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `local`.
+
+
+
+    Manpage text:
+
+    Mailbox delivery can be delegated to an external command specified with
+           the mailbox_command_maps and mailbox_command configuration parameters.
+           The command executes with the privileges of the recipient user
+           (exceptions: secondary groups are not enabled; in case of delivery as
+           root, the command executes with the privileges of default_privs).
+
+           Mailbox delivery can be delegated to alternative message transports
+           specified in the master.cf file.  The mailbox_transport_maps and
+           mailbox_transport configuration parameters specify an optional message
+           transport that is to be used for all local recipients, regardless of
+           whether they are found in the UNIX passwd database.  The
+           fallback_transport_maps and fallback_transport parameters specify an
+           optional message transport for recipients that are not found in the
+           aliases(5) or UNIX passwd database.
+
+           In the case of UNIX-style mailbox delivery, the local(8) daemon
+           prepends a "From sender time_stamp" envelope header to each message,
+           prepends an X-Original-To: header with the recipient address as given
+           to Postfix, prepends an optional Delivered-To: header with the final
+           envelope recipient address, prepends a Return-Path: header with the
+           envelope sender address, prepends a > character to lines beginning with
+           "From ", and appends an empty line.  The mailbox is locked for
+           exclusive access while delivery is in progress. In case of problems, an
+           attempt is made to truncate the mailbox to its original length.
+  manpageQuestion1: What is the primary purpose of the local(8) daemon in Postfix?
+  manpageQuestion2: How can you configure the local(8) daemon to use an external command for mailbox delivery?
+  manpageQuestion3: What are the steps involved in the local(8) daemon's process when delivering a message to a UNIX-style mailbox?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `local`.
+
+
+
+    Manpage text:
+
+    In the case of maildir delivery, the local daemon prepends an optional
+           Delivered-To: header with the final envelope recipient address,
+           prepends an X-Original-To: header with the recipient address as given
+           to Postfix, and prepends a Return-Path: header with the envelope sender
+           address.
+
+    EXTERNAL COMMAND DELIVERY
+           The allow_mail_to_commands configuration parameter restricts delivery
+           to external commands. The default setting (alias, forward) forbids
+           command destinations in :include: files.
+
+           Optionally, the process working directory is changed to the path
+           specified with command_execution_directory (Postfix 2.2 and later).
+           Failure to change directory causes mail to be deferred.
+
+           The command_execution_directory parameter value is subject to
+           interpolation of $user (recipient username), $home (recipient home
+           directory), $shell (recipient shell), $recipient (complete recipient
+           address), $extension (recipient address extension), $domain (recipient
+           domain), $local (entire recipient address localpart) and
+           $recipient_delimiter. The forms ${name?value} and ${name:value} expand
+           conditionally to value when $name is (is not) defined.  Characters that
+           may have special meaning to the shell or file system are replaced by
+           underscores.  The list of acceptable characters is specified with the
+           execution_directory_expansion_filter configuration parameter.
+  manpageQuestion1: What is the primary purpose of the local command in the context of mail delivery?
+  manpageQuestion2: How can you configure the local command to execute a specific external program with a custom working directory?
+  manpageQuestion3: What are the possible ways to handle special characters in the command_execution_directory parameter?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `local`.\n\n\n\nManpage text:\n\nThe command is executed directly where possible. Assistance by the\n       shell (/bin/sh on UNIX systems) is used only when the command contains\n       shell magic characters, or when the command invokes a shell built-in\n       command.\n\n       A limited amount of command output (standard output and standard error)\n       is captured for inclusion with non-delivery status reports.  A command\n       is forcibly terminated if it does not complete within\n       command_time_limit seconds.  Command exit status codes are expected to\n       follow the conventions defined in <sysexits.h>.\tExit status 0 means\n       normal successful completion.\n\n       Postfix version 2.3 and later support RFC 3463-style enhanced status\n       codes.  If a command terminates with a non-zero exit status, and the\n       command output begins with an enhanced status code, this status code\n       takes precedence over the non-zero exit status.\n\n       A limited amount of message context is exported via environment\n       variables. Characters that may have special meaning to the shell are\n       replaced by underscores.  The list of acceptable characters is\n       specified with the command_expansion_filter configuration parameter."
+  manpageQuestion1: What is the primary purpose of the `local` command in macOS?
+  manpageQuestion2: How can you use the `local` command to capture and process limited output from a subprocess?
+  manpageQuestion3: What is the behavior of the `local` command when a command exceeds the command_time_limit?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `local`.\n\n\n\nManpage text:\n\nSHELL  The recipient user's login shell.\n\n       HOME   The recipient user's home directory.\n\n       USER   The bare recipient name.\n\n       EXTENSION\n\t      The optional recipient address extension.\n\n       DOMAIN The recipient address domain part.\n\n       LOGNAME\n\t      The bare recipient name.\n\n       LOCAL  The entire recipient address localpart (text to the left of the\n\t      rightmost @ character).\n\n       ORIGINAL_RECIPIENT\n\t      The entire recipient address, before any address rewriting or\n\t      aliasing (Postfix 2.5 and later).\n\n       RECIPIENT\n\t      The entire recipient address.\n\n       SENDER The entire sender address.\n\n       Additional remote client information is made available via the\n       following environment variables:\n\n       CLIENT_ADDRESS\n\t      Remote client network address. Available as of Postfix 2.2.\n\n       CLIENT_HELO\n\t      Remote client EHLO command parameter. Available as of Postfix\n\t      2.2.\n\n       CLIENT_HOSTNAME\n\t      Remote client hostname. Available as of Postfix 2.2."
+  manpageQuestion1: What is the primary purpose of the local environment variable in Postfix?
+  manpageQuestion2: How can you retrieve the recipient's full email address using Postfix environment variables?
+  manpageQuestion3: What command or method would you use to obtain the remote client's hostname in Postfix?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `local`.\n\n\n\nManpage text:\n\nCLIENT_PROTOCOL\n\t      Remote client protocol. Available as of Postfix 2.2.\n\n       SASL_METHOD\n\t      SASL authentication method specified in the remote client AUTH\n\t      command. Available as of Postfix 2.2.\n\n       SASL_SENDER\n\t      SASL sender address specified in the remote client MAIL FROM\n\t      command. Available as of Postfix 2.2.\n\n       SASL_USERNAME\n\t      SASL username specified in the remote client AUTH command.\n\t      Available as of Postfix 2.2.\n\n       The PATH environment variable is always reset to a system-dependent\n       default path, and environment variables whose names are blessed by the\n       export_environment configuration parameter are exported unchanged.\n\n       The current working directory is the mail queue directory.\n\n       The local(8) daemon prepends a \"From sender time_stamp\" envelope header\n       to each message, prepends an X-Original-To: header with the recipient\n       address as given to Postfix, prepends an optional Delivered-To: header\n       with the final recipient envelope address, prepends a Return-Path:\n       header with the sender envelope address, and appends no empty line."
+  manpageQuestion1: What is the primary purpose of the local(8) daemon in Postfix?
+  manpageQuestion2: How can you configure the local(8) daemon to export specific environment variables unchanged?
+  manpageQuestion3: What headers does the local(8) daemon add to each message it processes?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `local`.\n\n\n\nManpage text:\n\nEXTERNAL FILE DELIVERY\n       The delivery format depends on the destination filename syntax.\tThe\n       default is to use UNIX-style mailbox format.  Specify a name ending in\n       / for qmail-compatible maildir delivery.\n\n       The allow_mail_to_files configuration parameter restricts delivery to\n       external files. The default setting (alias, forward) forbids file\n       destinations in :include: files.\n\n       In the case of UNIX-style mailbox delivery, the local(8) daemon\n       prepends a \"From sender time_stamp\" envelope header to each message,\n       prepends an X-Original-To: header with the recipient address as given\n       to Postfix, prepends an optional Delivered-To: header with the final\n       recipient envelope address, prepends a > character to lines beginning\n       with \"From \", and appends an empty line.  The envelope sender address\n       is available in the Return-Path: header.  When the destination is a\n       regular file, it is locked for exclusive access while delivery is in\n       progress. In case of problems, an attempt is made to truncate a regular\n       file to its original length."
+  manpageQuestion1: What is the primary purpose of the local command in macOS?
+  manpageQuestion2: How can you configure the local command to deliver mail using a qmail-compatible maildir format instead of UNIX-style mailbox format?
+  manpageQuestion3: What are the implications of setting the allow_mail_to_files parameter to restrict delivery to external files?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `local`.\n\n\n\nManpage text:\n\nIn the case of maildir delivery, the local daemon prepends an optional\n       Delivered-To: header with the final envelope recipient address, and\n       prepends an X-Original-To: header with the recipient address as given\n       to Postfix.  The envelope sender address is available in the\n       Return-Path: header.\n\nADDRESS EXTENSION\n       The optional recipient_delimiter configuration parameter specifies how\n       to separate address extensions from local recipient names.\n\n       For example, with \"recipient_delimiter = +\", mail for name+foo is\n       delivered to the alias name+foo or to the alias name, to the\n       destinations listed in ~name/.forward+foo or in ~name/.forward, to the\n       mailbox owned by the user name, or it is sent back as undeliverable.\n\nDELIVERY RIGHTS\n       Deliveries to external files and external commands are made with the\n       rights of the receiving user on whose behalf the delivery is made.  In\n       the absence of a user context, the local(8) daemon uses the owner\n       rights of the :include: file or alias database.\tWhen those files are\n       owned by the superuser, delivery is made with the rights specified with\n       the default_privs configuration parameter."
+  manpageQuestion1: What is the primary purpose of the local daemon in the context of email delivery?
+  manpageQuestion2: How does the local daemon handle address extensions when the recipient_delimiter is set to '+', as in 'name+foo'?
+  manpageQuestion3: What are the delivery rights associated with external file and command deliveries in the local daemon?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `local`.
+
+
+
+    Manpage text:
+
+    STANDARDS
+           RFC 822 (ARPA Internet Text Messages)
+           RFC 3463 (Enhanced status codes)
+
+    DIAGNOSTICS
+           Problems and transactions are logged to syslogd(8).  Corrupted message
+           files are marked so that the queue manager can move them to the corrupt
+           queue afterwards.
+
+           Depending on the setting of the notify_classes parameter, the
+           postmaster is notified of bounces and of other trouble.
+
+    SECURITY
+           The local(8) delivery agent needs a dual personality 1) to access the
+           private Postfix queue and IPC mechanisms, 2) to impersonate the
+           recipient and deliver to recipient-specified files or commands. It is
+           therefore security sensitive.
+
+           The local(8) delivery agent disallows regular expression substitution
+           of $1 etc. in alias_maps, because that would open a security hole.
+
+           The local(8) delivery agent will silently ignore requests to use the
+           proxymap(8) server within alias_maps. Instead it will open the table
+           directly.  Before Postfix version 2.2, the local(8) delivery agent will
+           terminate with a fatal error.
+  manpageQuestion1: What is the primary purpose of the local command in the context of Postfix?
+  manpageQuestion2: How does the local command handle security-related configurations in Postfix?
+  manpageQuestion3: What is the behavior of the local command when encountering corrupted message files?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `local`.\n\n\n\nManpage text:\n\nBUGS\n       For security reasons, the message delivery status of external commands\n       or of external files is never checkpointed to file. As a result, the\n       program may occasionally deliver more than once to a command or\n       external file. Better safe than sorry.\n\n       Mutually-recursive aliases or ~/.forward files are not detected early.\n       The resulting mail forwarding loop is broken by the use of the\n       Delivered-To: message header.\n\nCONFIGURATION PARAMETERS\n       Changes to main.cf are picked up automatically, as local(8) processes\n       run for only a limited amount of time. Use the command \"postfix reload\"\n       to speed up a change.\n\n       The text below provides only a parameter summary. See postconf(5) for\n       more details including examples.\n\nCOMPATIBILITY CONTROLS\n\n       biff (yes)\n\t      Whether or not to use the local biff service.\n\n       expand_owner_alias (no)\n\t      When delivering to an alias \"aliasname\" that has an\n\t      \"owner-aliasname\" companion alias, set the envelope sender\n\t      address to the expansion of the \"owner-aliasname\" alias."
+  manpageQuestion1: What is the primary purpose of the `local` command in macOS?
+  manpageQuestion2: How can you configure the local command to use the biff service for mail notifications?
+  manpageQuestion3: What is the effect of setting the expand_owner_alias parameter to 'yes' in the local command's configuration?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `local`.\n\n\n\nManpage text:\n\nowner_request_special (yes)\n\t      Give special treatment to owner-listname and listname-request\n\t      address localparts: don't split such addresses when the\n\t      recipient_delimiter is set to \"-\".\n\n       sun_mailtool_compatibility (no)\n\t      Obsolete SUN mailtool compatibility feature.\n\n       Available in Postfix version 2.3 and later:\n\n       frozen_delivered_to (yes)\n\t      Update the local(8) delivery agent's idea of the Delivered-To:\n\t      address (see prepend_delivered_header) only once, at the start\n\t      of a delivery attempt; do not update the Delivered-To: address\n\t      while expanding aliases or .forward files.\n\n       Available in Postfix version 2.5.3 and later:\n\n       strict_mailbox_ownership (yes)\n\t      Defer delivery when a mailbox file is not owned by its\n\t      recipient.\n\n       reset_owner_alias (no)\n\t      Reset the local(8) delivery agent's idea of the owner-alias\n\t      attribute, when delivering mail to a child alias that does not\n\t      have its own owner alias."
+  manpageQuestion1: What is the primary purpose of the local resource in the context of Postfix mail delivery?
+  manpageQuestion2: How can you configure the local resource to give special treatment to owner-listname and listname-request addresses when the recipient_delimiter is set to '-', and what does this mean?
+  manpageQuestion3: What is the effect of enabling the strict_mailbox_ownership option in the local resource, and how does it impact mail delivery?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `local`.\n\n\n\nManpage text:\n\nAvailable in Postfix version 3.0 and later:\n\n       local_delivery_status_filter ($default_delivery_status_filter)\n\t      Optional filter for the local(8) delivery agent to change the\n\t      status code or explanatory text of successful or unsuccessful\n\t      deliveries.\n\nDELIVERY METHOD CONTROLS\n       The precedence of local(8) delivery methods from high to low is:\n       aliases, .forward files, mailbox_transport_maps, mailbox_transport,\n       mailbox_command_maps, mailbox_command, home_mailbox,\n       mail_spool_directory, fallback_transport_maps, fallback_transport, and\n       luser_relay.\n\n       alias_maps (see 'postconf -d' output)\n\t      The alias databases that are used for local(8) delivery.\n\n       forward_path (see 'postconf -d' output)\n\t      The local(8) delivery agent search list for finding a .forward\n\t      file with user-specified delivery methods.\n\n       mailbox_transport_maps (empty)\n\t      Optional lookup tables with per-recipient message delivery\n\t      transports to use for local(8) mailbox delivery, whether or not\n\t      the recipients are found in the UNIX passwd database."
+  manpageQuestion1: What is the primary purpose of the local(8) delivery agent in Postfix?
+  manpageQuestion2: How can you configure the local(8) delivery agent to modify the status code of successful deliveries?
+  manpageQuestion3: What is the order of precedence for local(8) delivery methods in Postfix?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `local`.\n\n\n\nManpage text:\n\nmailbox_transport (empty)\n\t      Optional message delivery transport that the local(8) delivery\n\t      agent should use for mailbox delivery to all local recipients,\n\t      whether or not they are found in the UNIX passwd database.\n\n       mailbox_command_maps (empty)\n\t      Optional lookup tables with per-recipient external commands to\n\t      use for local(8) mailbox delivery.\n\n       mailbox_command (empty)\n\t      Optional external command that the local(8) delivery agent\n\t      should use for mailbox delivery.\n\n       home_mailbox (empty)\n\t      Optional pathname of a mailbox file relative to a local(8)\n\t      user's home directory.\n\n       mail_spool_directory (see 'postconf -d' output)\n\t      The directory where local(8) UNIX-style mailboxes are kept.\n\n       fallback_transport_maps (empty)\n\t      Optional lookup tables with per-recipient message delivery\n\t      transports for recipients that the local(8) delivery agent could\n\t      not find in the aliases(5) or UNIX password database."
+  manpageQuestion1: What is the primary purpose of the local(8) delivery agent?
+  manpageQuestion2: How would you configure the local(8) delivery agent to use a custom external command for mailbox delivery?
+  manpageQuestion3: What is the default location where local(8) stores UNIX-style mailboxes?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `local`.\n\n\n\nManpage text:\n\nfallback_transport (empty)\n\t      Optional message delivery transport that the local(8) delivery\n\t      agent should use for names that are not found in the aliases(5)\n\t      or UNIX password database.\n\n       luser_relay (empty)\n\t      Optional catch-all destination for unknown local(8) recipients.\n\n       Available in Postfix version 2.2 and later:\n\n       command_execution_directory (empty)\n\t      The local(8) delivery agent working directory for delivery to\n\t      external command.\n\nMAILBOX LOCKING CONTROLS\n\n       deliver_lock_attempts (20)\n\t      The maximal number of attempts to acquire an exclusive lock on a\n\t      mailbox file or bounce(8) logfile.\n\n       deliver_lock_delay (1s)\n\t      The time between attempts to acquire an exclusive lock on a\n\t      mailbox file or bounce(8) logfile.\n\n       stale_lock_time (500s)\n\t      The time after which a stale exclusive mailbox lockfile is\n\t      removed.\n\n       mailbox_delivery_lock (see 'postconf -d' output)\n\t      How to lock a UNIX-style local(8) mailbox before attempting\n\t      delivery."
+  manpageQuestion1: What is the primary purpose of the local command in Postfix?
+  manpageQuestion2: How would you configure the local delivery agent to use a specific command execution directory for external commands?
+  manpageQuestion3: What are the key configuration parameters related to mailbox locking in the local delivery agent?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `local`.\n\n\n\nManpage text:\n\nRESOURCE AND RATE CONTROLS\n\n       command_time_limit (1000s)\n\t      Time limit for delivery to external commands.\n\n       duplicate_filter_limit (1000)\n\t      The maximal number of addresses remembered by the address\n\t      duplicate filter for aliases(5) or virtual(5) alias expansion,\n\t      or for showq(8) queue displays.\n\n       local_destination_concurrency_limit (2)\n\t      The maximal number of parallel deliveries via the local mail\n\t      delivery transport to the same recipient (when\n\t      \"local_destination_recipient_limit = 1\") or the maximal number\n\t      of parallel deliveries to the same local domain (when\n\t      \"local_destination_recipient_limit > 1\").\n\n       local_destination_recipient_limit (1)\n\t      The maximal number of recipients per message delivery via the\n\t      local mail delivery transport.\n\n       mailbox_size_limit (51200000)\n\t      The maximal size of any local(8) individual mailbox or maildir\n\t      file, or zero (no limit).\n\nSECURITY CONTROLS\n\n       allow_mail_to_commands (alias, forward)\n\t      Restrict local(8) mail delivery to external commands."
+  manpageQuestion1: What is the primary purpose of the `local` resource in the context of mail delivery?
+  manpageQuestion2: How can you configure the `local` resource to limit the number of parallel deliveries to the same local domain?
+  manpageQuestion3: What is the function of the `allow_mail_to_commands` parameter in the security controls section?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `local`.\n\n\n\nManpage text:\n\nallow_mail_to_files (alias, forward)\n\t      Restrict local(8) mail delivery to external files.\n\n       command_expansion_filter (see 'postconf -d' output)\n\t      Restrict the characters that the local(8) delivery agent allows\n\t      in $name expansions of $mailbox_command and\n\t      $command_execution_directory.\n\n       default_privs (nobody)\n\t      The default rights used by the local(8) delivery agent for\n\t      delivery to external file or command.\n\n       forward_expansion_filter (see 'postconf -d' output)\n\t      Restrict the characters that the local(8) delivery agent allows\n\t      in $name expansions of $forward_path.\n\n       Available in Postfix version 2.2 and later:\n\n       execution_directory_expansion_filter (see 'postconf -d' output)\n\t      Restrict the characters that the local(8) delivery agent allows\n\t      in $name expansions of $command_execution_directory.\n\n       Available in Postfix version 2.5.3 and later:\n\n       strict_mailbox_ownership (yes)\n\t      Defer delivery when a mailbox file is not owned by its\n\t      recipient."
+  manpageQuestion1: What is the primary purpose of the local resource in macOS?
+  manpageQuestion2: How can you configure the local(8) delivery agent to restrict the characters allowed in $name expansions of $forward_path?
+  manpageQuestion3: What is the effect of setting strict_mailbox_ownership to yes in the local(8) delivery agent?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `local`.\n\n\n\nManpage text:\n\nMISCELLANEOUS CONTROLS\n\n       config_directory (see 'postconf -d' output)\n\t      The default location of the Postfix main.cf and master.cf\n\t      configuration files.\n\n       daemon_timeout (18000s)\n\t      How much time a Postfix daemon process may take to handle a\n\t      request before it is terminated by a built-in watchdog timer.\n\n       delay_logging_resolution_limit (2)\n\t      The maximal number of digits after the decimal point when\n\t      logging sub-second delay values.\n\n       export_environment (see 'postconf -d' output)\n\t      The list of environment variables that a Postfix process will\n\t      export to non-Postfix processes.\n\n       ipc_timeout (3600s)\n\t      The time limit for sending or receiving information over an\n\t      internal communication channel.\n\n       local_command_shell (empty)\n\t      Optional shell program for local(8) delivery to non-Postfix\n\t      command.\n\n       max_idle (100s)\n\t      The maximum amount of time that an idle Postfix daemon process\n\t      waits for an incoming connection before terminating voluntarily."
+  manpageQuestion1: What is the primary purpose of the local resource in the context of Postfix mail system?
+  manpageQuestion2: How can you configure the local command shell for Postfix to use a custom script located at /usr/local/bin/custom-shell?
+  manpageQuestion3: What is the default value for the daemon_timeout parameter in Postfix, and how does it affect the system?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `local`.\n\n\n\nManpage text:\n\nmax_use (100)\n\t      The maximal number of incoming connections that a Postfix daemon\n\t      process will service before terminating voluntarily.\n\n       prepend_delivered_header (command, file, forward)\n\t      The message delivery contexts where the Postfix local(8)\n\t      delivery agent prepends a Delivered-To:  message header with the\n\t      address that the mail was delivered to.\n\n       process_id (read-only)\n\t      The process ID of a Postfix command or daemon process.\n\n       process_name (read-only)\n\t      The process name of a Postfix command or daemon process.\n\n       propagate_unmatched_extensions (canonical, virtual)\n\t      What address lookup tables copy an address extension from the\n\t      lookup key to the lookup result.\n\n       queue_directory (see 'postconf -d' output)\n\t      The location of the Postfix top-level queue directory.\n\n       recipient_delimiter (empty)\n\t      The set of characters that can separate a user name from its\n\t      extension (example: user+foo), or a .forward file name from its\n\t      extension (example: .forward+foo)."
+  manpageQuestion1: What is the primary purpose of the local resource in Postfix?
+  manpageQuestion2: How can you configure the Postfix local delivery agent to prepend a Delivered-To header with the recipient address?
+  manpageQuestion3: What is the function of the queue_directory parameter in Postfix configuration?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `local`.\n\n\n\nManpage text:\n\nrequire_home_directory (no)\n\t      Require that a local(8) recipient's home directory exists before\n\t      mail delivery is attempted.\n\n       syslog_facility (mail)\n\t      The syslog facility of Postfix logging.\n\n       syslog_name (see 'postconf -d' output)\n\t      A prefix that is prepended to the process name in syslog\n\t      records, so that, for example, \"smtpd\" becomes \"prefix/smtpd\".\n\nFILES\n       The following are examples; details differ between systems.\n       $HOME/.forward, per-user aliasing\n       /etc/aliases, system-wide alias database\n       /var/spool/mail, system mailboxes\n\nSEE ALSO\n       qmgr(8), queue manager\n       bounce(8), delivery status reports\n       newaliases(1), create/update alias database\n       postalias(1), create/update alias database\n       aliases(5), format of alias database\n       postconf(5), configuration parameters\n       master(5), generic daemon options\n       syslogd(8), system logging\n\nLICENSE\n       The Secure Mailer license must be distributed with this software."
+  manpageQuestion1: What is the primary purpose of the local command in the context of mail delivery?
+  manpageQuestion2: How can you configure the local command to ensure that a recipient's home directory exists before attempting mail delivery?
+  manpageQuestion3: What is the role of the syslog_name parameter in the local command's configuration?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `local`.\n\n\n\nManpage text:\n\nHISTORY\n       The Delivered-To: message header appears in the qmail system by Daniel\n       Bernstein.\n\n       The maildir structure appears in the qmail system by Daniel Bernstein.\n\nAUTHOR(S)\n       Wietse Venema\n       IBM T.J. Watson Research\n       P.O. Box 704\n       Yorktown Heights, NY 10598, USA\n\n       Wietse Venema\n       Google, Inc.\n       111 8th Avenue\n       New York, NY 10011, USA\n\n\t\t\t\t\t\t\t\t      LOCAL(8)"
+  manpageQuestion1: What is the primary purpose of the local command in macOS?
+  manpageQuestion2: How would you use the local command to send an email message with a specific subject line and recipient address?
+  manpageQuestion3: Can you provide an example of using the local command to configure a mail delivery agent for a specific user account?
+

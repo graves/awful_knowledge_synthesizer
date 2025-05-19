@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `screensharingd`.\n\n\n\nManpage text:\n\nscreensharingd(8)\t    System Manager's Manual\t     screensharingd(8)\n\nNAME\n     screensharingd – listens for VNC connections from clients.\n\nDESCRIPTION\n     The screensharingd command should not be run directly. Enable Screen\n     Sharing or Remote Management to use this service.\n\nmacOS 15.3\t\t       November 10, 2016\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the screensharingd service?
+  manpageQuestion2: How can a user enable Screen Sharing to utilize the screensharingd service?
+  manpageQuestion3: What is the recommended method for managing VNC connections via screensharingd?
+

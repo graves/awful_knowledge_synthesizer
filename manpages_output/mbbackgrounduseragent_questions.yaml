@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mbbackgrounduseragent`.\n\n\n\nManpage text:\n\nmbbackgrounduseragent(8)    System Manager's Manual   mbbackgrounduseragent(8)\n\nNAME\n     mbbackgrounduseragent – helper for the Setup Assistant application.\n\nDESCRIPTION\n     mbbackgrounduseragent is used by the Setup Assistant application and runs\n     as the target user in order to configure that user from a background\n     agents or non-Aqua session agents. It is not meant to be invoked\n     directly.\n\nmacOS 15.3\t\t       November 2, 2016 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the mbbackgrounduseragent tool?
+  manpageQuestion2: How would you use mbbackgrounduseragent in the context of the Setup Assistant application?
+  manpageQuestion3: Can you explain the role of mbbackgrounduseragent in configuring a user from a background agent or non-Aqua session agent?
+

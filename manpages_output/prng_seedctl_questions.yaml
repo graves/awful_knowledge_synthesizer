@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `prng_seedctl`.\n\n\n\nManpage text:\n\nprng_seedctl(1) \t    General Commands Manual\t       prng_seedctl(1)\n\nNAME\n     prng_seedctl – Loads and updates the kernel PRNG seed file\n\nDESCRIPTION\n     The prng_seedctl loads the kernel PRNG seed file at\n     /var/db/SystemEntropyCache (if present) and writes it to /dev/random.  It\n     then calls getentropy(2) to get a new seed to update the seed file.\n\nEXIT STATUS\n     The prng_seedctl utility exits 0 on success and greater than 0 on error.\n\nSEE ALSO\n     getentropy(2), random(4)\n\nDarwin\t\t\t       November 13, 2018\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the prng_seedctl command?
+  manpageQuestion2: How can you use prng_seedctl to update the kernel PRNG seed file with a new entropy source?
+  manpageQuestion3: What is the typical exit status returned by prng_seedctl after successfully updating the seed file?
+

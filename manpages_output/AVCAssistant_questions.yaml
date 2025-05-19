@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `AVCAssistant`.\n\n\n\nManpage text:\n\nAVCAssistant(8) \t    System Manager's Manual\t       AVCAssistant(8)\n\nNAME\n     AVCAssistant – CoreMediaIO DAL Assistant Process.\n\nDESCRIPTION\n     AVCAssistant is used by the CoreMediaIO Device Abstraction Layer Plug-In\n     that provides audio/video capture from FireWire (IEEE 1394) AVC-class\n     devices (DV and HDV cameras and decks) using AVFoundation Capture APIs.\n     The process allows multiple applications to simultaneously capture from\n     the same AVC device.\n\nmacOS 15.3\t\t       November 11, 2016\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the AVCAssistant tool?
+  manpageQuestion2: How does AVCAssistant facilitate audio/video capture from FireWire AVC-class devices?
+  manpageQuestion3: What role does AVCAssistant play in allowing multiple applications to access the same AVC device simultaneously?
+

@@ -1,0 +1,55 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ssh-agent`.\n\n\n\nManpage text:\n\nSSH-AGENT(1)\t\t    General Commands Manual\t\t  SSH-AGENT(1)\n\nNAME\n     ssh-agent – OpenSSH authentication agent\n\nSYNOPSIS\n     ssh-agent [-c | -s] [-Dd] [-a bind_address] [-E fingerprint_hash]\n\t       [-O option] [-P allowed_providers] [-t life]\n     ssh-agent [-a bind_address] [-E fingerprint_hash] [-O option]\n\t       [-P allowed_providers] [-t life] command [arg ...]\n     ssh-agent [-c | -s] -k\n\nDESCRIPTION\n     ssh-agent is a program to hold private keys used for public key\n     authentication.  Through use of environment variables the agent can be\n     located and automatically used for authentication when logging in to\n     other machines using ssh(1).\n\n     The options are as follows:\n\n     -a bind_address\n\t     Bind the agent to the UNIX-domain socket bind_address.  The\n\t     default is $TMPDIR/ssh-XXXXXXXXXX/agent.<ppid>.\n\n     -c      Generate C-shell commands on stdout.  This is the default if\n\t     SHELL looks like it's a csh style of shell.\n\n     -D      Foreground mode.  When this option is specified, ssh-agent will\n\t     not fork."
+  manpageQuestion1: What is the primary purpose of the ssh-agent tool?
+  manpageQuestion2: How would you use ssh-agent to start it in foreground mode and bind it to a specific UNIX-domain socket address?
+  manpageQuestion3: Can you provide an example of using ssh-agent to generate C-shell commands for a new session?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ssh-agent`.\n\n\n\nManpage text:\n\n-d      Debug mode.  When this option is specified, ssh-agent will not\n\t     fork and will write debug information to standard error.\n\n     -E fingerprint_hash\n\t     Specifies the hash algorithm used when displaying key\n\t     fingerprints.  Valid options are: “md5” and “sha256”.  The\n\t     default is “sha256”.\n\n     -k      Kill the current agent (given by the SSH_AGENT_PID environment\n\t     variable).\n\n     -O option\n\t     Specify an option when starting ssh-agent.  Currently two options\n\t     are supported: allow-remote-pkcs11 and no-restrict-websafe.\n\n\t     The allow-remote-pkcs11 option allows clients of a forwarded\n\t     ssh-agent to load PKCS#11 or FIDO provider libraries.  By default\n\t     only local clients may perform this operation.  Note that\n\t     signalling that an ssh-agent client is remote is performed by\n\t     ssh(1), and use of other tools to forward access to the agent\n\t     socket may circumvent this restriction.\n\n\t     The no-restrict-websafe option instructs ssh-agent to permit\n\t     signatures using FIDO keys that might be web authentication\n\t     requests.\tBy default, ssh-agent refuses signature requests for\n\t     FIDO keys where the key application string does not start with\n\t     “ssh:” and when the data to be signed does not appear to be a\n\t     ssh(1) user authentication request or a ssh-keygen(1) signature.\n\t     The default behaviour prevents forwarded access to a FIDO key\n\t     from also implicitly forwarding the ability to authenticate to\n\t     websites."
+  manpageQuestion1: What is the primary purpose of the ssh-agent tool?
+  manpageQuestion2: How can you enable debug mode for ssh-agent to troubleshoot issues?
+  manpageQuestion3: What command can be used to kill the current ssh-agent instance?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ssh-agent`.\n\n\n\nManpage text:\n\n-P allowed_providers\n\t     Specify a pattern-list of acceptable paths for PKCS#11 provider\n\t     and FIDO authenticator middleware shared libraries that may be\n\t     used with the -S or -s options to ssh-add(1).  Libraries that do\n\t     not match the pattern list will be refused.  See PATTERNS in\n\t     ssh_config(5) for a description of pattern-list syntax.  The\n\t     default list is “usr/lib*/*,/usr/local/lib*/*”.\n\n     -s      Generate Bourne shell commands on stdout.\tThis is the default if\n\t     SHELL does not look like it's a csh style of shell.\n\n     -t life\n\t     Set a default value for the maximum lifetime of identities added\n\t     to the agent.  The lifetime may be specified in seconds or in a\n\t     time format specified in sshd_config(5).  A lifetime specified\n\t     for an identity with ssh-add(1) overrides this value.  Without\n\t     this option the default maximum lifetime is forever.\n\n     command [arg ...]\n\t     If a command (and optional arguments) is given, this is executed\n\t     as a subprocess of the agent.  The agent exits automatically when\n\t     the command given on the command line terminates."
+  manpageQuestion1: What is the primary purpose of the ssh-agent tool?
+  manpageQuestion2: How can you configure ssh-agent to use specific PKCS#11 provider paths?
+  manpageQuestion3: What is the process for executing a command through ssh-agent using its subprocess functionality?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ssh-agent`.
+
+
+
+    Manpage text:
+
+    There are two main ways to get an agent set up.  The first is at the
+         start of an X session, where all other windows or programs are started as
+         children of the ssh-agent program.  The agent starts a command under
+         which its environment variables are exported, for example ssh-agent xterm
+         &.  When the command terminates, so does the agent.
+
+         The second method is used for a login session.  When ssh-agent is
+         started, it prints the shell commands required to set its environment
+         variables, which in turn can be evaluated in the calling shell, for
+         example eval `ssh-agent -s`.
+
+         In both cases, ssh(1) looks at these environment variables and uses them
+         to establish a connection to the agent.
+
+         The agent initially does not have any private keys.  Keys are added using
+         ssh-add(1) or by ssh(1) when AddKeysToAgent is set in ssh_config(5).
+         Multiple identities may be stored in ssh-agent concurrently and ssh(1)
+         will automatically use them if present.  ssh-add(1) is also used to
+         remove keys from ssh-agent and to query the keys that are held in one.
+  manpageQuestion1: What is the primary purpose of the ssh-agent tool?
+  manpageQuestion2: How can you set up an X session to use ssh-agent for managing SSH keys?
+  manpageQuestion3: What is the correct command to start ssh-agent and evaluate its environment variables in a login shell?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ssh-agent`.\n\n\n\nManpage text:\n\nConnections to ssh-agent may be forwarded from further remote hosts using\n     the -A option to ssh(1) (but see the caveats documented therein),\n     avoiding the need for authentication data to be stored on other machines.\n     Authentication passphrases and private keys never go over the network:\n     the connection to the agent is forwarded over SSH remote connections and\n     the result is returned to the requester, allowing the user access to\n     their identities anywhere in the network in a secure fashion.\n\nENVIRONMENT\n     SSH_AGENT_PID  When ssh-agent starts, it stores the name of the agent's\n\t\t    process ID (PID) in this variable.\n\n     SSH_AUTH_SOCK  When ssh-agent starts, it creates a UNIX-domain socket and\n\t\t    stores its pathname in this variable.  It is accessible\n\t\t    only to the current user, but is easily abused by root or\n\t\t    another instance of the same user.\n\nFILES\n     $TMPDIR/ssh-XXXXXXXXXX/agent.<ppid>\n\t     UNIX-domain sockets used to contain the connection to the\n\t     authentication agent.  These sockets should only be readable by\n\t     the owner.  The sockets should get automatically removed when the\n\t     agent exits."
+  manpageQuestion1: What is the primary purpose of the ssh-agent tool?
+  manpageQuestion2: How can you forward an SSH agent connection to a remote host for secure authentication?
+  manpageQuestion3: What environment variables does ssh-agent set and what is their purpose?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `ssh-agent`.\n\n\n\nManpage text:\n\nSEE ALSO\n     ssh(1), ssh-add(1), ssh-keygen(1), ssh_config(5), sshd(8)\n\nAUTHORS\n     OpenSSH is a derivative of the original and free ssh 1.2.12 release by\n     Tatu Ylonen.  Aaron Campbell, Bob Beck, Markus Friedl, Niels Provos, Theo\n     de Raadt and Dug Song removed many bugs, re-added newer features and\n     created OpenSSH.  Markus Friedl contributed the support for SSH protocol\n     versions 1.5 and 2.0.\n\nmacOS 15.3\t\t\tAugust 10, 2023 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the ssh-agent tool?
+  manpageQuestion2: How would you use ssh-agent to manage SSH keys on a macOS system?
+  manpageQuestion3: Can you provide an example of using ssh-agent in conjunction with ssh-keygen to set up SSH authentication?
+

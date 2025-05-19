@@ -1,0 +1,61 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `string`.\n\n\n\nManpage text:\n\nSTRING(3)\t\t   Library Functions Manual\t\t     STRING(3)\n\nNAME\n     index, rindex, stpcpy, strcasecmp, strcat, strchr, strcmp, strcpy,\n     strcspn, strerror, strlen, strncasecmp, strncat, strncmp, strncpy,\n     strpbrk, strrchr, strsep, strspn, strstr, strtok – string specific\n     functions\n\nLIBRARY\n     Standard C Library (libc, -lc)\n\nSYNOPSIS\n     #include <strings.h>\n\n     char *\n     index(const char *s, int c);\n\n     char *\n     rindex(const char *s, int c);\n\n     int\n     strcasecmp(const char *s1, const char *s2);\n\n     int\n     strncasecmp(const char *s1, const char *s2, size_t n);\n\n     #include <string.h>\n\n     char *\n     stpcpy(char *dst, const char *src);\n\n     char *\n     strcat(char *restrict s1, const char *restrict s2);\n\n     char *\n     strchr(const char *s, int c);\n\n     int\n     strcmp(const char *s1, const char *s2);\n\n     char *\n     strcpy(char *restrict s1, const char *restrict s2);\n\n     size_t\n     strcspn(const char *s1, const char *s2);\n\n     char *\n     strerror(int errnum);"
+  manpageQuestion1: What is the primary purpose of the string functions provided in the manpage?
+  manpageQuestion2: How would you use the strcpy function to copy a string from one location to another in C?
+  manpageQuestion3: Can you provide an example of using the strcasecmp function to compare two strings in a case-insensitive manner?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `string`.
+
+
+
+    Manpage text:
+
+    size_t
+         strlen(const char *s);
+
+         char *
+         strncat(char *restrict s1, const char *restrict s2, size_t n);
+
+         int
+         strncmp(const char *s1, const char *s2, size_t n);
+
+         char *
+         strncpy(char *restrict s1, const char *restrict s2, size_t n);
+
+         char *
+         strpbrk(const char *s1, const char *s2);
+
+         char *
+         strrchr(const char *s, int c);
+
+         char *
+         strsep(char **stringp, const char *delim);
+
+         size_t
+         strspn(const char *s1, const char *s2);
+
+         char *
+         strstr(const char *s1, const char *s2);
+
+         char *
+         strtok(char *restrict s1, const char *restrict s2);
+
+    DESCRIPTION
+         The string functions manipulate strings that are terminated by a null
+         byte.
+
+         See the specific manual pages for more information.  For manipulating
+         variable length generic objects as byte strings (without the null byte
+         check), see bstring(3).
+
+         Except as noted in their specific manual pages, the string functions do
+         not test the destination for size limitations.
+  manpageQuestion1: What is the primary purpose of the string functions in the C standard library?
+  manpageQuestion2: How would you use the strncmp function to compare the first 5 characters of two strings, 'hello' and 'helicopter', without considering the null bytes?
+  manpageQuestion3: Can you provide an example of using the strsep function to split a string into tokens separated by spaces, and show how to iterate through the tokens?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `string`.\n\n\n\nManpage text:\n\nSEE ALSO\n     bstring(3), index(3), rindex(3), stpcpy(3), strcasecmp(3), strcat(3),\n     strchr(3), strcmp(3), strcpy(3), strcspn(3), strerror(3), strlen(3),\n     strpbrk(3), strrchr(3), strsep(3), strspn(3), strstr(3), strtok(3)\n\nSTANDARDS\n     The strcat(), strncat(), strchr(), strrchr(), strcmp(), strncmp(),\n     strcpy(), strncpy(), strerror(), strlen(), strpbrk(), strspn(),\n     strcspn(), strstr(), and strtok() functions conform to ISO/IEC 9899:1990\n     (“ISO C90”).\n\nmacOS 15.3\t\t       December 11, 1993\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the string resource?
+  manpageQuestion2: How would you use the string functions to concatenate two strings and ensure that the resulting string does not exceed a specified length?
+  manpageQuestion3: Can you provide an example of using the string functions to compare two strings case-insensitively and determine if they are equal?
+

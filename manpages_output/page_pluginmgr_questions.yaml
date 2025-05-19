@@ -1,0 +1,174 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `page_pluginmgr`.\n\n\n\nManpage text:\n\npage_pluginmgr(n)\t    Parser generator tools\t     page_pluginmgr(n)\n\n______________________________________________________________________________\n\nNAME\n       page_pluginmgr - page plugin manager\n\nSYNOPSIS\n       package require page::pluginmgr\t?0.2?\n\n       package require fileutil\n\n       ::page::pluginmgr::reportvia cmd\n\n       ::page::pluginmgr::report level text ?from ?to??\n\n       ::page::pluginmgr::log cmd\n\n       ::page::pluginmgr::configuration name\n\n       ::page::pluginmgr::reader name\n\n       ::page::pluginmgr::rconfigure dict\n\n       ::page::pluginmgr::rtimeable\n\n       ::page::pluginmgr::rtime\n\n       ::page::pluginmgr::rgettime\n\n       ::page::pluginmgr::rhelp\n\n       ::page::pluginmgr::rlabel\n\n       ::page::pluginmgr::read read eof ?complete?\n\n       read num\n\n       eof\n\n       done\n\n       ::page::pluginmgr::writer name\n\n       ::page::pluginmgr::wconfigure dict\n\n       ::page::pluginmgr::wtimeable\n\n       ::page::pluginmgr::wtime\n\n       ::page::pluginmgr::wgettime"
+  manpageQuestion1: What is the primary purpose of the page_pluginmgr tool?
+  manpageQuestion2: How would you use page_pluginmgr to report the status of a plugin with the 'reportvia' command?
+  manpageQuestion3: Can you provide an example of using page_pluginmgr to configure a plugin with the 'rconfigure' command?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `page_pluginmgr`.
+
+
+
+    Manpage text:
+
+    ::page::pluginmgr::whelp
+
+           ::page::pluginmgr::wlabel
+
+           ::page::pluginmgr::write chan data
+
+           ::page::pluginmgr::transform name
+
+           ::page::pluginmgr::tconfigure id dict
+
+           ::page::pluginmgr::ttimeable id
+
+           ::page::pluginmgr::ttime id
+
+           ::page::pluginmgr::tgettime id
+
+           ::page::pluginmgr::thelp id
+
+           ::page::pluginmgr::tlabel id
+
+           ::page::pluginmgr::transform_do id data
+
+           page_cdefinition
+
+           page_rfeature name
+
+           page_rtime
+
+           page_rgettime
+
+           page_rlabel
+
+           page_rhelp
+
+           page_roptions
+
+           page_rconfigure option value
+
+           page_rrun
+
+           page_read num
+
+           page_read_done
+
+           page_eof
+
+           page_info text ?from ?to??
+
+           page_warning text ?from ?to??
+
+           page_error text ?from ?to??
+
+           page_log_info text
+
+           page_log_warning text
+
+           page_log_error text
+
+           page_wfeature
+
+           page_wtime
+
+           page_wgettime
+
+           page_wlabel
+
+           page_whelp
+
+           page_woptions
+  manpageQuestion1: What is the primary purpose of the page_pluginmgr resource?
+  manpageQuestion2: How can you retrieve the time associated with a specific plugin using page_pluginmgr?
+  manpageQuestion3: What is the process for transforming data through a plugin manager using page_pluginmgr?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `page_pluginmgr`.
+
+
+
+    Manpage text:
+
+    page_wconfigure option value
+
+           page_wrun chan data
+
+           page_info text ?from ?to??
+
+           page_warning text ?from ?to??
+
+           page_error text ?from ?to??
+
+           page_log_info text
+
+           page_log_warning text
+
+           page_log_error text
+
+           page_tfeature
+
+           page_ttime
+
+           page_tgettime
+
+           page_tlabel
+
+           page_thelp
+
+           page_toptions
+
+           page_tconfigure option value
+
+           page_trun chan data
+
+           page_info text ?from ?to??
+
+           page_warning text ?from ?to??
+
+           page_error text ?from ?to??
+
+           page_log_info text
+
+           page_log_warning text
+
+           page_log_error text
+
+    ______________________________________________________________________________
+
+    DESCRIPTION
+           This package provides the plugin manager central to the page
+           application. It manages the various reader, writer, configuration, and
+           transformation plugins which actually process the text (read,
+           transform, and write).
+
+           All plugins are loaded into slave interpreters specially prepared for
+           them. While implemented using packages they need this special
+           environment and are not usable in a plain interpreter, like tclsh.
+           Because of that they are only described in general terms in section
+           PREDEFINED PLUGINS, and not documented as regular packages. It is
+           expected that they follow the APIs specified in the sections
+  manpageQuestion1: What is the primary purpose of the page_pluginmgr resource?
+  manpageQuestion2: How would you use page_pluginmgr to configure a plugin with the option 'output-format' set to 'HTML'?
+  manpageQuestion3: Can you provide an example of using page_pluginmgr to run a plugin that processes text and outputs it to a specified channel?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `page_pluginmgr`.\n\n\n\nManpage text:\n\n[1]    CONFIG PLUGIN API\n\n       [2]    READER PLUGIN API\n\n       [3]    WRITER PLUGIN API\n\n       [4]    TRANSFORM PLUGIN API\n\n       as per their type.\n\nAPI\n       ::page::pluginmgr::reportvia cmd\n\t      This command defines the callback command used by\n\t      ::page::pluginmgr::report (see below) to report input errors and\n\t      warnings. The default is to write such reports to the standard\n\t      error channel.\n\n       ::page::pluginmgr::report level text ?from ?to??\n\t      This command is used to report input errors and warnings. By\n\t      default such reports are written to the standard error. This can\n\t      be changed by setting a user-specific callback command with\n\t      ::page::pluginmgr::reportvia (see above).\n\n\t      The arguments level and text specify both the importance of the\n\t      message, and the message itself. For the former see the package\n\t      logger for the allowed values.\n\n\t      The optional argument from and to can be used by the caller to\n\t      indicate the location (or range) in the input where the reported\n\t      problem occured. Each is a list containing two elements, the\n\t      line and the column in the input, in this order."
+  manpageQuestion1: What is the primary purpose of the page_pluginmgr resource?
+  manpageQuestion2: How would you use the ::page::pluginmgr::report command to report a warning about an invalid input line in a file?
+  manpageQuestion3: Can you provide an example of setting up a custom callback command for error reporting using ::page::pluginmgr::reportvia?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `page_pluginmgr`.\n\n\n\nManpage text:\n\n::page::pluginmgr::log cmd\n\t      This command defines a log callback command to be used by loaded\n\t      plugins for the reporting of internal errors, warnings, and\n\t      general information. Specifying the empty string as callback\n\t      disables logging.\n\n\t      Note: The cmd has to be created by the logger package, or follow\n\t      the same API as such.\n\n\t      The command returns the empty string as its result.\n\n       ::page::pluginmgr::configuration name\n\t      This command loads the named configuration plugin, retrieves the\n\t      options encoded in it, and then immediately unloads it again.\n\n\t      If the name is the path to a file, then this files will be tried\n\t      to be loaded as a plugin first, and, if that fails, opened and\n\t      its contents read as a list of options and their arguments,\n\t      separated by spaces, tabs and newlines, possibly quotes with\n\t      single and double quotes.\n\n\t      See section CONFIG PLUGIN API for the API expected of\n\t      configuration plugins."
+  manpageQuestion1: What is the primary purpose of the page_pluginmgr resource?
+  manpageQuestion2: How would you use page_pluginmgr to load and retrieve options from a configuration file named 'myconfig.conf'?
+  manpageQuestion3: Can you provide an example of using page_pluginmgr to set up a log callback command for plugins to report errors?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `page_pluginmgr`.\n\n\n\nManpage text:\n\nThe result of the command is the list of options retrieved.\n\n       ::page::pluginmgr::reader name\n\t      This command loads the named reader plugin and initializes it.\n\t      The result of the command is a list of options the plugin\n\t      understands.\n\n\t      Only a single reader plugin can be loaded. Loading another\n\t      reader plugin causes the previously loaded reader plugin to be\n\t      de-initialized and unloaded.\n\n\t      See section READER PLUGIN API for the API expected of reader\n\t      plugins.\n\n       ::page::pluginmgr::rconfigure dict\n\t      This commands configures the loaded reader plugin. The options\n\t      and their values are provided as a Tcl dictionary. The result of\n\t      the command is the empty string.\n\n       ::page::pluginmgr::rtimeable\n\t      This commands checks if the loaded reader plugin is able to\n\t      collect timing statistics. The result of the command is a\n\t      boolean flag. The result is true if the plugin can be timed, and\n\t      false otherwise.\n\n       ::page::pluginmgr::rtime\n\t      This command activates the collection of timing statistics in\n\t      the loaded reader plugin.\n\n       ::page::pluginmgr::rgettime\n\t      This command retrieves the collected timing statistics of the\n\t      loaded reader plugin after it was executed.\n\n       ::page::pluginmgr::rhelp\n\t      This command retrieves the help string of the loaded reader\n\t      plugin. This is expected to be in doctools format.\n\n       ::page::pluginmgr::rlabel\n\t      This command retrieves the human-readable name of the loaded\n\t      reader plugin.\n\n       ::page::pluginmgr::read read eof ?complete?\n\t      This command invokes the loaded reader plugin to process the\n\t      input, and returns the results of the plugin as its own result.\n\t      The input is accessible through the callback commands read, and\n\t      eof. The optional done can be used to intrecept when the plugin\n\t      has completed its processing. All arguments are command\n\t      prefixes.\n\n\t      The plugin will invoke the various callbacks in the following\n\t      situations:\n\n\t      read num\n\t\t     is invoked whenever input to process is needed, with the\n\t\t     number of characters/bytes it asks for. The result is\n\t\t     expected to be the input the plugin is in need of.\n\n\t      eof    is invoked by the plugin to check if the input has\n\t\t     reached the of the stream. The result is expected to be a\n\t\t     boolean flag, true when the input has hit EOF, and false\n\t\t     otherwise.\n\n\t      done   is invoked when the plugin has completed the processing\n\t\t     of the input.\n\n       ::page::pluginmgr::writer name\n\t      This command loads the named writer plugin and initializes it.\n\t      The result of the command is a list of options the plugin\n\t      understands.\n\n\t      Only a single reader plugin can be loaded. Loading another\n\t      reader plugin causes the previously loaded reader plugin to be\n\t      de-initialized and unloaded.\n\n\t      See section WRITER PLUGIN API for the API expected of writer\n\t      plugins.\n\n       ::page::pluginmgr::wconfigure dict\n\t      This commands configures the loaded writer plugin. The options\n\t      and their values are provided as a Tcl dictionary. The result of\n\t      the command is the empty string.\n\n       ::page::pluginmgr::wtimeable\n\t      This commands checks if the loaded writer plugin is able to\n\t      measure execution times. The result of the command is a boolean\n\t      flag. The result is true if the plugin can be timed, and false\n\t      otherwise.\n\n       ::page::pluginmgr::wtime\n\t      This command activates the collection of timing statistics in\n\t      the loaded writer plugin.\n\n       ::page::pluginmgr::wgettime\n\t      This command retrieves the collected timing statistics of the\n\t      loaded writer plugin after it was executed.\n\n       ::page::pluginmgr::whelp\n\t      This command retrieves the help string of the loaded writer\n\t      plugin. This is expected to be in doctools format.\n\n       ::page::pluginmgr::wlabel\n\t      This command retrieves the human-readable name of the loaded\n\t      writer plugin.\n\n       ::page::pluginmgr::write chan data\n\t      The loaded writer plugin is invoked to generate the output. It\n\t      is given the data to generate the outpout from, and the Tcl\n\t      handle chan of the channel to write the generated output to. The\n\t      command returns th empty string as its result.\n\n       ::page::pluginmgr::transform name\n\t      This command loads the named transformation plugin and\n\t      initializes it. The result of the command is a 2-element list\n\t      containing the plugin id and a list of options the plugin\n\t      understands, in this order.\n\n\t      Multiple transformations plugins can be loaded and are\n\t      identified by handles.\n\n\t      See section TRANSFORM PLUGIN API for the API expected of\n\t      transformation plugins.\n\n       ::page::pluginmgr::tconfigure id dict\n\t      This commands configures the identified transformation plugin.\n\t      The options and their values are provided as a Tcl dictionary.\n\t      The result of the command is the empty string.\n\n       ::page::pluginmgr::ttimeable id\n\t      This commands checks if the identified transformation plugin is\n\t      able to collect timing statistics. The result of the command is\n\t      a boolean flag. The result is true if the plugin can be timed,\n\t      and false otherwise.\n\n       ::page::pluginmgr::ttime id\n\t      This command activates the collection of timing statistics in\n\t      the identified transformation plugin.\n\n       ::page::pluginmgr::tgettime id\n\t      This command retrieves the collected timing statistics of the\n\t      identified transformation plugin after it was executed.\n\n       ::page::pluginmgr::thelp id\n\t      This command retrieves the help string of the identified\n\t      transformation plugin. This is expected to be in doctools\n\t      format.\n\n       ::page::pluginmgr::tlabel id\n\t      This command retrieves the human-readable name of the identified\n\t      transformation plugin.\n\n       ::page::pluginmgr::transform_do id data\n\t      The identified transformation plugin is invoked to process the\n\t      specified data. The result of the plugin is returned as the\n\t      result of the command.\n\nCONFIG PLUGIN API\n       Configuration plugins are expected to provide a single command,\n       described below.\n\n       page_cdefinition\n\t      This command of a configuration plugin is called by the plugin\n\t      manager to execute it. Its result has to be a list of options\n\t      and values to process.\n\n       Configuration plugins do not expect the environment to provide any\n       special commands.\n\n       It is expected that a configuration plugin FOO is implemented by the\n       package page::config::FOO.\n\n       Configuration plugins are loaded, executed, and unloaded in one step,\n       they are not kept in memory. The command for doing this is\n       ::page::pluginmgr::configuration.\n\nREADER PLUGIN API\n       Reader plugins are expected to provide the following commands,\n       described below.\n\n       page_rfeature name\n\t      This command takes a feature name and returns a boolean flag\n\t      indicating whether the feature is supported by the plugin, or\n\t      not.  The result has to be true if the feature is supported, and\n\t      false otherwise.\n\n\t      See section FEATURES for the possible features the plugin\n\t      manager will ask for.\n\n       page_rtime\n\t      This command is invoked to activate the collection of timing\n\t      statistics.\n\n       page_rgettime\n\t      This command is invoked to retrieve the collected timing\n\t      statistics.\n\n       page_rlabel\n\t      This command is invoked to retrieve a human-readable label for\n\t      the plugin.\n\n       page_rhelp\n\t      This command is invoked to retrieve a help text for plugin. The\n\t      text is expected to be in doctools format.\n\n       page_roptions\n\t      This command is invoked to retrieve the options understood by\n\t      the plugin.\n\n       page_rconfigure option value\n\t      This command is invoked to reconfigure the plugin, specifically\n\t      the given option is set to the new value.\n\n       page_rrun\n\t      This command is invoked to process the input stream per the\n\t      current plugin configuration.  The result of the command is the\n\t      result of the processing.\n\n       Reader plugins expect the environment to provide the following special\n       commands.\n\n       page_read num\n\t      This command is invoked to read num characters/bytes from the\n\t      input. Its result has to be read characters/bytes.\n\n       page_read_done\n\t      This command is invoked to signal that the plugin has completed\n\t      the processing of the input.\n\n       page_eof\n\t      This command is invoked to check if the input stream has reached\n\t      its end. Its result has to be a boolean flag, true when the\n\t      input has reached the end, false otherwise.\n\n       page_info text ?from ?to??\n\t      Invoked to report some information to the user. May indicate a\n\t      location or range in the input. Each piece of location data, if\n\t      provided, is a 2-element list containing line and column\n\t      numbers.\n\n       page_warning text ?from ?to??\n\t      Invoked to report a warning to the user. May indicate a location\n\t      or range in the input. Each piece of location data, if provided,\n\t      is a 2-element list containing line and column numbers.\n\n       page_error text ?from ?to??\n\t      Invoked to report an error to the user. May indicate a location\n\t      or range in the input. Each piece of location data, if provided,\n\t      is a 2-element list containing line and column numbers.\n\n       page_log_info text\n\t      Invoked to report some internal information.\n\n       page_log_warning text\n\t      Invoked to report an internal warning.\n\n       page_log_error text\n\t      Invoked to report an internal error.\n\n       It is expected that a reader plugin FOO is implemented by the package\n       page::reader::FOO.\n\n       Reader plugins are loaded by the command ::page::pluginmgr::reader. At\n       most one reader plugin can be kept in memory.\n\nWRITER PLUGIN API\n       Writer plugins are expected to provide the following commands,\n       described below.\n\n       page_wfeature\n\t      This command takes a feature name and returns a boolean flag\n\t      indicating whether the feature is supported by the plugin, or\n\t      not.  The result has to be true if the feature is supported, and\n\t      false otherwise.\n\n\t      See section FEATURES for the possible features the plugin\n\t      manager will ask for.\n\n       page_wtime\n\t      This command is invoked to activate the collection of timing\n\t      statistics.\n\n       page_wgettime\n\t      This command is invoked to retrieve the collected timing\n\t      statistics.\n\n       page_wlabel\n\t      This command is invoked to retrieve a human-readable label for\n\t      the plugin.\n\n       page_whelp\n\t      This command is invoked to retrieve a help text for plugin. The\n\t      text is expected to be in doctools format.\n\n       page_woptions\n\t      This command is invoked to retrieve the options understood by\n\t      the plugin.\n\n       page_wconfigure option value\n\t      This command is invoked to reconfigure the plugin, specifically\n\t      the given option is set to the new value.\n\n       page_wrun chan data\n\t      This command is invoked to process the specified data and write\n\t      it to the output stream chan. The latter is a Tcl channel handle\n\t      opened for writing. The result of the command is the empty\n\t      string.\n\n       Writer plugins expect the environment to provide the following special\n       commands.\n\n       page_info text ?from ?to??\n\t      Invoked to report some information to the user. May indicate a\n\t      location or range in the input. Each piece of location data, if\n\t      provided, is a 2-element list containing line and column\n\t      numbers.\n\n       page_warning text ?from ?to??\n\t      Invoked to report a warning to the user. May indicate a location\n\t      or range in the input. Each piece of location data, if provided,\n\t      is a 2-element list containing line and column numbers.\n\n       page_error text ?from ?to??\n\t      Invoked to report an error to the user. May indicate a location\n\t      or range in the input. Each piece of location data, if provided,\n\t      is a 2-element list containing line and column numbers.\n\n       page_log_info text\n\t      Invoked to report some internal information.\n\n       page_log_warning text\n\t      Invoked to report an internal warning.\n\n       page_log_error text\n\t      Invoked to report an internal error.\n\n       It is expected that a writer plugin FOO is implemented by the package\n       page::writer::FOO.\n\n       Writer plugins are loaded by the command ::page::pluginmgr::writer. At\n       most one writer plugin can be kept in memory.\n\nTRANSFORM PLUGIN API page::transform::*\n       Transformation plugins are expected to provide the following commands,\n       described below.\n\n       page_tfeature\n\t      This command takes a feature name and returns a boolean flag\n\t      indicating whether the feature is supported by the plugin, or\n\t      not.  The result has to be true if the feature is supported, and\n\t      false otherwise.\n\n\t      See section FEATURES for the possible features the plugin\n\t      manager will ask for.\n\n       page_ttime\n\t      This command is invoked to activate the collection of timing\n\t      statistics.\n\n       page_tgettime\n\t      This command is invoked to retrieve the collected timing\n\t      statistics.\n\n       page_tlabel\n\t      This command is invoked to retrieve a human-readable label for\n\t      the plugin.\n\n       page_thelp\n\t      This command is invoked to retrieve a help text for plugin. The\n\t      text is expected to be in doctools format.\n\n       page_toptions\n\t      This command is invoked to retrieve the options understood by\n\t      the plugin.\n\n       page_tconfigure option value\n\t      This command is invoked to reconfigure the plugin, specifically\n\t      the given option is set to the new value.\n\n       page_trun chan data\n\t      This command is invoked to process the specified data and write\n\t      it to the output stream chan. The latter is a Tcl channel handle\n\t      opened for writing. The result of the command is the empty\n\t      string.\n\n       Transformation plugins expect the environment to provide the following\n       special commands.\n\n       page_info text ?from ?to??\n\t      Invoked to report some information to the user. May indicate a\n\t      location or range in the input. Each piece of location data, if\n\t      provided, is a 2-element list containing line and column\n\t      numbers.\n\n       page_warning text ?from ?to??\n\t      Invoked to report a warning to the user. May indicate a location\n\t      or range in the input. Each piece of location data, if provided,\n\t      is a 2-element list containing line and column numbers.\n\n       page_error text ?from ?to??\n\t      Invoked to report an error to the user. May indicate a location\n\t      or range in the input. Each piece of location data, if provided,\n\t      is a 2-element list containing line and column numbers.\n\n       page_log_info text\n\t      Invoked to report some internal information.\n\n       page_log_warning text\n\t      Invoked to report an internal warning.\n\n       page_log_error text\n\t      Invoked to report an internal error.\n\n       It is expected that a transformation plugin FOO is implemented by the\n       package page::transform::FOO.\n\n       Transformation plugins are loaded by the command\n       ::page::pluginmgr::transform. More than one transformation plugin can\n       be kept in memory.\n\nPREDEFINED PLUGINS\n       The following predefined plugins are known, i.e. provided by the page\n       module.\n\n       Configuration\n\n\t      peg    Returns a set of options to configure the page\n\t\t     application for the processing of a PEG grammar and the\n\t\t     generation of ME code. See the packages grammar_peg,\n\t\t     grammar_me and relations for more details.\n\n       Reader\n\n\t      hb     Expects a so-called half-baked PEG container as input and\n\t\t     returns the equivalent abstract syntax tree. See the\n\t\t     writer plugin hb for the plugin generating this type of\n\t\t     input.\n\n\t      lemon  Expects a grammar specification as understood by Richar\n\t\t     Hipp's LEMON parser generator and returns an abstract\n\t\t     syntax tree for it.\n\n\t      peg    Expects a grammar specification in the form of a parsing\n\t\t     expression grammar (PEG) and returns an abstract syntax\n\t\t     tree for it.\n\n\t      ser    Expect the serialized form of a parsing expression\n\t\t     grammar as generated by the package grammar::peg as\n\t\t     input, converts it into an equivalent abstract syntax\n\t\t     tree and returns that.\n\n\t      treeser\n\t\t     Expects the serialized form of a tree as generated by the\n\t\t     package struct::tree as input and returns it, after\n\t\t     validation.\n\n       Writer\n\n\t      hb     Expects an abstract syntax tree for a parsing expression\n\t\t     grammar as input and writes it out in the form of a so-\n\t\t     called half-baked PEG container.\n\n\t      identity\n\t\t     Takes any input and writes it as is.\n\n\t      mecpu  Expects symbolic assembler code for the MatchEngine CPU\n\t\t     (See the package grammar::me::cpu and relatives) and\n\t\t     writes it out as Tcl code for a parser.\n\n\t      me     Expects an abstract syntax tree for a parsing expression\n\t\t     grammar as input and writes it out as Tcl code for the\n\t\t     MatchEngine (See the package grammar::me and relatives)\n\t\t     which parses input in that grammar.\n\n\t      null   Takes any input and writes nothing. The logical\n\t\t     equivalent of /dev/null.\n\n\t      peg    Expects an abstract syntax tree for a parsing expression\n\t\t     grammar as input and writes it out in the form of a\n\t\t     canonical PEG which can be read by the reader plugin peg.\n\n\t      ser    Expects an abstract syntax tree for a parsing expression\n\t\t     grammar as input and writes it out as a serialized PEG\n\t\t     container which can be read by the reader plugin ser.\n\n\t      tpc    Expects an abstract syntax tree for a parsing expression\n\t\t     grammar as input and writes it out as Tcl code\n\t\t     initializing a PEG container as provided by the package\n\t\t     grammar::peg.\n\n\t      tree   Takes any serialized tree (per package struct::tree) as\n\t\t     input and writes it out in a generic indented format.\n\n       Transformation\n\n\t      mecpu  Takes an abstract syntax tree for a parsing expression\n\t\t     grammer as input, generates symbolic assembler code for\n\t\t     the MatchEngine CPU, and returns that as its result (See\n\t\t     the package grammar::me::cpu and relatives).\n\n\t      reachable\n\t\t     Takes an abstract syntax tree for a parsing expression\n\t\t     grammer as input, performs a reachability analysis, and\n\t\t     returns the modified and annotated tree.\n\n\t      realizable\n\t\t     Takes an abstract syntax tree for a parsing expression\n\t\t     grammer as input, performs an analysis of realizability,\n\t\t     and returns the modified and annotated tree.\n\nFEATURES\n       The plugin manager currently checks the plugins for only one feature,\n       timeable. A plugin supporting this feature is assumed to be able to\n       collect timing statistics on request.\n\nBUGS, IDEAS, FEEDBACK\n       This document, will undoubtedly contain bugs and other problems.\n       Please report such in the category page of the Tcllib SF Trackers\n       [http://sourceforge.net/tracker/?group_id=12883].  Please also report\n       any ideas for enhancements you may have.\n\nKEYWORDS\n       page, parser generator, text processing\n\nCATEGORY\n       Page Parser Generator\n\nCOPYRIGHT\n       Copyright (c) 2007 Andreas Kupries <andreas_kupries@users.sourceforge.net>"
+  manpageQuestion1: What is the primary purpose of the `4ccconv` resource?
+  manpageQuestion2: How can I use the `4ccconv` tool to convert a 4-character code to its hexadecimal representation?
+  manpageQuestion3: What is the correct command to convert an unsigned integer to a 4-character code using `4ccconv`?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `page_pluginmgr`.\n\n\n\nManpage text:\n\npage\t\t\t\t      1.0\t\t     page_pluginmgr(n)"
+  manpageQuestion1: What is the primary purpose of the page_pluginmgr command?
+  manpageQuestion2: How would you use page_pluginmgr to list all available plugins in the system?
+  manpageQuestion3: Can you provide an example of using page_pluginmgr to disable a specific plugin by its name?
+

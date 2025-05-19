@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `afktool`.\n\n\n\nManpage text:\n\nAFKTOOL(1)\t\t    General Commands Manual\t\t    AFKTOOL(1)\n\nNAME\n     afktool – AppleFirmwareKit debug utility\n\nSYNOPSIS\n     afktool [command] [options]\n\nDESCRIPTION\n     See afktool [help] for more information.\n\n\t\t\t       February 11, 2020"
+  manpageQuestion1: What is the primary purpose of the afktool utility?
+  manpageQuestion2: How can you use afktool to display help information about its available commands and options?
+  manpageQuestion3: Can you provide an example of using afktool with a specific command to interact with Apple firmware?
+

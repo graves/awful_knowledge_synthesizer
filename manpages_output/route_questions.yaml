@@ -1,0 +1,123 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `route`.\n\n\n\nManpage text:\n\nROUTE(8)\t\t    System Manager's Manual\t\t      ROUTE(8)\n\nNAME\n     route – manually manipulate the routing tables\n\nSYNOPSIS\n     route [-dnqtv] command [[modifiers] args]\n\nDESCRIPTION\n     route is a utility used to manually manipulate the network routing\n     tables.\n\n     The route utility supports a limited number of general options, but a\n     rich command language, enabling the user to specify any arbitrary request\n     that could be delivered via the programmatic interface discussed in\n     route(4).\n\n     The following options are available:\n\n     -d      Run in debug-only mode, i.e., do not actually modify the routing\n\t     table.\n\n     -n      Bypass attempts to print host and network names symbolically when\n\t     reporting actions.  (The process of translating between symbolic\n\t     names and numerical equivalents can be quite time consuming, and\n\t     may require correct operation of the network; thus it may be\n\t     expedient to forget this, especially when attempting to repair\n\t     networking operations)."
+  manpageQuestion1: What is the primary purpose of the route command?
+  manpageQuestion2: How would you use the route command to add a static route for the network 192.168.1.0/24 via the gateway 192.168.2.1 with a metric of 1?
+  manpageQuestion3: Can you provide an example of using the route command in debug mode to check the current routing table without modifying it?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `route`.\n\n\n\nManpage text:\n\n-t      Run in test-only mode.  /dev/null is used instead of a socket.\n\n     -v      (verbose) Print additional details.\n\n     -q      Suppress all output.\n\n     The route utility provides six commands:\n\n     add\t Add a route.\n     flush\t Remove all routes.\n     delete\t Delete a specific route.\n     change\t Change aspects of a route (such as its gateway).\n     get\t Lookup and display the route for a destination.\n     monitor\t Continuously report any changes to the routing information\n\t\t base, routing lookup misses, or suspected network\n\t\t partitionings.\n\n     The monitor command has the syntax:\n\n\t   route [-n] monitor\n\n     The flush command has the syntax:\n\n\t   route [-n] flush [family]\n\n     If the flush command is specified, route will ``flush'' the routing\n     tables of all gateway entries.  When the address family may is specified\n     by any of the -osi, -xns, -atalk, -inet6, or -inet modifiers, only routes\n     having destinations with addresses in the delineated family will be\n     deleted."
+  manpageQuestion1: What is the primary purpose of the route command in macOS?
+  manpageQuestion2: How can you use the route command to flush all routing table entries for IPv4 addresses?
+  manpageQuestion3: What command would you use to monitor changes in the routing table and display numeric representations of addresses?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `route`.\n\n\n\nManpage text:\n\nThe other commands have the following syntax:\n\n\t   route [-n] command [-net | -host] [-ifscope boundif] destination\n\t   gateway [netmask]\n\n     where destination is the destination host or network, gateway is the\n     next-hop intermediary via which packets should be routed.\tRoutes to a\n     particular host may be distinguished from those to a network by\n     interpreting the Internet address specified as the destination argument.\n     The optional modifiers -net and -host force the destination to be\n     interpreted as a network or a host, respectively.\tOtherwise, if the\n     destination has a “local address part” of INADDR_ANY (0.0.0.0), or if the\n     destination is the symbolic name of a network, then the route is assumed\n     to be to a network; otherwise, it is presumed to be a route to a host.\n     Optionally, the destination could also be specified in the net/bits\n     format.\n\n     For example, 128.32 is interpreted as -host 128.0.0.32; 128.32.130 is\n     interpreted as -host 128.32.0.130; -net 128.32 is interpreted as\n     128.32.0.0; -net 128.32.130 is interpreted as 128.32.130.0; and\n     192.168.64/20 is interpreted as -net 192.168.64 -netmask 255.255.240.0."
+  manpageQuestion1: What is the primary purpose of the route command in macOS?
+  manpageQuestion2: How can you use the route command to add a static route for the network 192.168.64.0/20 with a gateway at 192.168.0.1?
+  manpageQuestion3: What command would you use to display the current routing table in a numeric format without hostname resolution?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `route`.
+
+
+
+    Manpage text:
+
+    A destination of default is a synonym for -net 0.0.0.0, which is the
+         default route.
+
+         If the destination is directly reachable via an interface requiring no
+         intermediary system to act as a gateway, the -interface modifier should
+         be specified; the gateway given is the address of this host on the common
+         network, indicating the interface to be used for transmission.
+         Alternately, if the interface is point to point the name of the interface
+         itself may be given, in which case the route remains valid even if the
+         local or remote addresses change.
+
+         For AF_INET and AF_INET6, the -ifscope modifier specifies the additional
+         property of the route related to the interface scope derived from
+         interface boundif.  Such property allows for the presence of multiple
+         route entries with the same destination, where each route is associated
+         with a unique interface.  This modifier is required in order to
+         manipulate route entries marked with the RTF_IFSCOPE flag.
+  manpageQuestion1: What is the primary purpose of the route command in macOS?
+  manpageQuestion2: How would you use the route command to set a default route through the en0 interface?
+  manpageQuestion3: Can you explain how to use the -ifscope option with the route command when configuring a route for an IPv6 address?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `route`.
+
+
+
+    Manpage text:
+
+    The optional modifier -link specify that all subsequent addresses are
+         specified as link-level addresses, and the names must be numeric
+         specifications rather than symbolic names.
+
+         The optional -netmask modifier is intended to achieve the effect of an
+         OSI ESIS redirect with the netmask option, or to manually add subnet
+         routes with netmasks different from that of the implied network interface
+         (as would otherwise be communicated using the OSPF or ISIS routing
+         protocols).  One specifies an additional ensuing address parameter (to be
+         interpreted as a network mask).  The implicit network mask generated in
+         the AF_INET case can be overridden by making sure this option follows the
+         destination parameter.
+
+         For AF_INET6, the -prefixlen qualifier is available instead of the -mask
+         qualifier because non-continuous masks are not allowed in IPv6.  For
+         example, -prefixlen 32 specifies network mask of
+         ffff:ffff:0000:0000:0000:0000:0000:0000 to be used.  The default value of
+         prefixlen is 64 to get along with the aggregatable address.  But 0 is
+         assumed if default is specified.  Note that the qualifier works only for
+         AF_INET6 address family.
+  manpageQuestion1: What is the primary purpose of the route command in macOS?
+  manpageQuestion2: How can you use the -link option with route to specify link-level addresses?
+  manpageQuestion3: Can you provide an example of using the -prefixlen qualifier with route for IPv6 addressing?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `route`.\n\n\n\nManpage text:\n\nRoutes have associated flags which influence operation of the protocols\n     when sending to destinations matched by the routes.  These flags may be\n     set (or sometimes cleared) by indicating the following corresponding\n     modifiers:\n\n     -cloning\tRTF_CLONING    - generates a new route on use\n     -xresolve\tRTF_XRESOLVE   - emit mesg on use (for external lookup)\n     -iface    ~RTF_GATEWAY    - destination is directly reachable\n     -static\tRTF_STATIC     - manually added route\n     -nostatic ~RTF_STATIC     - pretend route added by kernel or daemon\n     -reject\tRTF_REJECT     - emit an ICMP unreachable when matched\n     -blackhole RTF_BLACKHOLE  - silently discard pkts (during updates)\n     -proto1\tRTF_PROTO1     - set protocol specific routing flag #1\n     -proto2\tRTF_PROTO2     - set protocol specific routing flag #2\n     -llinfo\tRTF_LLINFO     - validly translates proto addr to link addr\n\n     The optional modifiers -rtt, -rttvar, -sendpipe, -recvpipe, -mtu,\n     -hopcount, -expire, and -ssthresh provide initial values to quantities\n     maintained in the routing entry by transport level protocols, such as TCP\n     or TP4.  These may be individually locked by preceding each such modifier\n     to be locked by the -lock meta-modifier, or one can specify that all\n     ensuing metrics may be locked by the -lockrest meta-modifier."
+  manpageQuestion1: What is the primary purpose of the route command in macOS?
+  manpageQuestion2: How can you set a static route using the route command with specific flags?
+  manpageQuestion3: What are the common flags used to configure routing behavior when adding a route with the route command?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `route`.
+
+
+
+    Manpage text:
+
+    In a change or add command where the destination and gateway are not
+         sufficient to specify the route (as in the ISO case where several
+         interfaces may have the same address), the -ifp or -ifa modifiers may be
+         used to determine the interface or interface address.
+
+         The optional -proxy modifier specifies that the RTF_LLINFO routing table
+         entry is the “published (proxy-only)” ARP entry, as reported by arp(8).
+
+         All symbolic names specified for a destination or gateway are looked up
+         first as a host name using gethostbyname(3).  If this lookup fails,
+         getnetbyname(3) is then used to interpret the name as that of a network.
+
+         route uses a routing socket and the new message types RTM_ADD,
+         RTM_DELETE, RTM_GET, and RTM_CHANGE.  As such, only the super-user may
+         modify the routing tables.
+
+    DIAGNOSTICS
+         add [host | network ] %s: gateway %s flags %x  The specified route is
+         being added to the tables.  The values printed are from the routing table
+         entry supplied in the ioctl(2) call.  If the gateway address used was not
+         the primary address of the gateway (the first one returned by
+         gethostbyname(3)), the gateway address is printed numerically as well as
+         symbolically.
+  manpageQuestion1: What is the primary purpose of the route command in macOS?
+  manpageQuestion2: How can you use the route command to add a static route with a specific interface?
+  manpageQuestion3: What is the function of the -proxy modifier in the route command?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `route`.\n\n\n\nManpage text:\n\ndelete [ host | network ] %s: gateway %s flags %x\tAs above, but when\n     deleting an entry.\n\n     %s %s done  When the flush command is specified, each routing table entry\n     deleted is indicated with a message of this form.\n\n     Network is unreachable  An attempt to add a route failed because the\n     gateway listed was not on a directly-connected network.  The next-hop\n     gateway must be given.\n\n     not in table  A delete operation was attempted for an entry which wasn't\n     present in the tables.\n\n     routing table overflow  An add operation was attempted, but the system\n     was low on resources and was unable to allocate memory to create the new\n     entry.\n\n     gateway uses the same route  A change operation resulted in a route whose\n     gateway uses the same route as the one being changed.  The next-hop\n     gateway should be reachable through a different route.\n\n     The route utility exits 0 on success, and >0 if an error occurs.\n\nSEE ALSO\n     netintro(4), route(4), arp(8),"
+  manpageQuestion1: What is the primary purpose of the route command in macOS?
+  manpageQuestion2: How would you use the route command to delete a routing table entry for a specific host?
+  manpageQuestion3: Can you explain the possible error messages that might be displayed when using the route command and provide an example of each?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `route`.\n\n\n\nManpage text:\n\nHISTORY\n     The route command appeared in 4.2BSD.\n\nBSD 4.4 \t\t\t June 8, 2001\t\t\t       BSD 4.4"
+  manpageQuestion1: What is the primary purpose of the route command?
+  manpageQuestion2: How can you use the route command to add a static route for the network 192.168.1.0/24 via the gateway 192.168.0.1?
+  manpageQuestion3: Can you explain how to display the current routing table using the route command?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `system-override`.\n\n\n\nManpage text:\n\nSYSTEM-OVERRIDE(8)\t    System Manager's Manual\t    SYSTEM-OVERRIDE(8)\n\nNAME\n     system-override – configure system overrides\n\nSYNOPSIS\n     system-override command\n\nDESCRIPTION\n     system-override modifies system overrides.  Some of the commands require\n     the device to be booted into the Recovery OS.  Invoke system-override\n     with no arguments to see a full usage statement.\n\n\nmacOS\t\t\t\t March 9, 2023\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the system-override command?
+  manpageQuestion2: How would you use system-override to configure a system override for a specific device?
+  manpageQuestion3: Can you provide an example of using system-override to modify a system override setting that requires booting into the Recovery OS?
+

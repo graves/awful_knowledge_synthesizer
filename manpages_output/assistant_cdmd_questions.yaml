@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `assistant_cdmd`.\n\n\n\nManpage text:\n\nassistant_cdmd(1)\t    General Commands Manual\t     assistant_cdmd(1)\n\nNAME\n     assistant_cdmd, CDM/NLX Daemon – daemon handles Natural Langauge\n     Understanding tasks for Siri and other internal Apple teams.\n\nDESCRIPTION\n     assistant_cdmd, The assistant_cdmd daemon handles Natural Langauge\n     Understanding tasks for Siri and other internal Apple teams.\n\nmacOS 15.3\t\t      September 19, 2022\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the assistant_cdmd daemon?
+  manpageQuestion2: How would you check if the assistant_cdmd daemon is running on a macOS system?
+  manpageQuestion3: Can you explain the role of assistant_cdmd in relation to Siri and other Apple services?
+

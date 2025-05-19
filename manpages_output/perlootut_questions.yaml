@@ -1,0 +1,352 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlootut`.\n\n\n\nManpage text:\n\nPERLOOTUT(1)\t       Perl Programmers Reference Guide \t  PERLOOTUT(1)"
+  manpageQuestion1: What is the primary purpose of the perlootut tool?
+  manpageQuestion2: How would you use perlootut to demonstrate a specific Perl programming concept?
+  manpageQuestion3: Can you provide an example of using perlootut to show how a Perl function handles file input and output?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlootut`.
+
+
+
+    Manpage text:
+
+    NAME
+           perlootut - Object-Oriented Programming in Perl Tutorial
+
+    DATE
+           This document was created in February, 2011, and the last major
+           revision was in February, 2013.
+
+           If you are reading this in the future then it's possible that the state
+           of the art has changed. We recommend you start by reading the perlootut
+           document in the latest stable release of Perl, rather than this
+           version.
+
+    DESCRIPTION
+           This document provides an introduction to object-oriented programming
+           in Perl. It begins with a brief overview of the concepts behind object
+           oriented design. Then it introduces several different OO systems from
+           CPAN <https://www.cpan.org> which build on top of what Perl provides.
+
+           By default, Perl's built-in OO system is very minimal, leaving you to
+           do most of the work. This minimalism made a lot of sense in 1994, but
+           in the years since Perl 5.0 we've seen a number of common patterns
+           emerge in Perl OO. Fortunately, Perl's flexibility has allowed a rich
+           ecosystem of Perl OO systems to flourish.
+  manpageQuestion1: What is the primary purpose of the perlootut resource?
+  manpageQuestion2: How can one use perlootut to learn about object-oriented programming in Perl?
+  manpageQuestion3: What does the perlootut document cover regarding Perl's object-oriented programming systems?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlootut`.
+
+
+
+    Manpage text:
+
+    If you want to know how Perl OO works under the hood, the perlobj
+           document explains the nitty gritty details.
+
+           This document assumes that you already understand the basics of Perl
+           syntax, variable types, operators, and subroutine calls. If you don't
+           understand these concepts yet, please read perlintro first. You should
+           also read the perlsyn, perlop, and perlsub documents.
+
+    OBJECT-ORIENTED FUNDAMENTALS
+           Most object systems share a number of common concepts. You've probably
+           heard terms like "class", "object, "method", and "attribute" before.
+           Understanding the concepts will make it much easier to read and write
+           object-oriented code. If you're already familiar with these terms, you
+           should still skim this section, since it explains each concept in terms
+           of Perl's OO implementation.
+
+           Perl's OO system is class-based. Class-based OO is fairly common. It's
+           used by Java, C++, C#, Python, Ruby, and many other languages. There
+           are other object orientation paradigms as well. JavaScript is the most
+           popular language to use another paradigm. JavaScript's OO system is
+           prototype-based.
+  manpageQuestion1: What is the primary purpose of the perlootut resource?
+  manpageQuestion2: How does perlootut help in understanding Perl's object-oriented programming concepts?
+  manpageQuestion3: What are the key differences between class-based and prototype-based object orientation as described in perlootut?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlootut`.
+
+
+
+    Manpage text:
+
+    Object
+           An object is a data structure that bundles together data and
+           subroutines which operate on that data. An object's data is called
+           attributes, and its subroutines are called methods. An object can be
+           thought of as a noun (a person, a web service, a computer).
+
+           An object represents a single discrete thing. For example, an object
+           might represent a file. The attributes for a file object might include
+           its path, content, and last modification time. If we created an object
+           to represent /etc/hostname on a machine named "foo.example.com", that
+           object's path would be "/etc/hostname", its content would be "foo\n",
+           and it's last modification time would be 1304974868 seconds since the
+           beginning of the epoch.
+
+           The methods associated with a file might include "rename()" and
+           "write()".
+
+           In Perl most objects are hashes, but the OO systems we recommend keep
+           you from having to worry about this. In practice, it's best to consider
+           an object's internal data structure opaque.
+  manpageQuestion1: What is the primary purpose of the perlootut resource?
+  manpageQuestion2: How would you create an object in Perl to represent a file with specific attributes such as path, content, and last modification time?
+  manpageQuestion3: Can you provide an example of defining methods for an object that represents a file, such as 'rename()' and 'write()'?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlootut`.\n\n\n\nManpage text:\n\nClass\n       A class defines the behavior of a category of objects. A class is a\n       name for a category (like \"File\"), and a class also defines the\n       behavior of objects in that category.\n\n       All objects belong to a specific class. For example, our /etc/hostname\n       object belongs to the \"File\" class. When we want to create a specific\n       object, we start with its class, and construct or instantiate an\n       object. A specific object is often referred to as an instance of a\n       class.\n\n       In Perl, any package can be a class. The difference between a package\n       which is a class and one which isn't is based on how the package is\n       used. Here's our \"class declaration\" for the \"File\" class:\n\n\t package File;\n\n       In Perl, there is no special keyword for constructing an object.\n       However, most OO modules on CPAN use a method named \"new()\" to\n       construct a new object:\n\n\t my $hostname = File->new(\n\t     path\t   => '/etc/hostname',\n\t     content\t   => \"foo\\n\",\n\t     last_mod_time => 1304974868,\n\t );"
+  manpageQuestion1: What is the primary purpose of the perlootut resource?
+  manpageQuestion2: How would you create an instance of the 'File' class in Perl using the new() method?
+  manpageQuestion3: Can you provide an example of how to define a class in Perl based on the manpage description?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlootut`.\n\n\n\nManpage text:\n\n(Don't worry about that \"->\" operator, it will be explained later.)\n\n       Blessing\n\n       As we said earlier, most Perl objects are hashes, but an object can be\n       an instance of any Perl data type (scalar, array, etc.). Turning a\n       plain data structure into an object is done by blessing that data\n       structure using Perl's \"bless\" function.\n\n       While we strongly suggest you don't build your objects from scratch,\n       you should know the term bless. A blessed data structure (aka \"a\n       referent\") is an object. We sometimes say that an object has been\n       \"blessed into a class\".\n\n       Once a referent has been blessed, the \"blessed\" function from the\n       Scalar::Util core module can tell us its class name. This subroutine\n       returns an object's class when passed an object, and false otherwise.\n\n\t use Scalar::Util 'blessed';\n\n\t print blessed($hash);\t    # undef\n\t print blessed($hostname);  # File\n\n       Constructor\n\n       A constructor creates a new object. In Perl, a class's constructor is\n       just another method, unlike some other languages, which provide syntax\n       for constructors. Most Perl classes use \"new\" as the name for their\n       constructor:"
+  manpageQuestion1: What is the primary purpose of the perlootut resource?
+  manpageQuestion2: How would you use perlootut to create a new object from a hash reference and bless it into a class called 'MyClass'?
+  manpageQuestion3: Can you provide an example of using perlootut to determine the class of a blessed hash reference?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlootut`.\n\n\n\nManpage text:\n\nmy $file = File->new(...);\n\n   Methods\n       You already learned that a method is a subroutine that operates on an\n       object. You can think of a method as the things that an object can do.\n       If an object is a noun, then methods are its verbs (save, print, open).\n\n       In Perl, methods are simply subroutines that live in a class's package.\n       Methods are always written to receive the object as their first\n       argument:\n\n\t sub print_info {\n\t     my $self = shift;\n\n\t     print \"This file is at \", $self->path, \"\\n\";\n\t }\n\n\t $file->print_info;\n\t # The file is at /etc/hostname\n\n       What makes a method special is how it's called. The arrow operator\n       (\"->\") tells Perl that we are calling a method.\n\n       When we make a method call, Perl arranges for the method's invocant to\n       be passed as the first argument. Invocant is a fancy name for the thing\n       on the left side of the arrow. The invocant can either be a class name\n       or an object. We can also pass additional arguments to the method:"
+  manpageQuestion1: What is the primary purpose of the perlootut resource?
+  manpageQuestion2: How would you use the perlootut resource to print information about a file object?
+  manpageQuestion3: Can you provide an example of calling a method on a file object using the perlootut resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlootut`.\n\n\n\nManpage text:\n\nsub print_info {\n\t     my $self\t= shift;\n\t     my $prefix = shift // \"This file is at \";\n\n\t     print $prefix, \", \", $self->path, \"\\n\";\n\t }\n\n\t $file->print_info(\"The file is located at \");\n\t # The file is located at /etc/hostname\n\n   Attributes\n       Each class can define its attributes. When we instantiate an object, we\n       assign values to those attributes. For example, every \"File\" object has\n       a path. Attributes are sometimes called properties.\n\n       Perl has no special syntax for attributes. Under the hood, attributes\n       are often stored as keys in the object's underlying hash, but don't\n       worry about this.\n\n       We recommend that you only access attributes via accessor methods.\n       These are methods that can get or set the value of each attribute. We\n       saw this earlier in the \"print_info()\" example, which calls\n       \"$self->path\".\n\n       You might also see the terms getter and setter. These are two types of\n       accessors. A getter gets the attribute's value, while a setter sets it.\n       Another term for a setter is mutator"
+  manpageQuestion1: What is the primary purpose of the perlootut resource?
+  manpageQuestion2: How can you access the 'path' attribute of a File object in perlootut?
+  manpageQuestion3: What is the difference between a getter and a setter in the context of perlootut?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlootut`.
+
+
+
+    Manpage text:
+
+    Attributes are typically defined as read-only or read-write. Read-only
+           attributes can only be set when the object is first created, while
+           read-write attributes can be altered at any time.
+
+           The value of an attribute may itself be another object. For example,
+           instead of returning its last mod time as a number, the "File" class
+           could return a DateTime object representing that value.
+
+           It's possible to have a class that does not expose any publicly
+           settable attributes. Not every class has attributes and methods.
+
+       Polymorphism
+           Polymorphism is a fancy way of saying that objects from two different
+           classes share an API. For example, we could have "File" and "WebPage"
+           classes which both have a "print_content()" method. This method might
+           produce different output for each class, but they share a common
+           interface.
+
+           While the two classes may differ in many ways, when it comes to the
+           "print_content()" method, they are the same. This means that we can try
+           to call the "print_content()" method on an object of either class, and
+           we don't have to know what class the object belongs to!
+  manpageQuestion1: What is the primary purpose of the perlootut resource?
+  manpageQuestion2: How can polymorphism be demonstrated in the perlootut resource's example with the 'print_content()' method?
+  manpageQuestion3: What is the difference between read-only and read-write attributes in the context of the perlootut resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlootut`.\n\n\n\nManpage text:\n\nPolymorphism is one of the key concepts of object-oriented design.\n\n   Inheritance\n       Inheritance lets you create a specialized version of an existing class.\n       Inheritance lets the new class reuse the methods and attributes of\n       another class.\n\n       For example, we could create an \"File::MP3\" class which inherits from\n       \"File\". An \"File::MP3\" is-a more specific type of \"File\".  All mp3\n       files are files, but not all files are mp3 files.\n\n       We often refer to inheritance relationships as parent-child or\n       \"superclass\"/\"subclass\" relationships. Sometimes we say that the child\n       has an is-a relationship with its parent class.\n\n       \"File\" is a superclass of \"File::MP3\", and \"File::MP3\" is a subclass of\n       \"File\".\n\n\t package File::MP3;\n\n\t use parent 'File';\n\n       The parent module is one of several ways that Perl lets you define\n       inheritance relationships.\n\n       Perl allows multiple inheritance, which means that a class can inherit\n       from multiple parents. While this is possible, we strongly recommend\n       against it. Generally, you can use roles to do everything you can do\n       with multiple inheritance, but in a cleaner way."
+  manpageQuestion1: What is the primary purpose of the perlootut resource?
+  manpageQuestion2: How would you use the perlootut resource to demonstrate inheritance in Perl?
+  manpageQuestion3: Can you provide an example of using the perlootut resource to show multiple inheritance in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlootut`.\n\n\n\nManpage text:\n\nNote that there's nothing wrong with defining multiple subclasses of a\n       given class. This is both common and safe. For example, we might define\n       \"File::MP3::FixedBitrate\" and \"File::MP3::VariableBitrate\" classes to\n       distinguish between different types of mp3 file.\n\n       Overriding methods and method resolution\n\n       Inheritance allows two classes to share code. By default, every method\n       in the parent class is also available in the child. The child can\n       explicitly override a parent's method to provide its own\n       implementation. For example, if we have an \"File::MP3\" object, it has\n       the \"print_info()\" method from \"File\":\n\n\t my $cage = File::MP3->new(\n\t     path\t   => 'mp3s/My-Body-Is-a-Cage.mp3',\n\t     content\t   => $mp3_data,\n\t     last_mod_time => 1304974868,\n\t     title\t   => 'My Body Is a Cage',\n\t );\n\n\t $cage->print_info;\n\t # The file is at mp3s/My-Body-Is-a-Cage.mp3\n\n       If we wanted to include the mp3's title in the greeting, we could\n       override the method:"
+  manpageQuestion1: What is the primary purpose of the perlootut resource?
+  manpageQuestion2: How can you override a method in a subclass when using perlootut?
+  manpageQuestion3: Can you provide an example of defining multiple subclasses for a given class using perlootut?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlootut`.\n\n\n\nManpage text:\n\npackage File::MP3;\n\n\t use parent 'File';\n\n\t sub print_info {\n\t     my $self = shift;\n\n\t     print \"This file is at \", $self->path, \"\\n\";\n\t     print \"Its title is \", $self->title, \"\\n\";\n\t }\n\n\t $cage->print_info;\n\t # The file is at mp3s/My-Body-Is-a-Cage.mp3\n\t # Its title is My Body Is a Cage\n\n       The process of determining what method should be used is called method\n       resolution. What Perl does is look at the object's class first\n       (\"File::MP3\" in this case). If that class defines the method, then that\n       class's version of the method is called. If not, Perl looks at each\n       parent class in turn. For \"File::MP3\", its only parent is \"File\". If\n       \"File::MP3\" does not define the method, but \"File\" does, then Perl\n       calls the method in \"File\".\n\n       If \"File\" inherited from \"DataSource\", which inherited from \"Thing\",\n       then Perl would keep looking \"up the chain\" if necessary.\n\n       It is possible to explicitly call a parent method from a child:\n\n\t package File::MP3;"
+  manpageQuestion1: What is the primary purpose of the `perlootut` resource?
+  manpageQuestion2: How does Perl determine which method to call during method resolution for the `print_info` method in the `File::MP3` class?
+  manpageQuestion3: Can you provide an example of how to explicitly call a parent method from a child class in Perl using the `perlootut` resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlootut`.\n\n\n\nManpage text:\n\nuse parent 'File';\n\n\t sub print_info {\n\t     my $self = shift;\n\n\t     $self->SUPER::print_info();\n\t     print \"Its title is \", $self->title, \"\\n\";\n\t }\n\n       The \"SUPER::\" bit tells Perl to look for the \"print_info()\" in the\n       \"File::MP3\" class's inheritance chain. When it finds the parent class\n       that implements this method, the method is called.\n\n       We mentioned multiple inheritance earlier. The main problem with\n       multiple inheritance is that it greatly complicates method resolution.\n       See perlobj for more details.\n\n   Encapsulation\n       Encapsulation is the idea that an object is opaque. When another\n       developer uses your class, they don't need to know how it is\n       implemented, they just need to know what it does.\n\n       Encapsulation is important for several reasons. First, it allows you to\n       separate the public API from the private implementation. This means you\n       can change that implementation without breaking the API.\n\n       Second, when classes are well encapsulated, they become easier to\n       subclass. Ideally, a subclass uses the same APIs to access object data\n       that its parent class uses. In reality, subclassing sometimes involves\n       violating encapsulation, but a good API can minimize the need to do\n       this."
+  manpageQuestion1: What is the primary purpose of the perlootut resource?
+  manpageQuestion2: How does the 'SUPER::' keyword function in the provided code example, and what is its significance in Perl's object-oriented programming?
+  manpageQuestion3: What is encapsulation, and why is it considered important in object-oriented programming as described in the manpage text?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlootut`.
+
+
+
+    Manpage text:
+
+    We mentioned earlier that most Perl objects are implemented as hashes
+           under the hood. The principle of encapsulation tells us that we should
+           not rely on this. Instead, we should use accessor methods to access the
+           data in that hash. The object systems that we recommend below all
+           automate the generation of accessor methods. If you use one of them,
+           you should never have to access the object as a hash directly.
+
+       Composition
+           In object-oriented code, we often find that one object references
+           another object. This is called composition, or a has-a relationship.
+
+           Earlier, we mentioned that the "File" class's "last_mod_time" accessor
+           could return a DateTime object. This is a perfect example of
+           composition. We could go even further, and make the "path" and
+           "content" accessors return objects as well. The "File" class would then
+           be composed of several other objects.
+
+       Roles
+           Roles are something that a class does, rather than something that it
+           is. Roles are relatively new to Perl, but have become rather popular.
+           Roles are applied to classes. Sometimes we say that classes consume
+           roles.
+  manpageQuestion1: What is the primary purpose of the perlootut resource?
+  manpageQuestion2: How can you use roles in Perl as described in perlootut?
+  manpageQuestion3: Can you explain how composition works in Perl object-oriented programming according to the perlootut documentation?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlootut`.
+
+
+
+    Manpage text:
+
+    Roles are an alternative to inheritance for providing polymorphism.
+           Let's assume we have two classes, "Radio" and "Computer". Both of these
+           things have on/off switches. We want to model that in our class
+           definitions.
+
+           We could have both classes inherit from a common parent, like
+           "Machine", but not all machines have on/off switches. We could create a
+           parent class called "HasOnOffSwitch", but that is very artificial.
+           Radios and computers are not specializations of this parent. This
+           parent is really a rather ridiculous creation.
+
+           This is where roles come in. It makes a lot of sense to create a
+           "HasOnOffSwitch" role and apply it to both classes. This role would
+           define a known API like providing "turn_on()" and "turn_off()" methods.
+
+           Perl does not have any built-in way to express roles. In the past,
+           people just bit the bullet and used multiple inheritance. Nowadays,
+           there are several good choices on CPAN for using roles.
+  manpageQuestion1: What is the primary purpose of the perlootut resource?
+  manpageQuestion2: How can roles be used in Perl to achieve polymorphism without relying on inheritance?
+  manpageQuestion3: Can you provide an example of how to apply a role to a class in Perl using the perlootut resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlootut`.\n\n\n\nManpage text:\n\nWhen to Use OO\n       Object Orientation is not the best solution to every problem. In Perl\n       Best Practices (copyright 2004, Published by O'Reilly Media, Inc.),\n       Damian Conway provides a list of criteria to use when deciding if OO is\n       the right fit for your problem:\n\n       •   The system being designed is large, or is likely to become large.\n\n       •   The data can be aggregated into obvious structures, especially if\n\t   there's a large amount of data in each aggregate.\n\n       •   The various types of data aggregate form a natural hierarchy that\n\t   facilitates the use of inheritance and polymorphism.\n\n       •   You have a piece of data on which many different operations are\n\t   applied.\n\n       •   You need to perform the same general operations on related types of\n\t   data, but with slight variations depending on the specific type of\n\t   data the operations are applied to.\n\n       •   It's likely you'll have to add new data types later.\n\n       •   The typical interactions between pieces of data are best\n\t   represented by operators."
+  manpageQuestion1: What is the primary purpose of the perlootut resource?
+  manpageQuestion2: In what scenarios would object orientation be the best approach according to the criteria provided in perlootut?
+  manpageQuestion3: How can the criteria from perlootut help in deciding whether to use object orientation in a Perl project?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlootut`.\n\n\n\nManpage text:\n\n•   The implementation of individual components of the system is likely\n\t   to change over time.\n\n       •   The system design is already object-oriented.\n\n       •   Large numbers of other programmers will be using your code modules.\n\nPERL OO SYSTEMS\n       As we mentioned before, Perl's built-in OO system is very minimal, but\n       also quite flexible. Over the years, many people have developed systems\n       which build on top of Perl's built-in system to provide more features\n       and convenience.\n\n       We strongly recommend that you use one of these systems. Even the most\n       minimal of them eliminates a lot of repetitive boilerplate. There's\n       really no good reason to write your classes from scratch in Perl.\n\n       If you are interested in the guts underlying these systems, check out\n       perlobj.\n\n   Moose\n       Moose bills itself as a \"postmodern object system for Perl 5\". Don't be\n       scared, the \"postmodern\" label is a callback to Larry's description of\n       Perl as \"the first postmodern computer language\"."
+  manpageQuestion1: What is the primary purpose of the `perlootut` resource?
+  manpageQuestion2: How can a programmer leverage Perl's built-in object system to avoid writing boilerplate code?
+  manpageQuestion3: What are the key features of Moose as a Perl object system?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlootut`.\n\n\n\nManpage text:\n\n\"Moose\" provides a complete, modern OO system. Its biggest influence is\n       the Common Lisp Object System, but it also borrows ideas from Smalltalk\n       and several other languages. \"Moose\" was created by Stevan Little, and\n       draws heavily from his work on the Raku OO design.\n\n       Here is our \"File\" class using \"Moose\":\n\n\t package File;\n\t use Moose;\n\n\t has path\t   => ( is => 'ro' );\n\t has content\t   => ( is => 'ro' );\n\t has last_mod_time => ( is => 'ro' );\n\n\t sub print_info {\n\t     my $self = shift;\n\n\t     print \"This file is at \", $self->path, \"\\n\";\n\t }\n\n       \"Moose\" provides a number of features:\n\n       •   Declarative sugar\n\n\t   \"Moose\" provides a layer of declarative \"sugar\" for defining\n\t   classes.  That sugar is just a set of exported functions that make\n\t   declaring how your class works simpler and more palatable.  This\n\t   lets you describe what your class is, rather than having to tell\n\t   Perl how to implement your class.\n\n\t   The \"has()\" subroutine declares an attribute, and \"Moose\"\n\t   automatically creates accessors for these attributes. It also takes\n\t   care of creating a \"new()\" method for you. This constructor knows\n\t   about the attributes you declared, so you can set them when\n\t   creating a new \"File\"."
+  manpageQuestion1: What is the primary purpose of the Moose framework in Perl?
+  manpageQuestion2: How would you define a new class called 'File' using Moose, including attributes for path, content, and last_mod_time?
+  manpageQuestion3: Can you explain how Moose simplifies the process of creating a constructor for a class?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlootut`.\n\n\n\nManpage text:\n\n•   Roles built-in\n\n\t   \"Moose\" lets you define roles the same way you define classes:\n\n\t     package HasOnOffSwitch;\n\t     use Moose::Role;\n\n\t     has is_on => (\n\t\t is  => 'rw',\n\t\t isa => 'Bool',\n\t     );\n\n\t     sub turn_on {\n\t\t my $self = shift;\n\t\t $self->is_on(1);\n\t     }\n\n\t     sub turn_off {\n\t\t my $self = shift;\n\t\t $self->is_on(0);\n\t     }\n\n       •   A miniature type system\n\n\t   In the example above, you can see that we passed \"isa => 'Bool'\" to\n\t   \"has()\" when creating our \"is_on\" attribute. This tells \"Moose\"\n\t   that this attribute must be a boolean value. If we try to set it to\n\t   an invalid value, our code will throw an error.\n\n       •   Full introspection and manipulation\n\n\t   Perl's built-in introspection features are fairly minimal. \"Moose\"\n\t   builds on top of them and creates a full introspection layer for\n\t   your classes. This lets you ask questions like \"what methods does\n\t   the File class implement?\" It also lets you modify your classes\n\t   programmatically.\n\n       •   Self-hosted and extensible"
+  manpageQuestion1: What is the primary purpose of the perlootut resource?
+  manpageQuestion2: How can Moose be used to enforce a boolean attribute in a class?
+  manpageQuestion3: What are the benefits of using Moose for introspection in Perl classes?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlootut`.\n\n\n\nManpage text:\n\n\"Moose\" describes itself using its own introspection API. Besides\n\t   being a cool trick, this means that you can extend \"Moose\" using\n\t   \"Moose\" itself.\n\n       •   Rich ecosystem\n\n\t   There is a rich ecosystem of \"Moose\" extensions on CPAN under the\n\t   MooseX <https://metacpan.org/search?q=MooseX> namespace. In\n\t   addition, many modules on CPAN already use \"Moose\", providing you\n\t   with lots of examples to learn from.\n\n       •   Many more features\n\n\t   \"Moose\" is a very powerful tool, and we can't cover all of its\n\t   features here. We encourage you to learn more by reading the\n\t   \"Moose\" documentation, starting with Moose::Manual\n\t   <https://metacpan.org/pod/Moose::Manual>.\n\n       Of course, \"Moose\" isn't perfect.\n\n       \"Moose\" can make your code slower to load. \"Moose\" itself is not small,\n       and it does a lot of code generation when you define your class. This\n       code generation means that your runtime code is as fast as it can be,\n       but you pay for this when your modules are first loaded."
+  manpageQuestion1: What is the primary purpose of the 'perlootut' resource?
+  manpageQuestion2: How can 'perlootut' be used to extend the functionality of 'Moose'?
+  manpageQuestion3: What are some advantages and disadvantages of using 'Moose' as a class system in Perl?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlootut`.
+
+
+
+    Manpage text:
+
+    This load time hit can be a problem when startup speed is important,
+           such as with a command-line script or a "plain vanilla" CGI script that
+           must be loaded each time it is executed.
+
+           Before you panic, know that many people do use "Moose" for command-line
+           tools and other startup-sensitive code. We encourage you to try "Moose"
+           out first before worrying about startup speed.
+
+           "Moose" also has several dependencies on other modules. Most of these
+           are small stand-alone modules, a number of which have been spun off
+           from "Moose". "Moose" itself, and some of its dependencies, require a
+           compiler. If you need to install your software on a system without a
+           compiler, or if having any dependencies is a problem, then "Moose" may
+           not be right for you.
+
+           Moo
+
+           If you try "Moose" and find that one of these issues is preventing you
+           from using "Moose", we encourage you to consider Moo next. "Moo"
+           implements a subset of "Moose"'s functionality in a simpler package.
+           For most features that it does implement, the end-user API is identical
+           to "Moose", meaning you can switch from "Moo" to "Moose" quite easily.
+  manpageQuestion1: What is the primary purpose of the perlootut resource?
+  manpageQuestion2: How can perlootut be used in a command-line script to improve startup speed?
+  manpageQuestion3: What are the key differences between using perlootut and Moose in terms of dependencies and startup performance?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlootut`.
+
+
+
+    Manpage text:
+
+    "Moo" does not implement most of "Moose"'s introspection API, so it's
+           often faster when loading your modules. Additionally, none of its
+           dependencies require XS, so it can be installed on machines without a
+           compiler.
+
+           One of "Moo"'s most compelling features is its interoperability with
+           "Moose". When someone tries to use "Moose"'s introspection API on a
+           "Moo" class or role, it is transparently inflated into a "Moose" class
+           or role. This makes it easier to incorporate "Moo"-using code into a
+           "Moose" code base and vice versa.
+
+           For example, a "Moose" class can subclass a "Moo" class using "extends"
+           or consume a "Moo" role using "with".
+
+           The "Moose" authors hope that one day "Moo" can be made obsolete by
+           improving "Moose" enough, but for now it provides a worthwhile
+           alternative to "Moose".
+
+       Class::Accessor
+           Class::Accessor is the polar opposite of "Moose". It provides very few
+           features, nor is it self-hosting.
+  manpageQuestion1: What is the primary purpose of the perlootut resource?
+  manpageQuestion2: How can a Moose class subclass a Moo class using perlootut?
+  manpageQuestion3: What is the relationship between Class::Accessor and Moo according to the manpage?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlootut`.\n\n\n\nManpage text:\n\nIt is, however, very simple, pure Perl, and it has no non-core\n       dependencies. It also provides a \"Moose-like\" API on demand for the\n       features it supports.\n\n       Even though it doesn't do much, it is still preferable to writing your\n       own classes from scratch.\n\n       Here's our \"File\" class with \"Class::Accessor\":\n\n\t package File;\n\t use Class::Accessor 'antlers';\n\n\t has path\t   => ( is => 'ro' );\n\t has content\t   => ( is => 'ro' );\n\t has last_mod_time => ( is => 'ro' );\n\n\t sub print_info {\n\t     my $self = shift;\n\n\t     print \"This file is at \", $self->path, \"\\n\";\n\t }\n\n       The \"antlers\" import flag tells \"Class::Accessor\" that you want to\n       define your attributes using \"Moose\"-like syntax. The only parameter\n       that you can pass to \"has\" is \"is\". We recommend that you use this\n       Moose-like syntax if you choose \"Class::Accessor\" since it means you\n       will have a smoother upgrade path if you later decide to move to\n       \"Moose\".\n\n       Like \"Moose\", \"Class::Accessor\" generates accessor methods and a\n       constructor for your class."
+  manpageQuestion1: What is the primary purpose of the perlootut resource?
+  manpageQuestion2: How would you use the perlootut tool to create a class with Moose-like syntax for managing file attributes?
+  manpageQuestion3: Can you provide an example of using perlootut to define a class that includes attributes for path, content, and last modification time?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlootut`.\n\n\n\nManpage text:\n\nClass::Tiny\n       Finally, we have Class::Tiny. This module truly lives up to its name.\n       It has an incredibly minimal API and absolutely no dependencies on any\n       recent Perl. Still, we think it's a lot easier to use than writing your\n       own OO code from scratch.\n\n       Here's our \"File\" class once more:\n\n\t package File;\n\t use Class::Tiny qw( path content last_mod_time );\n\n\t sub print_info {\n\t     my $self = shift;\n\n\t     print \"This file is at \", $self->path, \"\\n\";\n\t }\n\n       That's it!\n\n       With \"Class::Tiny\", all accessors are read-write. It generates a\n       constructor for you, as well as the accessors you define.\n\n       You can also use Class::Tiny::Antlers for \"Moose\"-like syntax.\n\n   Role::Tiny\n       As we mentioned before, roles provide an alternative to inheritance,\n       but Perl does not have any built-in role support. If you choose to use\n       Moose, it comes with a full-fledged role implementation. However, if\n       you use one of our other recommended OO modules, you can still use\n       roles with Role::Tiny"
+  manpageQuestion1: What is the primary purpose of the Class::Tiny module?
+  manpageQuestion2: How can you use Class::Tiny to create a simple object-oriented class with minimal API?
+  manpageQuestion3: What is the role of Role::Tiny in Perl object-oriented programming?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlootut`.\n\n\n\nManpage text:\n\n\"Role::Tiny\" provides some of the same features as Moose's role system,\n       but in a much smaller package. Most notably, it doesn't support any\n       sort of attribute declaration, so you have to do that by hand.  Still,\n       it's useful, and works well with \"Class::Accessor\" and \"Class::Tiny\"\n\n   OO System Summary\n       Here's a brief recap of the options we covered:\n\n       •   Moose\n\n\t   \"Moose\" is the maximal option. It has a lot of features, a big\n\t   ecosystem, and a thriving user base. We also covered Moo briefly.\n\t   \"Moo\" is \"Moose\" lite, and a reasonable alternative when Moose\n\t   doesn't work for your application.\n\n       •   Class::Accessor\n\n\t   \"Class::Accessor\" does a lot less than \"Moose\", and is a nice\n\t   alternative if you find \"Moose\" overwhelming. It's been around a\n\t   long time and is well battle-tested. It also has a minimal \"Moose\"\n\t   compatibility mode which makes moving from \"Class::Accessor\" to\n\t   \"Moose\" easy.\n\n       •   Class::Tiny\n\n\t   \"Class::Tiny\" is the absolute minimal option. It has no\n\t   dependencies, and almost no syntax to learn. It's a good option for\n\t   a super minimal environment and for throwing something together\n\t   quickly without having to worry about details."
+  manpageQuestion1: What is the primary purpose of the perlootut resource?
+  manpageQuestion2: How can you use Class::Tiny to create a minimal object with attributes?
+  manpageQuestion3: What are the key differences between Moose, Class::Accessor, and Class::Tiny in terms of functionality and use cases?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlootut`.\n\n\n\nManpage text:\n\n•   Role::Tiny\n\n\t   Use \"Role::Tiny\" with \"Class::Accessor\" or \"Class::Tiny\" if you\n\t   find yourself considering multiple inheritance. If you go with\n\t   \"Moose\", it comes with its own role implementation.\n\n   Other OO Systems\n       There are literally dozens of other OO-related modules on CPAN besides\n       those covered here, and you're likely to run across one or more of them\n       if you work with other people's code.\n\n       In addition, plenty of code in the wild does all of its OO \"by hand\",\n       using just the Perl built-in OO features. If you need to maintain such\n       code, you should read perlobj to understand exactly how Perl's built-in\n       OO works.\n\nCONCLUSION\n       As we said before, Perl's minimal OO system has led to a profusion of\n       OO systems on CPAN. While you can still drop down to the bare metal and\n       write your classes by hand, there's really no reason to do that with\n       modern Perl.\n\n       For small systems, Class::Tiny and Class::Accessor both provide minimal\n       object systems that take care of basic boilerplate for you."
+  manpageQuestion1: What is the primary purpose of the `perlootut` resource?
+  manpageQuestion2: How can `perlootut` be used to understand Perl's built-in object-oriented features?
+  manpageQuestion3: What are two minimal object systems in Perl that handle basic boilerplate for small systems, as mentioned in the perlootut documentation?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlootut`.\n\n\n\nManpage text:\n\nFor bigger projects, Moose provides a rich set of features that will\n       let you focus on implementing your business logic. Moo provides a nice\n       alternative to Moose when you want a lot of features but need faster\n       compile time or to avoid XS.\n\n       We encourage you to play with and evaluate Moose, Moo, Class::Accessor,\n       and Class::Tiny to see which OO system is right for you.\n\nperl v5.34.1\t\t\t  2022-02-19\t\t\t  PERLOOTUT(1)"
+  manpageQuestion1: What is the primary purpose of the perlootut resource?
+  manpageQuestion2: How can you use perlootut to evaluate different object-oriented programming systems in Perl?
+  manpageQuestion3: What are the recommended approaches for choosing between Moose, Moo, Class::Accessor, and Class::Tiny for object-oriented programming in Perl?
+

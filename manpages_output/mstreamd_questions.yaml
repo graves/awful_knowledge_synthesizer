@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mstreamd`.\n\n\n\nManpage text:\n\nmstreamd(8)\t\t    System Manager's Manual\t\t   mstreamd(8)\n\nNAME\n     mstreamd – The macOS photo stream agent.\n\nDESCRIPTION\n     mstreamd is the photo stream agent.  It is responsible for My Photo\n     Stream and Shared Albums for Photos.\n\nSEE ALSO\n     cloudphotod(8), photolibraryd(8)\n\nmacOS\t\t\t       December 18, 2018\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the mstreamd tool?
+  manpageQuestion2: How would you configure mstreamd to manage photo streams and shared albums?
+  manpageQuestion3: Can you explain the relationship between mstreamd and other related services like cloudphotod and photolibraryd?
+

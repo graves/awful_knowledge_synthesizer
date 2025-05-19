@@ -1,0 +1,175 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlreftut`.\n\n\n\nManpage text:\n\nPERLREFTUT(1)\t       Perl Programmers Reference Guide \t PERLREFTUT(1)"
+  manpageQuestion1: What is the primary purpose of the perlreftut tool?
+  manpageQuestion2: How would you use perlreftut to demonstrate the concept of reference variables in Perl?
+  manpageQuestion3: Can you provide an example of using perlreftut to explain the difference between a scalar reference and an array reference in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlreftut`.\n\n\n\nManpage text:\n\nNAME\n       perlreftut - Mark's very short tutorial about references\n\nDESCRIPTION\n       One of the most important new features in Perl 5 was the capability to\n       manage complicated data structures like multidimensional arrays and\n       nested hashes.  To enable these, Perl 5 introduced a feature called\n       references, and using references is the key to managing complicated,\n       structured data in Perl.  Unfortunately, there's a lot of funny syntax\n       to learn, and the main manual page can be hard to follow.  The manual\n       is quite complete, and sometimes people find that a problem, because it\n       can be hard to tell what is important and what isn't.\n\n       Fortunately, you only need to know 10% of what's in the main page to\n       get 90% of the benefit.\tThis page will show you that 10%.\n\nWho Needs Complicated Data Structures?\n       One problem that comes up all the time is needing a hash whose values\n       are lists.  Perl has hashes, of course, but the values have to be\n       scalars; they can't be lists."
+  manpageQuestion1: What is the primary purpose of the perlreftut resource?
+  manpageQuestion2: How can one use perlreftut to understand the concept of references in Perl for managing nested data structures?
+  manpageQuestion3: What is an example of a scenario where perlreftut would be useful for learning how to handle hashes with list values in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlreftut`.\n\n\n\nManpage text:\n\nWhy would you want a hash of lists?  Let's take a simple example: You\n       have a file of city and country names, like this:\n\n\t       Chicago, USA\n\t       Frankfurt, Germany\n\t       Berlin, Germany\n\t       Washington, USA\n\t       Helsinki, Finland\n\t       New York, USA\n\n       and you want to produce an output like this, with each country\n       mentioned once, and then an alphabetical list of the cities in that\n       country:\n\n\t       Finland: Helsinki.\n\t       Germany: Berlin, Frankfurt.\n\t       USA:  Chicago, New York, Washington.\n\n       The natural way to do this is to have a hash whose keys are country\n       names.  Associated with each country name key is a list of the cities\n       in that country.  Each time you read a line of input, split it into a\n       country and a city, look up the list of cities already known to be in\n       that country, and append the new city to the list.  When you're done\n       reading the input, iterate over the hash as usual, sorting each list of\n       cities before you print it out."
+  manpageQuestion1: What is the primary purpose of the perlreftut resource?
+  manpageQuestion2: How can you use perlreftut to process a file containing city and country names into a structured format?
+  manpageQuestion3: Can you provide an example of how to create a hash of lists in Perl using perlreftut?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlreftut`.
+
+
+
+    Manpage text:
+
+    If hash values couldn't be lists, you lose.  You'd probably have to
+           combine all the cities into a single string somehow, and then when time
+           came to write the output, you'd have to break the string into a list,
+           sort the list, and turn it back into a string.  This is messy and
+           error-prone.  And it's frustrating, because Perl already has perfectly
+           good lists that would solve the problem if only you could use them.
+
+    The Solution
+           By the time Perl 5 rolled around, we were already stuck with this
+           design: Hash values must be scalars.  The solution to this is
+           references.
+
+           A reference is a scalar value that refers to an entire array or an
+           entire hash (or to just about anything else).  Names are one kind of
+           reference that you're already familiar with.  Each human being is a
+           messy, inconvenient collection of cells. But to refer to a particular
+           human, for instance the first computer programmer, it isn't necessary
+           to describe each of their cells; all you need is the easy, convenient
+           scalar string "Ada Lovelace".
+  manpageQuestion1: What is the primary purpose of the perlreftut resource?
+  manpageQuestion2: How can references in Perl be used to store and manipulate lists within a hash?
+  manpageQuestion3: Can you explain how references allow for more efficient handling of complex data structures in Perl?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlreftut`.
+
+
+
+    Manpage text:
+
+    References in Perl are like names for arrays and hashes.  They're
+           Perl's private, internal names, so you can be sure they're unambiguous.
+           Unlike a human name, a reference only refers to one thing, and you
+           always know what it refers to.  If you have a reference to an array,
+           you can recover the entire array from it.  If you have a reference to a
+           hash, you can recover the entire hash.  But the reference is still an
+           easy, compact scalar value.
+
+           You can't have a hash whose values are arrays; hash values can only be
+           scalars.  We're stuck with that.  But a single reference can refer to
+           an entire array, and references are scalars, so you can have a hash of
+           references to arrays, and it'll act a lot like a hash of arrays, and
+           it'll be just as useful as a hash of arrays.
+
+           We'll come back to this city-country problem later, after we've seen
+           some syntax for managing references.
+
+    Syntax
+           There are just two ways to make a reference, and just two ways to use
+           it once you have it.
+  manpageQuestion1: What is the primary purpose of the perlreftut resource?
+  manpageQuestion2: How can you create a reference to an array in Perl using the syntax described in perlreftut?
+  manpageQuestion3: Can you provide an example of using a reference to access elements in a hash of arrays in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlreftut`.\n\n\n\nManpage text:\n\nMaking References\n       Make Rule 1\n\n       If you put a \"\\\" in front of a variable, you get a reference to that\n       variable.\n\n\t   $aref = \\@array;\t    # $aref now holds a reference to @array\n\t   $href = \\%hash;\t    # $href now holds a reference to %hash\n\t   $sref = \\$scalar;\t    # $sref now holds a reference to $scalar\n\n       Once the reference is stored in a variable like $aref or $href, you can\n       copy it or store it just the same as any other scalar value:\n\n\t   $xy = $aref; \t    # $xy now holds a reference to @array\n\t   $p[3] = $href;\t    # $p[3] now holds a reference to %hash\n\t   $z = $p[3];\t\t    # $z now holds a reference to %hash\n\n       These examples show how to make references to variables with names.\n       Sometimes you want to make an array or a hash that doesn't have a name.\n       This is analogous to the way you like to be able to use the string \"\\n\"\n       or the number 80 without having to store it in a named variable first.\n\n       Make Rule 2\n\n       \"[ ITEMS ]\" makes a new, anonymous array, and returns a reference to\n       that array.  \"{ ITEMS }\" makes a new, anonymous hash, and returns a\n       reference to that hash."
+  manpageQuestion1: What is the primary purpose of the perlreftut resource?
+  manpageQuestion2: How can you create an anonymous array in Perl using the perlreftut resource?
+  manpageQuestion3: Can you provide an example of how to create a reference to a hash using the perlreftut resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlreftut`.\n\n\n\nManpage text:\n\n$aref = [ 1, \"foo\", undef, 13 ];\n\t   # $aref now holds a reference to an array\n\n\t   $href = { APR => 4, AUG => 8 };\n\t   # $href now holds a reference to a hash\n\n       The references you get from rule 2 are the same kind of references that\n       you get from rule 1:\n\n\t       # This:\n\t       $aref = [ 1, 2, 3 ];\n\n\t       # Does the same as this:\n\t       @array = (1, 2, 3);\n\t       $aref = \\@array;\n\n       The first line is an abbreviation for the following two lines, except\n       that it doesn't create the superfluous array variable @array.\n\n       If you write just \"[]\", you get a new, empty anonymous array.  If you\n       write just \"{}\", you get a new, empty anonymous hash.\n\n   Using References\n       What can you do with a reference once you have it?  It's a scalar\n       value, and we've seen that you can store it as a scalar and get it back\n       again just like any scalar.  There are just two more ways to use it:\n\n       Use Rule 1\n\n       You can always use an array reference, in curly braces, in place of the\n       name of an array.  For example, \"@{$aref}\" instead of @array."
+  manpageQuestion1: What is the primary purpose of the perlreftut resource?
+  manpageQuestion2: How would you create an anonymous array reference in Perl using the perlreftut resource?
+  manpageQuestion3: Can you provide an example of using a reference to access elements of an array in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlreftut`.\n\n\n\nManpage text:\n\nHere are some examples of that:\n\n       Arrays:\n\n\t       @a\t       @{$aref} \t       An array\n\t       reverse @a      reverse @{$aref}        Reverse the array\n\t       $a[3]\t       ${$aref}[3]\t       An element of the array\n\t       $a[3] = 17;     ${$aref}[3] = 17        Assigning an element\n\n       On each line are two expressions that do the same thing.  The left-hand\n       versions operate on the array @a.  The right-hand versions operate on\n       the array that is referred to by $aref.\tOnce they find the array\n       they're operating on, both versions do the same things to the arrays.\n\n       Using a hash reference is exactly the same:\n\n\t       %h\t       %{$href} \t     A hash\n\t       keys %h\t       keys %{$href}\t     Get the keys from the hash\n\t       $h{'red'}       ${$href}{'red'}\t     An element of the hash\n\t       $h{'red'} = 17  ${$href}{'red'} = 17  Assigning an element\n\n       Whatever you want to do with a reference, Use Rule 1 tells you how to\n       do it.  You just write the Perl code that you would have written for\n       doing the same thing to a regular array or hash, and then replace the\n       array or hash name with \"{$reference}\".\t\"How do I loop over an array\n       when all I have is a reference?\"  Well, to loop over an array, you\n       would write"
+  manpageQuestion1: What is the primary purpose of the perlreftut tool?
+  manpageQuestion2: How would you use perlreftut to loop over an array when you only have a reference to it?
+  manpageQuestion3: Can you provide an example of using perlreftut to retrieve the value of a specific element from a hash reference?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlreftut`.\n\n\n\nManpage text:\n\nfor my $element (@array) {\n\t\t ...\n\t       }\n\n       so replace the array name, @array, with the reference:\n\n\t       for my $element (@{$aref}) {\n\t\t ...\n\t       }\n\n       \"How do I print out the contents of a hash when all I have is a\n       reference?\"  First write the code for printing out a hash:\n\n\t       for my $key (keys %hash) {\n\t\t print \"$key => $hash{$key}\\n\";\n\t       }\n\n       And then replace the hash name with the reference:\n\n\t       for my $key (keys %{$href}) {\n\t\t print \"$key => ${$href}{$key}\\n\";\n\t       }\n\n       Use Rule 2\n\n       Use Rule 1 is all you really need, because it tells you how to do\n       absolutely everything you ever need to do with references.  But the\n       most common thing to do with an array or a hash is to extract a single\n       element, and the Use Rule 1 notation is cumbersome.  So there is an\n       abbreviation.\n\n       \"${$aref}[3]\" is too hard to read, so you can write \"$aref->[3]\"\n       instead.\n\n       \"${$href}{red}\" is too hard to read, so you can write \"$href->{red}\"\n       instead."
+  manpageQuestion1: What is the primary purpose of the perlreftut resource?
+  manpageQuestion2: How can you iterate over the elements of a hash reference in Perl?
+  manpageQuestion3: What is the shorthand notation for accessing elements of an array reference and a hash reference in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlreftut`.\n\n\n\nManpage text:\n\nIf $aref holds a reference to an array, then \"$aref->[3]\" is the fourth\n       element of the array.  Don't confuse this with $aref[3], which is the\n       fourth element of a totally different array, one deceptively named\n       @aref.  $aref and @aref are unrelated the same way that $item and @item\n       are.\n\n       Similarly, \"$href->{'red'}\" is part of the hash referred to by the\n       scalar variable $href, perhaps even one with no name.  $href{'red'} is\n       part of the deceptively named %href hash.  It's easy to forget to leave\n       out the \"->\", and if you do, you'll get bizarre results when your\n       program gets array and hash elements out of totally unexpected hashes\n       and arrays that weren't the ones you wanted to use.\n\n   An Example\n       Let's see a quick example of how all this is useful.\n\n       First, remember that \"[1, 2, 3]\" makes an anonymous array containing\n       \"(1, 2, 3)\", and gives you a reference to that array.\n\n       Now think about\n\n\t       @a = ( [1, 2, 3],\n\t\t      [4, 5, 6],\n\t\t      [7, 8, 9]\n\t\t    );"
+  manpageQuestion1: What is the primary purpose of the perlreftut resource?
+  manpageQuestion2: How does one access the fourth element of an array referenced by a scalar variable in Perl?
+  manpageQuestion3: Can you provide an example of accessing a specific key in a hash referenced by a scalar variable using perlreftut?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlreftut`.\n\n\n\nManpage text:\n\n@a is an array with three elements, and each one is a reference to\n       another array.\n\n       $a[1] is one of these references.  It refers to an array, the array\n       containing \"(4, 5, 6)\", and because it is a reference to an array, Use\n       Rule 2 says that we can write $a[1]->[2] to get the third element from\n       that array.  $a[1]->[2] is the 6.  Similarly, $a[0]->[1] is the 2.\n       What we have here is like a two-dimensional array; you can write\n       $a[ROW]->[COLUMN] to get or set the element in any row and any column\n       of the array.\n\n       The notation still looks a little cumbersome, so there's one more\n       abbreviation:\n\n   Arrow Rule\n       In between two subscripts, the arrow is optional.\n\n       Instead of $a[1]->[2], we can write $a[1][2]; it means the same thing.\n       Instead of \"$a[0]->[1] = 23\", we can write \"$a[0][1] = 23\"; it means\n       the same thing.\n\n       Now it really looks like two-dimensional arrays!\n\n       You can see why the arrows are important.  Without them, we would have\n       had to write \"${$a[1]}[2]\" instead of $a[1][2].\tFor three-dimensional\n       arrays, they let us write $x[2][3][5] instead of the unreadable\n       \"${${$x[2]}[3]}[5]\"."
+  manpageQuestion1: What is the primary purpose of the perlreftut resource?
+  manpageQuestion2: How can you access the third element of a nested array reference in Perl using the arrow rule?
+  manpageQuestion3: Can you provide an example of how to modify a specific element in a three-dimensional array using the arrow rule?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlreftut`.\n\n\n\nManpage text:\n\nSolution\n       Here's the answer to the problem I posed earlier, of reformatting a\n       file of city and country names.\n\n\t   1   my %table;\n\n\t   2   while (<>) {\n\t   3\t chomp;\n\t   4\t my ($city, $country) = split /, /;\n\t   5\t $table{$country} = [] unless exists $table{$country};\n\t   6\t push @{$table{$country}}, $city;\n\t   7   }\n\n\t   8   for my $country (sort keys %table) {\n\t   9\t print \"$country: \";\n\t  10\t my @cities = @{$table{$country}};\n\t  11\t print join ', ', sort @cities;\n\t  12\t print \".\\n\";\n\t  13   }\n\n       The program has two pieces: Lines 2-7 read the input and build a data\n       structure, and lines 8-13 analyze the data and print out the report.\n       We're going to have a hash, %table, whose keys are country names, and\n       whose values are references to arrays of city names.  The data\n       structure will look like this:\n\n\t\t  %table\n\t       +-------+---+\n\t       |       |   |   +-----------+--------+\n\t       |Germany| *---->| Frankfurt | Berlin |\n\t       |       |   |   +-----------+--------+\n\t       +-------+---+\n\t       |       |   |   +----------+\n\t       |Finland| *---->| Helsinki |\n\t       |       |   |   +----------+\n\t       +-------+---+\n\t       |       |   |   +---------+------------+----------+\n\t       |  USA  | *---->| Chicago | Washington | New York |\n\t       |       |   |   +---------+------------+----------+\n\t       +-------+---+"
+  manpageQuestion1: What is the primary purpose of the perlreftut resource?
+  manpageQuestion2: How can you use perlreftut to process a file containing city and country names, grouping cities by their respective countries?
+  manpageQuestion3: Can you provide an example of how the perlreftut script structures data to organize city names by country?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlreftut`.\n\n\n\nManpage text:\n\nWe'll look at output first.  Supposing we already have this structure,\n       how do we print it out?\n\n\t   8   for my $country (sort keys %table) {\n\t   9\t print \"$country: \";\n\t  10\t my @cities = @{$table{$country}};\n\t  11\t print join ', ', sort @cities;\n\t  12\t print \".\\n\";\n\t  13   }\n\n       %table is an ordinary hash, and we get a list of keys from it, sort the\n       keys, and loop over the keys as usual.  The only use of references is\n       in line 10.  $table{$country} looks up the key $country in the hash and\n       gets the value, which is a reference to an array of cities in that\n       country.  Use Rule 1 says that we can recover the array by saying\n       \"@{$table{$country}}\".  Line 10 is just like\n\n\t       @cities = @array;\n\n       except that the name \"array\" has been replaced by the reference\n       \"{$table{$country}}\".  The \"@\" tells Perl to get the entire array.\n       Having gotten the list of cities, we sort it, join it, and print it out\n       as usual.\n\n       Lines 2-7 are responsible for building the structure in the first\n       place.  Here they are again:"
+  manpageQuestion1: What is the primary purpose of the perlreftut resource?
+  manpageQuestion2: How would you use Perl to extract and print the list of cities for each country from a hash that references an array of cities?
+  manpageQuestion3: Can you provide an example of using Perl to build a hash structure where each key maps to an array reference containing city names?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlreftut`.\n\n\n\nManpage text:\n\n2   while (<>) {\n\t   3\t chomp;\n\t   4\t my ($city, $country) = split /, /;\n\t   5\t $table{$country} = [] unless exists $table{$country};\n\t   6\t push @{$table{$country}}, $city;\n\t   7   }\n\n       Lines 2-4 acquire a city and country name.  Line 5 looks to see if the\n       country is already present as a key in the hash.  If it's not, the\n       program uses the \"[]\" notation (Make Rule 2) to manufacture a new,\n       empty anonymous array of cities, and installs a reference to it into\n       the hash under the appropriate key.\n\n       Line 6 installs the city name into the appropriate array.\n       $table{$country} now holds a reference to the array of cities seen in\n       that country so far.  Line 6 is exactly like\n\n\t       push @array, $city;\n\n       except that the name \"array\" has been replaced by the reference\n       \"{$table{$country}}\".  The \"push\" adds a city name to the end of the\n       referred-to array.\n\n       There's one fine point I skipped.  Line 5 is unnecessary, and we can\n       get rid of it."
+  manpageQuestion1: What is the primary purpose of the perlreftut resource?
+  manpageQuestion2: How can you use perlreftut to process a list of city-country pairs and organize them into a hash where each country maps to an array of cities?
+  manpageQuestion3: Can you provide an example of how perlreftut handles the scenario where a country is not already present in the hash when processing city-country data?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlreftut`.\n\n\n\nManpage text:\n\n2   while (<>) {\n\t   3\t chomp;\n\t   4\t my ($city, $country) = split /, /;\n\t   5   ####  $table{$country} = [] unless exists $table{$country};\n\t   6\t push @{$table{$country}}, $city;\n\t   7   }\n\n       If there's already an entry in %table for the current $country, then\n       nothing is different.  Line 6 will locate the value in\n       $table{$country}, which is a reference to an array, and push $city into\n       the array.  But what does it do when $country holds a key, say\n       \"Greece\", that is not yet in %table?\n\n       This is Perl, so it does the exact right thing.\tIt sees that you want\n       to push \"Athens\" onto an array that doesn't exist, so it helpfully\n       makes a new, empty, anonymous array for you, installs it into %table,\n       and then pushes \"Athens\" onto it.  This is called\n       autovivification--bringing things to life automatically.  Perl saw that\n       the key wasn't in the hash, so it created a new hash entry\n       automatically. Perl saw that you wanted to use the hash value as an\n       array, so it created a new empty array and installed a reference to it\n       in the hash automatically.  And as usual, Perl made the array one\n       element longer to hold the new city name."
+  manpageQuestion1: What is the primary purpose of the perlreftut resource?
+  manpageQuestion2: How does the perlreftut script handle the scenario where a country key is not yet present in the %table hash?
+  manpageQuestion3: Can you provide an example of how Perl's autovivification is demonstrated in the perlreftut script?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlreftut`.\n\n\n\nManpage text:\n\nThe Rest\n       I promised to give you 90% of the benefit with 10% of the details, and\n       that means I left out 90% of the details.  Now that you have an\n       overview of the important parts, it should be easier to read the\n       perlref manual page, which discusses 100% of the details.\n\n       Some of the highlights of perlref:\n\n       •   You can make references to anything, including scalars, functions,\n\t   and other references.\n\n       •   In Use Rule 1, you can omit the curly brackets whenever the thing\n\t   inside them is an atomic scalar variable like $aref.  For example,\n\t   @$aref is the same as \"@{$aref}\", and $$aref[1] is the same as\n\t   \"${$aref}[1]\".  If you're just starting out, you may want to adopt\n\t   the habit of always including the curly brackets.\n\n       •   This doesn't copy the underlying array:\n\n\t\t   $aref2 = $aref1;\n\n\t   You get two references to the same array.  If you modify\n\t   \"$aref1->[23]\" and then look at \"$aref2->[23]\" you'll see the\n\t   change.\n\n\t   To copy the array, use"
+  manpageQuestion1: What is the primary purpose of the perlreftut resource?
+  manpageQuestion2: How can you create a reference to a scalar variable in Perl using the perlreftut resource?
+  manpageQuestion3: What is the difference between assigning references directly and copying an array's contents using the perlreftut resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlreftut`.\n\n\n\nManpage text:\n\n$aref2 = [@{$aref1}];\n\n\t   This uses \"[...]\" notation to create a new anonymous array, and\n\t   $aref2 is assigned a reference to the new array.  The new array is\n\t   initialized with the contents of the array referred to by $aref1.\n\n\t   Similarly, to copy an anonymous hash, you can use\n\n\t\t   $href2 = {%{$href1}};\n\n       •   To see if a variable contains a reference, use the \"ref\" function.\n\t   It returns true if its argument is a reference.  Actually it's a\n\t   little better than that: It returns \"HASH\" for hash references and\n\t   \"ARRAY\" for array references.\n\n       •   If you try to use a reference like a string, you get strings like\n\n\t\t   ARRAY(0x80f5dec)   or    HASH(0x826afc0)\n\n\t   If you ever see a string that looks like this, you'll know you\n\t   printed out a reference by mistake.\n\n\t   A side effect of this representation is that you can use \"eq\" to\n\t   see if two references refer to the same thing.  (But you should\n\t   usually use \"==\" instead because it's much faster.)\n\n       •   You can use a string as if it were a reference.  If you use the\n\t   string \"foo\" as an array reference, it's taken to be a reference to\n\t   the array @foo.  This is called a symbolic reference.  The\n\t   declaration \"use strict 'refs'\" disables this feature, which can\n\t   cause all sorts of trouble if you use it by accident."
+  manpageQuestion1: What is the primary purpose of the perlreftut resource?
+  manpageQuestion2: How can you copy an anonymous array reference in Perl using the syntax shown in the manpage?
+  manpageQuestion3: What is a symbolic reference in Perl, and how can it be used as an array reference?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlreftut`.
+
+
+
+    Manpage text:
+
+    You might prefer to go on to perllol instead of perlref; it discusses
+           lists of lists and multidimensional arrays in detail.  After that, you
+           should move on to perldsc; it's a Data Structure Cookbook that shows
+           recipes for using and printing out arrays of hashes, hashes of arrays,
+           and other kinds of data.
+
+    Summary
+           Everyone needs compound data structures, and in Perl the way you get
+           them is with references.  There are four important rules for managing
+           references: Two for making references and two for using them.  Once you
+           know these rules you can do most of the important things you need to do
+           with references.
+
+    Credits
+           Author: Mark Jason Dominus, Plover Systems ("mjd-perl-ref+@plover.com")
+
+           This article originally appeared in The Perl Journal (
+           <http://www.tpj.com/> ) volume 3, #2.  Reprinted with permission.
+
+           The original title was Understand References Today.
+
+       Distribution Conditions
+           Copyright 1998 The Perl Journal.
+  manpageQuestion1: What is the primary purpose of the perlreftut resource?
+  manpageQuestion2: How can you navigate from perlreftut to learning about lists of lists and multidimensional arrays in Perl?
+  manpageQuestion3: What are the four important rules for managing references in Perl as outlined in perlreftut?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlreftut`.\n\n\n\nManpage text:\n\nThis documentation is free; you can redistribute it and/or modify it\n       under the same terms as Perl itself.\n\n       Irrespective of its distribution, all code examples in these files are\n       hereby placed into the public domain.  You are permitted and encouraged\n       to use this code in your own programs for fun or for profit as you see\n       fit.  A simple comment in the code giving credit would be courteous but\n       is not required.\n\nperl v5.34.1\t\t\t  2022-02-19\t\t\t PERLREFTUT(1)"
+  manpageQuestion1: What is the primary purpose of the perlreftut resource?
+  manpageQuestion2: How would you use perlreftut to demonstrate a reference tutorial example?
+  manpageQuestion3: Can you provide an example of using perlreftut to explain the concept of reference counting in Perl?
+

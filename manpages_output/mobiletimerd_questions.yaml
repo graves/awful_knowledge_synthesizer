@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mobiletimerd`.\n\n\n\nManpage text:\n\nMOBILETIMERD(8) \t    System Manager's Manual\t       MOBILETIMERD(8)\n\nNAME\n     mobiletimerd – timer agent\n\nSYNOPSIS\n     takes no arguments, and users should not launch it manually.\n\nDESCRIPTION\n     It manages alarms and timers, and is responsible for showing\n     notifications when they fire.\n\nHISTORY\n     mobiletimerd first appeared in macOS 13.\n\nDarwin\t\t\t       January 25, 2022 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the mobiletimerd tool?
+  manpageQuestion2: How would you check if the mobiletimerd service is running on a macOS system?
+  manpageQuestion3: What is the recommended way to ensure that mobiletimerd is properly configured and operational?
+

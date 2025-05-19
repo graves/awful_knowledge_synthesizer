@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `afconvert`.\n\n\n\nManpage text:\n\nAFCONVERT(1)\t\t    General Commands Manual\t\t  AFCONVERT(1)\n\nNAME\n     afconvert – Audio File Convert\n\nSYNOPSIS\n     afconvert [option] src_audiofile dest_audiofile\n\nDESCRIPTION\n     Audio File Convert will convert a source audio file to a new audio file\n     with the specified file and data types\n\nOPTIONS\n     -h       print help text\n\nDarwin\t\t\t       February 13, 2007\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the afconvert tool?
+  manpageQuestion2: How would you use afconvert to convert an audio file from AIFF format to WAV format?
+  manpageQuestion3: Can you provide an example of using afconvert to convert a FLAC file to MP3 format with default settings?
+

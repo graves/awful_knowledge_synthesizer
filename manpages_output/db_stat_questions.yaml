@@ -1,0 +1,56 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `db_stat`.\n\n\n\nManpage text:\n\ndb_stat(1)\t\t    General Commands Manual\t\t    db_stat(1)\n\nNAME\n     db_stat\n\nSYNOPSIS\n     db_stat -d file [-fN] [-h home] [-P password] [-s database]\n     db_stat [-celmNrtVZ] [-C Aclmop] [-h home] [-M Ahm] [-P password]\n\nDESCRIPTION\n     The db_stat utility utility displays statistics for Berkeley DB\n     environments.\n\n     The options are as follows:\n\n     -C\n       Display internal information about the lock region. (The output from\n       this option is often both voluminous and meaningless, and is intended\n       only for debugging.)\n\n       A\n\t Display all information.\n\n       c\n\t Display lock conflict matrix.\n\n       l\n\t Display lockers within hash chains.\n\n       m\n\t Display region memory information.\n\n       o\n\t Display objects within hash chains.\n\n       p\n\t Display lock region parameters.\n\n     -c\n       Display lock region statistics, as described in DB_ENV->lock_stat.\n\n     -d\n       Display database statistics for the specified file, as described in\n       DB->stat.\n\n       If the database contains multiple databases and the -s flag is not\n       specified, the statistics are for the internal database that describes\n       the other databases the file contains, and not for the file as a whole."
+  manpageQuestion1: What is the primary purpose of the db_stat command?
+  manpageQuestion2: How can you use db_stat to display lock region statistics for a Berkeley DB environment?
+  manpageQuestion3: Can you provide an example of using db_stat to retrieve statistics for a specific file in a Berkeley DB environment?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `db_stat`.\n\n\n\nManpage text:\n\n-e\n       Display current environment statistics.\n\n     -f\n       Display only those database statistics that can be acquired without\n       traversing the database.\n\n     -h\n       Specify a home directory for the database environment; by default, the\n       current working directory is used.\n\n     -l\n       Display log region statistics, as described in DB_ENV->log_stat.\n\n     -M\n       Display internal information about the shared memory buffer pool. (The\n       output from this option is often both voluminous and meaningless, and\n       is intended only for debugging.)\n\n       A\n\t Display all information.\n\n       h\n\t Display buffers within hash chains.\n\n       m\n\t Display region memory information.\n\n     -m\n       Display shared memory buffer pool statistics, as described in\n       DB_ENV->memp_stat.\n\n     -N\n       Do not acquire shared region mutexes while running. Other problems,\n       such as potentially fatal errors in Berkeley DB, will be ignored as\n       well. This option is intended only for debugging errors, and should not\n       be used under any other circumstances."
+  manpageQuestion1: What is the primary purpose of the db_stat command?
+  manpageQuestion2: How would you use db_stat to display only those database statistics that can be acquired without traversing the database?
+  manpageQuestion3: Can you provide an example of using db_stat to display shared memory buffer pool statistics?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `db_stat`.
+
+
+
+    Manpage text:
+
+    -P
+           Specify an environment password. Although Berkeley DB utilities
+           overwrite password strings as soon as possible, be aware there may be a
+           window of vulnerability on systems where unprivileged users can see
+           command-line arguments or where utilities are not able to overwrite the
+           memory containing the command-line arguments.
+
+         -r
+           Display replication statistics, as described in DB_ENV->rep_stat.
+
+         -s
+           Display statistics for the specified database contained in the file
+           specified with the -d flag.
+
+         -t
+           Display transaction region statistics, as described in
+           DB_ENV->txn_stat.
+
+         -V
+           Write the library version number to the standard output, and exit.
+
+         -Z
+           Reset the statistics after reporting them; valid only with the -c, -e,
+           -l, -m, and -t options.
+
+         Values normally displayed in quantities of bytes are displayed as a
+         combination of gigabytes (GB), megabytes (MB), kilobytes (KB), and bytes
+         (B). Otherwise, values smaller than 10 million are displayed without any
+         special notation, and values larger than 10 million are displayed as a
+         number followed by "M".
+  manpageQuestion1: What is the primary purpose of the db_stat command?
+  manpageQuestion2: How can you use db_stat to display replication statistics for a database environment?
+  manpageQuestion3: Can you provide an example of using db_stat with the -s option to display statistics for a specific database file?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `db_stat`.\n\n\n\nManpage text:\n\nThe db_stat utility may be used with a Berkeley DB environment (as\n     described for the -h option, the environment variable DB_HOME, or because\n     the utility was run in a directory containing a Berkeley DB environment).\n     In order to avoid environment corruption when using a Berkeley DB\n     environment, db_stat should always be given the chance to detach from the\n     environment and exit gracefully. To cause db_stat to release all\n     environment resources and exit cleanly, send it an interrupt signal\n     (SIGINT).\n\n     The db_stat utility exits 0 on success, and >0 if an error occurs.\n\nENVIRONMENT\n     DB_HOME  If the -h option is not specified and the environment variable\n\t      DB_HOME is set, it is used as the path of the database home, as\n\t      described in DB_ENV->open.\n\nSEE ALSO\n     db_archive(1), db_checkpoint(1), db_deadlock(1), db_dump(1), db_load(1),\n     db_printlog(1), db_recover(1), db_upgrade(1), db_verify(1)\n\nDarwin\t\t\t       December 3, 2003 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the db_stat utility?
+  manpageQuestion2: How can you ensure that db_stat exits gracefully after performing its operations?
+  manpageQuestion3: In what scenarios would the db_stat utility be most useful when working with a Berkeley DB environment?
+

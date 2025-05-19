@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `translationd`.\n\n\n\nManpage text:\n\ntranslationd(8) \t    System Manager's Manual\t       translationd(8)\n\nNAME\n     translationd – Daemon that enables Translation features.\n\nmacOS 15.3\t\t       February 10, 2020\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the translationd daemon?
+  manpageQuestion2: How can you start the translationd daemon to enable translation features on a macOS system?
+  manpageQuestion3: What is the typical command used to check the status of the translationd daemon?
+

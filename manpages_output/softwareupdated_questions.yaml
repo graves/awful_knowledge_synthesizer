@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `softwareupdated`.\n\n\n\nManpage text:\n\nSU-Daemon(8)\t\t    System Manager's Manual\t\t  SU-Daemon(8)\n\nNAME\n     softwareupdated\n\nSYNOPSIS\n     softwareupdated – macOS Software Update daemon\n\nDESCRIPTION\n     softwareupdated is the main daemon responsible for running software\n     updates.\n\nSEE ALSO\n     softwareupdate(8)\n     softwareupdate_firstrun_tasks(8)\n     softwareupdate_download_service(8)\n     suhelperd(8)\n\nmacOS\t\t\t\t  2017-20-01\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the softwareupdated daemon?
+  manpageQuestion2: How does the softwareupdated daemon function within the macOS system?
+  manpageQuestion3: What is the relationship between softwareupdated and other related daemons or tools in macOS?
+

@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `passd`.\n\n\n\nManpage text:\n\npassd(8)\t\t    System Manager's Manual\t\t      passd(8)\n\nNAME\n     passd – Apple Pay & Wallet daemon\n\nDESCRIPTION\n     passd manages Apple Pay and Wallet operations. It cannot be used directly\n     by the user.\n\nmacOS 15.3\t\t       November 8, 2016 \t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the passd resource?
+  manpageQuestion2: How would you check if the passd daemon is running on a macOS system?
+  manpageQuestion3: Can you explain the role of passd in managing Apple Pay and Wallet operations?
+

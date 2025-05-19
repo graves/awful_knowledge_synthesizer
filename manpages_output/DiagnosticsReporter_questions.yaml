@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `DiagnosticsReporter`.\n\n\n\nManpage text:\n\nDiagnostics Reporter(8)     System Manager's Manual    Diagnostics Reporter(8)\n\nNAME\n     Diagnostics Reporter – Facilitates feedback and diagnostics reporting for\n     Panics and ALEs\n\nDESCRIPTION\n     Diagnostics Reporter is an application that launches when a panic log is\n     present in /var/db/PanicReporter or when an ALE crash log is present in\n     /var/db/DiagnosticsReporter. It is responsible for prompting the users to\n     submit feedback and diagnostic logs on seed and internal builds.  It will\n     not prompt more than twice a day.\n\nSEE ALSO\n     ReportPanic(8)\n\nmacOS\t\t\t       February 6, 2021 \t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the Diagnostics Reporter tool?
+  manpageQuestion2: How would you trigger the Diagnostics Reporter application manually on a macOS system?
+  manpageQuestion3: What is the default behavior of the Diagnostics Reporter regarding repeated prompts for feedback submission?
+

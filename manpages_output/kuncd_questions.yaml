@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `kuncd`.\n\n\n\nManpage text:\n\nkuncd(8)\t\t    System Manager's Manual\t\t      kuncd(8)\n\nNAME\n     kuncd – The Kernel User Notification Center daemon.\n\nDESCRIPTION\n     The Kernel User Notification Center daemon handles requests by software\n     executing in the kernel to display notices and alerts to the user.  The\n     daemon also handles kernel reqeusts to execute user-space helper tools.\n\n     The daemon is launched by launchd(8) when a request has been received\n     from the kernel and will exit 15 seconds after the last request has been\n     processed.\n\n     The daemon cannot be used directly by the user.\n\nSIGNALS\n     SIGTERM  This signal will result in the daemon unregistering itself from\n\t      launchd and exiting.  Once it is unregistered, it will not run\n\t      again until it is reregistered.\n\nSEE ALSO\n     launchd(8)\n\nHISTORY\n     The kuncd daemon was introduced in Mac OS X 10.3.\n\nNOTES\n     This daemon and its current behavior may change without notice.  Do not\n     rely on its existence or its behavior.  Consider it an unsupported\n     command."
+  manpageQuestion1: What is the primary purpose of the kuncd daemon?
+  manpageQuestion2: How can a system administrator signal the kuncd daemon to exit gracefully?
+  manpageQuestion3: Is the kuncd daemon intended for direct user interaction, and what is its typical usage scenario?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `kuncd`.\n\n\n\nManpage text:\n\nDarwin\t\t\t\t May 23, 2004\t\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the kuncd tool?
+  manpageQuestion2: How would you use kuncd to perform a specific operation related to its functionality?
+  manpageQuestion3: Can you provide an example of using kuncd with specific parameters to achieve a particular task?
+

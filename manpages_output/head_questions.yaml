@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `head`.\n\n\n\nManpage text:\n\nHEAD(1) \t\t    General Commands Manual\t\t       HEAD(1)\n\nNAME\n     head – display first lines of a file\n\nSYNOPSIS\n     head [-n count | -c bytes] [file ...]\n\nDESCRIPTION\n     This filter displays the first count lines or bytes of each of the\n     specified files, or of the standard input if no files are specified.  If\n     count is omitted it defaults to 10.\n\n     The following options are available:\n\n     -c bytes, --bytes=bytes\n\t     Print bytes of each of the specified files.\n\n     -n count, --lines=count\n\t     Print count lines of each of the specified files.\n\n     If more than a single file is specified, each file is preceded by a\n     header consisting of the string “==> XXX <==” where “XXX” is the name of\n     the file.\n\nEXIT STATUS\n     The head utility exits 0 on success, and >0 if an error occurs.\n\nEXAMPLES\n     To display the first 500 lines of the file foo:\n\n\t   $ head -n 500 foo\n\n     head can be used in conjunction with tail(1) in the following way to, for\n     example, display only line 500 from the file foo:"
+  manpageQuestion1: What is the primary purpose of the head command?
+  manpageQuestion2: How can you use the head command to display the first 500 lines of a file named 'data.txt'?
+  manpageQuestion3: What is the difference between using the -n and -c options with the head command?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `head`.\n\n\n\nManpage text:\n\n$ head -n 500 foo | tail -n 1\n\nSEE ALSO\n     tail(1)\n\nHISTORY\n     The head command appeared in PWB UNIX.\n\nmacOS 15.3\t\t\tApril 10, 2018\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the head command?
+  manpageQuestion2: How can you use the head command to display the last line of a file named 'data.txt'?
+  manpageQuestion3: Can you provide an example of using the head command to display the first 10 lines of a file named 'log.txt'?
+

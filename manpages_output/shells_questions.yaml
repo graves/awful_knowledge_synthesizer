@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `shells`.\n\n\n\nManpage text:\n\nSHELLS(5)\t\t      File Formats Manual\t\t     SHELLS(5)\n\nNAME\n     shells – shell database\n\nDESCRIPTION\n     The shells file contains a list of the shells on the system.  For each\n     shell a single line should be present, consisting of the shell's path,\n     relative to root.\n\n     A hash mark (``#'') indicates the beginning of a comment; subsequent\n     characters up to the end of the line are not interpreted by the routines\n     which search the file.  Blank lines are also ignored.\n\nFILES\n     /etc/shells  The shells file resides in /etc.\n\nSEE ALSO\n     getusershell(3)\n\nHISTORY\n     The shells file format appeared in 4.3BSD-Tahoe.\n\nBSD 4.2 \t\t\t June 5, 1993\t\t\t       BSD 4.2"
+  manpageQuestion1: What is the primary purpose of the shells resource?
+  manpageQuestion2: Where is the shells file typically located on a macOS system, and what does it contain?
+  manpageQuestion3: How can you verify the list of valid shells available on a macOS system using the shells resource?
+

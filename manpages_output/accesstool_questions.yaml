@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `accesstool`.\n\n\n\nManpage text:\n\nACCESSTOOL(8)\t\t    System Manager's Manual\t\t ACCESSTOOL(8)\n\nNAME\n     accesstool – accesstool\n\nSYNOPSIS\n     accesstool\n\nDESCRIPTION\n     accesstool CLI interface to the accessibility API.\n\n     There are no configuration options.\n\nmacOS\t\t\t\tOctober 6, 2011 \t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the accesstool command?
+  manpageQuestion2: How would you use accesstool to interact with the accessibility API?
+  manpageQuestion3: Can you provide an example of using accesstool to perform a specific accessibility-related task?
+

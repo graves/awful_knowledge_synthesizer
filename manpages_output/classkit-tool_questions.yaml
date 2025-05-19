@@ -1,0 +1,10 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `classkit-tool`.\n\n\n\nManpage text:\n\nclasskit-tool(8)\t    System Manager's Manual\t      classkit-tool(8)\n\nNAME\n     classkit-tool – ClassKit Tool\n\nSYNOPSIS\n     classkit-tool -h | --help\n     classkit-tool -s | --show-devmode\n     classkit-tool -d | --devmode dev-mode\n     classkit-tool -r | --reset-devmode-data\n\nDESCRIPTION\n     This tool allows you to test your ClassKit enabled app by putting this\n     Mac into development mode, in the role of either teacher or student.  You\n     also set the value of the ClassKit entitlement of your application to\n     development.  For more information, see\n     https://developer.apple.com/documentation/classkit.\n\n     The options are as follows:\n\n     -h | --help\t\t\t       Show this message and exit.\n\n     -s | --show-devmode\t\t       Return the current development\n\t\t\t\t\t       mode.\n\n     -d | --devmode <off | teacher | student>  Set the development mode to\n\t\t\t\t\t       off, teacher, or student\n\n     -r | --reset-devmode-data\t\t       Reset the development mode\n\t\t\t\t\t       data.\n\nHISTORY\n     The classkit-tool utility first appeared in macOS 11."
+  manpageQuestion1: What is the primary purpose of the classkit-tool command?
+  manpageQuestion2: How can you use classkit-tool to set the development mode to 'teacher'?
+  manpageQuestion3: What command would you use to reset the development mode data with classkit-tool?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `classkit-tool`.\n\n\n\nManpage text:\n\nmacOS 15.3\t\t\t April 2, 2021\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the classkit-tool utility?
+  manpageQuestion2: How would you use classkit-tool to add a new class kit to the system?
+  manpageQuestion3: Can you provide an example of using classkit-tool to remove a specific class kit from the system?
+

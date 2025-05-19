@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `WindowServer`.\n\n\n\nManpage text:\n\nWindowServer(8) \t  BSD System Manager's Manual\t       WindowServer(8)\n\n\nNAME\n       WindowServer - Window management, compositing, and event routing\n       daemon.\n\nSYNOPSIS\n       NONE (launched by launchd)\n\nDESCRIPTION\n       WindowServer is a system daemon that provides various UI services such\n       as window management, content compositing, and event routing.  It is\n       not user-invoked, nor does it have any options.\n\nCOPYRIGHT\n       Copyright 2017 by Apple Inc.\n\nmacOS\t\t\t\t  2024-12-12\t\t       WindowServer(8)"
+  manpageQuestion1: What is the primary purpose of the WindowServer daemon?
+  manpageQuestion2: How would you check if the WindowServer process is running on a macOS system?
+  manpageQuestion3: What are the key UI services provided by the WindowServer daemon?
+

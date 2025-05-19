@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `security-sysdiagnose`.\n\n\n\nManpage text:\n\nsecurity-sysdiagnose(1)     General Commands Manual    security-sysdiagnose(1)\n\nNAME\n     security-sysdiagnose – Command line interface do dump keychain related\n     information in sysdiagnose\n\nSYNOPSIS\n     security-sysdiagnose\n\nDESCRIPTION\n     Command line interface do dump keychain related information in\n     sysdiagnose.\n\nSEE ALSO\n     sysdiagnose(1),\n\nHISTORY\n     security-sysdiagnose was first introduced in Mac OS X version 10.13\n\nDarwin\t\t\t\tTue Oct 25 2016 \t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the security-sysdiagnose tool?
+  manpageQuestion2: How would you use security-sysdiagnose to gather keychain-related information for sysdiagnose?
+  manpageQuestion3: Can you provide an example of using security-sysdiagnose in a script to collect keychain data for system diagnostics?
+

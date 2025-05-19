@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `mcxalr`.\n\n\n\nManpage text:\n\nmcxalr(1)\t\t    General Commands Manual\t\t     mcxalr(1)\n\nNAME\n     mcxalr – Managed Client application launch restriction tool and agent\n\n\nDESCRIPTION\n     mcxalr\n\n     Used internally to manage and implement application launch restrictions\n     for Managed Clients (MCX). Also used by Workgroup Manager to sign\n     applications as root to insure all permissions and modes are preserved.\n\nMacOSX\t\t\t\t  May 5, 2006\t\t\t\tMacOSX"
+  manpageQuestion1: What is the primary purpose of the mcxalr tool?
+  manpageQuestion2: How would you use mcxalr to manage application launch restrictions for a Managed Client?
+  manpageQuestion3: Can you provide an example of using mcxalr to sign an application as root while preserving its permissions and modes?
+

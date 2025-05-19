@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `odmigrationtool`.\n\n\n\nManpage text:\n\nodmigrationtool(1)\t    General Commands Manual\t    odmigrationtool(1)\n\n\n\nNAME\n     odmigrationtool – Open Directory Migration Tool.\n\nSYNOPSIS\n     odmigrationtool [-source volume] [-target volume]\n\nDESCRIPTION\n     Use for system migration of Open Directory settings.\n\n     -source  source volume or path to migrate from.\n\n     -target  destination volume or path to mirage to.\n\nEXAMPLES\n     odmigrationtool -source '/Volumes/Macintosh HD/Previous System/' -target\n     '/Volumes/Macintosh HD'\n\nDarwin\t\t\t\t    1/1/11\t\t\t\tDarwin"
+  manpageQuestion1: What is the primary purpose of the odmigrationtool command?
+  manpageQuestion2: How would you use odmigrationtool to migrate Open Directory settings from one volume to another?
+  manpageQuestion3: Can you provide an example of using odmigrationtool with specific source and target volumes?
+

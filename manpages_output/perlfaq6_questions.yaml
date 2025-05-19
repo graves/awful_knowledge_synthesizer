@@ -1,0 +1,307 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\nPERLFAQ6(1)\t       Perl Programmers Reference Guide \t   PERLFAQ6(1)"
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can I use perlfaq6 to find information about common Perl programming questions?
+  manpageQuestion3: Can you provide an example of how to access specific information in the perlfaq6 resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\nNAME\n       perlfaq6 - Regular Expressions\n\nVERSION\n       version 5.20210411\n\nDESCRIPTION\n       This section is surprisingly small because the rest of the FAQ is\n       littered with answers involving regular expressions. For example,\n       decoding a URL and checking whether something is a number can be\n       handled with regular expressions, but those answers are found elsewhere\n       in this document (in perlfaq9: \"How do I decode or create those\n       %-encodings on the web\" and perlfaq4: \"How do I determine whether a\n       scalar is a number/whole/integer/float\", to be precise).\n\n   How can I hope to use regular expressions without creating illegible and\n       unmaintainable code?\n       Three techniques can make regular expressions maintainable and\n       understandable.\n\n       Comments Outside the Regex\n\t   Describe what you're doing and how you're doing it, using normal\n\t   Perl comments.\n\n\t       # turn the line into the first word, a colon, and the\n\t       # number of characters on the rest of the line\n\t       s/^(\\w+)(.*)/ lc($1) . \":\" . length($2) /meg;"
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can regular expressions be made more maintainable and understandable according to the perlfaq6 documentation?
+  manpageQuestion3: Can you provide an example of using regular expressions with comments to process a line of text as described in the perlfaq6 section?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\nComments Inside the Regex\n\t   The \"/x\" modifier causes whitespace to be ignored in a regex\n\t   pattern (except in a character class and a few other places), and\n\t   also allows you to use normal comments there, too. As you can\n\t   imagine, whitespace and comments help a lot.\n\n\t   \"/x\" lets you turn this:\n\n\t       s{<(?:[^>'\"]*|\".*?\"|'.*?')+>}{}gs;\n\n\t   into this:\n\n\t       s{ <\t\t       # opening angle bracket\n\t\t   (?:\t\t       # Non-backreffing grouping paren\n\t\t       [^>'\"] *        # 0 or more things that are neither > nor ' nor \"\n\t\t\t   |\t       #    or else\n\t\t       \".*?\"\t       # a section between double quotes (stingy match)\n\t\t\t   |\t       #    or else\n\t\t       '.*?'\t       # a section between single quotes (stingy match)\n\t\t   ) +\t\t       #   all occurring one or more times\n\t\t   >\t\t       # closing angle bracket\n\t       }{}gsx;\t\t       # replace with nothing, i.e. delete\n\n\t   It's still not quite so clear as prose, but it is very useful for\n\t   describing the meaning of each part of the pattern."
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can you use the /x modifier in Perl regular expressions to improve readability and maintainability of complex patterns?
+  manpageQuestion3: Can you provide an example of how the /x modifier allows for comments and whitespace in a Perl regular expression pattern?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\nDifferent Delimiters\n\t   While we normally think of patterns as being delimited with \"/\"\n\t   characters, they can be delimited by almost any character. perlre\n\t   describes this. For example, the \"s///\" above uses braces as\n\t   delimiters. Selecting another delimiter can avoid quoting the\n\t   delimiter within the pattern:\n\n\t       s/\\/usr\\/local/\\/usr\\/share/g;\t # bad delimiter choice\n\t       s#/usr/local#/usr/share#g;\t # better\n\n\t   Using logically paired delimiters can be even more readable:\n\n\t       s{/usr/local/}{/usr/share}g;\t # better still\n\n   I'm having trouble matching over more than one line. What's wrong?\n       Either you don't have more than one line in the string you're looking\n       at (probably), or else you aren't using the correct modifier(s) on your\n       pattern (possibly).\n\n       There are many ways to get multiline data into a string. If you want it\n       to happen automatically while reading input, you'll want to set $/\n       (probably to '' for paragraphs or \"undef\" for the whole file) to allow\n       you to read more than one line at a time."
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can I modify a regular expression in Perl to use a delimiter other than '/'?
+  manpageQuestion3: What steps should I take to match patterns across multiple lines in a Perl script?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\nRead perlre to help you decide which of \"/s\" and \"/m\" (or both) you\n       might want to use: \"/s\" allows dot to include newline, and \"/m\" allows\n       caret and dollar to match next to a newline, not just at the end of the\n       string. You do need to make sure that you've actually got a multiline\n       string in there.\n\n       For example, this program detects duplicate words, even when they span\n       line breaks (but not paragraph ones). For this example, we don't need\n       \"/s\" because we aren't using dot in a regular expression that we want\n       to cross line boundaries. Neither do we need \"/m\" because we don't want\n       caret or dollar to match at any point inside the record next to\n       newlines. But it's imperative that $/ be set to something other than\n       the default, or else we won't actually ever have a multiline record\n       read in.\n\n\t   $/ = '';\t     # read in whole paragraph, not just one line\n\t   while ( <> ) {\n\t       while ( /\\b([\\w'-]+)(\\s+\\g1)+\\b/gi ) {\t  # word starts alpha\n\t\t   print \"Duplicate $1 at paragraph $.\\n\";\n\t       }\n\t   }"
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can you modify the perlfaq6 example to detect duplicate words across multiple lines in a file?
+  manpageQuestion3: What is the role of setting $/ to an empty string in the perlfaq6 example?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\nHere's some code that finds sentences that begin with \"From \" (which\n       would be mangled by many mailers):\n\n\t   $/ = '';\t     # read in whole paragraph, not just one line\n\t   while ( <> ) {\n\t       while ( /^From /gm ) { # /m makes ^ match next to \\n\n\t       print \"leading From in paragraph $.\\n\";\n\t       }\n\t   }\n\n       Here's code that finds everything between START and END in a paragraph:\n\n\t   undef $/;\t      # read in whole file, not just one line or paragraph\n\t   while ( <> ) {\n\t       while ( /START(.*?)END/sgm ) { # /s makes . cross line boundaries\n\t\t   print \"$1\\n\";\n\t       }\n\t   }\n\n   How can I pull out lines between two patterns that are themselves on\n       different lines?\n       You can use Perl's somewhat exotic \"..\" operator (documented in\n       perlop):\n\n\t   perl -ne 'print if /START/ .. /END/' file1 file2 ...\n\n       If you wanted text and not lines, you would use\n\n\t   perl -0777 -ne 'print \"$1\\n\" while /START(.*?)END/gs' file1 file2 ...\n\n       But if you want nested occurrences of \"START\" through \"END\", you'll run\n       up against the problem described in the question in this section on\n       matching balanced text."
+  manpageQuestion1: What is the primary purpose of the `perlfaq6` resource?
+  manpageQuestion2: How can I use Perl to extract all text between 'START' and 'END' in a file, including content that spans multiple lines?
+  manpageQuestion3: What command can I use in Perl to print all lines that start with 'From ' within a paragraph?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\nHere's another example of using \"..\":\n\n\t   while (<>) {\n\t       my $in_header =\t 1  .. /^$/;\n\t       my $in_body   = /^$/ .. eof;\n\t   # now choose between them\n\t   } continue {\n\t       $. = 0 if eof;\t # fix $.\n\t   }\n\n   How do I match XML, HTML, or other nasty, ugly things with a regex?\n       Do not use regexes. Use a module and forget about the regular\n       expressions. The XML::LibXML, HTML::TokeParser and HTML::TreeBuilder\n       modules are good starts, although each namespace has other parsing\n       modules specialized for certain tasks and different ways of doing it.\n       Start at CPAN Search ( <http://metacpan.org/> ) and wonder at all the\n       work people have done for you already! :)\n\n   I put a regular expression into $/ but it didn't work. What's wrong?\n       $/ has to be a string. You can use these examples if you really need to\n       do this.\n\n       If you have File::Stream, this is easy.\n\n\t   use File::Stream;\n\n\t   my $stream = File::Stream->new(\n\t       $filehandle,\n\t       separator => qr/\\s*,\\s*/,\n\t       );"
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can I use the File::Stream module to read a file with custom separators using Perl?
+  manpageQuestion3: What is the recommended approach for parsing XML or HTML content in Perl according to the perlfaq6 resource?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\nprint \"$_\\n\" while <$stream>;\n\n       If you don't have File::Stream, you have to do a little more work.\n\n       You can use the four-argument form of sysread to continually add to a\n       buffer. After you add to the buffer, you check if you have a complete\n       line (using your regular expression).\n\n\t   local $_ = \"\";\n\t   while( sysread FH, $_, 8192, length ) {\n\t       while( s/^((?s).*?)your_pattern// ) {\n\t\t   my $record = $1;\n\t\t   # do stuff here.\n\t       }\n\t   }\n\n       You can do the same thing with foreach and a match using the c flag and\n       the \\G anchor, if you do not mind your entire file being in memory at\n       the end.\n\n\t   local $_ = \"\";\n\t   while( sysread FH, $_, 8192, length ) {\n\t       foreach my $record ( m/\\G((?s).*?)your_pattern/gc ) {\n\t\t   # do stuff here.\n\t       }\n\t       substr( $_, 0, pos ) = \"\" if pos;\n\t   }\n\n   How do I substitute case-insensitively on the LHS while preserving case on\n       the RHS?\n       Here's a lovely Perlish solution by Larry Rosler. It exploits\n       properties of bitwise xor on ASCII strings."
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can I read a file line by line using sysread in Perl without relying on File::Stream?
+  manpageQuestion3: Can you provide an example of using the c flag and \\
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\n$_= \"this is a TEsT case\";\n\n\t   $old = 'test';\n\t   $new = 'success';\n\n\t   s{(\\Q$old\\E)}\n\t   { uc $new | (uc $1 ^ $1) .\n\t       (uc(substr $1, -1) ^ substr $1, -1) x\n\t       (length($new) - length $1)\n\t   }egi;\n\n\t   print;\n\n       And here it is as a subroutine, modeled after the above:\n\n\t   sub preserve_case {\n\t       my ($old, $new) = @_;\n\t       my $mask = uc $old ^ $old;\n\n\t       uc $new | $mask .\n\t\t   substr($mask, -1) x (length($new) - length($old))\n\t   }\n\n\t   $string = \"this is a TEsT case\";\n\t   $string =~ s/(test)/preserve_case($1, \"success\")/egi;\n\t   print \"$string\\n\";\n\n       This prints:\n\n\t   this is a SUcCESS case\n\n       As an alternative, to keep the case of the replacement word if it is\n       longer than the original, you can use this code, by Jeff Pinyan:\n\n\t   sub preserve_case {\n\t       my ($from, $to) = @_;\n\t       my ($lf, $lt) = map length, @_;\n\n\t       if ($lt < $lf) { $from = substr $from, 0, $lt }\n\t       else { $from .= substr $to, $lf }\n\n\t       return uc $to | ($from ^ uc $from);\n\t   }"
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can you use the preserve_case subroutine to replace all occurrences of 'test' with 'success' in a string while preserving the case of the original word?
+  manpageQuestion3: What is the function of the code snippet provided in perlfaq6 that demonstrates case preservation during string replacement?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\nThis changes the sentence to \"this is a SUcCess case.\"\n\n       Just to show that C programmers can write C in any programming\n       language, if you prefer a more C-like solution, the following script\n       makes the substitution have the same case, letter by letter, as the\n       original.  (It also happens to run about 240% slower than the Perlish\n       solution runs.)\tIf the substitution has more characters than the\n       string being substituted, the case of the last character is used for\n       the rest of the substitution.\n\n\t   # Original by Nathan Torkington, massaged by Jeffrey Friedl\n\t   #\n\t   sub preserve_case\n\t   {\n\t       my ($old, $new) = @_;\n\t       my $state = 0; # 0 = no change; 1 = lc; 2 = uc\n\t       my ($i, $oldlen, $newlen, $c) = (0, length($old), length($new));\n\t       my $len = $oldlen < $newlen ? $oldlen : $newlen;\n\n\t       for ($i = 0; $i < $len; $i++) {\n\t\t   if ($c = substr($old, $i, 1), $c =~ /[\\W\\d_]/) {\n\t\t       $state = 0;\n\t\t   } elsif (lc $c eq $c) {\n\t\t       substr($new, $i, 1) = lc(substr($new, $i, 1));\n\t\t       $state = 1;\n\t\t   } else {\n\t\t       substr($new, $i, 1) = uc(substr($new, $i, 1));\n\t\t       $state = 2;\n\t\t   }\n\t       }\n\t       # finish up with any remaining new (for when new is longer than old)\n\t       if ($newlen > $oldlen) {\n\t\t   if ($state == 1) {\n\t\t       substr($new, $oldlen) = lc(substr($new, $oldlen));\n\t\t   } elsif ($state == 2) {\n\t\t       substr($new, $oldlen) = uc(substr($new, $oldlen));\n\t\t   }\n\t       }\n\t       return $new;\n\t   }"
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can you use the preserve_case function to ensure that a string substitution maintains the original case of each character?
+  manpageQuestion3: Can you provide an example of using the preserve_case function to replace a substring while preserving the case of each character in the replacement?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\nHow can I make \"\\w\" match national character sets?\n       Put \"use locale;\" in your script. The \\w character class is taken from\n       the current locale.\n\n       See perllocale for details.\n\n   How can I match a locale-smart version of \"/[a-zA-Z]/\"?\n       You can use the POSIX character class syntax \"/[[:alpha:]]/\" documented\n       in perlre.\n\n       No matter which locale you are in, the alphabetic characters are the\n       characters in \\w without the digits and the underscore.\tAs a regex,\n       that looks like \"/[^\\W\\d_]/\". Its complement, the non-alphabetics, is\n       then everything in \\W along with the digits and the underscore, or\n       \"/[\\W\\d_]/\".\n\n   How can I quote a variable to use in a regex?\n       The Perl parser will expand $variable and @variable references in\n       regular expressions unless the delimiter is a single quote. Remember,\n       too, that the right-hand side of a \"s///\" substitution is considered a\n       double-quoted string (see perlop for more details). Remember also that\n       any regex special characters will be acted on unless you precede the\n       substitution with \\Q. Here's an example:"
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can I modify a regular expression to match alphabetic characters in a locale-sensitive manner using Perl?
+  manpageQuestion3: What is the correct way to quote a variable within a regular expression in Perl to prevent it from being interpreted as a special pattern?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\n$string = \"Placido P. Octopus\";\n\t   $regex  = \"P.\";\n\n\t   $string =~ s/$regex/Polyp/;\n\t   # $string is now \"Polypacido P. Octopus\"\n\n       Because \".\" is special in regular expressions, and can match any single\n       character, the regex \"P.\" here has matched the <Pl> in the original\n       string.\n\n       To escape the special meaning of \".\", we use \"\\Q\":\n\n\t   $string = \"Placido P. Octopus\";\n\t   $regex  = \"P.\";\n\n\t   $string =~ s/\\Q$regex/Polyp/;\n\t   # $string is now \"Placido Polyp Octopus\"\n\n       The use of \"\\Q\" causes the \".\" in the regex to be treated as a regular\n       character, so that \"P.\" matches a \"P\" followed by a dot.\n\n   What is \"/o\" really for?\n       (contributed by brian d foy)\n\n       The \"/o\" option for regular expressions (documented in perlop and\n       perlreref) tells Perl to compile the regular expression only once.\n       This is only useful when the pattern contains a variable. Perls 5.6 and\n       later handle this automatically if the pattern does not change."
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can you modify a regular expression to ensure that special characters like '.' are treated as literal characters in Perl?
+  manpageQuestion3: What is the significance of using the '/o' modifier in Perl regular expressions, and how does it improve performance?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\nSince the match operator \"m//\", the substitution operator \"s///\", and\n       the regular expression quoting operator \"qr//\" are double-quotish\n       constructs, you can interpolate variables into the pattern. See the\n       answer to \"How can I quote a variable to use in a regex?\" for more\n       details.\n\n       This example takes a regular expression from the argument list and\n       prints the lines of input that match it:\n\n\t   my $pattern = shift @ARGV;\n\n\t   while( <> ) {\n\t       print if m/$pattern/;\n\t   }\n\n       Versions of Perl prior to 5.6 would recompile the regular expression\n       for each iteration, even if $pattern had not changed. The \"/o\" would\n       prevent this by telling Perl to compile the pattern the first time,\n       then reuse that for subsequent iterations:\n\n\t   my $pattern = shift @ARGV;\n\n\t   while( <> ) {\n\t       print if m/$pattern/o; # useful for Perl < 5.6\n\t   }\n\n       In versions 5.6 and later, Perl won't recompile the regular expression\n       if the variable hasn't changed, so you probably don't need the \"/o\"\n       option. It doesn't hurt, but it doesn't help either. If you want any\n       version of Perl to compile the regular expression only once even if the\n       variable changes (thus, only using its initial value), you still need\n       the \"/o\"."
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can you use Perl to match lines of input based on a pattern provided as a command-line argument?
+  manpageQuestion3: What is the difference between using the /o modifier and not using it when matching a regular expression in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\nYou can watch Perl's regular expression engine at work to verify for\n       yourself if Perl is recompiling a regular expression. The \"use re\n       'debug'\" pragma (comes with Perl 5.005 and later) shows the details.\n       With Perls before 5.6, you should see \"re\" reporting that its compiling\n       the regular expression on each iteration. With Perl 5.6 or later, you\n       should only see \"re\" report that for the first iteration.\n\n\t   use re 'debug';\n\n\t   my $regex = 'Perl';\n\t   foreach ( qw(Perl Java Ruby Python) ) {\n\t       print STDERR \"-\" x 73, \"\\n\";\n\t       print STDERR \"Trying $_...\\n\";\n\t       print STDERR \"\\t$_ is good!\\n\" if m/$regex/;\n\t   }\n\n   How do I use a regular expression to strip C-style comments from a file?\n       While this actually can be done, it's much harder than you'd think.\n       For example, this one-liner\n\n\t   perl -0777 -pe 's{/\\*.*?\\*/}{}gs' foo.c\n\n       will work in many but not all cases. You see, it's too simple-minded\n       for certain kinds of C programs, in particular, those with what appear\n       to be comments in quoted strings. For that, you'd need something like\n       this, created by Jeffrey Friedl and later modified by Fred Curtis."
+  manpageQuestion1: What is the primary purpose of the 'perlfaq6' resource?
+  manpageQuestion2: How can I use Perl to strip C-style comments from a file using a regular expression?
+  manpageQuestion3: What is the purpose of the 'use re 'debug'' pragma in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\n$/ = undef;\n\t   $_ = <>;\n\t   s#/\\*[^*]*\\*+([^/*][^*]*\\*+)*/|(\"(\\\\.|[^\"\\\\])*\"|'(\\\\.|[^'\\\\])*'|.[^/\"'\\\\]*)#defined $2 ? $2 : \"\"#gse;\n\t   print;\n\n       This could, of course, be more legibly written with the \"/x\" modifier,\n       adding whitespace and comments. Here it is expanded, courtesy of Fred\n       Curtis.\n\n\t   s{\n\t      /\\*\t  ##  Start of /* ... */ comment\n\t      [^*]*\\*+\t  ##  Non-* followed by 1-or-more *'s\n\t      (\n\t\t[^/*][^*]*\\*+\n\t      )*\t  ##  0-or-more things which don't start with /\n\t\t\t  ##\tbut do end with '*'\n\t      / \t  ##  End of /* ... */ comment\n\n\t    |\t      ##     OR  various things which aren't comments:\n\n\t      (\n\t\t\"\t    ##\tStart of \" ... \" string\n\t\t(\n\t\t  \\\\.\t\t##  Escaped char\n\t\t|\t\t##    OR\n\t\t  [^\"\\\\]\t##  Non \"\\\n\t\t)*\n\t\t\"\t    ##\tEnd of \" ... \" string\n\n\t      | \t##     OR\n\n\t\t'\t    ##\tStart of ' ... ' string\n\t\t(\n\t\t  \\\\.\t\t##  Escaped char\n\t\t|\t\t##    OR\n\t\t  [^'\\\\]\t##  Non '\\\n\t\t)*\n\t\t'\t    ##\tEnd of ' ... ' string\n\n\t      | \t##     OR\n\n\t\t.\t    ##\tAnything other char\n\t\t[^/\"'\\\\]*   ##\tChars which doesn't start a comment, string or escape\n\t      )\n\t    }{defined $2 ? $2 : \"\"}gxse;"
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How would you use the perlfaq6 resource to process a text file and extract content between /* ... */ comments while preserving quoted strings and handling escaped characters?
+  manpageQuestion3: Can you provide an example of using perlfaq6 to remove all comments and string literals from a Perl script?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\nA slight modification also removes C++ comments, possibly spanning\n       multiple lines using a continuation character:\n\n\ts#/\\*[^*]*\\*+([^/*][^*]*\\*+)*/|//([^\\\\]|[^\\n][\\n]?)*?\\n|(\"(\\\\.|[^\"\\\\])*\"|'(\\\\.|[^'\\\\])*'|.[^/\"'\\\\]*)#defined $3 ? $3 : \"\"#gse;\n\n   Can I use Perl regular expressions to match balanced text?\n       (contributed by brian d foy)\n\n       Your first try should probably be the Text::Balanced module, which is\n       in the Perl standard library since Perl 5.8. It has a variety of\n       functions to deal with tricky text. The Regexp::Common module can also\n       help by providing canned patterns you can use.\n\n       As of Perl 5.10, you can match balanced text with regular expressions\n       using recursive patterns. Before Perl 5.10, you had to resort to\n       various tricks such as using Perl code in \"(??{})\" sequences.\n\n       Here's an example using a recursive regular expression. The goal is to\n       capture all of the text within angle brackets, including the text in\n       nested angle brackets. This sample text has two \"major\" groups: a group\n       with one level of nesting and a group with two levels of nesting. There\n       are five total groups in angle brackets:"
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can Perl regular expressions be used to match balanced text as described in perlfaq6?
+  manpageQuestion3: Can you provide an example of using the Text::Balanced module to handle balanced text in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\nI have some <brackets in <nested brackets> > and\n\t   <another group <nested once <nested twice> > >\n\t   and that's it.\n\n       The regular expression to match the balanced text uses two new (to Perl\n       5.10) regular expression features. These are covered in perlre and this\n       example is a modified version of one in that documentation.\n\n       First, adding the new possessive \"+\" to any quantifier finds the\n       longest match and does not backtrack. That's important since you want\n       to handle any angle brackets through the recursion, not backtracking.\n       The group \"[^<>]++\" finds one or more non-angle brackets without\n       backtracking.\n\n       Second, the new \"(?PARNO)\" refers to the sub-pattern in the particular\n       capture group given by \"PARNO\". In the following regex, the first\n       capture group finds (and remembers) the balanced text, and you need\n       that same pattern within the first buffer to get past the nested text.\n       That's the recursive part. The \"(?1)\" uses the pattern in the outer\n       capture group as an independent part of the regex."
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can you use Perl's regular expressions to match balanced text with nested brackets, as described in perlfaq6?
+  manpageQuestion3: What is the significance of using possessive quantifiers like '++' in Perl regular expressions, as explained in perlfaq6?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\nPutting it all together, you have:\n\n\t   #!/usr/local/bin/perl5.10.0\n\n\t   my $string =<<\"HERE\";\n\t   I have some <brackets in <nested brackets> > and\n\t   <another group <nested once <nested twice> > >\n\t   and that's it.\n\t   HERE\n\n\t   my @groups = $string =~ m/\n\t\t   (\t\t       # start of capture group 1\n\t\t   <\t\t       # match an opening angle bracket\n\t\t       (?:\n\t\t\t   [^<>]++     # one or more non angle brackets, non backtracking\n\t\t\t     |\n\t\t\t   (?1)        # found < or >, so recurse to capture group 1\n\t\t       )*\n\t\t   >\t\t       # match a closing angle bracket\n\t\t   )\t\t       # end of capture group 1\n\t\t   /xg;\n\n\t   $\" = \"\\n\\t\";\n\t   print \"Found:\\n\\t@groups\\n\";\n\n       The output shows that Perl found the two major groups:\n\n\t   Found:\n\t       <brackets in <nested brackets> >\n\t       <another group <nested once <nested twice> > >\n\n       With a little extra work, you can get all of the groups in angle\n       brackets even if they are in other angle brackets too. Each time you\n       get a balanced match, remove its outer delimiter (that's the one you\n       just matched so don't match it again) and add it to a queue of strings\n       to process. Keep doing that until you get no matches:"
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can you use Perl to extract all angle-bracketed groups, including nested ones, from a string?
+  manpageQuestion3: Can you provide an example of Perl code that processes nested angle brackets and extracts all the inner content?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\n#!/usr/local/bin/perl5.10.0\n\n\t   my @queue =<<\"HERE\";\n\t   I have some <brackets in <nested brackets> > and\n\t   <another group <nested once <nested twice> > >\n\t   and that's it.\n\t   HERE\n\n\t   my $regex = qr/\n\t\t   (\t\t       # start of bracket 1\n\t\t   <\t\t       # match an opening angle bracket\n\t\t       (?:\n\t\t\t   [^<>]++     # one or more non angle brackets, non backtracking\n\t\t\t     |\n\t\t\t   (?1)        # recurse to bracket 1\n\t\t       )*\n\t\t   >\t\t       # match a closing angle bracket\n\t\t   )\t\t       # end of bracket 1\n\t\t   /x;\n\n\t   $\" = \"\\n\\t\";\n\n\t   while( @queue ) {\n\t       my $string = shift @queue;\n\n\t       my @groups = $string =~ m/$regex/g;\n\t       print \"Found:\\n\\t@groups\\n\\n\" if @groups;\n\n\t       unshift @queue, map { s/^<//; s/>$//; $_ } @groups;\n\t   }\n\n       The output shows all of the groups. The outermost matches show up first\n       and the nested matches show up later:\n\n\t   Found:\n\t       <brackets in <nested brackets> >\n\t       <another group <nested once <nested twice> > >\n\n\t   Found:\n\t       <nested brackets>"
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How would you use the perlfaq6 script to process a text containing nested angle brackets and extract all matches of the regex pattern defined in the script?
+  manpageQuestion3: Can you provide an example of how the perlfaq6 script handles nested angle bracket matches and outputs the results?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\nFound:\n\t       <nested once <nested twice> >\n\n\t   Found:\n\t       <nested twice>\n\n   What does it mean that regexes are greedy? How can I get around it?\n       Most people mean that greedy regexes match as much as they can.\n       Technically speaking, it's actually the quantifiers (\"?\", \"*\", \"+\",\n       \"{}\") that are greedy rather than the whole pattern; Perl prefers local\n       greed and immediate gratification to overall greed. To get non-greedy\n       versions of the same quantifiers, use (\"??\", \"*?\", \"+?\", \"{}?\").\n\n       An example:\n\n\t   my $s1 = my $s2 = \"I am very very cold\";\n\t   $s1 =~ s/ve.*y //;\t   # I am cold\n\t   $s2 =~ s/ve.*?y //;\t   # I am very cold\n\n       Notice how the second substitution stopped matching as soon as it\n       encountered \"y \". The \"*?\" quantifier effectively tells the regular\n       expression engine to find a match as quickly as possible and pass\n       control on to whatever is next in line, as you would if you were\n       playing hot potato.\n\n   How do I process each word on each line?\n       Use the split function:"
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can you modify a regular expression to make it non-greedy when using quantifiers like '*'?
+  manpageQuestion3: What is an example of splitting a line into words using the split function in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\nwhile (<>) {\n\t       foreach my $word ( split ) {\n\t\t   # do something with $word here\n\t       }\n\t   }\n\n       Note that this isn't really a word in the English sense; it's just\n       chunks of consecutive non-whitespace characters.\n\n       To work with only alphanumeric sequences (including underscores), you\n       might consider\n\n\t   while (<>) {\n\t       foreach $word (m/(\\w+)/g) {\n\t\t   # do something with $word here\n\t       }\n\t   }\n\n   How can I print out a word-frequency or line-frequency summary?\n       To do this, you have to parse out each word in the input stream. We'll\n       pretend that by word you mean chunk of alphabetics, hyphens, or\n       apostrophes, rather than the non-whitespace chunk idea of a word given\n       in the previous question:\n\n\t   my (%seen);\n\t   while (<>) {\n\t       while ( /(\\b[^\\W_\\d][\\w'-]+\\b)/g ) {   # misses \"`sheep'\"\n\t\t   $seen{$1}++;\n\t       }\n\t   }\n\n\t   while ( my ($word, $count) = each %seen ) {\n\t       print \"$count $word\\n\";\n\t   }\n\n       If you wanted to do the same thing for lines, you wouldn't need a\n       regular expression:"
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can I use perlfaq6 to process a text file and count the frequency of each word, considering words as sequences of alphanumeric characters and underscores?
+  manpageQuestion3: Can you provide an example of using perlfaq6 to extract and count all occurrences of alphanumeric sequences (including underscores) from a text file?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\nmy (%seen);\n\n\t   while (<>) {\n\t       $seen{$_}++;\n\t   }\n\n\t   while ( my ($line, $count) = each %seen ) {\n\t       print \"$count $line\";\n\t   }\n\n       If you want these output in a sorted order, see perlfaq4: \"How do I\n       sort a hash (optionally by value instead of key)?\".\n\n   How can I do approximate matching?\n       See the module String::Approx available from CPAN.\n\n   How do I efficiently match many regular expressions at once?\n       (contributed by brian d foy)\n\n       You want to avoid compiling a regular expression every time you want to\n       match it.  In this example, perl must recompile the regular expression\n       for every iteration of the \"foreach\" loop since $pattern can change:\n\n\t   my @patterns = qw( fo+ ba[rz] );\n\n\t   LINE: while( my $line = <> ) {\n\t       foreach my $pattern ( @patterns ) {\n\t\t   if( $line =~ m/\\b$pattern\\b/i ) {\n\t\t       print $line;\n\t\t       next LINE;\n\t\t   }\n\t       }\n\t   }\n\n       The \"qr//\" operator compiles a regular expression, but doesn't apply\n       it. When you use the pre-compiled version of the regex, perl does less\n       work. In this example, I inserted a \"map\" to turn each pattern into its\n       pre-compiled form. The rest of the script is the same, but faster:"
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can I efficiently match multiple regular expressions at once using Perl, as demonstrated in the perlfaq6 manpage?
+  manpageQuestion3: What is an example of using the qr// operator to pre-compile regular expressions for efficient matching in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\nmy @patterns = map { qr/\\b$_\\b/i } qw( fo+ ba[rz] );\n\n\t   LINE: while( my $line = <> ) {\n\t       foreach my $pattern ( @patterns ) {\n\t\t   if( $line =~ m/$pattern/ ) {\n\t\t       print $line;\n\t\t       next LINE;\n\t\t   }\n\t       }\n\t   }\n\n       In some cases, you may be able to make several patterns into a single\n       regular expression. Beware of situations that require backtracking\n       though. In this example, the regex is only compiled once because $regex\n       doesn't change between iterations:\n\n\t   my $regex = join '|', qw( fo+ ba[rz] );\n\n\t   while( my $line = <> ) {\n\t       print if $line =~ m/\\b(?:$regex)\\b/i;\n\t   }\n\n       The function \"list2re\" in Data::Munge on CPAN can also be used to form\n       a single regex that matches a list of literal strings (not regexes).\n\n       For more details on regular expression efficiency, see Mastering\n       Regular Expressions by Jeffrey Friedl. He explains how the regular\n       expressions engine works and why some patterns are surprisingly\n       inefficient. Once you understand how perl applies regular expressions,\n       you can tune them for individual situations."
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can you combine multiple patterns into a single regular expression for efficient matching in Perl?
+  manpageQuestion3: Can you provide an example of using the 'list2re' function from Data::Munge to create a regular expression that matches any of the strings in a list?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\nWhy don't word-boundary searches with \"\\b\" work for me?\n       (contributed by brian d foy)\n\n       Ensure that you know what \\b really does: it's the boundary between a\n       word character, \\w, and something that isn't a word character. That\n       thing that isn't a word character might be \\W, but it can also be the\n       start or end of the string.\n\n       It's not (not!) the boundary between whitespace and non-whitespace, and\n       it's not the stuff between words we use to create sentences.\n\n       In regex speak, a word boundary (\\b) is a \"zero width assertion\",\n       meaning that it doesn't represent a character in the string, but a\n       condition at a certain position.\n\n       For the regular expression, /\\bPerl\\b/, there has to be a word boundary\n       before the \"P\" and after the \"l\". As long as something other than a\n       word character precedes the \"P\" and succeeds the \"l\", the pattern will\n       match. These strings match /\\bPerl\\b/.\n\n\t   \"Perl\"    # no word char before \"P\" or after \"l\"\n\t   \"Perl \"   # same as previous (space is not a word char)\n\t   \"'Perl'\"  # the \"'\" char is not a word char\n\t   \"Perl's\"  # no word char before \"P\", non-word char after \"l\""
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can I ensure that my regular expression with \b correctly identifies word boundaries in different contexts?
+  manpageQuestion3: What are some examples of strings that would match the regular expression /\bPerl\b/?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\nThese strings do not match /\\bPerl\\b/.\n\n\t   \"Perl_\"   # \"_\" is a word char!\n\t   \"Perler\"  # no word char before \"P\", but one after \"l\"\n\n       You don't have to use \\b to match words though. You can look for non-\n       word characters surrounded by word characters. These strings match the\n       pattern /\\b'\\b/.\n\n\t   \"don't\"   # the \"'\" char is surrounded by \"n\" and \"t\"\n\t   \"qep'a'\"  # the \"'\" char is surrounded by \"p\" and \"a\"\n\n       These strings do not match /\\b'\\b/.\n\n\t   \"foo'\"    # there is no word char after non-word \"'\"\n\n       You can also use the complement of \\b, \\B, to specify that there should\n       not be a word boundary.\n\n       In the pattern /\\Bam\\B/, there must be a word character before the \"a\"\n       and after the \"m\". These patterns match /\\Bam\\B/:\n\n\t   \"llama\"   # \"am\" surrounded by word chars\n\t   \"Samuel\"  # same\n\n       These strings do not match /\\Bam\\B/\n\n\t   \"Sam\"      # no word boundary before \"a\", but one after \"m\"\n\t   \"I am Sam\" # \"am\" surrounded by non-word chars"
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can you match a string that contains the word 'Perl' with a word boundary using regular expressions in Perl?
+  manpageQuestion3: Can you provide an example of using the \\B operator in Perl to find occurrences of 'am' that are surrounded by word characters?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.
+
+
+
+    Manpage text:
+
+    Why does using $&, $`, or $' slow my program down?
+           (contributed by Anno Siegel)
+
+           Once Perl sees that you need one of these variables anywhere in the
+           program, it provides them on each and every pattern match. That means
+           that on every pattern match the entire string will be copied, part of
+           it to $`, part to $&, and part to $'. Thus the penalty is most severe
+           with long strings and patterns that match often. Avoid $&, $', and $`
+           if you can, but if you can't, once you've used them at all, use them at
+           will because you've already paid the price. Remember that some
+           algorithms really appreciate them. As of the 5.005 release, the $&
+           variable is no longer "expensive" the way the other two are.
+
+           Since Perl 5.6.1 the special variables @- and @+ can functionally
+           replace $`, $& and $'. These arrays contain pointers to the beginning
+           and end of each match (see perlvar for the full story), so they give
+           you essentially the same information, but without the risk of excessive
+           string copying.
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: Why should programmers avoid using $&, $`, or $' in Perl programs, and what is the recommended alternative?
+  manpageQuestion3: How can the use of @- and @+ improve performance compared to $`, $&, and $' in Perl?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.
+
+
+
+    Manpage text:
+
+    Perl 5.10 added three specials, "${^MATCH}", "${^PREMATCH}", and
+           "${^POSTMATCH}" to do the same job but without the global performance
+           penalty. Perl 5.10 only sets these variables if you compile or execute
+           the regular expression with the "/p" modifier.
+
+       What good is "\G" in a regular expression?
+           You use the "\G" anchor to start the next match on the same string
+           where the last match left off. The regular expression engine cannot
+           skip over any characters to find the next match with this anchor, so
+           "\G" is similar to the beginning of string anchor, "^". The "\G" anchor
+           is typically used with the "g" modifier. It uses the value of "pos()"
+           as the position to start the next match. As the match operator makes
+           successive matches, it updates "pos()" with the position of the next
+           character past the last match (or the first character of the next
+           match, depending on how you like to look at it). Each string has its
+           own "pos()" value.
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can you use the \G anchor in a regular expression to find all occurrences of a pattern in a string?
+  manpageQuestion3: What is the role of the /p modifier when using ${^MATCH}, ${^PREMATCH}, and ${^POSTMATCH} in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\nSuppose you want to match all of consecutive pairs of digits in a\n       string like \"1122a44\" and stop matching when you encounter non-digits.\n       You want to match 11 and 22 but the letter \"a\" shows up between 22 and\n       44 and you want to stop at \"a\". Simply matching pairs of digits skips\n       over the \"a\" and still matches 44.\n\n\t   $_ = \"1122a44\";\n\t   my @pairs = m/(\\d\\d)/g;   # qw( 11 22 44 )\n\n       If you use the \"\\G\" anchor, you force the match after 22 to start with\n       the \"a\". The regular expression cannot match there since it does not\n       find a digit, so the next match fails and the match operator returns\n       the pairs it already found.\n\n\t   $_ = \"1122a44\";\n\t   my @pairs = m/\\G(\\d\\d)/g; # qw( 11 22 )\n\n       You can also use the \"\\G\" anchor in scalar context. You still need the\n       \"g\" modifier.\n\n\t   $_ = \"1122a44\";\n\t   while( m/\\G(\\d\\d)/g ) {\n\t       print \"Found $1\\n\";\n\t   }\n\n       After the match fails at the letter \"a\", perl resets \"pos()\" and the\n       next match on the same string starts at the beginning."
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can you use the \G anchor in Perl to match consecutive pairs of digits in a string and stop at non-digits?
+  manpageQuestion3: Can you provide an example of using the \G anchor in scalar context to find and print all consecutive pairs of digits in a string?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\n$_ = \"1122a44\";\n\t   while( m/\\G(\\d\\d)/g ) {\n\t       print \"Found $1\\n\";\n\t   }\n\n\t   print \"Found $1 after while\" if m/(\\d\\d)/g; # finds \"11\"\n\n       You can disable \"pos()\" resets on fail with the \"c\" modifier,\n       documented in perlop and perlreref. Subsequent matches start where the\n       last successful match ended (the value of \"pos()\") even if a match on\n       the same string has failed in the meantime. In this case, the match\n       after the \"while()\" loop starts at the \"a\" (where the last match\n       stopped), and since it does not use any anchor it can skip over the \"a\"\n       to find 44.\n\n\t   $_ = \"1122a44\";\n\t   while( m/\\G(\\d\\d)/gc ) {\n\t       print \"Found $1\\n\";\n\t   }\n\n\t   print \"Found $1 after while\" if m/(\\d\\d)/g; # finds \"44\"\n\n       Typically you use the \"\\G\" anchor with the \"c\" modifier when you want\n       to try a different match if one fails, such as in a tokenizer. Jeffrey\n       Friedl offers this example which works in 5.004 or later.\n\n\t   while (<>) {\n\t       chomp;\n\t       PARSER: {\n\t\t   m/ \\G( \\d+\\b    )/gcx   && do { print \"number: $1\\n\";  redo; };\n\t\t   m/ \\G( \\w+\t   )/gcx   && do { print \"word:   $1\\n\";  redo; };\n\t\t   m/ \\G( \\s+\t   )/gcx   && do { print \"space:  $1\\n\";  redo; };\n\t\t   m/ \\G( [^\\w\\d]+ )/gcx   && do { print \"other:  $1\\n\";  redo; };\n\t       }\n\t   }"
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can you use the \G anchor with the 'c' modifier to find sequential numeric patterns in a string?
+  manpageQuestion3: Can you provide an example of using the \G anchor in a loop to parse different types of tokens from a string?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.
+
+
+
+    Manpage text:
+
+    For each line, the "PARSER" loop first tries to match a series of
+           digits followed by a word boundary. This match has to start at the
+           place the last match left off (or the beginning of the string on the
+           first match). Since "m/ \G( \d+\b )/gcx" uses the "c" modifier, if the
+           string does not match that regular expression, perl does not reset
+           pos() and the next match starts at the same position to try a different
+           pattern.
+
+       Are Perl regexes DFAs or NFAs? Are they POSIX compliant?
+           While it's true that Perl's regular expressions resemble the DFAs
+           (deterministic finite automata) of the egrep(1) program, they are in
+           fact implemented as NFAs (non-deterministic finite automata) to allow
+           backtracking and backreferencing. And they aren't POSIX-style either,
+           because those guarantee worst-case behavior for all cases. (It seems
+           that some people prefer guarantees of consistency, even when what's
+           guaranteed is slowness.) See the book "Mastering Regular Expressions"
+           (from O'Reilly) by Jeffrey Friedl for all the details you could ever
+           hope to know on these matters (a full citation appears in perlfaq2).
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How does Perl's regex engine handle backtracking and backreferencing in its regular expressions?
+  manpageQuestion3: Can you explain the difference between DFAs and NFAs in the context of Perl's regular expressions?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.
+
+
+
+    Manpage text:
+
+    What's wrong with using grep in a void context?
+           The problem is that grep builds a return list, regardless of the
+           context.  This means you're making Perl go to the trouble of building a
+           list that you then just throw away. If the list is large, you waste
+           both time and space.  If your intent is to iterate over the list, then
+           use a for loop for this purpose.
+
+           In perls older than 5.8.1, map suffers from this problem as well.  But
+           since 5.8.1, this has been fixed, and map is context aware - in void
+           context, no lists are constructed.
+
+       How can I match strings with multibyte characters?
+           Starting from Perl 5.6 Perl has had some level of multibyte character
+           support. Perl 5.8 or later is recommended. Supported multibyte
+           character repertoires include Unicode, and legacy encodings through the
+           Encode module. See perluniintro, perlunicode, and Encode.
+
+           If you are stuck with older Perls, you can do Unicode with the
+           Unicode::String module, and character conversions using the
+           Unicode::Map8 and Unicode::Map modules. If you are using Japanese
+           encodings, you might try using the jperl 5.005_03.
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can I efficiently iterate over a list of files matched by grep in Perl without wasting resources?
+  manpageQuestion3: What are the recommended methods for matching strings with multibyte characters in Perl 5.6 or later?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.
+
+
+
+    Manpage text:
+
+    Finally, the following set of approaches was offered by Jeffrey Friedl,
+           whose article in issue #5 of The Perl Journal talks about this very
+           matter.
+
+           Let's suppose you have some weird Martian encoding where pairs of ASCII
+           uppercase letters encode single Martian letters (i.e. the two bytes
+           "CV" make a single Martian letter, as do the two bytes "SG", "VS",
+           "XX", etc.). Other bytes represent single characters, just like ASCII.
+
+           So, the string of Martian "I am CVSGXX!" uses 12 bytes to encode the
+           nine characters 'I', ' ', 'a', 'm', ' ', 'CV', 'SG', 'XX', '!'.
+
+           Now, say you want to search for the single character "/GX/". Perl
+           doesn't know about Martian, so it'll find the two bytes "GX" in the "I
+           am CVSGXX!" string, even though that character isn't there: it just
+           looks like it is because "SG" is next to "XX", but there's no real
+           "GX". This is a big problem.
+
+           Here are a few ways, all painful, to deal with it:
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can you search for a specific sequence of bytes in a string that may contain encoded characters using Perl?
+  manpageQuestion3: What are some of the challenges encountered when dealing with encoded characters in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\n# Make sure adjacent \"martian\" bytes are no longer adjacent.\n\t   $martian =~ s/([A-Z][A-Z])/ $1 /g;\n\n\t   print \"found GX!\\n\" if $martian =~ /GX/;\n\n       Or like this:\n\n\t   my @chars = $martian =~ m/([A-Z][A-Z]|[^A-Z])/g;\n\t   # above is conceptually similar to:\t   my @chars = $text =~ m/(.)/g;\n\t   #\n\t   foreach my $char (@chars) {\n\t       print \"found GX!\\n\", last if $char eq 'GX';\n\t   }\n\n       Or like this:\n\n\t   while ($martian =~ m/\\G([A-Z][A-Z]|.)/gs) {\t# \\G probably unneeded\n\t       if ($1 eq 'GX') {\n\t\t   print \"found GX!\\n\";\n\t\t   last;\n\t       }\n\t   }\n\n       Here's another, slightly less painful, way to do it from Benjamin\n       Goldberg, who uses a zero-width negative look-behind assertion.\n\n\t   print \"found GX!\\n\" if    $martian =~ m/\n\t       (?<![A-Z])\n\t       (?:[A-Z][A-Z])*?\n\t       GX\n\t       /x;\n\n       This succeeds if the \"martian\" character GX is in the string, and fails\n       otherwise. If you don't like using (?<!), a zero-width negative look-\n       behind assertion, you can replace (?<![A-Z]) with (?:^|[^A-Z])."
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can you use regular expressions in Perl to detect the occurrence of 'GX' that is not preceded by another uppercase letter?
+  manpageQuestion3: Can you provide an example of using Perl's regular expressions to find and print 'GX' in a string, ensuring that it is not preceded by another uppercase letter?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\nIt does have the drawback of putting the wrong thing in $-[0] and\n       $+[0], but this usually can be worked around.\n\n   How do I match a regular expression that's in a variable?\n       (contributed by brian d foy)\n\n       We don't have to hard-code patterns into the match operator (or\n       anything else that works with regular expressions). We can put the\n       pattern in a variable for later use.\n\n       The match operator is a double quote context, so you can interpolate\n       your variable just like a double quoted string. In this case, you read\n       the regular expression as user input and store it in $regex.  Once you\n       have the pattern in $regex, you use that variable in the match\n       operator.\n\n\t   chomp( my $regex = <STDIN> );\n\n\t   if( $string =~ m/$regex/ ) { ... }\n\n       Any regular expression special characters in $regex are still special,\n       and the pattern still has to be valid or Perl will complain.  For\n       instance, in this pattern there is an unpaired parenthesis."
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can I use a regular expression stored in a variable with the match operator in Perl?
+  manpageQuestion3: What should I be aware of when using a regular expression from a variable in Perl?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\nmy $regex = \"Unmatched ( paren\";\n\n\t   \"Two parens to bind them all\" =~ m/$regex/;\n\n       When Perl compiles the regular expression, it treats the parenthesis as\n       the start of a memory match. When it doesn't find the closing\n       parenthesis, it complains:\n\n\t   Unmatched ( in regex; marked by <-- HERE in m/Unmatched ( <-- HERE  paren/ at script line 3.\n\n       You can get around this in several ways depending on our situation.\n       First, if you don't want any of the characters in the string to be\n       special, you can escape them with \"quotemeta\" before you use the\n       string.\n\n\t   chomp( my $regex = <STDIN> );\n\t   $regex = quotemeta( $regex );\n\n\t   if( $string =~ m/$regex/ ) { ... }\n\n       You can also do this directly in the match operator using the \"\\Q\" and\n       \"\\E\" sequences. The \"\\Q\" tells Perl where to start escaping special\n       characters, and the \"\\E\" tells it where to stop (see perlop for more\n       details).\n\n\t   chomp( my $regex = <STDIN> );\n\n\t   if( $string =~ m/\\Q$regex\\E/ ) { ... }"
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can you safely use a regular expression in Perl that contains special characters like parentheses without causing an unmatched parenthesis error?
+  manpageQuestion3: Can you provide an example of using the \
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\nAlternately, you can use \"qr//\", the regular expression quote operator\n       (see perlop for more details). It quotes and perhaps compiles the\n       pattern, and you can apply regular expression flags to the pattern.\n\n\t   chomp( my $input = <STDIN> );\n\n\t   my $regex = qr/$input/is;\n\n\t   $string =~ m/$regex/  # same as m/$input/is;\n\n       You might also want to trap any errors by wrapping an \"eval\" block\n       around the whole thing.\n\n\t   chomp( my $input = <STDIN> );\n\n\t   eval {\n\t       if( $string =~ m/\\Q$input\\E/ ) { ... }\n\t   };\n\t   warn $@ if $@;\n\n       Or...\n\n\t   my $regex = eval { qr/$input/is };\n\t   if( defined $regex ) {\n\t       $string =~ m/$regex/;\n\t   }\n\t   else {\n\t       warn $@;\n\t   }\n\nAUTHOR AND COPYRIGHT\n       Copyright (c) 1997-2010 Tom Christiansen, Nathan Torkington, and other\n       authors as noted. All rights reserved.\n\n       This documentation is free; you can redistribute it and/or modify it\n       under the same terms as Perl itself.\n\n       Irrespective of its distribution, all code examples in this file are\n       hereby placed into the public domain. You are permitted and encouraged\n       to use this code in your own programs for fun or for profit as you see\n       fit. A simple comment in the code giving credit would be courteous but\n       is not required."
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can you use the qr// operator to create a regular expression from user input while handling potential errors?
+  manpageQuestion3: Can you provide an example of using the qr// operator with Perl to create a regex pattern from a string input and apply case-insensitive matching?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `perlfaq6`.\n\n\n\nManpage text:\n\nperl v5.34.1\t\t\t  2022-02-19\t\t\t   PERLFAQ6(1)"
+  manpageQuestion1: What is the primary purpose of the perlfaq6 resource?
+  manpageQuestion2: How can I find answers to common Perl programming questions using perlfaq6?
+  manpageQuestion3: Can you provide an example of how to access information from perlfaq6 to solve a specific Perl problem?
+

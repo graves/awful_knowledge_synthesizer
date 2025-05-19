@@ -1,0 +1,98 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pam`.\n\n\n\nManpage text:\n\nPAM(3)\t\t\t   Library Functions Manual\t\t\tPAM(3)\n\nNAME\n     pam_acct_mgmt, pam_authenticate, pam_chauthtok, pam_close_session,\n     pam_end, pam_get_data, pam_get_item, pam_get_user, pam_getenv,\n     pam_getenvlist, pam_open_session, pam_putenv, pam_set_data, pam_set_item,\n     pam_setcred, pam_start, pam_strerror – Pluggable Authentication Modules\n     Library\n\nLIBRARY\n     Pluggable Authentication Module Library (libpam, -lpam)\n\nSYNOPSIS\n     #include <security/pam_appl.h>\n\n     int\n     pam_acct_mgmt(pam_handle_t *pamh, int flags);\n\n     int\n     pam_authenticate(pam_handle_t *pamh, int flags);\n\n     int\n     pam_chauthtok(pam_handle_t *pamh, int flags);\n\n     int\n     pam_close_session(pam_handle_t *pamh, int flags);\n\n     int\n     pam_end(pam_handle_t *pamh, int status);\n\n     int\n     pam_get_data(const pam_handle_t *pamh, const char *module_data_name,\n\t const void **data);\n\n     int\n     pam_get_item(const pam_handle_t *pamh, int item_type, const void **item);\n\n     int\n     pam_get_user(pam_handle_t *pamh, const char **user, const char *prompt);"
+  manpageQuestion1: What is the primary purpose of the PAM library functions?
+  manpageQuestion2: How would you use the pam_authenticate function to authenticate a user with PAM?
+  manpageQuestion3: Can you provide an example of using the pam_get_user function to prompt a user for their username?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pam`.\n\n\n\nManpage text:\n\nconst char *\n     pam_getenv(pam_handle_t *pamh, const char *name);\n\n     char **\n     pam_getenvlist(pam_handle_t *pamh);\n\n     int\n     pam_open_session(pam_handle_t *pamh, int flags);\n\n     int\n     pam_putenv(pam_handle_t *pamh, const char *namevalue);\n\n     int\n     pam_set_data(pam_handle_t *pamh, const char *module_data_name,\n\t void *data,\n\t void (*cleanup)(pam_handle_t *pamh, void *data, int pam_end_status));\n\n     int\n     pam_set_item(pam_handle_t *pamh, int item_type, const void *item);\n\n     int\n     pam_setcred(pam_handle_t *pamh, int flags);\n\n     int\n     pam_start(const char *service, const char *user,\n\t const struct pam_conv *pam_conv, pam_handle_t **pamh);\n\n     const char *\n     pam_strerror(const pam_handle_t *pamh, int error_number);\n\nDESCRIPTION\n     The Pluggable Authentication Modules (PAM) library abstracts a number of\n     common authentication-related operations and provides a framework for\n     dynamically loaded modules that implement these operations in various\n     ways."
+  manpageQuestion1: What is the primary purpose of the pam library and its associated functions?
+  manpageQuestion2: How would you use the pam_start function to initiate a PAM authentication session for a user named 'john.doe' with the service 'login'?
+  manpageQuestion3: Can you provide an example of using pam_set_item to set a specific item in the PAM context?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pam`.
+
+
+
+    Manpage text:
+
+    Terminology
+         In PAM parlance, the application that uses PAM to authenticate a user is
+         the server, and is identified for configuration purposes by a service
+         name, which is often (but not necessarily) the program name.
+
+         The user requesting authentication is called the applicant, while the
+         user (usually, root) charged with verifying his identity and granting him
+         the requested credentials is called the arbitrator.
+
+         The sequence of operations the server goes through to authenticate a user
+         and perform whatever task he requested is a PAM transaction; the context
+         within which the server performs the requested task is called a session.
+
+         The functionality embodied by PAM is divided into six primitives grouped
+         into four facilities: authentication, account management, session
+         management and password management.
+
+       Conversation
+         The PAM library expects the application to provide a conversation
+         callback which it can use to communicate with the user.  Some modules may
+         use specialized conversation functions to communicate with special
+         hardware such as cryptographic dongles or biometric devices.  See
+         pam_conv(3) for details.
+  manpageQuestion1: What is the primary purpose of the pam resource?
+  manpageQuestion2: How can an application use the pam library to handle user authentication with a custom conversation function?
+  manpageQuestion3: What are the four main facilities provided by PAM and what do they handle?
+
+- prompt: |-
+    You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pam`.
+
+
+
+    Manpage text:
+
+    Initialization and Cleanup
+         The pam_start() function initializes the PAM library and returns a handle
+         which must be provided in all subsequent function calls.  The transaction
+         state is contained entirely within the structure identified by this
+         handle, so it is possible to conduct multiple transactions in parallel.
+
+         The pam_end() function releases all resources associated with the
+         specified context, and can be called at any time to terminate a PAM
+         transaction.
+
+       Storage
+         The pam_set_item() and pam_get_item() functions set and retrieve a number
+         of predefined items, including the service name, the names of the
+         requesting and target users, the conversation function, and prompts.
+
+         The pam_set_data() and pam_get_data() functions manage named chunks of
+         free-form data, generally used by modules to store state from one
+         invocation to another.
+
+       Authentication
+         There are two authentication primitives: pam_authenticate() and
+         pam_setcred().  The former authenticates the user, while the latter
+         manages his credentials.
+  manpageQuestion1: What is the primary purpose of the pam library and its associated functions?
+  manpageQuestion2: How would you initialize a PAM transaction and set the service name using pam_start() and pam_set_item()
+  manpageQuestion3: Can you provide an example of how to manage user credentials using pam_setcred() and pam_end()?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pam`.\n\n\n\nManpage text:\n\nAccount Management\n     The pam_acct_mgmt() function enforces policies such as password expiry,\n     account expiry, time-of-day restrictions, and so forth.\n\n   Session Management\n     The pam_open_session() and pam_close_session() functions handle session\n     setup and teardown.\n\n   Password Management\n     The pam_chauthtok() function allows the server to change the user's\n     password, either at the user's request or because the password has\n     expired.\n\n   Miscellaneous\n     The pam_putenv(), pam_getenv() and pam_getenvlist() functions manage a\n     private environment list in which modules can set environment variables\n     they want the server to export during the session.\n\n     The pam_strerror() function returns a pointer to a string describing the\n     specified PAM error code.\n\nRETURN VALUES\n     The following return codes are defined by <security/pam_constants.h>:\n\n     [PAM_ABORT]\t General failure.\n\n     [PAM_ACCT_EXPIRED]  User account has expired.\n\n     [PAM_APPLE_ACCT_TEMP_LOCK]\n\t\t\t Account is temporarily locked."
+  manpageQuestion1: What is the primary purpose of the pam resource in macOS?
+  manpageQuestion2: How would you use pam_acct_mgmt() to enforce password expiry policies for a user account?
+  manpageQuestion3: Can you provide an example of using pam_putenv() to set an environment variable during a session?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pam`.\n\n\n\nManpage text:\n\n[PAM_APPLE_ACCT_LOCKED]\n\t\t\t Account is locked.\n\n     [PAM_AUTHINFO_UNAVAIL]\n\t\t\t Authentication information is unavailable.\n\n     [PAM_AUTHTOK_DISABLE_AGING]\n\t\t\t Authentication token aging disabled.\n\n     [PAM_AUTHTOK_ERR]\t Authentication token failure.\n\n     [PAM_AUTHTOK_EXPIRED]\n\t\t\t Password has expired.\n\n     [PAM_AUTHTOK_LOCK_BUSY]\n\t\t\t Authentication token lock busy.\n\n     [PAM_AUTHTOK_RECOVERY_ERR]\n\t\t\t Failed to recover old authentication token.\n\n     [PAM_AUTH_ERR]\t Authentication error.\n\n     [PAM_BUF_ERR]\t Memory buffer error.\n\n     [PAM_CONV_ERR]\t Conversation failure.\n\n     [PAM_CRED_ERR]\t Failed to set user credentials.\n\n     [PAM_CRED_EXPIRED]  User credentials have expired.\n\n     [PAM_CRED_INSUFFICIENT]\n\t\t\t Insufficient credentials.\n\n     [PAM_CRED_UNAVAIL]  Failed to retrieve user credentials.\n\n     [PAM_DOMAIN_UNKNOWN]\n\t\t\t Unknown authentication domain.\n\n     [PAM_IGNORE]\t Ignore this module.\n\n     [PAM_MAXTRIES]\t Maximum number of tries exceeded.\n\n     [PAM_MODULE_UNKNOWN]\n\t\t\t Unknown module type."
+  manpageQuestion1: What is the primary purpose of the pam resource?
+  manpageQuestion2: How would you use pam to handle a scenario where a user's password has expired?
+  manpageQuestion3: Can you provide an example of using pam to ignore a specific authentication module during the login process?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pam`.\n\n\n\nManpage text:\n\n[PAM_NEW_AUTHTOK_REQD]\n\t\t\t New authentication token required.\n\n     [PAM_NO_MODULE_DATA]\n\t\t\t Module data not found.\n\n     [PAM_OPEN_ERR]\t Failed to load module.\n\n     [PAM_PERM_DENIED]\t Permission denied.\n\n     [PAM_SERVICE_ERR]\t Error in service module.\n\n     [PAM_SESSION_ERR]\t Session failure.\n\n     [PAM_SUCCESS]\t Success.\n\n     [PAM_SYMBOL_ERR]\t Invalid symbol.\n\n     [PAM_SYSTEM_ERR]\t System error.\n\n     [PAM_TRY_AGAIN]\t Try again.\n\n     [PAM_USER_UNKNOWN]  Unknown user.\n\nSEE ALSO\n     openpam(3), pam_acct_mgmt(3), pam_authenticate(3), pam_chauthtok(3),\n     pam_close_session(3), pam_conv(3), pam_end(3), pam_get_data(3),\n     pam_getenv(3), pam_getenvlist(3), pam_get_item(3), pam_get_user(3),\n     pam_open_session(3), pam_putenv(3), pam_setcred(3), pam_set_data(3),\n     pam_set_item(3), pam_start(3), pam_strerror(3)\n\nSTANDARDS\n     X/Open Single Sign-On Service (XSSO) - Pluggable Authentication Modules,\n     June 1997.\n\nAUTHORS\n     The OpenPAM library and this manual page were developed for the FreeBSD\n     Project by ThinkSec AS and Network Associates Laboratories, the Security\n     Research Division of Network Associates, Inc. under DARPA/SPAWAR contract\n     N66001-01-C-8035 (“CBOSS”), as part of the DARPA CHATS research program."
+  manpageQuestion1: What is the primary purpose of the pam resource in macOS?
+  manpageQuestion2: How can you handle a situation where a PAM module fails to load due to a file not being found?
+  manpageQuestion3: What PAM error code would you use to indicate that a user is unknown in the system?
+
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `pam`.\n\n\n\nManpage text:\n\nmacOS 15.3\t\t       December 21, 2007\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the pam resource?
+  manpageQuestion2: How would you configure pam to authenticate users against a LDAP server?
+  manpageQuestion3: Can you provide an example of using pam to authenticate a user interactively at the login prompt?
+

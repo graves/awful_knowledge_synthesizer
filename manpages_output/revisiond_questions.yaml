@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `revisiond`.\n\n\n\nManpage text:\n\nREVISIOND(8)\t\t    System Manager's Manual\t\t  REVISIOND(8)\n\nNAME\n     revisiond – storage manager for document revisions\n\nSYNOPSIS\n     revisiond\n\nDESCRIPTION\n     revisiond is the daemon that manages document revisions created by\n     applications and system services.\n\n     There are no configurations to revisiond, and users should not run\n     revisiond manually.\n\nMac OS X\t\t\tMarch 11, 2011\t\t\t      Mac OS X"
+  manpageQuestion1: What is the primary purpose of the revisiond daemon?
+  manpageQuestion2: How would you check if the revisiond daemon is running on a macOS system?
+  manpageQuestion3: What are the key characteristics of the revisiond daemon's operation?
+

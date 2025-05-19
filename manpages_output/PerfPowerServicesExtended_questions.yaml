@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `PerfPowerServicesExtended`.\n\n\n\nManpage text:\n\nPerfPowerServicesExtended(8)\t\t\t       System Manager's Manual\n\nNAME\n     PerfPowerServicesExtended – manages structured log archives that enable\n     retrieval of system power and performance data.\n\nDESCRIPTION\n     The PerfPowerServicesExtended daemon works only within the context of a\n     launchd job and should not be run from the command line.\n\nmacOS 15.3\t\t\tApril 26, 2017\t\t\t    macOS 15.3"
+  manpageQuestion1: What is the primary purpose of the PerfPowerServicesExtended tool?
+  manpageQuestion2: How would you configure the PerfPowerServicesExtended daemon to start automatically at boot time on a macOS system?
+  manpageQuestion3: What is the typical use case for the PerfPowerServicesExtended service in a macOS environment?
+

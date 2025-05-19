@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `liquiddetectiond`.\n\n\n\nManpage text:\n\nLIQUIDDETECTIOND(8)\t    System Manager's Manual\t   LIQUIDDETECTIOND(8)\n\nNAME\n     liquiddetectiond – Liquid Detection and Corrosion Mitigation Daemon\n\nDESCRIPTION\n     liquiddetectiond runs in the background and collects liquid detection\n     analytics from each USB-C port on the system.\n\nmacOS\t\t\t       February 14, 2023\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the liquiddetectiond daemon?
+  manpageQuestion2: How does liquiddetectiond contribute to system maintenance and reliability in macOS?
+  manpageQuestion3: Can you describe the role of liquiddetectiond in monitoring and managing liquid-related issues on a macOS system?
+

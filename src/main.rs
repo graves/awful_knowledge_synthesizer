@@ -301,7 +301,7 @@ async fn run_for_books(
                 let mut count = 1;
                 let total = book.chunks.len();
 
-                for chunk in book.chunks {
+                for chunk in &book.chunks {
                     println!("Processing chunk {count}/{total}");
 
                     let book_details = format!("The text is from {title} by {author}.");

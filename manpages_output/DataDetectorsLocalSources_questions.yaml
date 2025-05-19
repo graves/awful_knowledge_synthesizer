@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `DataDetectorsLocalSources`.\n\n\n\nManpage text:\n\nDDLOCALSOURCES(8)\t    System Manager's Manual\t     DDLOCALSOURCES(8)\n\nNAME\n     DataDetectorsLocalSources – DataDetectors user source content manager\n\nSYNOPSIS\n     DataDetectorsLocalSources\n\nDESCRIPTION\n     The DataDetectorsLocalSources command controls the content of the private\n     user source of DataDetectors. Access to this source will be controlled by\n     DataDetectorsSourceAccess.\n\n     This tool should not be run directly.\n\nEXIT STATUS\n     DataDetectorsLocalSources will exit on SIGTERM with status 0, or >0 if an\n     error occurred.\n\nSEE ALSO\n     DataDetectorsSourceAccess(8)\n\nmacOS\t\t\t\t 16 June 2016\t\t\t\t macOS"
+  manpageQuestion1: What is the primary purpose of the DataDetectorsLocalSources command?
+  manpageQuestion2: How can you manage the content of the private user source for DataDetectors using this tool?
+  manpageQuestion3: What is the expected exit status of DataDetectorsLocalSources when it receives a SIGTERM signal?
+

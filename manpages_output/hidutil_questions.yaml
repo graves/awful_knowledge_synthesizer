@@ -1,0 +1,5 @@
+- prompt: "You are playing the role of a college professor. Here is some text copied from the manpages of the macOS resource `hidutil`.\n\n\n\nManpage text:\n\nHIDUTIL(1)\t\t    General Commands Manual\t\t    HIDUTIL(1)\n\nNAME\n     hidutil – HID event system debug utility\n\nSYNOPSIS\n     hidutil [command] [options]\n\nDESCRIPTION\n     See hidutil [help] for more information.\n\n\t\t\t\tMarch 11, 2016"
+  manpageQuestion1: What is the primary purpose of the hidutil command?
+  manpageQuestion2: How can you use hidutil to list all available HID devices on a macOS system?
+  manpageQuestion3: Can you provide an example of using hidutil to monitor HID events from a specific device?
+
