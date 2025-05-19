@@ -1,0 +1,18 @@
+USBAUDIOD(8)		    System Manager's Manual		  USBAUDIOD(8)
+
+NAME
+     usbaudiod – usbaudiod is a system daemon that runs USB audio diagnostics.
+
+SYNOPSIS
+     takes no arguments, and users should not launch it manually.
+
+DESCRIPTION
+     usbaudiod performs diagnostics of USB audio devices
+
+SEE ALSO
+     coreaudiod(8), audiomxd(8),
+
+HISTORY
+     usbaudiod first appeared in macOS 15.0 and iOS 18.0.
+
+Darwin				August 28, 2023 			Darwin

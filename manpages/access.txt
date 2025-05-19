@@ -1,0 +1,136 @@
+ACCESS(2)		      System Calls Manual		     ACCESS(2)
+
+NAME
+     access, faccessat – check accessibility of a file
+
+SYNOPSIS
+     #include <unistd.h>
+
+     int
+     access(const char *path, int mode);
+
+     int
+     faccessat(int fd, const char *path, int mode, int flag);
+
+DESCRIPTION
+     The access() system call checks the accessibility of the file named by
+     the path argument for the access permissions indicated by the mode
+     argument.	The value of mode is either the bitwise-inclusive OR of the
+     access permissions to be checked (R_OK for read permission, W_OK for
+     write permission, and X_OK for execute/search permission), or the
+     existence test (F_OK).
+
+     For additional information, see the File Access Permission section of
+     intro(2).
+
+     The access() system call uses the real user ID in place of the effective
+     user ID, the real group ID in place of the effective group ID, and the
+     rest of the group access list.
+
+     The faccessat() system call is equivalent to access() except in the case
+     where path specifies a relative path.  In this case the file whose
+     accessibility is to be determined is located relative to the directory
+     associated with the file descriptor fd instead of the current working
+     directory.  If faccessat() is passed the special value AT_FDCWD in the fd
+     parameter, the current working directory is used and the behavior is
+     identical to a call to access().  Values for flag are constructed by a
+     bitwise-inclusive OR of flags from the following list, defined in
+     <fcntl.h>:
+
+     AT_EACCESS
+	     The checks for accessibility are performed using the effective
+	     user and group IDs instead of the real user and group ID as
+	     required in a call to access().
+
+     AT_SYMLINK_NOFOLLOW
+	     If path names a symbolic link, the status of the symbolic link is
+	     returned.
+
+     AT_SYMLINK_NOFOLLOW_ANY
+	     If path names a symbolic link, the status of the symbolic link is
+	     returned and if the path has any other symbolic links, an error
+	     is returned.
+
+     Even if a process has appropriate privileges and indicates success for
+     X_OK, the file may not actually have execute permission bits set.
+     Likewise for R_OK and W_OK.
+
+RETURN VALUES
+     Upon successful completion, the value 0 is returned; otherwise the
+     value -1 is returned and the global variable errno is set to indicate the
+     error.
+
+ERRORS
+     access() or faccessat() will fail if:
+
+     [EINVAL]		The value of the mode argument is invalid.
+
+     [ENOTDIR]		A component of the path prefix is not a directory.
+
+     [ENAMETOOLONG]	A component of a pathname exceeded {NAME_MAX}
+			characters, or an entire path name exceeded {PATH_MAX}
+			characters.
+
+     [ENOENT]		The named file does not exist.
+
+     [ELOOP]		Too many symbolic links were encountered in
+			translating the pathname.
+
+     [ELOOP]		AT_SYMLINK_NOFOLLOW_ANY was passed and a symbolic link
+			was encountered in translating the pathname.
+
+     [EROFS]		Write access is requested for a file on a read-only
+			file system.
+
+     [ETXTBSY]		Write access is requested for a pure procedure (shared
+			text) file presently being executed.
+
+     [EACCES]		Permission bits of the file mode do not permit the
+			requested access, or search permission is denied on a
+			component of the path prefix.
+
+     [EFAULT]		The path argument points outside the process's
+			allocated address space.
+
+     [EIO]		An I/O error occurred while reading from or writing to
+			the file system.
+
+     Also, the faccessat() system call may fail if:
+
+     [EBADF]		The path argument does not specify an absolute path
+			and the fd argument is neither AT_FDCWD nor a valid
+			file descriptor.
+
+     [EINVAL]		The value of the flag argument is not valid.
+
+     [ENOTDIR]		The path argument is not an absolute path and fd is
+			neither AT_FDCWD nor a file descriptor associated with
+			a directory.
+
+SEE ALSO
+     chmod(2), intro(2), stat(2)
+
+STANDARDS
+     The access() system call is expected to conform to IEEE Std 1003.1-1990
+     (“POSIX.1”).  The faccessat() system call is expected to conform to
+     POSIX.1-2008 .
+
+HISTORY
+     The access() function appeared in Version 7 AT&T UNIX.
+
+SECURITY CONSIDERATIONS
+     The result of access() should not be used to make an actual access
+     control decision, since its response, even if correct at the moment it is
+     formed, may be outdated at the time you act on it.  access() results
+     should only be used to pre-flight, such as when configuring user
+     interface elements or for optimization purposes.  The actual access
+     control decision should be made by attempting to execute the relevant
+     system call while holding the applicable credentials, and properly
+     handling any resulting errors; and this must be done even though access()
+     may have predicted success.
+
+     Additionally, set-user-ID and set-group-ID applications should restore
+     the effective user or group ID, and perform actions directly rather than
+     use access() to simulate access checks for the real user or group ID.
+
+macOS 15.3		      September 15, 2014		    macOS 15.3

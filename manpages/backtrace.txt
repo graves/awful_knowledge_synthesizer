@@ -1,0 +1,96 @@
+backtrace(3)		   Library Functions Manual		  backtrace(3)
+
+NAME
+     backtrace, backtrace_symbols, backtrace_symbols_fd,
+     backtrace_image_offsets, backtrace_from_fp – call stack backtrace and
+     display functions
+
+SYNOPSIS
+     #include <execinfo.h>
+
+     int
+     backtrace(void** array, int size);
+
+     char**
+     backtrace_symbols(void* const* array, int size);
+
+     void
+     backtrace_symbols_fd(void* const* array, int size, int fd);
+
+     void
+     backtrace_image_offsets(void* const* array,
+	 struct image_offset *image_offsets, int size);
+
+     int
+     backtrace_from_fp(void* startfp, void** array, int size);
+
+     size_t
+     backtrace_async(void** array, size_t size, uint32_t* task_id);
+
+DESCRIPTION
+     These routines provide a mechanism to examine the current thread's call
+     stack.
+
+     backtrace() writes the function return addresses of the current call
+     stack to the array of pointers referenced by array.  At most, size
+     pointers are written.  The number of pointers actually written to array
+     is returned.
+
+     backtrace_symbols() attempts to transform a call stack obtained by
+     backtrace() into an array of human-readable strings using dladdr().  The
+     array of strings returned has size elements.  It is allocated using
+     malloc() and should be released using free().  There is no need to free
+     the individual strings in the array.
+
+     backtrace_symbols_fd() performs the same operation as
+     backtrace_symbols(), but the resulting strings are immediately written to
+     the file descriptor fd, and are not returned.
+
+     backtrace_image_offsets() attempts to transform a call stack obtained by
+     backtrace() into an array of image offsets, for deferred symbolication.
+     Each entry in the array has an offset relative to the __TEXT section of
+     the image with the given UUID.  The results are written to image_offsets
+     which should be an array of size length.
+
+     backtrace_from_fp() takes a backtrace of frames starting from the given
+     frame pointer.
+
+     backtrace_async() behaves exactly like backtrace() unless it is invoked
+     from a Swift async context.  In that case, instead of writing the return
+     addresses of the OS call stack, the continuation addresses of the async
+     invocations that led to the current state are provided.  If unwinding an
+     async stack rather than an OS stack, the value pointed to by task_id will
+     be set to a non-zero identifier that for the current process uniquely
+     identifies the async task currently running.  Otherwise, 0 is stored.
+
+     Note that the continuation addresses provided by backtrace_async() have
+     an offset of 1 added to them.  Most symbolication engines will substract
+     1 from the call stack return addresses in order to symbolicate the call
+     site rather than the return location.  With a Swift async continuation,
+     substracting 1 from its address would result in an address in a different
+     function.	This offset allows the returned addresses to be handled
+     correctly by most existing symbolication engines.
+
+EXAMPLE
+	 #include <execinfo.h>
+	 #include <stdio.h>
+	 ...
+	 void* callstack[128];
+	 int i, frames = backtrace(callstack, 128);
+	 char** strs = backtrace_symbols(callstack, frames);
+	 for (i = 0; i < frames; ++i) {
+	     printf("%s\n", strs[i]);
+	 }
+	 free(strs);
+	 ...
+
+HISTORY
+     backtrace(), backtrace_symbols(), and backtrace_symbols_fd() first
+     appeared in Mac OS X 10.5.  backtrace_image_offsets() and
+     backtrace_from_fp() first appeared macOS 10.14 and iOS 12.
+     backtrace_async() first appeared in macOS 12.
+
+SEE ALSO
+     dladdr(3), malloc(3)
+
+Darwin				 March 1, 2018				Darwin

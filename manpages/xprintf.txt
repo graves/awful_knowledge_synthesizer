@@ -1,0 +1,69 @@
+XPRINTF(3)		   Library Functions Manual		    XPRINTF(3)
+
+NAME
+     asxprintf, dxprintf, fxprintf, sxprintf, xprintf, vasxprintf, vdxprintf,
+     vfxprintf, vsxprintf, vxprintf – extensible printf
+
+SYNOPSIS
+     #include <printf.h>
+
+     int
+     asxprintf(char ** restrict ret, printf_domain_t restrict domain,
+	 locale_t restrict loc, const char * restrict format, ...);
+
+     int
+     dxprintf(int fd, printf_domain_t restrict domain, locale_t restrict loc,
+	 const char * restrict format, ...);
+
+     int
+     fxprintf(FILE * restrict stream, printf_domain_t restrict domain,
+	 locale_t restrict loc, const char * restrict format, ...);
+
+     int
+     sxprintf(char * restrict str, size_t size,
+	 printf_domain_t restrict domain, locale_t restrict loc,
+	 const char * restrict format, ...);
+
+     int
+     xprintf(printf_domain_t restrict domain, locale_t restrict loc,
+	 const char * restrict format, ...);
+
+     #include <stdarg.h>
+
+     int
+     vasxprintf(char ** restrict ret, printf_domain_t restrict domain,
+	 locale_t restrict loc, const char * restrict format, va_list ap);
+
+     int
+     vdxprintf(int fd, printf_domain_t restrict domain, locale_t restrict loc,
+	 const char * restrict format, va_list ap);
+
+     int
+     vfxprintf(FILE * restrict stream, printf_domain_t restrict domain,
+	 locale_t restrict loc, const char * restrict format, va_list ap);
+
+     int
+     vsxprintf(char * restrict str, size_t size,
+	 printf_domain_t restrict domain, locale_t restrict loc,
+	 const char * restrict format, va_list ap);
+
+     int
+     vxprintf(printf_domain_t restrict domain, locale_t restrict loc,
+	 const char * restrict format, va_list ap);
+
+DESCRIPTION
+     These extensible printf (see xprintf(5)) variants behave like their
+     normal printf counterparts (see printf(3)) without ‘x’ in the name
+     (except sxprintf() and vsxprintf() behave like snprintf() and
+     vsnprintf(), respectively).
+
+     The domain argument must be a pointer to a printf domain structure, as
+     returned by one of the functions described in xprintf_domain(3).  The loc
+     argument should be an extended locale (see xlocale(3)) or NULL, which
+     means to use the current locale in effect (either the per-thread locale
+     if set, or the global locale by default).
+
+SEE ALSO
+     printf(3), xlocale(3), xprintf_domain(3), xprintf(5)
+
+Darwin				August 19, 2012 			Darwin

@@ -1,0 +1,55 @@
+LSEARCH(3)		   Library Functions Manual		    LSEARCH(3)
+
+NAME
+     lfind, lsearch – linear search and append
+
+LIBRARY
+     Standard C Library (libc, -lc)
+
+SYNOPSIS
+     #include <search.h>
+
+     void *
+     lfind(const void *key, const void *base, size_t *nelp, size_t width,
+	 int (*compar)(const void *, const void *));
+
+     void *
+     lsearch(const void *key, void *base, size_t *nelp, size_t width,
+	 int (*compar)(const void *, const void *));
+
+DESCRIPTION
+     The lsearch() and lfind() functions walk linearly through an array,
+     comparing each element with the one to be sought, by means of a supplied
+     comparison function.
+
+     The key argument points to an element that matches the one that is
+     searched.	The array's address in memory is denoted by the base argument.
+     The width of one element (i.e., the size as returned by sizeof()) is
+     passed as the width argument.  The number of valid elements contained in
+     the array (not the number of elements the array has space reserved for)
+     is given in the integer pointed to by nelp.  The compar argument points
+     to a function which compares its two arguments and returns zero if they
+     are matching, and non-zero otherwise.
+
+     If no matching element was found in the array, lsearch() copies key into
+     the position after the last element and increments the integer pointed to
+     by nelp.
+
+RETURN VALUES
+     The lsearch() and lfind() functions return a pointer to the first element
+     found.  If no element was found, lsearch() returns a pointer to the newly
+     added element, whereas lfind() returns NULL.  Both functions return NULL
+     if an error occurs.
+
+SEE ALSO
+     bsearch(3), hsearch(3), tsearch(3)
+
+STANDARDS
+     The lsearch() and lfind() functions conform to IEEE Std 1003.1-2001
+     (“POSIX.1”).
+
+HISTORY
+     The lsearch() and lfind() functions appeared in 4.2BSD.  In FreeBSD 5.0,
+     they reappeared conforming to IEEE Std 1003.1-2001 (“POSIX.1”).
+
+macOS 15.3		       October 11, 2002 		    macOS 15.3

@@ -1,0 +1,112 @@
+CRYPT(3)		   Library Functions Manual		      CRYPT(3)
+
+NAME
+     crypt, encrypt, setkey – DES encryption
+
+SYNOPSIS
+     #include <unistd.h>
+
+     char *
+     crypt(const char *key, const char *salt);
+
+     void
+     encrypt(char *block, int edflag);
+
+     #include <stdlib.h>
+
+     void
+     setkey(const char *key);
+
+DESCRIPTION
+     The crypt() function performs password encryption, based on the NBS Data
+     Encryption Standard (DES).  Additional code has been added to deter key
+     search attempts.  The first argument to crypt() is a null-terminated
+     string, typically a user's typed password.  The second is in one of two
+     forms: if it begins with an underscore (``_''), an extended format is
+     used in interpreting both the key and the salt value, as outlined below.
+
+   Extended crypt:
+     The key is divided into groups of 8 characters (the last group is null-
+     padded) and the low-order 7 bits of each each character (56 bits per
+     group) are used to form the DES key as follows: the first group of 56
+     bits becomes the initial DES key.	For each additional group, the XOR of
+     the encryption of the current DES key with itself and the group bits
+     becomes the next DES key.
+
+     The salt is a 9-character array consisting of an underscore, followed by
+     4 bytes of iteration count and 4 bytes of salt.  These are encoded as
+     printable characters, 6 bits per character, least significant character
+     first.  The values 0 to 63 are encoded as ``./0-9A-Za-z''.  This allows
+     24 bits for both count and salt.
+
+   Traditional crypt:
+     The first 8 bytes of the key are null-padded, and the low-order 7 bits of
+     each character is used to form the 56-bit DES key.
+
+     The salt is a 2-character array of the ASCII-encoded salt.  Thus, only 12
+     bits of salt are used.  count is set to 25.
+
+   Algorithm:
+     The salt introduces disorder in the DES algorithm in one of 16777216 or
+     4096 possible ways (ie. with 24 or 12 bits: if bit i of the salt is set,
+     then bits i and i+24 are swapped in the DES E-box output).
+
+     The DES key is used to encrypt a 64-bit constant, using count iterations
+     of DES.  The value returned is a null-terminated string, 20 or 13 bytes
+     (plus null) in length, consisting of the salt, followed by the encoded
+     64-bit encryption.
+
+     The functions, encrypt() and setkey() provide access to the DES algorithm
+     itself.  setkey() is passed a 64-byte array of binary values (numeric 0
+     or 1).  A 56-bit key is extracted from this array by dividing the array
+     into groups of 8 and ignoring the last bit in each group.	That bit is
+     reserved for a byte parity check by DES, but is ignored by these
+     functions.
+
+     The block argument to encrypt() is also a 64-byte array of binary values.
+     If the value of edflag is 0, block is encrypted; otherwise, it is
+     decrypted.  The result is returned in the original array block, after
+     using the key specified by setkey() to process it.
+
+     The function crypt() returns a pointer to the encrypted value on success,
+     and NULL on failure.
+
+     The crypt() and setkey() functions all manipulate the same key space.
+
+SEE ALSO
+     login(1), passwd(1), getpass(3), compat(5), passwd(5)
+
+LEGACY SYNOPSIS
+     #include <unistd.h>
+
+     int
+     encrypt(char *block, int edflag);
+
+     The function encrypt() returns 0 on success and 1 on failure.
+
+     void
+     setkey(const char *key);
+
+     The include file <unistd.h> is necessary and sufficient for the setkey()
+     function.
+
+BUGS
+     The crypt() function returns a pointer to static data, and subsequent
+     calls to crypt() will modify the same object.
+
+HISTORY
+     A rotor-based crypt() function appeared in Version 6 AT&T UNIX.  The
+     current style crypt() first appeared in Version 7 AT&T UNIX.
+
+     This library (FreeSec 1.0) was developed outside the United States of
+     America as an unencumbered replacement for the U.S.-only libcrypt
+     encryption library.  Programs linked against the crypt() interface may be
+     exported from the U.S.A. only if they use crypt() solely for
+     authentication purposes and avoid use of the other programmer interfaces
+     listed above. Special care has been taken in the library so that programs
+     which only use the crypt() interface do not pull in the other components.
+
+AUTHOR
+     David Burren <davidb@werj.com.au>
+
+FreeSec 1.0			 March 9, 1994			   FreeSec 1.0

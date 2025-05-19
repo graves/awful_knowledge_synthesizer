@@ -1,0 +1,68 @@
+stringprep(3)			    libidn			 stringprep(3)
+
+NAME
+       stringprep - API function
+
+SYNOPSIS
+       #include <stringprep.h>
+
+       int stringprep(char * in, size_t maxlen, Stringprep_profile_flags
+       flags, const Stringprep_profile * profile);
+
+ARGUMENTS
+       char * in   input/output array with string to prepare.
+
+       size_t maxlen
+		   maximum length of input/output array.
+
+       Stringprep_profile_flags flags
+		   a Stringprep_profile_flags value, or 0.
+
+       const Stringprep_profile * profile
+		   pointer to Stringprep_profile to use.
+
+DESCRIPTION
+       Prepare the input zero terminated UTF-8 string according to the
+       stringprep profile, and write back the result to the input string.
+
+       Note that you must convert strings entered in the systems locale into
+       UTF-8 before using this function, see stringprep_locale_to_utf8().
+
+       Since the stringprep operation can expand the string,  maxlen indicate
+       how large the buffer holding the string is.  This function will not
+       read or write to characters outside that size.
+
+       The  flags are one of Stringprep_profile_flags values, or 0.
+
+       The  profile contain the Stringprep_profile instructions to perform.
+       Your application can define new profiles, possibly re-using the generic
+       stringprep tables that always will be part of the library, or use one
+       of the currently supported profiles.
+
+       Return value: Returns STRINGPREP_OK iff successful, or an error code.
+
+REPORTING BUGS
+       Report bugs to <help-libidn@gnu.org>.
+       General guidelines for reporting bugs: https://www.gnu.org/gethelp/
+       GNU Libidn home page: https://www.gnu.org/software/libidn/
+
+
+COPYRIGHT
+       Copyright © 2002-2025 Simon Josefsson.
+       Copying and distribution of this file, with or without modification,
+       are permitted in any medium without royalty provided the copyright
+       notice and this notice are preserved.
+
+SEE ALSO
+       The full documentation for libidn is maintained as a Texinfo manual.
+       If the info and libidn programs are properly installed at your site,
+       the command
+
+	      info libidn
+
+       should give you access to the complete manual.  As an alternative you
+       may obtain the manual from:
+
+	      https://www.gnu.org/software/libidn/manual/
+
+libidn				     1.43			 stringprep(3)

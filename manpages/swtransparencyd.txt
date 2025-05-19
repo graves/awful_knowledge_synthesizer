@@ -1,0 +1,14 @@
+swtransparencyd(8)	    System Manager's Manual	    swtransparencyd(8)
+
+NAME
+     swtransparencyd – The swtransparency daemon.
+
+DESCRIPTION
+     swtransparencyd swtransparencyd is a system daemon that verifies software
+     transparency information for requesting clients.  It is not intended to
+     be invoked directly.
+
+SEE ALSO
+     launchd(8) launchd.conf(5)
+
+Darwin				  1 Dec, 2023				Darwin
