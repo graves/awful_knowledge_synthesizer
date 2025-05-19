@@ -1,0 +1,143 @@
+system_prompt: You are Qwen, created by Alibaba Cloud.
+messages:
+  - role: user
+    content: |-
+      Please synthesize 3 questions that exercise the code where the answer contains correct usage of any APIs made available. The first question should ask a general question about what purpose the code serves. The next two questions should be realistic, specific questions about how the code is used and should be answered by a code example.
+
+      You are playing the role of a senior software engineer developing questions for a code review. Here is some source code from `AArch64_Assembly/misc/2048.s`. It is part of the AArch64_Assembly Algorithms project.\n\n
+
+      Source Code:
+
+      ```asm
+      /* ===============================
+
+      This program uses codes from Rosetta Code.
+      See: https://rosettacode.org/wiki/2048
+      This code follows Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) license.
+
+      =============================== */
+
+      /* ARM assembly AARCH64 Raspberry PI 3B */
+      /*  program 2048.s   */ 
+      
+      /*******************************************/
+      /* Constantes file                         */
+      /*******************************************/
+      /* for this file see task include a file in language AArch64 assembly*/
+      .include "../includeConstantesARM64.inc"
+      .equ SIZE,       4       
+      .equ TOTAL,      2048
+      .equ BUFFERSIZE, 80
+      
+      .equ KEYSIZE,    8
+      .equ IOCTL,     0x1D  // Linux syscall
+      .equ SIGACTION, 0x86  // Linux syscall
+      .equ SYSPOLL,   0x16  // Linux syscall
+      .equ CREATPOLL, 0x14  // Linux syscall
+      .equ CTLPOLL,   0x15  // Linux syscall
+      
+      .equ TCGETS,    0x5401
+      .equ TCSETS,    0x5402
+      .equ ICANON,    2
+      .equ ECHO,     10
+      .equ POLLIN,    1
+      .equ EPOLL_CTL_ADD,    1
+      
+      .equ SIGINT,   2      // Issued if the user sends an interrupt signal (Ctrl + C)
+      .equ SIGQUIT,  3      // Issued if the user sends a quit signal (Ctrl + D)
+      .equ SIGTERM, 15      // Software termination signal (sent by kill by default)
+      .equ SIGTTOU, 22
+      
+      /*******************************************/
+      /* Structures                               */
+      /********************************************/
+      /* structure termios see doc linux*/
+          .struct  0
+      term_c_iflag:                    // input modes
+          .struct  term_c_iflag + 4 
+      term_c_oflag:                    // output modes
+          .struct  term_c_oflag + 4 
+      term_c_cflag:                    // control modes
+          .struct  term_c_cflag + 4 
+      term_c_lflag:                    // local modes
+          .struct  term_c_lflag + 4 
+      term_c_cc:                       // special characters
+          .struct  term_c_cc + 40      // see length if necessary 
+      term_fin:
+  
+          /* structure sigaction see doc linux */
+              .struct  0
+          sa_handler:
+              .struct  sa_handler + 8 
+          sa_mask:
+              .struct  sa_mask + 8 
+          sa_flags:
+              .struct  sa_flags + 8
+          sa_sigaction:
+              .struct  sa_sigaction + 8
+          sa_fin:
+          
+          /* structure poll see doc linux */
+              .struct  0
+          poll_event:                        //  events mask
+              .struct  poll_event + 8
+          poll_fd:                           // events returned
+              .struct  poll_fd  + 8
+          poll_fin:
+          /*********************************/
+          /* Initialized data              */
+          /*********************************/
+          .data
+          szMessOK:           .asciz "Bravo !! You win. \n"
+          szMessNotOK:        .asciz "You lost !! \n"
+          szMessNewGame:      .asciz "New game (y/n) ? \n"
+          szMessErreur:       .asciz "Error detected.\n"
+          szMessErrInitTerm:  .asciz "Error terminal init.\n"
+          szMessErrInitPoll:  .asciz "Error poll init.\n"
+          szMessErreurKey:    .asciz "Error read key.\n"
+          szMessErr:          .asciz    "Error code hexa : @ décimal : @ \n"
+          szCarriageReturn:   .asciz "\n"
+          szMess0:            .asciz "      "
+          szMess2:            .asciz "   2  "
+          szMess4:            .asciz "   4  "
+          szMess8:            .asciz "   8  "
+          szMess16:           .asciz "  16  "
+          szMess32:           .asciz "  32  "
+          szMess64:           .asciz "  64  "
+          szMess128:          .asciz " 128  "
+          szMess256:          .asciz " 256  "
+          szMess512:          .asciz " 512  "
+          szMess1024:         .asciz " 1024 "
+          szMess2048:         .asciz " 2048 "
+      ```
+
+  - role: assistant
+    content: |-
+      {
+        "codeQuestion1": "What is the purpose of this code?",
+        "codeQuestion2": "How can a user initiate a new game after losing, and what system calls are involved in handling the input for this action?",
+        "codeQuestion3": "What steps are taken to handle terminal input and output settings for the game?"
+      }
+      
+response_format:
+  name: code_question_generator
+  strict: true
+  description: Represents 3 questions about source code that can be answered by obtaining a comprehensive understanding of the code base.
+  schema:
+    type: object
+    properties:
+      codeQuestion1:
+        type: string
+      codeQuestion2:
+        type: string
+      codeQuestion3:
+        type: string
+    required:
+      - codeQuestion1
+      - codeQuestion2
+      - codeQuestion3
+pre_user_message_content: |-
+  Please synthesize 3 questions that exercise the code where the answer contains correct usage of any APIs made available. The first question should ask a general question about what purpose the code serves. The next two questions should be realistic, specific questions about how the code is used and should be answered by a code example.
+post_user_message_content:
+
+  /nothink
