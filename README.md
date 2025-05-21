@@ -109,7 +109,7 @@ Processing chunk 2/116
   codeQuestion3: What steps are taken to handle terminal input and output settings?
 ```
 
-I've left all of the corpora inputs in [inputs](./inputs) and all of the completed question/prompt items in [complete][./complete].
+I've left all of the corpora inputs in [inputs](./inputs) and all of the completed question/prompt items in [complete](./complete).
 
 ### Example Inputs
 
