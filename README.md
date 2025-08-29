@@ -1,6 +1,6 @@
 # 🧠 Awful Knowledge Synthesizer: Transforming Text into Exam Questions  
 
-> *A tool to generate LLM-powered exam questions from YAML books, manpages, mdbooks, and more.
+> *A tool to generate LLM-powered exam questions from YAML books, manpages, mdbooks, and more.*
 
 ---
 
@@ -18,7 +18,7 @@
 ---
 
 
-### 🧠 **How It Works**  
+### 🧩 **How It Works**  
 
 This tool transforms text from various sources into exam questions using Large Language Models (LLMs). Here’s a breakdown of how each input type is processed:
 
@@ -52,7 +52,7 @@ This tool transforms text from various sources into exam questions using Large L
 
 ---
 
-#### 🧠 **Tealdeer (.md Files with `tldr` Commands)**  
+#### 🦌 **Tealdeer (.md Files with `tldr` Commands)**  
 - **Input**: Markdown files containing `tldr` command outputs (e.g., `aa.md`).  
 - **Process**:  
   - Extracts the command name from filenames (e.g., `aa.md → tldr aa`).  
@@ -61,7 +61,7 @@ This tool transforms text from various sources into exam questions using Large L
 
 ---
 
-#### 🧠 **Code Files (C, Rust, or Assembly)**  
+#### 👾 **Code Files (C, Rust, or Assembly)**  
 - **Input**: Source code files with extensions like `.c`, `.rs`, or `.asm`.  
 - **Process**:  
   - Uses the command line flag to determine its language (C, Rust, or Assembly).  
@@ -147,7 +147,7 @@ complete/
 
 ---
 
-## 📁 Configuration (config.yaml)  
+## 📎 Configuration (config.yaml)  
 
 ```yaml
 api_key: your-openai-api-key
@@ -186,7 +186,7 @@ templates/tealdeer_knowledge_synthesizer.yaml
 
 ---
 
-## 🧠 Example Output  
+## 📈 Example Output  
 
 ```yaml
 - prompt: "What is the purpose of this code?"
@@ -197,7 +197,7 @@ templates/tealdeer_knowledge_synthesizer.yaml
 
 ---
 
-## 🧠 Contributing & Feedback  
+## 🙋🏿‍♂️ Contributing & Feedback  
 
 - **Report bugs**: We welcome all questions ad contributions With Arms Wide Open. It's a Creed really.
 - **Suggest improvements**: We were aiming to build a user friendly, simple, fast CLI but if you are having \~big ideas\~ that require simple solutions, holler.  
@@ -205,7 +205,7 @@ templates/tealdeer_knowledge_synthesizer.yaml
 
 ---
 
-## 🧠 Why Use This?  
+## 🤔 Why Use This?  
 
 - **No code changes**: Just run it and let the LLM handle the heavy lifting.  
 - **Customizable**: Choose between `code`, `manpage`, `mdbook`, `book`, `tealdeer`, or `yaml` sources.  
@@ -213,7 +213,7 @@ templates/tealdeer_knowledge_synthesizer.yaml
 
 ---
 
-## 🧠 Final Thoughts  
+## 🫩 Final Thoughts  
 
 **`awful_knowledge_synthesizer`** is a begrudging love letter to the power of LLMs and the chaos of text. Whether you're studying for finals, building interesting NPCs, or simply trying to f*ck your computer, this tool is your dutiful assistant.  
 
@@ -221,11 +221,11 @@ templates/tealdeer_knowledge_synthesizer.yaml
 
 --- 
 
-### 🧠 Want to Try It?  
+### 🧐 Want to Try It?  
 
 1. **Install dependencies**:  
    ```bash
-   cargo install awful-knowledge-synthesizer
+   cargo install awful_knowledge_synthesizer
    ```
 
 2. **Run it**:  
