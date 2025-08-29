@@ -16,7 +16,7 @@
                                  -Mr R J Craggs-
 ```
 
-```bash
+```
 λ awful_knowledge_synthesizer --help
 Generate final exam questions from YAML book chunks
 
