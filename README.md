@@ -16,6 +16,23 @@
                                  -Mr R J Craggs-
 ```
 
+```bash
+λ awful_knowledge_synthesizer --help
+Generate final exam questions from YAML book chunks
+
+Usage: awful_knowledge_synthesizer [OPTIONS] --input-dir <INPUT_DIR> --config <CONFIG> --source-type <SOURCE_TYPE> --output-dir <OUTPUT_DIR>
+
+Options:
+  -i, --input-dir <INPUT_DIR>        Path to directory of inputs
+  -c, --config <CONFIG>              Configuration file
+  -s, --source-type <SOURCE_TYPE>    Source type [possible values: book, manpage, mdbook, tealdeer, code]
+  -m, --mdbook-name <MDBOOK_NAME>    mdbook project name
+  -o, --output-dir <OUTPUT_DIR>      Path to directory to output files
+  -l, --language <LANGUAGE>          Language of the code repository [possible values: asm, c, rust]
+  -p, --project-name <PROJECT_NAME>  Code repo project name
+  -h, --help                         Print help
+```
+
 ---
 
 ## 📚 What Is This?  
