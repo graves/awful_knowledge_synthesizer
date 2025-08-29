@@ -1,79 +1,98 @@
-# Awful Knowledge Synthesizer
+# 🧠 Awful Knowledge Synthesizer: Transforming Text into Exam Questions  
 
-Turn books that were parsed into chunks and placed in YAML files into exam questions meant to prompt an LLM for question/answer pairs.
+> *A tool to generate LLM-powered exam questions from YAML books, manpages, mdbooks, and more.
 
-```
-    _______________________________________________________
-   |:::::: o o o o . |..... . .. . | [45]  o o o o o ::::::|
-   |:::::: o o o o   | ..  . ..... |       o o o o o ::::::|
-   |::::::___________|__..._...__._|_________________::::::|
-   | # # | # # # | # # | # # # | # # | # # # | # # | # # # |
-   | # # | # # # | # # | # # # | # # | # # # | # # | # # # |
-   | # # | # # # | # # | # # # | # # | # # # | # # | # # # |
-   | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
-   |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|
+---
 
-                                 -Mr R J Craggs-
-```
+## 📚 What Is This?  
 
-`awful_knowledge_synthesizer` can work with books (yaml), manpages (txt), mdbook (nested directories of markdown), tealdeer (markdown).
+**`awful_knowledge_synthesizer`** is a command-line tool that takes YAML files (and other text formats) containing book excerpts, manpages, or code snippets and generates **exam questions** for Large Language Models (LLMs).  
 
-The `yaml` file inputs for the `--source-type books` option are expected to conform to the following schema:
+### 🔍 Key Features  
+- Supports multiple source types: `yaml`, `manpage`, `mdbook`, `tealdeer`, and `code`.  
+- Uses templates to format prompts for LLMs (e.g., "You are a senior software engineer...").  
+- Outputs YAML files with question-answer pairs (e.g., `SQLite_questions.yaml`).  
+- Integrates with [Awful Jade](https://github.com/awful_aj) for LLM inference and conversation persistence.  
+- Was used to generate finetuning datasets for the [Jade](https://github.com/graves/Jade) iOS app.  
 
-```yaml
-chunks:
-  - Some sanitized text
-  - From a book
-  - Or any corpus really
-```
+---
 
-All of the example inputs are XNU related. We would like to fine tune a model from basic grammar to calculus and trigonometry, followed by the systems programming building blocks I prefer. These are aarch64 assembly, C, Rust, and Nushell. Someday I pray these will be the only dependencies my system is built on. We follow that up with userland MacOS, iOS, *OS knowledge.
 
-Hopefully at the end of this we'll have a knowledgable, useful, subject matter expert, that lives on the device it knows deeply. Like a Clippy that doesn't suck (Microsoft Word's animated atrocity, not Rust's incredibly useful linter).
+### 🧠 **How It Works**  
 
-An iOS app to run the resulting model, [**Jade** is already available](https://github.com/graves/Jade).
-A command line interface to OpenAI-compatible APIs, for running the resulting model (with a built in vector database for persistent memories), [**Awful Jade** is already available](https://github.com/awful_aj)
+This tool transforms text from various sources into exam questions using Large Language Models (LLMs). Here’s a breakdown of how each input type is processed:
 
-## Configuration
+---
 
-Under the hood, this tool uses [aj](https://github.com/graves/aj) to send the prompts for inference. The configuration requires a `config.yaml` compatible with `aj` and `*_knowledge_synthsizer.yaml` files for each source type placed in the configuration directory `aj` expects.
+#### 📄 **Books (YAML Files)**  
+- **Input**: YAML files with structured text chunks (e.g., `GrammarLogicRhetoricMath.yaml`).  
+- **Process**:  
+  - Parses YAML files to extract text chunks.  
+  - Splits the content into manageable fragments (with default chunk size).  
+  - Uses a LLM template to generate exam questions based on the text.  
+- **Output**: Questions are saved in `_questions.yaml` files (e.g., `GrammarLogicRhetoricMath_questions.yaml`).  
 
-```sh
-λ ls template/
-╭───┬──────────────────────────────────────────────┬──────┬────────┬────────────╮
-│ # │                     name                     │ type │  size  │  modified  │
-├───┼──────────────────────────────────────────────┼──────┼────────┼────────────┤
-│ 0 │ template/book_knowledge_synthesizer.yaml     │ file │ 7.4 kB │ a week ago │
-│ 1 │ template/code_knowledge_synthesizer.yaml     │ file │ 5.9 kB │ 2 days ago │
-│ 2 │ template/manpage_knowledge_synthesizer.yaml  │ file │ 2.9 kB │ 4 days ago │
-│ 3 │ template/mdbook_knowledge_synthesizer.yaml   │ file │ 2.5 kB │ 3 days ago │
-│ 4 │ template/tealdeer_knowledge_synthesizer.yaml │ file │ 2.5 kB │ 2 days ago │
-╰───┴──────────────────────────────────────────────┴──────┴────────┴────────────╯
-```
+---
 
-```sh
-λ cp template/* `~/Library/Application Support/com.awful-sec.aj/templates/`
-```
+#### 📜 **Manpages (.txt Files)**  
+- **Input**: `.txt` files containing macOS manpage content (e.g., `4ccconv.txt`).  
+- **Process**:  
+  - Reads `.txt` files and splits them into chunks.  
+  - Uses a LLM template to create questions about the text.  
+- **Output**: Questions are saved in `_questions.yaml` files (e.g., `4ccconv_questions.yaml`).  
 
-```sh
-λ cat config/config.yaml
-api_key:
-api_base: http://127.0.0.1:1234/v1
-model: qwen3-4B-mlx
-context_max_tokens: 32768
-assistant_minimum_context_tokens: 2048
-stop_words:
-- |2-
+---
 
-  <|im_start|>
-- <|im_end|>
-session_db_url: "/Users/tg/Library/Application Support/com.awful-sec.aj/aj.db"
-session_name: None
-```
+#### 📄 **MDBooks (.md Files in Nested Directories)**  
+- **Input**: Markdown files under a directory structure (e.g., `cargo/` for Cargo documentation).  
+- **Process**:  
+  - Recursively scans directories for `.md` files.  
+  - Splits markdown content into chunks and generates questions about the text.  
+- **Output**: Questions are saved in format `mdbook_name_questions.yaml` (e.g., `Cargo_questions.yaml`).  
 
-## Usage
+---
 
-```sh
+#### 🧠 **Tealdeer (.md Files with `tldr` Commands)**  
+- **Input**: Markdown files containing `tldr` command outputs (e.g., `aa.md`).  
+- **Process**:  
+  - Extracts the command name from filenames (e.g., `aa.md → tldr aa`).  
+  - Splits markdown content into chunks and generates questions about the `tldr` output.  
+- **Output**: Questions are saved in `Tealdeer_questions.yaml`.  
+
+---
+
+#### 🧠 **Code Files (C, Rust, or Assembly)**  
+- **Input**: Source code files with extensions like `.c`, `.rs`, or `.asm`.  
+- **Process**:  
+  - Uses the command line flag to determine its language (C, Rust, or Assembly).  
+  - Uses a code-specific splitter to divide the content into chunks.  
+  - Generates questions tailored for developers (e.g., "What is this function doing?").  
+- **Output**: Questions are saved in `project_name_questions.yaml` (e.g., `SQLite_questions.yaml`).  
+
+---
+
+### 🧪 **Key Workflow**  
+1. **Input Parsing**:  
+   - YAML files (books), `.txt`/`.md` files, or source code.  
+   - Each type is handled by a dedicated function (`run_for_books`, `run_for_manpages`, etc.).  
+
+2. **Chunking**:  
+   - Text is split into manageable fragments (e.g., 1000–20,000 characters).  
+   - Code files are split based on language (e.g., `tree-sitter` parsers for C/Rust).  
+
+3. **LLM Prompting**:  
+   - All inputs are converted into questions using a LLM template (e.g., "You are a professor...").  
+
+4. **Output**:  
+   - Questions are saved in YAML files with structured formatting (e.g., `project_name_questions.yaml`).  
+
+---
+
+## 📦 Example Usage  
+
+### ✅ Basic Command  
+
+```bash
 λ awful_knowledge_synthesizer --help
 Generate final exam questions from YAML book chunks
 
@@ -90,7 +109,7 @@ Options:
   -h, --help                         Print help
 ```
 
-```sh
+```bash
 λ awful_knowledge_synthesizer --input-dir inputs/code/sqlite --config config.yaml --source-type code --language c --output-dir . --project-name "SQLite"
 Reading "inputs/code/sqlite"
 File: jimsh0.c
@@ -100,6 +119,8 @@ Wrote to ./SQLite_questions.yaml
 Processing chunk 2/116
 ```
 
+### ✅ Command Output
+  
 `SQLite_questions.yaml`:
 
 ```yaml
@@ -111,116 +132,111 @@ Processing chunk 2/116
 
 I've left all of the corpora inputs in [inputs](./inputs) and all of the completed question/prompt items in [complete](./complete).
 
-### Example Inputs
 
-```sh
-λ tree inputs
-inputs
-├── books
-│   ├── GrammarLogicRhetoricMath
-│   │   ├── Adler, Mortimer J. & Gorman, William | A Syntopicon of Great Books of the Western World.pdf.txt.yaml
-│   │   ├── Barbara Oakley | A Mind for Numbers.pdf.txt.yaml
-│   │   ├── Charles P. McKeague, Mark D. Turner | Trigonometry.pdf.txt.yaml
-│   │   ├── Corbett, Edward P. J. | Classical rhetoric for the modern student-Oxford University Press.pdf.txt.yaml
-│   │   ├── Irving M. Copi, Carl Cohen, Victor Rodych | Introduction to Logic.pdf.txt.yaml
-│   │   ├── Jeremy Kun | A Programmer’s Introduction to Mathematics.pdf.txt.yaml
-│   │   ├── Michael Spivak | Calculus.pdf.txt.yaml
-│   │   ├── Mortimer J. Adler, Charles Van Doren | How to Read a Book.pdf.txt.yaml
-│   │   ├── Neuronwaves | Critical Thinking Logic and Problem Solving.pdf.txt.yaml
-│   │   ├── Robert F. Blitzer | Algebra and Trigonometry.pdf.txt.yaml
-│   │   ├── Sidney Greenbaum, Gerald Nelson | An Introduction to English Grammar-Longman.pdf.txt.yaml
-│   │   ├── Sister Miriam Joseph, Marguerite McGlinn | The Trivium The Liberal Arts of Logic, Grammar, and Rhetoric.pdf.txt.yaml
-│   │   ├── Stephen E. Nadeau | The Neural Architecture of Grammar.pdf.txt.yaml
-│   │   └── Thomas S. Kane | The New Oxford Guide to Writing.pdf.txt.yaml
-│   ├── SystemsProgramming
-│   │   ├── Brian Kernighan and Dennis Ritchie | The C Programming Language.txt.yaml
-│   │   ├── Kodeco Team, Walter Tyree | Advanced Apple Debugging & Reverse Engineering (Fourth Edition) Exploring Apple Code Through LLDB, Python & DTrace.txt.yaml
-│   │   ├── Sagar Rastogi, Jasdeep Singh | Exploring macOS A Journey Through the Mac Ecosystem.txt.yaml
-│   │   └── Sufyan bin Uzayr  | Objective-C The Ultimate Guide.txt.yaml
-│   └── remove_ctrl_chars.nu
-├── code
-│   ├── AArch64_Assembly
-│   │   ...
-|   |   ...
-│   ├── reqwest
-|   |   ...
-|   |   ...
-│   ├── ripgrep
-|   |   ...
-|   |   ...
-│   └── sqlite
-|   |   ...
-|   |   ...
-├── manpages
-│   ├── 4ccconv.txt
-    ...
-    ...
-│   └── zshzle.txt
-└── mdbooks
-    ├── cargo
-    |   ...
-    |   ...
-    ├── helix
-    |   ...
-    |   ...
-    ├── nushell
-    |   ...
-    |   ...
-    └── rust
-    |   ...
-    |   ...
-└── tealdeer
-    ├── aa.md
-    ...
-    ...
-    └── yabai.md
-
-164 directories, 6307 files
+### 🧾 Output Structure  
+```bash
+complete/
+├── books/
+│   ├── GrammarLogicRhetoricMath/
+│   │   └── SQLite_questions.yaml
+├── code/
+│   ├── SQLite_questions.yaml
+└── mdbooks/
+    └── Rust_questions.yaml
 ```
 
-### Example Outputs
+---
 
-```sh
-λ tree complete
-complete
-├── books
-│   ├── GrammarLogicRhetoricMath
-│   │   ├── A Mind for Numbers_questions.yaml
-│   │   ├── A Programmer’s Introduction to Mathematics_questions.yaml
-│   │   ├── Algebra and Trigonometry_questions.yaml
-│   │   ├── An Introduction to English Grammar-Longman_questions.yaml
-│   │   ├── Calculus_questions.yaml
-│   │   ├── Classical rhetoric for the modern student-Oxford University Press_questions.yaml
-│   │   ├── Critical Thinking Logic and Problem Solving_questions.yaml
-│   │   ├── How to Read a Book_questions.yaml
-│   │   ├── Introduction to Logic_questions.yaml
-│   │   ├── The Neural Architecture of Grammar_questions.yaml
-│   │   ├── The New Oxford Guide to Writing_questions.yaml
-│   │   ├── The Trivium The Liberal Arts of Logic, Grammar, and Rhetoric_questions.yaml
-│   │   └── Trigonometry_questions.yaml
-│   └── SystemsProgramming
-│       ├── Advanced Apple Debugging & Reverse Engineering (Fourth Edition) Exploring Apple Code Through LLDB, Python & DTrace_questions.yaml
-│       ├── Exploring macOS A Journey Through the Mac Ecosystem_questions.yaml
-│       ├── Foundations of ARM64 Linux Debugging, Disassembling, and Reversing Analyze Code, Understand Stack Memory Usage, and Reconstruct Original C_C++ Code with ARM64_questions.yaml
-│       ├── Objective-C The Ultimate Guide_questions.yaml
-│       ├── The C Programming Language_questions.yaml
-│       └── The Rust Programming Language_questions.yaml
-├── code
-│   ├── AArch64_Assembly Algorithms_questions.yaml
-│   ├── Hyper_questions.yaml
-│   ├── Ripgrep_questions.yaml
-│   └── SQLite_questions.yaml
-├── manpages
-│   ├── 4ccconv_questions.yaml
-    | ...
-    | ...
-│   └── zshzle_questions.yaml
-├── mdbooks
-│   ├── Cargo_questions.yaml
-│   ├── Helix_questions.yaml
-│   ├── Nushell_questions.yaml
-│   └── Rust_questions.yaml
-└── tealdeer
-    └── Tealdeer_questions.yaml
+## 📁 Configuration (config.yaml)  
 
-8 directories, 2734 files
+```yaml
+api_key: your-openai-api-key
+api_base: http://127.0.0.1:1234/v1
+model: qwen3-4B-mlx
+context_max_tokens: 32768
+assistant_minimum_context_tokens: 2048
+stop_words:
+  - |-
+    This is a sample text...
+session_db_url: /path/to/aj.db
+```
+
+### 📁 Template Files
+
+Place these in a directory like `~/Library/Application Support/com.awful-sec.aj/templates/`:  
+```bash
+templates/book_knowledge_synthesizer.yaml
+templates/code_knowledge_synthesizer.yaml
+templates/manpage_knowledge_synthesizer.yaml
+templates/mdbook_knowledge_synthesizer.yaml
+templates/tealdeer_knowledge_synthesizer.yaml
+```
+
+---
+
+## 🧠 Supported Source Types  
+
+| Type               | Description                                      |
+|-------------------|--------------------------------------------------|
+| `yaml`            | Sanitized text chunks (e.g., from books).        |
+| `manpage`         | Manpages or system docs (txt files).             |
+| `mdbook`          | Nested markdown directories (e.g., `Cargo`, `Rust`). |
+| `tealdeer`        | Markdown files (e.g., `AArch64_Assembly.md`).    |
+| `code`            | Code snippets (e.g., C, Rust).                   |
+
+---
+
+## 🧠 Example Output  
+
+```yaml
+- prompt: "What is the purpose of this code?"
+  answer: "To implement a database engine..."
+```
+
+> *Note: The actual questions depend on the LLM and template used. Use [Awful Jade](https://github.com/awful_aj) to test the results.*  
+
+---
+
+## 🧠 Contributing & Feedback  
+
+- **Report bugs**: We welcome all questions ad contributions With Arms Wide Open. It's a Creed really.
+- **Suggest improvements**: We were aiming to build a user friendly, simple, fast CLI but if you are having \~big ideas\~ that require simple solutions, holler.  
+- **Share your data**: Both with us and in general. Here's are the Open Source datasets built using this tool: https://huggingface.co/dougiefresh/datasets
+
+---
+
+## 🧠 Why Use This?  
+
+- **No code changes**: Just run it and let the LLM handle the heavy lifting.  
+- **Customizable**: Choose between `code`, `manpage`, `mdbook`, `book`, `tealdeer`, or `yaml` sources.  
+- **Persistent converstaions (Optional)**: Use a sqlite database to store LLM responses with `config.yaml`.  
+
+---
+
+## 🧠 Final Thoughts  
+
+**`awful_knowledge_synthesizer`** is a begrudging love letter to the power of LLMs and the chaos of text. Whether you're studying for finals, building interesting NPCs, or simply trying to f*ck your computer, this tool is your dutiful assistant.  
+
+> *Remember: The goal isn’t to make every question perfect. It’s to ensure our knowledge *is used to refine*.*  
+
+--- 
+
+### 🧠 Want to Try It?  
+
+1. **Install dependencies**:  
+   ```bash
+   cargo install awful-knowledge-synthesizer
+   ```
+
+2. **Run it**:  
+   ```bash
+   awful_knowledge_synthesizer --help
+   ```
+
+3. **Explore the examples**:  
+   ```bash
+   tree inputs
+   tree complete
+   ```
+
+> *Now go forth and synthesize!* 🧠📚

@@ -537,10 +537,10 @@ async fn run_for_books(
                 println!("{:?}", book.author);
                 println!("{:?}", book.title);
 
-                let mut count = 240;
+                let mut count = 0;
                 let total = book.chunks.len();
 
-                for chunk in &book.chunks[239..] {
+                for chunk in &book.chunks {
                     println!("Processing chunk {count}/{total}");
 
                     let book_details = format!("The text is from {title} by {author}.");
