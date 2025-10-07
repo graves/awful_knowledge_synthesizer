@@ -48,10 +48,17 @@ Options:
 
 ---
 
+## 🤔 Why Use This?  
+
+- **No code changes**: Just run it and let the LLM handle the heavy lifting.  
+- **Customizable**: Choose between `code`, `manpage`, `mdbook`, `book`, `tealdeer`, or `yaml` sources.  
+- **Persistent converstaions (Optional)**: Use a sqlite database to store LLM responses with `config.yaml`.  
+
+---
 
 ### 🧩 **How It Works**  
 
-This tool transforms text from various sources into exam questions using Large Language Models (LLMs). Here’s a breakdown of how each input type is processed:
+This tool transforms text from various sources into exam questions using Large Language Models (LLMs). Here’s a breakdown of how each input type is processed.
 
 ---
 
@@ -235,22 +242,6 @@ templates/tealdeer_knowledge_synthesizer.yaml
 - **Share your data**: Both with us and in general. Here's are the Open Source datasets built using this tool: https://huggingface.co/dougiefresh/datasets
 
 ---
-
-## 🤔 Why Use This?  
-
-- **No code changes**: Just run it and let the LLM handle the heavy lifting.  
-- **Customizable**: Choose between `code`, `manpage`, `mdbook`, `book`, `tealdeer`, or `yaml` sources.  
-- **Persistent converstaions (Optional)**: Use a sqlite database to store LLM responses with `config.yaml`.  
-
----
-
-## 🫩 Final Thoughts  
-
-**`awful_knowledge_synthesizer`** is a begrudging love letter to the power of LLMs and the chaos of text. Whether you're studying for finals, building interesting NPCs, or simply trying to f*ck your computer, this tool is your dutiful assistant.  
-
-> *Remember: The goal isn’t to make every question perfect. It’s to ensure our knowledge *is used to refine*.*  
-
---- 
 
 ### 🧐 Want to Try It?  
 
