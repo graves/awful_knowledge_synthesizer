@@ -275,7 +275,7 @@ dependencies = [
 
 [[package]]
 name = "awful_knowledge_synthesizer"
-version = "0.1.3"
+version = "0.1.4"
 dependencies = [
  "awful_aj",
  "clap",
