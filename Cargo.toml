@@ -1,13 +1,43 @@
 [package]
 name = "awful_knowledge_synthesizer"
 version = "0.1.0"
-edition = "2024"
+# crates.io requires a stable edition; use 2021 for now.
+edition = "2021"
+license = "CC-BY-SA-4.0"
+description = "Generate LLM-powered exam questions from YAML books, manpages, mdbooks, tealdeer pages, and code."
+readme = "README.md"
+repository = "https://github.com/REPLACE_ME/awful_knowledge_synthesizer"
+homepage = "https://github.com/REPLACE_ME/awful_knowledge_synthesizer"
+documentation = "https://docs.rs/awful_knowledge_synthesizer"
+keywords = ["llm", "cli", "exam", "questions", "education"]
+categories = ["command-line-utilities", "text-processing", "development-tools"]
+
+# Only ship what users need
+include = [
+  "src/**",
+  "README.md",
+  "LICENSE*",
+  "Cargo.toml",
+]
+
+# Exclude large or local-only assets from the crate
+exclude = [
+  "inputs/**",
+  "complete/**",
+  "demo.gif",
+  ".github/**",
+  ".vscode/**",
+  "target/**",
+]
+
+[badges]
+maintenance = { status = "actively-developed" }
 
 [dependencies]
 serde = "1.0.219"
 serde_derive = "1.0.219"
 serde_yaml = "0.9.34"
-awful_aj = { version = "*", git = "https://github.com/graves/awful_aj" }
+awful_aj = "0.3.6"
 tokio = { version = "1.45.0", features = ["full"] }
 serde_json = "1.0.140"
 clap = { version = "4.5.38", features = ["derive"] }
