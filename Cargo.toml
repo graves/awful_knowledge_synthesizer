@@ -1,6 +1,6 @@
 [package]
 name = "awful_knowledge_synthesizer"
-version = "0.1.1"
+version = "0.1.2"
 # crates.io requires a stable edition; use 2021 for now.
 edition = "2021"
 license = "CC-BY-SA-4.0"
